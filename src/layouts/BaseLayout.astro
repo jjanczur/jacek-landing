@@ -22,7 +22,7 @@ const alternateUrls = {
 };
 ---
 
-<html lang={lang}>
+<html lang={lang} data-theme="light">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -91,7 +91,13 @@ const alternateUrls = {
     </script>
 
     <!-- Theme initialization -->
-    <script src="/theme-init.js" is:inline></script>
+    <script is:inline>
+      // Theme initialization
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    </script>
   </head>
   <body>
     <NavBar lang={lang} />

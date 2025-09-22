@@ -2,9 +2,11 @@
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleTheme() {
     const d = document.documentElement;
-    const next = d.dataset.theme === 'dark' ? 'light' : 'dark';
+    const current = d.dataset.theme;
+    const next = current === 'dark' ? 'light' : 'dark';
     d.dataset.theme = next;
     localStorage.setItem('theme', next);
+    console.log('Theme toggled from', current, 'to', next);
   }
 </script>
 
