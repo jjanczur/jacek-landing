@@ -98,6 +98,43 @@ const lang = 'de';
           </div>
         </article>
       </div>
+
+      <!-- Publications Section -->
+      <div class="publications-section">
+        <h2>Publikationen & Schreiben</h2>
+        <div class="publications-grid">
+          <div class="publication-group">
+            <h3>Peer‑Reviewed</h3>
+            <article class="publication-card">
+              <h4>Saluki: Finding Taint-style Vulnerabilities with Static Property Checking</h4>
+              <p>BAR/NDSS Workshop 2018. Forschungstool zur Erkennung von Taint‑Eigenschaften in Binärcode mit einem Mix aus statischer und dynamischer Taint‑Analyse. DSL für Taint‑Policies. An realen Programmen demonstriert.</p>
+              <p><strong>Rolle:</strong> Autor/Maintainer des Repos. <strong>Links:</strong> <a href="https://github.com/jjanczur/Saluki">GitHub</a> · <a href="https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf">Paper</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases</h4>
+              <p>IEEE BRAINS 2020. Blockchain‑basierte, dezentrale Vergütung für digitale Inhalte; transparente, programmierbare Auszahlungen in Smart Contracts.</p>
+              <p><strong>Rolle:</strong> Autor/Mitautor. <strong>DOI:</strong> <a href="https://doi.org/10.1109/BRAINS49436.2020.9223299">10.1109/BRAINS49436.2020.9223299</a> · <a href="https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases">ResearchGate</a></p>
+            </article>
+          </div>
+          <div class="publication-group">
+            <h3>Artikel & Guides</h3>
+            <article class="publication-card">
+              <h4>Utility NFTs — more than simple JPEGs?</h4>
+              <p>Medium, 1. Feb 2023. Definiert „Utility NFTs“ und argumentiert für realen Nutzen jenseits von Sammlerstücken (z. B. Zugänge/Rollen). Auswirkungen auf Marktplätze.</p>
+              <p><strong>Link:</strong> <a href="https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4">Artikel</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>How to run your python code in KnowledgeX</h4>
+              <p>Medium, 17. Feb 2022. Wie Entwickler Python‑Jobs auf KnowledgeX via iExec und TEEs ausführen. Docker‑Template, Worker‑Verifikation, Auditierbarkeit.</p>
+              <p><strong>Link:</strong> <a href="https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c">Guide</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>REL_2020_02_APP_web.pdf</h4>
+              <p><strong>PLACEHOLDER:</strong> Titel/Abstract ausstehend. [TODO: Titel/Abstract aus Quelle bestätigen].</p>
+            </article>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -107,6 +144,59 @@ const lang = 'de';
     padding: var(--space-8) 0;
     background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
     text-align: center;
+  }
+
+  .publications-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .publications-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    color: var(--primary);
+  }
+
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .publication-group h3 {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+  }
+
+  .publication-card h4 {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card p {
+    margin-bottom: var(--space-3);
+    line-height: 1.6;
+  }
+
+  .publication-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .publication-card a {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
   }
 
   .notes-hero h1 {

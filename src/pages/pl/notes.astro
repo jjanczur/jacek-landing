@@ -100,12 +100,46 @@ const lang = 'pl';
         </article>
       </div>
 
+      <!-- Publications Section -->
+      <div class="publications-section">
+        <h2>Publikacje i Pisanie</h2>
+        <div class="publications-grid">
+          <div class="publication-group">
+            <h3>Recenzowane</h3>
+            <article class="publication-card">
+              <h4>Saluki: Finding Taint-style Vulnerabilities with Static Property Checking</h4>
+              <p>BAR/NDSS Workshop 2018. Narzędzie badawcze do wykrywania własności typu „taint” w kodzie binarnym z użyciem mieszanki technik statycznych i dynamicznych. DSL do polityk „taint”. Pokazane na realnych programach.</p>
+              <p><strong>Rola:</strong> Autor/maintainer repozytorium. <strong>Linki:</strong> <a href="https://github.com/jjanczur/Saluki">GitHub</a> · <a href="https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf">Artykuł</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases</h4>
+              <p>IEEE BRAINS 2020. Zdecentralizowane rozliczenia dla zakupów treści cyfrowych; przejrzyste, programowalne wypłaty w smart‑kontraktach.</p>
+              <p><strong>Rola:</strong> Autor/współautor. <strong>DOI:</strong> <a href="https://doi.org/10.1109/BRAINS49436.2020.9223299">10.1109/BRAINS49436.2020.9223299</a> · <a href="https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases">ResearchGate</a></p>
+            </article>
+          </div>
+          <div class="publication-group">
+            <h3>Artykuły i Poradniki</h3>
+            <article class="publication-card">
+              <h4>Utility NFTs — more than simple JPEGs?</h4>
+              <p>Medium, 1 lutego 2023. Definiuje „utility NFTs” i argumentuje za użytecznością poza kolekcjonerstwem (np. przepustki/role). Konsekwencje dla rynków.</p>
+              <p><strong>Link:</strong> <a href="https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4">Artykuł</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>How to run your python code in KnowledgeX</h4>
+              <p>Medium, 17 lutego 2022. Jak uruchamiać zadania Pythona na KnowledgeX przez iExec i TEE. Szablon Docker, weryfikacja workerów, audytowalność.</p>
+              <p><strong>Link:</strong> <a href="https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c">Poradnik</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>REL_2020_02_APP_web.pdf</h4>
+              <p><strong>PLACEHOLDER:</strong> Tytuł i abstrakt do potwierdzenia. [TODO: potwierdź tytuł/abstrakt z pliku].</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
       <div class="notes-cta">
         <p>
-          Te notatki reprezentują ciągłą naukę i obserwacje z budowania systemów
-          AI. Dla bardziej strukturalnych treści sprawdź sekcje <a
-            href="/pl/talks/">wykłady</a
-          > i <a href="/pl/projects/">projekty</a>.
+          Te notatki i publikacje odzwierciedlają bieżącą naukę z budowy systemów AI. Zobacz też <a href="/pl/talks/">wykłady</a> i <a href="/pl/projects/">projekty</a>.
         </p>
       </div>
     </div>
@@ -219,6 +253,59 @@ const lang = 'pl';
     padding: var(--space-5);
     border-radius: var(--radius-l);
     text-align: center;
+  }
+
+  .publications-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .publications-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    color: var(--primary);
+  }
+
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .publication-group h3 {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+  }
+
+  .publication-card h4 {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card p {
+    margin-bottom: var(--space-3);
+    line-height: 1.6;
+  }
+
+  .publication-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .publication-card a {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
   }
 
   .notes-cta p {

@@ -97,9 +97,46 @@ const lang = 'en';
         </article>
       </div>
 
+      <!-- Publications Section -->
+      <div class="publications-section">
+        <h2>Publications & Writing</h2>
+        <div class="publications-grid">
+          <div class="publication-group">
+            <h3>Peer-Reviewed</h3>
+            <article class="publication-card">
+              <h4>Saluki: Finding Taint-style Vulnerabilities with Static Property Checking</h4>
+              <p>BAR/NDSS Workshop 2018. Research tool for detecting taint-style security properties in binary code using a mix of static and dynamic taint techniques. Provides a DSL for taint policies. Demonstrated on real programs.</p>
+              <p><strong>Role:</strong> Author/maintainer of repo. <strong>Links:</strong> <a href="https://github.com/jjanczur/Saluki">GitHub repo</a> · <a href="https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf">Paper</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases</h4>
+              <p>IEEE BRAINS 2020. Blockchain-based decentralized compensation for digital content purchases with transparent, programmable payouts and smart-contract design.</p>
+              <p><strong>Role:</strong> Author/co-author. <strong>DOI:</strong> <a href="https://doi.org/10.1109/BRAINS49436.2020.9223299">10.1109/BRAINS49436.2020.9223299</a> · <a href="https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases">ResearchGate</a></p>
+            </article>
+          </div>
+          <div class="publication-group">
+            <h3>Articles & Guides</h3>
+            <article class="publication-card">
+              <h4>Utility NFTs — more than simple JPEGs?</h4>
+              <p>Medium, Feb 1, 2023. Defines "utility NFTs" and argues for real-world utility beyond collectibles, with examples like access passes. Implications for marketplaces.</p>
+              <p><strong>Link:</strong> <a href="https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4">Medium Article</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>How to run your python code in KnowledgeX</h4>
+              <p>Medium, Feb 17, 2022. Guide on running Python jobs on KnowledgeX via iExec and TEEs. Covers Dockerized templates, worker verification, and auditability for developers and data scientists.</p>
+              <p><strong>Link:</strong> <a href="https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c">Blog Post</a></p>
+            </article>
+            <article class="publication-card">
+              <h4>REL_2020_02_APP_web.pdf</h4>
+              <p><strong>Placeholder:</strong> Title and abstract pending confirmation. [TODO: Confirm title/abstract from source].</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
       <div class="notes-cta">
         <p>
-          These notes represent ongoing learning and observations from building
+          These notes and publications represent ongoing learning and observations from building
           AI systems. For more structured content, check out the <a
             href="/en/talks/">talks</a
           > and <a href="/en/projects/">projects</a> sections.
@@ -208,6 +245,59 @@ const lang = 'en';
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-s);
     font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publications-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .publications-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    color: var(--primary);
+  }
+
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .publication-group h3 {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+  }
+
+  .publication-card h4 {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card p {
+    margin-bottom: var(--space-3);
+    line-height: 1.6;
+  }
+
+  .publication-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .publication-card a {
+    color: var(--primary);
     font-weight: var(--font-weight-bold);
   }
 
