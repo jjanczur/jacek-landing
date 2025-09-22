@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Projekte | Jacek Janczura';
+const description =
+  'KI-Projekte zeigen Unternehmens-LLM-Plattformen, RAG-Systeme und sichere Cloud-Architekturen. Von Prompt-Engineering bis Plattform-Architektur.';
+const lang = 'de';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="projects-hero">
+    <div class="container">
+      <h1>Projekte</h1>
+      <p class="projects-subtitle">
+        Von Prompt-Engineering bis Plattform-Architektur — KI, die implementiert
+        wird
+      </p>
+    </div>
+  </section>
+
+  <section class="projects-grid">
+    <div class="container">
+      <!-- entAIngine Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>entAIngine</h2>
+          <span class="project-period">2023–Heute</span>
+        </div>
+        <div class="project-role">Mitbegründer & CTO</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Unternehmen benötigen kontrollierte, konforme LLM-Workflows mit
+              Governance und Kostenkontrolle.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Ansatz</h3>
+            <p>
+              Multi-Tenant-SaaS mit RBAC, Content-Routing und
+              provider-unabhängiger LLM-Integration (OpenAI, Azure, Bedrock,
+              Mistral).
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Impact</h3>
+            <p>
+              Schnellere KI-Einführung mit Produktionsqualität und
+              Unternehmenssicherheit.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">LLM</span>
+          <span class="tag">RAG</span>
+          <span class="tag">RBAC</span>
+          <span class="tag">SaaS</span>
+        </div>
+      </article>
+
+      <!-- entAIgent Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>entAIgent</h2>
+          <span class="project-period">2023</span>
+        </div>
+        <div class="project-role">Lead-Architekt</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Nichtechnische Teams tun sich schwer, mehrstufige KI‑Agenten
+              zuverlässig zu orchestrieren.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Ansatz</h3>
+            <p>
+              Visueller Builder, Team‑Orchestrierung, Tool‑Integrationen mit
+              eingebauten Schutzmechanismen und Evaluationsframeworks.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wirkung</h3>
+            <p>
+              Von Wochen auf Tage für Agenten‑PoCs bei konsistenten Ergebnissen
+              über Teams hinweg.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">KI‑Agenten</span>
+          <span class="tag">No‑Code</span>
+          <span class="tag">Orchestrierung</span>
+          <span class="tag">Evals</span>
+        </div>
+      </article>
+
+      <!-- FlowHive Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>FlowHive</h2>
+          <span class="project-period">2022–2023</span>
+        </div>
+        <div class="project-role">Senior KI‑Ingenieur</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Zersplitterte KI‑Tools erhöhen Kosten und Reibung in
+              Forschungs‑Workflows.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Ansatz</h3>
+            <p>
+              Vereinheitlichter Workspace für Forschung, Agenten und Analysen
+              mit nahtlosem Modellwechsel und Caching.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wirkung</h3>
+            <p>
+              Weniger Tool‑Silos und geringere Pro‑Seat‑Kosten bei schnelleren
+              Iterationszyklen.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Multi‑Modell</span>
+          <span class="tag">Workspace</span>
+          <span class="tag">Caching</span>
+          <span class="tag">Research</span>
+        </div>
+      </article>
+
+      <!-- Valuation Engine Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>Bewertungssystem</h2>
+          <span class="project-period">2022</span>
+        </div>
+        <div class="project-role">Technischer Lead</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Manuelle lokale Marktrecherche ist für Immobilienbewertungen
+              langsam und fehleranfällig.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Ansatz</h3>
+            <p>
+              KI‑gestützte Datenaggregation und Texterstellung mit
+              strukturiertem Report‑Generieren.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wirkung</h3>
+            <p>
+              Rund 2 Stunden pro Bericht eingespart, mit höherer Konsistenz und
+              einfacheren Review‑Zyklen.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Immobilien</span>
+          <span class="tag">Copilot</span>
+          <span class="tag">Automatisierung</span>
+          <span class="tag">Berichte</span>
+        </div>
+      </article>
+
+      <!-- KnowledgeX Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>KnowledgeX</h2>
+          <span class="project-period">2021–2022</span>
+        </div>
+        <div class="project-role">Mitbegründer & Architekt</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Organisationsübergreifende Analytik ohne Offenlegung sensibler
+              Daten.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Ansatz</h3>
+            <p>
+              Blockchain plus Confidential‑Compute‑Plattform mit auditierbaren
+              Workflows.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wirkung</h3>
+            <p>
+              Sichere Datenkollaboration, validiert mit EU‑Stakeholdern und
+              Forschungspartnern.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Blockchain</span>
+          <span class="tag">Confidential Compute</span>
+          <span class="tag">Analytik</span>
+          <span class="tag">Privatsphäre</span>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .projects-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    color: var(--text);
+  }
+
+  .projects-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: 0;
+    font-weight: var(--font-weight-normal);
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .projects-grid {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-2);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-2);
+  }
+
+  .project-header h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--primary);
+    margin: 0;
+  }
+
+  .project-period {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+  }
+
+  .project-role {
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .project-content {
+    margin-bottom: var(--space-4);
+  }
+
+  .project-section h3 {
+    font-size: var(--font-size-lg);
+    color: var(--text);
+    margin: var(--space-4) 0 var(--space-2) 0;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .project-section p {
+    margin: 0 0 var(--space-3) 0;
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    background: var(--muted);
+    color: var(--primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  @media (max-width: 600px) {
+    .project-header {
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .project-header h2 {
+      font-size: var(--font-size-xl);
+    }
+  }
+</style>

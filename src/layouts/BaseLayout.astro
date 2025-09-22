@@ -1,0 +1,103 @@
+---
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/tokens.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  lang: 'en' | 'pl' | 'de';
+  ogImage?: string;
+}
+
+const { title, description, lang, ogImage } = Astro.props;
+
+// Define alternate URLs for hreflang
+const baseUrl = 'https://janczura.com';
+const currentPath = Astro.url.pathname;
+const alternateUrls = {
+  en: `${baseUrl}${currentPath.replace(/^\/(pl|de)/, '/en')}/`,
+  pl: `${baseUrl}${currentPath.replace(/^\/(en|de)/, '/pl')}/`,
+  de: `${baseUrl}${currentPath.replace(/^\/(en|pl)/, '/de')}/`,
+};
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage || `${baseUrl}/og-image.jpg`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`${baseUrl}${currentPath}`} />
+
+    <!-- Hreflang alternates -->
+    <link rel="alternate" hreflang="en" href={alternateUrls.en} />
+    <link rel="alternate" hreflang="pl" href={alternateUrls.pl} />
+    <link rel="alternate" hreflang="de" href={alternateUrls.de} />
+    <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
+
+    <!-- Google Fonts - Lato -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSP Meta -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self';"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jacek Janczura",
+        "jobTitle": "AI Architect & CTO",
+        "description": "AI and Cloud Architect specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures.",
+        "url": "https://janczura.com",
+        "sameAs": [
+          "https://linkedin.com/in/jacekjanczura",
+          "https://github.com/jacekjanczura"
+        ],
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Machine Learning",
+          "LLM Platforms",
+          "Cloud Architecture",
+          "Distributed Systems",
+          "Cybersecurity",
+          "ISO 27001",
+          "SOC 2"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "AI Architect",
+          "occupationLocation": {
+            "@type": "City",
+            "name": "Berlin"
+          }
+        }
+      }
+    </script>
+
+    <!-- Theme initialization -->
+    <script src="/theme-init.js" is:inline></script>
+  </head>
+  <body>
+    <NavBar lang={lang} />
+    <main style="min-height: calc(100vh - 64px - 120px);">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

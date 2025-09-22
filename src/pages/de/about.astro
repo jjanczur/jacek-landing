@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Über mich | Jacek Janczura';
+const description =
+  'KI- und Cloud-Architekt spezialisiert auf Unternehmens-LLM-Plattformen, RAG-Systeme und sichere Cloud-Architekturen. Mitbegründer/CTO mit Erfahrung in verteilten Systemen und Compliance.';
+const lang = 'de';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="about-hero">
+    <div class="container">
+      <h1>Über mich</h1>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="container content">
+      <div class="bio-section">
+        <p class="bio-text">
+          KI‑ und Cloud‑Architekt mit Fokus auf <strong
+            >LLM‑Plattformen, RAG und sicheren, skalierbaren Systemen</strong
+          >. Mitbegründer/CTO, der Unternehmens‑KI in den Bereichen
+          Versicherung, Recht, Automobil und Immobilien umsetzt. Ich entwerfe <strong
+            >ereignisgesteuerte Mikroservices</strong
+          > auf AWS, integriere Multi‑Modell‑Stacks (OpenAI, Azure, Bedrock, Mistral)
+          und implementiere <strong>ISO‑27001/SOC‑2</strong>‑Praktiken. Ich
+          leite Teams nach SOLID/TDD und übersetze Geschäftsziele in belastbare
+          Systeme, die unter Last performen.
+        </p>
+      </div>
+
+      <div class="bio-section">
+        <h2>Erfahrung</h2>
+        <p class="bio-text">
+          Jacek Janczura ist ein KI-Architekt und CTO, der sich auf <strong
+            >Unternehmens-LLM-Plattformen</strong
+          >,
+          <strong>Retrieval-Augmented Generation</strong> und <strong
+            >sichere Cloud-Architekturen</strong
+          > spezialisiert hat. Er hat Multi‑Tenant‑Designs geleitet, die AWS Bedrock,
+          Azure ML, OpenAI und Mistral integrieren, und ereignisgesteuerte Backends
+          mit Lambda, ECS/Fargate, SNS/SQS für <strong
+            >hohen Durchsatz bei kontrollierten Kosten</strong
+          > gebaut. Jacek entwickelte interne Tools wie einen <strong
+            >Assistenten zur Prompt‑Optimierung</strong
+          > und deterministische
+          <strong>KI‑Pipeline‑Testbeds</strong>, die Teams helfen, von
+          Experimenten zu zuverlässiger Produktion überzugehen.
+        </p>
+        <p class="bio-text">
+          Zuvor lieferte er bei <strong>idealo</strong> hochwirksame Backend‑Funktionen
+          in großem Maßstab; bei <strong>T-Labs</strong> baute er Blockchain-Systeme
+          mit Hyperledger; und bei <strong>SAS</strong>
+          entwarf er Echtzeitanalysesysteme für das Bankwesen. Er hält doppelte M.Sc.-Abschlüsse
+          in Informatik (TU Berlin, PW Warschau). Jacek arbeitet in den Bereichen
+          <strong>Architektur, Sicherheit und Lieferung</strong>, um
+          sicherzustellen, dass KI‑Lösungen Compliance‑Standards und
+          Geschäfts‑KPIs erfüllen.
+        </p>
+      </div>
+
+      <div class="skills-section">
+        <h2>Spezialisierungen</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>KI & Machine Learning</h3>
+            <ul class="skills-list">
+              <li>LLM‑Plattformarchitektur</li>
+              <li>Prompt‑Engineering & RAG</li>
+              <li>Multi‑Modell‑Integration</li>
+              <li>KI‑Pipeline‑Design</li>
+              <li>Evaluationsframeworks</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Cloud & Infrastruktur</h3>
+            <ul class="skills-list">
+              <li>AWS (Lambda, ECS, Bedrock)</li>
+              <li>Azure ML & OpenAI</li>
+              <li>Ereignisgesteuerte Systeme</li>
+              <li>Mikroservice‑Architektur</li>
+              <li>High‑Throughput‑Design</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Sicherheit & Compliance</h3>
+            <ul class="skills-list">
+              <li>ISO 27001/SOC 2</li>
+              <li>Multi‑Tenant‑Sicherheit</li>
+              <li>DSGVO & Datenschutz</li>
+              <li>Risikobewertung</li>
+              <li>Audit-Trail-Design</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Führung & Prozess</h3>
+            <ul class="skills-list">
+              <li>Technische Führung</li>
+              <li>Code-Review-Kultur</li>
+              <li>CI/CD & DevOps</li>
+              <li>Test-Strategie</li>
+              <li>Team-Mentoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-section">
+        <h2>Karriere</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2023–Heute</div>
+            <div class="timeline-content">
+              <h3>Mitbegründer & CTO</h3>
+              <p class="timeline-company">entAIngine</p>
+              <p>
+                Aufbau einer Unternehmens-KI-Prozessautomatisierungsplattform
+                mit RBAC und Multi-Provider-LLM-Integration.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022–2023</div>
+            <div class="timeline-content">
+              <h3>Senior KI‑Ingenieur</h3>
+              <p class="timeline-company">KI-Startup</p>
+              <p>
+                Entwicklung eines Multi‑Modell‑KI‑Arbeitsbereichs und einer
+                No‑Code‑Agenten‑Orchestrierungsplattform.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2021–2022</div>
+            <div class="timeline-content">
+              <h3>Mitbegründer & Architekt</h3>
+              <p class="timeline-company">KnowledgeX</p>
+              <p>
+                Aufbau eines Blockchain-basierten Analyse-Marktplatzes mit
+                vertraulichen Berechnungen für sichere Datenzusammenarbeit.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2019–2021</div>
+            <div class="timeline-content">
+              <h3>Senior Backend-Ingenieur</h3>
+              <p class="timeline-company">idealo</p>
+              <p>
+                Lieferung hochimpactvoller Backend-Features in großem Maßstab
+                mit Fokus auf verteilte Systeme und Observability.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2018–2019</div>
+            <div class="timeline-content">
+              <h3>Forschungsingenieur</h3>
+              <p class="timeline-company">T-Labs</p>
+              <p>
+                Aufbau von Blockchain-Systemen mit Hyperledger und Erforschung
+                verteilter Konsensmechanismen.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2016–2018</div>
+            <div class="timeline-content">
+              <h3>Softwareingenieur</h3>
+              <p class="timeline-company">SAS Institute</p>
+              <p>
+                Entwurf von Echtzeit-Analytik-Systemen für das Bankwesen mit
+                Fokus auf Leistung und Zuverlässigkeit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .about-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    color: var(--text);
+  }
+
+  .about-content {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .bio-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .bio-section h2 {
+    margin-bottom: var(--space-4);
+    color: var(--primary);
+  }
+
+  .bio-text {
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+  }
+
+  .skills-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .skills-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    color: var(--primary);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .skill-category h3 {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .skills-list li {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--font-size-sm);
+  }
+
+  .skills-list li:last-child {
+    border-bottom: none;
+  }
+
+  .timeline-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .timeline-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    color: var(--primary);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: var(--space-6);
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: var(--space-6);
+    padding-left: var(--space-6);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -21px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 3px solid var(--bg);
+  }
+
+  .timeline-date {
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline-content h3 {
+    font-size: var(--font-size-lg);
+    color: var(--text);
+    margin-bottom: var(--space-1);
+  }
+
+  .timeline-company {
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .timeline-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline {
+      padding-left: var(--space-4);
+    }
+
+    .timeline-item {
+      padding-left: var(--space-4);
+    }
+
+    .timeline-item::before {
+      left: -17px;
+    }
+  }
+</style>

@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'AI Architect & CTO | Jacek Janczura';
+const description =
+  'Architekt AI i Cloud specjalizujący się w platformach LLM dla przedsiębiorstw, systemach RAG i bezpiecznych architekturach chmurowych.';
+const lang = 'pl';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Architekt AI i CTO</h1>
+      <p class="hero-subtitle">Systemy LLM klasy korporacyjnej, end‑to‑end</p>
+      <div class="hero-cta">
+        <a href="/pl/contact/" class="cta-button">Skontaktuj się</a>
+        <a href="/pl/projects/" class="cta-link">Zobacz projekty</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="positioning">
+    <div class="container content">
+      <p>
+        Architekt AI i Cloud z doświadczeniem w <strong
+          >platformach LLM, RAG i bezpiecznych systemach skalowalnych</strong
+        >. Współzałożyciel/CTO dostarczający AI dla przedsiębiorstw z branż
+        ubezpieczeniowej, prawniczej, motoryzacyjnej i nieruchomości. Projektuję <strong
+          >systemy mikrousług sterowane zdarzeniami</strong
+        > na AWS, integruję stosy wielomodelowe (OpenAI, Azure, Bedrock, Mistral)
+        i wdrażam praktyki <strong>ISO 27001/SOC 2</strong>. Kieruję zespołami
+        zgodnie z zasadami SOLID/TDD i przekładam cele biznesowe na odporne
+        systemy działające pod obciążeniem.
+      </p>
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="container">
+      <h2>Kompetencje</h2>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <h3>Architektura Platform AI</h3>
+          <p>Wielomodelowa, wielodostępna, z wbudowaną obserwowalnością</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Inżynieria Promptów & RAG</h3>
+          <p>Jakość, kontrola i odtwarzalność</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Systemy Rozproszone</h3>
+          <p>Mikrousługi sterowane zdarzeniami, streaming, back-pressure</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Bezpieczeństwo & Compliance</h3>
+          <p>Praktyki ISO 27001/SOC 2 bez spowalniania zespołów</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-work">
+    <div class="container">
+      <h2>Najważniejsze projekty</h2>
+      <div class="featured-grid">
+        <div class="featured-item">
+          <h3>entAIngine</h3>
+          <p>
+            Platforma automatyzacji procesów AI dla przedsiębiorstw z RBAC i
+            integracją wielodostawców LLM
+          </p>
+          <a href="/pl/projects/" class="featured-link"
+            >Zobacz wszystkie projekty →</a
+          >
+        </div>
+        <div class="featured-item">
+          <h3>Wzorce Architektury AI</h3>
+          <p>Praktyczne lekcje z wdrożeń LLM w przedsiębiorstwach</p>
+          <a href="/pl/talks/" class="featured-link">Obejrzyj wykłady →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-cta">
+    <div class="container content">
+      <h2>Budujmy odpowiedzialnie projektowane AI</h2>
+      <p>
+        Najlepiej przez e‑mail lub LinkedIn. Otwarte na doradztwo, przeglądy
+        architektury i wybrane projekty delivery.
+      </p>
+      <a href="/pl/contact/" class="cta-button">Skontaktuj się</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--space-8) 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    color: var(--text);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: var(--space-6);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    background: var(--primary);
+    color: white;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-m);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    transition: background-color 0.2s;
+  }
+
+  .cta-button:hover {
+    background: var(--accent);
+    text-decoration: none;
+  }
+
+  .cta-link {
+    color: var(--primary);
+    padding: var(--space-3) var(--space-6);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-m);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cta-link:hover {
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+  }
+
+  .positioning {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .highlights {
+    padding: var(--space-8) 0;
+    background: var(--muted);
+  }
+
+  .highlights h2 {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-5);
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .highlight-card {
+    background: var(--bg);
+    padding: var(--space-5);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-1);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .highlight-card h3 {
+    color: var(--primary);
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-lg);
+  }
+
+  .featured-work {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .featured-work h2 {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .featured-item {
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    transition: border-color 0.2s;
+  }
+
+  .featured-item:hover {
+    border-color: var(--primary);
+  }
+
+  .featured-item h3 {
+    color: var(--primary);
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-xl);
+  }
+
+  .featured-link {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    margin-top: var(--space-3);
+    display: inline-block;
+  }
+
+  .contact-cta {
+    padding: var(--space-8) 0;
+    background: var(--muted);
+    text-align: center;
+  }
+
+  .contact-cta h2 {
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-cta p {
+    margin-bottom: var(--space-5);
+    font-size: var(--font-size-lg);
+  }
+
+  @media (max-width: 600px) {
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

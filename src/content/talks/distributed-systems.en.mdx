@@ -1,0 +1,85 @@
+---
+title: 'Distributed Systems at Scale'
+event: 'CloudNative Berlin 2023'
+date: '2023-09-22'
+youtubeId: 'fPp66mtx_60'
+description:
+  'Throughput, latency, and resilience trade-offs in modern distributed systems. Event-driven
+  architectures, back-pressure mechanisms, and observability patterns.'
+lang: 'en'
+---
+
+# Distributed Systems at Scale: Throughput, Latency & Resilience
+
+## Abstract
+
+Modern applications demand both high throughput and low latency, but achieving both requires careful
+architectural decisions. This talk explores the trade-offs and patterns for building resilient
+distributed systems.
+
+## Core Concepts
+
+### 1. Event-Driven Architecture
+
+- Decoupling producers and consumers
+- Asynchronous processing patterns
+- Event sourcing for auditability
+
+### 2. Back-Pressure Mechanisms
+
+- Queue-based load shedding
+- Circuit breaker patterns
+- Adaptive concurrency limits
+
+### 3. Observability at Scale
+
+- Distributed tracing with OpenTelemetry
+- Metrics collection strategies
+- Alerting and anomaly detection
+
+### 4. Consistency Models
+
+- CAP theorem in practice
+- Choosing the right consistency level
+- Conflict resolution strategies
+
+## Performance Patterns
+
+- **Read-Heavy Workloads**: CDN and edge caching strategies
+- **Write-Heavy Workloads**: Event-driven pipelines and CQRS
+- **Mixed Workloads**: Hybrid approaches with intelligent routing
+
+## Failure Modes & Recovery
+
+The talk covers common failure scenarios:
+
+- Network partitions and split-brain
+- Cascading failures and circuit breakers
+- Data consistency during outages
+- Graceful degradation strategies
+
+## Technology Stack Examples
+
+- **Message Brokers**: Apache Kafka, AWS SQS/SNS, Google Pub/Sub
+- **Service Mesh**: Istio, Linkerd, Consul
+- **Databases**: CockroachDB, YugabyteDB, Cassandra
+- **Monitoring**: Prometheus, Grafana, Jaeger
+
+## Case Studies
+
+Real examples from:
+
+- E-commerce platforms handling Black Friday traffic
+- Financial trading systems with microsecond latency requirements
+- IoT platforms processing millions of device events
+- Social media feeds serving billions of requests daily
+
+## Best Practices
+
+- **Testing**: Chaos engineering and failure injection
+- **Deployment**: Blue-green deployments and canary releases
+- **Security**: Zero-trust architecture and service-to-service auth
+- **Cost Optimization**: Auto-scaling and resource right-sizing
+
+This technical deep-dive has helped numerous teams redesign their systems for better scalability and
+reliability.

@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Notes | Jacek Janczura';
+const description =
+  'Technical notes, insights, and thoughts on AI architecture, distributed systems, and software engineering.';
+const lang = 'en';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="notes-hero">
+    <div class="container">
+      <h1>Notes</h1>
+      <p class="notes-subtitle">
+        Technical insights and thoughts on AI, architecture, and engineering
+      </p>
+    </div>
+  </section>
+
+  <section class="notes-content">
+    <div class="container content">
+      <div class="notes-intro">
+        <p>
+          Occasional technical notes and insights from working with AI systems,
+          distributed architectures, and enterprise software. These are less
+          formal than talks but capture important lessons and observations.
+        </p>
+      </div>
+
+      <div class="notes-grid">
+        <article class="note-card">
+          <div class="note-header">
+            <h2>Prompt Engineering at Scale</h2>
+            <span class="note-date">2024-02-15</span>
+          </div>
+          <p class="note-excerpt">
+            Building a prompt optimization system that scales across teams and
+            maintains consistency in AI outputs. Lessons learned from
+            implementing a "Prompt Wizard" for enterprise use cases.
+          </p>
+          <div class="note-tags">
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">AI Governance</span>
+            <span class="tag">Enterprise</span>
+          </div>
+        </article>
+
+        <article class="note-card">
+          <div class="note-header">
+            <h2>Event-Driven AI Pipelines</h2>
+            <span class="note-date">2024-01-22</span>
+          </div>
+          <p class="note-excerpt">
+            Designing resilient AI workflows using event-driven architecture
+            patterns. How SQS/SNS can help manage AI pipeline backpressure and
+            ensure reliable processing.
+          </p>
+          <div class="note-tags">
+            <span class="tag">Event-Driven</span>
+            <span class="tag">AI Pipelines</span>
+            <span class="tag">AWS</span>
+          </div>
+        </article>
+
+        <article class="note-card">
+          <div class="note-header">
+            <h2>Multi-Model AI Routing</h2>
+            <span class="note-date">2023-12-10</span>
+          </div>
+          <p class="note-excerpt">
+            Intelligent routing strategies for multi-model AI deployments. Cost
+            optimization while maintaining performance and quality across
+            different model providers.
+          </p>
+          <div class="note-tags">
+            <span class="tag">Multi-Model</span>
+            <span class="tag">Cost Optimization</span>
+            <span class="tag">Architecture</span>
+          </div>
+        </article>
+
+        <article class="note-card">
+          <div class="note-header">
+            <h2>Security for AI Platforms</h2>
+            <span class="note-date">2023-11-18</span>
+          </div>
+          <p class="note-excerpt">
+            Essential security considerations for AI platforms: data privacy,
+            access control, audit trails, and compliance automation in AI-first
+            applications.
+          </p>
+          <div class="note-tags">
+            <span class="tag">AI Security</span>
+            <span class="tag">Compliance</span>
+            <span class="tag">Privacy</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="notes-cta">
+        <p>
+          These notes represent ongoing learning and observations from building
+          AI systems. For more structured content, check out the <a
+            href="/en/talks/">talks</a
+          > and <a href="/en/projects/">projects</a> sections.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notes-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .notes-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    color: var(--text);
+  }
+
+  .notes-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: 0;
+    font-weight: var(--font-weight-normal);
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .notes-content {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .notes-intro {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .notes-intro p {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    margin-bottom: 0;
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+
+  .note-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .note-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-1);
+  }
+
+  .note-header {
+    margin-bottom: var(--space-3);
+  }
+
+  .note-header h2 {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin: 0 0 var(--space-2) 0;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .note-date {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+    font-weight: var(--font-weight-normal);
+  }
+
+  .note-excerpt {
+    margin: 0 0 var(--space-4) 0;
+    line-height: 1.6;
+  }
+
+  .note-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    background: var(--muted);
+    color: var(--primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .notes-cta {
+    background: var(--muted);
+    padding: var(--space-5);
+    border-radius: var(--radius-l);
+    text-align: center;
+  }
+
+  .notes-cta p {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+  }
+
+  .notes-cta a {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  @media (max-width: 600px) {
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+title: 'entAIngine — Enterprise AI Process Automation'
+period: '2023–Present'
+role: 'Co-founder & CTO'
+tags: ['LLM', 'RAG', 'RBAC', 'SaaS']
+outcome: 'Governed, provider-agnostic AI workflows for enterprises'
+image: '/images/entaingine-platform.jpg'
+links:
+  href: 'https://entaingine.com'
+  repo: 'https://github.com/entaingine/platform'
+lang: 'en'
+---
+
+**Problem.** Enterprises need controlled, compliant LLM workflows with governance and cost controls.
+
+**Approach.** Multi-tenant SaaS with RBAC, content routing, and provider-agnostic LLM integration
+(OpenAI, Azure, Bedrock, Mistral). Built event-driven backend with Lambda, ECS/Fargate, SNS/SQS for
+high throughput at controlled cost.
+
+**Impact.** Faster AI adoption with production-grade reliability and enterprise-grade security.
+Currently serving 50+ organizations with 99.9% uptime.
+
+### Key Features
+
+- **Multi-Model Support**: Seamless switching between OpenAI, Azure OpenAI, AWS Bedrock, and Mistral
+- **Enterprise Security**: ISO 27001 compliant with SOC 2 Type II certification
+- **Cost Optimization**: Intelligent routing and caching to minimize API costs
+- **Audit Trails**: Complete traceability of AI decisions and data flows
+- **Team Collaboration**: Role-based access control with approval workflows
+
+### Architecture Highlights
+
+The platform uses a microservices architecture with:
+
+- **API Gateway**: AWS API Gateway with custom authorizers
+- **Orchestration Engine**: Kubernetes-based service mesh
+- **Vector Database**: Pinecone with custom embeddings pipeline
+- **Monitoring**: Comprehensive observability with Grafana and Prometheus
+- **Security**: End-to-end encryption with customer-managed keys

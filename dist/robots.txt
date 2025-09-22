@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://janczura.com/sitemap-index.xml
+
+# Crawl delay for respectful indexing
+Crawl-delay: 1

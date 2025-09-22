@@ -1,0 +1,135 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+export interface Props {
+  lang: 'en' | 'pl' | 'de';
+}
+
+const { lang } = Astro.props;
+
+const navLinks = {
+  en: [
+    { href: '/en/', label: 'Home' },
+    { href: '/en/projects/', label: 'Projects' },
+    { href: '/en/talks/', label: 'Talks' },
+    { href: '/en/about/', label: 'About' },
+    { href: '/en/notes/', label: 'Notes' },
+    { href: '/en/contact/', label: 'Contact' },
+  ],
+  pl: [
+    { href: '/pl/', label: 'Strona główna' },
+    { href: '/pl/projects/', label: 'Projekty' },
+    { href: '/pl/talks/', label: 'Wystąpienia' },
+    { href: '/pl/about/', label: 'O mnie' },
+    { href: '/pl/notes/', label: 'Notatki' },
+    { href: '/pl/contact/', label: 'Kontakt' },
+  ],
+  de: [
+    { href: '/de/', label: 'Startseite' },
+    { href: '/de/projects/', label: 'Projekte' },
+    { href: '/de/talks/', label: 'Vorträge' },
+    { href: '/de/about/', label: 'Über mich' },
+    { href: '/de/notes/', label: 'Notizen' },
+    { href: '/de/contact/', label: 'Kontakt' },
+  ],
+};
+
+const pathMap = {
+  en: Astro.url.pathname.replace(/^\/(pl|de)/, '/en'),
+  pl: Astro.url.pathname.replace(/^\/(en|de)/, '/pl'),
+  de: Astro.url.pathname.replace(/^\/(en|pl)/, '/de'),
+};
+---
+
+<header class="navbar">
+  <div class="navbar-container">
+    <a href={`/${lang}/`} class="brand">
+      <span class="brand-name">Jacek Janczura</span>
+      <span class="brand-title">AI Architect & CTO</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      {
+        navLinks[lang].map(link => (
+          <a href={link.href} class="nav-link">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="nav-actions">
+      <LanguageSwitcher lang={lang} pathMap={pathMap} />
+      <ThemeToggle client:load />
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .navbar-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .brand {
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .brand-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+  }
+
+  .brand-title {
+    font-size: var(--font-size-xs);
+    color: var(--primary);
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: var(--font-weight-normal);
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--primary);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>

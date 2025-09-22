@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.9"><title>Notes | Jacek Janczura</title><meta name="description" content="Technical notes, insights, and thoughts on AI architecture, distributed systems, and software engineering."><!-- Open Graph --><meta property="og:title" content="Notes | Jacek Janczura"><meta property="og:description" content="Technical notes, insights, and thoughts on AI architecture, distributed systems, and software engineering."><meta property="og:image" content="https://janczura.com/og-image.jpg"><meta property="og:type" content="website"><meta property="og:url" content="https://janczura.com/en/notes/"><!-- Hreflang alternates --><link rel="alternate" hreflang="en" href="https://janczura.com/en/notes//"><link rel="alternate" hreflang="pl" href="https://janczura.com/pl/notes//"><link rel="alternate" hreflang="de" href="https://janczura.com/de/notes//"><link rel="alternate" hreflang="x-default" href="https://janczura.com/en/notes//"><!-- Google Fonts - Lato --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"><!-- CSP Meta --><meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self';"><!-- JSON-LD Structured Data --><script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jacek Janczura",
+        "jobTitle": "AI Architect & CTO",
+        "description": "AI and Cloud Architect specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures.",
+        "url": "https://janczura.com",
+        "sameAs": [
+          "https://linkedin.com/in/jacekjanczura",
+          "https://github.com/jacekjanczura"
+        ],
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Machine Learning",
+          "LLM Platforms",
+          "Cloud Architecture",
+          "Distributed Systems",
+          "Cybersecurity",
+          "ISO 27001",
+          "SOC 2"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "AI Architect",
+          "occupationLocation": {
+            "@type": "City",
+            "name": "Berlin"
+          }
+        }
+      }
+    </script><!-- Theme initialization --><script src="/theme-init.js"></script><style>.notes-hero[data-astro-cid-fip3cay6]{padding:var(--space-8) 0;background:linear-gradient(135deg,var(--bg) 0%,var(--muted) 100%);text-align:center}.notes-hero[data-astro-cid-fip3cay6] h1[data-astro-cid-fip3cay6]{font-size:var(--font-size-hero);margin-bottom:var(--space-3);color:var(--text)}.notes-subtitle[data-astro-cid-fip3cay6]{font-size:var(--font-size-xl);color:var(--primary);margin-bottom:0;font-weight:var(--font-weight-normal);max-width:var(--content-width);margin-left:auto;margin-right:auto}.notes-content[data-astro-cid-fip3cay6]{padding:var(--space-8) 0;background:var(--bg)}.notes-intro[data-astro-cid-fip3cay6]{text-align:center;margin-bottom:var(--space-8)}.notes-intro[data-astro-cid-fip3cay6] p[data-astro-cid-fip3cay6]{font-size:var(--font-size-lg);line-height:1.6;margin-bottom:0;max-width:var(--content-width);margin-left:auto;margin-right:auto}.notes-grid[data-astro-cid-fip3cay6]{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-5);margin-bottom:var(--space-8)}.note-card[data-astro-cid-fip3cay6]{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-l);padding:var(--space-5);transition:border-color .2s,box-shadow .2s}.note-card[data-astro-cid-fip3cay6]:hover{border-color:var(--primary);box-shadow:var(--shadow-1)}.note-header[data-astro-cid-fip3cay6]{margin-bottom:var(--space-3)}.note-header[data-astro-cid-fip3cay6] h2[data-astro-cid-fip3cay6]{font-size:var(--font-size-xl);color:var(--primary);margin:0 0 var(--space-2) 0;font-weight:var(--font-weight-bold)}.note-date[data-astro-cid-fip3cay6]{font-size:var(--font-size-sm);color:var(--text);opacity:.7;font-weight:var(--font-weight-normal)}.note-excerpt[data-astro-cid-fip3cay6]{margin:0 0 var(--space-4) 0;line-height:1.6}.note-tags[data-astro-cid-fip3cay6]{display:flex;flex-wrap:wrap;gap:var(--space-2)}.tag[data-astro-cid-fip3cay6]{background:var(--muted);color:var(--primary);padding:var(--space-1) var(--space-3);border-radius:var(--radius-s);font-size:var(--font-size-xs);font-weight:var(--font-weight-bold)}.notes-cta[data-astro-cid-fip3cay6]{background:var(--muted);padding:var(--space-5);border-radius:var(--radius-l);text-align:center}.notes-cta[data-astro-cid-fip3cay6] p[data-astro-cid-fip3cay6]{margin:0;font-size:var(--font-size-base);line-height:1.6}.notes-cta[data-astro-cid-fip3cay6] a[data-astro-cid-fip3cay6]{color:var(--primary);font-weight:var(--font-weight-bold)}@media (max-width: 600px){.notes-grid[data-astro-cid-fip3cay6]{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="/_astro/about.CAD1CMjk.css"></head> <body> <header class="navbar" data-astro-cid-ymhdp2rl> <div class="navbar-container" data-astro-cid-ymhdp2rl> <a href="/en/" class="brand" data-astro-cid-ymhdp2rl> <span class="brand-name" data-astro-cid-ymhdp2rl>Jacek Janczura</span> <span class="brand-title" data-astro-cid-ymhdp2rl>AI Architect & CTO</span> </a> <nav class="nav-links" aria-label="Main navigation" data-astro-cid-ymhdp2rl> <a href="/en/" class="nav-link" data-astro-cid-ymhdp2rl> Home </a><a href="/en/projects/" class="nav-link" data-astro-cid-ymhdp2rl> Projects </a><a href="/en/talks/" class="nav-link" data-astro-cid-ymhdp2rl> Talks </a><a href="/en/about/" class="nav-link" data-astro-cid-ymhdp2rl> About </a><a href="/en/notes/" class="nav-link" data-astro-cid-ymhdp2rl> Notes </a><a href="/en/contact/" class="nav-link" data-astro-cid-ymhdp2rl> Contact </a> </nav> <div class="nav-actions" data-astro-cid-ymhdp2rl> <nav aria-label="Language" class="language-switcher" data-astro-cid-a2mxz4y6> <a href="/en/notes/" aria-current="true" class="lang-link" data-astro-cid-a2mxz4y6>EN</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/pl/notes/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>PL</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/de/notes/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>DE</a> </nav>  <script>
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function toggleTheme() {
+    const d = document.documentElement;
+    const next = d.dataset.theme === 'dark' ? 'light' : 'dark';
+    d.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  }
+</script> <button aria-label="Toggle theme" class="theme-toggle" onclick="toggleTheme()" data-astro-cid-x3pjskd3> <span data-astro-cid-x3pjskd3>🌓</span> </button>  </div> </div> </header>  <main style="min-height: calc(100vh - 64px - 120px);">  <section class="notes-hero" data-astro-cid-fip3cay6> <div class="container" data-astro-cid-fip3cay6> <h1 data-astro-cid-fip3cay6>Notes</h1> <p class="notes-subtitle" data-astro-cid-fip3cay6>
+Technical insights and thoughts on AI, architecture, and engineering
+</p> </div> </section> <section class="notes-content" data-astro-cid-fip3cay6> <div class="container content" data-astro-cid-fip3cay6> <div class="notes-intro" data-astro-cid-fip3cay6> <p data-astro-cid-fip3cay6>
+Occasional technical notes and insights from working with AI systems,
+          distributed architectures, and enterprise software. These are less
+          formal than talks but capture important lessons and observations.
+</p> </div> <div class="notes-grid" data-astro-cid-fip3cay6> <article class="note-card" data-astro-cid-fip3cay6> <div class="note-header" data-astro-cid-fip3cay6> <h2 data-astro-cid-fip3cay6>Prompt Engineering at Scale</h2> <span class="note-date" data-astro-cid-fip3cay6>2024-02-15</span> </div> <p class="note-excerpt" data-astro-cid-fip3cay6>
+Building a prompt optimization system that scales across teams and
+            maintains consistency in AI outputs. Lessons learned from
+            implementing a "Prompt Wizard" for enterprise use cases.
+</p> <div class="note-tags" data-astro-cid-fip3cay6> <span class="tag" data-astro-cid-fip3cay6>Prompt Engineering</span> <span class="tag" data-astro-cid-fip3cay6>AI Governance</span> <span class="tag" data-astro-cid-fip3cay6>Enterprise</span> </div> </article> <article class="note-card" data-astro-cid-fip3cay6> <div class="note-header" data-astro-cid-fip3cay6> <h2 data-astro-cid-fip3cay6>Event-Driven AI Pipelines</h2> <span class="note-date" data-astro-cid-fip3cay6>2024-01-22</span> </div> <p class="note-excerpt" data-astro-cid-fip3cay6>
+Designing resilient AI workflows using event-driven architecture
+            patterns. How SQS/SNS can help manage AI pipeline backpressure and
+            ensure reliable processing.
+</p> <div class="note-tags" data-astro-cid-fip3cay6> <span class="tag" data-astro-cid-fip3cay6>Event-Driven</span> <span class="tag" data-astro-cid-fip3cay6>AI Pipelines</span> <span class="tag" data-astro-cid-fip3cay6>AWS</span> </div> </article> <article class="note-card" data-astro-cid-fip3cay6> <div class="note-header" data-astro-cid-fip3cay6> <h2 data-astro-cid-fip3cay6>Multi-Model AI Routing</h2> <span class="note-date" data-astro-cid-fip3cay6>2023-12-10</span> </div> <p class="note-excerpt" data-astro-cid-fip3cay6>
+Intelligent routing strategies for multi-model AI deployments. Cost
+            optimization while maintaining performance and quality across
+            different model providers.
+</p> <div class="note-tags" data-astro-cid-fip3cay6> <span class="tag" data-astro-cid-fip3cay6>Multi-Model</span> <span class="tag" data-astro-cid-fip3cay6>Cost Optimization</span> <span class="tag" data-astro-cid-fip3cay6>Architecture</span> </div> </article> <article class="note-card" data-astro-cid-fip3cay6> <div class="note-header" data-astro-cid-fip3cay6> <h2 data-astro-cid-fip3cay6>Security for AI Platforms</h2> <span class="note-date" data-astro-cid-fip3cay6>2023-11-18</span> </div> <p class="note-excerpt" data-astro-cid-fip3cay6>
+Essential security considerations for AI platforms: data privacy,
+            access control, audit trails, and compliance automation in AI-first
+            applications.
+</p> <div class="note-tags" data-astro-cid-fip3cay6> <span class="tag" data-astro-cid-fip3cay6>AI Security</span> <span class="tag" data-astro-cid-fip3cay6>Compliance</span> <span class="tag" data-astro-cid-fip3cay6>Privacy</span> </div> </article> </div> <div class="notes-cta" data-astro-cid-fip3cay6> <p data-astro-cid-fip3cay6>
+These notes represent ongoing learning and observations from building
+          AI systems. For more structured content, check out the <a href="/en/talks/" data-astro-cid-fip3cay6>talks</a> and <a href="/en/projects/" data-astro-cid-fip3cay6>projects</a> sections.
+</p> </div> </div> </section>  </main> <footer class="footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <p class="copyright" data-astro-cid-sz7xmlte>
+© 2025 Jacek Janczura
+</p> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://linkedin.com/in/jacekjanczura" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" data-astro-cid-sz7xmlte> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://github.com/jacekjanczura" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" data-astro-cid-sz7xmlte> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" data-astro-cid-sz7xmlte></path> </svg> </a> </div> </div> </footer>  </body></html> 

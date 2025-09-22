@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Projekty | Jacek Janczura';
+const description =
+  'Projekty AI prezentujące platformy LLM dla przedsiębiorstw, systemy RAG i bezpieczne architektury chmurowe.';
+const lang = 'pl';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="projects-hero">
+    <div class="container">
+      <h1>Projekty</h1>
+      <p class="projects-subtitle">
+        Od inżynierii promptów do architektury platform — AI, które się wdraża
+      </p>
+    </div>
+  </section>
+
+  <section class="projects-grid">
+    <div class="container">
+      <!-- entAIngine Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>entAIngine</h2>
+          <span class="project-period">2023–Obecnie</span>
+        </div>
+        <div class="project-role">Współzałożyciel i CTO</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Przedsiębiorstwa potrzebują kontrolowanych, zgodnych przepływów
+              pracy LLM z zarządzaniem i kontrolą kosztów.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Podejście</h3>
+            <p>
+              Wielodostępna SaaS z RBAC, routingiem treści i integracją LLM
+              niezależną od dostawcy (OpenAI, Azure, Bedrock, Mistral).
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wpływ</h3>
+            <p>
+              Szybsze wdrażanie AI z niezawodnością klasy produkcyjnej i
+              bezpieczeństwem korporacyjnym.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">LLM</span>
+          <span class="tag">RAG</span>
+          <span class="tag">RBAC</span>
+          <span class="tag">SaaS</span>
+        </div>
+      </article>
+
+      <!-- entAIgent Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>entAIgent</h2>
+          <span class="project-period">2023</span>
+        </div>
+        <div class="project-role">Główny Architekt</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Zespoły nietechniczne mają trudności z niezawodną orkiestracją
+              wieloetapowych agentów AI.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Podejście</h3>
+            <p>
+              Wizualny konstruktor, orkiestracja zespołowa, integracje narzędzi
+              z wbudowanymi zabezpieczeniami i frameworkami ewaluacji.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wpływ</h3>
+            <p>
+              Tygodnie do dni na wdrażanie PoC agentów z konsekwentnymi wynikami
+              w zespołach.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Agenci AI</span>
+          <span class="tag">No-Code</span>
+          <span class="tag">Orkiestracja</span>
+          <span class="tag">Ewaluacje</span>
+        </div>
+      </article>
+
+      <!-- FlowHive Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>FlowHive</h2>
+          <span class="project-period">2022–2023</span>
+        </div>
+        <div class="project-role">Senior Inżynier AI</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Fragmentowane narzędzia AI zwiększają koszty i tarcia w
+              przepływach badawczych.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Podejście</h3>
+            <p>
+              Zunifikowana przestrzeń robocza do badań, agentów i analizy z
+              płynnym przełączaniem modeli i buforowaniem.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wpływ</h3>
+            <p>
+              Mniejsza fragmentacja narzędzi i niższe koszty licencyjne, szybsze
+              pętle iteracji.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Wielomodelowy</span>
+          <span class="tag">Przestrzeń Robocza</span>
+          <span class="tag">Buforowanie</span>
+          <span class="tag">Badania</span>
+        </div>
+      </article>
+
+      <!-- Valuation Engine Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>Silnik Wyceny</h2>
+          <span class="project-period">2022</span>
+        </div>
+        <div class="project-role">Lider techniczny</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Ręczne badania rynku lokalnego są powolne i podatne na błędy w
+              wycenach nieruchomości.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Podejście</h3>
+            <p>
+              Agregacja danych wspomagana AI i redagowanie z generowaniem
+              ustrukturyzowanych raportów.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wpływ</h3>
+            <p>
+              ~2 godziny oszczędności na raport dzięki większej spójności i
+              łatwiejszym cyklom przeglądu.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Nieruchomości</span>
+          <span class="tag">Kopilot</span>
+          <span class="tag">Automatyzacja</span>
+          <span class="tag">Raporty</span>
+        </div>
+      </article>
+
+      <!-- KnowledgeX Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <h2>KnowledgeX</h2>
+          <span class="project-period">2021–2022</span>
+        </div>
+        <div class="project-role">Współzałożyciel i Architekt</div>
+        <div class="project-content">
+          <div class="project-section">
+            <h3>Problem</h3>
+            <p>
+              Analityka międzyorganizacyjna bez eksponowania wrażliwych danych.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Podejście</h3>
+            <p>
+              Platforma blockchain + obliczenia poufne z audytowalnymi
+              przepływami pracy.
+            </p>
+          </div>
+          <div class="project-section">
+            <h3>Wpływ</h3>
+            <p>
+              Bezpieczna współpraca w zakresie danych zatwierdzona przez
+              interesariuszy UE i partnerów badawczych.
+            </p>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Blockchain</span>
+          <span class="tag">Obliczenia Poufne</span>
+          <span class="tag">Analityka</span>
+          <span class="tag">Prywatność</span>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .projects-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    color: var(--text);
+  }
+
+  .projects-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: 0;
+    font-weight: var(--font-weight-normal);
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .projects-grid {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-2);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-2);
+  }
+
+  .project-header h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--primary);
+    margin: 0;
+  }
+
+  .project-period {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+  }
+
+  .project-role {
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .project-content {
+    margin-bottom: var(--space-4);
+  }
+
+  .project-section h3 {
+    font-size: var(--font-size-lg);
+    color: var(--text);
+    margin: var(--space-4) 0 var(--space-2) 0;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .project-section p {
+    margin: 0 0 var(--space-3) 0;
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    background: var(--muted);
+    color: var(--primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  @media (max-width: 600px) {
+    .project-header {
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .project-header h2 {
+      font-size: var(--font-size-xl);
+    }
+  }
+</style>
