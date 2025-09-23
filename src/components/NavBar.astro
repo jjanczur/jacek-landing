@@ -1,6 +1,5 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import ThemeToggle from './ThemeToggle.astro';
 
 export interface Props {
   lang: 'en' | 'pl' | 'de';
@@ -40,7 +39,23 @@ const pathMap = {
   pl: Astro.url.pathname.replace(/^\/(en|de)/, '/pl'),
   de: Astro.url.pathname.replace(/^\/(en|pl)/, '/de'),
 };
+
 ---
+
+<script is:inline>
+  // Simple theme toggle using onclick attribute
+  function toggleTheme() {
+    const d = document.documentElement;
+    const current = d.dataset.theme || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    d.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) {
+      // localStorage not available
+    }
+  }
+</script>
 
 <header class="navbar">
   <div class="navbar-container">
@@ -61,12 +76,27 @@ const pathMap = {
 
     <div class="nav-actions">
       <LanguageSwitcher lang={lang} pathMap={pathMap} />
-      <ThemeToggle client:load />
+      <button aria-label="Toggle theme" class="theme-toggle" onclick="toggleTheme()">
+        <span>🌓</span>
+      </button>
     </div>
   </div>
 </header>
 
 <style>
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    padding: var(--space-2);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .theme-toggle:hover {
+    background: var(--muted);
+  }
+
   .navbar {
     background: var(--bg);
     border-bottom: 1px solid var(--border);

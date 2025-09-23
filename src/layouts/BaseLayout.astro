@@ -53,7 +53,7 @@ const alternateUrls = {
     <!-- CSP Meta -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self';"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self';"
     />
 
     <!-- JSON-LD Structured Data -->
@@ -92,10 +92,13 @@ const alternateUrls = {
 
     <!-- Theme initialization -->
     <script is:inline>
-      // Theme initialization
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
+      // Simple theme initialization - read from localStorage
+      try {
+        const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.dataset.theme = savedTheme;
+      } catch (e) {
+        // localStorage not available, use default light theme
+        document.documentElement.dataset.theme = 'light';
       }
     </script>
   </head>
