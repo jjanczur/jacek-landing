@@ -17,6 +17,9 @@ const lang = 'de';
   <section class="about-content">
     <div class="container content">
       <div class="bio-section">
+        <div class="profile-image">
+          <img src="/images/headshot.jpg" alt="Jacek Janczura" class="headshot" />
+        </div>
         <p class="bio-text">
           KI- und Cloud-Architekt spezialisiert auf <strong
             >LLM‑Plattformen, RAG‑Systeme und sichere Cloud‑Architekturen</strong
@@ -334,6 +337,21 @@ const lang = 'de';
     margin-bottom: 0;
   }
 
+  .profile-image {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .headshot {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--primary);
+    box-shadow: var(--shadow-1);
+  }
+
   @media (max-width: 600px) {
     .skills-grid {
       grid-template-columns: 1fr;
@@ -349,6 +367,11 @@ const lang = 'de';
 
     .timeline-item::before {
       left: -17px;
+    }
+
+    .headshot {
+      width: 150px;
+      height: 150px;
     }
   }
 </style>

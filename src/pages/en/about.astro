@@ -18,6 +18,9 @@ const lang = 'en';
     <div class="container content">
       <!-- Short Bio -->
       <div class="bio-section">
+        <div class="profile-image">
+          <img src="/images/headshot.jpg" alt="Jacek Janczura" class="headshot" />
+        </div>
         <p class="bio-text">
           AI and Cloud Architect specializing in <strong
             >LLM platforms, RAG systems, and secure cloud architectures</strong
@@ -128,7 +131,7 @@ const lang = 'en';
         <h2>Timeline</h2>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date">2023Present</div>
+            <div class="timeline-date">2023–Present</div>
             <div class="timeline-content">
               <h3>Co-founder & CTO</h3>
               <p class="timeline-company">entAIngine</p>
@@ -141,7 +144,7 @@ const lang = 'en';
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">20222023</div>
+            <div class="timeline-date">2022–2023</div>
             <div class="timeline-content">
               <h3>Senior AI Engineer</h3>
               <p class="timeline-company">AI Startup</p>
@@ -153,7 +156,7 @@ const lang = 'en';
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">20212022</div>
+            <div class="timeline-date">2021–2022</div>
             <div class="timeline-content">
               <h3>Co-founder & Architect</h3>
               <p class="timeline-company">KnowledgeX</p>
@@ -165,7 +168,7 @@ const lang = 'en';
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">20192021</div>
+            <div class="timeline-date">2019–2021</div>
             <div class="timeline-content">
               <h3>Senior Backend Engineer</h3>
               <p class="timeline-company">idealo</p>
@@ -177,7 +180,7 @@ const lang = 'en';
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">20182019</div>
+            <div class="timeline-date">2018–2019</div>
             <div class="timeline-content">
               <h3>Research Engineer</h3>
               <p class="timeline-company">T-Labs</p>
@@ -188,7 +191,7 @@ const lang = 'en';
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">20162018</div>
+            <div class="timeline-date">2016–2018</div>
             <div class="timeline-content">
               <h3>Software Engineer</h3>
               <p class="timeline-company">SAS Institute</p>
@@ -343,6 +346,21 @@ const lang = 'en';
     margin-bottom: 0;
   }
 
+  .profile-image {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .headshot {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--primary);
+    box-shadow: var(--shadow-1);
+  }
+
   @media (max-width: 600px) {
     .skills-grid {
       grid-template-columns: 1fr;
@@ -358,6 +376,11 @@ const lang = 'en';
 
     .timeline-item::before {
       left: -17px;
+    }
+
+    .headshot {
+      width: 150px;
+      height: 150px;
     }
   }
 </style>
