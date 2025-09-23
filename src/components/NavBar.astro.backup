@@ -39,6 +39,7 @@ const pathMap = {
   pl: Astro.url.pathname.replace(/^\/(en|de)/, '/pl'),
   de: Astro.url.pathname.replace(/^\/(en|pl)/, '/de'),
 };
+
 ---
 
 <script is:inline>
@@ -139,7 +140,7 @@ const pathMap = {
               {link.label}
             </a>
           ))
-        }
+        )}
         <div class="mobile-nav-actions">
           <LanguageSwitcher lang={lang} pathMap={pathMap} />
           <button aria-label="Toggle theme" class="mobile-theme-toggle" onclick="toggleTheme(); toggleMobileMenu();">
