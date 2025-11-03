@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Building2, Workflow, Factory, Shield, TrendingUp, Network, Brain, Home, BarChart, Code, Mail, ArrowRight } from 'lucide-astro';
 
 const title = 'AI Architect & CTO | Jacek Janczura';
 const description =
@@ -27,8 +28,14 @@ const lang = 'en';
         Co-founder at Jaden Data — Building process intelligence for the AI era
       </p>
       <div class="hero-cta">
-        <a href="/en/contact/" class="cta-button">Get in touch</a>
-        <a href="/en/projects/" class="cta-link">View projects</a>
+        <a href="/en/contact/" class="cta-button">
+          <Mail size={18} />
+          Get in touch
+        </a>
+        <a href="/en/projects/" class="cta-link">
+          View projects
+          <ArrowRight size={16} />
+        </a>
       </div>
     </div>
   </section>
@@ -63,6 +70,9 @@ const lang = 'en';
       <h2>Where Process Intelligence Meets Technical Excellence</h2>
       <div class="highlights-grid">
         <div class="highlight-card">
+          <div class="highlight-icon">
+            <Building2 size={32} />
+          </div>
           <h3>Enterprise AI Platforms</h3>
           <p>
             Multi-tenant platforms serving 50+ organizations with &gt;1,000
@@ -71,6 +81,9 @@ const lang = 'en';
           </p>
         </div>
         <div class="highlight-card">
+          <div class="highlight-icon">
+            <Workflow size={32} />
+          </div>
           <h3>Process-First AI Design</h3>
           <p>
             Starting with how businesses actually operate, then enhancing
@@ -79,6 +92,9 @@ const lang = 'en';
           </p>
         </div>
         <div class="highlight-card">
+          <div class="highlight-icon">
+            <Factory size={32} />
+          </div>
           <h3>Industry-Specific Solutions</h3>
           <p>
             Real estate valuation saving 2+ hours per appraisal. VC due
@@ -88,6 +104,9 @@ const lang = 'en';
           </p>
         </div>
         <div class="highlight-card">
+          <div class="highlight-icon">
+            <Shield size={32} />
+          </div>
           <h3>Security & Compliance</h3>
           <p>
             Enterprise-grade security isn't an afterthought—it's fundamental.
@@ -96,6 +115,9 @@ const lang = 'en';
           </p>
         </div>
         <div class="highlight-card">
+          <div class="highlight-icon">
+            <TrendingUp size={32} />
+          </div>
           <h3>Measurable Business Impact</h3>
           <p>
             From implementation to results in weeks, not months. Pre-built
@@ -104,6 +126,9 @@ const lang = 'en';
           </p>
         </div>
         <div class="highlight-card">
+          <div class="highlight-icon">
+            <Network size={32} />
+          </div>
           <h3>Distributed Systems at Scale</h3>
           <p>
             Event-driven microservices on AWS handling thousands of RPS with
@@ -127,6 +152,9 @@ const lang = 'en';
       <h2>Process Intelligence in Action</h2>
       <div class="featured-grid">
         <a href="/en/projects/" class="featured-item">
+          <div class="featured-icon">
+            <Brain size={28} />
+          </div>
           <h3>entAIngine</h3>
           <p>
             Enterprise AI platform transforming mission-critical back office
@@ -137,6 +165,9 @@ const lang = 'en';
           <span class="featured-link">View all projects →</span>
         </a>
         <a href="/en/projects/" class="featured-item">
+          <div class="featured-icon">
+            <Home size={28} />
+          </div>
           <h3>Valuation Engine</h3>
           <p>
             Real estate appraisal platform saving 2+ hours per report.
@@ -146,6 +177,9 @@ const lang = 'en';
           <span class="featured-link">View all projects →</span>
         </a>
         <a href="/en/projects/" class="featured-item">
+          <div class="featured-icon">
+            <BarChart size={28} />
+          </div>
           <h3>Flowhive VC</h3>
           <p>
             Venture capital platform combining deep research with
@@ -156,6 +190,9 @@ const lang = 'en';
           <span class="featured-link">View all projects →</span>
         </a>
         <a href="/en/talks/" class="featured-item">
+          <div class="featured-icon">
+            <Code size={28} />
+          </div>
           <h3>AI Architecture Patterns</h3>
           <p>
             Practical lessons from enterprise LLM deployments—how to architect
@@ -178,7 +215,10 @@ const lang = 'en';
         your processes. Best via email or LinkedIn. I'm open to advisory,
         architecture reviews, and select delivery engagements.
       </p>
-      <a href="/en/contact/" class="cta-button">Get in touch</a>
+      <a href="/en/contact/" class="cta-button">
+        <Mail size={18} />
+        Get in touch
+      </a>
     </div>
   </section>
 </BaseLayout>
@@ -585,6 +625,9 @@ const lang = 'en';
     box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
     position: relative;
     overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
   }
 
   .cta-button::before {
@@ -626,6 +669,9 @@ const lang = 'en';
     border-radius: var(--radius-m);
     text-decoration: none;
     transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
   }
 
   .cta-link:hover {
@@ -717,6 +763,20 @@ const lang = 'en';
     border: 1px solid transparent;
     position: relative;
     overflow: hidden;
+  }
+
+  .highlight-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .highlight-card:hover .highlight-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
   }
 
   .highlight-card::before {
@@ -813,6 +873,20 @@ const lang = 'en';
     overflow: hidden;
     text-decoration: none;
     color: inherit;
+  }
+
+  .featured-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .featured-item:hover .featured-icon {
+    transform: scale(1.1);
+    color: var(--accent);
   }
 
   .featured-item::before {

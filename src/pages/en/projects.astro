@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Brain, Zap, Layers, BarChart, Home, Link as LinkIcon, ExternalLink, Github } from 'lucide-astro';
 
 const title = 'Projects | Jacek Janczura';
 const description =
@@ -31,7 +32,12 @@ const lang = 'en';
       <article class="project-card">
         <div class="project-header">
           <div class="project-title-group">
-            <h2 class="project-name">entAIngine</h2>
+            <h2 class="project-name">
+              <span class="project-icon">
+                <Brain size={24} />
+              </span>
+              entAIngine
+            </h2>
             <div class="project-meta">
               <span class="project-period">2023–Present</span>
               <span class="project-role">Co-founder & Lead Architect</span>
@@ -81,19 +87,7 @@ const lang = 'en';
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-              ></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
+            <ExternalLink size={16} />
             Website
           </a>
           <a
@@ -101,18 +95,7 @@ const lang = 'en';
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-              ></path>
-            </svg>
+            <Github size={16} />
             Repository
           </a>
         </div>
@@ -122,7 +105,12 @@ const lang = 'en';
       <article class="project-card">
         <div class="project-header">
           <div class="project-title-group">
-            <h2 class="project-name">entAIgent</h2>
+            <h2 class="project-name">
+              <span class="project-icon">
+                <Zap size={24} />
+              </span>
+              entAIgent
+            </h2>
             <div class="project-meta">
               <span class="project-period">2023</span>
               <span class="project-role">Co-founder & Lead Architect</span>
@@ -171,7 +159,12 @@ const lang = 'en';
       <article class="project-card">
         <div class="project-header">
           <div class="project-title-group">
-            <h2 class="project-name">Flowhive AI</h2>
+            <h2 class="project-name">
+              <span class="project-icon">
+                <Layers size={24} />
+              </span>
+              Flowhive AI
+            </h2>
             <div class="project-meta">
               <span class="project-period">2022–2023</span>
               <span class="project-role">Co-founder & Lead Architect</span>
@@ -220,7 +213,12 @@ const lang = 'en';
       <article class="project-card">
         <div class="project-header">
           <div class="project-title-group">
-            <h2 class="project-name">Flowhive VC</h2>
+            <h2 class="project-name">
+              <span class="project-icon">
+                <BarChart size={24} />
+              </span>
+              Flowhive VC
+            </h2>
             <div class="project-meta">
               <span class="project-period">2023</span>
               <span class="project-role">Co-founder & Lead Architect</span>
@@ -269,7 +267,12 @@ const lang = 'en';
       <article class="project-card">
         <div class="project-header">
           <div class="project-title-group">
-            <h2 class="project-name">Valuation Engine</h2>
+            <h2 class="project-name">
+              <span class="project-icon">
+                <Home size={24} />
+              </span>
+              Valuation Engine
+            </h2>
             <div class="project-meta">
               <span class="project-period">2022</span>
               <span class="project-role">Co-founder & Lead Architect</span>
@@ -321,7 +324,12 @@ const lang = 'en';
       <article class="project-card">
         <div class="project-header">
           <div class="project-title-group">
-            <h2 class="project-name">KnowledgeX</h2>
+            <h2 class="project-name">
+              <span class="project-icon">
+                <LinkIcon size={24} />
+              </span>
+              KnowledgeX
+            </h2>
             <div class="project-meta">
               <span class="project-period">2021–2022</span>
               <span class="project-role">Co-founder & Lead Architect</span>
@@ -371,19 +379,7 @@ const lang = 'en';
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path
-                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
-              ></path>
-            </svg>
+            <ExternalLink size={16} />
             Blog
           </a>
         </div>
@@ -568,6 +564,22 @@ const lang = 'en';
     line-height: 1.2;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .project-icon {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .project-card:hover .project-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
   }
 
   .project-meta {
@@ -824,6 +836,13 @@ const lang = 'en';
   .project-links a:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
+  }
+
+  .project-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
   }
 
   .project-links a svg {

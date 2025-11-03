@@ -18,6 +18,7 @@
     "@astrojs/mdx": "^4.3.5",
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.13.9",
+    "lucide-astro": "^0.552.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {

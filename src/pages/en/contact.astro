@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Mail, Linkedin, Github, Code, Users, Shield, Network, Send } from 'lucide-astro';
 
 const title = 'Contact | Jacek Janczura';
 const description =
@@ -27,6 +28,9 @@ const lang = 'en';
 
       <div class="contact-methods">
         <div class="contact-method">
+          <div class="contact-icon">
+            <Mail size={32} />
+          </div>
           <h2>Contact Form</h2>
           <p>
             For professional inquiries, project discussions, and collaboration
@@ -46,11 +50,17 @@ const lang = 'en';
               <textarea name="message" class="form-textarea" rows="4" required
               ></textarea>
             </label>
-            <button type="submit" class="form-submit">Send Message</button>
+            <button type="submit" class="form-submit">
+              <Send size={18} />
+              Send Message
+            </button>
           </form>
         </div>
 
         <div class="contact-method">
+          <div class="contact-icon">
+            <Linkedin size={32} />
+          </div>
           <h2>LinkedIn</h2>
           <p>
             For networking, industry discussions, and professional connections.
@@ -66,6 +76,9 @@ const lang = 'en';
         </div>
 
         <div class="contact-method">
+          <div class="contact-icon">
+            <Github size={32} />
+          </div>
           <h2>GitHub</h2>
           <p>
             For open source contributions, code reviews, and technical
@@ -86,12 +99,18 @@ const lang = 'en';
         <h2>Focus Areas</h2>
         <div class="focus-grid">
           <div class="focus-item">
+            <div class="focus-icon">
+              <Code size={24} />
+            </div>
             <h3>AI Platform Architecture</h3>
             <p>
               Multi-tenant LLM platforms, RAG systems, and AI pipeline design
             </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Users size={24} />
+            </div>
             <h3>Technical Leadership</h3>
             <p>
               Team building, code review culture, and delivery process
@@ -99,12 +118,18 @@ const lang = 'en';
             </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Shield size={24} />
+            </div>
             <h3>Security & Compliance</h3>
             <p>
               ISO 27001/SOC 2 implementation and AI-specific risk assessment
             </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Network size={24} />
+            </div>
             <h3>System Design</h3>
             <p>
               Event-driven microservices, distributed systems, and performance
@@ -305,6 +330,20 @@ const lang = 'en';
     opacity: 1;
   }
 
+  .contact-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .contact-method:hover .contact-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
+  }
+
   .contact-method h2 {
     font-size: var(--font-size-xl);
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
@@ -389,16 +428,8 @@ const lang = 'en';
     box-shadow: 0 0 0 4px oklch(from var(--primary) l c h / 0.1);
   }
 
-  .form-input:invalid:not(:focus):not(:placeholder-shown),
-  .form-textarea:invalid:not(:focus):not(:placeholder-shown) {
-    border-color: #dc2626;
-    background-color: rgba(220, 38, 38, 0.05);
-  }
-
-  .form-input:valid:not(:focus):not(:placeholder-shown),
-  .form-textarea:valid:not(:focus):not(:placeholder-shown) {
-    border-color: #16a34a;
-  }
+  /* Remove validation styling - keep fields neutral by default */
+  /* Fields will only show focus state, not validation states */
 
   .form-submit {
     padding: var(--space-3) var(--space-4);
@@ -412,6 +443,9 @@ const lang = 'en';
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
   }
 
   .form-submit:hover {
@@ -488,6 +522,20 @@ const lang = 'en';
 
   .focus-item:hover::before {
     opacity: 1;
+  }
+
+  .focus-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .focus-item:hover .focus-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
   }
 
   .focus-item h3 {

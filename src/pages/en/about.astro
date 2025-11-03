@@ -1,5 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  Brain,
+  Cloud,
+  Shield,
+  Users,
+  Code,
+  Languages,
+  Briefcase,
+  Award,
+  GraduationCap,
+  Download,
+} from 'lucide-astro';
 
 const title = 'About | Jacek Janczura';
 const description =
@@ -164,6 +176,9 @@ const lang = 'en';
         <h2>Specializations</h2>
         <div class="skills-grid">
           <div class="skill-category">
+            <div class="skill-icon">
+              <Brain size={24} />
+            </div>
             <h3>AI & Machine Learning</h3>
             <ul class="skills-list">
               <li>LLM Platform Architecture</li>
@@ -175,6 +190,9 @@ const lang = 'en';
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Cloud size={24} />
+            </div>
             <h3>Cloud & Infrastructure</h3>
             <ul class="skills-list">
               <li>AWS (Lambda, ECS/Fargate, Bedrock, SageMaker)</li>
@@ -186,6 +204,9 @@ const lang = 'en';
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Shield size={24} />
+            </div>
             <h3>Security & Compliance</h3>
             <ul class="skills-list">
               <li>ISO 27001/SOC 2 Certification</li>
@@ -197,6 +218,9 @@ const lang = 'en';
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Users size={24} />
+            </div>
             <h3>Leadership & Process Intelligence</h3>
             <ul class="skills-list">
               <li>Process-First Architecture</li>
@@ -208,6 +232,9 @@ const lang = 'en';
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Code size={24} />
+            </div>
             <h3>Development & Technologies</h3>
             <ul class="skills-list">
               <li>Java & Kotlin (Spring Boot)</li>
@@ -219,6 +246,9 @@ const lang = 'en';
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Languages size={24} />
+            </div>
             <h3>Languages & Certifications</h3>
             <ul class="skills-list">
               <li>Polish (Native), English (Professional)</li>
@@ -239,6 +269,9 @@ const lang = 'en';
           <div class="timeline-item">
             <div class="timeline-date">May 2023–Present</div>
             <div class="timeline-content">
+              <div class="timeline-icon">
+                <Briefcase size={20} />
+              </div>
               <h3>Co-founder & CTO</h3>
               <p class="timeline-company">entAIngine (Jaden Data)</p>
               <p>
@@ -313,20 +346,7 @@ const lang = 'en';
                   download="EmployerReference-Jacek.pdf"
                   class="download-link"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7,10 12,15 17,10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                  </svg>
+                  <Download size={16} />
                   Download Employer Reference
                 </a>
               </p>
@@ -381,20 +401,7 @@ const lang = 'en';
         <div class="awards-grid">
           <div class="award-card featured">
             <div class="award-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polygon
-                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"
-                ></polygon>
-              </svg>
+              <Award size={24} />
             </div>
             <div class="award-content">
               <h3>2nd Place - Berlin Legal Tech Hackathon 2020</h3>
@@ -411,21 +418,7 @@ const lang = 'en';
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>University President's Undergraduate Scholarship</h3>
@@ -440,21 +433,7 @@ const lang = 'en';
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>University President's Undergraduate Scholarship</h3>
@@ -469,21 +448,7 @@ const lang = 'en';
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>University President's Undergraduate Scholarship</h3>
@@ -498,21 +463,7 @@ const lang = 'en';
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>University President's Undergraduate Scholarship</h3>
@@ -711,6 +662,20 @@ const lang = 'en';
     overflow: hidden;
   }
 
+  .skill-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .skill-category:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
+  }
+
   .skill-category::before {
     content: '';
     position: absolute;
@@ -836,10 +801,35 @@ const lang = 'en';
     padding-left: var(--space-6);
   }
 
+  .timeline-icon {
+    position: absolute;
+    left: -15.5px;
+    top: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    /* Vertical line center is at 15px + 1.5px = 16.5px from timeline start */
+    /* Timeline-item padding-left is 32px, so left = 16.5px - 32px = -15.5px */
+  }
+
+  .timeline-item:hover .timeline-icon {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.4);
+  }
+
   .timeline-item::before {
     content: '';
     position: absolute;
-    left: -22px;
+    left: -15.5px;
     top: 8px;
     width: 14px;
     height: 14px;
@@ -848,10 +838,13 @@ const lang = 'en';
     border: 3px solid var(--bg);
     box-shadow: 0 0 0 2px oklch(from var(--primary) l c h / 0.2);
     transition: all 0.3s ease;
+    transform: translateX(-50%);
+    /* Vertical line center is at 15px + 1.5px = 16.5px from timeline start */
+    /* Timeline-item padding-left is 32px, so left = 16.5px - 32px = -15.5px */
   }
 
   .timeline-item:hover::before {
-    transform: scale(1.2);
+    transform: translateX(-50%) scale(1.2);
     box-shadow:
       0 0 0 3px oklch(from var(--primary) l c h / 0.3),
       0 0 12px oklch(from var(--primary) l c h / 0.4);
@@ -919,6 +912,10 @@ const lang = 'en';
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+  }
+
+  .download-link svg {
+    flex-shrink: 0;
   }
 
   .download-link::before {

@@ -30,13 +30,29 @@ const alternateUrls = {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Jacek Janczura" />
+    <meta name="keywords" content="Jacek Janczura, AI Architect, CTO, Enterprise AI, LLM Platforms, RAG Systems, Cloud Architecture, ISO 27001, SOC 2, Process Intelligence, AI Native Systems, Berlin, Germany" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={`${baseUrl}${currentPath}`} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage || `${baseUrl}/og-image.jpg`} />
+    <meta property="og:image" content={ogImage || `${baseUrl}/images/headshot.jpg`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${baseUrl}${currentPath}`} />
+    <meta property="og:site_name" content="Jacek Janczura" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : lang === 'pl' ? 'pl_PL' : 'de_DE'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage || `${baseUrl}/images/headshot.jpg`} />
+    <meta name="twitter:creator" content="@jacekjanczura" />
+    <meta name="twitter:site" content="@jacekjanczura" />
 
     <!-- Hreflang alternates -->
     <link rel="alternate" hreflang="en" href={alternateUrls.en} />
@@ -62,9 +78,11 @@ const alternateUrls = {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Jacek Janczura",
+        "alternateName": "Jacek Janczura",
         "jobTitle": "AI Architect & CTO",
-        "description": "AI and Cloud Architect specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures.",
+        "description": "Co-founder & CTO at Jaden Data. AI and Cloud Architect specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures. Transforming operational complexity into competitive advantage through process intelligence.",
         "url": "https://janczura.com",
+        "image": "https://janczura.com/images/headshot.jpg",
         "sameAs": [
           "https://linkedin.com/in/jacekjanczura",
           "https://github.com/jjanczur"
@@ -73,19 +91,57 @@ const alternateUrls = {
           "Artificial Intelligence",
           "Machine Learning",
           "LLM Platforms",
+          "Retrieval-Augmented Generation",
+          "RAG Systems",
           "Cloud Architecture",
+          "AWS",
+          "Azure",
           "Distributed Systems",
+          "Microservices",
           "Cybersecurity",
           "ISO 27001",
-          "SOC 2"
+          "SOC 2",
+          "Process Intelligence",
+          "Enterprise AI",
+          "AI Native Systems",
+          "Event-Driven Architecture",
+          "Serverless Computing"
         ],
         "hasOccupation": {
           "@type": "Occupation",
-          "name": "AI Architect",
+          "name": "AI Architect & CTO",
           "occupationLocation": {
             "@type": "City",
-            "name": "Berlin"
+            "name": "Berlin",
+            "@id": "https://www.wikidata.org/wiki/Q64"
+          },
+          "skills": [
+            "Enterprise LLM Platforms",
+            "RAG Systems",
+            "Cloud Architecture",
+            "Security & Compliance",
+            "Technical Leadership"
+          ]
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Jaden Data",
+          "url": "https://jaden-data.com"
+        },
+        "alumniOf": [
+          {
+            "@type": "EducationalOrganization",
+            "name": "Technische Universität Berlin"
+          },
+          {
+            "@type": "EducationalOrganization",
+            "name": "Warsaw University of Technology"
           }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Berlin",
+          "addressCountry": "DE"
         }
       }
     </script>
