@@ -22,6 +22,7 @@ const legalLinks = {
 
 const links = legalLinks[lang];
 ---
+
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-left">
@@ -29,9 +30,15 @@ const links = legalLinks[lang];
         © {new Date().getFullYear()} Jacek Janczura
       </p>
       <div class="legal-links">
-        <a href={lang === 'en' ? `/${lang}/privacy/` : '/en/privacy/'} class="legal-link">{links.privacy}</a>
+        <a
+          href={lang === 'en' ? `/${lang}/privacy/` : '/en/privacy/'}
+          class="legal-link">{links.privacy}</a
+        >
         <span class="legal-separator">•</span>
-        <a href={lang === 'en' ? `/${lang}/imprint/` : '/en/imprint/'} class="legal-link">{links.imprint}</a>
+        <a
+          href={lang === 'en' ? `/${lang}/imprint/` : '/en/imprint/'}
+          class="legal-link">{links.imprint}</a
+        >
       </div>
     </div>
 
@@ -105,7 +112,9 @@ const links = legalLinks[lang];
     color: var(--text);
     text-decoration: none;
     opacity: 0.7;
-    transition: opacity 0.2s, color 0.2s;
+    transition:
+      opacity 0.2s,
+      color 0.2s;
   }
 
   .legal-link:hover {
