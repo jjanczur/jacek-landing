@@ -2,19 +2,39 @@
 
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=/en/" />
     <script>
-      // Immediate redirect for better UX
-      window.location.href = '/en/';
+      // Instant redirect - execute immediately before page renders
+      (function () {
+        window.location.replace('/en/');
+      })();
     </script>
-    <title>Redirecting to Jacek Janczura</title>
+    <meta http-equiv="refresh" content="0; url=/en/" />
+    <link rel="canonical" href="/en/" />
+    <title>Jacek Janczura - AI Architect & CTO</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #fff;
+      }
+      body {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
-    <p>
-      Redirecting to <a href="/en/">Jacek Janczura - AI Architect & CTO</a>...
-    </p>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/en/" />
+      <p style="visibility: visible; padding: 20px; text-align: center;">
+        Please enable JavaScript or <a href="/en/">click here</a> to continue.
+      </p>
+    </noscript>
   </body>
 </html>
