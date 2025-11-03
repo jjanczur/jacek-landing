@@ -29,9 +29,9 @@ const links = legalLinks[lang];
         © {new Date().getFullYear()} Jacek Janczura
       </p>
       <div class="legal-links">
-        <a href={`/${lang}/privacy/`} class="legal-link">{links.privacy}</a>
+        <a href={lang === 'en' ? `/${lang}/privacy/` : '/en/privacy/'} class="legal-link">{links.privacy}</a>
         <span class="legal-separator">•</span>
-        <a href={`/${lang}/imprint/`} class="legal-link">{links.imprint}</a>
+        <a href={lang === 'en' ? `/${lang}/imprint/` : '/en/imprint/'} class="legal-link">{links.imprint}</a>
       </div>
     </div>
 
