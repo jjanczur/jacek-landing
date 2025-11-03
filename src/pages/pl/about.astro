@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'O mnie | Jacek Janczura';
 const description =
-  'Architekt AI i Cloud specjalizujący się w platformach LLM dla przedsiębiorstw, systemach RAG i bezpiecznych architekturach chmurowych. Współzałożyciel/CTO z doświadczeniem w systemach rozproszonych i compliance.';
+  'Współzałożyciel i CTO w Jaden Data. Architekt AI specjalizujący się w inteligencji procesowej — projektuję systemy AI-native, które zamieniają złożoność operacji w przewagę konkurencyjną.';
 const lang = 'pl';
 ---
 
@@ -11,6 +11,7 @@ const lang = 'pl';
   <section class="about-hero">
     <div class="container">
       <h1>O mnie</h1>
+      <p class="about-subtitle">Budowanie inteligencji procesowej na erę AI</p>
     </div>
   </section>
 
@@ -22,20 +23,27 @@ const lang = 'pl';
           <img src="/images/headshot.jpg" alt="Jacek Janczura" class="headshot" />
         </div>
         <p class="bio-text">
-          Architekt AI i Cloud specjalizujący się w <strong
-            >platformach LLM, systemach RAG i bezpiecznych architekturach
-            chmurowych</strong
-          >. Buduję bezserwerowe, zdarzeniowe mikrousługi na AWS ze stosami
-          wielomodelowymi (OpenAI, Azure, Bedrock, Mistral). Prowadzę projekty
-          wielodostępne obsługujące <strong>&gt;1000 równoczesnych połączeń</strong> i <strong
-            >tysiące żądań na sekundę</strong
-          >. Wdrażam <strong>ISO 27001 i SOC 2</strong> w ~3 miesiące. Przekładam potrzeby
-          biznesowe na odporne systemy o wysokiej przepustowości.
+          Jestem współzałożycielem i CTO <strong>Jaden Data</strong>, gdzie z pomysłu
+          zbudowałem rentowną firmę z rocznymi przychodami przekraczającymi 1 mln €.
+          Projektujemy inteligencję procesową — systemy AI-native, które realnie
+          zmieniają sposób działania firm. Specjalizuję się w <strong>platformach LLM klasy
+          enterprise, systemach RAG oraz bezpiecznych architekturach chmurowych</strong>,
+          zawsze z perspektywy procesu: najpierw rozumiem, jak praca przebiega w praktyce,
+          a dopiero potem usprawniam ją inteligentną automatyzacją.
         </p>
         <p class="bio-text">
-          Zobacz <a href="/pl/projects/">projekty</a> oraz <a href="/pl/notes/"
-            >publikacje</a
-          > po szczegóły.
+          Zeskalowałem zespół inżynieryjny z 0 do 10 osób, budując wydajną organizację
+          techniczną. Projektuję serwerlessowe, zdarzeniowe mikrousługi na AWS ze stosami
+          wielomodelowymi (OpenAI, Azure, Bedrock, Mistral). Prowadziłem projekty
+          wielodostępne obsługujące <strong>&gt;1000 równoczesnych połączeń</strong> i
+          <strong>tysiące żądań na sekundę</strong>. Dostarczyłem zgodność <strong>ISO 27001 i SOC 2</strong>
+          w ok. 3 miesiące. Najważniejsze jest jednak przełożenie potrzeb biznesu na
+          systemy, które przynoszą mierzalny efekt w produkcji — w przemyśle,
+          farmacji, VC, nieruchomościach i finansach.
+        </p>
+        <p class="bio-text">
+          Zobacz <a href="/pl/projects/">projekty</a> oraz <a href="/pl/publications/">publikacje</a>
+          po szczegóły.
         </p>
       </div>
 
@@ -43,41 +51,54 @@ const lang = 'pl';
       <div class="bio-section">
         <h2>Poza pracą</h2>
         <p class="bio-text">
-          Kocham sporty ekstremalne. Jestem licencjonowanym skoczkiem
-          spadochronowym (PJ(B)), nurkiem (Advanced Open Water), instruktorem
-          windsurfingu i kitesurfingu, a zimą jeżdżę na snowboardzie. Te
-          doświadczenia budują zarządzanie ryzykiem, umiejętność nauczania i
-          coachingu, spokój pod presją oraz zdyscyplinowane przygotowanie —
-          kompetencje przydatne w przywództwie technicznym i reagowaniu na
-          incydenty.
+          Kocham sporty ekstremalne i aktywności outdoorowe. Jestem licencjonowanym
+          skoczkiem spadochronowym (licencja PJ(B)), nurkiem Advanced Open Water,
+          międzynarodowym instruktorem windsurfingu i zapalonym snowboardzistą.
+          Te doświadczenia budują kluczowe kompetencje: zarządzanie ryzykiem, jasną
+          komunikację i nauczanie, spokój pod presją oraz zdyscyplinowane
+          przygotowanie — wszystkie bezpośrednio przekładam na przywództwo
+          techniczne, mentoring i radzenie sobie z kryzysami w środowiskach
+          enterprise.
+        </p>
+        <p class="bio-text">
+          Posługuję się wieloma językami: polski (ojczysty), angielski (biegły
+          zawodowo), niemiecki (roboczy) i hiszpański (podstawowy) — co ułatwia mi
+          pracę w zespołach międzynarodowych i z globalnymi klientami.
         </p>
       </div>
 
       <!-- Detailed Bio -->
       <div class="bio-section">
-        <h2>Doświadczenie</h2>
+        <h2>Filozofia inteligencji procesowej</h2>
         <p class="bio-text">
-          Architekt AI i CTO specjalizujący się w <strong
-            >platformach LLM dla przedsiębiorstw</strong
-          >, <strong>RAG</strong> i <strong
-            >bezpiecznych architekturach chmurowych</strong
-          >. Prowadzę projekty wielodostępne integrujące AWS Bedrock, Azure ML,
-          OpenAI i Mistral. Buduję backendy sterowane zdarzeniami z Lambda,
-          ECS/Fargate, SNS/SQS dla <strong
-            >wysokiej przepustowości przy kontrolowanych kosztach</strong
-          >. Tworzę narzędzia, m.in. <strong
-            >kreator optymalizacji promptów</strong
-          > oraz deterministyczne <strong>testbedy potoków AI</strong>,
-          przeprowadzając zespoły od eksperymentów do stabilnej produkcji.
+          Przez lata obserwowałem, jak firmom trudno wdraża się AI. Problemem nie jest
+          technologia, lecz zrozumienie, że <strong>sztuczna inteligencja ma wspierać
+          procesy, a nie je zastępować</strong>. Dlatego w Jaden Data każdy projekt
+          zaczynamy od tego, jak praca naprawdę się odbywa.
         </p>
         <p class="bio-text">
-          W <strong>idealo</strong> uruchomiłem logowanie w 6 krajach, co dało <strong
-            >1,4 mln nowych kont w 3 miesiące (700% ponad prognozy)</strong
-          >. W <strong>T‑Labs</strong> budowałem systemy blockchain na Hyperledger. W
-          <strong>SAS</strong> projektowałem analitykę czasu rzeczywistego dla bankowości.
-          Dwa tytuły M.Sc. z informatyki (TU Berlin, PW Warszawa). Pracuję na styku
-          architektury, bezpieczeństwa i delivery, aby spełniać wymagania compliance
-          i KPI.
+          Jako Architekt AI i CTO specjalizuję się w <strong>platformach LLM klasy
+          enterprise</strong>, <strong>retrieval‑augmented generation</strong> oraz
+          <strong>bezpiecznych architekturach chmurowych</strong>. Projektowałem
+          zaawansowane, wielodostępne platformy AI integrujące AWS Bedrock, AWS
+          SageMaker, Azure ML Studio, OpenAI i Mistral — zapewniając płynne połączenia
+          i współpracę między środowiskami. Budowałem zdarzeniowe architektury
+          mikroserwisowe oparte o AWS Fargate (ECS, ECR), Lambda, SNS, SQS i
+          CloudWatch, zoptymalizowane kosztowo i skalujące się serwerlessowo.
+        </p>
+        <p class="bio-text">
+          Stworzyłem nowoczesne usługi RAG, automatyzujące budowę wektorowych baz
+          danych z plików klientów (Pinecone, pgvector, Milvus). Zaprojektowałem i
+          wdrożyłem solidne ramy testowania procesów AI i potoków RAG (Testbed) do
+          oceny ilościowej i jakościowej. Rozwinąłem „Prompt Wizard” — narzędzie
+          automatyzujące optymalizację promptów LLM, znacząco usprawniające pracę
+          użytkowników enterprise.
+        </p>
+        <p class="bio-text">
+          Technologia to jednak dopiero fundament. Wartość pojawia się wtedy, gdy
+          przekuwamy ją w zmianę operacji: zamieniamy godziny ręcznej pracy w minuty
+          inteligentnej automatyzacji, przyspieszamy decyzje i budujemy systemy,
+          które uczą się razem z biznesem.
         </p>
       </div>
 
@@ -89,40 +110,66 @@ const lang = 'pl';
             <h3>AI i uczenie maszynowe</h3>
             <ul class="skills-list">
               <li>Architektura platform LLM</li>
-              <li>Prompt Engineering i RAG</li>
-              <li>Integracja wielomodelowa</li>
-              <li>Projektowanie potoków AI</li>
-              <li>Frameworki ewaluacji</li>
+              <li>Prompt engineering i RAG</li>
+              <li>Integracja wielomodelowa (OpenAI, Azure, Bedrock, Mistral)</li>
+              <li>Projektowanie i testowanie potoków AI</li>
+              <li>Bazy wektorowe (Pinecone, pgvector, Milvus)</li>
+              <li>Narzędzia do optymalizacji promptów</li>
             </ul>
           </div>
           <div class="skill-category">
             <h3>Chmura i infrastruktura</h3>
             <ul class="skills-list">
-              <li>AWS (Lambda, ECS, Bedrock)</li>
-              <li>Azure ML i OpenAI</li>
-              <li>Systemy sterowane zdarzeniami</li>
-              <li>Architektura mikrousług</li>
+              <li>AWS (Lambda, ECS/Fargate, Bedrock, SageMaker)</li>
+              <li>Azure ML Studio i OpenAI</li>
+              <li>Mikrousługi sterowane zdarzeniami</li>
+              <li>Architektura serverless</li>
               <li>Projektowanie wysokiej przepustowości</li>
+              <li>Optymalizacja kosztów</li>
             </ul>
           </div>
           <div class="skill-category">
             <h3>Bezpieczeństwo i compliance</h3>
             <ul class="skills-list">
-              <li>ISO 27001/SOC 2</li>
-              <li>Bezpieczeństwo wielodostępne</li>
+              <li>Certyfikacja ISO 27001/SOC 2</li>
+              <li>Bezpieczeństwo wielodostępne i RBAC</li>
               <li>RODO i prywatność danych</li>
-              <li>Ocena ryzyka</li>
-              <li>Projektowanie śladów audytu</li>
+              <li>Audyty bezpieczeństwa i ocena ryzyka</li>
+              <li>Wdrażanie compliance</li>
+              <li>Projektowanie śladów audytowych</li>
             </ul>
           </div>
           <div class="skill-category">
-            <h3>Przywództwo i proces</h3>
+            <h3>Przywództwo i inteligencja procesowa</h3>
             <ul class="skills-list">
+              <li>Architektura process‑first</li>
+              <li>Budowa i skalowanie zespołów (0→10 deweloperów)</li>
               <li>Przywództwo techniczne</li>
-              <li>Kultura przeglądów kodu</li>
-              <li>CI/CD i DevOps</li>
-              <li>Strategia testów</li>
-              <li>Mentoring zespołu</li>
+              <li>Nastawienie na wyniki biznesowe</li>
+              <li>Planowanie i egzekucja strategii</li>
+              <li>Zarządzanie interesariuszami</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Programowanie i technologie</h3>
+            <ul class="skills-list">
+              <li>Java i Kotlin (Spring Boot)</li>
+              <li>Python i Node.js</li>
+              <li>Mikrousługi i REST API</li>
+              <li>Systemy czasu rzeczywistego (Kafka, WebSockets)</li>
+              <li>Blockchain (Hyperledger, Ethereum)</li>
+              <li>Projektowanie baz danych (SQL, NoSQL)</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Języki i certyfikaty</h3>
+            <ul class="skills-list">
+              <li>Polski (ojczysty), angielski (zawodowy)</li>
+              <li>Niemiecki (roboczy), hiszpański (podstawy)</li>
+              <li>IELTS</li>
+              <li>SAS Certified Base Programmer</li>
+              <li>Międzynarodowy instruktor windsurfingu</li>
+              <li>Licencja PJ(B) spadochronowa</li>
             </ul>
           </div>
         </div>
@@ -133,59 +180,85 @@ const lang = 'pl';
         <h2>Kariera</h2>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date">2023–obecnie</div>
+            <div class="timeline-date">Maj 2023–obecnie</div>
             <div class="timeline-content">
               <h3>Współzałożyciel i CTO</h3>
-              <p class="timeline-company">entAIngine</p>
+              <p class="timeline-company">entAIngine (Jaden Data)</p>
               <p>
-                Architektura wielodostępnej platformy AI z &gt;1000 równoczesnych
-                połączeń i tysiącami RPS. Wdrożone ISO 27001/SOC 2 w ~3 miesiące. Usługi
-                RAG i narzędzia do optymalizacji promptów.
+                CTO platformy SaaS do automatyzacji procesów z wykorzystaniem AI. Zaprojektowałem
+                platformę inteligencji procesowej obsługującą 50+ organizacji z &gt;1000 równoczesnych
+                połączeń i tysiącami RPS. Dostarczyłem zgodność ISO 27001/SOC 2 w ok. 3 miesiące —
+                w napiętym terminie. Tworzyłem rozwiązania enterprise, które transformują operacje
+                w przemyśle, farmacji, VC, nieruchomościach i finansach — zaczynając od zrozumienia,
+                jak praca wygląda w praktyce, a następnie usprawniając ją inteligentną automatyzacją.
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">2022–2023</div>
+            <div class="timeline-date">Paź 2021–obecnie</div>
             <div class="timeline-content">
-              <h3>Senior inżynier AI</h3>
-              <p class="timeline-company">Startup AI</p>
+              <h3>Współzałożyciel i CTO</h3>
+              <p class="timeline-company">Jaden Data GmbH</p>
               <p>
-                Wielomodelowa przestrzeń robocza AI i no‑code orkiestracja agentów.
-                Mniej narzędzi, niższe koszty licencji, szybsze iteracje.
+                Kluczowa rola w przekształceniu pomysłu w w pełni rentowną firmę z przychodami
+                przekraczającymi 1 mln € rocznie. Zeskalowałem zespół z 0 do 10 osób. Przeprowadziłem
+                Jaden Data przez bezpieczeństwo, compliance i audyty ISO 27001/SOC 2. Zaprojektowałem
+                wielodostępną platformę AI integrującą AWS Bedrock, AWS SageMaker, Azure ML Studio,
+                OpenAI i Mistral. Zbudowałem zdarzeniową architekturę mikrousług zoptymalizowaną
+                kosztowo i serwerlessowo. Pioniersko stworzyłem usługi RAG, ramy testów potoków AI
+                oraz narzędzie „Prompt Wizard” do optymalizacji promptów.
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">2021–2022</div>
+            <div class="timeline-date">Kwi 2021–obecnie</div>
             <div class="timeline-content">
-              <h3>Współzałożyciel i architekt</h3>
+              <h3>Współzałożyciel i lider techniczny</h3>
               <p class="timeline-company">KnowledgeX</p>
               <p>
-                Rynek analityki na blockchain z obliczeniami poufnymi. Walidacja
-                z interesariuszami UE dla bezpiecznej współpracy danych.
+                CTO i lider techniczny platformy opartej na blockchain do międzyorganizacyjnego
+                przetwarzania zaufanych danych z wykorzystaniem obliczeń poufnych dla ML. Skupienie
+                na kluczowym wyzwaniu: firmom potrzebne są wspólne wnioski, a nie wymiana surowych
+                danych. Zweryfikowane z interesariuszami UE dla bezpiecznej współpracy danych.
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">2019–2021</div>
+            <div class="timeline-date">Kwi 2020–Cze 2021</div>
             <div class="timeline-content">
-              <h3>Senior inżynier backend</h3>
-              <p class="timeline-company">idealo</p>
+              <h3>Starszy inżynier backendu</h3>
+              <p class="timeline-company">idealo internet GmbH</p>
               <p>
-                Logowanie w 6 krajach <strong
-                  >1,4 mln nowych kont w 3 miesiące (700% ponad prognozy)</strong
-                >. Funkcje w skali, nacisk na systemy rozproszone.
+                Budowałem produkty od ideacji po wydanie. Tworzyłem wysokowydajne rozwiązania czasu
+                rzeczywistego oparte na Kafka, NoSQL i WebSockets. Implementowałem mikroserwisy i
+                REST API w Javie i Kotlinie (Spring Boot, Spring Security, Hibernate) z relacyjnymi
+                i NoSQL bazami. Umożliwiłem logowanie w 6 krajach, co dało 1,4 mln nowych kont w 3
+                miesiące (700% ponad prognozy). Prowadziłem testy A/B, analizę metryk i dbałem o
+                niezawodność 24/7 w ramach dyżurów on‑call.
+              </p>
+              <p class="employer-reference">
+                <a href="/docs/EmployerReference-Jacek.pdf" download="EmployerReference-Jacek.pdf" class="download-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Pobierz referencje pracodawcy
+                </a>
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">2018–2019</div>
+            <div class="timeline-date">Maj 2019–Kwi 2020</div>
             <div class="timeline-content">
-              <h3>Inżynier badawczy</h3>
-              <p class="timeline-company">T-Labs</p>
+              <h3>Programista blockchain</h3>
+              <p class="timeline-company">T-Labs, Telekom Innovation Laboratories</p>
               <p>
-                Systemy blockchain na Hyperledger. Badania nad konsensusem
-                rozproszonym; bezpieczne i przejrzyste przepływy.
+                Projektowałem architekturę systemu do śledzenia paczek na blockchainie. Wdrożyłem
+                rozproszoną sieć Hyperledger z chaincode (smart contracts). Zdockerowałem sieć i
+                mikroserwisy. Zaimplementowałem zabezpieczone REST API, serwis proxy dla aplikacji
+                mobilnej i ERP oraz usługę autoryzacji. Technologie: Hyperledger Composer, Hyperledger
+                Fabric, Node.js, JavaScript (ES6), Express.js, Docker/Docker‑Compose, JWT, PostgreSQL.
               </p>
             </div>
           </div>
@@ -195,9 +268,111 @@ const lang = 'pl';
               <h3>Inżynier oprogramowania</h3>
               <p class="timeline-company">SAS Institute</p>
               <p>
-                Analityka czasu rzeczywistego dla bankowości.
-                Wtyczka/rozszerzenie do linii pochodzenia danych (RODO) dla
-                zgodności i audytu.
+                Pracowałem dla sektora bankowego, wdrażając pierwszą platformę do oceny działań
+                użytkowników w czasie rzeczywistym z modelami ML. System analizował płatności i
+                zachowania, obsługując tysiące zdarzeń na sekundę (Kafka, Protobuf, Apache Flink).
+                Dodałem wtyczkę do linii pochodzenia danych pod RODO, zapewniając zgodność i
+                audytowalność.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards & Honors -->
+      <div class="awards-section">
+        <h2>Nagrody i Wyróżnienia</h2>
+        <div class="awards-grid">
+          <div class="award-card featured">
+            <div class="award-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/>
+              </svg>
+            </div>
+            <div class="award-content">
+              <h3>2. Miejsce - Berlin Legal Tech Hackathon 2020</h3>
+              <p class="award-subtitle">Hate Speech Online</p>
+              <p class="award-date">Lut 2020</p>
+              <p class="award-description">
+                Kierowałem zespołem rozwijającym innowacyjne rozwiązanie do wykrywania i moderowania mowy nienawiści online.
+                Nasza platforma łączyła przetwarzanie języka naturalnego z analizą treści w czasie rzeczywistym,
+                zapewniając praktyczne informacje dla zgodności prawnej i moderacji treści.
+              </p>
+            </div>
+          </div>
+
+          <div class="award-card scholarship">
+            <div class="award-icon scholarship-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10v6"/>
+                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"/>
+                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+                <path d="M10 18h4"/>
+              </svg>
+            </div>
+            <div class="award-content">
+              <h3>Stypendium Rektora dla najlepszych studentów</h3>
+              <p class="award-subtitle">Politechnika Warszawska</p>
+              <p class="award-date">2017</p>
+              <p class="award-description">
+                Przyznane za wyjątkowe wyniki akademickie i przywództwo w studiach informatycznych.
+              </p>
+            </div>
+          </div>
+
+          <div class="award-card scholarship">
+            <div class="award-icon scholarship-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10v6"/>
+                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"/>
+                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+                <path d="M10 18h4"/>
+              </svg>
+            </div>
+            <div class="award-content">
+              <h3>Stypendium Rektora dla najlepszych studentów</h3>
+              <p class="award-subtitle">Politechnika Warszawska</p>
+              <p class="award-date">2016</p>
+              <p class="award-description">
+                Uhonorowany za wybitną doskonałość akademicką i konsekwentnie najwyższe wyniki.
+              </p>
+            </div>
+          </div>
+
+          <div class="award-card scholarship">
+            <div class="award-icon scholarship-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10v6"/>
+                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"/>
+                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+                <path d="M10 18h4"/>
+              </svg>
+            </div>
+            <div class="award-content">
+              <h3>Stypendium Rektora dla najlepszych studentów</h3>
+              <p class="award-subtitle">Politechnika Warszawska</p>
+              <p class="award-date">2015</p>
+              <p class="award-description">
+                Doceniony za wybitne osiągnięcia akademickie i wkład w społeczność uczelni.
+              </p>
+            </div>
+          </div>
+
+          <div class="award-card scholarship">
+            <div class="award-icon scholarship-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10v6"/>
+                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"/>
+                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+                <path d="M10 18h4"/>
+              </svg>
+            </div>
+            <div class="award-content">
+              <h3>Stypendium Rektora dla najlepszych studentów</h3>
+              <p class="award-subtitle">Politechnika Warszawska</p>
+              <p class="award-date">2014</p>
+              <p class="award-description">
+                Wybrany do najbardziej prestiżowego stypendium licencjackiego na podstawie zasług akademickich.
               </p>
             </div>
           </div>
@@ -210,28 +385,109 @@ const lang = 'pl';
 <style>
   .about-hero {
     padding: var(--space-8) 0;
-    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%, 
+      oklch(from var(--primary) l c h / 0.05) 30%,
+      oklch(from var(--accent) l c h / 0.03) 60%,
+      var(--muted) 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at top left,
+      oklch(from var(--primary) l c h / 0.08) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about-hero .container {
+    position: relative;
+    z-index: 1;
   }
 
   .about-hero h1 {
     font-size: var(--font-size-hero);
     margin-bottom: var(--space-3);
-    color: var(--text);
+    background: linear-gradient(135deg, 
+      var(--text) 0%, 
+      var(--primary) 50%,
+      var(--text) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  .about-subtitle {
+    font-size: var(--font-size-xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: var(--space-2);
+    font-weight: var(--font-weight-bold);
+    font-style: italic;
   }
 
   .about-content {
     padding: var(--space-8) 0;
-    background: var(--bg);
+    background: linear-gradient(180deg, 
+      var(--bg) 0%,
+      oklch(from var(--muted) l c h / 0.3) 50%,
+      var(--bg) 100%);
   }
 
   .bio-section {
     margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .bio-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent,
+      var(--border),
+      transparent);
+  }
+
+  .bio-section:last-of-type::after {
+    display: none;
   }
 
   .bio-section h2 {
     margin-bottom: var(--space-4);
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: var(--font-weight-bold);
   }
 
   .bio-text {
@@ -242,23 +498,95 @@ const lang = 'pl';
 
   .skills-section {
     margin-bottom: var(--space-8);
+    padding: var(--space-6) 0;
+    background: linear-gradient(135deg, 
+      oklch(from var(--muted) l c h / 0.5) 0%,
+      oklch(from var(--primary) l c h / 0.02) 50%,
+      oklch(from var(--muted) l c h / 0.5) 100%);
+    border-radius: var(--radius-l);
+    position: relative;
+  }
+
+  .skills-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent,
+      var(--primary),
+      var(--accent),
+      var(--primary),
+      transparent);
+    opacity: 0.3;
   }
 
   .skills-section h2 {
     margin-bottom: var(--space-6);
     text-align: center;
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: var(--font-weight-bold);
   }
 
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--space-6);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .skill-category {
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%);
+    padding: var(--space-5);
+    border-radius: var(--radius-l);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      var(--primary),
+      var(--accent),
+      var(--primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .skill-category:hover {
+    border-color: oklch(from var(--primary) l c h / 0.2);
+    box-shadow: var(--shadow-1);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%);
+  }
+
+  .skill-category:hover::before {
+    opacity: 1;
   }
 
   .skill-category h3 {
     font-size: var(--font-size-lg);
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: var(--space-3);
     font-weight: var(--font-weight-bold);
   }
@@ -281,12 +609,38 @@ const lang = 'pl';
 
   .timeline-section {
     margin-bottom: var(--space-8);
+    padding: var(--space-6) 0;
+    background: linear-gradient(180deg, 
+      var(--bg) 0%,
+      oklch(from var(--muted) l c h / 0.3) 100%);
+    border-radius: var(--radius-l);
+    position: relative;
+  }
+
+  .timeline-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent,
+      var(--primary),
+      var(--accent),
+      var(--primary),
+      transparent);
+    opacity: 0.3;
   }
 
   .timeline-section h2 {
     margin-bottom: var(--space-6);
     text-align: center;
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: var(--font-weight-bold);
   }
 
   .timeline {
@@ -300,8 +654,12 @@ const lang = 'pl';
     left: 15px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: var(--border);
+    width: 3px;
+    background: linear-gradient(180deg, 
+      var(--primary) 0%,
+      var(--accent) 50%,
+      var(--primary) 100%);
+    border-radius: 2px;
   }
 
   .timeline-item {
@@ -313,18 +671,29 @@ const lang = 'pl';
   .timeline-item::before {
     content: '';
     position: absolute;
-    left: -21px;
+    left: -22px;
     top: 8px;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     border: 3px solid var(--bg);
+    box-shadow: 0 0 0 2px oklch(from var(--primary) l c h / 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .timeline-item:hover::before {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.3),
+                0 0 12px oklch(from var(--primary) l c h / 0.4);
   }
 
   .timeline-date {
     font-size: var(--font-size-sm);
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--space-2);
   }
@@ -333,17 +702,78 @@ const lang = 'pl';
     font-size: var(--font-size-lg);
     color: var(--text);
     margin-bottom: var(--space-1);
+    transition: color 0.2s ease;
+  }
+
+  .timeline-item:hover .timeline-content h3 {
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .timeline-company {
     font-size: var(--font-size-sm);
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: var(--space-2);
     font-weight: var(--font-weight-bold);
   }
 
   .timeline-content p:last-child {
     margin-bottom: 0;
+  }
+
+  .employer-reference {
+    margin-top: var(--space-3);
+    margin-bottom: 0;
+  }
+
+  .download-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: linear-gradient(135deg, 
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    color: var(--primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .download-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent);
+    transition: left 0.5s ease;
+  }
+
+  .download-link:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
+  }
+
+  .download-link:hover::before {
+    left: 100%;
   }
 
   .profile-image {
@@ -357,8 +787,18 @@ const lang = 'pl';
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
-    border: 3px solid var(--primary);
-    box-shadow: var(--shadow-1);
+    border: 4px solid transparent;
+    background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                linear-gradient(135deg, var(--primary), var(--accent), var(--primary)) border-box;
+    box-shadow: 0 4px 20px oklch(from var(--primary) l c h / 0.2),
+                var(--shadow-1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .headshot:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px oklch(from var(--primary) l c h / 0.3),
+                var(--shadow-2);
   }
 
   @media (max-width: 600px) {
@@ -382,5 +822,221 @@ const lang = 'pl';
       width: 150px;
       height: 150px;
     }
+  }
+
+  /* Awards Section */
+  .awards-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .awards-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    color: var(--primary);
+    font-size: var(--font-size-2xl);
+    position: relative;
+  }
+
+  .awards-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: 2px;
+  }
+
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-6);
+    max-width: var(--max-width);
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .award-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .award-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-3);
+    border-color: var(--primary);
+  }
+
+  .award-card.featured {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    border-color: var(--primary);
+    position: relative;
+  }
+
+  .award-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    pointer-events: none;
+  }
+
+  .award-card.featured .award-icon {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .award-card.scholarship {
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, 
+      var(--bg) 0%, 
+      oklch(from var(--primary) l c h / 0.02) 100%);
+    position: relative;
+  }
+
+  .award-card.scholarship::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      var(--primary),
+      var(--accent),
+      var(--primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .award-card.scholarship:hover {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%, 
+      oklch(from var(--primary) l c h / 0.05) 100%);
+  }
+
+  .award-card.scholarship:hover::before {
+    opacity: 1;
+  }
+
+  .award-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4) auto;
+    color: var(--primary);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .scholarship-icon {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(var(--primary), 0.2);
+  }
+
+  .award-card:hover .award-icon {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+  }
+
+  .award-card:hover .scholarship-icon {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(var(--primary), 0.3);
+  }
+
+  .award-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .award-content h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+  }
+
+  .award-card.featured .award-content h3 {
+    color: white;
+  }
+
+  .award-card.scholarship .award-content h3 {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .award-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--primary);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .award-card.featured .award-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .award-card.scholarship .award-subtitle {
+    color: var(--primary);
+  }
+
+  .award-date {
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .award-card.featured .award-date {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .award-card.scholarship .award-date {
+    color: var(--primary);
+    opacity: 0.8;
+  }
+
+  .award-description {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .award-card.featured .award-description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .award-card.scholarship .award-description {
+    color: var(--text);
+    opacity: 0.9;
   }
 </style>

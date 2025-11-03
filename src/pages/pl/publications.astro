@@ -1,0 +1,653 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Publikacje | Jacek Janczura';
+const description =
+  'Recenzowane publikacje, artykuły i notatki techniczne na temat architektury AI, systemów rozproszonych i inżynierii oprogramowania.';
+const lang = 'pl';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="notes-hero">
+    <div class="container">
+      <h1>Publikacje</h1>
+      <p class="notes-subtitle">
+        Recenzowane badania, artykuły i spostrzeżenia techniczne
+      </p>
+    </div>
+  </section>
+
+  <section class="notes-content">
+    <div class="container content">
+      <!-- Publications Section -->
+      <div class="publications-section">
+        <h2>Publikacje i artykuły</h2>
+        <div class="publications-grid">
+          <div class="publication-group">
+            <h3>Publikacje recenzowane</h3>
+            <article class="publication-card">
+              <h4>
+                Saluki: Finding Taint-style Vulnerabilities with Static Property
+                Checking
+              </h4>
+              <p>
+                BAR/NDSS Workshop 2018. Narzędzie badawcze do wykrywania podatności
+                typu taint w kodzie binarnym z wykorzystaniem połączenia analizy
+                statycznej i dynamicznego śledzenia taint. Udostępnia DSL do
+                definiowania polityk taint. Zweryfikowane na realnych programach.
+              </p>
+              <p>
+                <strong>Rola:</strong> Autor/opiekun repozytorium. <strong
+                  >Linki:</strong
+                >
+                <a href="https://github.com/jjanczur/Saluki" target="_blank" rel="noopener noreferrer">Repozytorium GitHub</a>
+                <a
+                  href="https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Artykuł</a
+                >
+              </p>
+            </article>
+            <article class="publication-card">
+              <h4>
+                DeCoCo: Blockchain-based Decentralized Compensation of Digital
+                Content Purchases
+              </h4>
+              <p>
+                IEEE BRAINS 2020. Oparty na blockchainie zdecentralizowany mechanizm
+                rozliczeń za zakupy treści cyfrowych; przejrzyste, programowalne
+                wypłaty i projekt smart‑kontraktów.
+              </p>
+              <p>
+                <strong>Rola:</strong> Autor/współautor. <strong>DOI:</strong>
+                <a href="https://doi.org/10.1109/BRAINS49436.2020.9223299"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >10.1109/BRAINS49436.2020.9223299</a
+                >
+                <a
+                  href="https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >ResearchGate</a
+                >
+              </p>
+            </article>
+          </div>
+          <div class="publication-group">
+            <h3>Artykuły i poradniki</h3>
+            <article class="publication-card">
+              <h4>Utility NFTs more than simple JPEGs?</h4>
+              <p>
+                Medium, 1 lutego 2023. Definiuje „utility NFTs” i pokazuje ich
+                zastosowania wykraczające poza kolekcjonerstwo (np. przepustki,
+                uprawnienia). Wnioski dla platform/rynków.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Artykuł na Medium</a
+                >
+              </p>
+            </article>
+            <article class="publication-card">
+              <h4>How to run your python code in KnowledgeX</h4>
+              <p>
+                Medium, 17 lutego 2022. Jak uruchamiać zadania Pythona na
+                KnowledgeX z wykorzystaniem iExec i TEE (Trusted Execution
+                Environments). Omawia szablony Docker, weryfikację workerów i
+                audytowalność.
+              </p>
+              <p>
+                <strong>Link:</strong>
+                <a
+                  href="https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Wpis na blogu</a
+                >
+              </p>
+            </article>
+            <article class="publication-card">
+              <h4>REL_2020_02_APP_web.pdf</h4>
+              <p>
+                <strong>Tymczasowo:</strong> Tytuł i abstrakt do potwierdzenia.
+                [Do potwierdzenia na podstawie źródła].
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes Section -->
+      <div class="notes-section">
+        <h2>Notatki techniczne</h2>
+        <div class="notes-intro">
+          <p>
+            Okazjonalne notatki techniczne i spostrzeżenia z pracy z systemami AI,
+            architekturami rozproszonymi i oprogramowaniem korporacyjnym. Mniej
+            formalne niż wykłady, ale zawierają ważne lekcje i obserwacje.
+          </p>
+        </div>
+
+        <div class="notes-grid">
+          <article class="note-card">
+            <div class="note-header">
+              <h2>Prompt engineering w skali</h2>
+              <span class="note-date">2024-02-15</span>
+            </div>
+            <p class="note-excerpt">
+              Budowa systemu optymalizacji promptów, który skaluje się w zespołach i
+              utrzymuje spójność wyników AI. Lekcje z wdrożenia „Kreatora promptów”
+              dla zastosowań korporacyjnych.
+            </p>
+            <div class="note-tags">
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">Zarządzanie AI</span>
+              <span class="tag">Enterprise</span>
+            </div>
+          </article>
+
+          <article class="note-card">
+            <div class="note-header">
+              <h2>Potoki AI sterowane zdarzeniami</h2>
+              <span class="note-date">2024-01-22</span>
+            </div>
+            <p class="note-excerpt">
+              Projektowanie odpornych przepływów pracy AI przy użyciu wzorców
+              architektury sterowanej zdarzeniami. Jak SQS/SNS może pomóc w
+              zarządzaniu przeciążeniami (backpressure) w potokach AI i zapewnić
+              niezawodne przetwarzanie.
+            </p>
+            <div class="note-tags">
+              <span class="tag">Sterowane zdarzeniami</span>
+              <span class="tag">Potoki AI</span>
+              <span class="tag">AWS</span>
+            </div>
+          </article>
+
+          <article class="note-card">
+            <div class="note-header">
+              <h2>Wielomodelowy routing AI</h2>
+              <span class="note-date">2023-12-10</span>
+            </div>
+            <p class="note-excerpt">
+              Inteligentne strategie routingu dla wdrożeń AI wielomodelowych.
+              Optymalizacja kosztów przy jednoczesnym utrzymaniu wydajności i jakości
+              u różnych dostawców modeli.
+            </p>
+            <div class="note-tags">
+              <span class="tag">Wielomodelowy</span>
+              <span class="tag">Optymalizacja kosztów</span>
+              <span class="tag">Architektura</span>
+            </div>
+          </article>
+
+          <article class="note-card">
+            <div class="note-header">
+              <h2>Bezpieczeństwo platform AI</h2>
+              <span class="note-date">2023-11-18</span>
+            </div>
+            <p class="note-excerpt">
+              Istotne zagadnienia bezpieczeństwa platform AI: prywatność danych,
+              kontrola dostępu, rejestry audytowe i automatyzacja zgodności w
+              aplikacjach AI‑first.
+            </p>
+            <div class="note-tags">
+              <span class="tag">Bezpieczeństwo AI</span>
+              <span class="tag">Compliance</span>
+              <span class="tag">Prywatność</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="notes-cta">
+        <p>
+          Te publikacje i notatki odzwierciedlają bieżące wnioski i obserwacje z budowy systemów AI.
+          Zobacz także <a href="/pl/talks/">wykłady</a> i <a href="/pl/projects/"
+            >projekty</a
+          >.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notes-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, 
+      var(--bg) 0%, 
+      oklch(from var(--primary) l c h / 0.05) 30%,
+      oklch(from var(--accent) l c h / 0.03) 60%,
+      var(--muted) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .notes-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at top right,
+      oklch(from var(--primary) l c h / 0.08) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .notes-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .notes-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    background: linear-gradient(135deg, 
+      var(--text) 0%, 
+      var(--primary) 50%,
+      var(--text) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  .notes-subtitle {
+    font-size: var(--font-size-xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0;
+    font-weight: var(--font-weight-bold);
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .notes-content {
+    padding: var(--space-8) 0;
+    background: linear-gradient(180deg, 
+      var(--bg) 0%,
+      oklch(from var(--muted) l c h / 0.3) 50%,
+      var(--bg) 100%);
+  }
+
+  .notes-intro {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .notes-intro p {
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    margin-bottom: 0;
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text);
+  }
+
+  .notes-section {
+    margin-top: var(--space-8);
+  }
+
+  .notes-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2xl);
+  }
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+
+  .note-card {
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%);
+    border: 1px solid transparent;
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .note-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+      var(--primary),
+      var(--accent),
+      var(--primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .note-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      oklch(from var(--primary) l c h / 0.05) 0%,
+      transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .note-card:hover {
+    border-color: oklch(from var(--primary) l c h / 0.3);
+    box-shadow: 0 8px 24px oklch(from var(--primary) l c h / 0.15),
+                var(--shadow-2);
+    transform: translateY(-4px);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%);
+  }
+
+  .note-card:hover::before {
+    opacity: 1;
+  }
+
+  .note-card:hover::after {
+    opacity: 1;
+  }
+
+  .note-header {
+    margin-bottom: var(--space-3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .note-header h2 {
+    font-size: var(--font-size-xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 var(--space-2) 0;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+  }
+
+  .note-date {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.8;
+    font-weight: var(--font-weight-normal);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(135deg, 
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.03) 100%);
+    border-radius: var(--radius-s);
+    display: inline-block;
+  }
+
+  .note-excerpt {
+    margin: 0 0 var(--space-4) 0;
+    line-height: 1.7;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+
+  .note-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .tag {
+    background: linear-gradient(135deg, 
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.1) 100%);
+    color: var(--primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .tag:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+  }
+
+  .publications-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .publications-section h2 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2xl);
+  }
+
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .publication-group h3 {
+    font-size: var(--font-size-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card {
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%);
+    border: 1px solid transparent;
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .publication-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      var(--primary),
+      var(--accent),
+      var(--primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .publication-card:hover {
+    border-color: oklch(from var(--primary) l c h / 0.3);
+    box-shadow: 0 6px 20px oklch(from var(--primary) l c h / 0.12),
+                var(--shadow-1);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.04) 100%);
+  }
+
+  .publication-card:hover::before {
+    opacity: 1;
+  }
+
+  .publication-card h4 {
+    font-size: var(--font-size-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+  }
+
+  .publication-card p {
+    margin-bottom: var(--space-3);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .publication-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .publication-card a {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-s);
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin-right: var(--space-2);
+    margin-bottom: var(--space-1);
+    background: linear-gradient(135deg, 
+      oklch(from var(--primary) l c h / 0.1) 0%,
+      oklch(from var(--accent) l c h / 0.05) 100%);
+    border: 1px solid transparent;
+  }
+
+  .publication-card a:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+    text-decoration: none;
+  }
+
+  .publication-card strong {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .notes-cta {
+    background: linear-gradient(135deg, 
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%);
+    padding: var(--space-6);
+    border-radius: var(--radius-l);
+    text-align: center;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .notes-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent,
+      var(--primary),
+      var(--accent),
+      var(--primary),
+      transparent);
+    opacity: 0.5;
+  }
+
+  .notes-cta p {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+
+  .notes-cta a {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    background: linear-gradient(135deg, 
+      oklch(from var(--primary) l c h / 0.1) 0%,
+      oklch(from var(--accent) l c h / 0.05) 100%);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-s);
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .notes-cta a:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+  }
+
+  @media (max-width: 600px) {
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .publications-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

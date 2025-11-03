@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Projects | Jacek Janczura';
 const description =
-  'AI projects showcasing enterprise LLM platforms, RAG systems, and secure cloud architectures. From prompt engineering to platform architecture.';
+  'Process intelligence solutions transforming enterprise operations across manufacturing, pharma, venture capital, real estate, and finance. AI-native platforms that deliver measurable business impact.';
 const lang = 'en';
 ---
 
@@ -12,136 +12,306 @@ const lang = 'en';
     <div class="container">
       <h1>Projects</h1>
       <p class="projects-subtitle">
-        From prompt engineering to platform architecture AI that ships
+        Transforming operational complexity into competitive advantage through process intelligence
       </p>
     </div>
   </section>
 
   <section class="projects-grid">
     <div class="container">
+      <div class="projects-intro">
+        <p>All projects below were built by <strong>Jaden Data</strong>, where I serve as Co-founder & Lead Architect.</p>
+      </div>
+      
       <!-- entAIngine Project -->
       <article class="project-card">
         <div class="project-header">
-          <h2>entAIngine (2023Present) Co-founder & CTO</h2>
+          <div class="project-title-group">
+            <h2 class="project-name">entAIngine</h2>
+            <div class="project-meta">
+              <span class="project-period">2023–Present</span>
+              <span class="project-role">Co-founder & Lead Architect</span>
+              <span class="project-industry">Enterprise AI Platform</span>
+              <span class="project-company">Jaden Data</span>
+            </div>
+          </div>
         </div>
         <div class="project-content">
+          <p class="project-tagline">
+            The AI Engine for Enterprise-Grade Process Automation
+          </p>
           <p>
-            Multi-tenant AI platform for controlled, compliant LLM workflows.
-            Built with RBAC, content routing, and provider-agnostic integration
-            (OpenAI, Azure, Bedrock, Mistral). Handles &gt;1,000 concurrent
-            connections and thousands of RPS with event-driven microservices on
-            AWS. Delivered ISO 27001/SOC 2 compliance in ~3 months.
+            Transforms mission-critical back office operations through intelligent automation, 
+            knowledge-aware chatbots, and sophisticated document workflows. Built for businesses 
+            that demand the highest standards of security, compliance, and performance—ISO 27001 
+            and SOC2 Type 1 certified with complete data sovereignty.
+          </p>
+          <p>
+            We architected process intelligence, not just AI tools. Starting with understanding 
+            how production facilities, pharmaceutical companies, and financial institutions 
+            actually operate, we built custom modules that embed data-driven decision-making 
+            into their operational DNA. Handles &gt;1,000 concurrent connections and thousands 
+            of RPS with event-driven microservices on AWS.
           </p>
         </div>
-        <div class="project-tech">
-          <strong>Tech:</strong> AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure,
-          Bedrock, Mistral, RAG, RBAC
-        </div>
-        <div class="project-impact">
-          <strong>Impact:</strong> Faster AI adoption; production-grade reliability;
-          enterprise security for 50+ organizations.
+        <div class="project-details">
+          <div class="project-industries">
+            <strong>Industries:</strong> Production & Manufacturing, Pharmaceutical, Financial Services, Enterprise Operations
+          </div>
+          <div class="project-tech">
+            <strong>Tech:</strong> AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC
+          </div>
+          <div class="project-impact">
+            <strong>Impact:</strong> Serving 50+ organizations with 99.9% uptime; ISO 27001/SOC 2 compliance delivered in ~3 months; 
+            production-grade reliability enabling faster AI adoption across enterprise workflows.
+          </div>
         </div>
         <div class="project-links">
-          <a href="https://entaingine.com">Website</a>
-          <a href="https://github.com/entaingine/platform">Repo</a>
+          <a href="https://entaingine.com" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            Website
+          </a>
+          <a href="https://github.com/entaingine/platform" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            Repository
+          </a>
         </div>
       </article>
 
       <!-- entAIgent Project -->
       <article class="project-card">
         <div class="project-header">
-          <h2>entAIgent (2023) Lead Architect</h2>
+          <div class="project-title-group">
+            <h2 class="project-name">entAIgent</h2>
+            <div class="project-meta">
+              <span class="project-period">2023</span>
+              <span class="project-role">Co-founder & Lead Architect</span>
+              <span class="project-industry">No-Code AI Agent Platform</span>
+              <span class="project-company">Jaden Data</span>
+            </div>
+          </div>
         </div>
         <div class="project-content">
+          <p class="project-tagline">
+            Build AI Agent Teams Without Writing Code
+          </p>
           <p>
-            No-code platform for orchestrating multi-step AI agents. Built
-            visual builder, team orchestration, and tool integrations with
-            safeguards and evaluation frameworks. Reduced agent PoC deployment
-            from weeks to days.
+            Empowers operations teams, customer service, and HR departments to create 
+            sophisticated multi-agent AI systems without technical expertise. Through 
+            intuitive drag-and-drop design, teams build coordinated AI agents specialized 
+            for specific roles and responsibilities—turning complex multi-step workflows 
+            into visual, manageable processes.
+          </p>
+          <p>
+            Process-first design means understanding the actual workflow before automating 
+            it. Pre-built templates for common business scenarios, custom knowledge bases, 
+            and real-time testing capabilities ensure that AI serves the process, not the 
+            other way around.
           </p>
         </div>
-        <div class="project-tech">
-          <strong>Tech:</strong> AI Agents, No-Code, Orchestration, Evals
-        </div>
-        <div class="project-impact">
-          <strong>Impact:</strong> Consistent outcomes across teams; faster agent
-          development.
-        </div>
-        <div class="project-links">
-          <!-- No links specified; add if available -->
+        <div class="project-details">
+          <div class="project-industries">
+            <strong>Industries:</strong> Operations, Customer Service, HR Automation, Enterprise Workflows
+          </div>
+          <div class="project-tech">
+            <strong>Tech:</strong> AI Agents, No-Code, Visual Workflows, Multi-Agent Orchestration, Evals
+          </div>
+          <div class="project-impact">
+            <strong>Impact:</strong> Reduced agent PoC deployment from weeks to days; consistent outcomes 
+            across teams; faster development cycles with coordinated multi-agent workflows.
+          </div>
         </div>
       </article>
 
-      <!-- FlowHive Project -->
+      <!-- Flowhive AI Project -->
       <article class="project-card">
         <div class="project-header">
-          <h2>FlowHive (20222023) Senior AI Engineer</h2>
+          <div class="project-title-group">
+            <h2 class="project-name">Flowhive AI</h2>
+            <div class="project-meta">
+              <span class="project-period">2022–2023</span>
+              <span class="project-role">Co-founder & Lead Architect</span>
+              <span class="project-industry">All-in-One AI Workspace</span>
+              <span class="project-company">Jaden Data</span>
+            </div>
+          </div>
         </div>
         <div class="project-content">
+          <p class="project-tagline">
+            One Platform. Every AI Model. Unlimited Possibilities.
+          </p>
           <p>
-            Unified AI workspace to reduce fragmented tools and costs. Built
-            seamless model switching, caching, and integration for research,
-            agents, and analysis workflows. Improved iteration speed and reduced
-            per-seat expenses.
+            Eliminates the complexity and expense of managing multiple AI tool subscriptions 
+            by providing unified access to leading AI models (GPT, Claude, Gemini, Llama, Mistral) 
+            in a single collaborative workspace. Designed for fast-moving startups, research 
+            teams, and content creators seeking to democratize AI access without vendor lock-in.
+          </p>
+          <p>
+            Built with deep research capabilities including internet-scanning AI agents, 
+            agentic workflows that plan and execute autonomously, and knowledge management 
+            with searchable databases. Credit-based pricing means you pay for usage, not 
+            per-user seats—transforming how teams budget for and scale AI adoption.
           </p>
         </div>
-        <div class="project-tech">
-          <strong>Tech:</strong> Multi-Model, Workspace, Caching, Research
+        <div class="project-details">
+          <div class="project-industries">
+            <strong>Industries:</strong> Startups, Research Teams, Content Creation, Knowledge Work
+          </div>
+          <div class="project-tech">
+            <strong>Tech:</strong> Multi-Model Access, Side-by-Side Comparison, AI Agents, Knowledge Management, Team Collaboration
+          </div>
+          <div class="project-impact">
+            <strong>Impact:</strong> Reduced tool sprawl and per-seat costs; faster iteration loops; 
+            unified access to multiple AI models in one collaborative workspace.
+          </div>
         </div>
-        <div class="project-impact">
-          <strong>Impact:</strong> Reduced tool sprawl; faster iteration loops.
+      </article>
+
+      <!-- Flowhive VC Project -->
+      <article class="project-card">
+        <div class="project-header">
+          <div class="project-title-group">
+            <h2 class="project-name">Flowhive VC</h2>
+            <div class="project-meta">
+              <span class="project-period">2023</span>
+              <span class="project-role">Co-founder & Lead Architect</span>
+              <span class="project-industry">AI for Venture Capital</span>
+              <span class="project-company">Jaden Data</span>
+            </div>
+          </div>
         </div>
-        <div class="project-links">
-          <!-- No links specified; add if available -->
+        <div class="project-content">
+          <p class="project-tagline">
+            Portfolio Management Meets Process Intelligence
+          </p>
+          <p>
+            Venture capital-specialized platform purpose-built for VCs, investment teams, 
+            and portfolio managers. Combines deep research capabilities with investment-specific 
+            automation to accelerate due diligence and market intelligence.
+          </p>
+          <p>
+            Pre-configured agents handle company due diligence and competitive analysis, while 
+            portfolio intelligence tracking provides AI-driven insights. Deal flow automation 
+            streamlines sourcing and evaluation, and market mapping delivers automated sector 
+            analysis. The centralized knowledge repository ensures that research and deals 
+            knowledge becomes institutional intelligence, not tribal knowledge.
+          </p>
+        </div>
+        <div class="project-details">
+          <div class="project-industries">
+            <strong>Industries:</strong> Venture Capital, Angel Investing, Corporate Venture Arms, Investment Analysis
+          </div>
+          <div class="project-tech">
+            <strong>Tech:</strong> AI Agents, Due Diligence Automation, Portfolio Intelligence, Market Mapping, Deal Flow Systems
+          </div>
+          <div class="project-impact">
+            <strong>Impact:</strong> Accelerated due diligence processes; AI-driven portfolio insights; 
+            faster deal evaluation; centralized research repository scaling investment team capabilities.
+          </div>
         </div>
       </article>
 
       <!-- Valuation Engine Project -->
       <article class="project-card">
         <div class="project-header">
-          <h2>Valuation Engine (2022) Technical Lead</h2>
+          <div class="project-title-group">
+            <h2 class="project-name">Valuation Engine</h2>
+            <div class="project-meta">
+              <span class="project-period">2022</span>
+              <span class="project-role">Co-founder & Lead Architect</span>
+              <span class="project-industry">AI-Powered Property Valuation</span>
+              <span class="project-company">Jaden Data</span>
+            </div>
+          </div>
         </div>
         <div class="project-content">
+          <p class="project-tagline">
+            Save 2+ Hours Per Appraisal with AI-Driven Research
+          </p>
           <p>
-            AI copilot for property appraisals. Automated data aggregation and
-            report drafting for local-market research. Cut manual work from
-            hours to minutes per report.
+            Specialized AI platform built exclusively for real estate appraisers and valuers. 
+            Transforms the time-consuming research and content generation process for professional 
+            appraisal reports with location-specific insights—turning hours of manual work into 
+            minutes of actionable intelligence.
+          </p>
+          <p>
+            Macro and micro location analysis from a single address input, market segment insights 
+            with customizable reporting, and multi-source data integration from verified real estate 
+            sources. Advanced AI logic provides contextual property analysis, generating appraisal-ready 
+            reports formatted for professional use in 2-3 minutes with quality assurance meeting 
+            professional appraisal standards.
           </p>
         </div>
-        <div class="project-tech">
-          <strong>Tech:</strong> Real Estate, Copilot, Automation, Reports
-        </div>
-        <div class="project-impact">
-          <strong>Impact:</strong> ~2 hours saved per report; higher consistency;
-          easier reviews.
-        </div>
-        <div class="project-links">
-          <!-- No links specified; add if available -->
+        <div class="project-details">
+          <div class="project-industries">
+            <strong>Industries:</strong> Real Estate Appraisal, Property Valuation, Investment Firms, Banking & Collateral Assessment
+          </div>
+          <div class="project-tech">
+            <strong>Tech:</strong> Real Estate AI, Location Analysis, Market Intelligence, Report Generation, Multi-Source Data Integration
+          </div>
+          <div class="project-impact">
+            <strong>Impact:</strong> 2+ hours saved per appraisal report; higher consistency and accuracy; 
+            easier review processes; results delivered in 2-3 minutes per property.
+          </div>
         </div>
       </article>
 
       <!-- KnowledgeX Project -->
       <article class="project-card">
         <div class="project-header">
-          <h2>KnowledgeX (20212022) Co-founder & Architect</h2>
+          <div class="project-title-group">
+            <h2 class="project-name">KnowledgeX</h2>
+            <div class="project-meta">
+              <span class="project-period">2021–2022</span>
+              <span class="project-role">Co-founder & Lead Architect</span>
+              <span class="project-industry">Trusted Analytics Marketplace</span>
+              <span class="project-company">Jaden Data</span>
+            </div>
+          </div>
         </div>
         <div class="project-content">
+          <p class="project-tagline">
+            Safe Data Collaboration Without Exposing Sensitive Information
+          </p>
           <p>
-            Blockchain-based analytics marketplace for safe data collaboration.
-            Built with confidential compute and auditable workflows to enable
-            cross-org insights without exposing sensitive data. Validated with
-            EU stakeholders.
+            Blockchain-based analytics marketplace enabling cross-organizational insights 
+            without exposing sensitive data. Built with confidential compute and auditable 
+            workflows to transform how organizations collaborate on data-driven insights 
+            while maintaining complete privacy and security.
+          </p>
+          <p>
+            Process intelligence applied to data collaboration: understanding that businesses 
+            need to share insights, not raw data. Confidential compute ensures computational 
+            results without data exposure, while blockchain provides immutable audit trails 
+            for compliance and trust. Validated with EU stakeholders for real-world applicability.
           </p>
         </div>
-        <div class="project-tech">
-          <strong>Tech:</strong> Blockchain, Confidential Compute, Analytics, Privacy
-        </div>
-        <div class="project-impact">
-          <strong>Impact:</strong> Safe collaboration; prototype validated with EU
-          partners.
+        <div class="project-details">
+          <div class="project-industries">
+            <strong>Industries:</strong> Cross-Organizational Analytics, Data Collaboration, Privacy-Sensitive Industries
+          </div>
+          <div class="project-tech">
+            <strong>Tech:</strong> Blockchain, Confidential Compute, Analytics Marketplace, Privacy-Preserving Systems, Auditable Workflows
+          </div>
+          <div class="project-impact">
+            <strong>Impact:</strong> Enabled safe collaboration without data exposure; prototype validated 
+            with EU partners; auditable workflows ensuring compliance and trust.
+          </div>
         </div>
         <div class="project-links">
-          <a href="https://blog.knowledgex.eu/">Blog</a>
+          <a href="https://blog.knowledgex.eu/" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            Blog
+          </a>
         </div>
       </article>
     </div>
@@ -151,21 +321,68 @@ const lang = 'en';
 <style>
   .projects-hero {
     padding: var(--space-8) 0;
-    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%, 
+      oklch(from var(--primary) l c h / 0.05) 30%,
+      oklch(from var(--accent) l c h / 0.03) 60%,
+      var(--muted) 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .projects-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at top right,
+      oklch(from var(--primary) l c h / 0.08) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .projects-hero .container {
+    position: relative;
+    z-index: 1;
   }
 
   .projects-hero h1 {
     font-size: var(--font-size-hero);
     margin-bottom: var(--space-3);
-    color: var(--text);
+    background: linear-gradient(135deg, 
+      var(--text) 0%, 
+      var(--primary) 50%,
+      var(--text) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
   }
 
   .projects-subtitle {
     font-size: var(--font-size-xl);
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 0;
-    font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-bold);
     max-width: var(--content-width);
     margin-left: auto;
     margin-right: auto;
@@ -173,75 +390,338 @@ const lang = 'en';
 
   .projects-grid {
     padding: var(--space-8) 0;
-    background: var(--bg);
+    background: linear-gradient(180deg, 
+      var(--bg) 0%,
+      oklch(from var(--muted) l c h / 0.3) 50%,
+      var(--bg) 100%);
   }
 
   .project-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%);
+    border: 1px solid transparent;
     border-radius: var(--radius-l);
     padding: var(--space-6);
     margin-bottom: var(--space-6);
-    transition:
-      border-color 0.2s,
-      box-shadow 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+      var(--primary),
+      var(--accent),
+      var(--primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      oklch(from var(--primary) l c h / 0.05) 0%,
+      transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
   }
 
   .project-card:hover {
-    border-color: var(--primary);
-    box-shadow: var(--shadow-2);
+    border-color: oklch(from var(--primary) l c h / 0.3);
+    box-shadow: 0 8px 24px oklch(from var(--primary) l c h / 0.15),
+                var(--shadow-2);
+    transform: translateY(-4px);
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%);
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .project-card:hover::after {
+    opacity: 1;
   }
 
   .project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-4);
   }
 
-  .project-header h2 {
+  .project-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .project-name {
     font-size: var(--font-size-2xl);
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin: 0;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
   }
 
   .project-period {
     font-size: var(--font-size-sm);
     color: var(--text);
-    opacity: 0.7;
+    opacity: 0.8;
+    font-weight: var(--font-weight-normal);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(135deg, 
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.03) 100%);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
   }
 
   .project-role {
     font-size: var(--font-size-sm);
-    color: var(--primary);
-    margin-bottom: var(--space-4);
+    color: white;
     font-weight: var(--font-weight-bold);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border: 1px solid transparent;
+    border-radius: var(--radius-s);
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+  }
+
+  .project-industry {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.8;
+    font-weight: var(--font-weight-normal);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(135deg, 
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+  }
+
+  .project-company {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+    font-weight: var(--font-weight-normal);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(135deg, 
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.03) 100%);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    font-style: italic;
+  }
+
+  .projects-intro {
+    text-align: center;
+    padding: var(--space-4) 0 var(--space-6) 0;
+    margin-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .projects-intro p {
+    font-size: var(--font-size-base);
+    color: var(--text);
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .projects-intro strong {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .project-tagline {
+    font-size: var(--font-size-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-3);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
   }
 
   .project-content {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
   }
 
   .project-content p {
-    margin: 0 0 var(--space-3) 0;
+    margin: 0;
+    line-height: 1.7;
+    font-size: var(--font-size-base);
+    color: var(--text);
+  }
+
+  .project-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent,
+      var(--primary),
+      var(--accent),
+      var(--primary),
+      transparent);
+    opacity: 0.5;
+  }
+
+  .project-industries,
+  .project-tech,
+  .project-impact {
+    font-size: var(--font-size-sm);
     line-height: 1.6;
   }
 
-  .project-tech,
-  .project-impact,
-  .project-links {
-    margin-bottom: var(--space-3);
-    font-size: var(--font-size-sm);
+  .project-industries {
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-2);
+    position: relative;
   }
 
+  .project-industries::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent,
+      oklch(from var(--primary) l c h / 0.3),
+      transparent);
+  }
+
+  .project-industries strong,
   .project-tech strong,
   .project-impact strong {
     color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    margin-right: var(--space-2);
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-links::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent,
+      var(--primary),
+      var(--accent),
+      var(--primary),
+      transparent);
+    opacity: 0.5;
   }
 
   .project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     color: var(--primary);
     font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, 
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent);
+    transition: left 0.5s ease;
+  }
+
+  .project-links a:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    border-color: var(--primary);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
+  }
+
+  .project-links a:hover::before {
+    left: 100%;
+  }
+
+  .project-links a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .project-links a svg {
+    flex-shrink: 0;
   }
 
   .project-section h3 {
@@ -272,13 +752,31 @@ const lang = 'en';
   }
 
   @media (max-width: 600px) {
-    .project-header {
-      flex-direction: column;
-      gap: var(--space-1);
+    .project-card {
+      padding: var(--space-4);
     }
 
-    .project-header h2 {
+    .project-name {
       font-size: var(--font-size-xl);
+    }
+
+    .project-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+
+    .project-details {
+      gap: var(--space-2);
+    }
+
+    .project-links {
+      flex-direction: column;
+    }
+
+    .project-links a {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

@@ -13,7 +13,7 @@ const navLinks = {
     { href: '/en/projects/', label: 'Projects' },
     { href: '/en/talks/', label: 'Talks' },
     { href: '/en/about/', label: 'About' },
-    { href: '/en/notes/', label: 'Notes' },
+    { href: '/en/publications/', label: 'Publications' },
     { href: '/en/contact/', label: 'Contact' },
   ],
   pl: [
@@ -21,7 +21,7 @@ const navLinks = {
     { href: '/pl/projects/', label: 'Projekty' },
     { href: '/pl/talks/', label: 'Wystąpienia' },
     { href: '/pl/about/', label: 'O mnie' },
-    { href: '/pl/notes/', label: 'Notatki' },
+    { href: '/pl/publications/', label: 'Publikacje' },
     { href: '/pl/contact/', label: 'Kontakt' },
   ],
   de: [
@@ -29,10 +29,28 @@ const navLinks = {
     { href: '/de/projects/', label: 'Projekte' },
     { href: '/de/talks/', label: 'Vorträge' },
     { href: '/de/about/', label: 'Über mich' },
-    { href: '/de/notes/', label: 'Notizen' },
+    { href: '/de/publications/', label: 'Publikationen' },
     { href: '/de/contact/', label: 'Kontakt' },
   ],
 };
+
+const i18n = {
+  en: {
+    mainNavAria: 'Main navigation',
+    toggleMenuAria: 'Toggle navigation menu',
+    toggleThemeText: 'Toggle Theme',
+  },
+  pl: {
+    mainNavAria: 'Nawigacja główna',
+    toggleMenuAria: 'Przełącz menu nawigacji',
+    toggleThemeText: 'Zmień motyw',
+  },
+  de: {
+    mainNavAria: 'Hauptnavigation',
+    toggleMenuAria: 'Navigationsmenü umschalten',
+    toggleThemeText: 'Theme wechseln',
+  },
+} as const;
 
 const pathMap = {
   en: Astro.url.pathname.replace(/^\/(pl|de)/, '/en'),
@@ -100,6 +118,11 @@ const pathMap = {
 </script>
 
 <header class="navbar">
+  <div class="navbar-background">
+    <div class="nav-shape nav-shape-1"></div>
+    <div class="nav-shape nav-shape-2"></div>
+    <div class="nav-shape nav-shape-3"></div>
+  </div>
   <div class="navbar-container">
     <a href={`/${lang}/`} class="brand">
       <span class="brand-name">Jacek Janczura</span>
@@ -107,7 +130,7 @@ const pathMap = {
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="nav-links desktop-nav" aria-label="Main navigation">
+    <nav class="nav-links desktop-nav" aria-label={i18n[lang].mainNavAria}>
       {
         navLinks[lang].map(link => (
           <a href={link.href} class="nav-link">
@@ -121,7 +144,7 @@ const pathMap = {
     <button
       id="mobile-menu-button"
       class="mobile-menu-button"
-      aria-label="Toggle navigation menu"
+      aria-label={i18n[lang].toggleMenuAria}
       aria-expanded="false"
       onclick="toggleMobileMenu()"
     >
@@ -131,7 +154,7 @@ const pathMap = {
     </button>
 
     <!-- Mobile Navigation Menu -->
-    <nav id="mobile-menu" class="mobile-menu" aria-label="Main navigation">
+    <nav id="mobile-menu" class="mobile-menu" aria-label={i18n[lang].mainNavAria}>
       <div class="mobile-menu-content">
         {
           navLinks[lang].map(link => (
@@ -142,9 +165,9 @@ const pathMap = {
         }
         <div class="mobile-nav-actions">
           <LanguageSwitcher lang={lang} pathMap={pathMap} />
-          <button aria-label="Toggle theme" class="mobile-theme-toggle" onclick="toggleTheme(); toggleMobileMenu();">
+          <button aria-label={i18n[lang].toggleThemeText} class="mobile-theme-toggle" onclick="toggleTheme(); toggleMobileMenu();">
             <span>🌓</span>
-            <span class="mobile-theme-text">Toggle Theme</span>
+            <span class="mobile-theme-text">{i18n[lang].toggleThemeText}</span>
           </button>
         </div>
       </div>
@@ -153,7 +176,7 @@ const pathMap = {
     <!-- Desktop Actions -->
     <div class="nav-actions desktop-actions">
       <LanguageSwitcher lang={lang} pathMap={pathMap} />
-      <button aria-label="Toggle theme" class="theme-toggle" onclick="toggleTheme()">
+      <button aria-label={i18n[lang].toggleThemeText} class="theme-toggle" onclick="toggleTheme()">
         <span>🌓</span>
       </button>
     </div>
@@ -202,6 +225,150 @@ const pathMap = {
     position: sticky;
     top: 0;
     z-index: 100;
+    overflow: hidden;
+  }
+
+  .navbar-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .nav-shape {
+    position: absolute;
+    border: 1.5px solid var(--primary);
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+
+  .nav-shape-1 {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    left: 15%;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: navRandom1 7s infinite;
+    animation-delay: 0s;
+  }
+
+  .nav-shape-2 {
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    right: 20%;
+    border-radius: 50%;
+    animation: navRandom2 9s infinite;
+    animation-delay: 2s;
+  }
+
+  .nav-shape-3 {
+    width: 35px;
+    height: 35px;
+    top: 50%;
+    right: 35%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    animation: navRandom3 8s infinite;
+    animation-delay: 4s;
+  }
+
+  @keyframes navRandom1 {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) rotate(0deg) scale(0.8);
+    }
+    20% {
+      opacity: 0.4;
+      transform: translateY(-50%) translateX(25px) rotate(180deg) scale(1);
+    }
+    40% {
+      opacity: 0.2;
+      transform: translateY(-50%) translateX(-15px) rotate(360deg) scale(0.9);
+    }
+    60% {
+      opacity: 0.5;
+      transform: translateY(-50%) translateX(30px) rotate(540deg) scale(1.1);
+    }
+    80% {
+      opacity: 0.3;
+      transform: translateY(-50%) translateX(-20px) rotate(720deg) scale(0.85);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) rotate(900deg) scale(0.8);
+    }
+  }
+
+  @keyframes navRandom2 {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) scale(0.7);
+    }
+    25% {
+      opacity: 0.5;
+      transform: translateY(-50%) translateX(-30px) scale(1);
+    }
+    45% {
+      opacity: 0.2;
+      transform: translateY(-50%) translateX(20px) scale(0.85);
+    }
+    65% {
+      opacity: 0.4;
+      transform: translateY(-50%) translateX(-25px) scale(1.05);
+    }
+    85% {
+      opacity: 0.3;
+      transform: translateY(-50%) translateX(15px) scale(0.9);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) scale(0.7);
+    }
+  }
+
+  @keyframes navRandom3 {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) rotate(0deg) scale(0.75);
+    }
+    18% {
+      opacity: 0.4;
+      transform: translateY(-50%) translateX(35px) rotate(120deg) scale(1);
+    }
+    38% {
+      opacity: 0.2;
+      transform: translateY(-50%) translateX(-20px) rotate(240deg) scale(0.9);
+    }
+    58% {
+      opacity: 0.5;
+      transform: translateY(-50%) translateX(25px) rotate(360deg) scale(1.1);
+    }
+    78% {
+      opacity: 0.3;
+      transform: translateY(-50%) translateX(-30px) rotate(480deg) scale(0.85);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) rotate(600deg) scale(0.75);
+    }
+  }
+
+  :root[data-theme='dark'] .navbar-background {
+    opacity: 0.12;
+  }
+
+  :root[data-theme='dark'] .nav-shape {
+    opacity: 0.4;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-shape {
+      animation: none;
+    }
   }
 
   .navbar-container {
@@ -213,6 +380,7 @@ const pathMap = {
     justify-content: space-between;
     height: 64px;
     position: relative;
+    z-index: 1;
   }
 
   .brand {
