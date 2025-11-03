@@ -34,13 +34,14 @@
       try {
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.dataset.theme = savedTheme;
-      } catch (e) {
+      } catch {
         // localStorage not available, use default light theme
         document.documentElement.dataset.theme = 'light';
       }
     </script><link rel="stylesheet" href="/_astro/index.CeFzQGs6.css">
 <link rel="stylesheet" href="/_astro/about.By4IE8xj.css"></head> <body> <script>
   // Simple theme toggle using onclick attribute
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleTheme() {
     const d = document.documentElement;
     const current = d.dataset.theme || 'light';
@@ -48,12 +49,13 @@
     d.dataset.theme = next;
     try {
       localStorage.setItem('theme', next);
-    } catch (e) {
+    } catch {
       // localStorage not available
     }
   }
 
   // Mobile menu toggle
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
@@ -91,70 +93,78 @@
   }
 
   // Initialize event listeners when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', closeMobileMenuOnClickOutside);
     document.addEventListener('keydown', closeMobileMenuOnEscape);
   });
-</script> <header class="navbar" data-astro-cid-ymhdp2rl> <div class="navbar-background" data-astro-cid-ymhdp2rl> <div class="nav-shape nav-shape-1" data-astro-cid-ymhdp2rl></div> <div class="nav-shape nav-shape-2" data-astro-cid-ymhdp2rl></div> <div class="nav-shape nav-shape-3" data-astro-cid-ymhdp2rl></div> </div> <div class="navbar-container" data-astro-cid-ymhdp2rl> <a href="/en/" class="brand" data-astro-cid-ymhdp2rl> <span class="brand-name" data-astro-cid-ymhdp2rl>Jacek Janczura</span> <span class="brand-title" data-astro-cid-ymhdp2rl>AI Architect & CTO</span> </a> <!-- Desktop Navigation --> <nav class="nav-links desktop-nav" aria-label="Main navigation" data-astro-cid-ymhdp2rl> <a href="/en/" class="nav-link" data-astro-cid-ymhdp2rl> Home </a><a href="/en/projects/" class="nav-link" data-astro-cid-ymhdp2rl> Projects </a><a href="/en/talks/" class="nav-link" data-astro-cid-ymhdp2rl> Talks </a><a href="/en/about/" class="nav-link" data-astro-cid-ymhdp2rl> About </a><a href="/en/publications/" class="nav-link" data-astro-cid-ymhdp2rl> Publications </a><a href="/en/contact/" class="nav-link" data-astro-cid-ymhdp2rl> Contact </a> </nav> <!-- Mobile Menu Button --> <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> </button> <!-- Mobile Navigation Menu --> <nav id="mobile-menu" class="mobile-menu" aria-label="Main navigation" data-astro-cid-ymhdp2rl> <div class="mobile-menu-content" data-astro-cid-ymhdp2rl> <a href="/en/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Home </a><a href="/en/projects/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Projects </a><a href="/en/talks/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Talks </a><a href="/en/about/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> About </a><a href="/en/publications/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Publications </a><a href="/en/contact/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Contact </a> <div class="mobile-nav-actions" data-astro-cid-ymhdp2rl> <nav aria-label="Language" class="language-switcher" data-astro-cid-a2mxz4y6> <a href="/en/" aria-current="true" class="lang-link" data-astro-cid-a2mxz4y6>EN</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/pl/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>PL</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/de/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>DE</a> </nav>  <button aria-label="Toggle Theme" class="mobile-theme-toggle" onclick="toggleTheme(); toggleMobileMenu();" data-astro-cid-ymhdp2rl> <span data-astro-cid-ymhdp2rl>🌓</span> <span class="mobile-theme-text" data-astro-cid-ymhdp2rl>Toggle Theme</span> </button> </div> </div> </nav> <!-- Desktop Actions --> <div class="nav-actions desktop-actions" data-astro-cid-ymhdp2rl> <nav aria-label="Language" class="language-switcher" data-astro-cid-a2mxz4y6> <a href="/en/" aria-current="true" class="lang-link" data-astro-cid-a2mxz4y6>EN</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/pl/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>PL</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/de/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>DE</a> </nav>  <button aria-label="Toggle Theme" class="theme-toggle" onclick="toggleTheme()" data-astro-cid-ymhdp2rl> <span data-astro-cid-ymhdp2rl>🌓</span> </button> </div> </div> </header>  <main style="min-height: calc(100vh - 64px - 120px);">   <section class="hero" data-astro-cid-dhfotatx> <div class="hero-background" data-astro-cid-dhfotatx> <div class="geometric-shape shape-1" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-2" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-3" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-4" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-5" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-6" data-astro-cid-dhfotatx></div> </div> <div class="container" data-astro-cid-dhfotatx> <h1 class="hero-title" data-astro-cid-dhfotatx>AI Architect & CTO</h1> <p class="hero-subtitle" data-astro-cid-dhfotatx>Transforming operational complexity into competitive advantage</p> <p class="hero-tagline" data-astro-cid-dhfotatx>Co-founder at Jaden Data — Building process intelligence for the AI era</p> <div class="hero-cta" data-astro-cid-dhfotatx> <a href="/en/contact/" class="cta-button" data-astro-cid-dhfotatx>Get in touch</a> <a href="/en/projects/" class="cta-link" data-astro-cid-dhfotatx>View projects</a> </div> </div> </section>  <section class="positioning" data-astro-cid-dhfotatx> <div class="container content" data-astro-cid-dhfotatx> <p data-astro-cid-dhfotatx>
-I'm the Co-founder & CTO of <strong data-astro-cid-dhfotatx>Jaden Data</strong>, where we architect 
-        process intelligence—AI-native systems that transform how businesses operate. 
-        We don't just build AI tools; we start with understanding how your business 
-        actually works, then enhance it with intelligent automation.
+</script> <header class="navbar" data-astro-cid-ymhdp2rl> <div class="navbar-background" data-astro-cid-ymhdp2rl> <div class="nav-shape nav-shape-1" data-astro-cid-ymhdp2rl></div> <div class="nav-shape nav-shape-2" data-astro-cid-ymhdp2rl></div> <div class="nav-shape nav-shape-3" data-astro-cid-ymhdp2rl></div> </div> <div class="navbar-container" data-astro-cid-ymhdp2rl> <a href="/en/" class="brand" data-astro-cid-ymhdp2rl> <span class="brand-name" data-astro-cid-ymhdp2rl>Jacek Janczura</span> <span class="brand-title" data-astro-cid-ymhdp2rl>AI Architect & CTO</span> </a> <!-- Desktop Navigation --> <nav class="nav-links desktop-nav" aria-label="Main navigation" data-astro-cid-ymhdp2rl> <a href="/en/" class="nav-link" data-astro-cid-ymhdp2rl> Home </a><a href="/en/projects/" class="nav-link" data-astro-cid-ymhdp2rl> Projects </a><a href="/en/talks/" class="nav-link" data-astro-cid-ymhdp2rl> Talks </a><a href="/en/about/" class="nav-link" data-astro-cid-ymhdp2rl> About </a><a href="/en/publications/" class="nav-link" data-astro-cid-ymhdp2rl> Publications </a><a href="/en/contact/" class="nav-link" data-astro-cid-ymhdp2rl> Contact </a> </nav> <!-- Mobile Menu Button --> <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> </button> <!-- Mobile Navigation Menu --> <nav id="mobile-menu" class="mobile-menu" aria-label="Main navigation" data-astro-cid-ymhdp2rl> <div class="mobile-menu-content" data-astro-cid-ymhdp2rl> <a href="/en/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Home </a><a href="/en/projects/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Projects </a><a href="/en/talks/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Talks </a><a href="/en/about/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> About </a><a href="/en/publications/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Publications </a><a href="/en/contact/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Contact </a> <div class="mobile-nav-actions" data-astro-cid-ymhdp2rl> <nav aria-label="Language" class="language-switcher" data-astro-cid-a2mxz4y6> <a href="/en/" aria-current="true" class="lang-link" data-astro-cid-a2mxz4y6>EN</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/pl/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>PL</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/de/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>DE</a> </nav>  <button aria-label="Toggle Theme" class="mobile-theme-toggle" onclick="toggleTheme(); toggleMobileMenu();" data-astro-cid-ymhdp2rl> <span data-astro-cid-ymhdp2rl>🌓</span> <span class="mobile-theme-text" data-astro-cid-ymhdp2rl>Toggle Theme</span> </button> </div> </div> </nav> <!-- Desktop Actions --> <div class="nav-actions desktop-actions" data-astro-cid-ymhdp2rl> <nav aria-label="Language" class="language-switcher" data-astro-cid-a2mxz4y6> <a href="/en/" aria-current="true" class="lang-link" data-astro-cid-a2mxz4y6>EN</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/pl/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>PL</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/de/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>DE</a> </nav>  <button aria-label="Toggle Theme" class="theme-toggle" onclick="toggleTheme()" data-astro-cid-ymhdp2rl> <span data-astro-cid-ymhdp2rl>🌓</span> </button> </div> </div> </header>  <main style="min-height: calc(100vh - 64px - 120px);">   <section class="hero" data-astro-cid-dhfotatx> <div class="hero-background" data-astro-cid-dhfotatx> <div class="geometric-shape shape-1" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-2" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-3" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-4" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-5" data-astro-cid-dhfotatx></div> <div class="geometric-shape shape-6" data-astro-cid-dhfotatx></div> </div> <div class="container" data-astro-cid-dhfotatx> <h1 class="hero-title" data-astro-cid-dhfotatx>AI Architect & CTO</h1> <p class="hero-subtitle" data-astro-cid-dhfotatx>
+Transforming operational complexity into competitive advantage
+</p> <p class="hero-tagline" data-astro-cid-dhfotatx>
+Co-founder at Jaden Data — Building process intelligence for the AI era
+</p> <div class="hero-cta" data-astro-cid-dhfotatx> <a href="/en/contact/" class="cta-button" data-astro-cid-dhfotatx>Get in touch</a> <a href="/en/projects/" class="cta-link" data-astro-cid-dhfotatx>View projects</a> </div> </div> </section>  <section class="positioning" data-astro-cid-dhfotatx> <div class="container content" data-astro-cid-dhfotatx> <p data-astro-cid-dhfotatx>
+I'm the Co-founder & CTO of <strong data-astro-cid-dhfotatx>Jaden Data</strong>, where we
+        architect process intelligence—AI-native systems that transform how
+        businesses operate. We don't just build AI tools; we start with
+        understanding how your business actually works, then enhance it with
+        intelligent automation.
 </p> <p data-astro-cid-dhfotatx>
-My expertise spans <strong data-astro-cid-dhfotatx>enterprise LLM platforms, RAG systems, and secure 
-        cloud architectures</strong>, but it's applied through a process-first lens. 
-        I design <strong data-astro-cid-dhfotatx>event-driven microservices</strong> on AWS, integrate 
-        multi-model stacks (OpenAI, Azure, Bedrock, Mistral), and deliver
-<strong data-astro-cid-dhfotatx>ISO 27001/SOC 2</strong> compliance—all to transform operations 
-        across manufacturing, pharmaceutical, venture capital, real estate, and 
-        financial services. The goal: measurable business impact, not just technical 
-        sophistication.
+My expertise spans <strong data-astro-cid-dhfotatx>enterprise LLM platforms, RAG systems, and secure cloud architectures</strong>, but it's applied through a process-first lens. I design <strong data-astro-cid-dhfotatx>event-driven microservices</strong> on AWS, integrate multi-model stacks (OpenAI, Azure, Bedrock, Mistral),
+        and deliver
+<strong data-astro-cid-dhfotatx>ISO 27001/SOC 2</strong> compliance—all to transform operations across
+        manufacturing, pharmaceutical, venture capital, real estate, and financial
+        services. The goal: measurable business impact, not just technical sophistication.
 </p> </div> </section>  <section class="highlights" data-astro-cid-dhfotatx> <div class="container" data-astro-cid-dhfotatx> <h2 data-astro-cid-dhfotatx>Where Process Intelligence Meets Technical Excellence</h2> <div class="highlights-grid" data-astro-cid-dhfotatx> <div class="highlight-card" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Enterprise AI Platforms</h3> <p data-astro-cid-dhfotatx>
-Multi-tenant platforms serving 50+ organizations with &gt;1,000 concurrent 
-            connections. Built for mission-critical operations with ISO 27001/SOC 2 
-            compliance delivered in ~3 months.
+Multi-tenant platforms serving 50+ organizations with &gt;1,000
+            concurrent connections. Built for mission-critical operations with
+            ISO 27001/SOC 2 compliance delivered in ~3 months.
 </p> </div> <div class="highlight-card" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Process-First AI Design</h3> <p data-astro-cid-dhfotatx>
-Starting with how businesses actually operate, then enhancing workflows 
-            with RAG systems, knowledge-aware agents, and intelligent automation 
-            that serves the process, not replaces it.
+Starting with how businesses actually operate, then enhancing
+            workflows with RAG systems, knowledge-aware agents, and intelligent
+            automation that serves the process, not replaces it.
 </p> </div> <div class="highlight-card" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Industry-Specific Solutions</h3> <p data-astro-cid-dhfotatx>
-Real estate valuation saving 2+ hours per appraisal. VC due diligence 
-            automation. Manufacturing quality control. Pharma compliance workflows. 
-            Solutions built for specific operational challenges.
+Real estate valuation saving 2+ hours per appraisal. VC due
+            diligence automation. Manufacturing quality control. Pharma
+            compliance workflows. Solutions built for specific operational
+            challenges.
 </p> </div> <div class="highlight-card" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Security & Compliance</h3> <p data-astro-cid-dhfotatx>
-Enterprise-grade security isn't an afterthought—it's fundamental. 
-            ISO 27001 and SOC 2 certified platforms with complete data sovereignty 
-            for industries that can't compromise.
+Enterprise-grade security isn't an afterthought—it's fundamental.
+            ISO 27001 and SOC 2 certified platforms with complete data
+            sovereignty for industries that can't compromise.
 </p> </div> <div class="highlight-card" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Measurable Business Impact</h3> <p data-astro-cid-dhfotatx>
-From implementation to results in weeks, not months. Pre-built platforms 
-            for speed, custom solutions for perfect fit. All designed to deliver 
-            ROI you can measure and scale.
+From implementation to results in weeks, not months. Pre-built
+            platforms for speed, custom solutions for perfect fit. All designed
+            to deliver ROI you can measure and scale.
 </p> </div> <div class="highlight-card" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Distributed Systems at Scale</h3> <p data-astro-cid-dhfotatx>
-Event-driven microservices on AWS handling thousands of RPS with 
-            high-throughput design and controlled costs. Technology that performs 
-            under load while delivering business value.
+Event-driven microservices on AWS handling thousands of RPS with
+            high-throughput design and controlled costs. Technology that
+            performs under load while delivering business value.
 </p> </div> </div> <p class="highlights-note" data-astro-cid-dhfotatx>
-Certified skydiver and diver; wind/kitesurf instructor; snowboarder. 
-        These experiences build risk management, clear instruction, calm under 
-        pressure, and disciplined preparation—skills that translate directly to 
+Certified skydiver and diver; wind/kitesurf instructor; snowboarder.
+        These experiences build risk management, clear instruction, calm under
+        pressure, and disciplined preparation—skills that translate directly to
         technical leadership and building systems that businesses depend on.
 </p> </div> </section>  <section class="featured-work" data-astro-cid-dhfotatx> <div class="container" data-astro-cid-dhfotatx> <h2 data-astro-cid-dhfotatx>Process Intelligence in Action</h2> <div class="featured-grid" data-astro-cid-dhfotatx> <a href="/en/projects/" class="featured-item" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>entAIngine</h3> <p data-astro-cid-dhfotatx>
-Enterprise AI platform transforming mission-critical back office operations 
-            for production facilities, pharma companies, and financial institutions. 
-            ISO 27001/SOC 2 certified with complete data sovereignty.
+Enterprise AI platform transforming mission-critical back office
+            operations for production facilities, pharma companies, and
+            financial institutions. ISO 27001/SOC 2 certified with complete data
+            sovereignty.
 </p> <span class="featured-link" data-astro-cid-dhfotatx>View all projects →</span> </a> <a href="/en/projects/" class="featured-item" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Valuation Engine</h3> <p data-astro-cid-dhfotatx>
-Real estate appraisal platform saving 2+ hours per report. Transforms 
-            hours of manual research into minutes of actionable intelligence—process 
-            intelligence applied to property valuation.
+Real estate appraisal platform saving 2+ hours per report.
+            Transforms hours of manual research into minutes of actionable
+            intelligence—process intelligence applied to property valuation.
 </p> <span class="featured-link" data-astro-cid-dhfotatx>View all projects →</span> </a> <a href="/en/projects/" class="featured-item" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>Flowhive VC</h3> <p data-astro-cid-dhfotatx>
-Venture capital platform combining deep research with investment-specific 
-            automation. Accelerates due diligence, provides AI-driven portfolio insights, 
-            and transforms tribal knowledge into institutional intelligence.
-</p> <span class="featured-link" data-astro-cid-dhfotatx>View all projects →</span> </a> <a href="/en/talks/" class="featured-item" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>AI Architecture Patterns</h3> <p data-astro-cid-dhfotatx>Practical lessons from enterprise LLM deployments—how to architect 
-            systems that serve business processes, not just implement technology.</p> <span class="featured-link" data-astro-cid-dhfotatx>Watch talks →</span> </a> </div> </div> </section>  <section class="contact-cta" data-astro-cid-dhfotatx> <div class="container content" data-astro-cid-dhfotatx> <h2 data-astro-cid-dhfotatx>Ready to Transform Your Operations?</h2> <p data-astro-cid-dhfotatx>
-Whether you're looking to implement proven AI platforms or need custom 
-        solutions for unique challenges, let's start with a conversation about 
-        your processes. Best via email or LinkedIn. I'm open to advisory, 
+Venture capital platform combining deep research with
+            investment-specific automation. Accelerates due diligence, provides
+            AI-driven portfolio insights, and transforms tribal knowledge into
+            institutional intelligence.
+</p> <span class="featured-link" data-astro-cid-dhfotatx>View all projects →</span> </a> <a href="/en/talks/" class="featured-item" data-astro-cid-dhfotatx> <h3 data-astro-cid-dhfotatx>AI Architecture Patterns</h3> <p data-astro-cid-dhfotatx>
+Practical lessons from enterprise LLM deployments—how to architect
+            systems that serve business processes, not just implement
+            technology.
+</p> <span class="featured-link" data-astro-cid-dhfotatx>Watch talks →</span> </a> </div> </div> </section>  <section class="contact-cta" data-astro-cid-dhfotatx> <div class="container content" data-astro-cid-dhfotatx> <h2 data-astro-cid-dhfotatx>Ready to Transform Your Operations?</h2> <p data-astro-cid-dhfotatx>
+Whether you're looking to implement proven AI platforms or need custom
+        solutions for unique challenges, let's start with a conversation about
+        your processes. Best via email or LinkedIn. I'm open to advisory,
         architecture reviews, and select delivery engagements.
 </p> <a href="/en/contact/" class="cta-button" data-astro-cid-dhfotatx>Get in touch</a> </div> </section>  </main> <footer class="footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <p class="copyright" data-astro-cid-sz7xmlte>
 © 2025 Jacek Janczura

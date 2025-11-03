@@ -34,13 +34,14 @@
       try {
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.dataset.theme = savedTheme;
-      } catch (e) {
+      } catch {
         // localStorage not available, use default light theme
         document.documentElement.dataset.theme = 'light';
       }
     </script><link rel="stylesheet" href="/_astro/projects.Bp1v94PP.css">
 <link rel="stylesheet" href="/_astro/about.By4IE8xj.css"></head> <body> <script>
   // Simple theme toggle using onclick attribute
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleTheme() {
     const d = document.documentElement;
     const current = d.dataset.theme || 'light';
@@ -48,12 +49,13 @@
     d.dataset.theme = next;
     try {
       localStorage.setItem('theme', next);
-    } catch (e) {
+    } catch {
       // localStorage not available
     }
   }
 
   // Mobile menu toggle
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
@@ -91,29 +93,38 @@
   }
 
   // Initialize event listeners when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', closeMobileMenuOnClickOutside);
     document.addEventListener('keydown', closeMobileMenuOnEscape);
   });
 </script> <header class="navbar" data-astro-cid-ymhdp2rl> <div class="navbar-background" data-astro-cid-ymhdp2rl> <div class="nav-shape nav-shape-1" data-astro-cid-ymhdp2rl></div> <div class="nav-shape nav-shape-2" data-astro-cid-ymhdp2rl></div> <div class="nav-shape nav-shape-3" data-astro-cid-ymhdp2rl></div> </div> <div class="navbar-container" data-astro-cid-ymhdp2rl> <a href="/en/" class="brand" data-astro-cid-ymhdp2rl> <span class="brand-name" data-astro-cid-ymhdp2rl>Jacek Janczura</span> <span class="brand-title" data-astro-cid-ymhdp2rl>AI Architect & CTO</span> </a> <!-- Desktop Navigation --> <nav class="nav-links desktop-nav" aria-label="Main navigation" data-astro-cid-ymhdp2rl> <a href="/en/" class="nav-link" data-astro-cid-ymhdp2rl> Home </a><a href="/en/projects/" class="nav-link" data-astro-cid-ymhdp2rl> Projects </a><a href="/en/talks/" class="nav-link" data-astro-cid-ymhdp2rl> Talks </a><a href="/en/about/" class="nav-link" data-astro-cid-ymhdp2rl> About </a><a href="/en/publications/" class="nav-link" data-astro-cid-ymhdp2rl> Publications </a><a href="/en/contact/" class="nav-link" data-astro-cid-ymhdp2rl> Contact </a> </nav> <!-- Mobile Menu Button --> <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> <span class="hamburger-line" data-astro-cid-ymhdp2rl></span> </button> <!-- Mobile Navigation Menu --> <nav id="mobile-menu" class="mobile-menu" aria-label="Main navigation" data-astro-cid-ymhdp2rl> <div class="mobile-menu-content" data-astro-cid-ymhdp2rl> <a href="/en/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Home </a><a href="/en/projects/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Projects </a><a href="/en/talks/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Talks </a><a href="/en/about/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> About </a><a href="/en/publications/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Publications </a><a href="/en/contact/" class="mobile-nav-link" onclick="toggleMobileMenu()" data-astro-cid-ymhdp2rl> Contact </a> <div class="mobile-nav-actions" data-astro-cid-ymhdp2rl> <nav aria-label="Language" class="language-switcher" data-astro-cid-a2mxz4y6> <a href="/en/projects/" aria-current="true" class="lang-link" data-astro-cid-a2mxz4y6>EN</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/pl/projects/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>PL</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/de/projects/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>DE</a> </nav>  <button aria-label="Toggle Theme" class="mobile-theme-toggle" onclick="toggleTheme(); toggleMobileMenu();" data-astro-cid-ymhdp2rl> <span data-astro-cid-ymhdp2rl>🌓</span> <span class="mobile-theme-text" data-astro-cid-ymhdp2rl>Toggle Theme</span> </button> </div> </div> </nav> <!-- Desktop Actions --> <div class="nav-actions desktop-actions" data-astro-cid-ymhdp2rl> <nav aria-label="Language" class="language-switcher" data-astro-cid-a2mxz4y6> <a href="/en/projects/" aria-current="true" class="lang-link" data-astro-cid-a2mxz4y6>EN</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/pl/projects/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>PL</a> <span data-astro-cid-a2mxz4y6>·</span> <a href="/de/projects/" aria-current="false" class="lang-link" data-astro-cid-a2mxz4y6>DE</a> </nav>  <button aria-label="Toggle Theme" class="theme-toggle" onclick="toggleTheme()" data-astro-cid-ymhdp2rl> <span data-astro-cid-ymhdp2rl>🌓</span> </button> </div> </div> </header>  <main style="min-height: calc(100vh - 64px - 120px);">  <section class="projects-hero" data-astro-cid-ia5tjcf2> <div class="container" data-astro-cid-ia5tjcf2> <h1 data-astro-cid-ia5tjcf2>Projects</h1> <p class="projects-subtitle" data-astro-cid-ia5tjcf2>
-Transforming operational complexity into competitive advantage through process intelligence
-</p> </div> </section> <section class="projects-grid" data-astro-cid-ia5tjcf2> <div class="container" data-astro-cid-ia5tjcf2> <div class="projects-intro" data-astro-cid-ia5tjcf2> <p data-astro-cid-ia5tjcf2>All projects below were built by <strong data-astro-cid-ia5tjcf2>Jaden Data</strong>, where I serve as Co-founder & Lead Architect.</p> </div> <!-- entAIngine Project --> <article class="project-card" data-astro-cid-ia5tjcf2> <div class="project-header" data-astro-cid-ia5tjcf2> <div class="project-title-group" data-astro-cid-ia5tjcf2> <h2 class="project-name" data-astro-cid-ia5tjcf2>entAIngine</h2> <div class="project-meta" data-astro-cid-ia5tjcf2> <span class="project-period" data-astro-cid-ia5tjcf2>2023–Present</span> <span class="project-role" data-astro-cid-ia5tjcf2>Co-founder & Lead Architect</span> <span class="project-industry" data-astro-cid-ia5tjcf2>Enterprise AI Platform</span> <span class="project-company" data-astro-cid-ia5tjcf2>Jaden Data</span> </div> </div> </div> <div class="project-content" data-astro-cid-ia5tjcf2> <p class="project-tagline" data-astro-cid-ia5tjcf2>
+Transforming operational complexity into competitive advantage through
+        process intelligence
+</p> </div> </section> <section class="projects-grid" data-astro-cid-ia5tjcf2> <div class="container" data-astro-cid-ia5tjcf2> <div class="projects-intro" data-astro-cid-ia5tjcf2> <p data-astro-cid-ia5tjcf2>
+All projects below were built by <strong data-astro-cid-ia5tjcf2>Jaden Data</strong>, where I
+          serve as Co-founder & Lead Architect.
+</p> </div> <!-- entAIngine Project --> <article class="project-card" data-astro-cid-ia5tjcf2> <div class="project-header" data-astro-cid-ia5tjcf2> <div class="project-title-group" data-astro-cid-ia5tjcf2> <h2 class="project-name" data-astro-cid-ia5tjcf2>entAIngine</h2> <div class="project-meta" data-astro-cid-ia5tjcf2> <span class="project-period" data-astro-cid-ia5tjcf2>2023–Present</span> <span class="project-role" data-astro-cid-ia5tjcf2>Co-founder & Lead Architect</span> <span class="project-industry" data-astro-cid-ia5tjcf2>Enterprise AI Platform</span> <span class="project-company" data-astro-cid-ia5tjcf2>Jaden Data</span> </div> </div> </div> <div class="project-content" data-astro-cid-ia5tjcf2> <p class="project-tagline" data-astro-cid-ia5tjcf2>
 The AI Engine for Enterprise-Grade Process Automation
 </p> <p data-astro-cid-ia5tjcf2>
-Transforms mission-critical back office operations through intelligent automation, 
-            knowledge-aware chatbots, and sophisticated document workflows. Built for businesses 
-            that demand the highest standards of security, compliance, and performance—ISO 27001 
-            and SOC2 Type 1 certified with complete data sovereignty.
+Transforms mission-critical back office operations through
+            intelligent automation, knowledge-aware chatbots, and sophisticated
+            document workflows. Built for businesses that demand the highest
+            standards of security, compliance, and performance—ISO 27001 and
+            SOC2 Type 1 certified with complete data sovereignty.
 </p> <p data-astro-cid-ia5tjcf2>
-We architected process intelligence, not just AI tools. Starting with understanding 
-            how production facilities, pharmaceutical companies, and financial institutions 
-            actually operate, we built custom modules that embed data-driven decision-making 
-            into their operational DNA. Handles &gt;1,000 concurrent connections and thousands 
-            of RPS with event-driven microservices on AWS.
-</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Production & Manufacturing, Pharmaceutical, Financial Services, Enterprise Operations
-</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC
-</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Serving 50+ organizations with 99.9% uptime; ISO 27001/SOC 2 compliance delivered in ~3 months; 
-            production-grade reliability enabling faster AI adoption across enterprise workflows.
+We architected process intelligence, not just AI tools. Starting
+            with understanding how production facilities, pharmaceutical
+            companies, and financial institutions actually operate, we built
+            custom modules that embed data-driven decision-making into their
+            operational DNA. Handles &gt;1,000 concurrent connections and
+            thousands of RPS with event-driven microservices on AWS.
+</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Production & Manufacturing, Pharmaceutical,
+            Financial Services, Enterprise Operations
+</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure,
+            Bedrock, Mistral, RAG, RBAC
+</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Serving 50+ organizations with 99.9% uptime;
+            ISO 27001/SOC 2 compliance delivered in ~3 months; production-grade reliability
+            enabling faster AI adoption across enterprise workflows.
 </div> </div> <div class="project-links" data-astro-cid-ia5tjcf2> <a href="https://entaingine.com" target="_blank" rel="noopener noreferrer" data-astro-cid-ia5tjcf2> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-ia5tjcf2> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" data-astro-cid-ia5tjcf2></path> <polyline points="15 3 21 3 21 9" data-astro-cid-ia5tjcf2></polyline> <line x1="10" y1="14" x2="21" y2="3" data-astro-cid-ia5tjcf2></line> </svg>
 Website
 </a> <a href="https://github.com/entaingine/platform" target="_blank" rel="noopener noreferrer" data-astro-cid-ia5tjcf2> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-ia5tjcf2> <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-astro-cid-ia5tjcf2></path> </svg>
@@ -121,85 +132,110 @@ Repository
 </a> </div> </article> <!-- entAIgent Project --> <article class="project-card" data-astro-cid-ia5tjcf2> <div class="project-header" data-astro-cid-ia5tjcf2> <div class="project-title-group" data-astro-cid-ia5tjcf2> <h2 class="project-name" data-astro-cid-ia5tjcf2>entAIgent</h2> <div class="project-meta" data-astro-cid-ia5tjcf2> <span class="project-period" data-astro-cid-ia5tjcf2>2023</span> <span class="project-role" data-astro-cid-ia5tjcf2>Co-founder & Lead Architect</span> <span class="project-industry" data-astro-cid-ia5tjcf2>No-Code AI Agent Platform</span> <span class="project-company" data-astro-cid-ia5tjcf2>Jaden Data</span> </div> </div> </div> <div class="project-content" data-astro-cid-ia5tjcf2> <p class="project-tagline" data-astro-cid-ia5tjcf2>
 Build AI Agent Teams Without Writing Code
 </p> <p data-astro-cid-ia5tjcf2>
-Empowers operations teams, customer service, and HR departments to create 
-            sophisticated multi-agent AI systems without technical expertise. Through 
-            intuitive drag-and-drop design, teams build coordinated AI agents specialized 
-            for specific roles and responsibilities—turning complex multi-step workflows 
-            into visual, manageable processes.
+Empowers operations teams, customer service, and HR departments to
+            create sophisticated multi-agent AI systems without technical
+            expertise. Through intuitive drag-and-drop design, teams build
+            coordinated AI agents specialized for specific roles and
+            responsibilities—turning complex multi-step workflows into visual,
+            manageable processes.
 </p> <p data-astro-cid-ia5tjcf2>
-Process-first design means understanding the actual workflow before automating 
-            it. Pre-built templates for common business scenarios, custom knowledge bases, 
-            and real-time testing capabilities ensure that AI serves the process, not the 
-            other way around.
-</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Operations, Customer Service, HR Automation, Enterprise Workflows
-</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> AI Agents, No-Code, Visual Workflows, Multi-Agent Orchestration, Evals
-</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Reduced agent PoC deployment from weeks to days; consistent outcomes 
-            across teams; faster development cycles with coordinated multi-agent workflows.
+Process-first design means understanding the actual workflow before
+            automating it. Pre-built templates for common business scenarios,
+            custom knowledge bases, and real-time testing capabilities ensure
+            that AI serves the process, not the other way around.
+</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Operations, Customer Service, HR Automation,
+            Enterprise Workflows
+</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> AI Agents, No-Code, Visual Workflows, Multi-Agent
+            Orchestration, Evals
+</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Reduced agent PoC deployment from weeks to days;
+            consistent outcomes across teams; faster development cycles with coordinated
+            multi-agent workflows.
 </div> </div> </article> <!-- Flowhive AI Project --> <article class="project-card" data-astro-cid-ia5tjcf2> <div class="project-header" data-astro-cid-ia5tjcf2> <div class="project-title-group" data-astro-cid-ia5tjcf2> <h2 class="project-name" data-astro-cid-ia5tjcf2>Flowhive AI</h2> <div class="project-meta" data-astro-cid-ia5tjcf2> <span class="project-period" data-astro-cid-ia5tjcf2>2022–2023</span> <span class="project-role" data-astro-cid-ia5tjcf2>Co-founder & Lead Architect</span> <span class="project-industry" data-astro-cid-ia5tjcf2>All-in-One AI Workspace</span> <span class="project-company" data-astro-cid-ia5tjcf2>Jaden Data</span> </div> </div> </div> <div class="project-content" data-astro-cid-ia5tjcf2> <p class="project-tagline" data-astro-cid-ia5tjcf2>
 One Platform. Every AI Model. Unlimited Possibilities.
 </p> <p data-astro-cid-ia5tjcf2>
-Eliminates the complexity and expense of managing multiple AI tool subscriptions 
-            by providing unified access to leading AI models (GPT, Claude, Gemini, Llama, Mistral) 
-            in a single collaborative workspace. Designed for fast-moving startups, research 
-            teams, and content creators seeking to democratize AI access without vendor lock-in.
+Eliminates the complexity and expense of managing multiple AI tool
+            subscriptions by providing unified access to leading AI models (GPT,
+            Claude, Gemini, Llama, Mistral) in a single collaborative workspace.
+            Designed for fast-moving startups, research teams, and content
+            creators seeking to democratize AI access without vendor lock-in.
 </p> <p data-astro-cid-ia5tjcf2>
-Built with deep research capabilities including internet-scanning AI agents, 
-            agentic workflows that plan and execute autonomously, and knowledge management 
-            with searchable databases. Credit-based pricing means you pay for usage, not 
-            per-user seats—transforming how teams budget for and scale AI adoption.
-</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Startups, Research Teams, Content Creation, Knowledge Work
-</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> Multi-Model Access, Side-by-Side Comparison, AI Agents, Knowledge Management, Team Collaboration
-</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Reduced tool sprawl and per-seat costs; faster iteration loops; 
-            unified access to multiple AI models in one collaborative workspace.
+Built with deep research capabilities including internet-scanning AI
+            agents, agentic workflows that plan and execute autonomously, and
+            knowledge management with searchable databases. Credit-based pricing
+            means you pay for usage, not per-user seats—transforming how teams
+            budget for and scale AI adoption.
+</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Startups, Research Teams, Content Creation,
+            Knowledge Work
+</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> Multi-Model Access, Side-by-Side Comparison, AI
+            Agents, Knowledge Management, Team Collaboration
+</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Reduced tool sprawl and per-seat costs; faster
+            iteration loops; unified access to multiple AI models in one collaborative
+            workspace.
 </div> </div> </article> <!-- Flowhive VC Project --> <article class="project-card" data-astro-cid-ia5tjcf2> <div class="project-header" data-astro-cid-ia5tjcf2> <div class="project-title-group" data-astro-cid-ia5tjcf2> <h2 class="project-name" data-astro-cid-ia5tjcf2>Flowhive VC</h2> <div class="project-meta" data-astro-cid-ia5tjcf2> <span class="project-period" data-astro-cid-ia5tjcf2>2023</span> <span class="project-role" data-astro-cid-ia5tjcf2>Co-founder & Lead Architect</span> <span class="project-industry" data-astro-cid-ia5tjcf2>AI for Venture Capital</span> <span class="project-company" data-astro-cid-ia5tjcf2>Jaden Data</span> </div> </div> </div> <div class="project-content" data-astro-cid-ia5tjcf2> <p class="project-tagline" data-astro-cid-ia5tjcf2>
 Portfolio Management Meets Process Intelligence
 </p> <p data-astro-cid-ia5tjcf2>
-Venture capital-specialized platform purpose-built for VCs, investment teams, 
-            and portfolio managers. Combines deep research capabilities with investment-specific 
-            automation to accelerate due diligence and market intelligence.
+Venture capital-specialized platform purpose-built for VCs,
+            investment teams, and portfolio managers. Combines deep research
+            capabilities with investment-specific automation to accelerate due
+            diligence and market intelligence.
 </p> <p data-astro-cid-ia5tjcf2>
-Pre-configured agents handle company due diligence and competitive analysis, while 
-            portfolio intelligence tracking provides AI-driven insights. Deal flow automation 
-            streamlines sourcing and evaluation, and market mapping delivers automated sector 
-            analysis. The centralized knowledge repository ensures that research and deals 
+Pre-configured agents handle company due diligence and competitive
+            analysis, while portfolio intelligence tracking provides AI-driven
+            insights. Deal flow automation streamlines sourcing and evaluation,
+            and market mapping delivers automated sector analysis. The
+            centralized knowledge repository ensures that research and deals
             knowledge becomes institutional intelligence, not tribal knowledge.
-</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Venture Capital, Angel Investing, Corporate Venture Arms, Investment Analysis
-</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> AI Agents, Due Diligence Automation, Portfolio Intelligence, Market Mapping, Deal Flow Systems
-</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Accelerated due diligence processes; AI-driven portfolio insights; 
-            faster deal evaluation; centralized research repository scaling investment team capabilities.
+</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Venture Capital, Angel Investing, Corporate
+            Venture Arms, Investment Analysis
+</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> AI Agents, Due Diligence Automation, Portfolio
+            Intelligence, Market Mapping, Deal Flow Systems
+</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Accelerated due diligence processes; AI-driven
+            portfolio insights; faster deal evaluation; centralized research repository
+            scaling investment team capabilities.
 </div> </div> </article> <!-- Valuation Engine Project --> <article class="project-card" data-astro-cid-ia5tjcf2> <div class="project-header" data-astro-cid-ia5tjcf2> <div class="project-title-group" data-astro-cid-ia5tjcf2> <h2 class="project-name" data-astro-cid-ia5tjcf2>Valuation Engine</h2> <div class="project-meta" data-astro-cid-ia5tjcf2> <span class="project-period" data-astro-cid-ia5tjcf2>2022</span> <span class="project-role" data-astro-cid-ia5tjcf2>Co-founder & Lead Architect</span> <span class="project-industry" data-astro-cid-ia5tjcf2>AI-Powered Property Valuation</span> <span class="project-company" data-astro-cid-ia5tjcf2>Jaden Data</span> </div> </div> </div> <div class="project-content" data-astro-cid-ia5tjcf2> <p class="project-tagline" data-astro-cid-ia5tjcf2>
 Save 2+ Hours Per Appraisal with AI-Driven Research
 </p> <p data-astro-cid-ia5tjcf2>
-Specialized AI platform built exclusively for real estate appraisers and valuers. 
-            Transforms the time-consuming research and content generation process for professional 
-            appraisal reports with location-specific insights—turning hours of manual work into 
-            minutes of actionable intelligence.
+Specialized AI platform built exclusively for real estate appraisers
+            and valuers. Transforms the time-consuming research and content
+            generation process for professional appraisal reports with
+            location-specific insights—turning hours of manual work into minutes
+            of actionable intelligence.
 </p> <p data-astro-cid-ia5tjcf2>
-Macro and micro location analysis from a single address input, market segment insights 
-            with customizable reporting, and multi-source data integration from verified real estate 
-            sources. Advanced AI logic provides contextual property analysis, generating appraisal-ready 
-            reports formatted for professional use in 2-3 minutes with quality assurance meeting 
-            professional appraisal standards.
-</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Real Estate Appraisal, Property Valuation, Investment Firms, Banking & Collateral Assessment
-</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> Real Estate AI, Location Analysis, Market Intelligence, Report Generation, Multi-Source Data Integration
-</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> 2+ hours saved per appraisal report; higher consistency and accuracy; 
-            easier review processes; results delivered in 2-3 minutes per property.
+Macro and micro location analysis from a single address input,
+            market segment insights with customizable reporting, and
+            multi-source data integration from verified real estate sources.
+            Advanced AI logic provides contextual property analysis, generating
+            appraisal-ready reports formatted for professional use in 2-3
+            minutes with quality assurance meeting professional appraisal
+            standards.
+</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Real Estate Appraisal, Property Valuation,
+            Investment Firms, Banking & Collateral Assessment
+</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> Real Estate AI, Location Analysis, Market Intelligence,
+            Report Generation, Multi-Source Data Integration
+</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> 2+ hours saved per appraisal report; higher
+            consistency and accuracy; easier review processes; results delivered
+            in 2-3 minutes per property.
 </div> </div> </article> <!-- KnowledgeX Project --> <article class="project-card" data-astro-cid-ia5tjcf2> <div class="project-header" data-astro-cid-ia5tjcf2> <div class="project-title-group" data-astro-cid-ia5tjcf2> <h2 class="project-name" data-astro-cid-ia5tjcf2>KnowledgeX</h2> <div class="project-meta" data-astro-cid-ia5tjcf2> <span class="project-period" data-astro-cid-ia5tjcf2>2021–2022</span> <span class="project-role" data-astro-cid-ia5tjcf2>Co-founder & Lead Architect</span> <span class="project-industry" data-astro-cid-ia5tjcf2>Trusted Analytics Marketplace</span> <span class="project-company" data-astro-cid-ia5tjcf2>Jaden Data</span> </div> </div> </div> <div class="project-content" data-astro-cid-ia5tjcf2> <p class="project-tagline" data-astro-cid-ia5tjcf2>
 Safe Data Collaboration Without Exposing Sensitive Information
 </p> <p data-astro-cid-ia5tjcf2>
-Blockchain-based analytics marketplace enabling cross-organizational insights 
-            without exposing sensitive data. Built with confidential compute and auditable 
-            workflows to transform how organizations collaborate on data-driven insights 
-            while maintaining complete privacy and security.
+Blockchain-based analytics marketplace enabling cross-organizational
+            insights without exposing sensitive data. Built with confidential
+            compute and auditable workflows to transform how organizations
+            collaborate on data-driven insights while maintaining complete
+            privacy and security.
 </p> <p data-astro-cid-ia5tjcf2>
-Process intelligence applied to data collaboration: understanding that businesses 
-            need to share insights, not raw data. Confidential compute ensures computational 
-            results without data exposure, while blockchain provides immutable audit trails 
-            for compliance and trust. Validated with EU stakeholders for real-world applicability.
-</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Cross-Organizational Analytics, Data Collaboration, Privacy-Sensitive Industries
-</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> Blockchain, Confidential Compute, Analytics Marketplace, Privacy-Preserving Systems, Auditable Workflows
-</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Enabled safe collaboration without data exposure; prototype validated 
-            with EU partners; auditable workflows ensuring compliance and trust.
+Process intelligence applied to data collaboration: understanding
+            that businesses need to share insights, not raw data. Confidential
+            compute ensures computational results without data exposure, while
+            blockchain provides immutable audit trails for compliance and trust.
+            Validated with EU stakeholders for real-world applicability.
+</p> </div> <div class="project-details" data-astro-cid-ia5tjcf2> <div class="project-industries" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Industries:</strong> Cross-Organizational Analytics, Data Collaboration,
+            Privacy-Sensitive Industries
+</div> <div class="project-tech" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Tech:</strong> Blockchain, Confidential Compute, Analytics Marketplace,
+            Privacy-Preserving Systems, Auditable Workflows
+</div> <div class="project-impact" data-astro-cid-ia5tjcf2> <strong data-astro-cid-ia5tjcf2>Impact:</strong> Enabled safe collaboration without data exposure;
+            prototype validated with EU partners; auditable workflows ensuring compliance
+            and trust.
 </div> </div> <div class="project-links" data-astro-cid-ia5tjcf2> <a href="https://blog.knowledgex.eu/" target="_blank" rel="noopener noreferrer" data-astro-cid-ia5tjcf2> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-ia5tjcf2> <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" data-astro-cid-ia5tjcf2></path> <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" data-astro-cid-ia5tjcf2></path> </svg>
 Blog
 </a> </div> </article> </div> </section>  </main> <footer class="footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <p class="copyright" data-astro-cid-sz7xmlte>

@@ -34,13 +34,14 @@
       try {
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.dataset.theme = savedTheme;
-      } catch (e) {
+      } catch {
         // localStorage not available, use default light theme
         document.documentElement.dataset.theme = 'light';
       }
     </script><link rel="stylesheet" href="/_astro/contact.AFrwJz5w.css">
 <link rel="stylesheet" href="/_astro/about.By4IE8xj.css"></head> <body> <script>
   // Simple theme toggle using onclick attribute
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleTheme() {
     const d = document.documentElement;
     const current = d.dataset.theme || 'light';
@@ -48,12 +49,13 @@
     d.dataset.theme = next;
     try {
       localStorage.setItem('theme', next);
-    } catch (e) {
+    } catch {
       // localStorage not available
     }
   }
 
   // Mobile menu toggle
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
@@ -91,7 +93,7 @@
   }
 
   // Initialize event listeners when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', closeMobileMenuOnClickOutside);
     document.addEventListener('keydown', closeMobileMenuOnEscape);
   });

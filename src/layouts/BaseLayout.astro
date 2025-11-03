@@ -96,7 +96,7 @@ const alternateUrls = {
       try {
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.dataset.theme = savedTheme;
-      } catch (e) {
+      } catch {
         // localStorage not available, use default light theme
         document.documentElement.dataset.theme = 'light';
       }

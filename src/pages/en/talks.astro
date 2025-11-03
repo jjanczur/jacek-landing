@@ -113,11 +113,13 @@ const lang = 'en';
 <style>
   .talks-hero {
     padding: var(--space-8) 0;
-    background: linear-gradient(135deg, 
-      var(--bg) 0%, 
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
       oklch(from var(--primary) l c h / 0.05) 30%,
       oklch(from var(--accent) l c h / 0.03) 60%,
-      var(--muted) 100%);
+      var(--muted) 100%
+    );
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -147,10 +149,12 @@ const lang = 'en';
   .talks-hero h1 {
     font-size: var(--font-size-hero);
     margin-bottom: var(--space-3);
-    background: linear-gradient(135deg, 
-      var(--text) 0%, 
+    background: linear-gradient(
+      135deg,
+      var(--text) 0%,
       var(--primary) 50%,
-      var(--text) 100%);
+      var(--text) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -159,7 +163,8 @@ const lang = 'en';
   }
 
   @keyframes gradient-shift {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% center;
     }
     50% {
@@ -182,16 +187,20 @@ const lang = 'en';
 
   .talks-grid {
     padding: var(--space-8) 0;
-    background: linear-gradient(180deg, 
+    background: linear-gradient(
+      180deg,
       var(--bg) 0%,
       oklch(from var(--muted) l c h / 0.3) 50%,
-      var(--bg) 100%);
+      var(--bg) 100%
+    );
   }
 
   .talk-card {
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.02) 100%);
+      oklch(from var(--primary) l c h / 0.02) 100%
+    );
     border: 1px solid transparent;
     border-radius: var(--radius-l);
     padding: var(--space-6);
@@ -208,10 +217,12 @@ const lang = 'en';
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, 
+    background: linear-gradient(
+      90deg,
       var(--primary),
       var(--accent),
-      var(--primary));
+      var(--primary)
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -223,9 +234,11 @@ const lang = 'en';
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       oklch(from var(--primary) l c h / 0.05) 0%,
-      transparent 100%);
+      transparent 100%
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -233,12 +246,15 @@ const lang = 'en';
 
   .talk-card:hover {
     border-color: oklch(from var(--primary) l c h / 0.3);
-    box-shadow: 0 8px 24px oklch(from var(--primary) l c h / 0.15),
-                var(--shadow-2);
+    box-shadow:
+      0 8px 24px oklch(from var(--primary) l c h / 0.15),
+      var(--shadow-2);
     transform: translateY(-4px);
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.05) 100%);
+      oklch(from var(--primary) l c h / 0.05) 100%
+    );
   }
 
   .talk-card:hover::before {
@@ -290,9 +306,11 @@ const lang = 'en';
     opacity: 0.8;
     font-weight: var(--font-weight-normal);
     padding: var(--space-1) var(--space-2);
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       var(--muted) 0%,
-      oklch(from var(--primary) l c h / 0.03) 100%);
+      oklch(from var(--primary) l c h / 0.03) 100%
+    );
     border-radius: var(--radius-s);
     border: 1px solid transparent;
   }
@@ -334,19 +352,23 @@ const lang = 'en';
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, 
+    background: linear-gradient(
+      90deg,
       transparent,
       var(--primary),
       var(--accent),
       var(--primary),
-      transparent);
+      transparent
+    );
     opacity: 0.5;
   }
 
   .tag {
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       var(--muted) 0%,
-      oklch(from var(--primary) l c h / 0.1) 100%);
+      oklch(from var(--primary) l c h / 0.1) 100%
+    );
     color: var(--primary);
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-s);
