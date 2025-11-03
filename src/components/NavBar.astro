@@ -79,14 +79,17 @@ const pathMap = {
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
+    const body = document.body;
     const isOpen = menu.classList.contains('open');
 
     if (isOpen) {
       menu.classList.remove('open');
       button.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
     } else {
       menu.classList.add('open');
       button.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
     }
   }
 
@@ -94,10 +97,12 @@ const pathMap = {
   function closeMobileMenuOnClickOutside(event) {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
+    const body = document.body;
 
     if (!menu.contains(event.target) && !button.contains(event.target)) {
       menu.classList.remove('open');
       button.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
     }
   }
 
@@ -106,8 +111,10 @@ const pathMap = {
     if (event.key === 'Escape') {
       const menu = document.getElementById('mobile-menu');
       const button = document.getElementById('mobile-menu-button');
+      const body = document.body;
       menu.classList.remove('open');
       button.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
       button.focus();
     }
   }
@@ -243,7 +250,7 @@ const pathMap = {
     position: sticky;
     top: 0;
     z-index: 100;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .navbar-background {
@@ -255,6 +262,7 @@ const pathMap = {
     z-index: 0;
     opacity: 0.08;
     pointer-events: none;
+    overflow: hidden;
   }
 
   .nav-shape {
@@ -482,22 +490,28 @@ const pathMap = {
 
   /* Mobile Menu */
   .mobile-menu {
-    position: absolute;
-    top: 100%;
+    display: none;
+    position: fixed;
+    top: 64px;
     left: 0;
     right: 0;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-2);
-    transform: translateY(-100%);
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 50;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    z-index: 99;
   }
 
   .mobile-menu.open {
-    transform: translateY(0);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
     opacity: 1;
     visibility: visible;
   }
@@ -509,6 +523,7 @@ const pathMap = {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
+    min-height: fit-content;
   }
 
   .mobile-nav-link {
@@ -537,6 +552,10 @@ const pathMap = {
 
   /* Responsive Breakpoints */
   @media (max-width: 768px) {
+    .navbar {
+      overflow: visible;
+    }
+
     .navbar-container {
       padding: 0 var(--space-3);
     }
@@ -556,6 +575,10 @@ const pathMap = {
 
     .mobile-menu-button {
       display: flex;
+    }
+
+    .mobile-menu {
+      display: block;
     }
   }
 
