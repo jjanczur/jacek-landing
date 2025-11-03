@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Privacy Policy | Jacek Janczura';
+const description =
+  'Privacy Policy for janczura.com. Information about data collection, processing, and your rights under GDPR.';
+const lang = 'en';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="privacy-hero">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="privacy-subtitle">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+    </div>
+  </section>
+
+  <section class="privacy-content">
+    <div class="container content">
+      <div class="privacy-intro">
+        <p>
+          This Privacy Policy explains how I collect, use, and protect your personal information when you visit this website.
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>1. Information I Collect</h2>
+        <p>
+          This website is designed with privacy in mind. I do not actively collect personal data through tracking scripts or analytics tools. However, some data may be collected automatically:
+        </p>
+        <ul>
+          <li>
+            <strong>Server Logs:</strong> When you visit this website, GitHub Pages (the hosting provider) may automatically log your IP address, browser type, and access times. This is standard web server functionality and is not under my direct control.
+          </li>
+          <li>
+            <strong>Contact Form Data:</strong> If you use the contact form, your email address and message are processed by Formspree, a third-party service. This data is sent to me via email and may be stored by Formspree according to their privacy policy.
+          </li>
+          <li>
+            <strong>Cookies:</strong> This website uses minimal cookies. YouTube videos are embedded using the privacy-enhanced mode (youtube-nocookie.com), which reduces but does not eliminate all cookies. No tracking cookies are set by this website itself.
+          </li>
+        </ul>
+      </div>
+
+      <div class="privacy-section">
+        <h2>2. How I Use Your Information</h2>
+        <p>Any information collected is used solely for:</p>
+        <ul>
+          <li>Responding to contact form inquiries</li>
+          <li>Ensuring website functionality and security</li>
+          <li>Complying with legal obligations</li>
+        </ul>
+        <p>
+          I do not sell, rent, or share your personal information with third parties for marketing purposes.
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>3. Third-Party Services</h2>
+        <p>This website uses the following third-party services:</p>
+        <ul>
+          <li>
+            <strong>GitHub Pages:</strong> Hosting provider. Their privacy policy applies to server logs.
+          </li>
+          <li>
+            <strong>Formspree:</strong> Contact form processing. Your form submissions are sent to me via email and handled according to Formspree's privacy policy.
+          </li>
+          <li>
+            <strong>Google Fonts:</strong> Font delivery service. Google may collect some usage data according to their privacy policy.
+          </li>
+          <li>
+            <strong>YouTube:</strong> Video embeds use privacy-enhanced mode. YouTube's privacy policy applies to their services.
+          </li>
+        </ul>
+      </div>
+
+      <div class="privacy-section">
+        <h2>4. Your Rights Under GDPR</h2>
+        <p>
+          As a resident of the European Union, you have the following rights regarding your personal data:
+        </p>
+        <ul>
+          <li><strong>Right to Access:</strong> You can request information about what personal data I hold about you.</li>
+          <li><strong>Right to Rectification:</strong> You can request correction of inaccurate personal data.</li>
+          <li><strong>Right to Erasure:</strong> You can request deletion of your personal data.</li>
+          <li><strong>Right to Restrict Processing:</strong> You can request limitation of how your data is processed.</li>
+          <li><strong>Right to Data Portability:</strong> You can request your data in a structured, machine-readable format.</li>
+          <li><strong>Right to Object:</strong> You can object to processing of your personal data.</li>
+        </ul>
+        <p>
+          To exercise any of these rights, please contact me using the contact form or email address provided on the contact page.
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>5. Data Retention</h2>
+        <p>
+          I retain personal data only for as long as necessary to fulfill the purposes outlined in this policy or as required by law. Contact form submissions are typically retained until the inquiry is resolved, unless you request deletion earlier.
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>6. Security</h2>
+        <p>
+          I take reasonable measures to protect your personal information. However, no method of transmission over the internet is 100% secure. This website uses HTTPS encryption, and third-party services are chosen for their security practices.
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>7. Children's Privacy</h2>
+        <p>
+          This website is not directed at children under 16 years of age. I do not knowingly collect personal information from children.
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>8. Changes to This Privacy Policy</h2>
+        <p>
+          I may update this Privacy Policy from time to time. The "Last updated" date at the top of this page indicates when changes were made. Your continued use of this website after changes constitutes acceptance of the updated policy.
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>9. Contact</h2>
+        <p>
+          If you have questions about this Privacy Policy or wish to exercise your rights, please contact me through the contact form on the contact page or via the email address provided in the imprint.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .privacy-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .privacy-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-2);
+    color: var(--text);
+  }
+
+  .privacy-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .privacy-content {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .privacy-intro {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .privacy-intro p {
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .privacy-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .privacy-section h2 {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .privacy-section p {
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .privacy-section ul {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-5);
+    line-height: 1.8;
+  }
+
+  .privacy-section li {
+    margin-bottom: var(--space-2);
+    color: var(--text);
+  }
+
+  .privacy-section li strong {
+    color: var(--primary);
+  }
+
+  @media (max-width: 600px) {
+    .privacy-hero h1 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .privacy-section {
+      margin-bottom: var(--space-6);
+    }
+  }
+</style>
+
