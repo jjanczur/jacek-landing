@@ -1,21 +1,207 @@
 ---
-// Redirect to English imprint
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Informacje prawne | Jacek Janczura';
+const description =
+  'Nota prawna i dane kontaktowe dla janczura.com. Informacje o właścicielu strony i zakresie odpowiedzialności.';
+const lang = 'pl';
 ---
 
-<html lang="pl">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=/en/imprint/" />
-    <link rel="canonical" href="/en/imprint/" />
-    <script>
-      // Immediate redirect for better UX
-      window.location.href = '/en/imprint/';
-    </script>
-    <title>Przekierowywanie - Informacje Prawne</title>
-  </head>
-  <body>
-    <p>
-      Przekierowywanie do <a href="/en/imprint/">Informacji Prawnych</a>...
-    </p>
-  </body>
-</html>
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="imprint-hero">
+    <div class="container">
+      <h1>Informacje prawne</h1>
+      <p class="imprint-subtitle">Nota prawna</p>
+    </div>
+  </section>
+
+  <section class="imprint-content">
+    <div class="container content">
+      <div class="imprint-section">
+        <h2>Osoba odpowiedzialna za treść</h2>
+        <div class="imprint-details">
+          <p><strong>Właściciel strony:</strong></p>
+          <p>
+            Jacek Janczura<br />
+            Polska
+          </p>
+          <p>
+            <small>
+              Uwaga: To jest strona prywatna. Zapytania biznesowe proszę kierować
+              przez formularz kontaktowy. Pełne dane firmowe udostępniam na
+              uzasadnione żądanie.
+            </small>
+          </p>
+        </div>
+      </div>
+
+      <div class="imprint-section">
+        <h2>Kontakt</h2>
+        <div class="imprint-details">
+          <p>
+            W sprawie zapytań proszę skorzystać z
+            <a href="/pl/contact/">formularza kontaktowego</a> lub LinkedIn.
+          </p>
+          <p>
+            LinkedIn:{' '}
+            <a
+              href="https://linkedin.com/in/jacekjanczura"
+              target="_blank"
+              rel="noopener noreferrer">linkedin.com/in/jacekjanczura</a
+            >
+          </p>
+          <p>
+            <small>
+              Ze względów prywatności adres e-mail nie jest publikowany. Na
+              uzasadnione zapytania biznesowe i prawne odpowiadam przez
+              formularz kontaktowy.
+            </small>
+          </p>
+        </div>
+      </div>
+
+      <div class="imprint-section">
+        <h2>Odpowiedzialność za treści</h2>
+        <p>
+          Jako właściciel strony odpowiadam za własne treści zgodnie z
+          obowiązującym prawem. Nie mam jednak obowiązku monitorowania
+          przekazywanych lub przechowywanych informacji osób trzecich ani
+          badania okoliczności wskazujących na działalność niezgodną z prawem.
+        </p>
+        <p>
+          Obowiązki usunięcia lub zablokowania treści wynikające z przepisów
+          prawa pozostają nienaruszone. Odpowiedzialność w tym zakresie jest
+          jednak możliwa dopiero od momentu uzyskania wiedzy o konkretnym
+          naruszeniu. Po otrzymaniu takiej informacji niezwłocznie usunę
+          naruszające treści.
+        </p>
+      </div>
+
+      <div class="imprint-section">
+        <h2>Odpowiedzialność za linki</h2>
+        <p>
+          Strona zawiera odnośniki do zewnętrznych witryn, na których treść nie
+          mam wpływu. Za treść linkowanych stron odpowiada ich właściciel lub
+          operator. Strony te zostały sprawdzone pod kątem zgodności z prawem
+          w momencie dodawania linku i nie stwierdzono wówczas treści
+          niezgodnych z prawem.
+        </p>
+        <p>
+          Stałe monitorowanie linkowanych stron bez konkretnych przesłanek
+          naruszenia prawa jest nieuzasadnione. Po uzyskaniu informacji o
+          naruszeniach takie linki zostaną niezwłocznie usunięte.
+        </p>
+      </div>
+
+      <div class="imprint-section">
+        <h2>Prawa autorskie</h2>
+        <p>
+          Treści i materiały stworzone przeze mnie na tej stronie podlegają
+          ochronie prawa autorskiego. Ich powielanie, przetwarzanie, dystrybucja
+          lub inne wykorzystanie wykraczające poza dozwolony użytek wymaga mojej
+          uprzedniej pisemnej zgody.
+        </p>
+        <p>
+          Pobieranie i kopiowanie treści z tej strony jest dozwolone wyłącznie
+          do użytku prywatnego i niekomercyjnego. W przypadku treści, które nie
+          zostały stworzone przeze mnie, respektowane są prawa autorskie osób
+          trzecich i są one odpowiednio oznaczone. Jeśli zauważysz naruszenie
+          praw autorskich, proszę o kontakt — naruszające treści zostaną
+          niezwłocznie usunięte.
+        </p>
+      </div>
+
+      <div class="imprint-section">
+        <h2>Ochrona danych osobowych</h2>
+        <p>
+          Korzystanie z tej strony jest zasadniczo możliwe bez podawania danych
+          osobowych. Jeśli dane osobowe (np. imię, adres e-mail) są zbierane,
+          odbywa się to — w miarę możliwości — dobrowolnie.
+        </p>
+        <p>
+          Szczegółowe informacje o przetwarzaniu danych osobowych znajdziesz w
+          <a href="/pl/privacy/">Polityce prywatności</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .imprint-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .imprint-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-2);
+    color: var(--text);
+  }
+
+  .imprint-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin: 0;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .imprint-content {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .imprint-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .imprint-section h2 {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .imprint-section p {
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .imprint-section a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .imprint-section a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .imprint-details {
+    background: var(--muted);
+    padding: var(--space-5);
+    border-radius: var(--radius-l);
+    border-left: 4px solid var(--primary);
+  }
+
+  .imprint-details p {
+    margin-bottom: var(--space-2);
+  }
+
+  .imprint-details p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .imprint-hero h1 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .imprint-section {
+      margin-bottom: var(--space-6);
+    }
+  }
+</style>

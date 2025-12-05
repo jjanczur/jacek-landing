@@ -2,18 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 
-const title = 'Wystąpienia | Jacek Janczura';
+const title = 'Prezentacje | Jacek Janczura';
 const description =
-  'Wystąpienia techniczne na temat architektury AI, systemów rozproszonych i blockchainu. Praktyczne wnioski z wdrożeń w przedsiębiorstwach.';
+  'Prezentacje techniczne o architekturze AI, systemach rozproszonych i blockchainie. Praktyczne wnioski z wdrożeń korporacyjnych.';
 const lang = 'pl';
 ---
 
 <BaseLayout title={title} description={description} lang={lang}>
   <section class="talks-hero">
     <div class="container">
-      <h1>Wystąpienia</h1>
+      <h1>Prezentacje</h1>
       <p class="talks-subtitle">
-        Praktyczne wnioski z wdrożeń w przedsiębiorstwach
+        Praktyczne wnioski z wdrożeń korporacyjnych
       </p>
     </div>
   </section>
@@ -25,15 +25,15 @@ const lang = 'pl';
         <div class="talk-header">
           <h2>Wzorce architektury AI</h2>
           <div class="talk-meta">
-            <span class="talk-event">Wystąpienie konferencyjne</span>
+            <span class="talk-event">Prezentacja konferencyjna</span>
             <span class="talk-date">2024</span>
           </div>
         </div>
         <div class="talk-content">
           <p class="talk-description">
-            Praktyczne wnioski z wdrożeń LLM w przedsiębiorstwach: architektura
-            multi‑tenant, optymalizacja kosztów, obserwowalność oraz wzorce
-            nadzoru (governance) w skali.
+            Praktyczne wnioski z wdrożeń LLM w środowiskach korporacyjnych:
+            architektura wielodostępna, optymalizacja kosztów, obserwowalność
+            oraz wzorce governance skalujące się wraz z organizacją.
           </p>
           <VideoEmbed
             youtubeId="Sf61QaWJDjA"
@@ -44,7 +44,7 @@ const lang = 'pl';
         <div class="talk-tags">
           <span class="tag">Architektura AI</span>
           <span class="tag">LLM</span>
-          <span class="tag">Przedsiębiorstwa</span>
+          <span class="tag">Enterprise</span>
           <span class="tag">Skalowalność</span>
         </div>
       </article>
@@ -61,8 +61,8 @@ const lang = 'pl';
         <div class="talk-content">
           <p class="talk-description">
             Kompromisy między przepustowością, opóźnieniem i odpornością w
-            nowoczesnych systemach rozproszonych. Architektury zdarzeniowe,
-            mechanizmy back‑pressure i wzorce obserwowalności.
+            nowoczesnych systemach rozproszonych. Architektury sterowane
+            zdarzeniami, mechanizmy backpressure i wzorce obserwowalności.
           </p>
           <VideoEmbed
             youtubeId="fPp66mtx_60"
@@ -72,7 +72,7 @@ const lang = 'pl';
         </div>
         <div class="talk-tags">
           <span class="tag">Systemy rozproszone</span>
-          <span class="tag">Event‑Driven</span>
+          <span class="tag">Event-Driven</span>
           <span class="tag">Skalowalność</span>
           <span class="tag">Obserwowalność</span>
         </div>
@@ -90,8 +90,8 @@ const lang = 'pl';
         <div class="talk-content">
           <p class="talk-description">
             Podstawy technologii blockchain i Bitcoina, przypadki użycia w
-            przedsiębiorstwach, smart kontrakty oraz praktyczne zastosowania w
-            nowoczesnej architekturze oprogramowania.
+            środowisku korporacyjnym, smart kontrakty oraz praktyczne
+            zastosowania w nowoczesnej architekturze oprogramowania.
           </p>
           <VideoEmbed
             youtubeId="6WzFtN3xWF4"
@@ -102,7 +102,7 @@ const lang = 'pl';
         <div class="talk-tags">
           <span class="tag">Blockchain</span>
           <span class="tag">Bitcoin</span>
-          <span class="tag">Przedsiębiorstwa</span>
+          <span class="tag">Enterprise</span>
           <span class="tag">Smart kontrakty</span>
         </div>
       </article>

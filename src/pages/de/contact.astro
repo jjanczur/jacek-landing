@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Mail, Linkedin, Github, Code, Users, Shield, Network, Send } from 'lucide-astro';
 
 const title = 'Kontakt | Jacek Janczura';
 const description =
-  'Kontakt für Reviews von KI-Architekturen, Beratung und Umsetzungsprojekte. Verfügbar für Design und Aufbau von Enterprise‑KI‑Plattformen sowie technische Führung.';
+  'Kontakt für Architektur-Reviews, Beratung und Umsetzungsprojekte rund um Enterprise-KI-Plattformen und technische Führung.';
 const lang = 'de';
 ---
 
@@ -12,7 +13,7 @@ const lang = 'de';
     <div class="container">
       <h1>Kontakt</h1>
       <p class="contact-subtitle">
-        Lassen Sie uns verantwortungsvoll entwickelte KI umsetzen
+        Gemeinsam verantwortungsvolle KI-Lösungen entwickeln
       </p>
     </div>
   </section>
@@ -21,14 +22,17 @@ const lang = 'de';
     <div class="container content">
       <div class="contact-intro">
         <p>
-          Am besten über das Kontaktformular unten oder über LinkedIn. Ich bin
-          offen für Beratung, Architektur‑Reviews und ausgewählte
-          Umsetzungsprojekte mit Fokus auf Enterprise‑KI‑Plattformen.
+          Am besten erreichen Sie mich über das Kontaktformular oder LinkedIn.
+          Ich bin offen für Beratung, Architektur-Reviews und ausgewählte
+          Umsetzungsprojekte — mit Fokus auf Enterprise-KI-Plattformen.
         </p>
       </div>
 
       <div class="contact-methods">
         <div class="contact-method">
+          <div class="contact-icon">
+            <Mail size={32} />
+          </div>
           <h2>Kontaktformular</h2>
           <p>
             Für berufliche Anfragen, Projektdiskussionen und
@@ -48,11 +52,17 @@ const lang = 'de';
               <textarea name="message" class="form-textarea" rows="4" required
               ></textarea>
             </label>
-            <button type="submit" class="form-submit">Nachricht senden</button>
+            <button type="submit" class="form-submit">
+              <Send size={18} />
+              Nachricht senden
+            </button>
           </form>
         </div>
 
         <div class="contact-method">
+          <div class="contact-icon">
+            <Linkedin size={32} />
+          </div>
           <h2>LinkedIn</h2>
           <p>Für Networking, Branchendiskussionen und berufliche Kontakte.</p>
           <a
@@ -66,6 +76,9 @@ const lang = 'de';
         </div>
 
         <div class="contact-method">
+          <div class="contact-icon">
+            <Github size={32} />
+          </div>
           <h2>GitHub</h2>
           <p>
             Für Open‑Source‑Beiträge, Code‑Reviews und technische Diskussionen.
@@ -82,29 +95,41 @@ const lang = 'de';
       </div>
 
       <div class="contact-focus">
-        <h2>Spezialisierungsbereiche</h2>
+        <h2>Schwerpunkte</h2>
         <div class="focus-grid">
           <div class="focus-item">
-            <h3>KI‑Plattform‑Architektur</h3>
+            <div class="focus-icon">
+              <Code size={24} />
+            </div>
+            <h3>KI-Plattform-Architektur</h3>
             <p>
-              Multi‑Tenant‑LLM‑Plattformen, RAG‑Systeme und KI‑Pipeline‑Design
+              Multi-Tenant-LLM-Plattformen, RAG-Systeme und KI-Pipeline-Design
             </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Users size={24} />
+            </div>
             <h3>Technische Führung</h3>
-            <p>Teambuilding, Code‑Review‑Kultur und Lieferprozessoptimierung</p>
+            <p>Teamaufbau, Code-Review-Kultur und Optimierung von Delivery-Prozessen</p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Shield size={24} />
+            </div>
             <h3>Sicherheit & Compliance</h3>
             <p>
-              ISO 27001/SOC 2‑Implementierung und KI‑spezifische Risikobewertung
+              ISO 27001/SOC 2-Implementierung und KI-spezifische Risikobewertung
             </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Network size={24} />
+            </div>
             <h3>Systemdesign</h3>
             <p>
-              Ereignisgesteuerte Mikroservices, verteilte Systeme und
-              Leistungsoptimierung
+              Ereignisgesteuerte Microservices, verteilte Systeme und
+              Performance-Optimierung
             </p>
           </div>
         </div>
@@ -112,13 +137,13 @@ const lang = 'de';
 
       <div class="contact-cta">
         <p>
-          Ich arbeite mit Organisationen zusammen, die Enterprise‑KI‑Lösungen
-          aufbauen und robuste Architektur, sicherheitsorientiertes Design sowie
-          skalierbare Implementierung benötigen.
+          Ich arbeite mit Unternehmen, die Enterprise-KI-Lösungen aufbauen —
+          mit Fokus auf solide Architektur, Security by Design und skalierbare
+          Umsetzung.
         </p>
         <p>
-          Derzeit konzentriere ich mich auf LLM‑Plattformentwicklung, Prompt
-          Engineering in großem Maßstab und KI‑Governance‑Frameworks.
+          Aktueller Schwerpunkt: LLM-Plattform-Entwicklung, Prompt Engineering
+          im großen Stil und KI-Governance-Frameworks.
         </p>
       </div>
     </div>

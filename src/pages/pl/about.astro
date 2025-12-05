@@ -1,9 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  Brain,
+  Cloud,
+  Shield,
+  Users,
+  Code,
+  Languages,
+  Briefcase,
+  Award,
+  GraduationCap,
+  Download,
+} from 'lucide-astro';
 
 const title = 'O mnie | Jacek Janczura';
 const description =
-  'Współzałożyciel i CTO w Jaden Data. Architekt AI specjalizujący się w inteligencji procesowej — projektuję systemy AI-native, które zamieniają złożoność operacji w przewagę konkurencyjną.';
+  'Współzałożyciel i CTO Jaden Data. Architekt AI — projektuję systemy, które usprawniają procesy i zamieniają złożoność operacyjną w przewagę konkurencyjną.';
 const lang = 'pl';
 ---
 
@@ -11,7 +23,7 @@ const lang = 'pl';
   <section class="about-hero">
     <div class="container">
       <h1>O mnie</h1>
-      <p class="about-subtitle">Budowanie inteligencji procesowej na erę AI</p>
+      <p class="about-subtitle">Tworzę systemy AI, które rozumieją Twój biznes</p>
     </div>
   </section>
 
@@ -27,36 +39,32 @@ const lang = 'pl';
           />
         </div>
         <p class="bio-text">
-          Jestem współzałożycielem i CTO <strong>Jaden Data</strong>, gdzie z
-          pomysłu zbudowałem rentowną firmę z rocznymi przychodami
-          przekraczającymi 1 mln €. Projektujemy inteligencję procesową —
-          systemy AI-native, które realnie zmieniają sposób działania firm.
-          Specjalizuję się w <strong
-            >platformach LLM klasy enterprise, systemach RAG oraz bezpiecznych
+          Jestem współzałożycielem i CTO <strong>Jaden Data</strong> —
+          współtworzyłem firmę od zera, doprowadzając ją do rentowności i
+          rocznych przychodów przekraczających 1 mln €. Buduję rozwiązania AI
+          dopasowane do realnych procesów biznesowych. Specjalizuję się w
+          <strong
+            >platformach LLM klasy enterprise, systemach RAG i bezpiecznych
             architekturach chmurowych</strong
-          >, zawsze z perspektywy procesu: najpierw rozumiem, jak praca
-          przebiega w praktyce, a dopiero potem usprawniam ją inteligentną
-          automatyzacją.
+          >. Zawsze zaczynam od zrozumienia, jak praca wygląda w praktyce, a
+          dopiero potem wdrażam inteligentną automatyzację.
         </p>
         <p class="bio-text">
-          Zeskalowałem zespół inżynieryjny z 0 do 10 osób, budując wydajną
-          organizację techniczną. Projektuję serwerlessowe, zdarzeniowe
-          mikrousługi na AWS ze stosami wielomodelowymi (OpenAI, Azure, Bedrock,
-          Mistral). Prowadziłem projekty wielodostępne obsługujące <strong
-            >&gt;1000 równoczesnych połączeń</strong
+          Zbudowałem zespół inżynieryjny od zera do 10 osób, tworząc wydajną
+          organizację techniczną. Projektuję serverless i zdarzeniowe
+          mikrousługi na AWS z wielomodelowymi stosami (OpenAI, Azure, Bedrock,
+          Mistral). Prowadzę projekty obsługujące <strong
+            >ponad 1000 równoczesnych połączeń</strong
           > i
-          <strong>tysiące żądań na sekundę</strong>. Dostarczyłem zgodność <strong
-            >ISO 27001 i SOC 2</strong
-          >
-          w ok. 3 miesiące. Najważniejsze jest jednak przełożenie potrzeb biznesu
-          na systemy, które przynoszą mierzalny efekt w produkcji — w przemyśle,
-          farmacji, VC, nieruchomościach i finansach.
+          <strong>tysiące żądań na sekundę</strong>. Dostarczyłem zgodność
+          <strong>ISO 27001 i SOC 2</strong> w około 3 miesiące. Najważniejsze?
+          Przekucie potrzeb biznesu w systemy, które dają mierzalne efekty — w
+          przemyśle, farmacji, VC, nieruchomościach i finansach.
         </p>
         <p class="bio-text">
-          Zobacz <a href="/pl/projects/">projekty</a> oraz <a
-            href="/pl/publications/">publikacje</a
-          >
-          po szczegóły.
+          Więcej szczegółów znajdziesz w sekcjach
+          <a href="/pl/projects/">projekty</a> i
+          <a href="/pl/publications/">publikacje</a>.
         </p>
       </div>
 
@@ -64,111 +72,122 @@ const lang = 'pl';
       <div class="bio-section">
         <h2>Poza pracą</h2>
         <p class="bio-text">
-          Kocham sporty ekstremalne i aktywności outdoorowe. Jestem
-          licencjonowanym skoczkiem spadochronowym (licencja PJ(B)), nurkiem
-          Advanced Open Water, międzynarodowym instruktorem windsurfingu i
-          zapalonym snowboardzistą. Te doświadczenia budują kluczowe
-          kompetencje: zarządzanie ryzykiem, jasną komunikację i nauczanie,
-          spokój pod presją oraz zdyscyplinowane przygotowanie — wszystkie
-          bezpośrednio przekładam na przywództwo techniczne, mentoring i
-          radzenie sobie z kryzysami w środowiskach enterprise.
+          Sporty ekstremalne i aktywności na świeżym powietrzu to moja pasja.
+          Mam licencję spadochronową PJ(B), jestem nurkiem Advanced Open Water,
+          międzynarodowym instruktorem windsurfingu i zapalonym snowboardzistą.
+          Te doświadczenia uczą zarządzania ryzykiem, jasnej komunikacji,
+          spokoju pod presją i dyscypliny w przygotowaniach — kompetencji, które
+          przenoszę na przywództwo techniczne, mentoring i radzenie sobie z
+          kryzysami w środowiskach enterprise.
         </p>
         <p class="bio-text">
-          Posługuję się wieloma językami: polski (ojczysty), angielski (biegły
-          zawodowo), niemiecki (roboczy) i hiszpański (podstawowy) — co ułatwia
-          mi pracę w zespołach międzynarodowych i z globalnymi klientami.
+          Mówię po polsku (ojczysty), angielsku (biegle, zawodowo), niemiecku
+          (komunikatywnie) i hiszpańsku (podstawy). Ułatwia to współpracę w
+          zespołach międzynarodowych i z klientami z całego świata.
         </p>
       </div>
 
       <!-- Detailed Bio -->
       <div class="bio-section">
-        <h2>Filozofia inteligencji procesowej</h2>
+        <h2>Moje podejście do AI</h2>
         <p class="bio-text">
-          Przez lata obserwowałem, jak firmom trudno wdraża się AI. Problemem
-          nie jest technologia, lecz zrozumienie, że <strong
-            >sztuczna inteligencja ma wspierać procesy, a nie je zastępować</strong
-          >. Dlatego w Jaden Data każdy projekt zaczynamy od tego, jak praca
-          naprawdę się odbywa.
+          Przez lata obserwowałem, jak firmom trudno wdraża się AI. Problem
+          rzadko tkwi w technologii — chodzi o zrozumienie, że <strong
+            >AI ma wspierać procesy, a nie je zastępować</strong
+          >. Dlatego w Jaden Data każdy projekt zaczynamy od analizy tego, jak
+          praca naprawdę wygląda.
         </p>
         <p class="bio-text">
-          Jako Architekt AI i CTO specjalizuję się w <strong
+          Jako architekt AI i CTO specjalizuję się w <strong
             >platformach LLM klasy enterprise</strong
-          >, <strong>retrieval‑augmented generation</strong> oraz
+          >, <strong>retrieval-augmented generation (RAG)</strong> oraz
           <strong>bezpiecznych architekturach chmurowych</strong>. Projektowałem
           zaawansowane, wielodostępne platformy AI integrujące AWS Bedrock, AWS
-          SageMaker, Azure ML Studio, OpenAI i Mistral — zapewniając płynne
-          połączenia i współpracę między środowiskami. Budowałem zdarzeniowe
-          architektury mikroserwisowe oparte o AWS Fargate (ECS, ECR), Lambda,
-          SNS, SQS i CloudWatch, zoptymalizowane kosztowo i skalujące się
-          serwerlessowo.
+          SageMaker, Azure ML Studio, OpenAI i Mistral — zapewniając płynną
+          współpracę między środowiskami. Budowałem zdarzeniowe architektury
+          mikroserwisowe oparte o AWS Fargate (ECS, ECR), Lambda, SNS, SQS i
+          CloudWatch, zoptymalizowane kosztowo i automatycznie skalowalne.
         </p>
         <p class="bio-text">
-          Stworzyłem nowoczesne usługi RAG, automatyzujące budowę wektorowych
-          baz danych z plików klientów (Pinecone, pgvector, Milvus).
-          Zaprojektowałem i wdrożyłem solidne ramy testowania procesów AI i
-          potoków RAG (Testbed) do oceny ilościowej i jakościowej. Rozwinąłem
-          „Prompt Wizard” — narzędzie automatyzujące optymalizację promptów LLM,
-          znacząco usprawniające pracę użytkowników enterprise.
+          Stworzyłem nowoczesne usługi RAG automatyzujące budowę wektorowych baz
+          danych z plików klientów (Pinecone, pgvector, Milvus). Zaprojektowałem
+          framework do testowania potoków AI i RAG (Testbed) — umożliwiający
+          ocenę ilościową i jakościową. Rozwinąłem „Prompt Wizard" — narzędzie
+          automatyzujące optymalizację promptów, które znacząco usprawnia pracę
+          użytkowników enterprise.
         </p>
         <p class="bio-text">
-          Technologia to jednak dopiero fundament. Wartość pojawia się wtedy,
-          gdy przekuwamy ją w zmianę operacji: zamieniamy godziny ręcznej pracy
-          w minuty inteligentnej automatyzacji, przyspieszamy decyzje i budujemy
-          systemy, które uczą się razem z biznesem.
+          Technologia to fundament, ale wartość pojawia się dopiero wtedy, gdy
+          przekłada się na realne zmiany: zamieniamy godziny ręcznej pracy w
+          minuty automatyzacji, przyspieszamy decyzje i budujemy systemy, które
+          rozwijają się razem z biznesem.
         </p>
       </div>
 
       <!-- Skills -->
       <div class="skills-section">
-        <h2>Specjalizacje</h2>
+        <h2>Kompetencje</h2>
         <div class="skills-grid">
           <div class="skill-category">
+            <div class="skill-icon">
+              <Brain size={24} />
+            </div>
             <h3>AI i uczenie maszynowe</h3>
             <ul class="skills-list">
-              <li>Architektura platform LLM</li>
-              <li>Prompt engineering i RAG</li>
-              <li>
-                Integracja wielomodelowa (OpenAI, Azure, Bedrock, Mistral)
-              </li>
+              <li>Architektura platform LLM klasy enterprise</li>
+              <li>Prompt engineering i systemy RAG</li>
+              <li>Integracja modeli AI (OpenAI, Azure, Bedrock, Mistral)</li>
               <li>Projektowanie i testowanie potoków AI</li>
-              <li>Bazy wektorowe (Pinecone, pgvector, Milvus)</li>
-              <li>Narzędzia do optymalizacji promptów</li>
+              <li>Wektorowe bazy danych (Pinecone, pgvector, Milvus)</li>
+              <li>Automatyzacja optymalizacji promptów</li>
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Cloud size={24} />
+            </div>
             <h3>Chmura i infrastruktura</h3>
             <ul class="skills-list">
               <li>AWS (Lambda, ECS/Fargate, Bedrock, SageMaker)</li>
               <li>Azure ML Studio i OpenAI</li>
               <li>Mikrousługi sterowane zdarzeniami</li>
-              <li>Architektura serverless</li>
-              <li>Projektowanie wysokiej przepustowości</li>
-              <li>Optymalizacja kosztów</li>
+              <li>Architektura bezserwerowa</li>
+              <li>Wysoka przepustowość i skalowalność</li>
+              <li>Optymalizacja kosztów infrastruktury</li>
             </ul>
           </div>
           <div class="skill-category">
-            <h3>Bezpieczeństwo i compliance</h3>
+            <div class="skill-icon">
+              <Shield size={24} />
+            </div>
+            <h3>Bezpieczeństwo i zgodność</h3>
             <ul class="skills-list">
-              <li>Certyfikacja ISO 27001/SOC 2</li>
-              <li>Bezpieczeństwo wielodostępne i RBAC</li>
-              <li>RODO i prywatność danych</li>
-              <li>Audyty bezpieczeństwa i ocena ryzyka</li>
-              <li>Wdrażanie compliance</li>
-              <li>Projektowanie śladów audytowych</li>
+              <li>Certyfikacje ISO 27001 i SOC 2</li>
+              <li>Bezpieczeństwo multi-tenant i RBAC</li>
+              <li>RODO i ochrona danych osobowych</li>
+              <li>Audyty bezpieczeństwa i analiza ryzyka</li>
+              <li>Wdrażanie zgodności regulacyjnej</li>
+              <li>Projektowanie ścieżek audytu</li>
             </ul>
           </div>
           <div class="skill-category">
-            <h3>Przywództwo i inteligencja procesowa</h3>
+            <div class="skill-icon">
+              <Users size={24} />
+            </div>
+            <h3>Przywództwo i zarządzanie</h3>
             <ul class="skills-list">
-              <li>Architektura process‑first</li>
-              <li>Budowa i skalowanie zespołów (0→10 deweloperów)</li>
-              <li>Przywództwo techniczne</li>
-              <li>Nastawienie na wyniki biznesowe</li>
-              <li>Planowanie i egzekucja strategii</li>
-              <li>Zarządzanie interesariuszami</li>
+              <li>Architektura zorientowana na procesy</li>
+              <li>Budowa zespołów od zera (0 → 10 osób)</li>
+              <li>Przywództwo techniczne i mentoring</li>
+              <li>Orientacja na rezultaty biznesowe</li>
+              <li>Planowanie i realizacja strategii</li>
+              <li>Zarządzanie relacjami z interesariuszami</li>
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Code size={24} />
+            </div>
             <h3>Programowanie i technologie</h3>
             <ul class="skills-list">
               <li>Java i Kotlin (Spring Boot)</li>
@@ -176,18 +195,21 @@ const lang = 'pl';
               <li>Mikrousługi i REST API</li>
               <li>Systemy czasu rzeczywistego (Kafka, WebSockets)</li>
               <li>Blockchain (Hyperledger, Ethereum)</li>
-              <li>Projektowanie baz danych (SQL, NoSQL)</li>
+              <li>Bazy danych relacyjne i NoSQL</li>
             </ul>
           </div>
           <div class="skill-category">
+            <div class="skill-icon">
+              <Languages size={24} />
+            </div>
             <h3>Języki i certyfikaty</h3>
             <ul class="skills-list">
-              <li>Polski (ojczysty), angielski (zawodowy)</li>
-              <li>Niemiecki (roboczy), hiszpański (podstawy)</li>
-              <li>IELTS</li>
+              <li>Polski (ojczysty), angielski (biegły zawodowo)</li>
+              <li>Niemiecki (komunikatywny), hiszpański (podstawy)</li>
+              <li>Certyfikat IELTS</li>
               <li>SAS Certified Base Programmer</li>
               <li>Międzynarodowy instruktor windsurfingu</li>
-              <li>Licencja PJ(B) spadochronowa</li>
+              <li>Licencja skoczka spadochronowego PJ(B)</li>
             </ul>
           </div>
         </div>
@@ -195,74 +217,80 @@ const lang = 'pl';
 
       <!-- Timeline -->
       <div class="timeline-section">
-        <h2>Kariera</h2>
+        <h2>Doświadczenie zawodowe</h2>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date">Maj 2023–obecnie</div>
+            <div class="timeline-date">Maj 2023 – obecnie</div>
             <div class="timeline-content">
+              <div class="timeline-icon">
+                <Briefcase size={20} />
+              </div>
               <h3>Współzałożyciel i CTO</h3>
               <p class="timeline-company">entAIngine (Jaden Data)</p>
               <p>
-                CTO platformy SaaS do automatyzacji procesów z wykorzystaniem
-                AI. Zaprojektowałem platformę inteligencji procesowej
-                obsługującą 50+ organizacji z &gt;1000 równoczesnych połączeń i
-                tysiącami RPS. Dostarczyłem zgodność ISO 27001/SOC 2 w ok. 3
-                miesiące — w napiętym terminie. Tworzyłem rozwiązania
-                enterprise, które transformują operacje w przemyśle, farmacji,
-                VC, nieruchomościach i finansach — zaczynając od zrozumienia,
-                jak praca wygląda w praktyce, a następnie usprawniając ją
-                inteligentną automatyzacją.
+                Kieruję rozwojem platformy SaaS do automatyzacji procesów
+                biznesowych z wykorzystaniem AI. Zaprojektowałem system
+                obsługujący ponad 50 organizacji, ponad 1000 równoczesnych
+                połączeń i tysiące żądań na sekundę. Uzyskaliśmy certyfikację
+                ISO 27001/SOC 2 w około 3 miesiące. Tworzę rozwiązania dla
+                przemysłu, farmacji, VC, nieruchomości i finansów — zawsze
+                zaczynając od zrozumienia, jak naprawdę wygląda praca.
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">Paź 2021–obecnie</div>
+            <div class="timeline-date">Paź 2021 – obecnie</div>
             <div class="timeline-content">
+              <div class="timeline-icon">
+                <Briefcase size={20} />
+              </div>
               <h3>Współzałożyciel i CTO</h3>
               <p class="timeline-company">Jaden Data GmbH</p>
               <p>
-                Kluczowa rola w przekształceniu pomysłu w w pełni rentowną firmę
-                z przychodami przekraczającymi 1 mln € rocznie. Zeskalowałem
-                zespół z 0 do 10 osób. Przeprowadziłem Jaden Data przez
-                bezpieczeństwo, compliance i audyty ISO 27001/SOC 2.
+                Współtworzyłem firmę od pomysłu do rentowności i przychodów
+                powyżej 1 mln € rocznie. Zbudowałem zespół od zera do 10 osób.
+                Przeprowadziłem organizację przez audyty ISO 27001/SOC 2.
                 Zaprojektowałem wielodostępną platformę AI integrującą AWS
-                Bedrock, AWS SageMaker, Azure ML Studio, OpenAI i Mistral.
-                Zbudowałem zdarzeniową architekturę mikrousług zoptymalizowaną
-                kosztowo i serwerlessowo. Pioniersko stworzyłem usługi RAG, ramy
-                testów potoków AI oraz narzędzie „Prompt Wizard” do
-                optymalizacji promptów.
+                Bedrock, SageMaker, Azure ML Studio, OpenAI i Mistral.
+                Stworzyłem zdarzeniową architekturę mikrousług zoptymalizowaną
+                kosztowo. Rozwinąłem usługi RAG, framework testów potoków AI
+                oraz narzędzie „Prompt Wizard".
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">Kwi 2021–obecnie</div>
+            <div class="timeline-date">Kwi 2021 – obecnie</div>
             <div class="timeline-content">
+              <div class="timeline-icon">
+                <Briefcase size={20} />
+              </div>
               <h3>Współzałożyciel i lider techniczny</h3>
               <p class="timeline-company">KnowledgeX</p>
               <p>
                 CTO i lider techniczny platformy opartej na blockchain do
-                międzyorganizacyjnego przetwarzania zaufanych danych z
-                wykorzystaniem obliczeń poufnych dla ML. Skupienie na kluczowym
-                wyzwaniu: firmom potrzebne są wspólne wnioski, a nie wymiana
-                surowych danych. Zweryfikowane z interesariuszami UE dla
-                bezpiecznej współpracy danych.
+                bezpiecznego przetwarzania danych między organizacjami z
+                wykorzystaniem confidential computing dla ML. Projekt zakładał,
+                że firmy potrzebują dzielić się wnioskami, nie surowymi danymi.
+                Zwalidowany z partnerami z UE.
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">Kwi 2020–Cze 2021</div>
+            <div class="timeline-date">Kwi 2020 – Cze 2021</div>
             <div class="timeline-content">
-              <h3>Starszy inżynier backendu</h3>
+              <div class="timeline-icon">
+                <Briefcase size={20} />
+              </div>
+              <h3>Starszy inżynier backend</h3>
               <p class="timeline-company">idealo internet GmbH</p>
               <p>
-                Budowałem produkty od ideacji po wydanie. Tworzyłem
+                Prowadziłem produkty od pomysłu do wdrożenia. Tworzyłem
                 wysokowydajne rozwiązania czasu rzeczywistego oparte na Kafka,
                 NoSQL i WebSockets. Implementowałem mikroserwisy i REST API w
-                Javie i Kotlinie (Spring Boot, Spring Security, Hibernate) z
-                relacyjnymi i NoSQL bazami. Umożliwiłem logowanie w 6 krajach,
-                co dało 1,4 mln nowych kont w 3 miesiące (700% ponad prognozy).
-                Prowadziłem testy A/B, analizę metryk i dbałem o niezawodność
-                24/7 w ramach dyżurów on‑call.
+                Javie i Kotlinie (Spring Boot, Spring Security, Hibernate).
+                Uruchomiłem logowanie w 6 krajach — 1,4 mln nowych kont w 3
+                miesiące (700% ponad prognozę). Odpowiadałem za testy A/B,
+                analizę metryk i dyżury on-call.
               </p>
               <p class="employer-reference">
                 <a
@@ -270,46 +298,39 @@ const lang = 'pl';
                   download="EmployerReference-Jacek.pdf"
                   class="download-link"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7,10 12,15 17,10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                  </svg>
+                  <Download size={16} />
                   Pobierz referencje pracodawcy
                 </a>
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">Maj 2019–Kwi 2020</div>
+            <div class="timeline-date">Maj 2019 – Kwi 2020</div>
             <div class="timeline-content">
+              <div class="timeline-icon">
+                <Briefcase size={20} />
+              </div>
               <h3>Programista blockchain</h3>
               <p class="timeline-company">
                 T-Labs, Telekom Innovation Laboratories
               </p>
               <p>
-                Projektowałem architekturę systemu do śledzenia paczek na
+                Projektowałem architekturę systemu śledzenia przesyłek na
                 blockchainie. Wdrożyłem rozproszoną sieć Hyperledger z chaincode
-                (smart contracts). Zdockerowałem sieć i mikroserwisy.
-                Zaimplementowałem zabezpieczone REST API, serwis proxy dla
-                aplikacji mobilnej i ERP oraz usługę autoryzacji. Technologie:
-                Hyperledger Composer, Hyperledger Fabric, Node.js, JavaScript
-                (ES6), Express.js, Docker/Docker‑Compose, JWT, PostgreSQL.
+                (smart contracts). Konteneryzowałem sieć i mikroserwisy.
+                Zaimplementowałem zabezpieczone REST API, proxy dla aplikacji
+                mobilnej i ERP oraz serwis autoryzacji. Technologie:
+                Hyperledger Fabric, Node.js, Express.js, Docker, JWT,
+                PostgreSQL.
               </p>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">2016–2018</div>
+            <div class="timeline-date">2016 – 2018</div>
             <div class="timeline-content">
+              <div class="timeline-icon">
+                <Briefcase size={20} />
+              </div>
               <h3>Inżynier oprogramowania</h3>
               <p class="timeline-company">SAS Institute</p>
               <p>
@@ -317,8 +338,7 @@ const lang = 'pl';
                 do oceny działań użytkowników w czasie rzeczywistym z modelami
                 ML. System analizował płatności i zachowania, obsługując tysiące
                 zdarzeń na sekundę (Kafka, Protobuf, Apache Flink). Dodałem
-                wtyczkę do linii pochodzenia danych pod RODO, zapewniając
-                zgodność i audytowalność.
+                moduł data lineage zgodny z RODO, zapewniający audytowalność.
               </p>
             </div>
           </div>
@@ -327,151 +347,82 @@ const lang = 'pl';
 
       <!-- Awards & Honors -->
       <div class="awards-section">
-        <h2>Nagrody i Wyróżnienia</h2>
+        <h2>Nagrody i wyróżnienia</h2>
         <div class="awards-grid">
           <div class="award-card featured">
             <div class="award-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polygon
-                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"
-                ></polygon>
-              </svg>
+              <Award size={24} />
             </div>
             <div class="award-content">
-              <h3>2. Miejsce - Berlin Legal Tech Hackathon 2020</h3>
+              <h3>2. miejsce – Berlin Legal Tech Hackathon 2020</h3>
               <p class="award-subtitle">Hate Speech Online</p>
-              <p class="award-date">Lut 2020</p>
+              <p class="award-date">Luty 2020</p>
               <p class="award-description">
-                Kierowałem zespołem rozwijającym innowacyjne rozwiązanie do
-                wykrywania i moderowania mowy nienawiści online. Nasza platforma
-                łączyła przetwarzanie języka naturalnego z analizą treści w
-                czasie rzeczywistym, zapewniając praktyczne informacje dla
-                zgodności prawnej i moderacji treści.
+                Kierowałem zespołem, który stworzył innowacyjne rozwiązanie do
+                wykrywania i moderowania mowy nienawiści w internecie.
+                Platforma łączyła przetwarzanie języka naturalnego z analizą
+                treści w czasie rzeczywistym, dostarczając praktycznych
+                informacji wspierających zgodność prawną i moderację.
               </p>
             </div>
           </div>
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>Stypendium Rektora dla najlepszych studentów</h3>
               <p class="award-subtitle">Politechnika Warszawska</p>
               <p class="award-date">2017</p>
               <p class="award-description">
-                Przyznane za wyjątkowe wyniki akademickie i przywództwo w
-                studiach informatycznych.
+                Przyznane za wybitne wyniki w nauce i zaangażowanie na kierunku
+                informatyka.
               </p>
             </div>
           </div>
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>Stypendium Rektora dla najlepszych studentów</h3>
               <p class="award-subtitle">Politechnika Warszawska</p>
               <p class="award-date">2016</p>
               <p class="award-description">
-                Uhonorowany za wybitną doskonałość akademicką i konsekwentnie
-                najwyższe wyniki.
+                Przyznane za bardzo dobre wyniki w nauce i konsekwentnie wysoką
+                średnią ocen.
               </p>
             </div>
           </div>
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>Stypendium Rektora dla najlepszych studentów</h3>
               <p class="award-subtitle">Politechnika Warszawska</p>
               <p class="award-date">2015</p>
               <p class="award-description">
-                Doceniony za wybitne osiągnięcia akademickie i wkład w
-                społeczność uczelni.
+                Przyznane za bardzo dobre wyniki w nauce i aktywność na rzecz
+                społeczności akademickiej.
               </p>
             </div>
           </div>
 
           <div class="award-card scholarship">
             <div class="award-icon scholarship-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10v6"></path>
-                <path d="M6 18v-6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"></path>
-                <path d="M10 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M10 18h4"></path>
-              </svg>
+              <GraduationCap size={24} />
             </div>
             <div class="award-content">
               <h3>Stypendium Rektora dla najlepszych studentów</h3>
               <p class="award-subtitle">Politechnika Warszawska</p>
               <p class="award-date">2014</p>
               <p class="award-description">
-                Wybrany do najbardziej prestiżowego stypendium licencjackiego na
-                podstawie zasług akademickich.
+                Jedno z najbardziej prestiżowych stypendiów przyznawane na
+                podstawie wyników w nauce.
               </p>
             </div>
           </div>
@@ -662,6 +613,20 @@ const lang = 'pl';
     overflow: hidden;
   }
 
+  .skill-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .skill-category:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
+  }
+
   .skill-category::before {
     content: '';
     position: absolute;
@@ -787,10 +752,34 @@ const lang = 'pl';
     padding-left: var(--space-6);
   }
 
+  .timeline-icon {
+    position: absolute;
+    left: -15.5px;
+    top: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    /* Timeline center alignment */
+  }
+
+  .timeline-item:hover .timeline-icon {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.4);
+  }
+
   .timeline-item::before {
     content: '';
     position: absolute;
-    left: -22px;
+    left: -15.5px;
     top: 8px;
     width: 14px;
     height: 14px;
@@ -799,10 +788,11 @@ const lang = 'pl';
     border: 3px solid var(--bg);
     box-shadow: 0 0 0 2px oklch(from var(--primary) l c h / 0.2);
     transition: all 0.3s ease;
+    transform: translateX(-50%);
   }
 
   .timeline-item:hover::before {
-    transform: scale(1.2);
+    transform: translateX(-50%) scale(1.2);
     box-shadow:
       0 0 0 3px oklch(from var(--primary) l c h / 0.3),
       0 0 12px oklch(from var(--primary) l c h / 0.4);
@@ -945,6 +935,10 @@ const lang = 'pl';
     }
 
     .timeline-item::before {
+      left: -17px;
+    }
+
+    .timeline-icon {
       left: -17px;
     }
 

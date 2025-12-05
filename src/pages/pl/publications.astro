@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Publikacje | Jacek Janczura';
 const description =
-  'Recenzowane publikacje, artykuły i notatki techniczne na temat architektury AI, systemów rozproszonych i inżynierii oprogramowania.';
+  'Recenzowane publikacje naukowe, artykuły i notatki techniczne o architekturze AI, systemach rozproszonych i inżynierii oprogramowania.';
 const lang = 'pl';
 ---
 
@@ -32,10 +32,10 @@ const lang = 'pl';
               </h4>
               <p>
                 BAR/NDSS Workshop 2018. Narzędzie badawcze do wykrywania
-                podatności typu taint w kodzie binarnym z wykorzystaniem
-                połączenia analizy statycznej i dynamicznego śledzenia taint.
-                Udostępnia DSL do definiowania polityk taint. Zweryfikowane na
-                realnych programach.
+                podatności typu taint w kodzie binarnym, łączące analizę
+                statyczną z dynamicznym śledzeniem taint. Udostępnia DSL do
+                definiowania polityk taint. Przetestowane na rzeczywistych
+                programach.
               </p>
               <p>
                 <strong>Rola:</strong> Autor/opiekun repozytorium. <strong
@@ -59,9 +59,9 @@ const lang = 'pl';
                 Content Purchases
               </h4>
               <p>
-                IEEE BRAINS 2020. Oparty na blockchainie zdecentralizowany
-                mechanizm rozliczeń za zakupy treści cyfrowych; przejrzyste,
-                programowalne wypłaty i projekt smart‑kontraktów.
+                IEEE BRAINS 2020. Zdecentralizowany mechanizm rozliczeń za
+                zakupy treści cyfrowych oparty na blockchainie. Przejrzyste,
+                programowalne wypłaty i architektura smart kontraktów.
               </p>
               <p>
                 <strong>Rola:</strong> Autor/współautor. <strong>DOI:</strong>
@@ -83,9 +83,9 @@ const lang = 'pl';
             <article class="publication-card">
               <h4>Utility NFTs more than simple JPEGs?</h4>
               <p>
-                Medium, 1 lutego 2023. Definiuje „utility NFTs” i pokazuje ich
-                zastosowania wykraczające poza kolekcjonerstwo (np. przepustki,
-                uprawnienia). Wnioski dla platform/rynków.
+                Medium, 1 lutego 2023. Definiuję pojęcie „utility NFTs" i
+                pokazuję ich zastosowania wykraczające poza kolekcjonerstwo
+                (np. przepustki, uprawnienia). Wnioski dla platform i rynków.
               </p>
               <p>
                 <strong>Link:</strong>
@@ -101,8 +101,8 @@ const lang = 'pl';
               <p>
                 Medium, 17 lutego 2022. Jak uruchamiać zadania Pythona na
                 KnowledgeX z wykorzystaniem iExec i TEE (Trusted Execution
-                Environments). Omawia szablony Docker, weryfikację workerów i
-                audytowalność.
+                Environments). Omawiam szablony Docker, weryfikację workerów
+                i audytowalność.
               </p>
               <p>
                 <strong>Link:</strong>
@@ -116,8 +116,7 @@ const lang = 'pl';
             <article class="publication-card">
               <h4>REL_2020_02_APP_web.pdf</h4>
               <p>
-                <strong>Tymczasowo:</strong> Tytuł i abstrakt do potwierdzenia. [Do
-                potwierdzenia na podstawie źródła].
+                <strong>Tymczasowo:</strong> Tytuł i abstrakt do potwierdzenia.
               </p>
             </article>
           </div>
@@ -129,26 +128,27 @@ const lang = 'pl';
         <h2>Notatki techniczne</h2>
         <div class="notes-intro">
           <p>
-            Okazjonalne notatki techniczne i spostrzeżenia z pracy z systemami
-            AI, architekturami rozproszonymi i oprogramowaniem korporacyjnym.
-            Mniej formalne niż wykłady, ale zawierają ważne lekcje i obserwacje.
+            Okazjonalne notatki i spostrzeżenia z pracy z systemami AI,
+            architekturami rozproszonymi i oprogramowaniem korporacyjnym.
+            Mniej formalne niż prezentacje, ale zawierają cenne wnioski
+            i obserwacje.
           </p>
         </div>
 
         <div class="notes-grid">
           <article class="note-card">
             <div class="note-header">
-              <h2>Prompt engineering w skali</h2>
+              <h2>Prompt engineering na dużą skalę</h2>
               <span class="note-date">2024-02-15</span>
             </div>
             <p class="note-excerpt">
               Budowa systemu optymalizacji promptów, który skaluje się w
-              zespołach i utrzymuje spójność wyników AI. Lekcje z wdrożenia
-              „Kreatora promptów” dla zastosowań korporacyjnych.
+              zespołach i utrzymuje spójność wyników AI. Wnioski z wdrożenia
+              „Prompt Wizard" dla zastosowań korporacyjnych.
             </p>
             <div class="note-tags">
               <span class="tag">Prompt Engineering</span>
-              <span class="tag">Zarządzanie AI</span>
+              <span class="tag">AI Governance</span>
               <span class="tag">Enterprise</span>
             </div>
           </article>
@@ -159,13 +159,13 @@ const lang = 'pl';
               <span class="note-date">2024-01-22</span>
             </div>
             <p class="note-excerpt">
-              Projektowanie odpornych przepływów pracy AI przy użyciu wzorców
-              architektury sterowanej zdarzeniami. Jak SQS/SNS może pomóc w
-              zarządzaniu przeciążeniami (backpressure) w potokach AI i zapewnić
-              niezawodne przetwarzanie.
+              Projektowanie odpornych przepływów pracy AI z wykorzystaniem
+              wzorców architektury sterowanej zdarzeniami. Jak SQS/SNS pomaga
+              w zarządzaniu backpressure w potokach AI i zapewnia niezawodne
+              przetwarzanie.
             </p>
             <div class="note-tags">
-              <span class="tag">Sterowane zdarzeniami</span>
+              <span class="tag">Event-driven</span>
               <span class="tag">Potoki AI</span>
               <span class="tag">AWS</span>
             </div>
@@ -173,16 +173,16 @@ const lang = 'pl';
 
           <article class="note-card">
             <div class="note-header">
-              <h2>Wielomodelowy routing AI</h2>
+              <h2>Routing wielomodelowy AI</h2>
               <span class="note-date">2023-12-10</span>
             </div>
             <p class="note-excerpt">
-              Inteligentne strategie routingu dla wdrożeń AI wielomodelowych.
-              Optymalizacja kosztów przy jednoczesnym utrzymaniu wydajności i
-              jakości u różnych dostawców modeli.
+              Inteligentne strategie routingu dla wdrożeń wielomodelowych AI.
+              Optymalizacja kosztów przy zachowaniu wydajności i jakości
+              u różnych dostawców modeli.
             </p>
             <div class="note-tags">
-              <span class="tag">Wielomodelowy</span>
+              <span class="tag">Multi-model</span>
               <span class="tag">Optymalizacja kosztów</span>
               <span class="tag">Architektura</span>
             </div>
@@ -194,9 +194,9 @@ const lang = 'pl';
               <span class="note-date">2023-11-18</span>
             </div>
             <p class="note-excerpt">
-              Istotne zagadnienia bezpieczeństwa platform AI: prywatność danych,
-              kontrola dostępu, rejestry audytowe i automatyzacja zgodności w
-              aplikacjach AI‑first.
+              Kluczowe zagadnienia bezpieczeństwa platform AI: prywatność
+              danych, kontrola dostępu, ścieżki audytu i automatyzacja
+              zgodności w aplikacjach AI-first.
             </p>
             <div class="note-tags">
               <span class="tag">Bezpieczeństwo AI</span>
@@ -209,10 +209,10 @@ const lang = 'pl';
 
       <div class="notes-cta">
         <p>
-          Te publikacje i notatki odzwierciedlają bieżące wnioski i obserwacje z
-          budowy systemów AI. Zobacz także <a href="/pl/talks/">wykłady</a> i <a
-            href="/pl/projects/">projekty</a
-          >.
+          Te publikacje i notatki odzwierciedlają wnioski i obserwacje z
+          budowy systemów AI. Zapraszam również do sekcji
+          <a href="/pl/talks/">prezentacje</a> i
+          <a href="/pl/projects/">projekty</a>.
         </p>
       </div>
     </div>

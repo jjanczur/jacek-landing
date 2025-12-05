@@ -1,9 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  Mail,
+  Linkedin,
+  Github,
+  Code,
+  Users,
+  Shield,
+  Network,
+  Send,
+} from 'lucide-astro';
 
 const title = 'Kontakt | Jacek Janczura';
 const description =
-  'Kontakt w sprawie przeglądów architektury AI, doradztwa i projektów wdrożeniowych. Dostępny w zakresie projektowania i budowy platform AI klasy enterprise oraz przywództwa technicznego.';
+  'Skontaktuj się w sprawie przeglądów architektury AI, doradztwa i wdrożeń. Specjalizuję się w projektowaniu platform AI klasy enterprise oraz przywództwie technicznym.';
 const lang = 'pl';
 ---
 
@@ -12,7 +22,7 @@ const lang = 'pl';
     <div class="container">
       <h1>Kontakt</h1>
       <p class="contact-subtitle">
-        Budujmy odpowiedzialnie zaprojektowane rozwiązania AI
+        Twórzmy razem odpowiedzialne rozwiązania AI
       </p>
     </div>
   </section>
@@ -21,18 +31,20 @@ const lang = 'pl';
     <div class="container content">
       <div class="contact-intro">
         <p>
-          Najlepiej przez formularz poniżej lub przez LinkedIn. Jestem otwarty
-          na doradztwo, przeglądy architektury i wybrane projekty wdrożeniowe
-          skoncentrowane na platformach AI dla przedsiębiorstw.
+          Najlepiej skontaktować się przez formularz poniżej lub LinkedIn.
+          Chętnie podejmuję się doradztwa, przeglądów architektury oraz wybranych
+          projektów wdrożeniowych związanych z platformami AI dla przedsiębiorstw.
         </p>
       </div>
 
       <div class="contact-methods">
         <div class="contact-method">
+          <div class="contact-icon">
+            <Mail size={32} />
+          </div>
           <h2>Formularz kontaktowy</h2>
           <p>
-            Dla zapytań zawodowych, dyskusji projektowych i możliwości
-            współpracy.
+            Zapytania zawodowe, rozmowy o projektach i propozycje współpracy.
           </p>
           <form
             action="https://formspree.io/f/myzngpqa"
@@ -40,7 +52,7 @@ const lang = 'pl';
             class="contact-form"
           >
             <label class="form-label">
-              Twój e‑mail:
+              Twój e-mail:
               <input type="email" name="email" class="form-input" required />
             </label>
             <label class="form-label">
@@ -48,13 +60,19 @@ const lang = 'pl';
               <textarea name="message" class="form-textarea" rows="4" required
               ></textarea>
             </label>
-            <button type="submit" class="form-submit">Wyślij wiadomość</button>
+            <button type="submit" class="form-submit">
+              <Send size={18} />
+              Wyślij wiadomość
+            </button>
           </form>
         </div>
 
         <div class="contact-method">
+          <div class="contact-icon">
+            <Linkedin size={32} />
+          </div>
           <h2>LinkedIn</h2>
-          <p>Dla networkingu, dyskusji branżowych i kontaktów zawodowych.</p>
+          <p>Networking, rozmowy branżowe i kontakty zawodowe.</p>
           <a
             href="https://linkedin.com/in/jacekjanczura"
             target="_blank"
@@ -66,9 +84,12 @@ const lang = 'pl';
         </div>
 
         <div class="contact-method">
+          <div class="contact-icon">
+            <Github size={32} />
+          </div>
           <h2>GitHub</h2>
           <p>
-            Dla wkładów open source, przeglądów kodu i dyskusji technicznych.
+            Projekty open source, przeglądy kodu i dyskusje techniczne.
           </p>
           <a
             href="https://github.com/jjanczur"
@@ -85,24 +106,37 @@ const lang = 'pl';
         <h2>Obszary specjalizacji</h2>
         <div class="focus-grid">
           <div class="focus-item">
+            <div class="focus-icon">
+              <Code size={24} />
+            </div>
             <h3>Architektura platform AI</h3>
             <p>
-              Wielodostępne platformy LLM, systemy RAG i projektowanie potoków
-              AI
+              Wielodostępne platformy LLM, systemy RAG i projektowanie potoków AI
             </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Users size={24} />
+            </div>
             <h3>Przywództwo techniczne</h3>
             <p>
-              Budowanie zespołów, kultura przeglądów kodu i optymalizacja
-              procesu dostarczania
+              Budowanie zespołów, kultura code review i optymalizacja procesów
+              dostarczania oprogramowania
             </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Shield size={24} />
+            </div>
             <h3>Bezpieczeństwo i zgodność</h3>
-            <p>Wdrażanie ISO 27001/SOC 2 i ocena ryzyka specyficznego dla AI</p>
+            <p>
+              Wdrażanie ISO 27001/SOC 2 i ocena ryzyka w projektach AI
+            </p>
           </div>
           <div class="focus-item">
+            <div class="focus-icon">
+              <Network size={24} />
+            </div>
             <h3>Projektowanie systemów</h3>
             <p>
               Mikrousługi sterowane zdarzeniami, systemy rozproszone i
@@ -114,13 +148,13 @@ const lang = 'pl';
 
       <div class="contact-cta">
         <p>
-          Współpracuję z organizacjami budującymi rozwiązania AI dla
-          przedsiębiorstw, które wymagają solidnej architektury, projektowania z
-          bezpieczeństwem na pierwszym miejscu i skalowalnej implementacji.
+          Współpracuję z organizacjami, które budują rozwiązania AI klasy
+          enterprise wymagające solidnej architektury, bezpieczeństwa od
+          podstaw i skalowalnego wdrożenia.
         </p>
         <p>
-          Obecnie skupiam się na rozwoju platform LLM, Prompt Engineering na
-          dużą skalę oraz frameworkach zarządzania AI.
+          Obecnie koncentruję się na rozwoju platform LLM, prompt engineeringu
+          na dużą skalę oraz ramach governance AI.
         </p>
       </div>
     </div>
@@ -303,6 +337,20 @@ const lang = 'pl';
     opacity: 1;
   }
 
+  .contact-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .contact-method:hover .contact-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
+  }
+
   .contact-method h2 {
     font-size: var(--font-size-xl);
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
@@ -399,6 +447,9 @@ const lang = 'pl';
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
   }
 
   .form-submit:hover {
@@ -475,6 +526,20 @@ const lang = 'pl';
 
   .focus-item:hover::before {
     opacity: 1;
+  }
+
+  .focus-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .focus-item:hover .focus-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
   }
 
   .focus-item h3 {
