@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Kontakt | Jacek Janczura",
+    "description": "Kontakt für Architektur-Reviews, Beratung und Umsetzungsprojekte rund um Enterprise-KI-Plattformen und technische Führung."
+  },
+  "hero": {
+    "title": "Kontakt",
+    "subtitle": "Gemeinsam verantwortungsvolle KI-Lösungen entwickeln"
+  },
+  "intro": "Am besten erreichen Sie mich über das Kontaktformular oder LinkedIn. Ich bin offen für Beratung, Architektur-Reviews und ausgewählte Umsetzungsprojekte — mit Fokus auf Enterprise-KI-Plattformen.",
+  "methods": {
+    "form": {
+      "title": "Kontaktformular",
+      "description": "Für berufliche Anfragen, Projektdiskussionen und Kooperationsmöglichkeiten.",
+      "emailLabel": "Ihre E‑Mail:",
+      "messageLabel": "Ihre Nachricht:",
+      "submit": "Nachricht senden"
+    },
+    "linkedin": {
+      "title": "LinkedIn",
+      "description": "Für Networking, Branchendiskussionen und berufliche Kontakte."
+    },
+    "github": {
+      "title": "GitHub",
+      "description": "Für Open‑Source‑Beiträge, Code‑Reviews und technische Diskussionen."
+    }
+  },
+  "focus": {
+    "title": "Schwerpunkte",
+    "items": [
+      {
+        "title": "KI-Plattform-Architektur",
+        "description": "Multi-Tenant-LLM-Plattformen, RAG-Systeme und KI-Pipeline-Design"
+      },
+      {
+        "title": "Technische Führung",
+        "description": "Teamaufbau, Code-Review-Kultur und Optimierung von Delivery-Prozessen"
+      },
+      {
+        "title": "Sicherheit & Compliance",
+        "description": "ISO 27001/SOC 2-Implementierung und KI-spezifische Risikobewertung"
+      },
+      {
+        "title": "Systemdesign",
+        "description": "Ereignisgesteuerte Microservices, verteilte Systeme und Performance-Optimierung"
+      }
+    ]
+  },
+  "cta": {
+    "text1": "Ich arbeite mit Unternehmen, die Enterprise-KI-Lösungen aufbauen — mit Fokus auf solide Architektur, Security by Design und skalierbare Umsetzung.",
+    "text2": "Aktueller Schwerpunkt: LLM-Plattform-Entwicklung, Prompt Engineering im großen Stil und KI-Governance-Frameworks."
+  }
+}
+

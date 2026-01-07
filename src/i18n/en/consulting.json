@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Consulting | Jacek Janczura",
+    "description": "AI & Cloud consulting: enterprise LLM platforms, RAG, PromptOps/evals, AWS architecture, and AI developer enablement (Cursor/Claude Code). Engagement types: advisory, architecture reviews, delivery sprints."
+  },
+  "hero": {
+    "title": "Consulting",
+    "subtitle": "How I work and how engagements typically look"
+  },
+  "intro": {
+    "p1": "I help teams ship <strong>secure, scalable AI systems</strong>—from LLM platforms and RAG to AWS architecture and operational excellence.",
+    "p2": "My focus is <strong>measurable outcomes</strong>: reliability, cost/performance, security/compliance, and a delivery approach that fits how your organization actually operates."
+  },
+  "engagements": {
+    "title": "How I work / Engagements",
+    "items": [
+      {
+        "title": "Advisory / Fractional Leadership",
+        "description": "Hands-on guidance for strategy, technical direction, architecture decisions, and delivery standards—especially when you’re building or scaling an AI platform.",
+        "deliverables": [
+          "Architecture direction and decision support",
+          "Risk & security review (including AI-specific risks)",
+          "Roadmap shaping and delivery standards (quality gates, reviews, rollout)"
+        ]
+      },
+      {
+        "title": "AI Architecture Review (LLM / RAG / Cloud)",
+        "description": "A structured assessment of your current system (or planned design) with concrete recommendations you can execute.",
+        "deliverables": [
+          "Findings + prioritized recommendations",
+          "Reference architecture + key tradeoffs",
+          "Plan for reliability, observability, and cost control"
+        ]
+      },
+      {
+        "title": "Delivery Sprint (production-grade thin slice)",
+        "description": "Ship a focused, valuable increment end-to-end—so you get working software plus a pattern your team can repeat.",
+        "deliverables": [
+          "One production-ready feature (e.g., a RAG endpoint, evaluation harness, or workflow automation)",
+          "Monitoring/alerts + operational runbook basics",
+          "Security-first defaults (RBAC, data handling, auditability where needed)"
+        ]
+      },
+      {
+        "title": "AI Developer Enablement (Cursor / Claude Code)",
+        "description": "Enable your engineering org to use AI coding tools effectively and safely—without turning the codebase into a prompt experiment.",
+        "deliverables": [
+          "Team onboarding + workflows tailored to your repo",
+          "PR/review guidelines and safe-use guardrails",
+          "Templates for prompts, evals, and regression prevention"
+        ]
+      }
+    ]
+  },
+  "howIWork": {
+    "title": "How I approach delivery",
+    "steps": [
+      {
+        "title": "Start with the process",
+        "description": "We map the real workflow and constraints (people, systems, risk, compliance) before choosing tech."
+      },
+      {
+        "title": "Design for production from day one",
+        "description": "Security, observability, cost controls, and failure modes are part of the architecture—not a later phase."
+      },
+      {
+        "title": "Ship in iterations with quality gates",
+        "description": "Small releases, measurable outcomes, and evaluation/monitoring so quality improves over time instead of drifting."
+      }
+    ]
+  },
+  "goodFit": {
+    "title": "Good fit if you’re building…",
+    "items": [
+      "Enterprise LLM platform capabilities (multi-model routing, guardrails, auditability)",
+      "RAG systems that need quality control (retrieval strategy + evals, not just embeddings)",
+      "AWS-based event-driven architectures for AI workloads",
+      "A practical PromptOps / Evals approach to prevent regressions",
+      "An engineering org rollout of AI coding tools with clear standards"
+    ]
+  },
+  "cta": {
+    "title": "Want to discuss a project?",
+    "description": "The fastest way is a short message with context: your goal, current state, constraints (security/compliance), and timeline expectations.",
+    "button": "Contact me"
+  }
+}
+
+

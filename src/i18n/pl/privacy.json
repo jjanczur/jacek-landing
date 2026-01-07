@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Polityka prywatności | Jacek Janczura",
+    "description": "Polityka prywatności janczura.com. Informacje o gromadzeniu i przetwarzaniu danych oraz Twoich prawach wynikających z RODO."
+  },
+  "hero": {
+    "title": "Polityka prywatności",
+    "lastUpdated": "Ostatnia aktualizacja:"
+  },
+  "intro": "Niniejsza polityka wyjaśnia, jakie dane są gromadzone podczas korzystania z tej strony, w jakim celu oraz jak możesz realizować swoje prawa.",
+  "sections": {
+    "information": {
+      "title": "1. Jakie informacje są zbierane",
+      "text": "Strona została zaprojektowana z myślą o prywatności. Nie stosuję skryptów śledzących ani narzędzi analitycznych. Automatycznie mogą być zbierane jedynie:",
+      "items": [
+        {
+          "title": "Logi serwera:",
+          "text": "GitHub Pages (dostawca hostingu) może rejestrować adres IP, typ przeglądarki i czas dostępu. Jest to standardowe działanie serwerów webowych."
+        },
+        {
+          "title": "Dane z formularza kontaktowego:",
+          "text": "Jeśli wypełnisz formularz, Twój adres e-mail i wiadomość są przetwarzane przez Formspree i przekazywane do mnie zgodnie z ich polityką prywatności."
+        },
+        {
+          "title": "Cookies i localStorage:",
+          "text": "Strona nie ustawia własnych cookies śledzących. Filmy YouTube są osadzone w trybie privacy-enhanced (youtube-nocookie.com). Google Fonts może ustawiać cookies zgodnie ze swoją polityką. localStorage służy wyłącznie do zapamiętania preferencji motywu (jasny/ciemny)."
+        }
+      ]
+    },
+    "usage": {
+      "title": "2. Cel przetwarzania danych",
+      "text": "Zebrane dane są wykorzystywane wyłącznie do:",
+      "items": [
+        "Odpowiadania na zgłoszenia z formularza kontaktowego",
+        "Zapewnienia prawidłowego działania i bezpieczeństwa strony",
+        "Wypełnienia obowiązków prawnych"
+      ],
+      "note": "Nie sprzedaję ani nie udostępniam danych osobowych podmiotom trzecim w celach marketingowych."
+    },
+    "thirdParty": {
+      "title": "3. Usługi zewnętrzne",
+      "text": "Strona korzysta z następujących usług zewnętrznych:",
+      "items": [
+        {
+          "title": "GitHub Pages:",
+          "text": "Hosting; ich polityka prywatności dotyczy logów serwera."
+        },
+        {
+          "title": "Formspree:",
+          "text": "Obsługa formularza kontaktowego; dane trafiają do mnie e-mailem."
+        },
+        {
+          "title": "Google Fonts:",
+          "text": "Dostarczanie czcionek; Google może zbierać pewne dane o użyciu."
+        },
+        {
+          "title": "YouTube:",
+          "text": "Osadzanie filmów w trybie privacy-enhanced (youtube-nocookie.com) w celu minimalizacji cookies."
+        }
+      ],
+      "cookieNote": "Informacja o cookies: Używane są wyłącznie cookies niezbędne do działania strony (czcionki, odtwarzanie wideo). Nie stosuję cookies śledzących ani marketingowych, dlatego baner zgody na cookies nie jest wymagany."
+    },
+    "rights": {
+      "title": "4. Twoje prawa (RODO)",
+      "text": "Jako użytkownik masz prawo do:",
+      "items": [
+        {
+          "title": "Dostępu:",
+          "text": "uzyskania informacji o przetwarzanych danych."
+        },
+        {
+          "title": "Sprostowania:",
+          "text": "poprawienia nieprawidłowych danych."
+        },
+        {
+          "title": "Usunięcia:",
+          "text": "żądania usunięcia swoich danych."
+        },
+        {
+          "title": "Ograniczenia przetwarzania:",
+          "text": "ograniczenia sposobu wykorzystania danych."
+        },
+        {
+          "title": "Przenoszenia danych:",
+          "text": "otrzymania danych w ustrukturyzowanym formacie."
+        },
+        {
+          "title": "Sprzeciwu:",
+          "text": "wniesienia sprzeciwu wobec przetwarzania."
+        }
+      ],
+      "contactText": "Aby skorzystać z tych praw, skontaktuj się przez formularz kontaktowy lub adres e-mail podany w sekcji kontakt."
+    },
+    "retention": {
+      "title": "5. Okres przechowywania danych",
+      "text": "Dane osobowe są przechowywane tylko tak długo, jak jest to niezbędne do realizacji celów opisanych w niniejszej polityce lub wymagane przez przepisy prawa. Zgłoszenia z formularza kontaktowego są zwykle przechowywane do momentu zakończenia sprawy."
+    },
+    "security": {
+      "title": "6. Bezpieczeństwo",
+      "text": "Stosuję odpowiednie środki bezpieczeństwa, jednak żadna metoda transmisji danych przez internet nie jest w 100% bezpieczna. Strona korzysta z szyfrowania HTTPS, a usługi zewnętrzne są dobierane z uwzględnieniem ich standardów bezpieczeństwa."
+    },
+    "children": {
+      "title": "7. Prywatność dzieci",
+      "text": "Strona nie jest skierowana do osób poniżej 16. roku życia. Nie gromadzę świadomie danych osobowych dzieci."
+    },
+    "changes": {
+      "title": "8. Zmiany w polityce prywatności",
+      "text": "Niniejsza polityka może być aktualizowana. Data „Ostatnia aktualizacja\" u góry strony wskazuje, kiedy wprowadzono zmiany. Dalsze korzystanie ze strony po zmianach oznacza akceptację zaktualizowanych zasad."
+    },
+    "contact": {
+      "title": "9. Kontakt",
+      "text": "W przypadku pytań dotyczących niniejszej polityki lub chęci skorzystania ze swoich praw, proszę o kontakt przez formularz na stronie kontaktowej lub dane podane w sekcji informacje prawne."
+    }
+  }
+}
+

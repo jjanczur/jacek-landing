@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Prezentacje | Jacek Janczura",
+    "description": "Prezentacje techniczne o architekturze AI, systemach rozproszonych i blockchainie. Praktyczne wnioski z wdrożeń korporacyjnych."
+  },
+  "hero": {
+    "title": "Prezentacje",
+    "subtitle": "Praktyczne wnioski z wdrożeń korporacyjnych"
+  },
+  "talks": [
+    {
+      "title": "Wzorce architektury AI",
+      "event": "Prezentacja konferencyjna",
+      "date": "2024",
+      "description": "Praktyczne wnioski z wdrożeń LLM w środowiskach korporacyjnych: architektura wielodostępna, optymalizacja kosztów, obserwowalność oraz wzorce governance skalujące się wraz z organizacją.",
+      "youtubeId": "Sf61QaWJDjA",
+      "videoTitle": "Wzorce architektury AI - Wdrożenia LLM w przedsiębiorstwach",
+      "tags": ["Architektura AI", "LLM", "Enterprise", "Skalowalność"]
+    },
+    {
+      "title": "Systemy rozproszone na dużą skalę",
+      "event": "Konferencja techniczna",
+      "date": "2023",
+      "description": "Kompromisy między przepustowością, opóźnieniem i odpornością w nowoczesnych systemach rozproszonych. Architektury sterowane zdarzeniami, mechanizmy backpressure i wzorce obserwowalności.",
+      "youtubeId": "fPp66mtx_60",
+      "videoTitle": "Systemy rozproszone w skali - Wzorce architektury",
+      "tags": ["Systemy rozproszone", "Event-Driven", "Skalowalność", "Obserwowalność"]
+    },
+    {
+      "title": "Blockchain i Bitcoin",
+      "event": "idealo Tech Talks",
+      "date": "2022",
+      "description": "Podstawy technologii blockchain i Bitcoina, przypadki użycia w środowisku korporacyjnym, smart kontrakty oraz praktyczne zastosowania w nowoczesnej architekturze oprogramowania.",
+      "youtubeId": "6WzFtN3xWF4",
+      "videoTitle": "Blockchain i Bitcoin - podstawy i zastosowania w przedsiębiorstwach",
+      "tags": ["Blockchain", "Bitcoin", "Enterprise", "Smart kontrakty"]
+    }
+  ]
+}
+

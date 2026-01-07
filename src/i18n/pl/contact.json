@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Kontakt | Jacek Janczura",
+    "description": "Skontaktuj się w sprawie przeglądów architektury AI, doradztwa i wdrożeń. Specjalizuję się w projektowaniu platform AI klasy enterprise oraz przywództwie technicznym."
+  },
+  "hero": {
+    "title": "Kontakt",
+    "subtitle": "Twórzmy razem odpowiedzialne rozwiązania AI"
+  },
+  "intro": "Najlepiej skontaktować się przez formularz poniżej lub LinkedIn. Chętnie podejmuję się doradztwa, przeglądów architektury oraz wybranych projektów wdrożeniowych związanych z platformami AI dla przedsiębiorstw.",
+  "methods": {
+    "form": {
+      "title": "Formularz kontaktowy",
+      "description": "Zapytania zawodowe, rozmowy o projektach i propozycje współpracy.",
+      "emailLabel": "Twój e-mail:",
+      "messageLabel": "Twoja wiadomość:",
+      "submit": "Wyślij wiadomość"
+    },
+    "linkedin": {
+      "title": "LinkedIn",
+      "description": "Networking, rozmowy branżowe i kontakty zawodowe."
+    },
+    "github": {
+      "title": "GitHub",
+      "description": "Projekty open source, przeglądy kodu i dyskusje techniczne."
+    }
+  },
+  "focus": {
+    "title": "Obszary specjalizacji",
+    "items": [
+      {
+        "title": "Architektura platform AI",
+        "description": "Wielodostępne platformy LLM, systemy RAG i projektowanie potoków AI"
+      },
+      {
+        "title": "Przywództwo techniczne",
+        "description": "Budowanie zespołów, kultura code review i optymalizacja procesów dostarczania oprogramowania"
+      },
+      {
+        "title": "Bezpieczeństwo i zgodność",
+        "description": "Wdrażanie ISO 27001/SOC 2 i ocena ryzyka w projektach AI"
+      },
+      {
+        "title": "Projektowanie systemów",
+        "description": "Mikrousługi sterowane zdarzeniami, systemy rozproszone i optymalizacja wydajności"
+      }
+    ]
+  },
+  "cta": {
+    "text1": "Współpracuję z organizacjami, które budują rozwiązania AI klasy enterprise wymagające solidnej architektury, bezpieczeństwa od podstaw i skalowalnego wdrożenia.",
+    "text2": "Obecnie koncentruję się na rozwoju platform LLM, prompt engineeringu na dużą skalę oraz ramach governance AI."
+  }
+}
+

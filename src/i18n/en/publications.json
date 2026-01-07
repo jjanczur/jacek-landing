@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "title": "Publications | Jacek Janczura",
+    "description": "Peer-reviewed publications, articles, and technical notes on AI architecture, distributed systems, and software engineering."
+  },
+  "hero": {
+    "title": "Publications",
+    "subtitle": "Peer-reviewed research, articles, and technical insights"
+  },
+  "sections": {
+    "publications": {
+      "title": "Publications & Writing",
+      "groups": {
+        "peerReviewed": {
+          "title": "Peer-Reviewed",
+          "items": [
+            {
+              "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
+              "description": "BAR/NDSS Workshop 2018. Research tool for detecting taint-style security properties in binary code using a mix of static and dynamic taint techniques. Provides a DSL for taint policies. Demonstrated on real programs.",
+              "role": "Author/maintainer of repo.",
+              "links": [
+                {
+                  "label": "GitHub repo",
+                  "url": "https://github.com/jjanczur/Saluki"
+                },
+                {
+                  "label": "Paper",
+                  "url": "https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf"
+                }
+              ]
+            },
+            {
+              "title": "DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases",
+              "description": "IEEE BRAINS 2020. Blockchain-based decentralized compensation for digital content purchases with transparent, programmable payouts and smart-contract design.",
+              "role": "Author/co-author.",
+              "doi": "10.1109/BRAINS49436.2020.9223299",
+              "links": [
+                {
+                  "label": "10.1109/BRAINS49436.2020.9223299",
+                  "url": "https://doi.org/10.1109/BRAINS49436.2020.9223299"
+                },
+                {
+                  "label": "ResearchGate",
+                  "url": "https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases"
+                }
+              ]
+            }
+          ]
+        },
+        "articles": {
+          "title": "Articles & Guides",
+          "items": [
+            {
+              "title": "Utility NFTs more than simple JPEGs?",
+              "description": "Medium, Feb 1, 2023. Defines \"utility NFTs\" and argues for real-world utility beyond collectibles, with examples like access passes. Implications for marketplaces.",
+              "links": [
+                {
+                  "label": "Medium Article",
+                  "url": "https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4"
+                }
+              ]
+            },
+            {
+              "title": "How to run your python code in KnowledgeX",
+              "description": "Medium, Feb 17, 2022. Guide on running Python jobs on KnowledgeX via iExec and TEEs. Covers Dockerized templates, worker verification, and auditability for developers and data scientists.",
+              "links": [
+                {
+                  "label": "Blog Post",
+                  "url": "https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "notes": {
+      "title": "Technical Notes",
+      "intro": "Occasional technical notes and insights from working with AI systems, distributed architectures, and enterprise software. These are less formal than talks but capture important lessons and observations.",
+      "items": [
+        {
+          "title": "Prompt Engineering at Scale",
+          "date": "2024-02-15",
+          "excerpt": "Building a prompt optimization system that scales across teams and maintains consistency in AI outputs. Lessons learned from implementing a \"Prompt Wizard\" for enterprise use cases.",
+          "tags": ["Prompt Engineering", "AI Governance", "Enterprise"]
+        },
+        {
+          "title": "Event-Driven AI Pipelines",
+          "date": "2024-01-22",
+          "excerpt": "Designing resilient AI workflows using event-driven architecture patterns. How SQS/SNS can help manage AI pipeline backpressure and ensure reliable processing.",
+          "tags": ["Event-Driven", "AI Pipelines", "AWS"]
+        },
+        {
+          "title": "Multi-Model AI Routing",
+          "date": "2023-12-10",
+          "excerpt": "Intelligent routing strategies for multi-model AI deployments. Cost optimization while maintaining performance and quality across different model providers.",
+          "tags": ["Multi-Model", "Cost Optimization", "Architecture"]
+        },
+        {
+          "title": "Security for AI Platforms",
+          "date": "2023-11-18",
+          "excerpt": "Essential security considerations for AI platforms: data privacy, access control, audit trails, and compliance automation in AI-first applications.",
+          "tags": ["AI Security", "Compliance", "Privacy"]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "role": "Role:",
+    "links": "Links:",
+    "link": "Link:",
+    "doi": "DOI:",
+    "placeholder": "Placeholder:"
+  },
+  "cta": "These publications and notes represent ongoing learning and observations from building AI systems. For more structured content, check out the {talksLink} and {projectsLink} sections.",
+  "ctaLinks": {
+    "talks": "talks",
+    "projects": "projects"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Projects | Jacek Janczura",
+    "description": "Selected projects from enterprise AI platforms to ML systems—built on AWS and focused on measurable operational impact. Available for architecture reviews, LLM/RAG work, and AI consulting."
+  },
+  "hero": {
+    "title": "Projects",
+    "subtitle": "Selected work across enterprise AI platforms, ML systems, and privacy-first architectures"
+  },
+  "intro": "Selected projects built at {company}, where I serve as Co-founder & CTO.",
+  "company": "Jaden Data",
+  "role": "Co-founder & CTO",
+  "labels": {
+    "industries": "Industries:",
+    "tech": "Tech:",
+    "impact": "Impact:",
+    "website": "Website",
+    "repository": "Repository",
+    "blog": "Blog"
+  },
+  "projects": [
+    {
+      "name": "entAIngine",
+      "period": "2022–Present",
+      "industry": "Enterprise AI Platform",
+      "role": "CTO & Lead Architect",
+      "tagline": "The AI Engine for Enterprise-Grade Process Automation",
+      "description": [
+        "A multi-tenant SaaS platform for AI process automation: knowledge-aware assistants, document workflows, and deep integration into real back-office operations (not demo workflows).",
+        "Built on AWS with event-driven microservices (Lambda, ECS/Fargate, SNS/SQS) and multi-model LLM integrations (OpenAI, Azure OpenAI, Bedrock, Mistral). Designed for high-throughput workloads (>1,000 concurrent connections; thousands of requests per second) with controlled cost and reliability.",
+        "Enterprise-grade security and compliance by design: ISO 27001 and SOC 2, with data sovereignty as a first-class requirement."
+      ],
+      "industries": "Production & Manufacturing, Pharmaceutical, Financial Services, Enterprise Operations",
+      "tech": "AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC",
+      "impact": "Serving 50+ organizations with 99.9% uptime; ISO 27001/SOC 2 compliance delivered in ~3 months; production-grade reliability enabling faster AI adoption across enterprise workflows.",
+      "links": [
+        {
+          "type": "website",
+          "url": "https://entaingine.com",
+          "label": "Website"
+        }
+      ]
+    },
+    {
+      "name": "Prompt Wizard & Testbed",
+      "period": "2022–Present",
+      "industry": "LLM Evaluation & Prompt Engineering",
+      "role": "Architect & Builder",
+      "tagline": "Enterprise tooling for reliable LLM pipelines",
+      "description": [
+        "Built an internal testing and evaluation framework (Testbed) to make LLM systems measurable and repeatable: deterministic test cases, quantitative + qualitative evaluation, and regression testing for RAG and multi-step pipelines.",
+        "Developed \"Prompt Wizard\" to streamline prompt iteration and optimization—helping teams ship prompts that are robust, versioned, and testable instead of \"works on my laptop\".",
+        "The goal: move prompt engineering from ad-hoc experimentation to engineering discipline—so teams can scale, ship safely, and keep performance stable over time."
+      ],
+      "industries": "Enterprise AI, RAG, Multi-Step LLM Pipelines",
+      "tech": "LLM Evals, RAG Testing, Deterministic Test Cases, Prompt Engineering, Metrics",
+      "impact": "Faster iteration without breaking production behavior; higher confidence in releases; improved prompt quality via repeatable evaluation instead of ad-hoc testing.",
+      "links": []
+    },
+    {
+      "name": "RP-Matcher",
+      "period": "2025–2026",
+      "industry": "ML Product Matching System",
+      "role": "Project Lead (ML) & Data Scientist",
+      "tagline": "Automated product matching to eliminate manual offer preparation",
+      "description": [
+        "For RP Group (emergency lighting), built a machine-learning system that matches customer inquiries to the best-fitting products—replacing time-consuming expert-driven selection with repeatable ranking.",
+        "Built a robust dataset via LLM-assisted extraction (entAIngine API) and domain-specific feature engineering (25+ engineered features). Benchmarked five models with hyperparameter optimization.",
+        "Best model: tuned Random Forest with 70.7% Top‑1 accuracy (MRR 0.835; AUC‑ROC 0.923), delivering strong ranking quality while keeping the system interpretable and deployable."
+      ],
+      "industries": "Manufacturing, Product Catalog Matching, Sales Operations",
+      "tech": "Python, Scikit-Learn, Random Forest, Ensembles, Feature Engineering, LLM-Assisted Extraction",
+      "impact": "60% reduction in offer preparation time; reduced dependency on domain experts; scalable matching workflow with measurable accuracy.",
+      "links": []
+    },
+    {
+      "name": "Valuation Engine",
+      "period": "2022",
+      "industry": "AI-Powered Property Valuation",
+      "role": "Lead Architect",
+      "tagline": "Save 2+ hours per appraisal with AI-driven research",
+      "description": [
+        "An AI platform built for real estate appraisers and valuers to automate the most time-consuming parts of an appraisal: research, location analysis, and report drafting.",
+        "Turns hours of manual work into 2–3 minutes of structured output per property with macro/micro location insights, market context, and appraisal-ready report generation.",
+        "Designed for professional workflows: multi-source data integration and quality controls to keep outputs consistent and reviewable."
+      ],
+      "industries": "Real Estate Appraisal, Property Valuation, Investment Firms, Banking & Collateral Assessment",
+      "tech": "Real Estate AI, Location Analysis, Market Intelligence, Report Generation, Multi-Source Data Integration",
+      "impact": "2+ hours saved per appraisal report; higher consistency and easier review; results delivered in 2–3 minutes per property.",
+      "links": []
+    },
+    {
+      "name": "entAIgent",
+      "period": "2023",
+      "industry": "No-Code AI Agent Platform",
+      "role": "Co-founder & Architect",
+      "tagline": "Build multi-agent systems without writing code",
+      "description": [
+        "A no-code platform enabling operations teams (customer service, HR, internal ops) to design and run multi-agent workflows without engineering support.",
+        "Focused on orchestration and reliability: clear role separation, controlled handoffs, and evaluation hooks so teams can iterate safely and scale outcomes across departments."
+      ],
+      "industries": "Operations, Customer Service, HR Automation, Enterprise Workflows",
+      "tech": "AI Agents, No-Code, Visual Workflows, Multi-Agent Orchestration, Evals",
+      "impact": "Faster PoCs and iteration cycles; more consistent outcomes through structured multi-agent coordination.",
+      "links": []
+    },
+    {
+      "name": "Flowhive VC",
+      "period": "2023",
+      "industry": "AI for Venture Capital",
+      "role": "Co-founder & Architect",
+      "tagline": "Due diligence and portfolio intelligence—productized",
+      "description": [
+        "A VC-focused platform combining deep research with investment-specific automation to speed up due diligence and market intelligence.",
+        "Pre-configured agents support competitive analysis, portfolio intelligence tracking, deal flow automation, and market mapping—turning scattered research into institutional knowledge."
+      ],
+      "industries": "Venture Capital, Angel Investing, Corporate Venture Arms, Investment Analysis",
+      "tech": "AI Agents, Due Diligence Automation, Portfolio Intelligence, Market Mapping, Deal Flow Systems",
+      "impact": "Faster deal evaluation cycles and more repeatable research workflows across teams.",
+      "links": []
+    },
+    {
+      "name": "KnowledgeX",
+      "period": "2021–2022",
+      "industry": "Trusted Data Processing (EU Funded)",
+      "role": "CTO & Lead Architect",
+      "tagline": "Safe Data Collaboration Without Exposing Sensitive Information",
+      "description": [
+        "An EU Horizon 2020-funded platform enabling organizations to run analytics on private data without taking custody of it—\"bring the code to the data\" with strong auditability and security.",
+        "Designed end-to-end secure workflows (agreement → execution → evaluation) and a modular microservice architecture, plus immutable audit trails via blockchain.",
+        "Used confidential computing (TEEs / Intel SGX) and encryption for data at rest to support privacy-preserving, inter-organizational processing—validated with EU stakeholders."
+      ],
+      "industries": "Cross-Organizational Analytics, Data Collaboration, Privacy-Sensitive Industries",
+      "tech": "Blockchain, Confidential Computing (TEEs), Encryption, Auditable Workflows, Microservices",
+      "impact": "Enabled privacy-preserving, cross-organization data processing; strong auditability for regulated environments; validated within an EU-funded research context.",
+      "links": [
+        {
+          "type": "blog",
+          "url": "https://blog.knowledgex.eu/",
+          "label": "Blog"
+        }
+      ]
+    }
+  ]
+}

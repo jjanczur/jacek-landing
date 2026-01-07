@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Projekty | Jacek Janczura",
+    "description": "Wybrane projekty: platformy enterprise AI, systemy ML i architektury privacy-first. AWS, LLM/RAG i mierzalny wpływ na procesy. Dostępny do przeglądów architektury, prompt engineering i konsultingu AI."
+  },
+  "hero": {
+    "title": "Projekty",
+    "subtitle": "Wybrane realizacje: enterprise AI, systemy ML i architektury privacy-first"
+  },
+  "intro": "Wybrane projekty z {company}, gdzie jestem współzałożycielem i CTO.",
+  "company": "Jaden Data",
+  "role": "Współzałożyciel i CTO",
+  "labels": {
+    "industries": "Branże:",
+    "tech": "Technologie:",
+    "impact": "Rezultaty:",
+    "website": "Strona",
+    "repository": "Repozytorium",
+    "blog": "Blog"
+  },
+  "projects": [
+    {
+      "name": "entAIngine",
+      "period": "2022 – obecnie",
+      "industry": "Platforma AI klasy enterprise",
+      "role": "CTO i główny architekt",
+      "tagline": "Silnik AI do automatyzacji procesów biznesowych",
+      "description": [
+        "Wielotenantowa platforma SaaS do automatyzacji procesów z AI: asystenci oparci o wiedzę, obiegi dokumentów i głęboka integracja z realnymi procesami back-office (nie „demo workflow”).",
+        "Zbudowana na AWS jako zdarzeniowe mikrousługi (Lambda, ECS/Fargate, SNS/SQS) z integracją wielu modeli LLM (OpenAI, Azure OpenAI, Bedrock, Mistral). Zaprojektowana pod wysoką przepustowość (>1 000 równoczesnych połączeń; tysiące żądań na sekundę) z kontrolą kosztów i niezawodnością.",
+        "Bezpieczeństwo i zgodność jako element architektury: ISO 27001 i SOC 2 oraz suwerenność danych jako wymaganie od początku."
+      ],
+      "industries": "Produkcja i przemysł, farmacja, usługi finansowe, operacje korporacyjne",
+      "tech": "AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC",
+      "impact": "Obsługa ponad 50 organizacji przy dostępności 99,9%; certyfikacja ISO 27001/SOC 2 w około 3 miesiące; niezawodność produkcyjna umożliwiająca szybszą adopcję AI w procesach biznesowych.",
+      "links": [
+        { "type": "website", "url": "https://entaingine.com", "label": "Strona" }
+      ]
+    },
+    {
+      "name": "Prompt Wizard & Testbed",
+      "period": "2022 – obecnie",
+      "industry": "Ewaluacja LLM i prompt engineering",
+      "role": "Architekt i autor",
+      "tagline": "Narzędzia enterprise do stabilnych pipeline’ów LLM",
+      "description": [
+        "Zbudowałem framework do testowania i oceny (Testbed), który zamienia LLM-y z „magii” w inżynierię: deterministyczne testy, metryki, oceny jakości i testy regresji dla RAG oraz pipeline’ów wieloetapowych.",
+        "„Prompt Wizard” przyspiesza iterację i optymalizację promptów, a jednocześnie wymusza wersjonowanie i testowalność — tak, żeby jakość nie znikała po pierwszym wdrożeniu.",
+        "Cel: prompt engineering jako praktyka inżynieryjna, nie jednorazowe eksperymenty — żeby zespoły mogły skalować wdrożenia i dowozić stabilne wyniki."
+      ],
+      "industries": "Enterprise AI, RAG, pipeline’y LLM",
+      "tech": "LLM evals, testy RAG, deterministyczne przypadki, prompt engineering, metryki",
+      "impact": "Szybsza iteracja bez „psucia” zachowania w produkcji; większa pewność wydań; lepsza jakość promptów dzięki ocenie opartej o testy, a nie intuicję.",
+      "links": []
+    },
+    {
+      "name": "RP-Matcher",
+      "period": "2025–2026",
+      "industry": "System dopasowania produktów (ML)",
+      "role": "Lider projektu (ML) i Data Scientist",
+      "tagline": "Automatyczne dopasowanie produktów zamiast ręcznej selekcji",
+      "description": [
+        "Dla RP Group (oświetlenie awaryjne) zbudowałem system ML, który dopasowuje zapytania klientów do najlepszych produktów — zastępując czasochłonny dobór przez ekspertów powtarzalnym rankingiem.",
+        "Zbudowałem solidny zbiór danych dzięki ekstrakcji wspieranej LLM (API entAIngine) i inżynierii cech (25+ cech). Przebadałem 5 modeli z tuningiem hiperparametrów.",
+        "Najlepszy model: tuning Random Forest z 70,7% Top‑1 (MRR 0,835; AUC‑ROC 0,923) — dobry ranking przy zachowaniu interpretowalności i sensownej złożoności wdrożenia."
+      ],
+      "industries": "Produkcja, dopasowanie katalogu produktów, operacje sprzedażowe",
+      "tech": "Python, Scikit-Learn, Random Forest, ensemble, inżynieria cech, ekstrakcja wspierana LLM",
+      "impact": "60% skrócenie czasu przygotowania ofert; mniejsza zależność od ekspertów domenowych; skalowalny proces dopasowania z mierzalną skutecznością.",
+      "links": []
+    },
+    {
+      "name": "Valuation Engine",
+      "period": "2022",
+      "industry": "Wycena nieruchomości wspierana AI",
+      "role": "Główny architekt",
+      "tagline": "Oszczędź 2+ godziny na operat dzięki AI",
+      "description": [
+        "Platforma AI dla rzeczoznawców i wyceniających, która automatyzuje najbardziej czasochłonne elementy wyceny: research, analizę lokalizacji i tworzenie raportu.",
+        "Zamienia godziny ręcznej pracy w 2–3 minuty uporządkowanego wyniku na nieruchomość (macro/micro insights, kontekst rynkowy, raport gotowy do dalszej pracy).",
+        "Zaprojektowana pod workflow rzeczoznawców: integracje wieloźródłowe i kontrola jakości, żeby wyniki były spójne i łatwe do weryfikacji."
+      ],
+      "industries": "Wycena nieruchomości, firmy inwestycyjne, banki i ocena zabezpieczeń",
+      "tech": "Real-estate AI, analiza lokalizacji, inteligencja rynkowa, generowanie raportów, integracje wieloźródłowe",
+      "impact": "2+ godziny oszczędności na operat; większa spójność i łatwiejszy przegląd; wynik w 2–3 minuty na nieruchomość.",
+      "links": []
+    },
+    {
+      "name": "entAIgent",
+      "period": "2023",
+      "industry": "Platforma no-code dla agentów AI",
+      "role": "Współzałożyciel i architekt",
+      "tagline": "Wieloagentowe systemy bez pisania kodu",
+      "description": [
+        "Platforma no-code, która pozwala zespołom operacyjnym (customer service, HR, ops) projektować i uruchamiać multi-agentowe workflow bez wsparcia zespołu engineering.",
+        "Fokus na orkiestrację i niezawodność: jasne role agentów, kontrolowane handoffy i punkty ewaluacji — tak, żeby dało się iterować bez chaosu i skalować wyniki między zespołami."
+      ],
+      "industries": "Operacje, obsługa klienta, automatyzacja HR, procesy korporacyjne",
+      "tech": "Agenci AI, no-code, wizualne przepływy, orkiestracja multi-agent, ewaluacje",
+      "impact": "Szybsze PoC i iteracje; bardziej powtarzalne rezultaty dzięki ustrukturyzowanej koordynacji agentów.",
+      "links": []
+    },
+    {
+      "name": "Flowhive VC",
+      "period": "2023",
+      "industry": "AI dla venture capital",
+      "role": "Współzałożyciel i architekt",
+      "tagline": "Due diligence i portfolio intelligence jako produkt",
+      "description": [
+        "Platforma dla VC łącząca deep research z automatyzacją specyficzną dla procesów inwestycyjnych — żeby szybciej dowozić due diligence i analizy rynkowe.",
+        "Wstępnie skonfigurowane agenty wspierają analizę konkurencji, tracking portfela, automatyzację deal flow i market mapping — zamieniając rozproszony research w wiedzę instytucjonalną."
+      ],
+      "industries": "Venture capital, aniołowie biznesu, CVC, analiza inwestycyjna",
+      "tech": "Agenci AI, automatyzacja due diligence, inteligencja portfelowa, mapowanie rynku, systemy deal-flow",
+      "impact": "Szybsza ocena transakcji i bardziej powtarzalny workflow researchu w zespole.",
+      "links": []
+    },
+    {
+      "name": "KnowledgeX",
+      "period": "2021 – 2022",
+      "industry": "Zaufane przetwarzanie danych (projekt UE)",
+      "role": "CTO i główny architekt",
+      "tagline": "Bezpieczna współpraca na danych bez ujawniania wrażliwych informacji",
+      "description": [
+        "Projekt finansowany z EU Horizon 2020: platforma pozwalająca uruchamiać analitykę na prywatnych danych bez przejmowania nad nimi kontroli („bring the code to the data”), z mocnym naciskiem na audytowalność i bezpieczeństwo.",
+        "Zaprojektowałem end-to-end workflow (agreement → execution → evaluation) i modularną architekturę mikrousług oraz niezmienny audit trail na blockchainie.",
+        "Wykorzystałem confidential computing (TEE / Intel SGX) i szyfrowanie danych w spoczynku do privacy-preserving przetwarzania między organizacjami — zwalidowane z interesariuszami UE."
+      ],
+      "industries": "Analityka międzyorganizacyjna, współpraca na danych, branże wrażliwe na prywatność",
+      "tech": "Blockchain, confidential computing (TEE), szyfrowanie, audytowalne workflow, mikrousługi",
+      "impact": "Przetwarzanie danych bez ich ujawniania; niezmienny audit trail dla zgodności i zaufania; prototyp zwalidowany w kontekście projektu badawczego UE.",
+      "links": [
+        { "type": "blog", "url": "https://blog.knowledgex.eu/", "label": "Blog" }
+      ]
+    }
+  ]
+}
+

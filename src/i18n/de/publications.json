@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Publikationen | Jacek Janczura",
+    "description": "Begutachtete Forschungsarbeiten, Fachartikel und technische Notizen zu KI-Architektur, verteilten Systemen und Software-Engineering."
+  },
+  "hero": {
+    "title": "Publikationen",
+    "subtitle": "Begutachtete Forschung, Fachartikel und technische Einblicke"
+  },
+  "sections": {
+    "publications": {
+      "title": "Publikationen & Beiträge",
+      "groups": {
+        "peerReviewed": {
+          "title": "Begutachtete Veröffentlichungen",
+          "items": [
+            {
+              "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
+              "description": "BAR/NDSS Workshop 2018. Ein Forschungstool zur Erkennung von Taint-basierten Sicherheitslücken in Binärcode — kombiniert statische Analyse mit dynamischem Taint-Tracking. Bietet eine DSL für Taint-Policies und wurde an realen Programmen erprobt.",
+              "role": "Autor und Maintainer des Repositories.",
+              "links": [
+                { "label": "GitHub-Repository", "url": "https://github.com/jjanczur/Saluki" },
+                { "label": "Paper", "url": "https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf" }
+              ]
+            },
+            {
+              "title": "DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases",
+              "description": "IEEE BRAINS 2020. Ein Blockchain-basierter, dezentraler Vergütungsmechanismus für digitale Inhalte mit transparenten, programmierbaren Auszahlungen und Smart-Contract-Architektur.",
+              "role": "Autor/Co-Autor.",
+              "doi": "10.1109/BRAINS49436.2020.9223299",
+              "links": [
+                { "label": "10.1109/BRAINS49436.2020.9223299", "url": "https://doi.org/10.1109/BRAINS49436.2020.9223299" },
+                { "label": "ResearchGate", "url": "https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases" }
+              ]
+            }
+          ]
+        },
+        "articles": {
+          "title": "Artikel & Anleitungen",
+          "items": [
+            {
+              "title": "Utility NFTs more than simple JPEGs?",
+              "description": "Medium, 1. Februar 2023. Definiert „Utility-NFTs\" und zeigt deren praktischen Nutzen jenseits reiner Sammlerstücke — etwa als Zugangsberechtigungen oder Rollen. Mit Implikationen für NFT-Marktplätze.",
+              "links": [
+                { "label": "Medium-Artikel", "url": "https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4" }
+              ]
+            },
+            {
+              "title": "How to run your python code in KnowledgeX",
+              "description": "Medium, 17. Februar 2022. Anleitung zur Ausführung von Python-Jobs auf KnowledgeX via iExec und TEE. Behandelt Docker-Templates, Worker-Verifikation und Auditierbarkeit für Entwickler und Data Scientists.",
+              "links": [
+                { "label": "Blogbeitrag", "url": "https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c" }
+              ]
+            },
+            {
+              "title": "REL_2020_02_APP_web.pdf",
+              "description": "Vorläufig: Titel und Abstract noch ausstehend. [Bestätigung aus Originalquelle erforderlich].",
+              "placeholder": true
+            }
+          ]
+        }
+      }
+    },
+    "notes": {
+      "title": "Technische Notizen",
+      "intro": "Gelegentliche technische Notizen und Erkenntnisse aus der Arbeit mit KI-Systemen, verteilten Architekturen und Enterprise-Software. Weniger formal als Vorträge, aber mit wertvollen Beobachtungen aus der Praxis.",
+      "items": [
+        {
+          "title": "Prompt Engineering im Unternehmenseinsatz",
+          "date": "2024-02-15",
+          "excerpt": "Wie man ein Prompt-Optimierungssystem aufbaut, das teamübergreifend skaliert und konsistente KI-Ergebnisse liefert. Erkenntnisse aus der Entwicklung eines „Prompt-Assistenten\" für Enterprise-Anwendungsfälle.",
+          "tags": ["Prompt Engineering", "KI-Governance", "Enterprise"]
+        },
+        {
+          "title": "Event-Driven KI-Pipelines",
+          "date": "2024-01-22",
+          "excerpt": "Design robuster KI-Workflows mit ereignisgesteuerten Architekturmustern. Wie SQS/SNS den Backpressure in KI-Pipelines abfedern und zuverlässige Verarbeitung sicherstellen.",
+          "tags": ["Event-Driven", "KI-Pipelines", "AWS"]
+        },
+        {
+          "title": "Multi-Modell-Routing für KI",
+          "date": "2023-12-10",
+          "excerpt": "Intelligente Routing-Strategien für Multi-Modell-KI-Deployments. Kostenoptimierung bei gleichzeitig hoher Performance und Qualität — über verschiedene Modellanbieter hinweg.",
+          "tags": ["Multi-Modell", "Kostenoptimierung", "Architektur"]
+        },
+        {
+          "title": "Sicherheit für KI-Plattformen",
+          "date": "2023-11-18",
+          "excerpt": "Zentrale Sicherheitsaspekte für KI-Plattformen: Datenschutz, Zugriffskontrolle, Audit-Trails und automatisierte Compliance in KI-first-Anwendungen.",
+          "tags": ["KI-Sicherheit", "Compliance", "Datenschutz"]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "role": "Rolle:",
+    "links": "Links:",
+    "link": "Link:",
+    "doi": "DOI:",
+    "placeholder": "Vorläufig:"
+  },
+  "cta": "Diese Publikationen und Notizen spiegeln laufendes Lernen und Beobachtungen aus der Entwicklung von KI-Systemen wider. Für strukturiertere Inhalte siehe die Bereiche {talksLink} und {projectsLink}.",
+  "ctaLinks": {
+    "talks": "Vorträge",
+    "projects": "Projekte"
+  }
+}
+

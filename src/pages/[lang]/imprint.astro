@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, getSupportedLangs } from '../../utils/i18n';
+import type { Lang } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  return getSupportedLangs().map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = await getTranslations('imprint', lang);
+---
+
+<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
+  <section class="imprint-hero">
+    <div class="container">
+      <h1>{t.hero.title}</h1>
+      <p class="imprint-subtitle">{t.hero.subtitle}</p>
+    </div>
+  </section>
+
+  <section class="imprint-content">
+    <div class="container content">
+      <div class="imprint-section">
+        <h2>{t.sections.responsible.title}</h2>
+        <div class="imprint-details">
+          <p><strong>{t.sections.responsible.websiteOwner}</strong></p>
+          <p>
+            {t.sections.responsible.name}<br />
+            {t.sections.responsible.location}
+          </p>
+          <p>
+            <small>{t.sections.responsible.note}</small>
+          </p>
+        </div>
+      </div>
+
+      <div class="imprint-section">
+        <h2>{t.sections.contact.title}</h2>
+        <div class="imprint-details">
+          <p>
+            {t.sections.contact.text.split('{contactLink}')[0]}
+            <a href={`/${lang}/contact/`}>{t.sections.contact.contactLink}</a>
+            {t.sections.contact.text.split('{contactLink}')[1]}
+          </p>
+          <p>
+            {t.sections.contact.linkedin}{' '}
+            <a
+              href="https://linkedin.com/in/jacekjanczura"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.sections.contact.linkedinUrl}
+            </a>
+          </p>
+          <p>
+            <small>{t.sections.contact.privacyNote}</small>
+          </p>
+        </div>
+      </div>
+
+      <div class="imprint-section">
+        <h2>{t.sections.liabilityContent.title}</h2>
+        <p>{t.sections.liabilityContent.text1}</p>
+        <p>{t.sections.liabilityContent.text2}</p>
+      </div>
+
+      <div class="imprint-section">
+        <h2>{t.sections.liabilityLinks.title}</h2>
+        <p>{t.sections.liabilityLinks.text1}</p>
+        <p>{t.sections.liabilityLinks.text2}</p>
+      </div>
+
+      <div class="imprint-section">
+        <h2>{t.sections.copyright.title}</h2>
+        <p>{t.sections.copyright.text1}</p>
+        <p>{t.sections.copyright.text2}</p>
+      </div>
+
+      <div class="imprint-section">
+        <h2>{t.sections.dataProtection.title}</h2>
+        <p>{t.sections.dataProtection.text1}</p>
+        <p>
+          {t.sections.dataProtection.text2.split('{privacyLink}')[0]}
+          <a href={`/${lang}/privacy/`}>{t.sections.dataProtection.privacyLink}</a>
+          {t.sections.dataProtection.text2.split('{privacyLink}')[1] || ''}
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .imprint-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .imprint-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-2);
+    color: var(--text);
+  }
+
+  .imprint-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    margin: 0;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .imprint-content {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .imprint-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .imprint-section h2 {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .imprint-section p {
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .imprint-section a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .imprint-section a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .imprint-details {
+    background: var(--muted);
+    padding: var(--space-5);
+    border-radius: var(--radius-l);
+    border-left: 4px solid var(--primary);
+  }
+
+  .imprint-details p {
+    margin-bottom: var(--space-2);
+  }
+
+  .imprint-details p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .imprint-hero h1 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .imprint-section {
+      margin-bottom: var(--space-6);
+    }
+  }
+</style>
+

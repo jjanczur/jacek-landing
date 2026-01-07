@@ -4,6 +4,7 @@
   --text: #222;
   --primary: oklch(0.6 0.15 280);
   --accent: oklch(0.65 0.05 180);
+  --highlight: oklch(0.75 0.15 75);
   --muted: #f5f5f5;
   --border: #ddd;
 
@@ -12,6 +13,7 @@
   --text-dark: #eaeaea;
   --primary-dark: oklch(0.65 0.18 280);
   --accent-dark: oklch(0.7 0.05 180);
+  --highlight-dark: oklch(0.8 0.15 75);
   --muted-dark: #1e1e1e;
   --border-dark: #333;
 
@@ -71,6 +73,7 @@
   --text: var(--text-dark);
   --primary: var(--primary-dark);
   --accent: var(--accent-dark);
+  --highlight: var(--highlight-dark);
   --muted: var(--muted-dark);
   --border: var(--border-dark);
 }

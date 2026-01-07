@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Publikacje | Jacek Janczura",
+    "description": "Recenzowane publikacje naukowe, artykuły i notatki techniczne o architekturze AI, systemach rozproszonych i inżynierii oprogramowania."
+  },
+  "hero": {
+    "title": "Publikacje",
+    "subtitle": "Recenzowane badania, artykuły i spostrzeżenia techniczne"
+  },
+  "sections": {
+    "publications": {
+      "title": "Publikacje i artykuły",
+      "groups": {
+        "peerReviewed": {
+          "title": "Publikacje recenzowane",
+          "items": [
+            {
+              "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
+              "description": "BAR/NDSS Workshop 2018. Narzędzie badawcze do wykrywania podatności typu taint w kodzie binarnym, łączące analizę statyczną z dynamicznym śledzeniem taint. Udostępnia DSL do definiowania polityk taint. Przetestowane na rzeczywistych programach.",
+              "role": "Autor/opiekun repozytorium.",
+              "links": [
+                { "label": "Repozytorium GitHub", "url": "https://github.com/jjanczur/Saluki" },
+                { "label": "Artykuł", "url": "https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf" }
+              ]
+            },
+            {
+              "title": "DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases",
+              "description": "IEEE BRAINS 2020. Zdecentralizowany mechanizm rozliczeń za zakupy treści cyfrowych oparty na blockchainie. Przejrzyste, programowalne wypłaty i architektura smart kontraktów.",
+              "role": "Autor/współautor.",
+              "doi": "10.1109/BRAINS49436.2020.9223299",
+              "links": [
+                { "label": "10.1109/BRAINS49436.2020.9223299", "url": "https://doi.org/10.1109/BRAINS49436.2020.9223299" },
+                { "label": "ResearchGate", "url": "https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases" }
+              ]
+            }
+          ]
+        },
+        "articles": {
+          "title": "Artykuły i poradniki",
+          "items": [
+            {
+              "title": "Utility NFTs more than simple JPEGs?",
+              "description": "Medium, 1 lutego 2023. Definiuję pojęcie „utility NFTs\" i pokazuję ich zastosowania wykraczające poza kolekcjonerstwo (np. przepustki, uprawnienia). Wnioski dla platform i rynków.",
+              "links": [
+                { "label": "Artykuł na Medium", "url": "https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4" }
+              ]
+            },
+            {
+              "title": "How to run your python code in KnowledgeX",
+              "description": "Medium, 17 lutego 2022. Jak uruchamiać zadania Pythona na KnowledgeX z wykorzystaniem iExec i TEE (Trusted Execution Environments). Omawiam szablony Docker, weryfikację workerów i audytowalność.",
+              "links": [
+                { "label": "Wpis na blogu", "url": "https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c" }
+              ]
+            },
+            {
+              "title": "REL_2020_02_APP_web.pdf",
+              "description": "Tymczasowo: Tytuł i abstrakt do potwierdzenia.",
+              "placeholder": true
+            }
+          ]
+        }
+      }
+    },
+    "notes": {
+      "title": "Notatki techniczne",
+      "intro": "Okazjonalne notatki i spostrzeżenia z pracy z systemami AI, architekturami rozproszonymi i oprogramowaniem korporacyjnym. Mniej formalne niż prezentacje, ale zawierają cenne wnioski i obserwacje.",
+      "items": [
+        {
+          "title": "Prompt engineering na dużą skalę",
+          "date": "2024-02-15",
+          "excerpt": "Budowa systemu optymalizacji promptów, który skaluje się w zespołach i utrzymuje spójność wyników AI. Wnioski z wdrożenia „Prompt Wizard\" dla zastosowań korporacyjnych.",
+          "tags": ["Prompt Engineering", "AI Governance", "Enterprise"]
+        },
+        {
+          "title": "Potoki AI sterowane zdarzeniami",
+          "date": "2024-01-22",
+          "excerpt": "Projektowanie odpornych przepływów pracy AI z wykorzystaniem wzorców architektury sterowanej zdarzeniami. Jak SQS/SNS pomaga w zarządzaniu backpressure w potokach AI i zapewnia niezawodne przetwarzanie.",
+          "tags": ["Event-driven", "Potoki AI", "AWS"]
+        },
+        {
+          "title": "Routing wielomodelowy AI",
+          "date": "2023-12-10",
+          "excerpt": "Inteligentne strategie routingu dla wdrożeń wielomodelowych AI. Optymalizacja kosztów przy zachowaniu wydajności i jakości u różnych dostawców modeli.",
+          "tags": ["Multi-model", "Optymalizacja kosztów", "Architektura"]
+        },
+        {
+          "title": "Bezpieczeństwo platform AI",
+          "date": "2023-11-18",
+          "excerpt": "Kluczowe zagadnienia bezpieczeństwa platform AI: prywatność danych, kontrola dostępu, ścieżki audytu i automatyzacja zgodności w aplikacjach AI-first.",
+          "tags": ["Bezpieczeństwo AI", "Compliance", "Prywatność"]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "role": "Rola:",
+    "links": "Linki:",
+    "link": "Link:",
+    "doi": "DOI:",
+    "placeholder": "Tymczasowo:"
+  },
+  "cta": "Te publikacje i notatki odzwierciedlają wnioski i obserwacje z budowy systemów AI. Zapraszam również do sekcji {talksLink} i {projectsLink}.",
+  "ctaLinks": {
+    "talks": "prezentacje",
+    "projects": "projekty"
+  }
+}
+

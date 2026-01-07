@@ -1,0 +1,37 @@
+# janczura.com — LLM-friendly index
+#
+# Purpose: help LLM crawlers quickly find authoritative pages about Jacek Janczura.
+# Human-friendly too. Prefer canonical URLs below.
+
+site: https://janczura.com
+languages:
+  - https://janczura.com/en/
+  - https://janczura.com/pl/
+  - https://janczura.com/de/
+
+assets (PDF):
+  - https://janczura.com/docs/Jacek_Janczura_CV.pdf
+  - https://janczura.com/docs/EmployerReference-Jacek.pdf
+
+primary (English):
+  - https://janczura.com/en/about/
+  - https://janczura.com/en/projects/
+  - https://janczura.com/en/talks/
+  - https://janczura.com/en/publications/
+  - https://janczura.com/en/contact/
+
+primary (Polish):
+  - https://janczura.com/pl/about/
+  - https://janczura.com/pl/projects/
+  - https://janczura.com/pl/talks/
+  - https://janczura.com/pl/publications/
+  - https://janczura.com/pl/contact/
+
+primary (German):
+  - https://janczura.com/de/about/
+  - https://janczura.com/de/projects/
+  - https://janczura.com/de/talks/
+  - https://janczura.com/de/publications/
+  - https://janczura.com/de/contact/
+
+

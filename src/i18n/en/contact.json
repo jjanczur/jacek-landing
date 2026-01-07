@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Contact | Jacek Janczura",
+    "description": "Get in touch for AI architecture reviews, advisory, and delivery engagements. Available for enterprise AI platform design and technical leadership."
+  },
+  "hero": {
+    "title": "Contact",
+    "subtitle": "Let's build responsibly-engineered AI"
+  },
+  "intro": "Best via the contact form below or LinkedIn. I'm open to advisory, architecture reviews, and select delivery engagements focused on enterprise AI platforms.",
+  "methods": {
+    "form": {
+      "title": "Contact Form",
+      "description": "For professional inquiries, project discussions, and collaboration opportunities.",
+      "emailLabel": "Your email:",
+      "messageLabel": "Your message:",
+      "submit": "Send Message"
+    },
+    "linkedin": {
+      "title": "LinkedIn",
+      "description": "For networking, industry discussions, and professional connections."
+    },
+    "github": {
+      "title": "GitHub",
+      "description": "For open source contributions, code reviews, and technical discussions."
+    }
+  },
+  "focus": {
+    "title": "Focus Areas",
+    "items": [
+      {
+        "title": "AI Platform Architecture",
+        "description": "Multi-tenant LLM platforms, RAG systems, and AI pipeline design"
+      },
+      {
+        "title": "Technical Leadership",
+        "description": "Team building, code review culture, and delivery process optimization"
+      },
+      {
+        "title": "Security & Compliance",
+        "description": "ISO 27001/SOC 2 implementation and AI-specific risk assessment"
+      },
+      {
+        "title": "System Design",
+        "description": "Event-driven microservices, distributed systems, and performance optimization"
+      }
+    ]
+  },
+  "cta": {
+    "text1": "I work with organizations building enterprise AI solutions that require robust architecture, security-first design, and scalable implementation.",
+    "text2": "Currently focusing on LLM platform development, prompt engineering at scale, and AI governance frameworks."
+  }
+}
+

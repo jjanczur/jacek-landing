@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Privacy Policy | Jacek Janczura",
+    "description": "Privacy Policy for janczura.com. Information about data collection, processing, and your rights under GDPR."
+  },
+  "hero": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated:"
+  },
+  "intro": "This Privacy Policy explains how I collect, use, and protect your personal information when you visit this website.",
+  "sections": {
+    "information": {
+      "title": "1. Information I Collect",
+      "text": "This website is designed with privacy in mind. I do not actively collect personal data through tracking scripts or analytics tools. However, some data may be collected automatically:",
+      "items": [
+        {
+          "title": "Server Logs:",
+          "text": "When you visit this website, GitHub Pages (the hosting provider) may automatically log your IP address, browser type, and access times. This is standard web server functionality and is not under my direct control."
+        },
+        {
+          "title": "Contact Form Data:",
+          "text": "If you use the contact form, your email address and message are processed by Formspree, a third-party service. This data is sent to me via email and may be stored by Formspree according to their privacy policy."
+        },
+        {
+          "title": "Cookies and Local Storage:",
+          "text": "This website does not set any cookies directly. YouTube videos are embedded using privacy-enhanced mode (youtube-nocookie.com) to minimize cookie usage. Google Fonts may set cookies according to their policy. The website uses localStorage only to remember your theme preference (light/dark mode) for better user experience. No tracking cookies or analytics cookies are used."
+        }
+      ]
+    },
+    "usage": {
+      "title": "2. How I Use Your Information",
+      "text": "Any information collected is used solely for:",
+      "items": [
+        "Responding to contact form inquiries",
+        "Ensuring website functionality and security",
+        "Complying with legal obligations"
+      ],
+      "note": "I do not sell, rent, or share your personal information with third parties for marketing purposes."
+    },
+    "thirdParty": {
+      "title": "3. Third-Party Services",
+      "text": "This website uses the following third-party services:",
+      "items": [
+        {
+          "title": "GitHub Pages:",
+          "text": "Hosting provider. Their privacy policy applies to server logs."
+        },
+        {
+          "title": "Formspree:",
+          "text": "Contact form processing. Your form submissions are sent to me via email and handled according to Formspree's privacy policy."
+        },
+        {
+          "title": "Google Fonts:",
+          "text": "Font delivery service. Google may collect some usage data and set cookies according to their privacy policy. These are considered essential for website functionality."
+        },
+        {
+          "title": "YouTube:",
+          "text": "Video embeds use privacy-enhanced mode (youtube-nocookie.com) to minimize cookie usage. YouTube's privacy policy applies to their services."
+        }
+      ],
+      "cookieNote": "Cookie Consent: Since this website only uses essential cookies (for font delivery and video functionality) that are necessary for the website to function, no cookie consent banner is required under EU/GDPR regulations. No tracking or marketing cookies are used."
+    },
+    "rights": {
+      "title": "4. Your Rights Under GDPR",
+      "text": "As a resident of the European Union, you have the following rights regarding your personal data:",
+      "items": [
+        {
+          "title": "Right to Access:",
+          "text": "You can request information about what personal data I hold about you."
+        },
+        {
+          "title": "Right to Rectification:",
+          "text": "You can request correction of inaccurate personal data."
+        },
+        {
+          "title": "Right to Erasure:",
+          "text": "You can request deletion of your personal data."
+        },
+        {
+          "title": "Right to Restrict Processing:",
+          "text": "You can request limitation of how your data is processed."
+        },
+        {
+          "title": "Right to Data Portability:",
+          "text": "You can request your data in a structured, machine-readable format."
+        },
+        {
+          "title": "Right to Object:",
+          "text": "You can object to processing of your personal data."
+        }
+      ],
+      "contactText": "To exercise any of these rights, please contact me using the contact form or email address provided on the contact page."
+    },
+    "retention": {
+      "title": "5. Data Retention",
+      "text": "I retain personal data only for as long as necessary to fulfill the purposes outlined in this policy or as required by law. Contact form submissions are typically retained until the inquiry is resolved, unless you request deletion earlier."
+    },
+    "security": {
+      "title": "6. Security",
+      "text": "I take reasonable measures to protect your personal information. However, no method of transmission over the internet is 100% secure. This website uses HTTPS encryption, and third-party services are chosen for their security practices."
+    },
+    "children": {
+      "title": "7. Children's Privacy",
+      "text": "This website is not directed at children under 16 years of age. I do not knowingly collect personal information from children."
+    },
+    "changes": {
+      "title": "8. Changes to This Privacy Policy",
+      "text": "I may update this Privacy Policy from time to time. The \"Last updated\" date at the top of this page indicates when changes were made. Your continued use of this website after changes constitutes acceptance of the updated policy."
+    },
+    "contact": {
+      "title": "9. Contact",
+      "text": "If you have questions about this Privacy Policy or wish to exercise your rights, please contact me through the contact form on the contact page or via the email address provided in the imprint."
+    }
+  }
+}
+

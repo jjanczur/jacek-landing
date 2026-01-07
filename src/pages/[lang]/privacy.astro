@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, getSupportedLangs } from '../../utils/i18n';
+import type { Lang } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  return getSupportedLangs().map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = await getTranslations('privacy', lang);
+
+const dateLocale = lang === 'en' ? 'en-US' : lang === 'de' ? 'de-DE' : 'pl-PL';
+const formattedDate = new Date().toLocaleDateString(dateLocale, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
+  <section class="privacy-hero">
+    <div class="container">
+      <h1>{t.hero.title}</h1>
+      <p class="privacy-subtitle">
+        {t.hero.lastUpdated} {formattedDate}
+      </p>
+    </div>
+  </section>
+
+  <section class="privacy-content">
+    <div class="container content">
+      <div class="privacy-intro">
+        <p>{t.intro}</p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.information.title}</h2>
+        <p>{t.sections.information.text}</p>
+        <ul>
+          {t.sections.information.items.map((item) => (
+            <li>
+              <strong>{item.title}</strong> {item.text}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.usage.title}</h2>
+        <p>{t.sections.usage.text}</p>
+        <ul>
+          {t.sections.usage.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <p>{t.sections.usage.note}</p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.thirdParty.title}</h2>
+        <p>{t.sections.thirdParty.text}</p>
+        <ul>
+          {t.sections.thirdParty.items.map((item) => (
+            <li>
+              <strong>{item.title}</strong> {item.text}
+            </li>
+          ))}
+        </ul>
+        <p>
+          <strong>{t.sections.thirdParty.cookieNote.split(':')[0]}:</strong>{' '}
+          {t.sections.thirdParty.cookieNote.split(':').slice(1).join(':')}
+        </p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.rights.title}</h2>
+        <p>{t.sections.rights.text}</p>
+        <ul>
+          {t.sections.rights.items.map((item) => (
+            <li>
+              <strong>{item.title}</strong> {item.text}
+            </li>
+          ))}
+        </ul>
+        <p>{t.sections.rights.contactText}</p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.retention.title}</h2>
+        <p>{t.sections.retention.text}</p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.security.title}</h2>
+        <p>{t.sections.security.text}</p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.children.title}</h2>
+        <p>{t.sections.children.text}</p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.changes.title}</h2>
+        <p>{t.sections.changes.text}</p>
+      </div>
+
+      <div class="privacy-section">
+        <h2>{t.sections.contact.title}</h2>
+        <p>{t.sections.contact.text}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .privacy-hero {
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--muted) 100%);
+    text-align: center;
+  }
+
+  .privacy-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-2);
+    color: var(--text);
+  }
+
+  .privacy-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .privacy-content {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .privacy-intro {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .privacy-intro p {
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .privacy-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .privacy-section h2 {
+    font-size: var(--font-size-xl);
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .privacy-section p {
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .privacy-section ul {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-5);
+    line-height: 1.8;
+  }
+
+  .privacy-section li {
+    margin-bottom: var(--space-2);
+    color: var(--text);
+  }
+
+  .privacy-section li strong {
+    color: var(--primary);
+  }
+
+  @media (max-width: 600px) {
+    .privacy-hero h1 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .privacy-section {
+      margin-bottom: var(--space-6);
+    }
+  }
+</style>
+

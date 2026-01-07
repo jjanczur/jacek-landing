@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "Imprint | Jacek Janczura",
+    "description": "Legal notice and imprint information for janczura.com. Contact details and legal information."
+  },
+  "hero": {
+    "title": "Imprint",
+    "subtitle": "Legal Notice"
+  },
+  "sections": {
+    "responsible": {
+      "title": "Responsible for Content",
+      "websiteOwner": "Website Owner:",
+      "name": "Jacek Janczura",
+      "location": "Poland",
+      "note": "Note: This is a personal website. Business inquiries can be made through the contact form. Full business details are available upon request for legitimate business purposes."
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "For inquiries, please use the {contactLink} or reach out via LinkedIn.",
+      "contactLink": "Contact Form",
+      "linkedin": "LinkedIn:",
+      "linkedinUrl": "linkedin.com/in/jacekjanczura",
+      "privacyNote": "For privacy reasons, direct email addresses are not published on this website. All legitimate business and legal inquiries will be responded to through the contact form."
+    },
+    "liabilityContent": {
+      "title": "Liability for Content",
+      "text1": "As a service provider, I am responsible for my own content on these pages according to general law. However, I am not obligated to monitor third-party information transmitted or stored, or to investigate circumstances that indicate illegal activity.",
+      "text2": "Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the point in time at which a concrete infringement of the law becomes known. Upon becoming aware of such violations, I will remove this content immediately."
+    },
+    "liabilityLinks": {
+      "title": "Liability for Links",
+      "text1": "My website contains links to external websites of third parties, on whose contents I have no influence. Therefore, I cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the contents of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking.",
+      "text2": "However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of a violation of the law. Upon becoming aware of violations, I will remove such links immediately."
+    },
+    "copyright": {
+      "title": "Copyright",
+      "text1": "The content and works created by me on these pages are subject to copyright law. Duplication, processing, distribution, and any form of commercialization of such material beyond the scope of the copyright law shall require the prior written consent of its respective author or creator.",
+      "text2": "Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by me, the copyrights of third parties are respected. In particular, third-party content is identified as such. Should you nevertheless become aware of a copyright infringement, please inform me accordingly. Upon becoming aware of violations, I will remove such content immediately."
+    },
+    "dataProtection": {
+      "title": "Data Protection",
+      "text1": "The use of my website is usually possible without providing personal data. Insofar as personal data (such as name, address, or email addresses) is collected on my pages, this is always done, as far as possible, on a voluntary basis.",
+      "text2": "For detailed information on the handling of user data, please refer to my {privacyLink}.",
+      "privacyLink": "Privacy Policy"
+    }
+  }
+}
+

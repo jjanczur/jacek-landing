@@ -1,40 +1,46 @@
 ---
-
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <script>
-      // Instant redirect - execute immediately before page renders
-      (function () {
-        window.location.replace('/en/');
-      })();
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex, follow" />
     <meta http-equiv="refresh" content="0; url=/en/" />
-    <link rel="canonical" href="/en/" />
-    <title>Jacek Janczura - AI Architect & CTO</title>
+
+    <!-- Canonical + hreflang (English default) -->
+    <link rel="canonical" href="https://janczura.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://janczura.com/en/" />
+    <link rel="alternate" hreflang="en" href="https://janczura.com/en/" />
+    <link rel="alternate" hreflang="pl" href="https://janczura.com/pl/" />
+    <link rel="alternate" hreflang="de" href="https://janczura.com/de/" />
+
+    <script>
+      // Redirect only from the site root to avoid accidental loops.
+      // Prefer JS redirect (faster, avoids adding to history).
+      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        window.location.replace('/en/');
+      }
+    </script>
+
     <style>
+      :root {
+        color-scheme: light dark;
+      }
+      /* Ensure nothing flashes if the redirect takes a moment */
       html,
       body {
         margin: 0;
         padding: 0;
-        height: 100%;
-        overflow: hidden;
-        background: #fff;
+        background: transparent;
       }
       body {
-        visibility: hidden;
+        display: none;
       }
     </style>
   </head>
-  <body>
-    <noscript>
-      <meta http-equiv="refresh" content="0; url=/en/" />
-      <p style="visibility: visible; padding: 20px; text-align: center;">
-        Please enable JavaScript or <a href="/en/">click here</a> to continue.
-      </p>
-    </noscript>
-  </body>
+  <body></body>
 </html>

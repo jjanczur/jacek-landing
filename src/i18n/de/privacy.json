@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Datenschutzerklärung | Jacek Janczura",
+    "description": "Datenschutzerklärung für janczura.com. Informationen zur Datenerhebung, Verarbeitung und Ihren Rechten gemäß DSGVO."
+  },
+  "hero": {
+    "title": "Datenschutzerklärung",
+    "lastUpdated": "Letzte Aktualisierung:"
+  },
+  "intro": "Diese Datenschutzerklärung informiert Sie darüber, welche personenbezogenen Daten beim Besuch dieser Website erhoben werden, wie sie verwendet werden und welche Rechte Sie haben.",
+  "sections": {
+    "information": {
+      "title": "1. Welche Daten werden erhoben",
+      "text": "Diese Website wurde mit Fokus auf Datenschutz entwickelt. Es werden keine Tracking-Skripte oder Analytics-Tools eingesetzt. Automatisch erfasst werden lediglich:",
+      "items": [
+        {
+          "title": "Server-Logs:",
+          "text": "GitHub Pages (Hosting-Anbieter) kann IP-Adresse, Browsertyp und Zugriffszeiten protokollieren. Dies ist Standard und liegt nicht unter meiner direkten Kontrolle."
+        },
+        {
+          "title": "Kontaktformulardaten:",
+          "text": "Wenn Sie das Kontaktformular nutzen, werden Ihre E-Mail-Adresse und Nachricht von Formspree verarbeitet und mir per E-Mail zugestellt — gemäß deren Datenschutzrichtlinie."
+        },
+        {
+          "title": "Cookies und LocalStorage:",
+          "text": "Es werden keine Tracking-Cookies gesetzt. YouTube-Videos sind im Privacy-Enhanced-Modus (youtube-nocookie.com) eingebettet. Google Fonts kann gemäß eigener Richtlinie Cookies setzen. LocalStorage speichert ausschließlich Ihre Theme-Präferenz (hell/dunkel)."
+        }
+      ]
+    },
+    "usage": {
+      "title": "2. Verwendung der Daten",
+      "text": "Erhobene Daten werden ausschließlich verwendet für:",
+      "items": [
+        "Beantwortung von Kontaktanfragen",
+        "Sicherstellung der Funktionalität und Sicherheit der Website",
+        "Erfüllung gesetzlicher Verpflichtungen"
+      ],
+      "note": "Ihre Daten werden nicht verkauft oder zu Marketingzwecken an Dritte weitergegeben."
+    },
+    "thirdParty": {
+      "title": "3. Externe Dienste",
+      "text": "Diese Website nutzt folgende Drittanbieter-Dienste:",
+      "items": [
+        {
+          "title": "GitHub Pages:",
+          "text": "Hosting-Anbieter; deren Datenschutzrichtlinie gilt für Server-Logs."
+        },
+        {
+          "title": "Formspree:",
+          "text": "Verarbeitung des Kontaktformulars; Ihre Anfragen werden mir per E-Mail zugestellt."
+        },
+        {
+          "title": "Google Fonts:",
+          "text": "Bereitstellung von Schriftarten; Google kann dabei Nutzungsdaten erheben."
+        },
+        {
+          "title": "YouTube:",
+          "text": "Video-Einbettung im Privacy-Enhanced-Modus (youtube-nocookie.com), um Cookies zu minimieren."
+        }
+      ],
+      "cookieNote": "Hinweis zu Cookies: Es werden nur technisch notwendige Cookies (für Schriften und Videos) verwendet. Da keine Tracking- oder Marketing-Cookies eingesetzt werden, ist kein Cookie-Consent-Banner erforderlich."
+    },
+    "rights": {
+      "title": "4. Ihre Rechte nach DSGVO",
+      "text": "Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:",
+      "items": [
+        {
+          "title": "Auskunft:",
+          "text": "über die zu Ihrer Person gespeicherten Daten."
+        },
+        {
+          "title": "Berichtigung:",
+          "text": "unrichtiger personenbezogener Daten."
+        },
+        {
+          "title": "Löschung:",
+          "text": "Ihrer Daten."
+        },
+        {
+          "title": "Einschränkung:",
+          "text": "der Verarbeitung."
+        },
+        {
+          "title": "Datenübertragbarkeit:",
+          "text": "Erhalt Ihrer Daten in einem strukturierten, maschinenlesbaren Format."
+        },
+        {
+          "title": "Widerspruch:",
+          "text": "gegen die Verarbeitung."
+        }
+      ],
+      "contactText": "Zur Ausübung Ihrer Rechte nutzen Sie bitte das Kontaktformular oder die Angaben im Impressum."
+    },
+    "retention": {
+      "title": "5. Speicherdauer",
+      "text": "Personenbezogene Daten werden nur so lange gespeichert, wie es für die genannten Zwecke erforderlich ist oder gesetzlich vorgeschrieben. Anfragen über das Kontaktformular werden in der Regel bis zur Klärung des Anliegens aufbewahrt."
+    },
+    "security": {
+      "title": "6. Sicherheit",
+      "text": "Ich treffe angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer Daten. Dennoch ist keine Datenübertragung im Internet vollständig sicher. Diese Website nutzt HTTPS-Verschlüsselung; externe Dienste werden unter Berücksichtigung ihrer Sicherheitsstandards ausgewählt."
+    },
+    "children": {
+      "title": "7. Datenschutz bei Minderjährigen",
+      "text": "Diese Website richtet sich nicht an Personen unter 16 Jahren. Es werden keine personenbezogenen Daten von Kindern wissentlich erhoben."
+    },
+    "changes": {
+      "title": "8. Änderungen dieser Datenschutzerklärung",
+      "text": "Diese Datenschutzerklärung kann gelegentlich aktualisiert werden. Das Datum „Letzte Aktualisierung\" oben zeigt den aktuellen Stand. Die fortgesetzte Nutzung der Website nach Änderungen gilt als Zustimmung zur aktualisierten Fassung."
+    },
+    "contact": {
+      "title": "9. Kontakt",
+      "text": "Bei Fragen zu dieser Datenschutzerklärung oder zur Ausübung Ihrer Rechte nutzen Sie bitte das Kontaktformular oder die Kontaktdaten im Impressum."
+    }
+  }
+}
+

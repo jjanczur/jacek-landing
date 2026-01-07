@@ -31,18 +31,22 @@ const links = legalLinks[lang];
       </p>
       <div class="legal-links">
         <a
-          href={lang === 'en' ? `/${lang}/privacy/` : '/en/privacy/'}
+          href={`/${lang}/privacy/`}
           class="legal-link">{links.privacy}</a
         >
         <span class="legal-separator">•</span>
         <a
-          href={lang === 'en' ? `/${lang}/imprint/` : '/en/imprint/'}
+          href={`/${lang}/imprint/`}
           class="legal-link">{links.imprint}</a
         >
       </div>
     </div>
 
-    <div class="social-links">
+    <div class="footer-right">
+      <a href={`/${lang}/contact/`} class="footer-cta">
+        Get in touch
+      </a>
+      <div class="social-links">
       <a
         href="https://linkedin.com/in/jacekjanczura"
         target="_blank"
@@ -69,6 +73,7 @@ const links = legalLinks[lang];
           ></path>
         </svg>
       </a>
+      </div>
     </div>
   </div>
 </footer>
@@ -87,6 +92,31 @@ const links = legalLinks[lang];
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-4);
+  }
+
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .footer-cta {
+    padding: var(--space-2) var(--space-4);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-m);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .footer-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
+    text-decoration: none;
   }
 
   .footer-left {
@@ -150,6 +180,12 @@ const links = legalLinks[lang];
 
     .footer-left {
       align-items: center;
+    }
+
+    .footer-right {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
     }
 
     .legal-links {

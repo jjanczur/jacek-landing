@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Vorträge | Jacek Janczura",
+    "description": "Technische Vorträge zu KI-Architektur, verteilten Systemen und Blockchain. Praxiswissen aus Enterprise-Projekten."
+  },
+  "hero": {
+    "title": "Vorträge",
+    "subtitle": "Praxiswissen aus Enterprise-Projekten"
+  },
+  "talks": [
+    {
+      "title": "KI-Architekturmuster",
+      "event": "Konferenzvortrag",
+      "date": "2024",
+      "description": "Praktische Erkenntnisse aus LLM-Deployments im Enterprise-Umfeld: Multi-Tenant-Architektur, Kostenoptimierung, Observability und skalierbare Governance-Patterns.",
+      "youtubeId": "Sf61QaWJDjA",
+      "videoTitle": "KI-Architekturmuster – LLM-Deployments im Unternehmen",
+      "tags": ["KI-Architektur", "LLM", "Enterprise", "Skalierbarkeit"]
+    },
+    {
+      "title": "Verteilte Systeme at Scale",
+      "event": "Tech-Konferenz",
+      "date": "2023",
+      "description": "Trade-offs zwischen Durchsatz, Latenz und Resilienz in modernen verteilten Systemen. Event-Driven-Architekturen, Backpressure-Mechanismen und Observability-Patterns.",
+      "youtubeId": "fPp66mtx_60",
+      "videoTitle": "Verteilte Systeme at Scale – Architekturmuster",
+      "tags": ["Verteilte Systeme", "Event-Driven", "Skalierbarkeit", "Observability"]
+    },
+    {
+      "title": "Blockchain & Bitcoin",
+      "event": "idealo Tech Talks",
+      "date": "2022",
+      "description": "Grundlagen der Blockchain-Technologie und Bitcoin, Enterprise-Anwendungsfälle, Smart Contracts und praktische Integration in moderne Softwarearchitekturen.",
+      "youtubeId": "6WzFtN3xWF4",
+      "videoTitle": "Blockchain & Bitcoin – Grundlagen und Enterprise-Anwendungen",
+      "tags": ["Blockchain", "Bitcoin", "Enterprise", "Smart Contracts"]
+    }
+  ]
+}
+

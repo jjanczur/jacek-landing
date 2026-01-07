@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "Informacje prawne | Jacek Janczura",
+    "description": "Nota prawna i dane kontaktowe dla janczura.com. Informacje o właścicielu strony i zakresie odpowiedzialności."
+  },
+  "hero": {
+    "title": "Informacje prawne",
+    "subtitle": "Nota prawna"
+  },
+  "sections": {
+    "responsible": {
+      "title": "Osoba odpowiedzialna za treść",
+      "websiteOwner": "Właściciel strony:",
+      "name": "Jacek Janczura",
+      "location": "Polska",
+      "note": "Uwaga: To jest strona prywatna. Zapytania biznesowe proszę kierować przez formularz kontaktowy. Pełne dane firmowe udostępniam na uzasadnione żądanie."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "text": "W sprawie zapytań proszę skorzystać z {contactLink} lub LinkedIn.",
+      "contactLink": "formularza kontaktowego",
+      "linkedin": "LinkedIn:",
+      "linkedinUrl": "linkedin.com/in/jacekjanczura",
+      "privacyNote": "Ze względów prywatności adres e-mail nie jest publikowany. Na uzasadnione zapytania biznesowe i prawne odpowiadam przez formularz kontaktowy."
+    },
+    "liabilityContent": {
+      "title": "Odpowiedzialność za treści",
+      "text1": "Jako właściciel strony odpowiadam za własne treści zgodnie z obowiązującym prawem. Nie mam jednak obowiązku monitorowania przekazywanych lub przechowywanych informacji osób trzecich ani badania okoliczności wskazujących na działalność niezgodną z prawem.",
+      "text2": "Obowiązki usunięcia lub zablokowania treści wynikające z przepisów prawa pozostają nienaruszone. Odpowiedzialność w tym zakresie jest jednak możliwa dopiero od momentu uzyskania wiedzy o konkretnym naruszeniu. Po otrzymaniu takiej informacji niezwłocznie usunę naruszające treści."
+    },
+    "liabilityLinks": {
+      "title": "Odpowiedzialność za linki",
+      "text1": "Strona zawiera odnośniki do zewnętrznych witryn, na których treść nie mam wpływu. Za treść linkowanych stron odpowiada ich właściciel lub operator. Strony te zostały sprawdzone pod kątem zgodności z prawem w momencie dodawania linku i nie stwierdzono wówczas treści niezgodnych z prawem.",
+      "text2": "Stałe monitorowanie linkowanych stron bez konkretnych przesłanek naruszenia prawa jest nieuzasadnione. Po uzyskaniu informacji o naruszeniach takie linki zostaną niezwłocznie usunięte."
+    },
+    "copyright": {
+      "title": "Prawa autorskie",
+      "text1": "Treści i materiały stworzone przeze mnie na tej stronie podlegają ochronie prawa autorskiego. Ich powielanie, przetwarzanie, dystrybucja lub inne wykorzystanie wykraczające poza dozwolony użytek wymaga mojej uprzedniej pisemnej zgody.",
+      "text2": "Pobieranie i kopiowanie treści z tej strony jest dozwolone wyłącznie do użytku prywatnego i niekomercyjnego. W przypadku treści, które nie zostały stworzone przeze mnie, respektowane są prawa autorskie osób trzecich i są one odpowiednio oznaczone. Jeśli zauważysz naruszenie praw autorskich, proszę o kontakt — naruszające treści zostaną niezwłocznie usunięte."
+    },
+    "dataProtection": {
+      "title": "Ochrona danych osobowych",
+      "text1": "Korzystanie z tej strony jest zasadniczo możliwe bez podawania danych osobowych. Jeśli dane osobowe (np. imię, adres e-mail) są zbierane, odbywa się to — w miarę możliwości — dobrowolnie.",
+      "text2": "Szczegółowe informacje o przetwarzaniu danych osobowych znajdziesz w {privacyLink}.",
+      "privacyLink": "Polityce prywatności"
+    }
+  }
+}
+

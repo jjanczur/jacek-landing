@@ -1,0 +1,683 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+import { getTranslations, getSupportedLangs } from '../../utils/i18n';
+import type { Lang } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  return getSupportedLangs().map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const talksT = await getTranslations('talks', lang);
+const publicationsT = await getTranslations('publications', lang);
+---
+
+<BaseLayout
+  title={`Writing & Talks | Jacek Janczura`}
+  description={`Technical talks, publications, and writing on AI architecture, distributed systems, and enterprise software.`}
+  lang={lang}
+>
+  <section class="writing-hero">
+    <div class="container">
+      <h1>Writing & Talks</h1>
+      <p class="writing-subtitle">Technical insights, publications, and practical lessons from enterprise deployments</p>
+    </div>
+  </section>
+
+  <section class="writing-content">
+    <div class="container content">
+      <!-- Talks Section -->
+      <div class="writing-section">
+        <h2>Talks</h2>
+        <p class="section-intro">{talksT.hero.subtitle}</p>
+        <div class="talks-list">
+          {talksT.talks.map((talk) => (
+            <article class="talk-card">
+              <div class="talk-header">
+                <h3>{talk.title}</h3>
+                <div class="talk-meta">
+                  <span class="talk-event">{talk.event}</span>
+                  <span class="talk-date">{talk.date}</span>
+                </div>
+              </div>
+              <div class="talk-content">
+                <p class="talk-description">{talk.description}</p>
+                <VideoEmbed
+                  youtubeId={talk.youtubeId}
+                  title={talk.videoTitle}
+                  className="talk-video"
+                />
+              </div>
+              <div class="talk-tags">
+                {talk.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- Publications Section -->
+      <div class="writing-section">
+        <h2>{publicationsT.sections.publications.title}</h2>
+        <div class="publications-grid">
+          <div class="publication-group">
+            <h3>{publicationsT.sections.publications.groups.peerReviewed.title}</h3>
+            {publicationsT.sections.publications.groups.peerReviewed.items.map((item) => (
+              <article class="publication-card">
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+                <p>
+                  {item.role && (
+                    <>
+                      <strong>{publicationsT.labels.role}</strong> {item.role}{' '}
+                    </>
+                  )}
+                  {item.doi && (
+                    <>
+                      <strong>{publicationsT.labels.doi}</strong>{' '}
+                      <a
+                        href={`https://doi.org/${item.doi}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.doi}
+                      </a>{' '}
+                    </>
+                  )}
+                  {item.links && item.links.length > 0 && (
+                    <>
+                      <strong>{publicationsT.labels.links}</strong>{' '}
+                      {item.links.map((link, idx) => (
+                        <>
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.label}
+                          </a>
+                          {idx < item.links.length - 1 && ' '}
+                        </>
+                      ))}
+                    </>
+                  )}
+                </p>
+              </article>
+            ))}
+          </div>
+          <div class="publication-group">
+            <h3>{publicationsT.sections.publications.groups.articles.title}</h3>
+            {publicationsT.sections.publications.groups.articles.items
+              .filter((item) => !item.placeholder)
+              .map((item) => (
+                <article class="publication-card">
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                  {item.links && item.links.length > 0 && (
+                    <p>
+                      <strong>{publicationsT.labels.link}</strong>{' '}
+                      {item.links.map((link) => (
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </p>
+                  )}
+                </article>
+              ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Notes Section -->
+      <div class="writing-section">
+        <h2>{publicationsT.sections.notes.title}</h2>
+        <div class="notes-intro">
+          <p>{publicationsT.sections.notes.intro}</p>
+        </div>
+        <div class="notes-grid">
+          {publicationsT.sections.notes.items.map((note) => (
+            <article class="note-card">
+              <div class="note-header">
+                <h3>{note.title}</h3>
+                <span class="note-date">{note.date}</span>
+              </div>
+              <p class="note-excerpt">{note.excerpt}</p>
+              <div class="note-tags">
+                {note.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .writing-hero {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .writing-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at top right,
+      oklch(from var(--primary) l c h / 0.08) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .writing-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .writing-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    background: linear-gradient(
+      135deg,
+      var(--text) 0%,
+      var(--primary) 50%,
+      var(--text) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  .writing-subtitle {
+    font-size: var(--font-size-xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0;
+    font-weight: var(--font-weight-bold);
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .writing-content {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .writing-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .writing-section h2 {
+    margin-bottom: var(--space-4);
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2xl);
+  }
+
+  .section-intro {
+    text-align: center;
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-lg);
+    opacity: 0.8;
+  }
+
+  .talks-list {
+    display: grid;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .talk-card {
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%
+    );
+    border: 1px solid transparent;
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .talk-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      var(--accent),
+      var(--primary)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .talk-card:hover {
+    border-color: oklch(from var(--primary) l c h / 0.3);
+    box-shadow:
+      0 8px 24px oklch(from var(--primary) l c h / 0.15),
+      var(--shadow-2);
+    transform: translateY(-4px);
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%
+    );
+  }
+
+  .talk-card:hover::before {
+    opacity: 1;
+  }
+
+  .talk-header {
+    margin-bottom: var(--space-4);
+    position: relative;
+    z-index: 1;
+  }
+
+  .talk-header h3 {
+    font-size: var(--font-size-2xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 var(--space-2) 0;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+  }
+
+  .talk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .talk-event {
+    font-size: var(--font-size-sm);
+    color: white;
+    font-weight: var(--font-weight-bold);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border: 1px solid transparent;
+    border-radius: var(--radius-s);
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+  }
+
+  .talk-date {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.8;
+    font-weight: var(--font-weight-normal);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(
+      135deg,
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.03) 100%
+    );
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+  }
+
+  .talk-content {
+    margin-bottom: var(--space-4);
+    position: relative;
+    z-index: 1;
+  }
+
+  .talk-description {
+    margin: 0 0 var(--space-4) 0;
+    line-height: 1.7;
+    font-size: var(--font-size-base);
+    color: var(--text);
+  }
+
+  .talk-video {
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.1);
+  }
+
+  .talk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .publication-group h3 {
+    font-size: var(--font-size-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .publication-card {
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%
+    );
+    border: 1px solid transparent;
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .publication-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      var(--accent),
+      var(--primary)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .publication-card:hover {
+    border-color: oklch(from var(--primary) l c h / 0.3);
+    box-shadow:
+      0 6px 20px oklch(from var(--primary) l c h / 0.12),
+      var(--shadow-1);
+    transform: translateY(-2px);
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.04) 100%
+    );
+  }
+
+  .publication-card:hover::before {
+    opacity: 1;
+  }
+
+  .publication-card h4 {
+    font-size: var(--font-size-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+  }
+
+  .publication-card p {
+    margin-bottom: var(--space-3);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .publication-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .publication-card a {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-s);
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin-right: var(--space-2);
+    margin-bottom: var(--space-1);
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.1) 0%,
+      oklch(from var(--accent) l c h / 0.05) 100%
+    );
+    border: 1px solid transparent;
+  }
+
+  .publication-card a:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
+    text-decoration: none;
+  }
+
+  .publication-card strong {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .notes-intro {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .notes-intro p {
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    margin-bottom: 0;
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text);
+  }
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+
+  .note-card {
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%
+    );
+    border: 1px solid transparent;
+    border-radius: var(--radius-l);
+    padding: var(--space-5);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .note-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      var(--accent),
+      var(--primary)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .note-card:hover {
+    border-color: oklch(from var(--primary) l c h / 0.3);
+    box-shadow:
+      0 8px 24px oklch(from var(--primary) l c h / 0.15),
+      var(--shadow-2);
+    transform: translateY(-4px);
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%
+    );
+  }
+
+  .note-card:hover::before {
+    opacity: 1;
+  }
+
+  .note-header {
+    margin-bottom: var(--space-3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .note-header h3 {
+    font-size: var(--font-size-xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 var(--space-2) 0;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+  }
+
+  .note-date {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.8;
+    font-weight: var(--font-weight-normal);
+    padding: var(--space-1) var(--space-2);
+    background: linear-gradient(
+      135deg,
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.03) 100%
+    );
+    border-radius: var(--radius-s);
+    display: inline-block;
+  }
+
+  .note-excerpt {
+    margin: 0 0 var(--space-4) 0;
+    line-height: 1.7;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+
+  .note-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .tag {
+    background: linear-gradient(
+      135deg,
+      var(--muted) 0%,
+      oklch(from var(--primary) l c h / 0.08) 100%
+    );
+    color: var(--text);
+    opacity: 0.8;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    border: 1px solid var(--border);
+    cursor: default;
+  }
+
+  @media (max-width: 600px) {
+    .talks-list {
+      gap: var(--space-4);
+    }
+
+    .talk-card {
+      padding: var(--space-4);
+    }
+
+    .talk-header h3 {
+      font-size: var(--font-size-xl);
+    }
+
+    .talk-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .publications-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

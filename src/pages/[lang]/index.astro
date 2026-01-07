@@ -1,0 +1,1101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  Building2,
+  Workflow,
+  Factory,
+  Shield,
+  TrendingUp,
+  Network,
+  Brain,
+  Home,
+  BarChart,
+  Code,
+  Mail,
+  ArrowRight,
+} from 'lucide-astro';
+import { getTranslations, getSupportedLangs } from '../../utils/i18n';
+import type { Lang } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  return getSupportedLangs().map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = await getTranslations('index', lang);
+
+const highlightIcons = [Building2, Workflow, Factory, Shield, TrendingUp, Network];
+const featuredIcons = [Brain, Home, BarChart, Code];
+
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang,
+  mainEntity: (t.faq?.items || []).map((item: any) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
+  {(t.faq?.items?.length || 0) > 0 && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(faqStructuredData)}
+    />
+  )}
+
+  <section class="hero">
+    <div class="hero-background">
+      <canvas class="network-canvas"></canvas>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">{t.hero.title}</h1>
+          <p class="hero-subtitle">{t.hero.subtitle}</p>
+          <p class="hero-tagline">{t.hero.tagline}</p>
+          <div class="hero-cta">
+            <a href={`/${lang}/contact/`} class="cta-button">
+              <Mail size={18} />
+              {t.hero.cta.primary}
+            </a>
+            <a href={`/${lang}/projects/`} class="cta-link">
+              {t.hero.cta.secondary}
+              <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="/images/headshot.jpg"
+            alt="Jacek Janczura"
+            width="300"
+            height="300"
+            class="headshot"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="positioning">
+    <div class="container content">
+      <p set:html={t.positioning.p1} />
+      <p set:html={t.positioning.p2} />
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="container">
+      <h2>{t.highlights.title}</h2>
+      <div class="highlights-grid">
+        {t.highlights.items.map((item, idx) => {
+          const Icon = highlightIcons[idx];
+          return (
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <Icon size={32} />
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          );
+        })}
+      </div>
+      <p class="highlights-note">{t.highlights.note}</p>
+    </div>
+  </section>
+
+  <section class="featured-work">
+    <div class="container">
+      <h2>{t.featured.title}</h2>
+      <div class="featured-grid">
+        {t.featured.items.map((item, idx) => {
+          const Icon = featuredIcons[idx];
+          const url = item.url || '/projects/';
+          return (
+            <a href={`/${lang}${url}`} class="featured-item">
+              <div class="featured-icon">
+                <Icon size={28} />
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <span class="featured-link">{item.link}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-cta">
+    <div class="container content">
+      <h2>{t.contactCta.title}</h2>
+      <p>{t.contactCta.description}</p>
+      <a href={`/${lang}/contact/`} class="cta-button">
+        <Mail size={18} />
+        {t.contactCta.button}
+      </a>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2>{t.faq.title}</h2>
+      <p class="faq-intro">{t.faq.intro}</p>
+      <div class="faq-list">
+        {t.faq.items.map((item, idx) => (
+          <details class="faq-item" open={idx === 0}>
+            <summary class="faq-question">{item.question}</summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+              <div class="faq-links">
+                <a href={`/${lang}/about/`} class="faq-link">
+                  {lang === 'en'
+                    ? 'About'
+                    : lang === 'pl'
+                      ? 'O mnie'
+                      : 'Über mich'}
+                </a>
+                <a href={`/${lang}/projects/`} class="faq-link">
+                  {lang === 'en'
+                    ? 'Projects'
+                    : lang === 'pl'
+                      ? 'Projekty'
+                      : 'Projekte'}
+                </a>
+                <a href={`/${lang}/contact/`} class="faq-link">
+                  {lang === 'en'
+                    ? 'Contact'
+                    : lang === 'pl'
+                      ? 'Kontakt'
+                      : 'Kontakt'}
+                </a>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  // Network animation script - Canvas-based like jadendata.com
+  (function() {
+    function initNetwork() {
+      const canvas = document.querySelector('.network-canvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      // Resize canvas to match container
+      function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Get primary color from CSS and convert to RGB
+      function getPrimaryColorRGB() {
+        // Create a temporary element to get computed color
+        const temp = document.createElement('div');
+        temp.style.color = 'var(--primary)';
+        temp.style.position = 'absolute';
+        temp.style.visibility = 'hidden';
+        document.body.appendChild(temp);
+        
+        const computed = getComputedStyle(temp).color;
+        document.body.removeChild(temp);
+        
+        // Parse rgb/rgba string
+        const match = computed.match(/\d+/g);
+        if (match && match.length >= 3) {
+          return {
+            r: parseInt(match[0]),
+            g: parseInt(match[1]),
+            b: parseInt(match[2])
+          };
+        }
+        
+        // Fallback to purple if parsing fails
+        return { r: 139, g: 92, b: 246 };
+      }
+
+      const color = getPrimaryColorRGB();
+      // Much more subtle - less visible dots and lines
+      const dotColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.15)`;
+      const lineColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.08)`;
+
+      // Create dots in grid pattern (like jadendata.com) - fewer dots
+      const dots = [];
+      const gridSpacing = 150; // Increased spacing for fewer dots
+      const cols = Math.ceil(canvas.width / gridSpacing) + 1;
+      const rows = Math.ceil(canvas.height / gridSpacing) + 1;
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          dots.push({
+            x: gridSpacing * i + (Math.random() - 0.5) * 60,
+            y: gridSpacing * j + (Math.random() - 0.5) * 60,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3
+          });
+        }
+      }
+
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      let animationFrame;
+      function animate() {
+        if (prefersReducedMotion) {
+          // Draw static network for reduced motion
+          draw();
+          return;
+        }
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update and draw dots
+        dots.forEach(dot => {
+          // Update position
+          dot.x += dot.vx;
+          dot.y += dot.vy;
+
+          // Bounce off edges
+          if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
+          if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
+
+          // Keep within bounds
+          dot.x = Math.max(0, Math.min(canvas.width, dot.x));
+          dot.y = Math.max(0, Math.min(canvas.height, dot.y));
+        });
+
+        // Draw network
+        draw();
+
+        animationFrame = requestAnimationFrame(animate);
+      }
+
+      function draw() {
+        // Draw lines between nearby dots
+        ctx.strokeStyle = lineColor;
+        ctx.lineWidth = 1;
+        const maxDistance = 150;
+
+        for (let i = 0; i < dots.length; i++) {
+          for (let j = i + 1; j < dots.length; j++) {
+            const dx = dots[i].x - dots[j].x;
+            const dy = dots[i].y - dots[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < maxDistance) {
+              ctx.beginPath();
+              ctx.moveTo(dots[i].x, dots[i].y);
+              ctx.lineTo(dots[j].x, dots[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw dots
+        ctx.fillStyle = dotColor;
+        dots.forEach(dot => {
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, 2, 0, 2 * Math.PI);
+          ctx.fill();
+        });
+      }
+
+      // Start animation
+      animate();
+
+      // Cleanup on unmount
+      return () => {
+        window.removeEventListener('resize', resizeCanvas);
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+      };
+    }
+
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initNetwork);
+    } else {
+      initNetwork();
+    }
+  })();
+</script>
+
+<style>
+  .hero {
+    padding: var(--space-8) 0;
+    text-align: center;
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 30%,
+      oklch(from var(--accent) l c h / 0.03) 60%,
+      var(--muted) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at top right,
+      oklch(from var(--primary) l c h / 0.08) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .network-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4; // Reduced overall opacity
+  }
+
+  :root[data-theme='dark'] .network-canvas {
+    opacity: 0.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .network-canvas {
+      opacity: 0.2;
+    }
+  }
+
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-8);
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-image {
+    position: relative;
+    z-index: 1;
+  }
+
+  .headshot {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    box-shadow: 0 8px 24px oklch(from var(--primary) l c h / 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .headshot:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-6);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .headshot {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  .hero-title {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    background: linear-gradient(
+      135deg,
+      var(--text) 0%,
+      var(--primary) 50%,
+      var(--text) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .hero-tagline {
+    font-size: var(--font-size-lg);
+    color: var(--text);
+    opacity: 0.8;
+    margin-bottom: var(--space-6);
+    font-weight: var(--font-weight-normal);
+    font-style: italic;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-m);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .cta-button:hover {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px oklch(from var(--primary) l c h / 0.4);
+  }
+
+  .cta-button:hover::before {
+    left: 100%;
+  }
+
+  .cta-button:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .cta-link {
+    color: var(--primary);
+    padding: var(--space-3) var(--space-6);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-m);
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .cta-link:hover {
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+  }
+
+  .cta-link:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .positioning {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+    position: relative;
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .positioning::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .highlights {
+    padding: var(--space-8) 0;
+    background: var(--muted);
+    position: relative;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+  }
+
+  .highlights::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary),
+      transparent
+    );
+    opacity: 0.3;
+  }
+
+  .highlights h2 {
+    text-align: center;
+    margin-bottom: var(--space-6);
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-5);
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .highlight-card {
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%
+    );
+    padding: var(--space-5);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-card:nth-child(1),
+  .highlight-card:nth-child(4) {
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.05) 0%,
+      var(--bg) 100%
+    );
+    border: 1px solid oklch(from var(--primary) l c h / 0.15);
+  }
+
+  .highlight-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .highlight-card:hover .highlight-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      var(--accent),
+      var(--primary)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    border-color: oklch(from var(--primary) l c h / 0.2);
+    box-shadow: var(--shadow-2);
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 100%
+    );
+  }
+
+  .highlight-card:hover::before {
+    opacity: 1;
+  }
+
+  .highlight-card h3 {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .highlights-note {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.8;
+    margin-top: var(--space-4);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .featured-work {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+  }
+
+  .featured-work h2 {
+    text-align: center;
+    margin-bottom: var(--space-6);
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .featured-item {
+    display: block;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    transition: all 0.3s ease;
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.01) 100%
+    );
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .featured-icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+
+  .featured-item:hover .featured-icon {
+    transform: scale(1.1);
+    color: var(--accent);
+  }
+
+  .featured-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.05) 0%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .featured-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2);
+    text-decoration: none;
+  }
+
+  .featured-item:hover::before {
+    opacity: 1;
+  }
+
+  .featured-item:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .featured-item h3 {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-xl);
+    position: relative;
+    z-index: 1;
+  }
+
+  .featured-link {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    margin-top: var(--space-3);
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .featured-item:hover .featured-link {
+    transform: translateX(4px);
+  }
+
+  .contact-cta {
+    padding: var(--space-8) 0;
+    background: var(--muted);
+    text-align: center;
+    position: relative;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+  }
+
+  .contact-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary),
+      var(--accent),
+      var(--primary),
+      transparent
+    );
+    opacity: 0.4;
+  }
+
+  .contact-cta h2 {
+    margin-bottom: var(--space-3);
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .contact-cta p {
+    margin-bottom: var(--space-5);
+    font-size: var(--font-size-lg);
+  }
+
+  @media (max-width: 600px) {
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* FAQ */
+  .faq {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+    position: relative;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+  }
+
+  .highlight-card {
+    animation: fadeIn 0.5s ease-out both;
+  }
+
+  .highlight-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .highlight-card:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .highlight-card:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .highlight-card:nth-child(4) {
+    animation-delay: 0.25s;
+  }
+
+  .highlight-card:nth-child(5) {
+    animation-delay: 0.3s;
+  }
+
+  .highlight-card:nth-child(6) {
+    animation-delay: 0.35s;
+  }
+
+  .featured-item {
+    animation: fadeIn 0.5s ease-out both;
+  }
+
+  .featured-item:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .featured-item:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .featured-item:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .featured-item:nth-child(4) {
+    animation-delay: 0.25s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .positioning,
+    .highlights,
+    .featured-work,
+    .contact-cta,
+    .faq,
+    .highlight-card,
+    .featured-item {
+      animation: none;
+    }
+  }
+
+  .faq::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.25;
+  }
+
+  .faq h2 {
+    text-align: center;
+    margin-bottom: var(--space-3);
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .faq-intro {
+    max-width: 720px;
+    margin: 0 auto var(--space-6) auto;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  .faq-list {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .faq-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    cursor: pointer;
+    padding: var(--space-4) var(--space-5);
+    font-weight: var(--font-weight-bold);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item[open] .faq-question {
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.05) 0%,
+      transparent 100%
+    );
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-5) var(--space-5) var(--space-5);
+  }
+
+  .faq-answer p {
+    margin: 0 0 var(--space-3);
+  }
+
+  .faq-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .faq-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: var(--radius-m);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    transition: all 0.2s ease;
+  }
+
+  .faq-link:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    text-decoration: none;
+  }
+
+  .faq-item:focus-within {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 600px) {
+    .faq-question {
+      padding: var(--space-4);
+    }
+    .faq-answer {
+      padding: 0 var(--space-4) var(--space-4) var(--space-4);
+    }
+  }
+</style>
+

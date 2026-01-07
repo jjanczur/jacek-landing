@@ -13,12 +13,124 @@ export interface Props {
 const { title, description, lang, ogImage } = Astro.props;
 
 // Define alternate URLs for hreflang
+// Note: `trailingSlash: 'always'` means `Astro.url.pathname` already ends with `/`.
+// We normalize to avoid generating `//` in hreflang URLs.
 const baseUrl = 'https://janczura.com';
 const currentPath = Astro.url.pathname;
-const alternateUrls = {
-  en: `${baseUrl}${currentPath.replace(/^\/(pl|de)/, '/en')}/`,
-  pl: `${baseUrl}${currentPath.replace(/^\/(en|de)/, '/pl')}/`,
-  de: `${baseUrl}${currentPath.replace(/^\/(en|pl)/, '/de')}/`,
+const canonicalUrl = `${baseUrl}${currentPath}`;
+
+const supportedLangs = ['en', 'pl', 'de'] as const;
+type SupportedLang = (typeof supportedLangs)[number];
+
+const stripTrailingSlashes = (path: string) => path.replace(/\/+$/, '');
+const ensureLeadingSlash = (path: string) => (path.startsWith('/') ? path : `/${path}`);
+const ensureTrailingSlash = (path: string) => `${stripTrailingSlashes(path)}/`;
+
+const getAltPathForLang = (targetLang: SupportedLang) => {
+  const normalized = stripTrailingSlashes(currentPath);
+  const parts = normalized.split('/').filter(Boolean); // e.g. ["en","projects"]
+  const first = parts[0] as string | undefined;
+  const rest = supportedLangs.includes(first as SupportedLang) ? parts.slice(1) : parts;
+  const rebuilt = ensureLeadingSlash([targetLang, ...rest].join('/'));
+  return ensureTrailingSlash(rebuilt);
+};
+
+const alternateUrls: Record<SupportedLang, string> = {
+  en: `${baseUrl}${getAltPathForLang('en')}`,
+  pl: `${baseUrl}${getAltPathForLang('pl')}`,
+  de: `${baseUrl}${getAltPathForLang('de')}`,
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://janczura.com/#person',
+      name: 'Jacek Janczura',
+      alternateName: 'Jacek Janczura',
+      jobTitle: 'AI Architect & CTO',
+      description:
+        'Co-founder & CTO at Jaden Data. AI and Cloud Architect specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures. Transforming operational complexity into competitive advantage through process intelligence.',
+      url: 'https://janczura.com',
+      image: 'https://janczura.com/images/headshot.jpg',
+      sameAs: ['https://linkedin.com/in/jacekjanczura', 'https://github.com/jjanczur'],
+      knowsAbout: [
+        'Artificial Intelligence',
+        'Machine Learning',
+        'LLM Platforms',
+        'Retrieval-Augmented Generation',
+        'RAG Systems',
+        'Cloud Architecture',
+        'AWS',
+        'Azure',
+        'Distributed Systems',
+        'Microservices',
+        'Cybersecurity',
+        'ISO 27001',
+        'SOC 2',
+        'Process Intelligence',
+        'Enterprise AI',
+        'AI Native Systems',
+        'Event-Driven Architecture',
+        'Serverless Computing',
+      ],
+      hasOccupation: {
+        '@type': 'Occupation',
+        name: 'AI Architect & CTO',
+        occupationLocation: {
+          '@type': 'City',
+          name: 'Berlin',
+          '@id': 'https://www.wikidata.org/wiki/Q64',
+        },
+        skills: [
+          'Enterprise LLM Platforms',
+          'RAG Systems',
+          'Cloud Architecture',
+          'Security & Compliance',
+          'Technical Leadership',
+        ],
+      },
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Jaden Data',
+        url: 'https://jaden-data.com',
+      },
+      alumniOf: [
+        {
+          '@type': 'EducationalOrganization',
+          name: 'Technische Universität Berlin',
+        },
+        {
+          '@type': 'EducationalOrganization',
+          name: 'Warsaw University of Technology',
+        },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Berlin',
+        addressCountry: 'DE',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://janczura.com/#website',
+      url: 'https://janczura.com',
+      name: 'Jacek Janczura',
+      inLanguage: ['en', 'pl', 'de'],
+      publisher: { '@id': 'https://janczura.com/#person' },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: title,
+      description,
+      inLanguage: lang,
+      isPartOf: { '@id': 'https://janczura.com/#website' },
+      about: { '@id': 'https://janczura.com/#person' },
+    },
+  ],
 };
 ---
 
@@ -39,7 +151,7 @@ const alternateUrls = {
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
-    <link rel="canonical" href={`${baseUrl}${currentPath}`} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -51,7 +163,7 @@ const alternateUrls = {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`${baseUrl}${currentPath}`} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Jacek Janczura" />
     <meta
       property="og:locale"
@@ -88,78 +200,10 @@ const alternateUrls = {
     />
 
     <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Jacek Janczura",
-        "alternateName": "Jacek Janczura",
-        "jobTitle": "AI Architect & CTO",
-        "description": "Co-founder & CTO at Jaden Data. AI and Cloud Architect specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures. Transforming operational complexity into competitive advantage through process intelligence.",
-        "url": "https://janczura.com",
-        "image": "https://janczura.com/images/headshot.jpg",
-        "sameAs": [
-          "https://linkedin.com/in/jacekjanczura",
-          "https://github.com/jjanczur"
-        ],
-        "knowsAbout": [
-          "Artificial Intelligence",
-          "Machine Learning",
-          "LLM Platforms",
-          "Retrieval-Augmented Generation",
-          "RAG Systems",
-          "Cloud Architecture",
-          "AWS",
-          "Azure",
-          "Distributed Systems",
-          "Microservices",
-          "Cybersecurity",
-          "ISO 27001",
-          "SOC 2",
-          "Process Intelligence",
-          "Enterprise AI",
-          "AI Native Systems",
-          "Event-Driven Architecture",
-          "Serverless Computing"
-        ],
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "AI Architect & CTO",
-          "occupationLocation": {
-            "@type": "City",
-            "name": "Berlin",
-            "@id": "https://www.wikidata.org/wiki/Q64"
-          },
-          "skills": [
-            "Enterprise LLM Platforms",
-            "RAG Systems",
-            "Cloud Architecture",
-            "Security & Compliance",
-            "Technical Leadership"
-          ]
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Jaden Data",
-          "url": "https://jaden-data.com"
-        },
-        "alumniOf": [
-          {
-            "@type": "EducationalOrganization",
-            "name": "Technische Universität Berlin"
-          },
-          {
-            "@type": "EducationalOrganization",
-            "name": "Warsaw University of Technology"
-          }
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Berlin",
-          "addressCountry": "DE"
-        }
-      }
-    </script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
 
     <!-- Theme initialization -->
     <script is:inline>

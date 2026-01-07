@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Talks | Jacek Janczura",
+    "description": "Technical talks on AI architecture, distributed systems, and blockchain. Sharing practical lessons from enterprise deployments."
+  },
+  "hero": {
+    "title": "Talks",
+    "subtitle": "Practical lessons from enterprise deployments"
+  },
+  "talks": [
+    {
+      "title": "AI Architecture Patterns",
+      "event": "Conference Talk",
+      "date": "2024",
+      "description": "Practical lessons from enterprise LLM deployments: multi-tenant architecture, cost optimization, observability, and governance patterns that scale.",
+      "youtubeId": "Sf61QaWJDjA",
+      "videoTitle": "AI Architecture Patterns - Enterprise LLM Deployments",
+      "tags": ["AI Architecture", "LLM", "Enterprise", "Scalability"]
+    },
+    {
+      "title": "Distributed Systems at Scale",
+      "event": "Tech Conference",
+      "date": "2023",
+      "description": "Throughput, latency, and resilience trade-offs in modern distributed systems. Event-driven architectures, back-pressure mechanisms, and observability patterns.",
+      "youtubeId": "fPp66mtx_60",
+      "videoTitle": "Distributed Systems at Scale - Architecture Patterns",
+      "tags": ["Distributed Systems", "Event-Driven", "Scalability", "Observability"]
+    },
+    {
+      "title": "Blockchain & Bitcoin",
+      "event": "idealo Tech Talks",
+      "date": "2022",
+      "description": "Fundamentals of blockchain technology and Bitcoin, with enterprise use cases, smart contracts, and practical applications in modern software architecture.",
+      "youtubeId": "6WzFtN3xWF4",
+      "videoTitle": "Blockchain & Bitcoin - Fundamentals and Enterprise Use Cases",
+      "tags": ["Blockchain", "Bitcoin", "Enterprise", "Smart Contracts"]
+    }
+  ]
+}
+
