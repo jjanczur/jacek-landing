@@ -3,20 +3,22 @@ export type Lang = 'en' | 'pl' | 'de';
 /**
  * Get translations for a specific page and language
  */
-export async function getTranslations<T = Record<string, any>>(
+export async function getTranslations<T = Record<string, unknown>>(
   page: string,
-  lang: Lang
+  lang: Lang,
 ): Promise<T> {
   try {
     const translations = await import(`../i18n/${lang}/${page}.json`);
     return translations.default as T;
-  } catch (error) {
+  } catch {
     // Fallback to English if translation file doesn't exist
     if (lang !== 'en') {
       const fallback = await import(`../i18n/en/${page}.json`);
       return fallback.default as T;
     }
-    throw new Error(`Translation file not found: ${page} for language: ${lang}`);
+    throw new Error(
+      `Translation file not found: ${page} for language: ${lang}`,
+    );
   }
 }
 
@@ -35,4 +37,3 @@ export function getLangFromPath(pathname: string): Lang {
 export function getSupportedLangs(): Lang[] {
   return ['en', 'pl', 'de'];
 }
-

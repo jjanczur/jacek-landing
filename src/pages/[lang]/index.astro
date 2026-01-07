@@ -52,6 +52,7 @@ const faqStructuredData = {
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
   {(t.faq?.items?.length || 0) > 0 && (
     <script
+      is:inline
       type="application/ld+json"
       set:html={JSON.stringify(faqStructuredData)}
     />
@@ -229,8 +230,8 @@ const faqStructuredData = {
           return {
             r: parseInt(match[0]),
             g: parseInt(match[1]),
-            b: parseInt(match[2])
-          };
+            b: parseInt(match[2]),
+        };
         }
         
         // Fallback to purple if parsing fails
@@ -254,8 +255,8 @@ const faqStructuredData = {
             x: gridSpacing * i + (Math.random() - 0.5) * 60,
             y: gridSpacing * j + (Math.random() - 0.5) * 60,
             vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3
-          });
+            vy: (Math.random() - 0.5) * 0.3,
+        });
         }
       }
 
@@ -391,7 +392,7 @@ const faqStructuredData = {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.4; // Reduced overall opacity
+    opacity: 0.4; /* Reduced overall opacity */
   }
 
   :root[data-theme='dark'] .network-canvas {

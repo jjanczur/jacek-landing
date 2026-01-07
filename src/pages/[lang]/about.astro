@@ -16,7 +16,7 @@ import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -57,18 +57,21 @@ function isListHtml(value: unknown): value is string {
             class="headshot"
           />
         </div>
-        {t.bio.paragraphs.map((para) => (
-          isListHtml(para) ? (
-            <div class="bio-text" set:html={para} />
-          ) : (
-            <p class="bio-text" set:html={para} />
+        {
+          t.bio.paragraphs.map(para =>
+            isListHtml(para) ? (
+              <div class="bio-text" set:html={para} />
+            ) : (
+              <p class="bio-text" set:html={para} />
+            ),
           )
-        ))}
+        }
 
         <div class="downloads">
           <a
             href="/docs/Jacek_Janczura_CV.pdf"
             download="Jacek_Janczura_CV.pdf"
+            type="application/pdf"
             class="download-link"
           >
             <Download size={16} />
@@ -80,55 +83,59 @@ function isListHtml(value: unknown): value is string {
       <!-- Personal -->
       <div class="bio-section">
         <h2>{t.outsideWork.title}</h2>
-        {t.outsideWork.paragraphs.map((para) => (
-          <p class="bio-text">{para}</p>
-        ))}
+        {t.outsideWork.paragraphs.map(para => <p class="bio-text">{para}</p>)}
       </div>
 
       <!-- Detailed Bio -->
       <div class="bio-section">
         <h2>{t.philosophy.title}</h2>
-        {t.philosophy.paragraphs.map((para) => (
-          isListHtml(para) ? (
-            <div class="bio-text" set:html={para} />
-          ) : (
-            <p class="bio-text" set:html={para} />
+        {
+          t.philosophy.paragraphs.map(para =>
+            isListHtml(para) ? (
+              <div class="bio-text" set:html={para} />
+            ) : (
+              <p class="bio-text" set:html={para} />
+            ),
           )
-        ))}
+        }
       </div>
 
       <!-- Career Journey -->
       <div class="bio-section">
         <h2>{t.career.title}</h2>
-        {t.career.paragraphs.map((para) => (
-          isListHtml(para) ? (
-            <div class="bio-text" set:html={para} />
-          ) : (
-            <p class="bio-text" set:html={para} />
+        {
+          t.career.paragraphs.map(para =>
+            isListHtml(para) ? (
+              <div class="bio-text" set:html={para} />
+            ) : (
+              <p class="bio-text" set:html={para} />
+            ),
           )
-        ))}
+        }
       </div>
 
       <!-- Skills -->
       <div class="skills-section">
         <h2>{t.specializations.title}</h2>
         <div class="skills-grid">
-          {t.specializations.categories.map((category, idx) => {
-            const Icon = skillIcons[idx];
-            return (
-              <div class="skill-category">
-                <div class="skill-icon">
-                  <Icon size={24} />
+          {
+            t.specializations.categories.map((category, idx) => {
+              const Icon = skillIcons[idx];
+              return (
+                <div class="skill-category">
+                  <div class="skill-icon">
+                    <Icon size={24} />
+                  </div>
+                  <h3>{category.title}</h3>
+                  <ul class="skills-list">
+                    {category.items.map(item => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
                 </div>
-                <h3>{category.title}</h3>
-                <ul class="skills-list">
-                  {category.items.map((item) => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+              );
+            })
+          }
         </div>
       </div>
 
@@ -136,35 +143,38 @@ function isListHtml(value: unknown): value is string {
       <div class="timeline-section">
         <h2>{t.timeline.title}</h2>
         <div class="timeline">
-          {t.timeline.items.map((item) => (
-            <div class="timeline-item">
-              <div class="timeline-date">{item.date}</div>
-              <div class="timeline-content">
-                <div class="timeline-icon">
-                  <Briefcase size={20} />
+          {
+            t.timeline.items.map(item => (
+              <div class="timeline-item">
+                <div class="timeline-date">{item.date}</div>
+                <div class="timeline-content">
+                  <div class="timeline-icon">
+                    <Briefcase size={20} />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p class="timeline-company">{item.company}</p>
+                  {isListHtml(item.description) ? (
+                    <div class="bio-text" set:html={item.description} />
+                  ) : (
+                    <p>{item.description}</p>
+                  )}
+                  {item.hasReference && (
+                    <p class="employer-reference">
+                      <a
+                        href="/docs/EmployerReference-Jacek.pdf"
+                        download="EmployerReference-Jacek.pdf"
+                        type="application/pdf"
+                        class="download-link"
+                      >
+                        <Download size={16} />
+                        {item.referenceText}
+                      </a>
+                    </p>
+                  )}
                 </div>
-                <h3>{item.title}</h3>
-                <p class="timeline-company">{item.company}</p>
-                {isListHtml(item.description) ? (
-                  <div class="bio-text" set:html={item.description} />
-                ) : (
-                  <p>{item.description}</p>
-                )}
-                {item.hasReference && (
-                  <p class="employer-reference">
-                    <a
-                      href="/docs/EmployerReference-Jacek.pdf"
-                      download="EmployerReference-Jacek.pdf"
-                      class="download-link"
-                    >
-                      <Download size={16} />
-                      {item.referenceText}
-                    </a>
-                  </p>
-                )}
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
 
@@ -172,23 +182,25 @@ function isListHtml(value: unknown): value is string {
       <div class="awards-section">
         <h2>{t.awards.title}</h2>
         <div class="awards-grid">
-          {t.awards.items.map((award) => (
-            <div class={`award-card ${award.type}`}>
-              <div class="award-icon">
-                {award.type === 'featured' ? (
-                  <Award size={24} />
-                ) : (
-                  <GraduationCap size={24} />
-                )}
+          {
+            t.awards.items.map(award => (
+              <div class={`award-card ${award.type}`}>
+                <div class="award-icon">
+                  {award.type === 'featured' ? (
+                    <Award size={24} />
+                  ) : (
+                    <GraduationCap size={24} />
+                  )}
+                </div>
+                <div class="award-content">
+                  <h3>{award.title}</h3>
+                  <p class="award-subtitle">{award.subtitle}</p>
+                  <p class="award-date">{award.date}</p>
+                  <p class="award-description">{award.description}</p>
+                </div>
               </div>
-              <div class="award-content">
-                <h3>{award.title}</h3>
-                <p class="award-subtitle">{award.subtitle}</p>
-                <p class="award-date">{award.date}</p>
-                <p class="award-description">{award.description}</p>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>
@@ -964,3 +976,28 @@ function isListHtml(value: unknown): value is string {
   }
 </style>
 
+<script is:inline>
+  // Ensure download links work correctly with proper filenames
+  // This handles cases where browsers might ignore the download attribute
+  document.addEventListener('DOMContentLoaded', function () {
+    const downloadLinks = document.querySelectorAll('.download-link[download]');
+
+    downloadLinks.forEach(function (link) {
+      const anchor = link;
+      const downloadFilename = anchor.getAttribute('download');
+
+      if (downloadFilename) {
+        // Ensure the download attribute is properly set
+        anchor.download = downloadFilename;
+
+        // For additional reliability, handle the click event
+        anchor.addEventListener('click', function () {
+          // Verify the download attribute is still set
+          if (!anchor.download) {
+            anchor.download = downloadFilename;
+          }
+        });
+      }
+    });
+  });
+</script>
