@@ -24,7 +24,12 @@
       "description": "Trade-offs zwischen Durchsatz, Latenz und Resilienz in modernen verteilten Systemen. Event-Driven-Architekturen, Backpressure-Mechanismen und Observability-Patterns.",
       "youtubeId": "fPp66mtx_60",
       "videoTitle": "Verteilte Systeme at Scale – Architekturmuster",
-      "tags": ["Verteilte Systeme", "Event-Driven", "Skalierbarkeit", "Observability"]
+      "tags": [
+        "Verteilte Systeme",
+        "Event-Driven",
+        "Skalierbarkeit",
+        "Observability"
+      ]
     },
     {
       "title": "Blockchain & Bitcoin",
@@ -37,4 +42,3 @@
     }
   ]
 }
-

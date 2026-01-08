@@ -4,7 +4,7 @@ import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -30,7 +30,8 @@ const formattedDate = new Date().toLocaleDateString(dateLocale, {
     <div class="container">
       <h1>{t.hero.title}</h1>
       <p class="privacy-subtitle">
-        {t.hero.lastUpdated} {formattedDate}
+        {t.hero.lastUpdated}
+        {formattedDate}
       </p>
     </div>
   </section>
@@ -45,11 +46,13 @@ const formattedDate = new Date().toLocaleDateString(dateLocale, {
         <h2>{t.sections.information.title}</h2>
         <p>{t.sections.information.text}</p>
         <ul>
-          {t.sections.information.items.map((item) => (
-            <li>
-              <strong>{item.title}</strong> {item.text}
-            </li>
-          ))}
+          {
+            t.sections.information.items.map(item => (
+              <li>
+                <strong>{item.title}</strong> {item.text}
+              </li>
+            ))
+          }
         </ul>
       </div>
 
@@ -57,9 +60,7 @@ const formattedDate = new Date().toLocaleDateString(dateLocale, {
         <h2>{t.sections.usage.title}</h2>
         <p>{t.sections.usage.text}</p>
         <ul>
-          {t.sections.usage.items.map((item) => (
-            <li>{item}</li>
-          ))}
+          {t.sections.usage.items.map(item => <li>{item}</li>)}
         </ul>
         <p>{t.sections.usage.note}</p>
       </div>
@@ -68,14 +69,18 @@ const formattedDate = new Date().toLocaleDateString(dateLocale, {
         <h2>{t.sections.thirdParty.title}</h2>
         <p>{t.sections.thirdParty.text}</p>
         <ul>
-          {t.sections.thirdParty.items.map((item) => (
-            <li>
-              <strong>{item.title}</strong> {item.text}
-            </li>
-          ))}
+          {
+            t.sections.thirdParty.items.map(item => (
+              <li>
+                <strong>{item.title}</strong> {item.text}
+              </li>
+            ))
+          }
         </ul>
         <p>
-          <strong>{t.sections.thirdParty.cookieNote.split(':')[0]}:</strong>{' '}
+          <strong>{t.sections.thirdParty.cookieNote.split(':')[0]}:</strong>{
+            ' '
+          }
           {t.sections.thirdParty.cookieNote.split(':').slice(1).join(':')}
         </p>
       </div>
@@ -84,11 +89,13 @@ const formattedDate = new Date().toLocaleDateString(dateLocale, {
         <h2>{t.sections.rights.title}</h2>
         <p>{t.sections.rights.text}</p>
         <ul>
-          {t.sections.rights.items.map((item) => (
-            <li>
-              <strong>{item.title}</strong> {item.text}
-            </li>
-          ))}
+          {
+            t.sections.rights.items.map(item => (
+              <li>
+                <strong>{item.title}</strong> {item.text}
+              </li>
+            ))
+          }
         </ul>
         <p>{t.sections.rights.contactText}</p>
       </div>
@@ -200,4 +207,3 @@ const formattedDate = new Date().toLocaleDateString(dateLocale, {
     }
   }
 </style>
-

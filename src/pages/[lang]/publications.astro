@@ -4,7 +4,7 @@ import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -33,33 +33,64 @@ const t = await getTranslations('publications', lang);
         <div class="publications-grid">
           <div class="publication-group">
             <h3>{t.sections.publications.groups.peerReviewed.title}</h3>
-            {t.sections.publications.groups.peerReviewed.items.map((item) => (
-              <article class="publication-card">
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
-                <p>
-                  {item.role && (
-                    <>
-                      <strong>{t.labels.role}</strong> {item.role}{' '}
-                    </>
-                  )}
-                  {item.doi && (
-                    <>
-                      <strong>{t.labels.doi}</strong>{' '}
-                      <a
-                        href={`https://doi.org/${item.doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.doi}
-                      </a>{' '}
-                    </>
-                  )}
-                  {item.links && item.links.length > 0 && (
-                    <>
-                      <strong>{t.labels.links}</strong>{' '}
-                      {item.links.map((link, idx) => (
-                        <>
+            {
+              t.sections.publications.groups.peerReviewed.items.map(item => (
+                <article class="publication-card">
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                  <p>
+                    {item.role && (
+                      <>
+                        <strong>{t.labels.role}</strong> {item.role}{' '}
+                      </>
+                    )}
+                    {item.doi && (
+                      <>
+                        <strong>{t.labels.doi}</strong>{' '}
+                        <a
+                          href={`https://doi.org/${item.doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {item.doi}
+                        </a>{' '}
+                      </>
+                    )}
+                    {item.links && item.links.length > 0 && (
+                      <>
+                        <strong>{t.labels.links}</strong>{' '}
+                        {item.links.map((link, idx) => (
+                          <>
+                            <a
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {link.label}
+                            </a>
+                            {idx < item.links.length - 1 && ' '}
+                          </>
+                        ))}
+                      </>
+                    )}
+                  </p>
+                </article>
+              ))
+            }
+          </div>
+          <div class="publication-group">
+            <h3>{t.sections.publications.groups.articles.title}</h3>
+            {
+              t.sections.publications.groups.articles.items
+                .filter(item => !item.placeholder)
+                .map(item => (
+                  <article class="publication-card">
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                    {item.links && item.links.length > 0 && (
+                      <p>
+                        <strong>{t.labels.link}</strong>{' '}
+                        {item.links.map(link => (
                           <a
                             href={link.url}
                             target="_blank"
@@ -67,39 +98,12 @@ const t = await getTranslations('publications', lang);
                           >
                             {link.label}
                           </a>
-                          {idx < item.links.length - 1 && ' '}
-                        </>
-                      ))}
-                    </>
-                  )}
-                </p>
-              </article>
-            ))}
-          </div>
-          <div class="publication-group">
-            <h3>{t.sections.publications.groups.articles.title}</h3>
-            {t.sections.publications.groups.articles.items
-              .filter((item) => !item.placeholder)
-              .map((item) => (
-                <article class="publication-card">
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
-                  {item.links && item.links.length > 0 && (
-                    <p>
-                      <strong>{t.labels.link}</strong>{' '}
-                      {item.links.map((link) => (
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </p>
-                  )}
-                </article>
-              ))}
+                        ))}
+                      </p>
+                    )}
+                  </article>
+                ))
+            }
           </div>
         </div>
       </div>
@@ -111,20 +115,22 @@ const t = await getTranslations('publications', lang);
         </div>
 
         <div class="notes-grid">
-          {t.sections.notes.items.map((note) => (
-            <article class="note-card">
-              <div class="note-header">
-                <h2>{note.title}</h2>
-                <span class="note-date">{note.date}</span>
-              </div>
-              <p class="note-excerpt">{note.excerpt}</p>
-              <div class="note-tags">
-                {note.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {
+            t.sections.notes.items.map(note => (
+              <article class="note-card">
+                <div class="note-header">
+                  <h2>{note.title}</h2>
+                  <span class="note-date">{note.date}</span>
+                </div>
+                <p class="note-excerpt">{note.excerpt}</p>
+                <div class="note-tags">
+                  {note.tags.map(tag => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
 
@@ -602,4 +608,3 @@ const t = await getTranslations('publications', lang);
     }
   }
 </style>
-

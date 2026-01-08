@@ -5,7 +5,7 @@ import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -29,30 +29,32 @@ const t = await getTranslations('talks', lang);
 
   <section class="talks-grid">
     <div class="container">
-      {t.talks.map((talk) => (
-        <article class="talk-card">
-          <div class="talk-header">
-            <h2>{talk.title}</h2>
-            <div class="talk-meta">
-              <span class="talk-event">{talk.event}</span>
-              <span class="talk-date">{talk.date}</span>
+      {
+        t.talks.map(talk => (
+          <article class="talk-card">
+            <div class="talk-header">
+              <h2>{talk.title}</h2>
+              <div class="talk-meta">
+                <span class="talk-event">{talk.event}</span>
+                <span class="talk-date">{talk.date}</span>
+              </div>
             </div>
-          </div>
-          <div class="talk-content">
-            <p class="talk-description">{talk.description}</p>
-            <VideoEmbed
-              youtubeId={talk.youtubeId}
-              title={talk.videoTitle}
-              className="talk-video"
-            />
-          </div>
-          <div class="talk-tags">
-            {talk.tags.map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        </article>
-      ))}
+            <div class="talk-content">
+              <p class="talk-description">{talk.description}</p>
+              <VideoEmbed
+                youtubeId={talk.youtubeId}
+                title={talk.videoTitle}
+                className="talk-video"
+              />
+            </div>
+            <div class="talk-tags">
+              {talk.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
     </div>
   </section>
 </BaseLayout>
@@ -342,4 +344,3 @@ const t = await getTranslations('talks', lang);
     }
   }
 </style>
-

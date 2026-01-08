@@ -14,7 +14,7 @@ import {
 } from 'lucide-astro';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -60,11 +60,7 @@ const t = await getTranslations('contact', lang);
             </label>
             <label class="form-label">
               {t.methods.form.messageLabel}
-              <textarea
-                name="message"
-                class="form-textarea"
-                rows="4"
-                required
+              <textarea name="message" class="form-textarea" rows="4" required
               ></textarea>
             </label>
             <button type="submit" class="form-submit">
@@ -110,18 +106,20 @@ const t = await getTranslations('contact', lang);
       <div class="contact-focus">
         <h2>{t.focus.title}</h2>
         <div class="focus-grid">
-          {t.focus.items.map((item, index) => (
-            <div class="focus-item">
-              <div class="focus-icon">
-                {index === 0 && <Code size={24} />}
-                {index === 1 && <Users size={24} />}
-                {index === 2 && <Shield size={24} />}
-                {index === 3 && <Network size={24} />}
+          {
+            t.focus.items.map((item, index) => (
+              <div class="focus-item">
+                <div class="focus-icon">
+                  {index === 0 && <Code size={24} />}
+                  {index === 1 && <Users size={24} />}
+                  {index === 2 && <Shield size={24} />}
+                  {index === 3 && <Network size={24} />}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
 
@@ -586,4 +584,3 @@ const t = await getTranslations('contact', lang);
     }
   }
 </style>
-

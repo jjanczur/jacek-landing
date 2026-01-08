@@ -1,4 +1,10 @@
 ---
+import { getTranslations } from '../utils/i18n';
+
+// Get English translations for meta tags
+const t = await getTranslations('index', 'en');
+const baseUrl = 'https://janczura.com';
+const canonicalUrl = `${baseUrl}/en/`;
 ---
 
 <!doctype html>
@@ -7,13 +13,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Redirecting…</title>
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
     <meta name="robots" content="noindex, follow" />
     <meta http-equiv="refresh" content="0; url=/en/" />
 
+    <!-- Open Graph -->
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:image" content={`${baseUrl}/images/headshot.jpg`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Jacek Janczura" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.meta.title} />
+    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:image" content={`${baseUrl}/images/headshot.jpg`} />
+    <meta name="twitter:creator" content="@jacekjanczura" />
+    <meta name="twitter:site" content="@jacekjanczura" />
+
     <!-- Canonical + hreflang (English default) -->
     <link rel="canonical" href="https://janczura.com/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://janczura.com/en/" />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://janczura.com/en/"
+    />
     <link rel="alternate" hreflang="en" href="https://janczura.com/en/" />
     <link rel="alternate" hreflang="pl" href="https://janczura.com/pl/" />
     <link rel="alternate" hreflang="de" href="https://janczura.com/de/" />
@@ -21,7 +51,10 @@
     <script>
       // Redirect only from the site root to avoid accidental loops.
       // Prefer JS redirect (faster, avoids adding to history).
-      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+      if (
+        window.location.pathname === '/' ||
+        window.location.pathname === '/index.html'
+      ) {
         window.location.replace('/en/');
       }
     </script>

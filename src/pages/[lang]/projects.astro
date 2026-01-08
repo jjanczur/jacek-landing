@@ -14,7 +14,7 @@ import {
 } from 'lucide-astro';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -57,62 +57,64 @@ const iconMap: Record<string, any> = {
         </p>
       </div>
 
-      {t.projects.map((project) => {
-        const Icon = iconMap[project.name];
-        return (
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-title-group">
-                <h2 class="project-name">
-                  <span class="project-icon">
-                    {Icon && <Icon size={24} />}
-                  </span>
-                  {project.name}
-                </h2>
-                <div class="project-meta">
-                  <span class="project-period">{project.period}</span>
-                  <span class="project-role">{project.role ?? t.role}</span>
-                  <span class="project-industry">{project.industry}</span>
-                  <span class="project-company">{t.company}</span>
+      {
+        t.projects.map(project => {
+          const Icon = iconMap[project.name];
+          return (
+            <article class="project-card">
+              <div class="project-header">
+                <div class="project-title-group">
+                  <h2 class="project-name">
+                    <span class="project-icon">
+                      {Icon && <Icon size={24} />}
+                    </span>
+                    {project.name}
+                  </h2>
+                  <div class="project-meta">
+                    <span class="project-period">{project.period}</span>
+                    <span class="project-role">{project.role ?? t.role}</span>
+                    <span class="project-industry">{project.industry}</span>
+                    <span class="project-company">{t.company}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="project-content">
-              <p class="project-tagline">{project.tagline}</p>
-              {project.description.map((para) => (
-                <p>{para}</p>
-              ))}
-            </div>
-            <div class="project-details">
-              <div class="project-industries">
-                <strong>{t.labels.industries}</strong> {project.industries}
-              </div>
-              <div class="project-tech">
-                <strong>{t.labels.tech}</strong> {project.tech}
-              </div>
-              <div class="project-impact">
-                <strong>{t.labels.impact}</strong> {project.impact}
-              </div>
-            </div>
-            {project.links && project.links.length > 0 && (
-              <div class="project-links">
-                {project.links.map((link) => (
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.type === 'website' && <ExternalLink size={16} />}
-                    {link.type === 'repository' && <Github size={16} />}
-                    {link.type === 'blog' && <ExternalLink size={16} />}
-                    {link.label}
-                  </a>
+              <div class="project-content">
+                <p class="project-tagline">{project.tagline}</p>
+                {project.description.map(para => (
+                  <p>{para}</p>
                 ))}
               </div>
-            )}
-          </article>
-        );
-      })}
+              <div class="project-details">
+                <div class="project-industries">
+                  <strong>{t.labels.industries}</strong> {project.industries}
+                </div>
+                <div class="project-tech">
+                  <strong>{t.labels.tech}</strong> {project.tech}
+                </div>
+                <div class="project-impact">
+                  <strong>{t.labels.impact}</strong> {project.impact}
+                </div>
+              </div>
+              {project.links && project.links.length > 0 && (
+                <div class="project-links">
+                  {project.links.map(link => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.type === 'website' && <ExternalLink size={16} />}
+                      {link.type === 'repository' && <Github size={16} />}
+                      {link.type === 'blog' && <ExternalLink size={16} />}
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </article>
+          );
+        })
+      }
     </div>
   </section>
 </BaseLayout>
@@ -605,4 +607,3 @@ const iconMap: Record<string, any> = {
     }
   }
 </style>
-

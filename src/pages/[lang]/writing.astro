@@ -5,7 +5,7 @@ import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -28,7 +28,10 @@ const publicationsT = await getTranslations('publications', lang);
   <section class="writing-hero">
     <div class="container">
       <h1>Writing & Talks</h1>
-      <p class="writing-subtitle">Technical insights, publications, and practical lessons from enterprise deployments</p>
+      <p class="writing-subtitle">
+        Technical insights, publications, and practical lessons from enterprise
+        deployments
+      </p>
     </div>
   </section>
 
@@ -39,30 +42,32 @@ const publicationsT = await getTranslations('publications', lang);
         <h2>Talks</h2>
         <p class="section-intro">{talksT.hero.subtitle}</p>
         <div class="talks-list">
-          {talksT.talks.map((talk) => (
-            <article class="talk-card">
-              <div class="talk-header">
-                <h3>{talk.title}</h3>
-                <div class="talk-meta">
-                  <span class="talk-event">{talk.event}</span>
-                  <span class="talk-date">{talk.date}</span>
+          {
+            talksT.talks.map(talk => (
+              <article class="talk-card">
+                <div class="talk-header">
+                  <h3>{talk.title}</h3>
+                  <div class="talk-meta">
+                    <span class="talk-event">{talk.event}</span>
+                    <span class="talk-date">{talk.date}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="talk-content">
-                <p class="talk-description">{talk.description}</p>
-                <VideoEmbed
-                  youtubeId={talk.youtubeId}
-                  title={talk.videoTitle}
-                  className="talk-video"
-                />
-              </div>
-              <div class="talk-tags">
-                {talk.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+                <div class="talk-content">
+                  <p class="talk-description">{talk.description}</p>
+                  <VideoEmbed
+                    youtubeId={talk.youtubeId}
+                    title={talk.videoTitle}
+                    className="talk-video"
+                  />
+                </div>
+                <div class="talk-tags">
+                  {talk.tags.map(tag => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
 
@@ -71,34 +76,70 @@ const publicationsT = await getTranslations('publications', lang);
         <h2>{publicationsT.sections.publications.title}</h2>
         <div class="publications-grid">
           <div class="publication-group">
-            <h3>{publicationsT.sections.publications.groups.peerReviewed.title}</h3>
-            {publicationsT.sections.publications.groups.peerReviewed.items.map((item) => (
-              <article class="publication-card">
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
-                <p>
-                  {item.role && (
-                    <>
-                      <strong>{publicationsT.labels.role}</strong> {item.role}{' '}
-                    </>
-                  )}
-                  {item.doi && (
-                    <>
-                      <strong>{publicationsT.labels.doi}</strong>{' '}
-                      <a
-                        href={`https://doi.org/${item.doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.doi}
-                      </a>{' '}
-                    </>
-                  )}
-                  {item.links && item.links.length > 0 && (
-                    <>
-                      <strong>{publicationsT.labels.links}</strong>{' '}
-                      {item.links.map((link, idx) => (
+            <h3>
+              {publicationsT.sections.publications.groups.peerReviewed.title}
+            </h3>
+            {
+              publicationsT.sections.publications.groups.peerReviewed.items.map(
+                item => (
+                  <article class="publication-card">
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                    <p>
+                      {item.role && (
                         <>
+                          <strong>{publicationsT.labels.role}</strong>{' '}
+                          {item.role}{' '}
+                        </>
+                      )}
+                      {item.doi && (
+                        <>
+                          <strong>{publicationsT.labels.doi}</strong>{' '}
+                          <a
+                            href={`https://doi.org/${item.doi}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.doi}
+                          </a>{' '}
+                        </>
+                      )}
+                      {item.links && item.links.length > 0 && (
+                        <>
+                          <strong>{publicationsT.labels.links}</strong>{' '}
+                          {item.links.map((link, idx) => (
+                            <>
+                              <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {link.label}
+                              </a>
+                              {idx < item.links.length - 1 && ' '}
+                            </>
+                          ))}
+                        </>
+                      )}
+                    </p>
+                  </article>
+                ),
+              )
+            }
+          </div>
+          <div class="publication-group">
+            <h3>{publicationsT.sections.publications.groups.articles.title}</h3>
+            {
+              publicationsT.sections.publications.groups.articles.items
+                .filter(item => !item.placeholder)
+                .map(item => (
+                  <article class="publication-card">
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                    {item.links && item.links.length > 0 && (
+                      <p>
+                        <strong>{publicationsT.labels.link}</strong>{' '}
+                        {item.links.map(link => (
                           <a
                             href={link.url}
                             target="_blank"
@@ -106,39 +147,12 @@ const publicationsT = await getTranslations('publications', lang);
                           >
                             {link.label}
                           </a>
-                          {idx < item.links.length - 1 && ' '}
-                        </>
-                      ))}
-                    </>
-                  )}
-                </p>
-              </article>
-            ))}
-          </div>
-          <div class="publication-group">
-            <h3>{publicationsT.sections.publications.groups.articles.title}</h3>
-            {publicationsT.sections.publications.groups.articles.items
-              .filter((item) => !item.placeholder)
-              .map((item) => (
-                <article class="publication-card">
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
-                  {item.links && item.links.length > 0 && (
-                    <p>
-                      <strong>{publicationsT.labels.link}</strong>{' '}
-                      {item.links.map((link) => (
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </p>
-                  )}
-                </article>
-              ))}
+                        ))}
+                      </p>
+                    )}
+                  </article>
+                ))
+            }
           </div>
         </div>
       </div>
@@ -150,20 +164,22 @@ const publicationsT = await getTranslations('publications', lang);
           <p>{publicationsT.sections.notes.intro}</p>
         </div>
         <div class="notes-grid">
-          {publicationsT.sections.notes.items.map((note) => (
-            <article class="note-card">
-              <div class="note-header">
-                <h3>{note.title}</h3>
-                <span class="note-date">{note.date}</span>
-              </div>
-              <p class="note-excerpt">{note.excerpt}</p>
-              <div class="note-tags">
-                {note.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {
+            publicationsT.sections.notes.items.map(note => (
+              <article class="note-card">
+                <div class="note-header">
+                  <h3>{note.title}</h3>
+                  <span class="note-date">{note.date}</span>
+                </div>
+                <p class="note-excerpt">{note.excerpt}</p>
+                <div class="note-tags">
+                  {note.tags.map(tag => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -680,4 +696,3 @@ const publicationsT = await getTranslations('publications', lang);
     }
   }
 </style>
-

@@ -24,7 +24,12 @@
       "description": "Kompromisy między przepustowością, opóźnieniem i odpornością w nowoczesnych systemach rozproszonych. Architektury sterowane zdarzeniami, mechanizmy backpressure i wzorce obserwowalności.",
       "youtubeId": "fPp66mtx_60",
       "videoTitle": "Systemy rozproszone w skali - Wzorce architektury",
-      "tags": ["Systemy rozproszone", "Event-Driven", "Skalowalność", "Obserwowalność"]
+      "tags": [
+        "Systemy rozproszone",
+        "Event-Driven",
+        "Skalowalność",
+        "Obserwowalność"
+      ]
     },
     {
       "title": "Blockchain i Bitcoin",
@@ -37,4 +42,3 @@
     }
   ]
 }
-

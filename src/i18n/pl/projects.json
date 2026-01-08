@@ -34,7 +34,11 @@
       "tech": "AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC",
       "impact": "Obsługa ponad 50 organizacji przy dostępności 99,9%; certyfikacja ISO 27001/SOC 2 w około 3 miesiące; niezawodność produkcyjna umożliwiająca szybszą adopcję AI w procesach biznesowych.",
       "links": [
-        { "type": "website", "url": "https://entaingine.com", "label": "Strona" }
+        {
+          "type": "website",
+          "url": "https://entaingine.com",
+          "label": "Strona"
+        }
       ]
     },
     {
@@ -130,9 +134,12 @@
       "tech": "Blockchain, confidential computing (TEE), szyfrowanie, audytowalne workflow, mikrousługi",
       "impact": "Przetwarzanie danych bez ich ujawniania; niezmienny audit trail dla zgodności i zaufania; prototyp zwalidowany w kontekście projektu badawczego UE.",
       "links": [
-        { "type": "blog", "url": "https://blog.knowledgex.eu/", "label": "Blog" }
+        {
+          "type": "blog",
+          "url": "https://blog.knowledgex.eu/",
+          "label": "Blog"
+        }
       ]
     }
   ]
 }
-

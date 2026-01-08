@@ -19,8 +19,14 @@
               "description": "BAR/NDSS Workshop 2018. Ein Forschungstool zur Erkennung von Taint-basierten Sicherheitslücken in Binärcode — kombiniert statische Analyse mit dynamischem Taint-Tracking. Bietet eine DSL für Taint-Policies und wurde an realen Programmen erprobt.",
               "role": "Autor und Maintainer des Repositories.",
               "links": [
-                { "label": "GitHub-Repository", "url": "https://github.com/jjanczur/Saluki" },
-                { "label": "Paper", "url": "https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf" }
+                {
+                  "label": "GitHub-Repository",
+                  "url": "https://github.com/jjanczur/Saluki"
+                },
+                {
+                  "label": "Paper",
+                  "url": "https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf"
+                }
               ]
             },
             {
@@ -29,8 +35,14 @@
               "role": "Autor/Co-Autor.",
               "doi": "10.1109/BRAINS49436.2020.9223299",
               "links": [
-                { "label": "10.1109/BRAINS49436.2020.9223299", "url": "https://doi.org/10.1109/BRAINS49436.2020.9223299" },
-                { "label": "ResearchGate", "url": "https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases" }
+                {
+                  "label": "10.1109/BRAINS49436.2020.9223299",
+                  "url": "https://doi.org/10.1109/BRAINS49436.2020.9223299"
+                },
+                {
+                  "label": "ResearchGate",
+                  "url": "https://www.researchgate.net/publication/347575008_DeCoCo_Blockchain-based_Decentralized_Compensation_of_Digital_Content_Purchases"
+                }
               ]
             }
           ]
@@ -42,14 +54,20 @@
               "title": "Utility NFTs more than simple JPEGs?",
               "description": "Medium, 1. Februar 2023. Definiert „Utility-NFTs\" und zeigt deren praktischen Nutzen jenseits reiner Sammlerstücke — etwa als Zugangsberechtigungen oder Rollen. Mit Implikationen für NFT-Marktplätze.",
               "links": [
-                { "label": "Medium-Artikel", "url": "https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4" }
+                {
+                  "label": "Medium-Artikel",
+                  "url": "https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4"
+                }
               ]
             },
             {
               "title": "How to run your python code in KnowledgeX",
               "description": "Medium, 17. Februar 2022. Anleitung zur Ausführung von Python-Jobs auf KnowledgeX via iExec und TEE. Behandelt Docker-Templates, Worker-Verifikation und Auditierbarkeit für Entwickler und Data Scientists.",
               "links": [
-                { "label": "Blogbeitrag", "url": "https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c" }
+                {
+                  "label": "Blogbeitrag",
+                  "url": "https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c"
+                }
               ]
             },
             {
@@ -105,4 +123,3 @@
     "projects": "Projekte"
   }
 }
-

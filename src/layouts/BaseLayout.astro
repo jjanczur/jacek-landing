@@ -23,14 +23,17 @@ const supportedLangs = ['en', 'pl', 'de'] as const;
 type SupportedLang = (typeof supportedLangs)[number];
 
 const stripTrailingSlashes = (path: string) => path.replace(/\/+$/, '');
-const ensureLeadingSlash = (path: string) => (path.startsWith('/') ? path : `/${path}`);
+const ensureLeadingSlash = (path: string) =>
+  path.startsWith('/') ? path : `/${path}`;
 const ensureTrailingSlash = (path: string) => `${stripTrailingSlashes(path)}/`;
 
 const getAltPathForLang = (targetLang: SupportedLang) => {
   const normalized = stripTrailingSlashes(currentPath);
   const parts = normalized.split('/').filter(Boolean); // e.g. ["en","projects"]
   const first = parts[0] as string | undefined;
-  const rest = supportedLangs.includes(first as SupportedLang) ? parts.slice(1) : parts;
+  const rest = supportedLangs.includes(first as SupportedLang)
+    ? parts.slice(1)
+    : parts;
   const rebuilt = ensureLeadingSlash([targetLang, ...rest].join('/'));
   return ensureTrailingSlash(rebuilt);
 };
@@ -54,7 +57,10 @@ const structuredData = {
         'Co-founder & CTO at Jaden Data. AI and Cloud Architect specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures. Transforming operational complexity into competitive advantage through process intelligence.',
       url: 'https://janczura.com',
       image: 'https://janczura.com/images/headshot.jpg',
-      sameAs: ['https://linkedin.com/in/jacekjanczura', 'https://github.com/jjanczur'],
+      sameAs: [
+        'https://linkedin.com/in/jacekjanczura',
+        'https://github.com/jjanczur',
+      ],
       knowsAbout: [
         'Artificial Intelligence',
         'Machine Learning',

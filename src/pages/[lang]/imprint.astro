@@ -4,7 +4,7 @@ import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -89,7 +89,9 @@ const t = await getTranslations('imprint', lang);
         <p>{t.sections.dataProtection.text1}</p>
         <p>
           {t.sections.dataProtection.text2.split('{privacyLink}')[0]}
-          <a href={`/${lang}/privacy/`}>{t.sections.dataProtection.privacyLink}</a>
+          <a href={`/${lang}/privacy/`}
+            >{t.sections.dataProtection.privacyLink}</a
+          >
           {t.sections.dataProtection.text2.split('{privacyLink}')[1] || ''}
         </p>
       </div>
@@ -175,4 +177,3 @@ const t = await getTranslations('imprint', lang);
     }
   }
 </style>
-

@@ -18,7 +18,7 @@ import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
-  return getSupportedLangs().map((lang) => ({
+  return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
@@ -31,7 +31,14 @@ interface Props {
 const { lang } = Astro.props;
 const t = await getTranslations('index', lang);
 
-const highlightIcons = [Building2, Workflow, Factory, Shield, TrendingUp, Network];
+const highlightIcons = [
+  Building2,
+  Workflow,
+  Factory,
+  Shield,
+  TrendingUp,
+  Network,
+];
 const featuredIcons = [Brain, Home, BarChart, Code];
 
 const faqStructuredData = {
@@ -50,13 +57,15 @@ const faqStructuredData = {
 ---
 
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
-  {(t.faq?.items?.length || 0) > 0 && (
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(faqStructuredData)}
-    />
-  )}
+  {
+    (t.faq?.items?.length || 0) > 0 && (
+      <script
+        is:inline
+        type="application/ld+json"
+        set:html={JSON.stringify(faqStructuredData)}
+      />
+    )
+  }
 
   <section class="hero">
     <div class="hero-background">
@@ -103,18 +112,20 @@ const faqStructuredData = {
     <div class="container">
       <h2>{t.highlights.title}</h2>
       <div class="highlights-grid">
-        {t.highlights.items.map((item, idx) => {
-          const Icon = highlightIcons[idx];
-          return (
-            <div class="highlight-card">
-              <div class="highlight-icon">
-                <Icon size={32} />
+        {
+          t.highlights.items.map((item, idx) => {
+            const Icon = highlightIcons[idx];
+            return (
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <Icon size={32} />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
-          );
-        })}
+            );
+          })
+        }
       </div>
       <p class="highlights-note">{t.highlights.note}</p>
     </div>
@@ -124,20 +135,22 @@ const faqStructuredData = {
     <div class="container">
       <h2>{t.featured.title}</h2>
       <div class="featured-grid">
-        {t.featured.items.map((item, idx) => {
-          const Icon = featuredIcons[idx];
-          const url = item.url || '/projects/';
-          return (
-            <a href={`/${lang}${url}`} class="featured-item">
-              <div class="featured-icon">
-                <Icon size={28} />
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <span class="featured-link">{item.link}</span>
-            </a>
-          );
-        })}
+        {
+          t.featured.items.map((item, idx) => {
+            const Icon = featuredIcons[idx];
+            const url = item.url || '/projects/';
+            return (
+              <a href={`/${lang}${url}`} class="featured-item">
+                <div class="featured-icon">
+                  <Icon size={28} />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <span class="featured-link">{item.link}</span>
+              </a>
+            );
+          })
+        }
       </div>
     </div>
   </section>
@@ -158,37 +171,39 @@ const faqStructuredData = {
       <h2>{t.faq.title}</h2>
       <p class="faq-intro">{t.faq.intro}</p>
       <div class="faq-list">
-        {t.faq.items.map((item, idx) => (
-          <details class="faq-item" open={idx === 0}>
-            <summary class="faq-question">{item.question}</summary>
-            <div class="faq-answer">
-              <p>{item.answer}</p>
-              <div class="faq-links">
-                <a href={`/${lang}/about/`} class="faq-link">
-                  {lang === 'en'
-                    ? 'About'
-                    : lang === 'pl'
-                      ? 'O mnie'
-                      : 'Über mich'}
-                </a>
-                <a href={`/${lang}/projects/`} class="faq-link">
-                  {lang === 'en'
-                    ? 'Projects'
-                    : lang === 'pl'
-                      ? 'Projekty'
-                      : 'Projekte'}
-                </a>
-                <a href={`/${lang}/contact/`} class="faq-link">
-                  {lang === 'en'
-                    ? 'Contact'
-                    : lang === 'pl'
-                      ? 'Kontakt'
-                      : 'Kontakt'}
-                </a>
+        {
+          t.faq.items.map((item, idx) => (
+            <details class="faq-item" open={idx === 0}>
+              <summary class="faq-question">{item.question}</summary>
+              <div class="faq-answer">
+                <p>{item.answer}</p>
+                <div class="faq-links">
+                  <a href={`/${lang}/about/`} class="faq-link">
+                    {lang === 'en'
+                      ? 'About'
+                      : lang === 'pl'
+                        ? 'O mnie'
+                        : 'Über mich'}
+                  </a>
+                  <a href={`/${lang}/projects/`} class="faq-link">
+                    {lang === 'en'
+                      ? 'Projects'
+                      : lang === 'pl'
+                        ? 'Projekty'
+                        : 'Projekte'}
+                  </a>
+                  <a href={`/${lang}/contact/`} class="faq-link">
+                    {lang === 'en'
+                      ? 'Contact'
+                      : lang === 'pl'
+                        ? 'Kontakt'
+                        : 'Kontakt'}
+                  </a>
+                </div>
               </div>
-            </div>
-          </details>
-        ))}
+            </details>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -196,7 +211,7 @@ const faqStructuredData = {
 
 <script is:inline>
   // Network animation script - Canvas-based like jadendata.com
-  (function() {
+  (function () {
     function initNetwork() {
       const canvas = document.querySelector('.network-canvas');
       if (!canvas) return;
@@ -220,10 +235,10 @@ const faqStructuredData = {
         temp.style.position = 'absolute';
         temp.style.visibility = 'hidden';
         document.body.appendChild(temp);
-        
+
         const computed = getComputedStyle(temp).color;
         document.body.removeChild(temp);
-        
+
         // Parse rgb/rgba string
         const match = computed.match(/\d+/g);
         if (match && match.length >= 3) {
@@ -231,9 +246,9 @@ const faqStructuredData = {
             r: parseInt(match[0]),
             g: parseInt(match[1]),
             b: parseInt(match[2]),
-        };
+          };
         }
-        
+
         // Fallback to purple if parsing fails
         return { r: 139, g: 92, b: 246 };
       }
@@ -256,12 +271,14 @@ const faqStructuredData = {
             y: gridSpacing * j + (Math.random() - 0.5) * 60,
             vx: (Math.random() - 0.5) * 0.3,
             vy: (Math.random() - 0.5) * 0.3,
-        });
+          });
         }
       }
 
       // Check for reduced motion preference
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      ).matches;
 
       let animationFrame;
       function animate() {
@@ -404,7 +421,6 @@ const faqStructuredData = {
       opacity: 0.2;
     }
   }
-
 
   .hero .container {
     position: relative;
@@ -993,7 +1009,12 @@ const faqStructuredData = {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary),
+      transparent
+    );
     opacity: 0.25;
   }
 
@@ -1099,4 +1120,3 @@ const faqStructuredData = {
     }
   }
 </style>
-

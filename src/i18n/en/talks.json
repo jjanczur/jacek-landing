@@ -24,7 +24,12 @@
       "description": "Throughput, latency, and resilience trade-offs in modern distributed systems. Event-driven architectures, back-pressure mechanisms, and observability patterns.",
       "youtubeId": "fPp66mtx_60",
       "videoTitle": "Distributed Systems at Scale - Architecture Patterns",
-      "tags": ["Distributed Systems", "Event-Driven", "Scalability", "Observability"]
+      "tags": [
+        "Distributed Systems",
+        "Event-Driven",
+        "Scalability",
+        "Observability"
+      ]
     },
     {
       "title": "Blockchain & Bitcoin",
@@ -37,4 +42,3 @@
     }
   ]
 }
-
