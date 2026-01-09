@@ -14,8 +14,70 @@ interface Props {
   lang: Lang;
 }
 
+interface PrivacyListItem {
+  title: string;
+  text: string;
+}
+
+interface PrivacyTranslations {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    title: string;
+    lastUpdated: string;
+  };
+  intro: string;
+  sections: {
+    information: {
+      title: string;
+      text: string;
+      items: PrivacyListItem[];
+    };
+    usage: {
+      title: string;
+      text: string;
+      items: string[];
+      note: string;
+    };
+    thirdParty: {
+      title: string;
+      text: string;
+      items: PrivacyListItem[];
+      cookieNote: string;
+    };
+    rights: {
+      title: string;
+      text: string;
+      items: PrivacyListItem[];
+      contactText: string;
+    };
+    retention: {
+      title: string;
+      text: string;
+    };
+    security: {
+      title: string;
+      text: string;
+    };
+    children: {
+      title: string;
+      text: string;
+    };
+    changes: {
+      title: string;
+      text: string;
+    };
+    contact: {
+      title: string;
+      text: string;
+    };
+  };
+}
+
 const { lang } = Astro.props;
-const t = await getTranslations('privacy', lang);
+const t = await getTranslations<PrivacyTranslations>('privacy', lang);
 
 const dateLocale = lang === 'en' ? 'en-US' : lang === 'de' ? 'de-DE' : 'pl-PL';
 const formattedDate = new Date().toLocaleDateString(dateLocale, {

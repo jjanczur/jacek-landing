@@ -22,8 +22,12 @@
           "text": "If you use the contact form, your email address and message are processed by Formspree, a third-party service. This data is sent to me via email and may be stored by Formspree according to their privacy policy."
         },
         {
+          "title": "Scheduling (Calendly):",
+          "text": "If you choose to book a meeting, you may be redirected to Calendly (a third-party scheduling provider). Calendly may process personal data and set cookies according to their policies."
+        },
+        {
           "title": "Cookies and Local Storage:",
-          "text": "This website does not set any cookies directly. YouTube videos are embedded using privacy-enhanced mode (youtube-nocookie.com) to minimize cookie usage. Google Fonts may set cookies according to their policy. The website uses localStorage only to remember your theme preference (light/dark mode) for better user experience. No tracking cookies or analytics cookies are used."
+          "text": "This website does not set any tracking cookies. YouTube videos are embedded using privacy-enhanced mode (youtube-nocookie.com) to minimize cookie usage. Google Fonts may set cookies according to their policy. If you choose to book a meeting via Calendly, Calendly may set cookies according to their policies. The website uses localStorage only to remember your theme preference (light/dark mode)."
         }
       ]
     },
@@ -50,6 +54,10 @@
           "text": "Contact form processing. Your form submissions are sent to me via email and handled according to Formspree's privacy policy."
         },
         {
+          "title": "Calendly:",
+          "text": "Scheduling provider (optional). If you choose to book a meeting, you may be redirected to Calendly. Calendly's privacy and cookie policies apply on their site."
+        },
+        {
           "title": "Google Fonts:",
           "text": "Font delivery service. Google may collect some usage data and set cookies according to their privacy policy. These are considered essential for website functionality."
         },
@@ -58,7 +66,7 @@
           "text": "Video embeds use privacy-enhanced mode (youtube-nocookie.com) to minimize cookie usage. YouTube's privacy policy applies to their services."
         }
       ],
-      "cookieNote": "Cookie Consent: Since this website only uses essential cookies (for font delivery and video functionality) that are necessary for the website to function, no cookie consent banner is required under EU/GDPR regulations. No tracking or marketing cookies are used."
+      "cookieNote": "Cookie Consent: This website does not use tracking or marketing cookies. If you choose to use third-party services (like Calendly) by following outbound links, the respective provider's policies apply."
     },
     "rights": {
       "title": "4. Your Rights Under GDPR",

@@ -22,8 +22,12 @@
           "text": "Wenn Sie das Kontaktformular nutzen, werden Ihre E-Mail-Adresse und Nachricht von Formspree verarbeitet und mir per E-Mail zugestellt — gemäß deren Datenschutzrichtlinie."
         },
         {
+          "title": "Terminbuchung (Calendly):",
+          "text": "Wenn Sie einen Termin buchen möchten, werden Sie ggf. zu Calendly (einem Drittanbieter für Terminbuchungen) weitergeleitet. Calendly kann personenbezogene Daten verarbeiten und Cookies gemäß den eigenen Richtlinien setzen."
+        },
+        {
           "title": "Cookies und LocalStorage:",
-          "text": "Es werden keine Tracking-Cookies gesetzt. YouTube-Videos sind im Privacy-Enhanced-Modus (youtube-nocookie.com) eingebettet. Google Fonts kann gemäß eigener Richtlinie Cookies setzen. LocalStorage speichert ausschließlich Ihre Theme-Präferenz (hell/dunkel)."
+          "text": "Es werden keine Tracking-Cookies gesetzt. YouTube-Videos sind im Privacy-Enhanced-Modus (youtube-nocookie.com) eingebettet. Google Fonts kann gemäß eigener Richtlinie Cookies setzen. Wenn Sie einen Termin über Calendly buchen, kann Calendly Cookies gemäß den eigenen Richtlinien setzen. LocalStorage speichert ausschließlich Ihre Theme-Präferenz (hell/dunkel)."
         }
       ]
     },
@@ -50,6 +54,10 @@
           "text": "Verarbeitung des Kontaktformulars; Ihre Anfragen werden mir per E-Mail zugestellt."
         },
         {
+          "title": "Calendly:",
+          "text": "Terminbuchung (optional). Wenn Sie einen Termin buchen möchten, werden Sie ggf. zu Calendly weitergeleitet. Es gelten die Datenschutz- und Cookie-Richtlinien von Calendly auf deren Website."
+        },
+        {
           "title": "Google Fonts:",
           "text": "Bereitstellung von Schriftarten; Google kann dabei Nutzungsdaten erheben."
         },
@@ -58,7 +66,7 @@
           "text": "Video-Einbettung im Privacy-Enhanced-Modus (youtube-nocookie.com), um Cookies zu minimieren."
         }
       ],
-      "cookieNote": "Hinweis zu Cookies: Es werden nur technisch notwendige Cookies (für Schriften und Videos) verwendet. Da keine Tracking- oder Marketing-Cookies eingesetzt werden, ist kein Cookie-Consent-Banner erforderlich."
+      "cookieNote": "Hinweis zu Cookies: Diese Website nutzt keine Tracking- oder Marketing-Cookies. Wenn Sie Drittanbieter-Dienste (z. B. Calendly) über externe Links nutzen, gelten die jeweiligen Richtlinien des Anbieters."
     },
     "rights": {
       "title": "4. Ihre Rechte nach DSGVO",

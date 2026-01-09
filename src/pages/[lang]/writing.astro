@@ -15,9 +15,85 @@ interface Props {
   lang: Lang;
 }
 
+interface TalkItem {
+  title: string;
+  event: string;
+  date: string;
+  description: string;
+  youtubeId: string;
+  videoTitle: string;
+  tags: string[];
+}
+
+interface TalksTranslations {
+  hero: {
+    subtitle: string;
+  };
+  talks: TalkItem[];
+}
+
+interface PublicationLink {
+  label: string;
+  url: string;
+}
+
+interface PeerReviewedPublicationItem {
+  title: string;
+  description: string;
+  role?: string;
+  doi?: string;
+  links?: PublicationLink[];
+}
+
+interface ArticlePublicationItem {
+  title: string;
+  description: string;
+  links?: PublicationLink[];
+  placeholder?: boolean;
+}
+
+interface NoteItem {
+  title: string;
+  date: string;
+  excerpt: string;
+  tags: string[];
+}
+
+interface PublicationsTranslations {
+  sections: {
+    publications: {
+      title: string;
+      groups: {
+        peerReviewed: {
+          title: string;
+          items: PeerReviewedPublicationItem[];
+        };
+        articles: {
+          title: string;
+          items: ArticlePublicationItem[];
+        };
+      };
+    };
+    notes: {
+      title: string;
+      intro: string;
+      items: NoteItem[];
+    };
+  };
+  labels: {
+    role: string;
+    links: string;
+    link: string;
+    doi: string;
+  };
+}
+
 const { lang } = Astro.props;
-const talksT = await getTranslations('talks', lang);
-const publicationsT = await getTranslations('publications', lang);
+const talksT = await getTranslations<TalksTranslations>('talks', lang);
+const publicationsT = await getTranslations<PublicationsTranslations>(
+  'publications',
+  lang,
+);
 ---
 
 <BaseLayout
@@ -116,7 +192,7 @@ const publicationsT = await getTranslations('publications', lang);
                               >
                                 {link.label}
                               </a>
-                              {idx < item.links.length - 1 && ' '}
+                              {idx < (item.links?.length ?? 0) - 1 && ' '}
                             </>
                           ))}
                         </>

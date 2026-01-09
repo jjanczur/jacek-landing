@@ -22,8 +22,12 @@
           "text": "Jeśli wypełnisz formularz, Twój adres e-mail i wiadomość są przetwarzane przez Formspree i przekazywane do mnie zgodnie z ich polityką prywatności."
         },
         {
+          "title": "Umawianie spotkań (Calendly):",
+          "text": "Jeśli zdecydujesz się umówić spotkanie, możesz zostać przekierowany/-a do Calendly (zewnętrznego dostawcy umawiania). Calendly może przetwarzać dane osobowe i ustawiać cookies zgodnie ze swoimi zasadami."
+        },
+        {
           "title": "Cookies i localStorage:",
-          "text": "Strona nie ustawia własnych cookies śledzących. Filmy YouTube są osadzone w trybie privacy-enhanced (youtube-nocookie.com). Google Fonts może ustawiać cookies zgodnie ze swoją polityką. localStorage służy wyłącznie do zapamiętania preferencji motywu (jasny/ciemny)."
+          "text": "Strona nie ustawia własnych cookies śledzących. Filmy YouTube są osadzone w trybie privacy-enhanced (youtube-nocookie.com). Google Fonts może ustawiać cookies zgodnie ze swoją polityką. Jeśli zdecydujesz się umówić spotkanie przez Calendly, Calendly może ustawiać cookies zgodnie ze swoimi zasadami. localStorage służy wyłącznie do zapamiętania preferencji motywu (jasny/ciemny)."
         }
       ]
     },
@@ -50,6 +54,10 @@
           "text": "Obsługa formularza kontaktowego; dane trafiają do mnie e-mailem."
         },
         {
+          "title": "Calendly:",
+          "text": "Umawianie spotkań (opcjonalnie). Jeśli zdecydujesz się umówić spotkanie, możesz zostać przekierowany/-a do Calendly. Na ich stronie obowiązują polityki prywatności i cookies Calendly."
+        },
+        {
           "title": "Google Fonts:",
           "text": "Dostarczanie czcionek; Google może zbierać pewne dane o użyciu."
         },
@@ -58,7 +66,7 @@
           "text": "Osadzanie filmów w trybie privacy-enhanced (youtube-nocookie.com) w celu minimalizacji cookies."
         }
       ],
-      "cookieNote": "Informacja o cookies: Używane są wyłącznie cookies niezbędne do działania strony (czcionki, odtwarzanie wideo). Nie stosuję cookies śledzących ani marketingowych, dlatego baner zgody na cookies nie jest wymagany."
+      "cookieNote": "Informacja o cookies: Strona nie używa cookies śledzących ani marketingowych. Jeśli korzystasz z usług zewnętrznych (np. Calendly) poprzez linki zewnętrzne, obowiązują zasady danego dostawcy."
     },
     "rights": {
       "title": "4. Twoje prawa (RODO)",

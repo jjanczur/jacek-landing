@@ -15,8 +15,30 @@ interface Props {
   lang: Lang;
 }
 
+interface TalkItem {
+  title: string;
+  event: string;
+  date: string;
+  description: string;
+  youtubeId: string;
+  videoTitle: string;
+  tags: string[];
+}
+
+interface TalksTranslations {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  talks: TalkItem[];
+}
+
 const { lang } = Astro.props;
-const t = await getTranslations('talks', lang);
+const t = await getTranslations<TalksTranslations>('talks', lang);
 ---
 
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>

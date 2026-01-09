@@ -7,23 +7,39 @@
     "title": "Kontakt",
     "subtitle": "Gemeinsam verantwortungsvolle KI-Lösungen entwickeln"
   },
-  "intro": "Am besten erreichen Sie mich über das Kontaktformular oder LinkedIn. Ich bin offen für Beratung, Architektur-Reviews und ausgewählte Umsetzungsprojekte — mit Fokus auf Enterprise-KI-Plattformen.",
-  "methods": {
-    "form": {
-      "title": "Kontaktformular",
-      "description": "Für berufliche Anfragen, Projektdiskussionen und Kooperationsmöglichkeiten.",
-      "emailLabel": "Ihre E‑Mail:",
-      "messageLabel": "Ihre Nachricht:",
-      "submit": "Nachricht senden"
-    },
-    "linkedin": {
-      "title": "LinkedIn",
-      "description": "Für Networking, Branchendiskussionen und berufliche Kontakte."
-    },
-    "github": {
-      "title": "GitHub",
-      "description": "Für Open‑Source‑Beiträge, Code‑Reviews und technische Diskussionen."
+  "intro": "Wählen Sie unten den schnellsten Weg. Ich bin offen für Beratung, Architektur-Reviews und ausgewählte Umsetzungsprojekte — mit Fokus auf Enterprise-KI-Plattformen.",
+  "primaryCta": {
+    "title": "Kurz sprechen – diese Woche?",
+    "description": "Am schnellsten ist ein kurzer Termin. Alternativ können Sie mir eine Nachricht mit Kontext senden – ich melde mich zurück.",
+    "bookCall": "Termin buchen",
+    "sendMessage": "Nachricht senden"
+  },
+  "quickOptions": {
+    "title": "Schnelle Optionen",
+    "items": {
+      "bookCall": {
+        "title": "Termin buchen",
+        "description": "Wählen Sie einen passenden Slot. Öffnet Calendly in einem neuen Tab.",
+        "button": "Calendly öffnen"
+      },
+      "linkedin": {
+        "title": "LinkedIn",
+        "description": "Für Networking und professionelle Gespräche.",
+        "button": "Auf LinkedIn schreiben"
+      },
+      "github": {
+        "title": "GitHub",
+        "description": "Für Open‑Source‑Beiträge und technische Diskussionen.",
+        "button": "GitHub ansehen"
+      }
     }
+  },
+  "message": {
+    "title": "Nachricht senden",
+    "description": "Beschreiben Sie kurz Ziel, Ausgangslage, Constraints (Security/Compliance) und Timeline.",
+    "emailLabel": "Ihre E‑Mail:",
+    "messageLabel": "Ihre Nachricht:",
+    "submit": "Nachricht senden"
   },
   "focus": {
     "title": "Schwerpunkte",

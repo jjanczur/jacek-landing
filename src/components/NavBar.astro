@@ -1,5 +1,6 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import { Calendar } from 'lucide-astro';
 
 export interface Props {
   lang: 'en' | 'pl' | 'de';
@@ -39,16 +40,19 @@ const i18n = {
     mainNavAria: 'Main navigation',
     toggleMenuAria: 'Toggle navigation menu',
     toggleThemeText: 'Toggle Theme',
+    bookCall: 'Book a call',
   },
   pl: {
     mainNavAria: 'Nawigacja główna',
     toggleMenuAria: 'Przełącz menu nawigacji',
     toggleThemeText: 'Zmień motyw',
+    bookCall: 'Umów rozmowę',
   },
   de: {
     mainNavAria: 'Hauptnavigation',
     toggleMenuAria: 'Navigationsmenü umschalten',
     toggleThemeText: 'Theme wechseln',
+    bookCall: 'Termin buchen',
   },
 } as const;
 
@@ -57,6 +61,9 @@ const pathMap = {
   pl: Astro.url.pathname.replace(/^\/(en|de)/, '/pl'),
   de: Astro.url.pathname.replace(/^\/(en|pl)/, '/de'),
 };
+
+const calendlyUrl =
+  'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
 ---
 
 <script is:inline>
@@ -169,6 +176,16 @@ const pathMap = {
       aria-label={i18n[lang].mainNavAria}
     >
       <div class="mobile-menu-content">
+        <a
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-cta"
+          onclick="toggleMobileMenu()"
+        >
+          <Calendar size={18} />
+          {i18n[lang].bookCall}
+        </a>
         {
           navLinks[lang].map(link => (
             <a
@@ -188,7 +205,6 @@ const pathMap = {
             onclick="toggleTheme(); toggleMobileMenu();"
           >
             <span>🌓</span>
-            <span class="mobile-theme-text">{i18n[lang].toggleThemeText}</span>
           </button>
         </div>
       </div>
@@ -196,6 +212,15 @@ const pathMap = {
 
     <!-- Desktop Actions -->
     <div class="nav-actions desktop-actions">
+      <a
+        href={calendlyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="header-cta"
+      >
+        <Calendar size={16} />
+        {i18n[lang].bookCall}
+      </a>
       <LanguageSwitcher lang={lang} pathMap={pathMap} />
       <button
         aria-label={i18n[lang].toggleThemeText}
@@ -209,9 +234,112 @@ const pathMap = {
 </header>
 
 <style>
+  /* Language switcher (globe dropdown) */
+  :global(details.language-switcher) {
+    position: relative;
+    display: inline-block;
+  }
+
+  :global(
+    details.language-switcher summary.language-trigger::-webkit-details-marker
+  ) {
+    display: none;
+  }
+
+  :global(details.language-switcher summary.language-trigger) {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-m);
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  :global(details.language-switcher summary.language-trigger:hover) {
+    background: var(--muted);
+  }
+
+  :global(details.language-switcher summary.language-trigger:focus-visible) {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  :global(details.language-switcher .language-menu) {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-2);
+    padding: var(--space-2);
+    display: grid;
+    gap: var(--space-1);
+    min-width: 140px;
+    z-index: 1000;
+  }
+
+  :global(details.language-switcher .lang-item) {
+    text-decoration: none;
+    color: var(--text);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-m);
+    transition: background-color 0.2s;
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  :global(details.language-switcher .lang-item[aria-current='true']) {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+  }
+
+  :global(details.language-switcher .lang-item:hover) {
+    background: var(--muted);
+  }
+
+  :global(details.language-switcher .lang-item[aria-current='true']:hover) {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  }
+
+  .header-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-m);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+  }
+
+  .header-cta:hover {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    transform: translateY(-1px);
+    text-decoration: none;
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.35);
+  }
+
+  .header-cta:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
   .theme-toggle {
     background: none;
-    border: 1px solid var(--border);
+    border: none;
     border-radius: var(--radius-m);
     padding: var(--space-2);
     cursor: pointer;
@@ -224,24 +352,48 @@ const pathMap = {
 
   .mobile-theme-toggle {
     background: none;
-    border: 1px solid var(--border);
+    border: none;
     border-radius: var(--radius-m);
-    padding: var(--space-3);
+    padding: var(--space-2);
     cursor: pointer;
     transition: background-color 0.2s;
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    width: 100%;
-    justify-content: flex-start;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
   }
 
   .mobile-theme-toggle:hover {
     background: var(--muted);
   }
 
-  .mobile-theme-text {
-    font-size: var(--font-size-base);
+  .mobile-nav-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .mobile-cta {
+    margin-bottom: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius-m);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
+  }
+
+  .mobile-cta:hover {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    text-decoration: none;
   }
 
   .navbar {

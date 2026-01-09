@@ -62,6 +62,9 @@ const { lang } = Astro.props;
 const t = await getTranslations<ConsultingTranslations>('consulting', lang);
 
 const engagementIcons = [Compass, Shield, Wrench, Users];
+
+const calendlyUrl =
+  'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
 ---
 
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
@@ -130,7 +133,12 @@ const engagementIcons = [Compass, Shield, Wrench, Users];
       <div class="cta">
         <h2>{t.cta.title}</h2>
         <p>{t.cta.description}</p>
-        <a href={`/${lang}/contact/`} class="cta-button">
+        <a
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button"
+        >
           <Mail size={18} />
           {t.cta.button}
         </a>

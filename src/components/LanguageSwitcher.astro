@@ -1,4 +1,6 @@
 ---
+import { Globe } from 'lucide-astro';
+
 export interface Props {
   lang: 'en' | 'pl' | 'de';
   pathMap: {
@@ -11,48 +13,109 @@ export interface Props {
 const { lang, pathMap } = Astro.props;
 ---
 
-<nav aria-label="Language" class="language-switcher">
-  <a
-    href={pathMap.en}
-    aria-current={lang === 'en' ? 'true' : 'false'}
-    class="lang-link">EN</a
-  >
-  <span>·</span>
-  <a
-    href={pathMap.pl}
-    aria-current={lang === 'pl' ? 'true' : 'false'}
-    class="lang-link">PL</a
-  >
-  <span>·</span>
-  <a
-    href={pathMap.de}
-    aria-current={lang === 'de' ? 'true' : 'false'}
-    class="lang-link">DE</a
-  >
-</nav>
+<details class="language-switcher" aria-label="Language">
+  <summary class="language-trigger" aria-label="Change language">
+    <Globe size={18} />
+  </summary>
+  <div class="language-menu" role="menu">
+    <a
+      role="menuitem"
+      href={pathMap.en}
+      aria-current={lang === 'en' ? 'true' : 'false'}
+      class="lang-item"
+    >
+      EN
+    </a>
+    <a
+      role="menuitem"
+      href={pathMap.pl}
+      aria-current={lang === 'pl' ? 'true' : 'false'}
+      class="lang-item"
+    >
+      PL
+    </a>
+    <a
+      role="menuitem"
+      href={pathMap.de}
+      aria-current={lang === 'de' ? 'true' : 'false'}
+      class="lang-item"
+    >
+      DE
+    </a>
+  </div>
+</details>
 
 <style>
   .language-switcher {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--font-size-sm);
+    position: relative;
+    display: inline-block;
   }
 
-  .lang-link {
-    text-decoration: none;
+  .language-switcher summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .language-trigger {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-m);
+    border: 1px solid var(--border);
+    background: transparent;
     color: var(--text);
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-s);
+    cursor: pointer;
     transition: background-color 0.2s;
   }
 
-  .lang-link[aria-current='true'] {
-    background: var(--primary);
+  .language-trigger:hover {
+    background: var(--muted);
+  }
+
+  .language-trigger:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .language-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-2);
+    padding: var(--space-2);
+    display: grid;
+    gap: var(--space-1);
+    min-width: 140px;
+    z-index: 1000;
+  }
+
+  .lang-item {
+    text-decoration: none;
+    color: var(--text);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-m);
+    transition: background-color 0.2s;
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .lang-item[aria-current='true'] {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: white;
   }
 
-  .lang-link:hover {
+  .lang-item:hover {
     background: var(--muted);
+  }
+
+  .lang-item[aria-current='true']:hover {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
   }
 </style>

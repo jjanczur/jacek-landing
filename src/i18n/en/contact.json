@@ -7,23 +7,39 @@
     "title": "Contact",
     "subtitle": "Let's build responsibly-engineered AI"
   },
-  "intro": "Best via the contact form below or LinkedIn. I'm open to advisory, architecture reviews, and select delivery engagements focused on enterprise AI platforms.",
-  "methods": {
-    "form": {
-      "title": "Contact Form",
-      "description": "For professional inquiries, project discussions, and collaboration opportunities.",
-      "emailLabel": "Your email:",
-      "messageLabel": "Your message:",
-      "submit": "Send Message"
-    },
-    "linkedin": {
-      "title": "LinkedIn",
-      "description": "For networking, industry discussions, and professional connections."
-    },
-    "github": {
-      "title": "GitHub",
-      "description": "For open source contributions, code reviews, and technical discussions."
+  "intro": "Pick the fastest way below. I’m open to advisory, architecture reviews, and select delivery engagements focused on enterprise AI platforms.",
+  "primaryCta": {
+    "title": "Want to talk this week?",
+    "description": "The fastest path is a short call. If you prefer, send a message with context and I’ll follow up.",
+    "bookCall": "Book a call",
+    "sendMessage": "Send a message"
+  },
+  "quickOptions": {
+    "title": "Quick options",
+    "items": {
+      "bookCall": {
+        "title": "Book a call",
+        "description": "Pick a slot that works for you. Opens Calendly in a new tab.",
+        "button": "Open Calendly"
+      },
+      "linkedin": {
+        "title": "LinkedIn",
+        "description": "For networking and professional conversations.",
+        "button": "Message on LinkedIn"
+      },
+      "github": {
+        "title": "GitHub",
+        "description": "For open source contributions and technical discussions.",
+        "button": "View GitHub"
+      }
     }
+  },
+  "message": {
+    "title": "Send a message",
+    "description": "Share a short problem statement, constraints (security/compliance), and timeline expectations.",
+    "emailLabel": "Your email:",
+    "messageLabel": "Your message:",
+    "submit": "Send message"
   },
   "focus": {
     "title": "Focus Areas",

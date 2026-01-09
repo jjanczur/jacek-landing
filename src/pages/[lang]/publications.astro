@@ -14,8 +14,78 @@ interface Props {
   lang: Lang;
 }
 
+interface PublicationLink {
+  label: string;
+  url: string;
+}
+
+interface PeerReviewedPublicationItem {
+  title: string;
+  description: string;
+  role?: string;
+  doi?: string;
+  links?: PublicationLink[];
+}
+
+interface ArticlePublicationItem {
+  title: string;
+  description: string;
+  links?: PublicationLink[];
+  placeholder?: boolean;
+}
+
+interface NoteItem {
+  title: string;
+  date: string;
+  excerpt: string;
+  tags: string[];
+}
+
+interface PublicationsTranslations {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  sections: {
+    publications: {
+      title: string;
+      groups: {
+        peerReviewed: {
+          title: string;
+          items: PeerReviewedPublicationItem[];
+        };
+        articles: {
+          title: string;
+          items: ArticlePublicationItem[];
+        };
+      };
+    };
+    notes: {
+      title: string;
+      intro: string;
+      items: NoteItem[];
+    };
+  };
+  labels: {
+    role: string;
+    links: string;
+    link: string;
+    doi: string;
+    placeholder: string;
+  };
+  cta: string;
+  ctaLinks: {
+    talks: string;
+    projects: string;
+  };
+}
+
 const { lang } = Astro.props;
-const t = await getTranslations('publications', lang);
+const t = await getTranslations<PublicationsTranslations>('publications', lang);
 ---
 
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
@@ -68,7 +138,7 @@ const t = await getTranslations('publications', lang);
                             >
                               {link.label}
                             </a>
-                            {idx < item.links.length - 1 && ' '}
+                            {idx < (item.links?.length ?? 0) - 1 && ' '}
                           </>
                         ))}
                       </>

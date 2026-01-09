@@ -7,23 +7,39 @@
     "title": "Kontakt",
     "subtitle": "Twórzmy razem odpowiedzialne rozwiązania AI"
   },
-  "intro": "Najlepiej skontaktować się przez formularz poniżej lub LinkedIn. Chętnie podejmuję się doradztwa, przeglądów architektury oraz wybranych projektów wdrożeniowych związanych z platformami AI dla przedsiębiorstw.",
-  "methods": {
-    "form": {
-      "title": "Formularz kontaktowy",
-      "description": "Zapytania zawodowe, rozmowy o projektach i propozycje współpracy.",
-      "emailLabel": "Twój e-mail:",
-      "messageLabel": "Twoja wiadomość:",
-      "submit": "Wyślij wiadomość"
-    },
-    "linkedin": {
-      "title": "LinkedIn",
-      "description": "Networking, rozmowy branżowe i kontakty zawodowe."
-    },
-    "github": {
-      "title": "GitHub",
-      "description": "Projekty open source, przeglądy kodu i dyskusje techniczne."
+  "intro": "Wybierz poniżej najszybszą opcję. Chętnie podejmuję się doradztwa, przeglądów architektury oraz wybranych wdrożeń związanych z platformami AI dla przedsiębiorstw.",
+  "primaryCta": {
+    "title": "Chcesz porozmawiać w tym tygodniu?",
+    "description": "Najszybciej będzie umówić krótką rozmowę. Jeśli wolisz, wyślij wiadomość z kontekstem – odezwę się.",
+    "bookCall": "Umów rozmowę",
+    "sendMessage": "Wyślij wiadomość"
+  },
+  "quickOptions": {
+    "title": "Szybkie opcje",
+    "items": {
+      "bookCall": {
+        "title": "Umów rozmowę",
+        "description": "Wybierz dogodny termin. Otwiera Calendly w nowej karcie.",
+        "button": "Otwórz Calendly"
+      },
+      "linkedin": {
+        "title": "LinkedIn",
+        "description": "Networking i rozmowy zawodowe.",
+        "button": "Napisz na LinkedIn"
+      },
+      "github": {
+        "title": "GitHub",
+        "description": "Open source i dyskusje techniczne.",
+        "button": "Zobacz GitHub"
+      }
     }
+  },
+  "message": {
+    "title": "Wyślij wiadomość",
+    "description": "Krótko opisz cel, stan obecny, ograniczenia (security/compliance) i oczekiwania czasowe.",
+    "emailLabel": "Twój e-mail:",
+    "messageLabel": "Twoja wiadomość:",
+    "submit": "Wyślij wiadomość"
   },
   "focus": {
     "title": "Obszary specjalizacji",

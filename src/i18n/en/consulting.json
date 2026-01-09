@@ -81,7 +81,7 @@
   },
   "cta": {
     "title": "Want to discuss a project?",
-    "description": "The fastest way is a short message with context: your goal, current state, constraints (security/compliance), and timeline expectations.",
-    "button": "Contact me"
+    "description": "The fastest way is booking a short call. If you prefer, you can also send a message with context: your goal, current state, constraints (security/compliance), and timeline expectations.",
+    "button": "Book a call"
   }
 }

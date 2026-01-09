@@ -24,8 +24,52 @@ interface Props {
   lang: Lang;
 }
 
+type ProjectLinkType = 'website' | 'repository' | 'blog';
+
+interface ProjectLink {
+  type: ProjectLinkType;
+  url: string;
+  label: string;
+}
+
+interface ProjectItem {
+  name: string;
+  period: string;
+  industry: string;
+  role?: string;
+  tagline: string;
+  description: string[];
+  industries: string;
+  tech: string;
+  impact: string;
+  links?: ProjectLink[];
+}
+
+interface ProjectsTranslations {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  intro: string;
+  company: string;
+  role: string;
+  labels: {
+    industries: string;
+    tech: string;
+    impact: string;
+    website: string;
+    repository: string;
+    blog: string;
+  };
+  projects: ProjectItem[];
+}
+
 const { lang } = Astro.props;
-const t = await getTranslations('projects', lang);
+const t = await getTranslations<ProjectsTranslations>('projects', lang);
 
 const iconMap: Record<string, any> = {
   entAIngine: Brain,

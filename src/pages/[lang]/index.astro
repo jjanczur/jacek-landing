@@ -28,8 +28,64 @@ interface Props {
   lang: Lang;
 }
 
+interface IndexHighlightItem {
+  title: string;
+  description: string;
+}
+
+interface IndexFeaturedItem {
+  title: string;
+  description: string;
+  link: string;
+  url?: string;
+}
+
+interface IndexFaqItem {
+  question: string;
+  answer: string;
+}
+
+interface IndexTranslations {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    title: string;
+    subtitle: string;
+    tagline: string;
+    cta: {
+      primary: string;
+      secondary: string;
+    };
+  };
+  positioning: {
+    p1: string;
+    p2: string;
+  };
+  highlights: {
+    title: string;
+    items: IndexHighlightItem[];
+    note: string;
+  };
+  featured: {
+    title: string;
+    items: IndexFeaturedItem[];
+  };
+  contactCta: {
+    title: string;
+    description: string;
+    button: string;
+  };
+  faq: {
+    title: string;
+    intro: string;
+    items: IndexFaqItem[];
+  };
+}
+
 const { lang } = Astro.props;
-const t = await getTranslations('index', lang);
+const t = await getTranslations<IndexTranslations>('index', lang);
 
 const highlightIcons = [
   Building2,
@@ -45,7 +101,7 @@ const faqStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   inLanguage: lang,
-  mainEntity: (t.faq?.items || []).map((item: any) => ({
+  mainEntity: (t.faq?.items || []).map(item => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: {

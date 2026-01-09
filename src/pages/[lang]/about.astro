@@ -26,8 +26,72 @@ interface Props {
   lang: Lang;
 }
 
+interface AboutTimelineItem {
+  date: string;
+  title: string;
+  company: string;
+  description: string;
+  hasReference?: boolean;
+  referenceText?: string;
+}
+
+type AboutAwardType = 'featured' | 'scholarship';
+
+interface AboutAwardItem {
+  type: AboutAwardType;
+  title: string;
+  subtitle: string;
+  date: string;
+  description: string;
+}
+
+interface AboutTranslations {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  downloads: {
+    title: string;
+    cv: string;
+  };
+  bio: {
+    paragraphs: string[];
+  };
+  outsideWork: {
+    title: string;
+    paragraphs: string[];
+  };
+  philosophy: {
+    title: string;
+    paragraphs: string[];
+  };
+  career: {
+    title: string;
+    paragraphs: string[];
+  };
+  specializations: {
+    title: string;
+    categories: Array<{
+      title: string;
+      items: string[];
+    }>;
+  };
+  timeline: {
+    title: string;
+    items: AboutTimelineItem[];
+  };
+  awards: {
+    title: string;
+    items: AboutAwardItem[];
+  };
+}
+
 const { lang } = Astro.props;
-const t = await getTranslations('about', lang);
+const t = await getTranslations<AboutTranslations>('about', lang);
 
 const skillIcons = [Brain, Cloud, Shield, Users, Code, Languages];
 

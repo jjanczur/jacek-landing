@@ -1,9 +1,14 @@
 export type Lang = 'en' | 'pl' | 'de';
 
+// Default return type for translation JSON blobs.
+// Many pages don't provide a typed schema yet, so we intentionally use a permissive type.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TranslationBlob = Record<string, any>;
+
 /**
  * Get translations for a specific page and language
  */
-export async function getTranslations<T = Record<string, unknown>>(
+export async function getTranslations<T = TranslationBlob>(
   page: string,
   lang: Lang,
 ): Promise<T> {
