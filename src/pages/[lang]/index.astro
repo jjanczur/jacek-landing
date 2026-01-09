@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
 import {
   Building2,
   Workflow,
@@ -16,6 +17,7 @@ import {
 } from 'lucide-astro';
 import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
+import headshotImage from '../../assets/images/headshot.jpg';
 
 export async function getStaticPaths() {
   return getSupportedLangs().map(lang => ({
@@ -145,12 +147,16 @@ const faqStructuredData = {
           </div>
         </div>
         <div class="hero-image">
-          <img
-            src="/images/headshot.jpg"
+          <Picture
+            src={headshotImage}
             alt="Jacek Janczura"
-            width="300"
-            height="300"
             class="headshot"
+            widths={[280, 560]}
+            sizes="(max-width: 900px) 200px, 280px"
+            formats={['avif', 'webp']}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
           />
         </div>
       </div>

@@ -143,8 +143,15 @@ const structuredData = {
 <html lang={lang} data-theme="light">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Resource hints - Must be early to establish connections before other resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -193,11 +200,19 @@ const structuredData = {
     <link rel="alternate" hreflang="de" href={alternateUrls.de} />
     <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
 
-    <!-- Google Fonts - Lato -->
+    <!-- Google Fonts - Load asynchronously to avoid render blocking -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- CSP Meta -->
     <meta
@@ -221,6 +236,22 @@ const structuredData = {
       } catch {
         // localStorage not available, use default light theme
         document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+
+    <!-- Service Worker Registration for caching static assets -->
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {
+              console.log('Service Worker registered:', registration.scope);
+            })
+            .catch((error) => {
+              console.log('Service Worker registration failed:', error);
+            });
+        });
       }
     </script>
   </head>
