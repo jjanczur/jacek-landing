@@ -116,16 +116,17 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
           // - rel=0: Don't show related videos from other channels (privacy)
           // - cc_load_policy=0: Disable closed captions by default
           const iframe = document.createElement('iframe');
-          iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&enablejsapi=0&modestbranding=1&rel=0&cc_load_policy=0`;
-          iframe.title = thumbnailImage?.getAttribute('alt') || 'YouTube video';
-          iframe.width = '560';
-          iframe.height = '315';
-          iframe.frameBorder = '0';
-          iframe.allow =
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-          iframe.allowFullscreen = true;
-          iframe.loading = 'lazy';
-          iframe.referrerPolicy = 'no-referrer-when-downgrade';
+          // Use setAttribute for src to work with Trusted Types
+          const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&enablejsapi=0&modestbranding=1&rel=0&cc_load_policy=0`;
+          iframe.setAttribute('src', embedUrl);
+          iframe.setAttribute('title', thumbnailImage?.getAttribute('alt') || 'YouTube video');
+          iframe.setAttribute('width', '560');
+          iframe.setAttribute('height', '315');
+          iframe.setAttribute('frameborder', '0');
+          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+          iframe.setAttribute('allowfullscreen', '');
+          iframe.setAttribute('loading', 'lazy');
+          iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
           iframe.className = 'video-iframe';
           iframe.setAttribute('data-loaded', 'true');
 
