@@ -127,10 +127,31 @@ const calendlyUrl =
   }
 
   // Initialize event listeners when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function () {
-    document.addEventListener('click', closeMobileMenuOnClickOutside);
-    document.addEventListener('keydown', closeMobileMenuOnEscape);
-  });
+  // Defer to avoid blocking initial page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      // Use requestIdleCallback to defer non-critical event listeners
+      const initListeners = () => {
+        document.addEventListener('click', closeMobileMenuOnClickOutside);
+        document.addEventListener('keydown', closeMobileMenuOnEscape);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initListeners, { timeout: 1000 });
+      } else {
+        setTimeout(initListeners, 100);
+      }
+    });
+  } else {
+    const initListeners = () => {
+      document.addEventListener('click', closeMobileMenuOnClickOutside);
+      document.addEventListener('keydown', closeMobileMenuOnEscape);
+    };
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initListeners, { timeout: 1000 });
+    } else {
+      setTimeout(initListeners, 100);
+    }
+  }
 </script>
 
 <header class="navbar">

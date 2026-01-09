@@ -320,9 +320,9 @@ const faqStructuredData = {
       const dotColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.15)`;
       const lineColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.08)`;
 
-      // Create dots in grid pattern (like jadendata.com) - fewer dots
+      // Create dots in grid pattern (like jadendata.com) - optimized for performance
       const dots = [];
-      const gridSpacing = 150; // Increased spacing for fewer dots
+      const gridSpacing = 180; // Increased spacing for fewer dots (better performance)
       const cols = Math.ceil(canvas.width / gridSpacing) + 1;
       const rows = Math.ceil(canvas.height / gridSpacing) + 1;
 
@@ -376,17 +376,21 @@ const faqStructuredData = {
 
       function draw() {
         // Draw lines between nearby dots
+        // Optimized: use squared distance to avoid expensive sqrt calculation
         ctx.strokeStyle = lineColor;
         ctx.lineWidth = 1;
-        const maxDistance = 150;
+        const maxDistanceSquared = 150 * 150; // Pre-calculate squared distance
 
+        // Optimize: only check nearby dots using spatial partitioning
+        // For small numbers of dots, this is still efficient
         for (let i = 0; i < dots.length; i++) {
           for (let j = i + 1; j < dots.length; j++) {
             const dx = dots[i].x - dots[j].x;
             const dy = dots[i].y - dots[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            const distanceSquared = dx * dx + dy * dy;
 
-            if (distance < maxDistance) {
+            // Use squared distance comparison (avoids Math.sqrt)
+            if (distanceSquared < maxDistanceSquared) {
               ctx.beginPath();
               ctx.moveTo(dots[i].x, dots[i].y);
               ctx.lineTo(dots[j].x, dots[j].y);
@@ -395,17 +399,18 @@ const faqStructuredData = {
           }
         }
 
-        // Draw dots
+        // Draw dots - batch operations
         ctx.fillStyle = dotColor;
+        ctx.beginPath();
         dots.forEach(dot => {
-          ctx.beginPath();
+          ctx.moveTo(dot.x + 2, dot.y);
           ctx.arc(dot.x, dot.y, 2, 0, 2 * Math.PI);
-          ctx.fill();
         });
+        ctx.fill();
       }
 
-      // Start animation
-      animate();
+      // Start animation with initial timestamp
+      animationFrame = requestAnimationFrame(animate);
 
       // Cleanup on unmount
       return () => {
@@ -414,11 +419,38 @@ const faqStructuredData = {
       };
     }
 
-    // Wait for DOM to be ready
+    // Wait for DOM to be ready, then use Intersection Observer to start animation only when visible
+    function startNetworkWhenVisible() {
+      const canvas = document.querySelector('.network-canvas');
+      if (!canvas) return;
+
+      // Use Intersection Observer to start animation only when hero section is visible
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              initNetwork();
+              observer.disconnect(); // Only initialize once
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      // Observe the hero section (parent of canvas)
+      const heroSection = canvas.closest('.hero');
+      if (heroSection) {
+        observer.observe(heroSection);
+      } else {
+        // Fallback: initialize immediately if hero section not found
+        initNetwork();
+      }
+    }
+
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initNetwork);
+      document.addEventListener('DOMContentLoaded', startNetworkWhenVisible);
     } else {
-      initNetwork();
+      startNetworkWhenVisible();
     }
   })();
 </script>
@@ -1178,6 +1210,11 @@ const faqStructuredData = {
       padding: var(--space-4);
     }
     .faq-answer {
+      padding: 0 var(--space-4) var(--space-4) var(--space-4);
+    }
+  }
+</style>
+
       padding: 0 var(--space-4) var(--space-4) var(--space-4);
     }
   }

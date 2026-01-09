@@ -50,7 +50,8 @@ self.addEventListener('fetch', (event) => {
   const isStaticAsset =
     url.pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|ico|css|js|woff|woff2|ttf|eot)$/i) ||
     url.pathname.startsWith('/images/') ||
-    url.pathname.startsWith('/_astro/');
+    url.pathname.startsWith('/_astro/') ||
+    url.pathname.startsWith('/_assets/');
 
   if (isStaticAsset && event.request.method === 'GET') {
     event.respondWith(

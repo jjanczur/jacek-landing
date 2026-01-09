@@ -1050,7 +1050,8 @@ function isListHtml(value: unknown): value is string {
 <script is:inline>
   // Ensure download links work correctly with proper filenames
   // This handles cases where browsers might ignore the download attribute
-  document.addEventListener('DOMContentLoaded', function () {
+  // Deferred to avoid blocking initial page load
+  function initDownloadLinks() {
     const downloadLinks = document.querySelectorAll('.download-link[download]');
 
     downloadLinks.forEach(function (link) {
@@ -1070,5 +1071,21 @@ function isListHtml(value: unknown): value is string {
         });
       }
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initDownloadLinks, { timeout: 1000 });
+      } else {
+        setTimeout(initDownloadLinks, 100);
+      }
+    });
+  } else {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initDownloadLinks, { timeout: 1000 });
+    } else {
+      setTimeout(initDownloadLinks, 100);
+    }
+  }
 </script>

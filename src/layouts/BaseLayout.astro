@@ -261,9 +261,11 @@ const structuredData = {
     </script>
 
     <!-- Service Worker Registration for caching static assets -->
+    <!-- Deferred to avoid blocking initial page load -->
     <script is:inline>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
+        // Use requestIdleCallback if available, otherwise defer with setTimeout
+        const registerSW = () => {
           navigator.serviceWorker
             .register('/sw.js')
             .then(registration => {
@@ -274,7 +276,13 @@ const structuredData = {
               // eslint-disable-next-line no-console
               console.log('Service Worker registration failed:', error);
             });
-        });
+        };
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(registerSW, { timeout: 2000 });
+        } else {
+          setTimeout(registerSW, 2000);
+        }
       }
     </script>
   </head>
