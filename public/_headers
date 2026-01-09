@@ -1,7 +1,18 @@
-# Cache headers for static assets
+# Security headers - applied to all pages
 # This file is used by Cloudflare Pages and Netlify
 # For GitHub Pages, use the service worker (sw.js) instead
+# Content Security Policy: Removed 'unsafe-inline' from script-src, using SHA256 hashes instead
+# style-src keeps 'unsafe-inline' because Astro inlines stylesheets (inlineStylesheets: 'always')
+/*
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'sha256-muiKPiReAdVhdZpVmP8unyQfIj7e6XDjG3oGeInO9gE=' 'sha256-Ff3RKx3FsXH/UQwKyw6myJRPP0FJKVp5OoXHrx46DDo=' 'sha256-mxoIBKRThFwhc0BveW1ZbFV3NlIbh69L+OGTZc5oOPg=' 'sha256-M54CNdp0ToT5ut3ILis30T3w5yKfbKJKDmrTlIPkOhc=' 'sha256-rowvXSDKFdFHQhqg8yyFHwCk/9EKVkfVYx2Lu60QGJs=' 'sha256-c/Cm8nBnw9op3myVhLeIGNsQPBhO52wMR3NV240+8WQ=' 'sha256-oGxloQmFQqCDZfdvdUywZqhCb72Y5JknajUuiP/+ogg='; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; require-trusted-types-for 'script'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cache-Control: public, max-age=3600, must-revalidate
 
+# Cache headers for static assets
 # Images - cache for 1 year
 /images/*
   Cache-Control: public, max-age=31536000, immutable
@@ -24,7 +35,3 @@
 # Favicon - cache for 1 year
 /favicon.svg
   Cache-Control: public, max-age=31536000, immutable
-
-# HTML pages - cache for 1 hour (shorter for content updates)
-/*
-  Cache-Control: public, max-age=3600, must-revalidate

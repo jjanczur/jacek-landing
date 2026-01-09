@@ -235,17 +235,19 @@ const structuredData = {
       })();
     </script>
 
-    <!-- CSP Meta -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self';"
-    />
-
     <!-- JSON-LD Structured Data -->
     <script
       is:inline
       type="application/ld+json"
       set:html={JSON.stringify(structuredData)}
+    />
+
+    <!-- CSP Meta Tag (for GitHub Pages - HTTP headers in _headers file for Netlify/Cloudflare) -->
+    <!-- Removed 'unsafe-inline' from script-src, using SHA256 hashes instead -->
+    <!-- style-src keeps 'unsafe-inline' because Astro inlines stylesheets -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'sha256-muiKPiReAdVhdZpVmP8unyQfIj7e6XDjG3oGeInO9gE=' 'sha256-Ff3RKx3FsXH/UQwKyw6myJRPP0FJKVp5OoXHrx46DDo=' 'sha256-mxoIBKRThFwhc0BveW1ZbFV3NlIbh69L+OGTZc5oOPg=' 'sha256-M54CNdp0ToT5ut3ILis30T3w5yKfbKJKDmrTlIPkOhc=' 'sha256-rowvXSDKFdFHQhqg8yyFHwCk/9EKVkfVYx2Lu60QGJs=' 'sha256-c/Cm8nBnw9op3myVhLeIGNsQPBhO52wMR3NV240+8WQ=' 'sha256-oGxloQmFQqCDZfdvdUywZqhCb72Y5JknajUuiP/+ogg='; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; require-trusted-types-for 'script'"
     />
 
     <!-- Theme initialization -->
