@@ -144,13 +144,13 @@ const structuredData = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <!-- Resource hints - Must be early to establish connections before other resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -205,7 +205,7 @@ const structuredData = {
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
       media="print"
-      onload="this.media='all'"
+      id="google-fonts-link"
     />
     <noscript>
       <link
@@ -213,6 +213,23 @@ const structuredData = {
         rel="stylesheet"
       />
     </noscript>
+    <script is:inline>
+      // Load Google Fonts asynchronously
+      (function() {
+        const link = document.getElementById('google-fonts-link');
+        if (link) {
+          link.onload = function() {
+            this.media = 'all';
+          };
+          // Fallback: if onload doesn't fire, set media after a short delay
+          setTimeout(function() {
+            if (link.media === 'print') {
+              link.media = 'all';
+            }
+          }, 100);
+        }
+      })();
+    </script>
 
     <!-- CSP Meta -->
     <meta
@@ -245,10 +262,12 @@ const structuredData = {
         window.addEventListener('load', () => {
           navigator.serviceWorker
             .register('/sw.js')
-            .then((registration) => {
+            .then(registration => {
+              // eslint-disable-next-line no-console
               console.log('Service Worker registered:', registration.scope);
             })
-            .catch((error) => {
+            .catch(error => {
+              // eslint-disable-next-line no-console
               console.log('Service Worker registration failed:', error);
             });
         });
