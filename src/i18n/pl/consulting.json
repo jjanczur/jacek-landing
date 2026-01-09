@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Konsulting | Jacek Janczura",
+    "description": "Konsulting CTO & Cloud: architektura AWS, systemy rozproszone, niezawodność (SLO/observability), cost/performance, security/compliance oraz AI (LLM/RAG/evals) wtedy, gdy ma to sens. Formy współpracy: fractional leadership, architecture reviews, delivery sprinty, developer enablement."
+  },
+  "hero": {
+    "title": "Konsulting",
+    "subtitle": "Senior engineering leadership dla złożonych systemów (AI, gdy ma sens)"
+  },
+  "intro": {
+    "p1": "Pomagam zespołom dowozić <strong>bezpieczne, niezawodne systemy</strong> — platformy chmurowe, systemy rozproszone i funkcje AI (LLM/RAG/evals), jeśli realnie poprawiają produkt albo proces.",
+    "p2": "Skupiam się na <strong>produkcji</strong>: decyzje architektoniczne z jasno opisanymi trade‑offami, szybki delivery bez regresji, cost/performance, security/compliance oraz sposób pracy dopasowany do tego, jak Twoja organizacja naprawdę działa."
+  },
+  "engagements": {
+    "title": "Jak pracuję / Formy współpracy",
+    "items": [
+      {
+        "title": "Fractional CTO / senior leadership techniczny",
+        "description": "Hands-on wsparcie w strategii, kierunku technicznym, decyzjach architektonicznych i standardach delivery — kiedy potrzebujesz doświadczonej osoby „obok” zespołu.",
+        "deliverables": [
+          "Kierunek architektury + decision records (trade‑offy wprost)",
+          "Roadmapa + operating model delivery (quality gates, code review, rollout)",
+          "Mentoring dla seniorów i wsparcie rozwoju zespołu",
+          "Przegląd ryzyk: security, niezawodność i koszty (także AI‑specific, jeśli dotyczy)"
+        ]
+      },
+      {
+        "title": "Architecture Review (Cloud / distributed systems / AI)",
+        "description": "Ustrukturyzowany przegląd obecnego rozwiązania (albo planu) z rekomendacjami, które da się wdrożyć — bez slajdów „dla slajdów”.",
+        "deliverables": [
+          "Wnioski + priorytety (now/next/later)",
+          "Reference architecture + kluczowe trade‑offy (granice systemu, data flows, build vs buy)",
+          "Plan na reliability, observability (logs/metrics/traces) i cost control"
+        ]
+      },
+      {
+        "title": "Delivery Sprint (production-grade thin slice)",
+        "description": "Dowozimy wartościowy kawałek end‑to‑end — tak, żeby zostało działające rozwiązanie i pattern, który zespół może powtarzać.",
+        "deliverables": [
+          "Jedna production‑ready funkcja (np. event‑driven workflow, capability platformy, RAG endpoint albo evaluation harness)",
+          "CI/test coverage + ścieżka wdrożenia, którą zespół przejmuje",
+          "Monitoring/alerty + podstawy runbooka operacyjnego",
+          "Security‑first defaulty (RBAC, data handling, auditability — gdzie trzeba)"
+        ]
+      },
+      {
+        "title": "Developer productivity & safe AI tooling",
+        "description": "Podnosimy tempo bez utraty jakości — workflow, standardy i (opcjonalnie) AI coding tools typu Cursor/Claude Code.",
+        "deliverables": [
+          "Standardy PR/code review + szablony dopasowane do repo",
+          "Quality gates w CI (testy, lint, security checks) skrojone pod Wasz flow",
+          "Enablement narzędzi AI: onboarding, guardrails i ochrona przed regresjami"
+        ]
+      }
+    ]
+  },
+  "howIWork": {
+    "title": "Jak podchodzę do delivery",
+    "steps": [
+      {
+        "title": "Najpierw cel i constraints",
+        "description": "Mapujemy realny workflow, interesariuszy i ograniczenia (ludzie, systemy, ryzyko, compliance), zanim wybierzemy rozwiązanie."
+      },
+      {
+        "title": "Operability od pierwszego dnia",
+        "description": "Security, observability, kontrola kosztów i failure modes są częścią architektury — nie „następną fazą”."
+      },
+      {
+        "title": "Iteracje i mierzalny efekt",
+        "description": "Małe releasy, jasne metryki sukcesu i monitoring (a przy AI również evale), żeby jakość rosła zamiast dryfować."
+      }
+    ]
+  },
+  "goodFit": {
+    "title": "Dobry fit, jeśli budujesz…",
+    "items": [
+      "Platformy na AWS (serverless, kontenery), gdzie potrzebna jest klarowna architektura i kontrola kosztów",
+      "Event‑driven systemy i real-time pipelines (problemy w stylu Kafka/Flink)",
+      "Multi‑tenant SaaS z mocnymi wymaganiami dot. security, auditability i compliance",
+      "Reliability/performance: SLO, observability, usprawnienia oparte o incydenty",
+      "Funkcje AI, które muszą być bezpieczne i mierzalne (LLM platform, RAG quality, evals)"
+    ]
+  },
+  "cta": {
+    "title": "Chcesz pogadać o projekcie?",
+    "description": "Najszybciej będzie przez krótką rozmowę. Jeśli wolisz, wyślij wiadomość z kontekstem: cel, obecny stan, constraints (security/compliance) i oczekiwania co do timeline’u.",
+    "button": "Umów rozmowę"
+  }
+}

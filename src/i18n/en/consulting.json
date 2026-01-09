@@ -1,53 +1,55 @@
 {
   "meta": {
     "title": "Consulting | Jacek Janczura",
-    "description": "AI & Cloud consulting: enterprise LLM platforms, RAG, PromptOps/evals, AWS architecture, and AI developer enablement (Cursor/Claude Code). Engagement types: advisory, architecture reviews, delivery sprints."
+    "description": "CTO & Cloud consulting: distributed systems, AWS architecture, reliability/cost optimization, security/compliance, and AI (LLM/RAG/evals) where it fits. Engagements: fractional leadership, architecture reviews, delivery sprints, developer enablement."
   },
   "hero": {
     "title": "Consulting",
-    "subtitle": "How I work and how engagements typically look"
+    "subtitle": "Senior engineering leadership for complex systems (AI included, not required)"
   },
   "intro": {
-    "p1": "I help teams ship <strong>secure, scalable AI systems</strong>—from LLM platforms and RAG to AWS architecture and operational excellence.",
-    "p2": "My focus is <strong>measurable outcomes</strong>: reliability, cost/performance, security/compliance, and a delivery approach that fits how your organization actually operates."
+    "p1": "I help teams ship <strong>secure, reliable software</strong>—cloud platforms, distributed systems, and AI capabilities (LLM/RAG/evals) when they deliver real business value.",
+    "p2": "My focus is <strong>production outcomes</strong>: clear architecture decisions, speed of delivery without regressions, cost/performance, security/compliance, and an approach that fits how your organization actually operates."
   },
   "engagements": {
     "title": "How I work / Engagements",
     "items": [
       {
-        "title": "Advisory / Fractional Leadership",
-        "description": "Hands-on guidance for strategy, technical direction, architecture decisions, and delivery standards—especially when you’re building or scaling an AI platform.",
+        "title": "Fractional CTO / Senior Engineering Leadership",
+        "description": "Hands-on leadership for strategy, technical direction, architecture decisions, and delivery standards—when you need senior support shaping systems and teams.",
         "deliverables": [
-          "Architecture direction and decision support",
-          "Risk & security review (including AI-specific risks)",
-          "Roadmap shaping and delivery standards (quality gates, reviews, rollout)"
+          "Architecture direction + decision records (tradeoffs made explicit)",
+          "Roadmap shaping + delivery operating model (quality gates, reviews, rollout)",
+          "Mentoring for senior engineers and team enablement",
+          "Risk review: security, reliability, and cost (including AI-specific risks where relevant)"
         ]
       },
       {
-        "title": "AI Architecture Review (LLM / RAG / Cloud)",
-        "description": "A structured assessment of your current system (or planned design) with concrete recommendations you can execute.",
+        "title": "Architecture Review (Cloud / Distributed Systems / AI)",
+        "description": "A structured assessment of your current system (or planned design) with concrete recommendations your team can execute.",
         "deliverables": [
-          "Findings + prioritized recommendations",
-          "Reference architecture + key tradeoffs",
-          "Plan for reliability, observability, and cost control"
+          "Findings + prioritized recommendations (now/next/later)",
+          "Reference architecture + key tradeoffs (build vs buy, data flows, boundaries)",
+          "Plan for reliability, observability (logs/metrics/traces), and cost control"
         ]
       },
       {
         "title": "Delivery Sprint (production-grade thin slice)",
         "description": "Ship a focused, valuable increment end-to-end—so you get working software plus a pattern your team can repeat.",
         "deliverables": [
-          "One production-ready feature (e.g., a RAG endpoint, evaluation harness, or workflow automation)",
+          "One production-ready feature (e.g., event-driven workflow, platform capability, RAG endpoint, or evaluation harness)",
+          "CI/test coverage + a deployment path your team owns",
           "Monitoring/alerts + operational runbook basics",
           "Security-first defaults (RBAC, data handling, auditability where needed)"
         ]
       },
       {
-        "title": "AI Developer Enablement (Cursor / Claude Code)",
-        "description": "Enable your engineering org to use AI coding tools effectively and safely—without turning the codebase into a prompt experiment.",
+        "title": "Developer Productivity & Safe AI Tooling",
+        "description": "Make your engineering org faster without sacrificing quality—workflows, standards, and (optionally) AI coding tools like Cursor/Claude Code.",
         "deliverables": [
-          "Team onboarding + workflows tailored to your repo",
-          "PR/review guidelines and safe-use guardrails",
-          "Templates for prompts, evals, and regression prevention"
+          "PR/review standards, coding guidelines, and templates tailored to your repo",
+          "CI quality gates (tests, lint, security checks) tuned to your delivery flow",
+          "AI coding tool enablement: onboarding, guardrails, and regression prevention"
         ]
       }
     ]
@@ -56,27 +58,27 @@
     "title": "How I approach delivery",
     "steps": [
       {
-        "title": "Start with the process",
-        "description": "We map the real workflow and constraints (people, systems, risk, compliance) before choosing tech."
+        "title": "Start with goals and constraints",
+        "description": "We map the real workflow, stakeholders, and constraints (people, systems, risk, compliance) before choosing tech."
       },
       {
-        "title": "Design for production from day one",
+        "title": "Design for operability from day one",
         "description": "Security, observability, cost controls, and failure modes are part of the architecture—not a later phase."
       },
       {
-        "title": "Ship in iterations with quality gates",
-        "description": "Small releases, measurable outcomes, and evaluation/monitoring so quality improves over time instead of drifting."
+        "title": "Ship in iterations with measurable outcomes",
+        "description": "Small releases, clear success metrics, and monitoring (and evals where AI is involved) so quality improves over time instead of drifting."
       }
     ]
   },
   "goodFit": {
     "title": "Good fit if you’re building…",
     "items": [
-      "Enterprise LLM platform capabilities (multi-model routing, guardrails, auditability)",
-      "RAG systems that need quality control (retrieval strategy + evals, not just embeddings)",
-      "AWS-based event-driven architectures for AI workloads",
-      "A practical PromptOps / Evals approach to prevent regressions",
-      "An engineering org rollout of AI coding tools with clear standards"
+      "AWS-based platforms (serverless, containers) that need clear architecture and cost control",
+      "Event-driven systems and real-time pipelines (Kafka/Flink-style problems)",
+      "Multi-tenant SaaS with strong security, auditability, and compliance requirements",
+      "Reliability/performance work: SLOs, observability, incident-driven improvements",
+      "AI features that must be safe and measurable (LLM platform, RAG quality, evals)"
     ]
   },
   "cta": {
