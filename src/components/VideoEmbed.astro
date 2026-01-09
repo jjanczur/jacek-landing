@@ -3,9 +3,10 @@ export interface Props {
   youtubeId: string;
   title: string;
   className?: string;
+  priority?: boolean; // Set to true for LCP image (first video)
 }
 
-const { youtubeId, title, className = '' } = Astro.props;
+const { youtubeId, title, className = '', priority = false } = Astro.props;
 
 // Generate thumbnail URL (maxresdefault or hqdefault as fallback)
 const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
@@ -23,7 +24,8 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
     <img
       src={thumbnailUrl}
       alt={title}
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : undefined}
       class="thumbnail-image"
       data-fallback={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
     />
@@ -108,8 +110,13 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
 
           // Create and insert iframe - this is when YouTube scripts will load
           // NO YouTube scripts load before this point
+          // Privacy-focused URL parameters to minimize cookie usage:
+          // - enablejsapi=0: Disables JavaScript API (reduces cookies)
+          // - modestbranding=1: Reduces branding
+          // - rel=0: Don't show related videos from other channels (privacy)
+          // - cc_load_policy=0: Disable closed captions by default
           const iframe = document.createElement('iframe');
-          iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1`;
+          iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&enablejsapi=0&modestbranding=1&rel=0&cc_load_policy=0`;
           iframe.title = thumbnailImage?.getAttribute('alt') || 'YouTube video';
           iframe.width = '560';
           iframe.height = '315';
@@ -118,6 +125,7 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
             'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
           iframe.allowFullscreen = true;
           iframe.loading = 'lazy';
+          iframe.referrerPolicy = 'no-referrer-when-downgrade';
           iframe.className = 'video-iframe';
           iframe.setAttribute('data-loaded', 'true');
 

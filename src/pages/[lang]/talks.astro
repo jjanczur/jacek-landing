@@ -39,9 +39,25 @@ interface TalksTranslations {
 
 const { lang } = Astro.props;
 const t = await getTranslations<TalksTranslations>('talks', lang);
+
+// Get first video thumbnail URL for preload (LCP optimization)
+const firstVideoThumbnail = t.talks.length > 0
+  ? `https://i.ytimg.com/vi/${t.talks[0].youtubeId}/maxresdefault.jpg`
+  : null;
 ---
 
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
+  {
+    firstVideoThumbnail && (
+      <link
+        slot="head"
+        rel="preload"
+        as="image"
+        href={firstVideoThumbnail}
+        fetchpriority="high"
+      />
+    )
+  }
   <section class="talks-hero">
     <div class="container">
       <h1>{t.hero.title}</h1>
@@ -52,7 +68,7 @@ const t = await getTranslations<TalksTranslations>('talks', lang);
   <section class="talks-grid">
     <div class="container">
       {
-        t.talks.map(talk => (
+        t.talks.map((talk, index) => (
           <article class="talk-card">
             <div class="talk-header">
               <h2>{talk.title}</h2>
@@ -67,6 +83,7 @@ const t = await getTranslations<TalksTranslations>('talks', lang);
                 youtubeId={talk.youtubeId}
                 title={talk.videoTitle}
                 className="talk-video"
+                priority={index === 0}
               />
             </div>
             <div class="talk-tags">
