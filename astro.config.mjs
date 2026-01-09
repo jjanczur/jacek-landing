@@ -9,8 +9,9 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   trailingSlash: 'always',
   build: {
-    // Inline small stylesheets to reduce render-blocking requests
-    inlineStylesheets: 'auto',
+    // Inline stylesheets to eliminate render-blocking CSS requests
+    // This reduces critical path latency by removing the CSS file from the dependency chain
+    inlineStylesheets: 'always',
     // Optimize assets
     assets: '_assets',
   },

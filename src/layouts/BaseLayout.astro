@@ -146,6 +146,10 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Resource hints - Must be early to establish connections before other resources -->
+    <!-- Preconnect to same origin for faster asset loading (though CSS will be inlined) -->
+    <link rel="preconnect" href={baseUrl} />
+    <link rel="dns-prefetch" href={baseUrl} />
+    <!-- External font resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
