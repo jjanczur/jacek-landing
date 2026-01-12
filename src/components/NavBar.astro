@@ -139,8 +139,18 @@ const calendlyUrl =
     const button = document.getElementById('mobile-menu-button');
     if (!button) return;
 
+    // Handle both click and touch events for better mobile support
+    function handleMenuToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileMenu();
+    }
+
     // Add click event listener directly to button
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', handleMenuToggle);
+    
+    // Add touch event listener for better mobile support
+    button.addEventListener('touchend', function(e) {
       e.preventDefault();
       e.stopPropagation();
       toggleMobileMenu();
