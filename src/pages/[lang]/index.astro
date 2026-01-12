@@ -426,8 +426,8 @@ const faqStructuredData = {
 
       // Use Intersection Observer to start animation only when hero section is visible
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
+        entries => {
+          entries.forEach(entry => {
             if (entry.isIntersecting) {
               initNetwork();
               observer.disconnect(); // Only initialize once

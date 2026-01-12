@@ -223,14 +223,14 @@ const structuredData = {
     </noscript>
     <script is:inline>
       // Load Google Fonts asynchronously
-      (function() {
+      (function () {
         const link = document.getElementById('google-fonts-link');
         if (link) {
-          link.onload = function() {
+          link.onload = function () {
             this.media = 'all';
           };
           // Fallback: if onload doesn't fire, set media after a short delay
-          setTimeout(function() {
+          setTimeout(function () {
             if (link.media === 'print') {
               link.media = 'all';
             }

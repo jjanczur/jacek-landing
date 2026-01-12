@@ -41,9 +41,10 @@ const { lang } = Astro.props;
 const t = await getTranslations<TalksTranslations>('talks', lang);
 
 // Get first video thumbnail URL for preload (LCP optimization)
-const firstVideoThumbnail = t.talks.length > 0
-  ? `https://i.ytimg.com/vi/${t.talks[0].youtubeId}/maxresdefault.jpg`
-  : null;
+const firstVideoThumbnail =
+  t.talks.length > 0
+    ? `https://i.ytimg.com/vi/${t.talks[0].youtubeId}/maxresdefault.jpg`
+    : null;
 ---
 
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>

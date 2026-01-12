@@ -85,7 +85,7 @@ const calendlyUrl =
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
     if (!menu || !button) return;
-    
+
     const body = document.body;
     const isOpen = menu.classList.contains('open');
 
@@ -105,7 +105,7 @@ const calendlyUrl =
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
     if (!menu || !button) return;
-    
+
     const body = document.body;
 
     if (!menu.contains(event.target) && !button.contains(event.target)) {
@@ -121,7 +121,7 @@ const calendlyUrl =
       const menu = document.getElementById('mobile-menu');
       const button = document.getElementById('mobile-menu-button');
       if (!menu || !button) return;
-      
+
       const body = document.body;
       menu.classList.remove('open');
       button.setAttribute('aria-expanded', 'false');
@@ -148,18 +148,20 @@ const calendlyUrl =
 
     // Add click event listener directly to button
     button.addEventListener('click', handleMenuToggle);
-    
+
     // Add touch event listener for better mobile support
-    button.addEventListener('touchend', function(e) {
+    button.addEventListener('touchend', function (e) {
       e.preventDefault();
       e.stopPropagation();
       toggleMobileMenu();
     });
 
     // Add click listeners to mobile menu links to close menu
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
+    const mobileLinks = document.querySelectorAll(
+      '.mobile-nav-link, .mobile-cta',
+    );
     mobileLinks.forEach(link => {
-      link.addEventListener('click', function() {
+      link.addEventListener('click', function () {
         toggleMobileMenu();
       });
     });
@@ -167,7 +169,7 @@ const calendlyUrl =
     // Add click listener to mobile theme toggle button
     const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
     if (mobileThemeToggle) {
-      mobileThemeToggle.addEventListener('click', function() {
+      mobileThemeToggle.addEventListener('click', function () {
         toggleTheme();
         toggleMobileMenu();
       });
@@ -176,14 +178,14 @@ const calendlyUrl =
     // Add click listener to desktop theme toggle button
     const desktopThemeToggle = document.querySelector('.theme-toggle');
     if (desktopThemeToggle) {
-      desktopThemeToggle.addEventListener('click', function() {
+      desktopThemeToggle.addEventListener('click', function () {
         toggleTheme();
       });
     }
 
     // Close menu when clicking outside
     document.addEventListener('click', closeMobileMenuOnClickOutside);
-    
+
     // Close menu on escape key
     document.addEventListener('keydown', closeMobileMenuOnEscape);
   }
@@ -251,10 +253,7 @@ const calendlyUrl =
         </a>
         {
           navLinks[lang].map(link => (
-            <a
-              href={link.href}
-              class="mobile-nav-link"
-            >
+            <a href={link.href} class="mobile-nav-link">
               {link.label}
             </a>
           ))

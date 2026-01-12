@@ -44,9 +44,8 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
       >
         <path
           d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
-          fill="red"
-        />
-        <path d="M45 24 27 14v20l18-10z" fill="white" />
+          fill="red"></path>
+        <path d="M45 24 27 14v20l18-10z" fill="white"></path>
       </svg>
     </button>
   </div>
@@ -69,7 +68,7 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
 
       const embeds = document.querySelectorAll('.video-embed[data-youtube-id]');
 
-      embeds.forEach((embed) => {
+      embeds.forEach(embed => {
         const youtubeId = embed.getAttribute('data-youtube-id');
         if (!youtubeId) return;
 
@@ -119,11 +118,17 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
           // Use setAttribute for src to work with Trusted Types
           const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&enablejsapi=0&modestbranding=1&rel=0&cc_load_policy=0`;
           iframe.setAttribute('src', embedUrl);
-          iframe.setAttribute('title', thumbnailImage?.getAttribute('alt') || 'YouTube video');
+          iframe.setAttribute(
+            'title',
+            thumbnailImage?.getAttribute('alt') || 'YouTube video',
+          );
           iframe.setAttribute('width', '560');
           iframe.setAttribute('height', '315');
           iframe.setAttribute('frameborder', '0');
-          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+          iframe.setAttribute(
+            'allow',
+            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+          );
           iframe.setAttribute('allowfullscreen', '');
           iframe.setAttribute('loading', 'lazy');
           iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
@@ -143,12 +148,16 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
         thumbnail.addEventListener('click', loadVideo, clickOptions);
 
         // Also handle keyboard activation for accessibility
-        playButton.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            loadVideo(e);
-          }
-        }, { once: true });
+        playButton.addEventListener(
+          'keydown',
+          e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              loadVideo(e);
+            }
+          },
+          { once: true },
+        );
       });
     }
 
