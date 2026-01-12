@@ -2,17 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import { getTranslations, getSupportedLangs } from '../../utils/i18n';
-import type { Lang } from '../../utils/i18n';
 
 export async function getStaticPaths() {
   return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
-}
-
-interface Props {
-  lang: Lang;
 }
 
 interface TalkItem {

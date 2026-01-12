@@ -81,19 +81,22 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
 
         // Handle thumbnail fallback if high-res image fails to load
         if (thumbnailImage) {
-          thumbnailImage.addEventListener('error', function () {
-            const fallback = this.getAttribute('data-fallback');
-            if (fallback && this.src !== fallback) {
-              this.src = fallback;
-            }
-          });
+          thumbnailImage.addEventListener(
+            'error',
+            function (this: HTMLImageElement) {
+              const fallback = this.getAttribute('data-fallback');
+              if (fallback && this.src !== fallback) {
+                this.src = fallback;
+              }
+            },
+          );
         }
 
         // Track if video is already loaded to prevent double-loading
         let videoLoaded = false;
 
         // Load iframe on click - ONLY when user explicitly clicks
-        function loadVideo(event) {
+        function loadVideo(event?: Event) {
           // Prevent default and stop propagation
           if (event) {
             event.preventDefault();
@@ -105,7 +108,9 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
           videoLoaded = true;
 
           // Hide thumbnail
-          thumbnail.style.display = 'none';
+          if (thumbnail instanceof HTMLElement) {
+            thumbnail.style.display = 'none';
+          }
 
           // Create and insert iframe - this is when YouTube scripts will load
           // NO YouTube scripts load before this point
@@ -137,8 +142,10 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
 
           // Show container and insert iframe
           // This is the ONLY point where YouTube scripts will be loaded
-          iframeContainer.style.display = 'block';
-          iframeContainer.appendChild(iframe);
+          if (iframeContainer instanceof HTMLElement) {
+            iframeContainer.style.display = 'block';
+            iframeContainer.appendChild(iframe);
+          }
         }
 
         // Attach click handler - only on explicit user interaction
@@ -150,10 +157,11 @@ const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
         // Also handle keyboard activation for accessibility
         playButton.addEventListener(
           'keydown',
-          e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              loadVideo(e);
+          (e: Event) => {
+            const keyEvent = e as KeyboardEvent;
+            if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+              keyEvent.preventDefault();
+              loadVideo(keyEvent);
             }
           },
           { once: true },
