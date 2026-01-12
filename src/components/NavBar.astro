@@ -259,7 +259,9 @@ const calendlyUrl =
           ))
         }
         <div class="mobile-nav-actions">
-          <LanguageSwitcher lang={lang} pathMap={pathMap} />
+          <div class="mobile-language-wrapper">
+            <LanguageSwitcher lang={lang} pathMap={pathMap} />
+          </div>
           <button
             aria-label={i18n[lang].toggleThemeText}
             class="mobile-theme-toggle"
@@ -344,6 +346,18 @@ const calendlyUrl =
     gap: var(--space-1);
     min-width: 140px;
     z-index: 1000;
+  }
+
+  /* Ensure mobile menu content allows positioned children to overflow */
+  /* The mobile-menu itself handles scrolling, but content can overflow for dropdowns */
+  .mobile-menu.open {
+    overflow-y: auto;
+    overflow-x: visible;
+  }
+
+  .mobile-menu-content {
+    /* Ensure positioned children (like dropdowns) can overflow */
+    position: relative;
   }
 
   :global(details.language-switcher .lang-item) {
@@ -726,10 +740,14 @@ const calendlyUrl =
     max-width: var(--max-width);
     margin: 0 auto;
     padding: var(--space-4);
+    padding-bottom: calc(
+      var(--space-4) + 80px
+    ); /* Extra padding for dropdown space */
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
     min-height: fit-content;
+    position: relative;
   }
 
   .mobile-nav-link {
@@ -749,11 +767,32 @@ const calendlyUrl =
 
   .mobile-nav-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
     gap: var(--space-3);
     margin-top: var(--space-4);
     padding-top: var(--space-4);
     border-top: 1px solid var(--border);
+  }
+
+  .mobile-language-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Language dropdown in mobile menu - opens upward to prevent cutoff */
+  .mobile-nav-actions :global(.language-switcher .language-menu) {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 10px);
+    top: auto;
+    margin-bottom: 0;
+  }
+
+  /* Ensure dropdown is visible above mobile menu content */
+  .mobile-nav-actions :global(.language-switcher[open] .language-menu) {
+    z-index: 1001;
   }
 
   /* Responsive Breakpoints */
