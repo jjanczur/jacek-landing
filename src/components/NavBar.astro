@@ -67,8 +67,7 @@ const calendlyUrl =
 ---
 
 <script is:inline>
-  // Simple theme toggle using onclick attribute
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // Simple theme toggle
   function toggleTheme() {
     const d = document.documentElement;
     const current = d.dataset.theme || 'light';
@@ -82,10 +81,11 @@ const calendlyUrl =
   }
 
   // Mobile menu toggle
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
+    if (!menu || !button) return;
+    
     const body = document.body;
     const isOpen = menu.classList.contains('open');
 
@@ -104,6 +104,8 @@ const calendlyUrl =
   function closeMobileMenuOnClickOutside(event) {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
+    if (!menu || !button) return;
+    
     const body = document.body;
 
     if (!menu.contains(event.target) && !button.contains(event.target)) {
@@ -118,6 +120,8 @@ const calendlyUrl =
     if (event.key === 'Escape') {
       const menu = document.getElementById('mobile-menu');
       const button = document.getElementById('mobile-menu-button');
+      if (!menu || !button) return;
+      
       const body = document.body;
       menu.classList.remove('open');
       button.setAttribute('aria-expanded', 'false');
@@ -126,31 +130,60 @@ const calendlyUrl =
     }
   }
 
+  // Make functions globally available
+  window.toggleTheme = toggleTheme;
+  window.toggleMobileMenu = toggleMobileMenu;
+
   // Initialize event listeners when DOM is loaded
-  // Defer to avoid blocking initial page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      // Use requestIdleCallback to defer non-critical event listeners
-      const initListeners = () => {
-        document.addEventListener('click', closeMobileMenuOnClickOutside);
-        document.addEventListener('keydown', closeMobileMenuOnEscape);
-      };
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initListeners, { timeout: 1000 });
-      } else {
-        setTimeout(initListeners, 100);
-      }
+  function initMobileMenu() {
+    const button = document.getElementById('mobile-menu-button');
+    if (!button) return;
+
+    // Add click event listener directly to button
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileMenu();
     });
-  } else {
-    const initListeners = () => {
-      document.addEventListener('click', closeMobileMenuOnClickOutside);
-      document.addEventListener('keydown', closeMobileMenuOnEscape);
-    };
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initListeners, { timeout: 1000 });
-    } else {
-      setTimeout(initListeners, 100);
+
+    // Add click listeners to mobile menu links to close menu
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        toggleMobileMenu();
+      });
+    });
+
+    // Add click listener to mobile theme toggle button
+    const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
+    if (mobileThemeToggle) {
+      mobileThemeToggle.addEventListener('click', function() {
+        toggleTheme();
+        toggleMobileMenu();
+      });
     }
+
+    // Add click listener to desktop theme toggle button
+    const desktopThemeToggle = document.querySelector('.theme-toggle');
+    if (desktopThemeToggle) {
+      desktopThemeToggle.addEventListener('click', function() {
+        toggleTheme();
+      });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', closeMobileMenuOnClickOutside);
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', closeMobileMenuOnEscape);
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    // DOM already loaded
+    initMobileMenu();
   }
 </script>
 
@@ -183,7 +216,7 @@ const calendlyUrl =
       class="mobile-menu-button"
       aria-label={i18n[lang].toggleMenuAria}
       aria-expanded="false"
-      onclick="toggleMobileMenu()"
+      type="button"
     >
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -202,7 +235,6 @@ const calendlyUrl =
           target="_blank"
           rel="noopener noreferrer"
           class="mobile-cta"
-          onclick="toggleMobileMenu()"
         >
           <Calendar size={18} />
           {i18n[lang].bookCall}
@@ -212,7 +244,6 @@ const calendlyUrl =
             <a
               href={link.href}
               class="mobile-nav-link"
-              onclick="toggleMobileMenu()"
             >
               {link.label}
             </a>
@@ -223,7 +254,7 @@ const calendlyUrl =
           <button
             aria-label={i18n[lang].toggleThemeText}
             class="mobile-theme-toggle"
-            onclick="toggleTheme(); toggleMobileMenu();"
+            type="button"
           >
             <span>🌓</span>
           </button>
@@ -246,7 +277,7 @@ const calendlyUrl =
       <button
         aria-label={i18n[lang].toggleThemeText}
         class="theme-toggle"
-        onclick="toggleTheme()"
+        type="button"
       >
         <span>🌓</span>
       </button>
@@ -388,13 +419,6 @@ const calendlyUrl =
 
   .mobile-theme-toggle:hover {
     background: var(--muted);
-  }
-
-  .mobile-nav-actions {
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-2);
-    align-items: center;
   }
 
   .mobile-cta {
