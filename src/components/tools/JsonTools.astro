@@ -1,0 +1,1531 @@
+---
+// Advanced Unified JSON Tools Component - Client-side only, lazy loaded
+// Combines Validator, Formatter, and Viewer into one powerful interface
+---
+
+<div class="json-tools-wrapper">
+  <div class="tool-header">
+    <h2>JSON Tools</h2>
+    <p class="tool-description">
+      Validate, format, minify, and explore JSON. All processing happens in your
+      browser.
+    </p>
+  </div>
+
+  <!-- Mode Toggle -->
+  <div class="json-mode-toggle">
+    <button
+      class="mode-button active"
+      data-mode="validator"
+      title="Validate JSON"
+    >
+      ✓ Validator
+    </button>
+    <button class="mode-button" data-mode="formatter" title="Format JSON">
+      ⚡ Formatter
+    </button>
+    <button class="mode-button" data-mode="viewer" title="Explore JSON">
+      🔍 Viewer
+    </button>
+    <label class="line-numbers-toggle">
+      <input type="checkbox" id="json-line-numbers" checked />
+      <span>Line numbers</span>
+    </label>
+  </div>
+
+  <!-- Unified JSON Tool Interface -->
+  <div class="unified-json-container">
+    <!-- Left Panel: Input -->
+    <div class="json-input-panel">
+      <div class="panel-header">
+        <span>JSON Input</span>
+        <div class="panel-actions">
+          <button
+            id="clear-json"
+            class="control-button-small"
+            title="Clear input"
+          >
+            Clear
+          </button>
+          <button
+            id="load-example"
+            class="control-button-small"
+            title="Load example JSON"
+          >
+            Example
+          </button>
+        </div>
+      </div>
+      <div class="json-input-wrapper">
+        <div id="json-input-line-numbers" class="line-numbers"></div>
+        <textarea
+          id="json-input"
+          class="json-input"
+          placeholder='Paste your JSON here, e.g.:
+{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}'
+        ></textarea>
+      </div>
+      <div class="input-stats">
+        <span id="input-stats">0 characters, 0 lines</span>
+      </div>
+    </div>
+
+    <!-- Right Panel: Output with Controls -->
+    <div class="json-output-panel">
+      <div class="panel-header">
+        <span id="output-title">Result</span>
+        <div class="panel-actions">
+          <div class="format-options">
+            <select id="indent-size" class="format-select" title="Indent size">
+              <option value="2" selected>2 spaces</option>
+              <option value="4">4 spaces</option>
+              <option value="tab">Tab</option>
+            </select>
+            <button
+              id="format-json"
+              class="control-button-small"
+              title="Format JSON"
+            >
+              Format
+            </button>
+            <button
+              id="minify-json"
+              class="control-button-small"
+              title="Minify JSON"
+            >
+              Minify
+            </button>
+            <button
+              id="sort-keys"
+              class="control-button-small"
+              title="Sort object keys alphabetically"
+            >
+              Sort Keys
+            </button>
+          </div>
+          <button id="copy-json" class="control-button-small" title="Copy JSON">
+            Copy
+          </button>
+          <button
+            id="download-json"
+            class="control-button-small"
+            title="Download as file"
+          >
+            Download
+          </button>
+        </div>
+      </div>
+
+      <!-- Viewer Controls (when in viewer mode) -->
+      <div id="viewer-controls" class="viewer-controls" style="display: none">
+        <div class="search-box">
+          <input
+            type="text"
+            id="json-search"
+            placeholder="Search in JSON (keys and values)..."
+            class="search-input"
+          />
+          <button id="clear-search" class="search-clear" title="Clear search">
+            ×
+          </button>
+        </div>
+        <button id="expand-all" class="control-button-small">Expand All</button>
+        <button id="collapse-all" class="control-button-small">
+          Collapse All
+        </button>
+        <button
+          id="zoom-viewer"
+          class="control-button-small"
+          title="Enlarge view"
+        >
+          ⛶
+        </button>
+      </div>
+
+      <!-- Output Display -->
+      <div class="json-output-wrapper">
+        <div id="json-output-line-numbers" class="line-numbers"></div>
+        <div id="json-output" class="json-output">
+          <p class="placeholder-text">
+            Enter JSON to validate, format, or explore
+          </p>
+        </div>
+      </div>
+
+      <!-- Output Stats and Status -->
+      <div class="output-footer">
+        <div id="output-status" class="output-status"></div>
+        <div id="output-stats" class="output-stats">0 characters, 0 lines</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initJsonTools() {
+    const jsonInput = document.getElementById(
+      'json-input',
+    ) as HTMLTextAreaElement;
+    const jsonOutput = document.getElementById('json-output');
+    const jsonInputLineNumbers = document.getElementById(
+      'json-input-line-numbers',
+    );
+    const jsonOutputLineNumbers = document.getElementById(
+      'json-output-line-numbers',
+    );
+    const lineNumbersToggle = document.getElementById(
+      'json-line-numbers',
+    ) as HTMLInputElement;
+    const clearBtn = document.getElementById('clear-json');
+    const loadExampleBtn = document.getElementById('load-example');
+    const copyBtn = document.getElementById('copy-json');
+    const downloadBtn = document.getElementById('download-json');
+    const formatBtn = document.getElementById('format-json');
+    const minifyBtn = document.getElementById('minify-json');
+    const sortKeysBtn = document.getElementById('sort-keys');
+    const indentSizeSelect = document.getElementById(
+      'indent-size',
+    ) as HTMLSelectElement;
+    const modeButtons = document.querySelectorAll('.mode-button');
+    const outputTitle = document.getElementById('output-title');
+    const viewerControls = document.getElementById('viewer-controls');
+    const jsonSearch = document.getElementById(
+      'json-search',
+    ) as HTMLInputElement;
+    const clearSearchBtn = document.getElementById('clear-search');
+    const expandAllBtn = document.getElementById('expand-all');
+    const collapseAllBtn = document.getElementById('collapse-all');
+    const zoomViewerBtn = document.getElementById('zoom-viewer');
+    const inputStats = document.getElementById('input-stats');
+    const outputStats = document.getElementById('output-stats');
+    const outputStatus = document.getElementById('output-status');
+
+    if (!jsonInput || !jsonOutput) return;
+
+    // Bind line number scroll sync
+    if (jsonInputLineNumbers)
+      bindLineNumberScroll(jsonInput, jsonInputLineNumbers);
+    if (jsonOutputLineNumbers)
+      bindLineNumberScroll(jsonOutput as HTMLElement, jsonOutputLineNumbers);
+
+    let currentMode: 'validator' | 'formatter' | 'viewer' = 'validator';
+    let searchTerm = '';
+
+    function updateLineNumbers(
+      text: string,
+      lineNumbersEl: HTMLElement | null,
+    ) {
+      if (!lineNumbersEl) return;
+      const lines = text.split('\n').length || 1;
+      lineNumbersEl.innerHTML = Array.from({ length: lines }, (_, i) => i + 1)
+        .map(num => `<div>${num}</div>`)
+        .join('');
+    }
+
+    function updateStats(text: string, statsEl: HTMLElement | null) {
+      if (!statsEl) return;
+      const chars = text.length;
+      const lines = text.split('\n').length;
+      statsEl.textContent = `${chars.toLocaleString()} characters, ${lines} line${lines !== 1 ? 's' : ''}`;
+    }
+
+    function escapeHtml(text: string): string {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function escapeRegex(text: string): string {
+      return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function bindLineNumberScroll(
+      contentEl: HTMLElement,
+      gutterEl: HTMLElement,
+    ) {
+      let raf = 0;
+      const sync = () => {
+        raf = 0;
+        gutterEl.scrollTop = contentEl.scrollTop;
+      };
+
+      contentEl.addEventListener(
+        'scroll',
+        () => {
+          if (raf) return;
+          raf = requestAnimationFrame(sync);
+        },
+        { passive: true },
+      );
+
+      gutterEl.addEventListener(
+        'wheel',
+        e => {
+          e.preventDefault();
+          contentEl.scrollTop += e.deltaY;
+        },
+        { passive: false },
+      );
+    }
+
+    function highlightJsonSyntax(json: string): string {
+      const lines = json.split('\n');
+      const highlightedLines = lines.map(line => {
+        let result = escapeHtml(line);
+
+        // First, protect strings by replacing them with placeholders
+        const stringMatches: Array<{ original: string; replacement: string }> =
+          [];
+        result = result.replace(/"([^"\\]|\\.)*"/g, match => {
+          const placeholder = `__STRING_${stringMatches.length}__`;
+          stringMatches.push({
+            original: match,
+            replacement: `<span class="json-string">${match}</span>`,
+          });
+          return placeholder;
+        });
+
+        // Highlight brackets
+        result = result.replace(
+          /(\{|\}|\[|\])/g,
+          '<span class="json-bracket">$1</span>',
+        );
+
+        // Highlight numbers (but not inside strings)
+        result = result.replace(
+          /\b(-?\d+\.?\d*)\b/g,
+          '<span class="json-number">$1</span>',
+        );
+
+        // Highlight booleans and null
+        result = result.replace(
+          /\b(true|false|null)\b/g,
+          '<span class="json-boolean">$1</span>',
+        );
+
+        // Highlight punctuation (colons and commas) - but not inside strings
+        result = result.replace(
+          /(:)/g,
+          '<span class="json-punctuation">$1</span>',
+        );
+        result = result.replace(
+          /(,)/g,
+          '<span class="json-punctuation">$1</span>',
+        );
+
+        // Restore strings
+        stringMatches.forEach((match, idx) => {
+          result = result.replace(`__STRING_${idx}__`, match.replacement);
+        });
+
+        // Highlight keys (strings followed by colon)
+        result = result.replace(
+          /(<span class="json-string">"([^"\\]|\\.)*"<\/span>)\s*(<span class="json-punctuation">:<\/span>)/g,
+          '<span class="json-key">$1</span>$3',
+        );
+
+        return result;
+      });
+
+      return highlightedLines.join('\n');
+    }
+
+    function findErrorPosition(
+      error: Error,
+      json: string,
+    ): { line: number; column: number } | null {
+      const match = error.message.match(/position (\d+)/);
+      if (!match) return null;
+      const position = parseInt(match[1], 10);
+      const beforeError = json.substring(0, position);
+      const line = beforeError.split('\n').length;
+      const column = beforeError.split('\n').pop()?.length || 0;
+      return { line, column };
+    }
+
+    function sortObjectKeys(obj: any): any {
+      if (Array.isArray(obj)) {
+        return obj.map(item => sortObjectKeys(item));
+      }
+      if (obj !== null && typeof obj === 'object') {
+        const sortedKeys = Object.keys(obj).sort();
+        const sortedObj: any = {};
+        sortedKeys.forEach(key => {
+          sortedObj[key] = sortObjectKeys(obj[key]);
+        });
+        return sortedObj;
+      }
+      return obj;
+    }
+
+    function getIndentString(): string {
+      const indentSize = indentSizeSelect?.value || '2';
+      if (indentSize === 'tab') return '\t';
+      return ' '.repeat(parseInt(indentSize, 10));
+    }
+
+    // Validator mode
+    function updateValidator() {
+      if (!jsonOutput || currentMode !== 'validator') return;
+
+      const input = jsonInput.value;
+      if (!input.trim()) {
+        jsonOutput.innerHTML =
+          '<p class="placeholder-text">Enter JSON to validate</p>';
+        if (jsonOutputLineNumbers) jsonOutputLineNumbers.innerHTML = '';
+        if (outputStatus) outputStatus.innerHTML = '';
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(input);
+
+        const indent = getIndentString();
+        const formatted = JSON.stringify(parsed, null, indent);
+        const highlighted = highlightJsonSyntax(formatted);
+
+        jsonOutput.innerHTML = `<div class="success-message">
+          <strong>✓ Valid JSON</strong>
+          <pre class="validated-json">${highlighted}</pre>
+        </div>`;
+
+        if (outputStatus) {
+          outputStatus.innerHTML =
+            '<span class="status-success">✓ Valid</span>';
+          outputStatus.className = 'output-status status-success';
+        }
+
+        if (lineNumbersToggle?.checked) {
+          updateLineNumbers(formatted, jsonOutputLineNumbers);
+        }
+        updateStats(formatted, outputStats);
+      } catch (error: any) {
+        const errorPos = findErrorPosition(error, input);
+        let errorDisplay = `<div class="error-message">
+          <strong>✗ Invalid JSON</strong>
+          <p>${escapeHtml(error.message)}</p>`;
+
+        if (errorPos) {
+          errorDisplay += `<p class="error-position">Error at line ${errorPos.line}, column ${errorPos.column}</p>`;
+          const lines = input.split('\n');
+          const formattedLines = lines.map((line, idx) => {
+            if (idx === errorPos.line - 1) {
+              return `<div class="error-line-wrapper"><span class="error-line">${highlightJsonSyntax(line)}</span></div>`;
+            }
+            return `<div>${highlightJsonSyntax(line)}</div>`;
+          });
+          errorDisplay += `<pre class="error-json">${formattedLines.join('\n')}</pre>`;
+        } else {
+          errorDisplay += `<pre class="error-json">${highlightJsonSyntax(input)}</pre>`;
+        }
+
+        errorDisplay +=
+          '<p class="error-hint">Try fixing common issues like trailing commas, missing quotes, or unclosed brackets.</p></div>';
+        jsonOutput.innerHTML = errorDisplay;
+
+        if (outputStatus) {
+          outputStatus.innerHTML =
+            '<span class="status-error">✗ Invalid</span>';
+          outputStatus.className = 'output-status status-error';
+        }
+
+        if (lineNumbersToggle?.checked) {
+          updateLineNumbers(input, jsonOutputLineNumbers);
+        }
+        updateStats(input, outputStats);
+      }
+    }
+
+    // Formatter mode
+    function updateFormatter() {
+      if (!jsonOutput || currentMode !== 'formatter') return;
+
+      const input = jsonInput.value.trim();
+      if (!input) {
+        jsonOutput.innerHTML = '';
+        if (jsonOutputLineNumbers) jsonOutputLineNumbers.innerHTML = '';
+        if (outputStats) outputStats.textContent = '0 characters, 0 lines';
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(input);
+
+        const indent = getIndentString();
+        const formatted = JSON.stringify(parsed, null, indent);
+        const highlighted = highlightJsonSyntax(formatted);
+        jsonOutput.innerHTML = `<pre class="formatted-json">${highlighted}</pre>`;
+
+        if (lineNumbersToggle?.checked) {
+          updateLineNumbers(formatted, jsonOutputLineNumbers);
+        }
+        updateStats(formatted, outputStats);
+        if (outputStatus) {
+          outputStatus.innerHTML =
+            '<span class="status-success">✓ Formatted</span>';
+          outputStatus.className = 'output-status status-success';
+        }
+      } catch (error: any) {
+        jsonOutput.innerHTML = `<div class="error-message"><strong>Error:</strong> ${escapeHtml(error.message)}</div>`;
+        if (lineNumbersToggle?.checked) {
+          updateLineNumbers(input, jsonOutputLineNumbers);
+        }
+        updateStats(input, outputStats);
+        if (outputStatus) {
+          outputStatus.innerHTML = '<span class="status-error">✗ Error</span>';
+          outputStatus.className = 'output-status status-error';
+        }
+      }
+    }
+
+    // Viewer mode
+    function renderJsonViewer(
+      json: any,
+      parentKey = '',
+      level = 0,
+      path = '',
+    ): string {
+      if (json === null) {
+        const isMatch =
+          searchTerm && 'null'.toLowerCase().includes(searchTerm.toLowerCase());
+        return `<span class="json-null">${isMatch ? highlightSearch('null', searchTerm) : 'null'}</span>`;
+      }
+
+      const type = typeof json;
+
+      if (type === 'string') {
+        const isMatch =
+          searchTerm &&
+          (json.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            parentKey.toLowerCase().includes(searchTerm.toLowerCase()));
+        const highlighted =
+          searchTerm && isMatch
+            ? highlightSearch(json, searchTerm)
+            : escapeHtml(json);
+        return `<span class="json-string">"${highlighted}"</span>`;
+      }
+
+      if (type === 'number') {
+        const isMatch = searchTerm && String(json).includes(searchTerm);
+        return `<span class="json-number">${isMatch ? highlightSearch(String(json), searchTerm) : json}</span>`;
+      }
+
+      if (type === 'boolean') {
+        const isMatch =
+          searchTerm &&
+          String(json).toLowerCase().includes(searchTerm.toLowerCase());
+        return `<span class="json-boolean">${isMatch ? highlightSearch(String(json), searchTerm) : json}</span>`;
+      }
+
+      if (Array.isArray(json)) {
+        if (json.length === 0) {
+          return '<span class="json-bracket">[]</span>';
+        }
+        const items = json
+          .map((item, idx) => {
+            const itemPath = `${path}[${idx}]`;
+            const keyMatch = searchTerm && String(idx).includes(searchTerm);
+            return `<div class="json-item" style="padding-left: ${(level + 1) * 12}px" data-path="${itemPath}"><span class="json-key">${keyMatch ? highlightSearch(String(idx), searchTerm) : idx}</span><span class="json-punctuation">:</span>${renderJsonViewer(item, `${idx}`, level + 1, itemPath)}</div>`;
+          })
+          .join('');
+        return `<span class="json-bracket">[</span><button class="json-toggle" data-expanded="true">−</button><div class="json-children">${items}</div><span class="json-bracket">]</span>`;
+      }
+
+      if (type === 'object') {
+        const keys = Object.keys(json);
+        if (keys.length === 0) {
+          return '<span class="json-bracket">{}</span>';
+        }
+        const items = keys
+          .map(key => {
+            const keyPath = path ? `${path}.${key}` : key;
+            const keyMatch =
+              searchTerm &&
+              key.toLowerCase().includes(searchTerm.toLowerCase());
+            const valueMatch =
+              searchTerm &&
+              JSON.stringify(json[key])
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
+            const shouldHighlight = keyMatch || valueMatch;
+
+            return `<div class="json-item ${shouldHighlight ? 'search-match' : ''}" style="padding-left: ${(level + 1) * 12}px" data-path="${keyPath}"><span class="json-key">"${keyMatch ? highlightSearch(key, searchTerm) : escapeHtml(key)}"</span><span class="json-punctuation">:</span>${renderJsonViewer(json[key], key, level + 1, keyPath)}</div>`;
+          })
+          .join('');
+        return `<span class="json-bracket">{</span><button class="json-toggle" data-expanded="true">−</button><div class="json-children">${items}</div><span class="json-bracket">}</span>`;
+      }
+
+      return '';
+    }
+
+    function highlightSearch(text: string, term: string): string {
+      const regex = new RegExp(`(${escapeRegex(term)})`, 'gi');
+      return escapeHtml(text).replace(
+        regex,
+        '<mark class="search-highlight">$1</mark>',
+      );
+    }
+
+    function updateViewer() {
+      if (!jsonOutput || currentMode !== 'viewer') return;
+
+      const input = jsonInput.value.trim();
+      if (!input) {
+        jsonOutput.innerHTML =
+          '<p class="placeholder-text">Enter JSON to view it</p>';
+        // Clear line numbers for viewer mode
+        if (jsonOutputLineNumbers) jsonOutputLineNumbers.innerHTML = '';
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(input);
+
+        jsonOutput.innerHTML = renderJsonViewer(parsed, '', 0, '');
+        attachToggleListeners();
+
+        // Clear line numbers for viewer mode since it's a tree view
+        if (jsonOutputLineNumbers) jsonOutputLineNumbers.innerHTML = '';
+
+        if (searchTerm) {
+          const matches = jsonOutput.querySelectorAll('.search-match');
+          if (matches.length > 0) {
+            matches.forEach(match => {
+              let parent = match.parentElement;
+              while (parent && !parent.classList.contains('json-output')) {
+                const toggle = parent.querySelector(
+                  '.json-toggle',
+                ) as HTMLButtonElement;
+                if (
+                  toggle &&
+                  toggle.getAttribute('data-expanded') === 'false'
+                ) {
+                  toggle.click();
+                }
+                parent = parent.parentElement;
+              }
+            });
+            (matches[0] as HTMLElement)?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+          }
+        }
+
+        if (outputStatus) {
+          outputStatus.innerHTML =
+            '<span class="status-success">✓ Loaded</span>';
+          outputStatus.className = 'output-status status-success';
+        }
+      } catch (error: any) {
+        jsonOutput.innerHTML = `<div class="error-message"><strong>✗ Invalid JSON</strong><p>${escapeHtml(error.message)}</p></div>`;
+        if (outputStatus) {
+          outputStatus.innerHTML = '<span class="status-error">✗ Error</span>';
+          outputStatus.className = 'output-status status-error';
+        }
+      }
+    }
+
+    function attachToggleListeners() {
+      const toggles = jsonOutput?.querySelectorAll('.json-toggle');
+      toggles?.forEach(toggle => {
+        toggle.addEventListener('click', e => {
+          const btn = e.target as HTMLButtonElement;
+          const children = btn.nextElementSibling as HTMLElement;
+          const isExpanded = (btn as HTMLElement).dataset.expanded === 'true';
+
+          if (isExpanded) {
+            children.style.display = 'none';
+            btn.textContent = '+';
+            (btn as HTMLElement).dataset.expanded = 'false';
+          } else {
+            children.style.display = 'block';
+            btn.textContent = '−';
+            (btn as HTMLElement).dataset.expanded = 'true';
+          }
+        });
+      });
+    }
+
+    function handleInput() {
+      updateStats(jsonInput.value, inputStats);
+
+      if (currentMode === 'validator') {
+        updateValidator();
+      } else if (currentMode === 'formatter') {
+        updateFormatter();
+      } else if (currentMode === 'viewer') {
+        updateViewer();
+      }
+
+      if (lineNumbersToggle?.checked) {
+        updateLineNumbers(jsonInput.value, jsonInputLineNumbers);
+      }
+    }
+
+    // Mode switching
+    modeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = (btn as HTMLElement).dataset.mode as
+          | 'validator'
+          | 'formatter'
+          | 'viewer';
+        currentMode = mode;
+
+        modeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (outputTitle) {
+          if (mode === 'validator') outputTitle.textContent = 'Result';
+          else if (mode === 'formatter')
+            outputTitle.textContent = 'Formatted JSON';
+          else outputTitle.textContent = 'JSON Viewer';
+        }
+
+        if (viewerControls) {
+          viewerControls.style.display = mode === 'viewer' ? 'flex' : 'none';
+        }
+
+        handleInput();
+      });
+    });
+
+    // Format button
+    formatBtn?.addEventListener('click', () => {
+      if (!jsonInput.value.trim()) return;
+      try {
+        const parsed = JSON.parse(jsonInput.value);
+        const indent = getIndentString();
+        jsonInput.value = JSON.stringify(parsed, null, indent);
+        handleInput();
+      } catch (error: any) {
+        alert(`Error: ${error.message}`);
+      }
+    });
+
+    // Minify button
+    minifyBtn?.addEventListener('click', () => {
+      if (!jsonInput.value.trim()) return;
+      try {
+        const parsed = JSON.parse(jsonInput.value);
+        jsonInput.value = JSON.stringify(parsed);
+        handleInput();
+      } catch (error: any) {
+        alert(`Error: ${error.message}`);
+      }
+    });
+
+    // Sort keys button
+    sortKeysBtn?.addEventListener('click', () => {
+      if (!jsonInput.value.trim()) return;
+      try {
+        const parsed = JSON.parse(jsonInput.value);
+        const sorted = sortObjectKeys(parsed);
+        const indent = getIndentString();
+        jsonInput.value = JSON.stringify(sorted, null, indent);
+        handleInput();
+      } catch (error: any) {
+        alert(`Error: ${error.message}`);
+      }
+    });
+
+    // Copy button
+    copyBtn?.addEventListener('click', async () => {
+      try {
+        const outputText = jsonOutput?.textContent || '';
+        if (outputText) {
+          await navigator.clipboard.writeText(outputText);
+          const btn = copyBtn as HTMLButtonElement;
+          const originalText = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => {
+            btn.textContent = originalText;
+          }, 2000);
+        }
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+
+    // Download button
+    downloadBtn?.addEventListener('click', () => {
+      try {
+        const outputText = jsonOutput?.textContent || '';
+        if (!outputText) return;
+
+        const blob = new Blob([outputText], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'output.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        console.error('Failed to download:', err);
+      }
+    });
+
+    // Load example
+    loadExampleBtn?.addEventListener('click', () => {
+      const example = `{
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S",
+      "GlossList": {
+        "GlossEntry": {
+          "ID": "SGML",
+          "SortAs": "SGML",
+          "GlossTerm": "Standard Generalized Markup Language",
+          "Acronym": "SGML",
+          "Abbrev": "ISO 8879:1986",
+          "GlossDef": {
+            "para": "A meta-markup language, used to create markup languages such as DocBook.",
+            "GlossSeeAlso": ["GML", "XML"]
+          },
+          "GlossSee": "markup"
+        }
+      }
+    }
+  }
+}`;
+      jsonInput.value = example;
+      handleInput();
+    });
+
+    // Clear button
+    clearBtn?.addEventListener('click', () => {
+      jsonInput.value = '';
+      jsonOutput.innerHTML =
+        '<p class="placeholder-text">Enter JSON to validate, format, or explore</p>';
+      if (jsonInputLineNumbers) jsonInputLineNumbers.innerHTML = '';
+      if (jsonOutputLineNumbers) jsonOutputLineNumbers.innerHTML = '';
+      if (inputStats) inputStats.textContent = '0 characters, 0 lines';
+      if (outputStats) outputStats.textContent = '0 characters, 0 lines';
+      if (outputStatus) outputStatus.innerHTML = '';
+      searchTerm = '';
+      if (jsonSearch) jsonSearch.value = '';
+    });
+
+    // Search
+    jsonSearch?.addEventListener('input', e => {
+      searchTerm = (e.target as HTMLInputElement).value;
+      if (currentMode === 'viewer') {
+        updateViewer();
+      }
+    });
+
+    clearSearchBtn?.addEventListener('click', () => {
+      if (jsonSearch) {
+        jsonSearch.value = '';
+        searchTerm = '';
+        if (currentMode === 'viewer') {
+          updateViewer();
+        }
+      }
+    });
+
+    // Expand/Collapse
+    expandAllBtn?.addEventListener('click', () => {
+      const toggles = jsonOutput?.querySelectorAll('.json-toggle');
+      const children = jsonOutput?.querySelectorAll('.json-children');
+      toggles?.forEach(btn => {
+        (btn as HTMLButtonElement).textContent = '−';
+        (btn as HTMLElement).dataset.expanded = 'true';
+      });
+      children?.forEach(child => {
+        (child as HTMLElement).style.display = 'block';
+      });
+    });
+
+    collapseAllBtn?.addEventListener('click', () => {
+      const toggles = jsonOutput?.querySelectorAll('.json-toggle');
+      const children = jsonOutput?.querySelectorAll('.json-children');
+      toggles?.forEach(btn => {
+        (btn as HTMLButtonElement).textContent = '+';
+        (btn as HTMLElement).dataset.expanded = 'false';
+      });
+      children?.forEach(child => {
+        (child as HTMLElement).style.display = 'none';
+      });
+    });
+
+    // Zoom viewer
+    let isZoomed = false;
+    const outputPanel = document.querySelector('.json-output-panel');
+    zoomViewerBtn?.addEventListener('click', () => {
+      if (!outputPanel) return;
+      isZoomed = !isZoomed;
+      if (isZoomed) {
+        outputPanel.classList.add('zoomed');
+        zoomViewerBtn.textContent = '⊟';
+        zoomViewerBtn.title = 'Restore view';
+      } else {
+        outputPanel.classList.remove('zoomed');
+        zoomViewerBtn.textContent = '⛶';
+        zoomViewerBtn.title = 'Enlarge view';
+      }
+    });
+
+    // Line numbers toggle
+    lineNumbersToggle?.addEventListener('change', () => {
+      const show = lineNumbersToggle.checked;
+      if (jsonInputLineNumbers)
+        jsonInputLineNumbers.style.display = show ? 'block' : 'none';
+      if (jsonOutputLineNumbers)
+        jsonOutputLineNumbers.style.display = show ? 'block' : 'none';
+      if (show) {
+        handleInput();
+      }
+    });
+
+    // Input handlers
+    jsonInput?.addEventListener('input', handleInput);
+    indentSizeSelect?.addEventListener('change', () => {
+      if (currentMode === 'formatter' || currentMode === 'validator') {
+        handleInput();
+      }
+    });
+
+    // Initial render
+    handleInput();
+  }
+
+  // Initialize when component is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.json-tools-wrapper');
+      if (container) {
+        initJsonTools();
+      }
+    });
+  } else {
+    const container = document.querySelector('.json-tools-wrapper');
+    if (container) {
+      initJsonTools();
+    }
+  }
+</script>
+
+<style>
+  .json-tools-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .tool-header {
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+
+  .tool-header h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tool-description {
+    color: var(--text);
+    opacity: 0.8;
+    font-size: var(--font-size-base);
+  }
+
+  /* Unified Container */
+  .unified-json-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    min-width: 0;
+  }
+
+  .json-input-panel,
+  .json-output-panel {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    background: var(--bg);
+    box-shadow: var(--shadow-1);
+    min-height: 600px;
+    min-width: 0;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--muted);
+    border-bottom: 1px solid var(--border);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .panel-actions {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .format-options {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .format-select {
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .control-button-small {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: var(--font-weight-bold);
+    white-space: nowrap;
+  }
+
+  .control-button-small:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .json-input-wrapper,
+  .json-output-wrapper {
+    position: relative;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  /* Make line numbers scroll with content */
+  .json-output-wrapper .line-numbers {
+    position: relative;
+    z-index: 1;
+  }
+
+  .json-output-wrapper .json-output {
+    position: relative;
+    z-index: 1;
+  }
+
+  .line-numbers {
+    background: var(--muted);
+    color: var(--text);
+    opacity: 0.5;
+    padding: var(--space-4) var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid var(--border);
+    min-width: 50px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-shrink: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .line-numbers::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-numbers div {
+    height: 1.6em;
+    line-height: 1.6em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .line-numbers::before {
+    content: '';
+    display: block;
+    height: var(--space-4);
+    flex-shrink: 0;
+  }
+
+  .json-input {
+    flex: 1;
+    padding: var(--space-4);
+    padding-top: 0;
+    margin-top: var(--space-4);
+    border: none;
+    resize: none;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .json-output {
+    flex: 1;
+    padding: var(--space-4);
+    overflow-y: auto;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    max-height: 500px;
+    min-width: 0;
+    white-space: pre;
+    word-wrap: normal;
+  }
+
+  .input-stats,
+  .output-stats {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-xs);
+    color: var(--text);
+    opacity: 0.6;
+    border-top: 1px solid var(--border);
+    background: var(--muted);
+  }
+
+  .output-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    border-top: 1px solid var(--border);
+    background: var(--muted);
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .output-status {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .status-success {
+    color: oklch(0.5 0.15 150);
+  }
+
+  .status-error {
+    color: oklch(0.5 0.2 15);
+  }
+
+  .placeholder-text {
+    color: var(--text);
+    opacity: 0.5;
+    text-align: center;
+    padding: var(--space-8);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .success-message {
+    color: var(--text);
+  }
+
+  .success-message strong {
+    color: oklch(0.5 0.15 150);
+    display: block;
+    margin-bottom: var(--space-3);
+  }
+
+  .validated-json,
+  .formatted-json {
+    background: var(--muted);
+    padding: 0;
+    border-radius: var(--radius-m);
+    border: 1px solid var(--border);
+    margin: 0;
+    white-space: pre;
+    word-wrap: normal;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .error-message {
+    color: var(--text);
+  }
+
+  .error-message strong {
+    color: oklch(0.5 0.2 15);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .error-position {
+    color: oklch(0.5 0.2 15);
+    font-weight: var(--font-weight-bold);
+    margin: var(--space-2) 0;
+  }
+
+  .error-line-wrapper {
+    background: oklch(0.9 0.2 15 / 0.4);
+    border-left: 3px solid oklch(0.5 0.2 15);
+    padding: 0 var(--space-2);
+    margin: 0;
+    display: block;
+    width: 100%;
+  }
+
+  .error-line {
+    color: oklch(0.5 0.2 15);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .error-json {
+    background: var(--muted);
+    padding: var(--space-3);
+    border-radius: var(--radius-m);
+    border: 1px solid oklch(0.5 0.2 15);
+    margin: var(--space-3) 0;
+    white-space: pre;
+    word-wrap: break-word;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+  }
+
+  .error-json div {
+    min-height: 1.6em;
+  }
+
+  .error-hint {
+    margin-top: var(--space-3);
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+  }
+
+  /* VSCode-style JSON syntax colors - using :global() for dynamic content */
+  :global(.json-output .json-key) {
+    color: oklch(0.45 0.2 280) !important;
+    font-weight: var(--font-weight-bold);
+  }
+
+  :global(.json-output .json-string) {
+    color: oklch(0.45 0.2 150) !important;
+  }
+
+  :global(.json-output .json-number) {
+    color: oklch(0.5 0.2 250) !important;
+  }
+
+  :global(.json-output .json-boolean) {
+    color: oklch(0.5 0.2 50) !important;
+  }
+
+  :global(.json-output .json-null) {
+    color: oklch(0.5 0.1 280) !important;
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  :global(.json-output .json-bracket) {
+    color: var(--text);
+    font-weight: var(--font-weight-bold);
+    opacity: 0.9;
+  }
+
+  :global(.json-output .json-punctuation) {
+    color: var(--text);
+    opacity: 0.8;
+  }
+
+  /* Also apply to pre elements in validator/formatter modes */
+  :global(.validated-json .json-key),
+  :global(.formatted-json .json-key) {
+    color: oklch(0.45 0.2 280) !important;
+    font-weight: var(--font-weight-bold);
+  }
+
+  :global(.validated-json .json-string),
+  :global(.formatted-json .json-string) {
+    color: oklch(0.45 0.2 150) !important;
+  }
+
+  :global(.validated-json .json-number),
+  :global(.formatted-json .json-number) {
+    color: oklch(0.5 0.2 250) !important;
+  }
+
+  :global(.validated-json .json-boolean),
+  :global(.formatted-json .json-boolean) {
+    color: oklch(0.5 0.2 50) !important;
+  }
+
+  :global(.validated-json .json-null),
+  :global(.formatted-json .json-null) {
+    color: oklch(0.5 0.1 280) !important;
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  :global(.validated-json .json-bracket),
+  :global(.formatted-json .json-bracket) {
+    color: var(--text);
+    font-weight: var(--font-weight-bold);
+    opacity: 0.9;
+  }
+
+  :global(.validated-json .json-punctuation),
+  :global(.formatted-json .json-punctuation) {
+    color: var(--text);
+    opacity: 0.8;
+  }
+
+  /* Viewer styles */
+  .viewer-controls {
+    display: flex;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    background: var(--muted);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    font-size: var(--font-size-sm);
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+  }
+
+  .search-input:focus {
+    border-color: var(--primary);
+  }
+
+  .search-clear {
+    position: absolute;
+    right: var(--space-2);
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+  }
+
+  .search-clear:hover {
+    opacity: 1;
+  }
+
+  :global(.json-item) {
+    margin: 0;
+    line-height: 1.4;
+    display: block;
+  }
+
+  :global(.json-item > .json-punctuation) {
+    margin-right: 4px;
+  }
+
+  :global(.json-item.search-match) {
+    background: oklch(from var(--highlight) l c h / 0.2);
+    border-left: 2px solid var(--primary);
+    padding-left: var(--space-2);
+  }
+
+  :global(.json-toggle) {
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-s);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    margin: 0 var(--space-1);
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  :global(.json-toggle:hover) {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  :global(.json-children) {
+    display: block;
+    margin-left: 0;
+    line-height: 1.4;
+  }
+
+  :global(.json-children .json-item) {
+    margin: 0;
+    padding: 0;
+    display: block;
+    white-space: nowrap;
+  }
+
+  :global(.json-toggle) {
+    white-space: nowrap;
+  }
+
+  :global(.search-highlight) {
+    background: oklch(from var(--highlight) l c h / 0.6);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: var(--font-weight-bold);
+    color: var(--text);
+  }
+
+  /* Mode Toggle */
+  .json-mode-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .mode-button {
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-m);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: var(--font-weight-normal);
+  }
+
+  .mode-button:hover {
+    background: var(--bg);
+    border-color: var(--primary);
+  }
+
+  .mode-button.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .line-numbers-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--text);
+  }
+
+  .line-numbers-toggle input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary);
+  }
+
+  .json-output-panel.zoomed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--bg);
+    border: none;
+    border-radius: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+    padding: var(--space-4);
+  }
+
+  .json-output-panel.zoomed .json-output {
+    max-height: calc(100vh - 200px);
+  }
+
+  @media (max-width: 1200px) {
+    .unified-json-container {
+      grid-template-columns: 1fr;
+    }
+
+    .json-input-panel,
+    .json-output-panel {
+      min-height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .panel-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .panel-actions {
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    .format-options {
+      flex-wrap: wrap;
+    }
+
+    .json-mode-toggle {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+  }
+</style>

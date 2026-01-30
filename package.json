@@ -18,7 +18,14 @@
     "@astrojs/mdx": "^4.3.5",
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.13.9",
+    "diff": "^8.0.3",
+    "highlight.js": "^11.11.1",
+    "html2pdf.js": "^0.14.0",
     "lucide-astro": "^0.552.0",
+    "marked": "^17.0.1",
+    "marked-custom-heading-id": "^2.0.16",
+    "marked-emoji": "^2.0.2",
+    "marked-highlight": "^2.2.3",
     "zod": "^3.25.76"
   },
   "devDependencies": {

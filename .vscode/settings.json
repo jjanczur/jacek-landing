@@ -18,5 +18,11 @@
     "astro": "html"
   },
   "typescript.preferences.includePackageJsonAutoImports": "auto",
-  "astro.types.packageMains": ["astro"]
+  "astro.types.packageMains": [
+    "astro"
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "snyk.advanced.autoSelectOrganization": true
 }

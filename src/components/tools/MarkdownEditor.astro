@@ -1,0 +1,1805 @@
+---
+// Markdown Editor Component - Client-side only, lazy loaded
+---
+
+<div class="markdown-editor-wrapper">
+  <div class="tool-header">
+    <h2>Markdown Editor</h2>
+    <p class="tool-description">
+      Write Markdown on the left, see the preview on the right. All processing
+      happens in your browser.
+    </p>
+  </div>
+
+  <div class="markdown-controls">
+    <label class="line-numbers-toggle">
+      <input type="checkbox" id="markdown-line-numbers" checked />
+      <span>Show line numbers</span>
+    </label>
+    <button
+      id="pdf-settings-toggle"
+      class="settings-button"
+      title="PDF Settings"
+    >
+      PDF Settings
+    </button>
+  </div>
+
+  <div class="markdown-editor-container">
+    <div class="editor-panel">
+      <div class="panel-header">
+        <span>Editor</span>
+        <button id="copy-markdown" class="copy-button" title="Copy Markdown">
+          Copy
+        </button>
+      </div>
+      <div class="editor-wrapper">
+        <div id="markdown-line-numbers-editor" class="line-numbers"></div>
+        <textarea
+          id="markdown-input"
+          class="markdown-input"
+          placeholder="Start typing your Markdown here..."></textarea>
+      </div>
+    </div>
+
+    <div class="panel-divider"></div>
+
+    <div class="preview-panel">
+      <div class="panel-header">
+        <span>Preview</span>
+        <div class="preview-actions">
+          <button
+            id="download-pdf"
+            class="download-button"
+            title="Download PDF"
+          >
+            Download PDF
+          </button>
+          <button id="copy-html" class="copy-button" title="Copy HTML">
+            Copy HTML
+          </button>
+        </div>
+      </div>
+      <div class="preview-wrapper">
+        <div id="markdown-preview" class="markdown-preview"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF Settings Modal -->
+<div id="pdf-settings-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>PDF Export Settings</h3>
+      <button id="pdf-settings-close" class="modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <!-- Preset Selection -->
+      <div class="preset-section">
+        <label class="section-label">Export Preset:</label>
+        <div class="preset-cards">
+          <button
+            type="button"
+            class="preset-card"
+            data-preset="quick"
+            title="Low quality, 1x scale, JPEG - Best for drafts and quick sharing"
+          >
+            <span class="preset-icon">&#9889;</span>
+            <span class="preset-name">Quick Export</span>
+            <span class="preset-desc">Smaller file</span>
+          </button>
+          <button
+            type="button"
+            class="preset-card"
+            data-preset="balanced"
+            title="Medium quality, 2x scale, JPEG - Good balance of quality and size"
+          >
+            <span class="preset-icon">&#9878;</span>
+            <span class="preset-name">Balanced</span>
+            <span class="preset-desc">Recommended</span>
+          </button>
+          <button
+            type="button"
+            class="preset-card"
+            data-preset="high"
+            title="High quality, 3x scale, PNG - Best for printing and archiving"
+          >
+            <span class="preset-icon">&#9733;</span>
+            <span class="preset-name">High Quality</span>
+            <span class="preset-desc">Larger file</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Page Settings (always visible) -->
+      <div class="setting-group">
+        <label for="pdf-format">Page Format:</label>
+        <select id="pdf-format" class="pdf-modal-select">
+          <option value="a4">A4</option>
+          <option value="a3">A3</option>
+          <option value="letter">Letter</option>
+          <option value="legal">Legal</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label for="pdf-orientation">Orientation:</label>
+        <select id="pdf-orientation" class="pdf-modal-select">
+          <option value="portrait">Portrait</option>
+          <option value="landscape">Landscape</option>
+        </select>
+      </div>
+
+      <!-- Advanced Settings (collapsible) -->
+      <details id="advanced-settings" class="advanced-settings">
+        <summary class="advanced-toggle">
+          <span>Advanced Settings</span>
+          <span class="toggle-icon">&#9662;</span>
+        </summary>
+        <div class="advanced-content">
+          <div class="setting-group">
+            <label for="pdf-margin">Margin (mm):</label>
+            <input type="number" id="pdf-margin" min="0" max="50" value="15" />
+          </div>
+
+          <div class="setting-group">
+            <label for="pdf-quality">Image Quality:</label>
+            <select id="pdf-quality" class="pdf-modal-select">
+              <option value="0.7">Low (0.7)</option>
+              <option value="0.85">Medium (0.85)</option>
+              <option value="0.98">High (0.98)</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="pdf-scale">Scale Factor:</label>
+            <select id="pdf-scale" class="pdf-modal-select">
+              <option value="1">1x</option>
+              <option value="2">2x</option>
+              <option value="3">3x</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="pdf-links-enabled" checked />
+              Enable hyperlinks
+            </label>
+          </div>
+
+          <div class="setting-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="pdf-compression" checked />
+              Enable compression
+            </label>
+          </div>
+
+          <div class="setting-group">
+            <label for="pdf-image-format">Image Format:</label>
+            <select id="pdf-image-format" class="pdf-modal-select">
+              <option value="jpeg">JPEG (Smaller)</option>
+              <option value="png">PNG (Better quality)</option>
+              <option value="webp">WebP (Modern)</option>
+            </select>
+          </div>
+        </div>
+      </details>
+    </div>
+    <div class="modal-footer">
+      <button id="pdf-settings-save" class="save-button">Save Settings</button>
+      <button id="pdf-settings-reset" class="reset-button"
+        >Reset to Defaults</button
+      >
+    </div>
+  </div>
+</div>
+
+<script>
+  let marked: any = null;
+  let html2pdf: any = null;
+
+  // Load marked dynamically with basic functionality
+  async function loadMarked() {
+    if (!marked) {
+      const markedModule = await import('marked');
+      marked = markedModule.marked;
+
+      // Basic configuration only
+      marked.setOptions({
+        breaks: true,
+        gfm: true,
+      });
+    }
+    return marked;
+  }
+
+  // Load html2pdf dynamically
+  async function loadHtml2Pdf() {
+    if (!html2pdf) {
+      const html2pdfModule = await import('html2pdf.js');
+      // html2pdf.js exports a default function
+      html2pdf = html2pdfModule.default || html2pdfModule;
+    }
+    return html2pdf;
+  }
+
+  function initMarkdownEditor() {
+    const input = document.getElementById(
+      'markdown-input',
+    ) as HTMLTextAreaElement;
+    const preview = document.getElementById('markdown-preview');
+    const copyMarkdownBtn = document.getElementById('copy-markdown');
+    const copyHtmlBtn = document.getElementById('copy-html');
+    const downloadPdfBtn = document.getElementById('download-pdf');
+    const pdfSettingsToggle = document.getElementById('pdf-settings-toggle');
+    const pdfSettingsModal = document.getElementById('pdf-settings-modal');
+    const pdfSettingsClose = document.getElementById('pdf-settings-close');
+    const pdfSettingsSave = document.getElementById('pdf-settings-save');
+    const pdfSettingsReset = document.getElementById('pdf-settings-reset');
+    const pdfCompressionSelect = document.getElementById(
+      'pdf-compression',
+    ) as HTMLSelectElement;
+    const pdfImageFormatSelect = document.getElementById(
+      'pdf-image-format',
+    ) as HTMLSelectElement;
+    const lineNumbersToggle = document.getElementById(
+      'markdown-line-numbers',
+    ) as HTMLInputElement;
+    const editorLineNumbers = document.getElementById(
+      'markdown-line-numbers-editor',
+    );
+
+    if (!input || !preview) return;
+
+    if (editorLineNumbers) {
+      bindLineNumberScroll(input, editorLineNumbers);
+    }
+
+    // PDF settings optimized for smaller file sizes and A4 fit
+    let pdfSettings = {
+      format: 'a4',
+      orientation: 'portrait',
+      margin: 15, // Smaller margins for more content per page
+      quality: 0.7, // Lower quality for smaller files
+      scale: 1, // Lower scale for smaller files
+      enableLinks: true,
+      compression: true, // Enable compression
+      imageFormat: 'jpeg', // JPEG is smaller than PNG
+    };
+
+    // Load PDF settings from localStorage
+    const savedSettings = localStorage.getItem('markdown-pdf-settings');
+    if (savedSettings) {
+      try {
+        pdfSettings = { ...pdfSettings, ...JSON.parse(savedSettings) };
+      } catch {
+        // Ignore localStorage errors
+      }
+    }
+
+    function updateLineNumbers(
+      text: string,
+      lineNumbersEl: HTMLElement | null,
+    ) {
+      if (!lineNumbersEl) return;
+      const lines = text.split('\n').length;
+      lineNumbersEl.innerHTML = Array.from({ length: lines }, (_, i) => i + 1)
+        .map(num => `<div>${num}</div>`)
+        .join('');
+    }
+
+    function bindLineNumberScroll(
+      contentEl: HTMLElement,
+      gutterEl: HTMLElement,
+    ) {
+      let raf = 0;
+      const sync = () => {
+        raf = 0;
+        gutterEl.scrollTop = contentEl.scrollTop;
+      };
+
+      contentEl.addEventListener(
+        'scroll',
+        () => {
+          if (raf) return;
+          raf = requestAnimationFrame(sync);
+        },
+        { passive: true },
+      );
+
+      gutterEl.addEventListener(
+        'wheel',
+        e => {
+          e.preventDefault();
+          contentEl.scrollTop += e.deltaY;
+        },
+        { passive: false },
+      );
+    }
+
+    let previewUpdateInProgress = false;
+
+    async function updatePreview() {
+      if (!preview || previewUpdateInProgress) return;
+      previewUpdateInProgress = true;
+
+      const previewEl = preview; // Capture for TypeScript narrowing
+      const markdown = input.value;
+
+      try {
+        const markdownParser = await loadMarked();
+        const html = markdownParser.parse(markdown);
+        previewEl.innerHTML = html;
+      } catch (error) {
+        console.error('Error parsing Markdown:', error);
+        // Fallback: show raw text if parsing fails
+        previewEl.innerHTML = `<pre>${markdown.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
+      }
+
+      if (lineNumbersToggle?.checked) {
+        updateLineNumbers(markdown, editorLineNumbers);
+        if (editorLineNumbers) editorLineNumbers.scrollTop = input.scrollTop;
+      }
+
+      previewUpdateInProgress = false;
+    }
+
+    // Modal handling functions
+    function openPdfSettingsModal() {
+      if (!pdfSettingsModal) return;
+
+      // Populate form with current settings
+      const formatSelect = document.getElementById(
+        'pdf-format',
+      ) as HTMLSelectElement;
+      const orientationSelect = document.getElementById(
+        'pdf-orientation',
+      ) as HTMLSelectElement;
+      const marginInput = document.getElementById(
+        'pdf-margin',
+      ) as HTMLInputElement;
+      const qualitySelect = document.getElementById(
+        'pdf-quality',
+      ) as HTMLSelectElement;
+      const scaleSelect = document.getElementById(
+        'pdf-scale',
+      ) as HTMLSelectElement;
+      const linksCheckbox = document.getElementById(
+        'pdf-links-enabled',
+      ) as HTMLInputElement;
+
+      if (formatSelect) formatSelect.value = pdfSettings.format;
+      if (orientationSelect) orientationSelect.value = pdfSettings.orientation;
+      if (marginInput) marginInput.value = pdfSettings.margin.toString();
+      if (qualitySelect) qualitySelect.value = pdfSettings.quality.toString();
+      if (scaleSelect) scaleSelect.value = pdfSettings.scale.toString();
+      if (linksCheckbox) linksCheckbox.checked = pdfSettings.enableLinks;
+      if (pdfCompressionSelect)
+        pdfCompressionSelect.value = pdfSettings.compression.toString();
+      if (pdfImageFormatSelect)
+        pdfImageFormatSelect.value = pdfSettings.imageFormat;
+
+      pdfSettingsModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePdfSettingsModal() {
+      if (!pdfSettingsModal) return;
+      pdfSettingsModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    // Preset definitions
+    const presets = {
+      quick: { quality: 0.7, scale: 1, imageFormat: 'jpeg', margin: 15 },
+      balanced: { quality: 0.85, scale: 2, imageFormat: 'jpeg', margin: 15 },
+      high: { quality: 0.98, scale: 3, imageFormat: 'png', margin: 15 },
+    };
+
+    function applyPreset(presetName: keyof typeof presets) {
+      const preset = presets[presetName];
+      if (!preset) return;
+
+      const qualitySelect = document.getElementById(
+        'pdf-quality',
+      ) as HTMLSelectElement;
+      const scaleSelect = document.getElementById(
+        'pdf-scale',
+      ) as HTMLSelectElement;
+      const marginInput = document.getElementById(
+        'pdf-margin',
+      ) as HTMLInputElement;
+
+      if (qualitySelect) qualitySelect.value = preset.quality.toString();
+      if (scaleSelect) scaleSelect.value = preset.scale.toString();
+      if (pdfImageFormatSelect) pdfImageFormatSelect.value = preset.imageFormat;
+      if (marginInput) marginInput.value = preset.margin.toString();
+
+      // Update active state
+      document.querySelectorAll('.preset-card').forEach(card => {
+        card.classList.remove('active');
+        if ((card as HTMLElement).dataset.preset === presetName) {
+          card.classList.add('active');
+        }
+      });
+    }
+
+    // Setup preset card click handlers
+    document.querySelectorAll('.preset-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const presetName = (card as HTMLElement).dataset
+          .preset as keyof typeof presets;
+        applyPreset(presetName);
+      });
+    });
+
+    function savePdfSettings() {
+      const formatSelect = document.getElementById(
+        'pdf-format',
+      ) as HTMLSelectElement;
+      const orientationSelect = document.getElementById(
+        'pdf-orientation',
+      ) as HTMLSelectElement;
+      const marginInput = document.getElementById(
+        'pdf-margin',
+      ) as HTMLInputElement;
+      const qualitySelect = document.getElementById(
+        'pdf-quality',
+      ) as HTMLSelectElement;
+      const scaleSelect = document.getElementById(
+        'pdf-scale',
+      ) as HTMLSelectElement;
+      const linksCheckbox = document.getElementById(
+        'pdf-links-enabled',
+      ) as HTMLInputElement;
+
+      pdfSettings = {
+        format: formatSelect?.value || 'a4',
+        orientation: orientationSelect?.value || 'portrait',
+        margin: parseInt(marginInput?.value || '15'),
+        quality: parseFloat(qualitySelect?.value || '0.7'),
+        scale: parseInt(scaleSelect?.value || '1'),
+        enableLinks: linksCheckbox?.checked ?? true,
+        compression: pdfCompressionSelect?.value === 'true',
+        imageFormat: pdfImageFormatSelect?.value || 'jpeg',
+      };
+
+      // Save to localStorage
+      try {
+        localStorage.setItem(
+          'markdown-pdf-settings',
+          JSON.stringify(pdfSettings),
+        );
+      } catch {
+        // Ignore localStorage errors
+      }
+
+      closePdfSettingsModal();
+    }
+
+    function resetPdfSettings() {
+      pdfSettings = {
+        format: 'a4',
+        orientation: 'portrait',
+        margin: 15, // Optimized for smaller files
+        quality: 0.7, // Lower quality for smaller files
+        scale: 1, // Lower scale for smaller files
+        enableLinks: true,
+        compression: true,
+        imageFormat: 'jpeg',
+      };
+
+      // Save defaults
+      try {
+        localStorage.setItem(
+          'markdown-pdf-settings',
+          JSON.stringify(pdfSettings),
+        );
+      } catch {
+        // Ignore localStorage errors
+      }
+
+      closePdfSettingsModal();
+    }
+
+    function handleInput() {
+      updatePreview();
+      if (lineNumbersToggle?.checked) {
+        updateLineNumbers(input.value, editorLineNumbers);
+      }
+    }
+
+    // Update preview on input
+    input.addEventListener('input', handleInput);
+
+    // Line numbers toggle
+    lineNumbersToggle?.addEventListener('change', () => {
+      const show = lineNumbersToggle.checked;
+      if (editorLineNumbers) {
+        editorLineNumbers.style.display = show ? 'block' : 'none';
+        if (show) {
+          editorLineNumbers.scrollTop = input.scrollTop;
+          updatePreview();
+        }
+      }
+    });
+
+    // PDF settings modal
+    pdfSettingsToggle?.addEventListener('click', openPdfSettingsModal);
+    pdfSettingsClose?.addEventListener('click', closePdfSettingsModal);
+    pdfSettingsSave?.addEventListener('click', savePdfSettings);
+    pdfSettingsReset?.addEventListener('click', resetPdfSettings);
+
+    // Close modal when clicking outside
+    pdfSettingsModal?.addEventListener('click', e => {
+      if (e.target === pdfSettingsModal) {
+        closePdfSettingsModal();
+      }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', _e => {
+      if (pdfSettingsModal?.style.display === 'flex') {
+        closePdfSettingsModal();
+      }
+    });
+
+    // Update preview on input
+    input.addEventListener('input', updatePreview);
+    input.addEventListener('keyup', updatePreview); // Backup event listener
+
+    // Copy functions
+    copyMarkdownBtn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(input.value);
+        const btn = copyMarkdownBtn as HTMLButtonElement;
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+
+    copyHtmlBtn?.addEventListener('click', async () => {
+      try {
+        const markdownParser = await loadMarked();
+        const html = markdownParser.parse(input.value);
+        await navigator.clipboard.writeText(html as string);
+        const btn = copyHtmlBtn as HTMLButtonElement;
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+
+    downloadPdfBtn?.addEventListener('click', async () => {
+      if (!preview) return;
+
+      const btn = downloadPdfBtn as HTMLButtonElement;
+      const originalText = btn.textContent;
+      btn.textContent = 'Generating...';
+      btn.disabled = true;
+
+      try {
+        const html2pdfLib = await loadHtml2Pdf();
+
+        // Create a temporary container optimized for A4 and small file sizes
+        const tempContainer = document.createElement('div');
+        tempContainer.style.width = '210mm'; // A4 width
+        tempContainer.style.maxWidth = '210mm'; // Ensure it doesn't exceed A4
+        tempContainer.style.fontFamily = 'system-ui, -apple-system, sans-serif';
+        tempContainer.style.color = '#000';
+        tempContainer.style.backgroundColor = '#fff';
+        tempContainer.style.lineHeight = '1.4'; // Tighter line height for more content
+        tempContainer.style.boxSizing = 'border-box';
+        tempContainer.style.padding = '0'; // No padding, let PDF margins handle spacing
+
+        // Instead of cloning, create clean HTML for PDF generation
+        const cleanHtml = preview.innerHTML
+          .replace(/oklch\([^)]+\)/g, '#000') // Replace oklch colors
+          .replace(/--[^:;]+:[^;]+;?/g, '') // Remove CSS custom properties
+          .replace(/var\(--[^)]+\)/g, '#000'); // Replace CSS variables
+
+        tempContainer.innerHTML = cleanHtml;
+
+        // Apply PDF-specific styles to the cloned content
+        const style = document.createElement('style');
+        style.textContent = `
+          * {
+            color: #000 !important;
+            background: transparent !important;
+            box-sizing: border-box !important;
+            font-size: 11px !important; /* Smaller for more content per page */
+            line-height: 1.3 !important; /* Tighter for smaller files */
+          }
+
+          /* Page layout */
+          body, div {
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          /* Ensure content doesn't overflow - optimized spacing */
+          p, li, span {
+            max-width: 100% !important;
+            overflow-wrap: break-word !important;
+            word-wrap: break-word !important;
+            hyphens: auto !important;
+            margin: 4px 0 !important;
+            padding: 0 !important;
+          }
+
+          /* Proper heading sizes for PDF - optimized for smaller files */
+          h1 { font-size: 18px !important; margin: 16px 0 8px 0 !important; font-weight: bold !important; }
+          h2 { font-size: 16px !important; margin: 14px 0 6px 0 !important; font-weight: bold !important; }
+          h3 { font-size: 14px !important; margin: 12px 0 4px 0 !important; font-weight: bold !important; }
+          h4 { font-size: 13px !important; margin: 10px 0 4px 0 !important; font-weight: bold !important; }
+          h5 { font-size: 12px !important; margin: 8px 0 4px 0 !important; font-weight: bold !important; }
+          h6 { font-size: 11px !important; margin: 6px 0 4px 0 !important; font-weight: bold !important; }
+
+          /* Constrain table width */
+          table {
+            max-width: 100% !important;
+            table-layout: auto !important;
+            font-size: 11px !important;
+            margin: 10px 0 !important;
+          }
+
+          /* Code blocks - optimized for smaller files */
+          pre {
+            font-size: 9px !important;
+            line-height: 1.2 !important;
+            margin: 8px 0 !important;
+            padding: 6px !important;
+            white-space: pre-wrap !important;
+            word-break: break-all !important;
+            max-width: 100% !important;
+            background: #f8f8f8 !important;
+          }
+
+          code {
+            font-size: 9px !important;
+            padding: 1px 3px !important;
+            background: #f0f0f0 !important;
+          }
+
+          /* Force all colors to black for PDF compatibility */
+          h1, h2, h3, h4, h5, h6, p, li, span, div, a {
+            color: #000 !important;
+          }
+
+          /* Code highlighting - use safe colors */
+          .hljs {
+            background: #f6f8fa !important;
+            color: #000 !important;
+          }
+
+          .hljs-keyword {
+            color: #d73a49 !important;
+          }
+
+          .hljs-string {
+            color: #032f62 !important;
+          }
+
+          .hljs-comment {
+            color: #6a737d !important;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+          }
+          th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+          }
+          th {
+            background: #f0f0f0 !important;
+            font-weight: bold;
+          }
+          ul, ol {
+            margin: 1em 0;
+            padding-left: 2em;
+          }
+          li {
+            margin: 0.5em 0;
+          }
+          h1, h2, h3, h4, h5, h6 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+          }
+          code {
+            background: #f5f5f5 !important;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #000 !important;
+          }
+          pre {
+            background: #f5f5f5 !important;
+            padding: 1em;
+            border-radius: 4px;
+            overflow-x: auto;
+            color: #000 !important;
+            white-space: pre-wrap !important;
+            word-break: break-all !important;
+            max-width: 100% !important;
+          }
+
+          pre code {
+            white-space: pre-wrap !important;
+            word-break: break-all !important;
+          }
+          blockquote {
+            border-left: 4px solid #333;
+            padding-left: 1em;
+            margin: 1em 0;
+            font-style: italic;
+            color: #000 !important;
+          }
+
+          /* PDF-specific styling for better output */
+          .pdf-code-block {
+            background: #f6f8fa !important;
+            border: 1px solid #d1d9e0 !important;
+            border-radius: 6px !important;
+            padding: 16px !important;
+            margin: 16px 0 !important;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+            font-size: 12px !important;
+            line-height: 1.45 !important;
+            overflow-x: auto !important;
+            color: #000 !important;
+          }
+
+          .pdf-blockquote {
+            border-left: 3px solid #ccc !important;
+            padding-left: 12px !important;
+            margin: 8px 0 !important;
+            color: #666 !important;
+            font-style: italic !important;
+            font-size: 10px !important;
+          }
+
+          .pdf-table {
+            border-collapse: collapse !important;
+            width: 100% !important;
+            margin: 16px 0 !important;
+          }
+
+          .pdf-table th,
+          .pdf-table td {
+            border: 1px solid #ccc !important;
+            padding: 4px 6px !important;
+            text-align: left !important;
+            font-size: 9px !important;
+          }
+
+          .pdf-table th {
+            background: #f0f0f0 !important;
+            font-weight: 600 !important;
+          }
+
+          .pdf-list {
+            padding-left: 18px !important;
+            margin: 8px 0 !important;
+          }
+
+          /* Page breaks - optimized for smaller files */
+          .html2pdf__page-break {
+            page-break-before: always !important;
+            height: 1px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            visibility: hidden !important;
+            display: none !important;
+          }
+
+          /* Ensure lists don't break awkwardly */
+          ul, ol {
+            page-break-inside: avoid !important;
+            margin: 8px 0 !important;
+            padding-left: 20px !important;
+          }
+
+          /* Prevent headings from being at the bottom of pages */
+          h1, h2, h3 {
+            page-break-after: avoid !important;
+          }
+
+          /* Table handling */
+          tr {
+            page-break-inside: avoid !important;
+          }
+
+          /* Override any custom CSS variables and modern color functions */
+          [style*="oklch"],
+          [style*="--"] {
+            color: #000 !important;
+            background: transparent !important;
+            font-size: 12px !important;
+          }
+        `;
+        tempContainer.appendChild(style);
+
+        // Temporarily add to document for rendering
+        document.body.appendChild(tempContainer);
+
+        // Generate PDF with advanced settings
+        const opt = {
+          margin: pdfSettings.margin,
+          filename: 'markdown-document.pdf',
+          image: {
+            type: pdfSettings.imageFormat, // jpeg, png, or webp
+            quality: pdfSettings.quality,
+          },
+          enableLinks: pdfSettings.enableLinks,
+          html2canvas: {
+            scale: pdfSettings.scale,
+            useCORS: true,
+            logging: false,
+            allowTaint: false, // Better security
+            backgroundColor: '#ffffff', // Ensure white background
+            width: pdfSettings.orientation === 'landscape' ? 842 : 595, // A4 in pixels at 72 DPI for smaller files
+            height: pdfSettings.orientation === 'landscape' ? 595 : 842,
+            windowWidth: 800, // Lower resolution for smaller files
+            windowHeight: 600,
+            scrollX: 0,
+            scrollY: 0,
+            // Performance optimizations for smaller files
+            foreignObjectRendering: false, // Faster rendering
+            removeContainer: true, // Clean up after rendering
+            letterRendering: false, // Faster rendering, smaller files
+            imageTimeout: 0, // Don't wait for images
+          },
+          jsPDF: {
+            unit: 'mm',
+            format: pdfSettings.format,
+            orientation: pdfSettings.orientation,
+            compress: pdfSettings.compression, // User-controlled compression
+            precision: 1, // Lower precision for smaller files
+            userUnit: 1.0, // User unit
+            compressPDF: pdfSettings.compression, // Additional compression
+            putOnlyUsedFonts: true, // Only embed used fonts
+            floatPrecision: 2, // Lower float precision
+          },
+          pagebreak: {
+            mode: ['avoid-all', 'css', 'legacy'], // Multiple pagebreak strategies
+            before: '.html2pdf__page-break',
+            after: '.html2pdf__page-break',
+            avoid: 'h1, h2, h3, .pdf-code-block, table, .pdf-blockquote', // Avoid breaking these elements
+          },
+        };
+
+        await html2pdfLib().set(opt).from(tempContainer).save();
+
+        // Clean up
+        document.body.removeChild(tempContainer);
+
+        btn.textContent = 'Downloaded!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to generate PDF:', err);
+        btn.textContent = 'Error';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 2000);
+      }
+    });
+
+    // Set initial sample content
+    const sampleContent = `# Simple Markdown Test
+
+This is a **bold** text and this is *italic*.
+
+## Lists
+- Item 1
+- Item 2
+- Item 3
+
+## Code
+\`\`\`javascript
+console.log("Hello World!");
+\`\`\`
+
+## Links
+[Google](https://google.com)`;
+
+    if (!input.value.trim()) {
+      input.value = sampleContent;
+    }
+
+    // Initial preview
+    updatePreview();
+  }
+
+  // Initialize when component is in view
+  const container = document.querySelector('.markdown-editor-wrapper');
+  if (container) {
+    // Check if already visible
+    const rect = container.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isVisible) {
+      initMarkdownEditor();
+    } else {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              initMarkdownEditor();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      observer.observe(container);
+    }
+  }
+</script>
+
+<style>
+  .markdown-editor-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .tool-header {
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+
+  .tool-header h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tool-description {
+    color: var(--text);
+    opacity: 0.8;
+    font-size: var(--font-size-base);
+  }
+
+  .markdown-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-6);
+    margin-bottom: var(--space-4);
+  }
+
+  .line-numbers-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--text);
+  }
+
+  .line-numbers-toggle input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary);
+  }
+
+  .markdown-editor-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    background: var(--bg);
+    box-shadow: var(--shadow-1);
+  }
+
+  .panel-divider {
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      var(--primary),
+      transparent
+    );
+    margin: var(--space-2) 0;
+    opacity: 0.3;
+  }
+
+  .editor-panel,
+  .preview-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+  }
+
+  .editor-wrapper,
+  .preview-wrapper {
+    position: relative;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .line-numbers {
+    background: var(--muted);
+    color: var(--text);
+    opacity: 0.5;
+    padding: var(--space-4) var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid var(--border);
+    min-width: 50px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-shrink: 0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .line-numbers::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+
+  .line-numbers div {
+    min-height: 1.6em;
+    line-height: 1.6em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--muted);
+    border-bottom: 1px solid var(--border);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--text);
+  }
+
+  .preview-actions {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .settings-button {
+    background: var(--muted);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .settings-button:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .copy-button,
+  .download-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .copy-button:hover,
+  .download-button:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .download-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .markdown-input {
+    flex: 1;
+    padding: var(--space-4);
+    border: none;
+    resize: none;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .markdown-preview {
+    flex: 1;
+    padding: var(--space-4);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .markdown-preview :global(h1),
+  .markdown-preview :global(h2),
+  .markdown-preview :global(h3),
+  .markdown-preview :global(h4),
+  .markdown-preview :global(h5),
+  .markdown-preview :global(h6) {
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .markdown-preview :global(h1) {
+    font-size: var(--font-size-2xl);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: var(--space-2);
+  }
+
+  .markdown-preview :global(h2) {
+    font-size: var(--font-size-xl);
+  }
+
+  .markdown-preview :global(p) {
+    margin-bottom: var(--space-4);
+  }
+
+  .markdown-preview :global(code) {
+    background: var(--muted);
+    padding: 2px 6px;
+    border-radius: var(--radius-s);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  .markdown-preview :global(pre) {
+    background: var(--muted);
+    padding: var(--space-4);
+    border-radius: var(--radius-m);
+    overflow-x: auto;
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--border);
+  }
+
+  .markdown-preview :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .markdown-preview :global(blockquote) {
+    border-left: 4px solid var(--primary);
+    padding-left: var(--space-4);
+    margin: var(--space-4) 0;
+    color: var(--text);
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  .markdown-preview :global(ul),
+  .markdown-preview :global(ol) {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+  }
+
+  /* Support for nested lists at multiple levels */
+  .markdown-preview :global(ul ul),
+  .markdown-preview :global(ol ol),
+  .markdown-preview :global(ul ol),
+  .markdown-preview :global(ol ul) {
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-6);
+  }
+
+  .markdown-preview :global(ul ul ul),
+  .markdown-preview :global(ol ol ol),
+  .markdown-preview :global(ul ol ul),
+  .markdown-preview :global(ol ul ol) {
+    padding-left: var(--space-6);
+  }
+
+  .markdown-preview :global(li) {
+    margin-bottom: var(--space-2);
+  }
+
+  /* Ensure nested list items are properly indented */
+  .markdown-preview :global(li > ul),
+  .markdown-preview :global(li > ol) {
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .markdown-preview :global(a) {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  .markdown-preview :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-4);
+    margin-top: var(--space-4);
+    display: table;
+    overflow-x: auto;
+  }
+
+  .markdown-preview :global(thead) {
+    display: table-header-group;
+  }
+
+  .markdown-preview :global(tbody) {
+    display: table-row-group;
+  }
+
+  .markdown-preview :global(tr) {
+    display: table-row;
+  }
+
+  .markdown-preview :global(th),
+  .markdown-preview :global(td) {
+    border: 1px solid var(--border);
+    padding: var(--space-2) var(--space-3);
+    text-align: left;
+    display: table-cell;
+  }
+
+  .markdown-preview :global(th) {
+    background: var(--muted);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Ensure tables are scrollable on small screens */
+  @media (max-width: 767px) {
+    .markdown-preview :global(table) {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .markdown-preview :global(table thead),
+    .markdown-preview :global(table tbody),
+    .markdown-preview :global(table tr) {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .markdown-editor-container {
+      grid-template-columns: 1fr;
+    }
+
+    .editor-panel,
+    .preview-panel {
+      min-height: 400px;
+    }
+  }
+
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-content {
+    background: var(--bg);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+    position: relative;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-header h3 {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    color: var(--text);
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    color: var(--text);
+    opacity: 0.7;
+    padding: var(--space-1);
+    border-radius: var(--radius-s);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-close:hover {
+    background: var(--muted);
+    opacity: 1;
+  }
+
+  .modal-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .setting-group label {
+    font-weight: var(--font-weight-bold);
+    color: var(--text);
+    font-size: var(--font-size-sm);
+  }
+
+  .setting-group select,
+  .setting-group input {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    background: var(--bg);
+    color: var(--text);
+    font-size: var(--font-size-sm);
+  }
+
+  .setting-group select:focus,
+  .setting-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px oklch(from var(--primary) l c h / 0.2);
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    font-weight: normal !important;
+  }
+
+  .checkbox-label input[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+  }
+
+  .modal-footer {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: flex-end;
+    padding: var(--space-4);
+    border-top: 1px solid var(--border);
+  }
+
+  .save-button,
+  .reset-button {
+    padding: var(--space-2) var(--space-4);
+    border: none;
+    border-radius: var(--radius-m);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .save-button {
+    background: var(--primary);
+    color: white;
+  }
+
+  .save-button:hover {
+    background: var(--accent);
+  }
+
+  .reset-button {
+    background: var(--muted);
+    color: var(--text);
+  }
+
+  .reset-button:hover {
+    background: var(--border);
+  }
+
+  /* Preset cards */
+  .preset-section {
+    margin-bottom: var(--space-2);
+  }
+
+  .section-label {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    color: var(--text);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-2);
+  }
+
+  .preset-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+
+  .preset-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-m);
+    background: var(--bg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .preset-card:hover {
+    border-color: var(--primary);
+    background: oklch(from var(--primary) l c h / 0.05);
+  }
+
+  .preset-card.active {
+    border-color: var(--primary);
+    background: oklch(from var(--primary) l c h / 0.1);
+    box-shadow: 0 0 0 2px oklch(from var(--primary) l c h / 0.2);
+  }
+
+  .preset-icon {
+    font-size: var(--font-size-xl);
+  }
+
+  .preset-name {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--text);
+  }
+
+  .preset-desc {
+    font-size: var(--font-size-xs);
+    color: var(--text);
+    opacity: 0.7;
+  }
+
+  /* Advanced settings */
+  .advanced-settings {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+  }
+
+  .advanced-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3);
+    background: var(--muted);
+    cursor: pointer;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+  }
+
+  .advanced-toggle:hover {
+    background: var(--border);
+  }
+
+  .toggle-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .advanced-settings[open] .toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .advanced-content {
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Page break styling */
+  .html2pdf__page-break {
+    page-break-before: always;
+    border-top: 2px dashed var(--border);
+    margin: var(--space-4) 0;
+    height: 1px;
+    background: transparent;
+  }
+
+  .html2pdf__page-break::after {
+    content: 'Page Break';
+    display: block;
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--text);
+    opacity: 0.6;
+    margin-top: var(--space-2);
+    font-style: italic;
+  }
+
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-content {
+    background: var(--bg);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+    position: relative;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-header h3 {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    color: var(--text);
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    color: var(--text);
+    opacity: 0.7;
+    padding: var(--space-1);
+    border-radius: var(--radius-s);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-close:hover {
+    background: var(--muted);
+    opacity: 1;
+  }
+
+  .modal-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .setting-group label {
+    font-weight: var(--font-weight-bold);
+    color: var(--text);
+    font-size: var(--font-size-sm);
+  }
+
+  .setting-group select,
+  .setting-group input {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    background: var(--bg);
+    color: var(--text);
+    font-size: var(--font-size-sm);
+  }
+
+  .setting-group select:focus,
+  .setting-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px oklch(from var(--primary) l c h / 0.2);
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    font-weight: normal !important;
+  }
+
+  .checkbox-label input[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+  }
+
+  .modal-footer {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: flex-end;
+    padding: var(--space-4);
+    border-top: 1px solid var(--border);
+  }
+
+  .save-button,
+  .reset-button {
+    padding: var(--space-2) var(--space-4);
+    border: none;
+    border-radius: var(--radius-m);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .save-button {
+    background: var(--primary);
+    color: white;
+  }
+
+  .save-button:hover {
+    background: var(--accent);
+  }
+
+  .reset-button {
+    background: var(--muted);
+    color: var(--text);
+  }
+
+  .reset-button:hover {
+    background: var(--border);
+  }
+
+  /* Syntax highlighting styles */
+  .markdown-preview .hljs {
+    background: var(--muted);
+    border-radius: var(--radius-s);
+    padding: var(--space-4);
+    margin: var(--space-4) 0;
+    overflow-x: auto;
+  }
+
+  /* Task list styles */
+  .markdown-preview .task-list-item {
+    list-style: none;
+  }
+
+  .markdown-preview .task-list-item input[type='checkbox'] {
+    margin-right: var(--space-2);
+    accent-color: var(--primary);
+  }
+
+  /* Emoji styles */
+  .markdown-preview .emoji {
+    height: 1.2em;
+    vertical-align: middle;
+  }
+
+  /* Anchor link styles */
+  .markdown-preview .anchor {
+    margin-left: var(--space-2);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+    color: var(--primary);
+  }
+
+  .markdown-preview h1:hover .anchor,
+  .markdown-preview h2:hover .anchor,
+  .markdown-preview h3:hover .anchor,
+  .markdown-preview h4:hover .anchor,
+  .markdown-preview h5:hover .anchor,
+  .markdown-preview h6:hover .anchor {
+    opacity: 1;
+  }
+
+  /* PDF modal specific styling */
+  .pdf-modal-select {
+    position: relative;
+    z-index: 1002 !important; /* Above modal overlay */
+  }
+
+  .pdf-modal-select:focus {
+    z-index: 1003 !important; /* Even higher when focused */
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 95%;
+      margin: var(--space-4);
+    }
+
+    .modal-footer {
+      flex-direction: column;
+    }
+
+    .save-button,
+    .reset-button {
+      width: 100%;
+    }
+  }
+</style>

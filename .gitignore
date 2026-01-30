@@ -67,3 +67,6 @@ Desktop.ini
 # File formats (large files)
 /docs/Profile.pdf
 /docs/AI_jacek_janczura.pdf
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md

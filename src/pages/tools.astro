@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Shield, FileText, GitCompare, Code } from 'lucide-astro';
+import MarkdownEditor from '../components/tools/MarkdownEditor.astro';
+import TextCompare from '../components/tools/TextCompare.astro';
+import JsonTools from '../components/tools/JsonTools.astro';
+
+const title = 'Developer Tools - Jacek Janczura';
+const description =
+  'Free frontend-only developer tools: Markdown Editor, Text Compare, and JSON Tools. All processing happens in your browser - no data is stored or transmitted.';
+---
+
+<BaseLayout title={title} description={description} lang="en">
+  <section class="tools-hero">
+    <div class="container">
+      <div class="privacy-notice">
+        <Shield size={20} />
+        <div>
+          <strong>Privacy First:</strong> All tools run entirely in your browser.
+          No data is stored, transmitted, or captured. Everything happens client-side
+          for your security and privacy.
+        </div>
+      </div>
+      <h1>Developer Tools</h1>
+      <p class="tools-subtitle">
+        Free, privacy-focused tools that run entirely in your browser
+      </p>
+    </div>
+  </section>
+
+  <section class="tools-grid">
+    <div class="container">
+      <div class="tool-card" data-tool="markdown">
+        <div class="tool-icon">
+          <FileText size={32} />
+        </div>
+        <h2>Markdown Editor</h2>
+        <p>
+          Write and preview Markdown in real-time. Split-view editor with live
+          preview on the side.
+        </p>
+        <a href="#markdown-editor" class="tool-link">Open Tool →</a>
+      </div>
+
+      <div class="tool-card" data-tool="compare">
+        <div class="tool-icon">
+          <GitCompare size={32} />
+        </div>
+        <h2>Text Compare</h2>
+        <p>
+          Compare two texts side-by-side with highlighted differences. Perfect
+          for code reviews and document comparison.
+        </p>
+        <a href="#text-compare" class="tool-link">Open Tool →</a>
+      </div>
+
+      <div class="tool-card" data-tool="json">
+        <div class="tool-icon">
+          <Code size={32} />
+        </div>
+        <h2>JSON Tools</h2>
+        <p>
+          Validate, format, and explore JSON. Includes validator, formatter, and
+          interactive viewer with search.
+        </p>
+        <a href="#json-tools" class="tool-link">Open Tool →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="markdown-editor" class="tool-section">
+    <div class="container">
+      <MarkdownEditor />
+    </div>
+  </section>
+
+  <section id="text-compare" class="tool-section">
+    <div class="container">
+      <TextCompare />
+    </div>
+  </section>
+
+  <section id="json-tools" class="tool-section">
+    <div class="container">
+      <JsonTools />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tools-hero {
+    padding: var(--space-8) 0 var(--space-6) 0;
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.05) 30%,
+      oklch(from var(--accent) l c h / 0.03) 60%,
+      var(--muted) 100%
+    );
+    text-align: center;
+    position: relative;
+  }
+
+  .privacy-notice {
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.1) 0%,
+      oklch(from var(--accent) l c h / 0.05) 100%
+    );
+    border: 1px solid oklch(from var(--primary) l c h / 0.2);
+    border-radius: var(--radius-l);
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .privacy-notice svg {
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .privacy-notice strong {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .tools-hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--space-3);
+    background: linear-gradient(
+      135deg,
+      var(--text) 0%,
+      var(--primary) 50%,
+      var(--text) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tools-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--text);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .tools-grid {
+    padding: var(--space-8) 0;
+    background: var(--bg);
+  }
+
+  .tools-grid .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    align-items: stretch;
+  }
+
+  .tool-card {
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%
+    );
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tool-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-2);
+    transform: translateY(-4px);
+  }
+
+  .tool-icon {
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+    display: flex;
+    justify-content: center;
+  }
+
+  .tool-card h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-3);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tool-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-m);
+    transition: all 0.2s ease;
+  }
+
+  .tool-link:hover {
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+  }
+
+  .tool-section {
+    padding: var(--space-8) 0;
+    min-height: 60vh;
+    border-top: 1px solid var(--border);
+  }
+
+  .tool-section:first-of-type {
+    border-top: none;
+  }
+
+  @media (max-width: 1024px) {
+    .tools-grid .container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tools-hero {
+      padding: var(--space-6) 0 var(--space-4) 0;
+    }
+
+    .privacy-notice {
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .tools-grid .container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

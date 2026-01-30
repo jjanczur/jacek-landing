@@ -13,6 +13,7 @@ const navLinks = {
     { href: '/en/', label: 'Home' },
     { href: '/en/projects/', label: 'Projects' },
     { href: '/en/writing/', label: 'Writing & Talks' },
+    { href: '/tools/', label: 'Tools' },
     { href: '/en/about/', label: 'About' },
     { href: '/en/consulting/', label: 'Consulting' },
     { href: '/en/contact/', label: 'Contact' },
@@ -208,19 +209,27 @@ const calendlyUrl =
   <div class="navbar-container">
     <a href={`/${lang}/`} class="brand">
       <span class="brand-name">Jacek Janczura</span>
-      <span class="brand-title">AI Architect & CTO</span>
+      <span class="brand-title">AI Architect & Consultant</span>
     </a>
 
-    <!-- Desktop Navigation -->
-    <nav class="nav-links desktop-nav" aria-label={i18n[lang].mainNavAria}>
-      {
-        navLinks[lang].map(link => (
-          <a href={link.href} class="nav-link">
-            {link.label}
-          </a>
-        ))
-      }
-    </nav>
+    <!-- Navigation Section -->
+    <div class="nav-section">
+      <!-- Desktop Navigation -->
+      <nav class="nav-links desktop-nav" aria-label={i18n[lang].mainNavAria}>
+        {
+          navLinks[lang]
+            .filter(link => link.href !== '/tools/')
+            .map(link => (
+              <a href={link.href} class="nav-link">
+                {link.label}
+              </a>
+            ))
+        }
+      </nav>
+
+      <!-- Tools Link (positioned to the right of main nav) -->
+      <a href="/tools/" class="nav-link tools-link"> Tools </a>
+    </div>
 
     <!-- Mobile Menu Button -->
     <button
@@ -252,12 +261,15 @@ const calendlyUrl =
           {i18n[lang].bookCall}
         </a>
         {
-          navLinks[lang].map(link => (
-            <a href={link.href} class="mobile-nav-link">
-              {link.label}
-            </a>
-          ))
+          navLinks[lang]
+            .filter(link => link.href !== '/tools/')
+            .map(link => (
+              <a href={link.href} class="mobile-nav-link">
+                {link.label}
+              </a>
+            ))
         }
+        <a href="/tools/" class="mobile-nav-link"> Tools </a>
         <div class="mobile-nav-actions">
           <div class="mobile-language-wrapper">
             <LanguageSwitcher lang={lang} pathMap={pathMap} />
@@ -622,6 +634,32 @@ const calendlyUrl =
     height: 64px;
     position: relative;
     z-index: 1;
+  }
+
+  .brand {
+    flex-shrink: 0;
+  }
+
+  .nav-section {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .tools-link {
+    flex-shrink: 0;
+  }
+
+  .desktop-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
   }
 
   .brand {
