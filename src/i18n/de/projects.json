@@ -49,8 +49,8 @@
       "tagline": "Enterprise‑Tooling für verlässliche LLM‑Pipelines",
       "description": [
         "Ein internes Test‑ und Evaluations‑Framework (Testbed), das LLM‑Systeme messbar und reproduzierbar macht: deterministische Testfälle, Metriken, qualitative/quantitative Bewertung und Regressionstests für RAG und Multi‑Step‑Pipelines.",
-        "„Prompt Wizard“ beschleunigt Prompt‑Iteration und Optimierung und sorgt gleichzeitig für Versionierung und Testbarkeit — damit Qualität nicht beim ersten Release verloren geht.",
-        "Ziel: Prompt Engineering als Engineering‑Disziplin statt ad‑hoc Experimente — damit Teams sicher shippen und Performance stabil bleibt."
+        "„Prompt Wizard“ beschleunigt Prompt‑Iteration und Optimierung und sorgt gleichzeitig für Versionierung und Testbarkeit - damit Qualität nicht beim ersten Release verloren geht.",
+        "Ziel: Prompt Engineering als Engineering‑Disziplin statt ad‑hoc Experimente - damit Teams sicher shippen und Performance stabil bleibt."
       ],
       "industries": "Enterprise AI, RAG, Multi‑Step LLM‑Pipelines",
       "tech": "LLM Evals, RAG Testing, deterministische Testfälle, Prompt Engineering, Metriken",
@@ -64,9 +64,9 @@
       "role": "Projektleitung (ML) & Data Scientist",
       "tagline": "Automatisches Produktmatching statt manueller Expertenauswahl",
       "description": [
-        "Für RP Group (Notbeleuchtung) habe ich ein ML‑System entwickelt, das Kundenanfragen automatisch den passenden Produkten zuordnet — und damit zeitaufwändige, expertengetriebene Auswahl durch ein reproduzierbares Ranking ersetzt.",
+        "Für RP Group (Notbeleuchtung) habe ich ein ML‑System entwickelt, das Kundenanfragen automatisch den passenden Produkten zuordnet - und damit zeitaufwändige, expertengetriebene Auswahl durch ein reproduzierbares Ranking ersetzt.",
         "Robuste Datengrundlage durch LLM‑gestützte Extraktion (entAIngine API) und domain‑spezifisches Feature Engineering (25+ Features). Fünf Modelle mit Hyperparameter‑Optimierung benchmarked.",
-        "Bestes Modell: getunter Random Forest mit 70,7% Top‑1 (MRR 0,835; AUC‑ROC 0,923) — starke Ranking‑Qualität bei guter Interpretierbarkeit und pragmatischem Deployment."
+        "Bestes Modell: getunter Random Forest mit 70,7% Top‑1 (MRR 0,835; AUC‑ROC 0,923) - starke Ranking‑Qualität bei guter Interpretierbarkeit und pragmatischem Deployment."
       ],
       "industries": "Fertigung, Produktkatalog‑Matching, Sales Operations",
       "tech": "Python, Scikit‑Learn, Random Forest, Ensembles, Feature Engineering, LLM‑gestützte Extraktion",
@@ -78,7 +78,7 @@
       "period": "2022",
       "industry": "KI‑gestützte Immobilienbewertung",
       "role": "Lead‑Architekt",
-      "tagline": "Über 2 Stunden pro Gutachten sparen — mit KI‑gestützter Recherche",
+      "tagline": "Über 2 Stunden pro Gutachten sparen - mit KI‑gestützter Recherche",
       "description": [
         "KI‑Plattform für Immobiliengutachter, die die zeitintensiven Teile der Bewertung automatisiert: Recherche, Standortanalyse und Entwurf des Berichts.",
         "Aus Stunden manueller Arbeit werden 2–3 Minuten strukturierter Output pro Objekt (Makro/Mikro‑Insights, Markt‑Kontext, gutachtensfähige Report‑Bausteine).",
@@ -96,7 +96,7 @@
       "role": "Mitgründer & Architekt",
       "tagline": "Multi‑Agent‑Systeme ohne Code bauen",
       "description": [
-        "Eine No‑Code‑Plattform, mit der Operations‑Teams (Customer Service, HR, Ops) Multi‑Agent‑Workflows entwerfen und betreiben können — ohne Engineering‑Support.",
+        "Eine No‑Code‑Plattform, mit der Operations‑Teams (Customer Service, HR, Ops) Multi‑Agent‑Workflows entwerfen und betreiben können - ohne Engineering‑Support.",
         "Fokus auf Orchestrierung und Zuverlässigkeit: klare Rollen, kontrollierte Handoffs und Evaluations‑Hooks, damit Teams sauber iterieren und Ergebnisse über Abteilungen skalieren können."
       ],
       "industries": "Operations, Kundenservice, HR‑Automatisierung, Unternehmens‑Workflows",
@@ -111,8 +111,8 @@
       "role": "Mitgründer & Architekt",
       "tagline": "Due Diligence und Portfolio‑Intelligence als Produkt",
       "description": [
-        "Eine VC‑Plattform, die Deep Research mit investment‑spezifischer Automatisierung kombiniert — für schnellere Due Diligence und Marktanalysen.",
-        "Vorkonfigurierte Agenten unterstützen Wettbewerbsanalyse, Portfolio‑Tracking, Deal‑Flow‑Automatisierung und Market Mapping — aus verstreutem Research wird institutionelles Wissen."
+        "Eine VC‑Plattform, die Deep Research mit investment‑spezifischer Automatisierung kombiniert - für schnellere Due Diligence und Marktanalysen.",
+        "Vorkonfigurierte Agenten unterstützen Wettbewerbsanalyse, Portfolio‑Tracking, Deal‑Flow‑Automatisierung und Market Mapping - aus verstreutem Research wird institutionelles Wissen."
       ],
       "industries": "Venture Capital, Business Angels, Corporate Venture Arms, Investmentanalyse",
       "tech": "KI‑Agenten, Due‑Diligence‑Automatisierung, Portfolio‑Intelligenz, Markt‑Mapping, Deal‑Flow‑Systeme",
@@ -126,9 +126,9 @@
       "role": "CTO & Lead‑Architekt",
       "tagline": "Datenkollaboration ohne Offenlegung sensibler Informationen",
       "description": [
-        "Ein EU Horizon 2020‑Projekt, das organisationsübergreifende Analytik ermöglicht, ohne die Kontrolle über Daten abzugeben — „bring the code to the data“ mit starker Auditierbarkeit und Security.",
+        "Ein EU Horizon 2020‑Projekt, das organisationsübergreifende Analytik ermöglicht, ohne die Kontrolle über Daten abzugeben - „bring the code to the data“ mit starker Auditierbarkeit und Security.",
         "Konzipiert end‑to‑end Workflows (Agreement → Execution → Evaluation) und eine modulare Microservice‑Architektur plus unveränderlichen Audit‑Trail via Blockchain.",
-        "Mit Confidential Computing (TEEs / Intel SGX) und Verschlüsselung für Daten at rest — validiert mit EU‑Stakeholdern."
+        "Mit Confidential Computing (TEEs / Intel SGX) und Verschlüsselung für Daten at rest - validiert mit EU‑Stakeholdern."
       ],
       "industries": "Organisationsübergreifende Analytik, Datenkollaboration, datenschutzsensible Branchen",
       "tech": "Blockchain, Confidential Computing (TEEs), Verschlüsselung, auditierbare Workflows, Microservices",

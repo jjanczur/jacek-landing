@@ -5,7 +5,7 @@
   },
   "hero": {
     "title": "Kontakt",
-    "subtitle": "Twórzmy razem odpowiedzialne rozwiązania AI"
+    "subtitle": "Tworzę odpowiedzialne rozwiązania AI"
   },
   "intro": "Wybierz poniżej najszybszą opcję. Chętnie podejmuję się doradztwa, przeglądów architektury oraz wybranych wdrożeń związanych z platformami AI dla przedsiębiorstw.",
   "primaryCta": {
@@ -19,8 +19,8 @@
     "items": {
       "bookCall": {
         "title": "Umów rozmowę",
-        "description": "Wybierz dogodny termin. Otwiera Calendly w nowej karcie.",
-        "button": "Otwórz Calendly"
+        "description": "Wybierz dogodny termin. Otwiera kalendarz w nowej karcie.",
+        "button": "Otwórz Kalendarz"
       },
       "linkedin": {
         "title": "LinkedIn",
@@ -63,7 +63,7 @@
     ]
   },
   "cta": {
-    "text1": "Współpracuję z organizacjami, które budują rozwiązania AI klasy enterprise wymagające solidnej architektury, bezpieczeństwa od podstaw i skalowalnego wdrożenia.",
+    "text1": "Współpracuję ze startupami, rozwijającymi się firmami i dużymi przedsiębiorstwami, które budują rozwiązania AI wymagające solidnej architektury, bezpieczeństwa od podstaw i skalowalnego wdrożenia.",
     "text2": "Obecnie koncentruję się na rozwoju platform LLM, prompt engineeringu na dużą skalę oraz ramach governance AI."
   }
 }

@@ -6,14 +6,14 @@
   "hero": {
     "title": "KI-Architekt & CTO",
     "subtitle": "Aus komplexen Abläufen echte Wettbewerbsvorteile machen",
-    "tagline": "Mitgründer bei Jaden Data — Enterprise‑KI auf AWS (und verfügbar für Consulting)",
+    "tagline": "Mitgründer bei Jaden Data - Enterprise‑KI auf AWS (und verfügbar für Consulting)",
     "cta": {
       "primary": "Kontakt aufnehmen",
       "secondary": "Projekte ansehen"
     }
   },
   "positioning": {
-    "p1": "Ich bin Mitgründer & CTO von <strong>Jaden Data</strong>. Wir bauen Prozessintelligenz — KI‑native Systeme, die reale Abläufe messbar verbessern. Wir starten nicht mit „KI‑Features“, sondern mit dem Prozess und machen ihn schneller, sicherer und messbar.",
+    "p1": "Ich bin Jacek, Mitgründer & CTO von <strong>Jaden Data</strong>. Ich baue Prozessintelligenz - KI-native Systeme, die reale Abläufe in Ihrem Unternehmen messbar verbessern. Ich starte mit dem Prozess und mache ihn schneller, sicherer und messbar.",
     "p2": "Meine Stärken sind <strong>KI/ML</strong> und <strong>Cloud‑Architektur</strong>: Enterprise‑LLM‑Plattformen, RAG‑Systeme und ereignisgesteuerte Microservices auf <strong>AWS</strong> (Lambda, ECS/Fargate, SNS/SQS). Ich integriere Multi‑Modell‑Stacks (OpenAI, Azure OpenAI, Bedrock, Mistral) und liefere für regulierte Umfelder (ISO 27001, SOC 2 Type 2). Außerdem unterstütze ich als Freelancer: Architektur‑Reviews, Prompt Engineering + Evals und technische Führung."
   },
   "highlights": {
@@ -21,7 +21,7 @@
     "items": [
       {
         "title": "Enterprise‑AI‑Plattformen",
-        "description": "Mandantenfähige Systeme für 50+ Organisationen mit >1.000 gleichzeitigen Verbindungen und tausenden Requests pro Sekunde — für geschäftskritische Abläufe."
+        "description": "Mandantenfähige Systeme für 50+ Organisationen mit >1.000 gleichzeitigen Verbindungen und tausenden Requests pro Sekunde - für geschäftskritische Abläufe."
       },
       {
         "title": "AWS‑Architektur (Serverless + Microservices)",
@@ -29,7 +29,7 @@
       },
       {
         "title": "Branchenlösungen",
-        "description": "Impact in Fertigung, Pharma, Finance und Enterprise Operations — immer gekoppelt an messbare KPIs."
+        "description": "Impact in Fertigung, Pharma, Finance, Startups und wachsenden Unternehmen - immer gekoppelt an messbare KPIs."
       },
       {
         "title": "Sicherheit & Compliance",
@@ -44,7 +44,7 @@
         "description": "Engineering‑Team von 0→10 skaliert, Delivery end‑to‑end geführt und Business‑Ziele in Architektur + Umsetzung übersetzt."
       }
     ],
-    "note": "Zertifizierter Fallschirmspringer und Taucher, Wind- und Kitesurf-Instruktor, begeisterter Snowboarder. Diese Erfahrungen schärfen Risikobewusstsein, klare Kommunikation, Ruhe unter Druck und disziplinierte Vorbereitung — Fähigkeiten, die sich direkt in technische Führung und den Aufbau verlässlicher Systeme übersetzen."
+    "note": "Zertifizierter Fallschirmspringer und Taucher, Wind- und Kitesurf-Instruktor, begeisterter Snowboarder. Diese Erfahrungen schärfen Risikobewusstsein, klare Kommunikation, Ruhe unter Druck und disziplinierte Vorbereitung - Fähigkeiten, die sich direkt in technische Führung und den Aufbau verlässlicher Systeme übersetzen."
   },
   "featured": {
     "title": "Prozessintelligenz in der Praxis",
@@ -67,7 +67,7 @@
       },
       {
         "title": "KI-Architekturmuster",
-        "description": "Praxisnahe Learnings aus Enterprise‑LLM‑Deployments — wie man Systeme baut, die Prozesse unterstützen und in Produktion stabil bleiben.",
+        "description": "Praxisnahe Learnings aus Enterprise‑LLM‑Deployments - wie man Systeme baut, die Prozesse unterstützen und in Produktion stabil bleiben.",
         "link": "Vorträge ansehen →",
         "url": "/talks/"
       }
@@ -75,7 +75,7 @@
   },
   "contactCta": {
     "title": "Bereit, deine Abläufe zu transformieren?",
-    "description": "Wenn du Unterstützung bei AWS‑Architektur, LLM/RAG‑Delivery, Prompt Engineering + Evals oder technischer Führung (Team/Prozess) brauchst, lass uns mit einem kurzen Gespräch starten. Am besten per E‑Mail oder LinkedIn.",
+    "description": "Ob Startup, wachsendes Unternehmen oder etabliertes Business - wenn du Unterstützung bei AWS-Architektur, LLM/RAG-Delivery, Prompt Engineering + Evals oder technischer Führung brauchst, lass uns mit einem kurzen Gespräch starten.",
     "button": "Kontakt aufnehmen"
   },
   "faq": {
@@ -84,39 +84,48 @@
     "items": [
       {
         "question": "Wer ist Jacek Janczura?",
-        "answer": "Jacek Janczura ist KI-Architekt & CTO mit Sitz in Berlin. Er ist Mitgründer und CTO bei Jaden Data und baut KI-native Systeme für Prozessintelligenz und Enterprise-Operations."
+        "answer": "Jacek Janczura ist KI-Architekt & CTO mit Sitz in Berlin. Er ist Mitgründer und CTO bei Jaden Data und baut KI-native Systeme für Prozessintelligenz und Enterprise-Operations.",
+        "links": ["about"]
       },
       {
         "question": "Was bedeutet „Process Intelligence“?",
-        "answer": "Process Intelligence bedeutet: zuerst verstehen, wie Arbeit in der Praxis abläuft, und dann Prozesse mit KI, Automatisierung und datengetriebenen Entscheidungen verbessern—KI soll dem Prozess dienen (nicht umgekehrt)."
+        "answer": "Process Intelligence bedeutet: zuerst verstehen, wie Arbeit in der Praxis abläuft, und dann Prozesse mit KI, Automatisierung und datengetriebenen Entscheidungen verbessern-KI soll dem Prozess dienen (nicht umgekehrt).",
+        "links": ["about"]
       },
       {
         "question": "Was baust du?",
-        "answer": "Enterprise-LLM-Plattformen, RAG-Systeme und ereignisgesteuerte Cloud-Architekturen—oft als Multi-Tenant-SaaS und Prozessautomatisierung, integriert in reale Abläufe."
+        "answer": "Enterprise-LLM-Plattformen, RAG-Systeme und ereignisgesteuerte Cloud-Architekturen-oft als Multi-Tenant-SaaS und Prozessautomatisierung, integriert in reale Abläufe.",
+        "links": ["projects"]
       },
       {
         "question": "In welcher Größenordnung hast du Systeme betrieben?",
-        "answer": "Plattformen für 50+ Organisationen, >1.000 gleichzeitige Verbindungen und Tausende Requests pro Sekunde—mit hochperformanten, ereignisgesteuerten Microservices auf AWS."
+        "answer": "Plattformen für 50+ Organisationen, >1.000 gleichzeitige Verbindungen und Tausende Requests pro Sekunde-mit hochperformanten, ereignisgesteuerten Microservices auf AWS.",
+        "links": ["projects"]
       },
       {
         "question": "Für welche Branchen hast du geliefert?",
-        "answer": "Fertigung/Industrie, Pharma, Finanzdienstleistungen & Banking, Venture Capital, Immobilien, Versicherungen, Legal, Automotive, E-Commerce, Telekommunikation, Energie/Cleantech, Logistik und Supply Chain."
+        "answer": "Fertigung/Industrie, Pharma, Finanzdienstleistungen & Banking, Venture Capital, Immobilien, Versicherungen, Legal, Automotive, E-Commerce, Telekommunikation, Energie/Cleantech, Logistik und Supply Chain.",
+        "links": ["projects"]
       },
       {
         "question": "Welche Erfahrung hast du mit LLMs und RAG?",
-        "answer": "Konzipiert und umgesetzt: Enterprise LLM Stacks (OpenAI/Azure/Bedrock/Mistral) sowie RAG-Services mit automatisierter Vektor-Datenbank-Erstellung (Pinecone, pgvector, Milvus) und Test/Evaluations-Frameworks für KI-Pipelines."
+        "answer": "Konzipiert und umgesetzt: Enterprise LLM Stacks (OpenAI/Azure/Bedrock/Mistral) sowie RAG-Services mit automatisierter Vektor-Datenbank-Erstellung (Pinecone, pgvector, Milvus) und Test/Evaluations-Frameworks für KI-Pipelines.",
+        "links": ["projects", "consulting"]
       },
       {
         "question": "Arbeitest du an Security und Compliance?",
-        "answer": "Ja. ISO 27001 und SOC 2 Type 2 in ~3 Monaten für Enterprise‑Plattformen geliefert; Multi‑Tenant‑Security und RBAC sind Kernbestandteile der Architektur."
+        "answer": "Ja. ISO 27001 und SOC 2 Type 2 in ~3 Monaten für Enterprise‑Plattformen geliefert; Multi‑Tenant‑Security und RBAC sind Kernbestandteile der Architektur.",
+        "links": ["consulting"]
       },
       {
         "question": "Wie können wir zusammenarbeiten?",
-        "answer": "Ich übernehme Freelance‑Engagements wie Architektur‑Reviews (AWS/Cloud, LLM/RAG, Security, Skalierung/Kosten), Prompt Engineering und Evals, hands‑on KI‑Delivery sowie Interim‑Technical‑Leadership / Team‑Support."
+        "answer": "Ich übernehme Freelance‑Engagements wie Architektur‑Reviews (AWS/Cloud, LLM/RAG, Security, Skalierung/Kosten), Prompt Engineering und Evals, hands‑on KI‑Delivery sowie Interim‑Technical‑Leadership / Team‑Support.",
+        "links": ["consulting", "contact"]
       },
       {
         "question": "Wie kann man dich kontaktieren?",
-        "answer": "Am besten über die Kontaktseite oder via LinkedIn. Schicken Sie kurz Problemstellung und Zeitrahmen — ich schlage den schnellsten Weg zur Unterstützung vor."
+        "answer": "Am besten über die Kontaktseite oder via LinkedIn. Schicken Sie kurz Problemstellung und Zeitrahmen - ich schlage den schnellsten Weg zur Unterstützung vor.",
+        "links": ["contact"]
       }
     ]
   }

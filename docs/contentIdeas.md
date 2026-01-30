@@ -5,7 +5,7 @@
 - Architecture notes: event-driven LLM pipelines with SQS/SNS.
 - Cost controls for multi-model stacks; routing & caching.
 - Security for AI platforms: keys, PII, tenants, audits.
-- Postmortems: things that broke—and fixes.
+- Postmortems: things that broke-and fixes.
 - Talk summaries + Q&A follow-ups.
 - Hiring/standards: code review checklists in AI teams.
 - RAG pitfalls in the wild (chunking, evals, hallucinations).

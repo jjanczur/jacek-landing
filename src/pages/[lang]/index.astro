@@ -45,6 +45,7 @@ interface IndexFeaturedItem {
 interface IndexFaqItem {
   question: string;
   answer: string;
+  links?: string[];
 }
 
 interface IndexTranslations {
@@ -98,6 +99,13 @@ const highlightIcons = [
   Network,
 ];
 const featuredIcons = [Brain, Home, BarChart, Code];
+
+const faqLinkLabels: Record<string, Record<string, string>> = {
+  about: { en: 'About', pl: 'O mnie', de: 'Über mich' },
+  projects: { en: 'Projects', pl: 'Projekty', de: 'Projekte' },
+  consulting: { en: 'Consulting', pl: 'Konsulting', de: 'Beratung' },
+  contact: { en: 'Contact', pl: 'Kontakt', de: 'Kontakt' },
+};
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -239,29 +247,15 @@ const faqStructuredData = {
               <summary class="faq-question">{item.question}</summary>
               <div class="faq-answer">
                 <p>{item.answer}</p>
-                <div class="faq-links">
-                  <a href={`/${lang}/about/`} class="faq-link">
-                    {lang === 'en'
-                      ? 'About'
-                      : lang === 'pl'
-                        ? 'O mnie'
-                        : 'Über mich'}
-                  </a>
-                  <a href={`/${lang}/projects/`} class="faq-link">
-                    {lang === 'en'
-                      ? 'Projects'
-                      : lang === 'pl'
-                        ? 'Projekty'
-                        : 'Projekte'}
-                  </a>
-                  <a href={`/${lang}/contact/`} class="faq-link">
-                    {lang === 'en'
-                      ? 'Contact'
-                      : lang === 'pl'
-                        ? 'Kontakt'
-                        : 'Kontakt'}
-                  </a>
-                </div>
+                {item.links && item.links.length > 0 && (
+                  <div class="faq-links">
+                    {item.links.map(link => (
+                      <a href={`/${lang}/${link}/`} class="faq-link">
+                        {faqLinkLabels[link]?.[lang] || link}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </details>
           ))

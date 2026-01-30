@@ -19,8 +19,8 @@
     "items": {
       "bookCall": {
         "title": "Book a call",
-        "description": "Pick a slot that works for you. Opens Calendly in a new tab.",
-        "button": "Open Calendly"
+        "description": "Pick a slot that works for you. Opens the calendar in a new tab.",
+        "button": "Open Calendar"
       },
       "linkedin": {
         "title": "LinkedIn",
@@ -63,7 +63,7 @@
     ]
   },
   "cta": {
-    "text1": "I work with organizations building enterprise AI solutions that require robust architecture, security-first design, and scalable implementation.",
+    "text1": "I work with startups, growing companies, and enterprises building AI solutions that require robust architecture, security-first design, and scalable implementation.",
     "text2": "Currently focusing on LLM platform development, prompt engineering at scale, and AI governance frameworks."
   }
 }

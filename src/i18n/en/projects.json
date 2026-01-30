@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Projects | Jacek Janczura",
-    "description": "Selected projects from enterprise AI platforms to ML systems—built on AWS and focused on measurable operational impact. Available for architecture reviews, LLM/RAG work, and AI consulting."
+    "description": "Selected projects from enterprise AI platforms to ML systems-built on AWS and focused on measurable operational impact. Available for architecture reviews, LLM/RAG work, and AI consulting."
   },
   "hero": {
     "title": "Projects",
@@ -49,8 +49,8 @@
       "tagline": "Enterprise tooling for reliable LLM pipelines",
       "description": [
         "Built an internal testing and evaluation framework (Testbed) to make LLM systems measurable and repeatable: deterministic test cases, quantitative + qualitative evaluation, and regression testing for RAG and multi-step pipelines.",
-        "Developed \"Prompt Wizard\" to streamline prompt iteration and optimization—helping teams ship prompts that are robust, versioned, and testable instead of \"works on my laptop\".",
-        "The goal: move prompt engineering from ad-hoc experimentation to engineering discipline—so teams can scale, ship safely, and keep performance stable over time."
+        "Developed \"Prompt Wizard\" to streamline prompt iteration and optimization-helping teams ship prompts that are robust, versioned, and testable instead of \"works on my laptop\".",
+        "The goal: move prompt engineering from ad-hoc experimentation to engineering discipline-so teams can scale, ship safely, and keep performance stable over time."
       ],
       "industries": "Enterprise AI, RAG, Multi-Step LLM Pipelines",
       "tech": "LLM Evals, RAG Testing, Deterministic Test Cases, Prompt Engineering, Metrics",
@@ -64,7 +64,7 @@
       "role": "Project Lead (ML) & Data Scientist",
       "tagline": "Automated product matching to eliminate manual offer preparation",
       "description": [
-        "For RP Group (emergency lighting), built a machine-learning system that matches customer inquiries to the best-fitting products—replacing time-consuming expert-driven selection with repeatable ranking.",
+        "For RP Group (emergency lighting), built a machine-learning system that matches customer inquiries to the best-fitting products-replacing time-consuming expert-driven selection with repeatable ranking.",
         "Built a robust dataset via LLM-assisted extraction (entAIngine API) and domain-specific feature engineering (25+ engineered features). Benchmarked five models with hyperparameter optimization.",
         "Best model: tuned Random Forest with 70.7% Top‑1 accuracy (MRR 0.835; AUC‑ROC 0.923), delivering strong ranking quality while keeping the system interpretable and deployable."
       ],
@@ -109,10 +109,10 @@
       "period": "2023",
       "industry": "AI for Venture Capital",
       "role": "Co-founder & Architect",
-      "tagline": "Due diligence and portfolio intelligence—productized",
+      "tagline": "Due diligence and portfolio intelligence-productized",
       "description": [
         "A VC-focused platform combining deep research with investment-specific automation to speed up due diligence and market intelligence.",
-        "Pre-configured agents support competitive analysis, portfolio intelligence tracking, deal flow automation, and market mapping—turning scattered research into institutional knowledge."
+        "Pre-configured agents support competitive analysis, portfolio intelligence tracking, deal flow automation, and market mapping-turning scattered research into institutional knowledge."
       ],
       "industries": "Venture Capital, Angel Investing, Corporate Venture Arms, Investment Analysis",
       "tech": "AI Agents, Due Diligence Automation, Portfolio Intelligence, Market Mapping, Deal Flow Systems",
@@ -126,9 +126,9 @@
       "role": "CTO & Lead Architect",
       "tagline": "Safe Data Collaboration Without Exposing Sensitive Information",
       "description": [
-        "An EU Horizon 2020-funded platform enabling organizations to run analytics on private data without taking custody of it—\"bring the code to the data\" with strong auditability and security.",
+        "An EU Horizon 2020-funded platform enabling organizations to run analytics on private data without taking custody of it-\"bring the code to the data\" with strong auditability and security.",
         "Designed end-to-end secure workflows (agreement → execution → evaluation) and a modular microservice architecture, plus immutable audit trails via blockchain.",
-        "Used confidential computing (TEEs / Intel SGX) and encryption for data at rest to support privacy-preserving, inter-organizational processing—validated with EU stakeholders."
+        "Used confidential computing (TEEs / Intel SGX) and encryption for data at rest to support privacy-preserving, inter-organizational processing-validated with EU stakeholders."
       ],
       "industries": "Cross-Organizational Analytics, Data Collaboration, Privacy-Sensitive Industries",
       "tech": "Blockchain, Confidential Computing (TEEs), Encryption, Auditable Workflows, Microservices",

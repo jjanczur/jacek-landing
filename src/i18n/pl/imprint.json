@@ -36,11 +36,11 @@
     "copyright": {
       "title": "Prawa autorskie",
       "text1": "Treści i materiały stworzone przeze mnie na tej stronie podlegają ochronie prawa autorskiego. Ich powielanie, przetwarzanie, dystrybucja lub inne wykorzystanie wykraczające poza dozwolony użytek wymaga mojej uprzedniej pisemnej zgody.",
-      "text2": "Pobieranie i kopiowanie treści z tej strony jest dozwolone wyłącznie do użytku prywatnego i niekomercyjnego. W przypadku treści, które nie zostały stworzone przeze mnie, respektowane są prawa autorskie osób trzecich i są one odpowiednio oznaczone. Jeśli zauważysz naruszenie praw autorskich, proszę o kontakt — naruszające treści zostaną niezwłocznie usunięte."
+      "text2": "Pobieranie i kopiowanie treści z tej strony jest dozwolone wyłącznie do użytku prywatnego i niekomercyjnego. W przypadku treści, które nie zostały stworzone przeze mnie, respektowane są prawa autorskie osób trzecich i są one odpowiednio oznaczone. Jeśli zauważysz naruszenie praw autorskich, proszę o kontakt - naruszające treści zostaną niezwłocznie usunięte."
     },
     "dataProtection": {
       "title": "Ochrona danych osobowych",
-      "text1": "Korzystanie z tej strony jest zasadniczo możliwe bez podawania danych osobowych. Jeśli dane osobowe (np. imię, adres e-mail) są zbierane, odbywa się to — w miarę możliwości — dobrowolnie.",
+      "text1": "Korzystanie z tej strony jest zasadniczo możliwe bez podawania danych osobowych. Jeśli dane osobowe (np. imię, adres e-mail) są zbierane, odbywa się to - w miarę możliwości - dobrowolnie.",
       "text2": "Szczegółowe informacje o przetwarzaniu danych osobowych znajdziesz w {privacyLink}.",
       "privacyLink": "Polityce prywatności"
     }

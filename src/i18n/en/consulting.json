@@ -8,7 +8,7 @@
     "subtitle": "Senior engineering leadership for complex systems (AI included, not required)"
   },
   "intro": {
-    "p1": "I help teams ship <strong>secure, reliable software</strong>—cloud platforms, distributed systems, and AI capabilities (LLM/RAG/evals) when they deliver real business value.",
+    "p1": "I help teams ship <strong>secure, reliable software</strong>-cloud platforms, distributed systems, and AI capabilities (LLM/RAG/evals) when they deliver real business value.",
     "p2": "My focus is <strong>production outcomes</strong>: clear architecture decisions, speed of delivery without regressions, cost/performance, security/compliance, and an approach that fits how your organization actually operates."
   },
   "engagements": {
@@ -16,7 +16,7 @@
     "items": [
       {
         "title": "Fractional CTO / Senior Engineering Leadership",
-        "description": "Hands-on leadership for strategy, technical direction, architecture decisions, and delivery standards—when you need senior support shaping systems and teams.",
+        "description": "Hands-on leadership for strategy, technical direction, architecture decisions, and delivery standards-when you need senior support shaping systems and teams.",
         "deliverables": [
           "Architecture direction + decision records (tradeoffs made explicit)",
           "Roadmap shaping + delivery operating model (quality gates, reviews, rollout)",
@@ -35,7 +35,7 @@
       },
       {
         "title": "Delivery Sprint (production-grade thin slice)",
-        "description": "Ship a focused, valuable increment end-to-end—so you get working software plus a pattern your team can repeat.",
+        "description": "Ship a focused, valuable increment end-to-end-so you get working software plus a pattern your team can repeat.",
         "deliverables": [
           "One production-ready feature (e.g., event-driven workflow, platform capability, RAG endpoint, or evaluation harness)",
           "CI/test coverage + a deployment path your team owns",
@@ -45,7 +45,7 @@
       },
       {
         "title": "Developer Productivity & Safe AI Tooling",
-        "description": "Make your engineering org faster without sacrificing quality—workflows, standards, and (optionally) AI coding tools like Cursor/Claude Code.",
+        "description": "Make your engineering org faster without sacrificing quality-workflows, standards, and (optionally) AI coding tools like Cursor/Claude Code.",
         "deliverables": [
           "PR/review standards, coding guidelines, and templates tailored to your repo",
           "CI quality gates (tests, lint, security checks) tuned to your delivery flow",
@@ -63,7 +63,7 @@
       },
       {
         "title": "Design for operability from day one",
-        "description": "Security, observability, cost controls, and failure modes are part of the architecture—not a later phase."
+        "description": "Security, observability, cost controls, and failure modes are part of the architecture-not a later phase."
       },
       {
         "title": "Ship in iterations with measurable outcomes",

@@ -13,7 +13,7 @@
   },
   "bio": {
     "paragraphs": [
-      "I'm the Co-founder & CTO of <strong>Jaden Data</strong> (Berlin). I build enterprise AI systems on AWS—LLM platforms, RAG, and event-driven microservices—always tied to real operational workflows.",
+      "I'm Jacek, the Co-founder & CTO of <strong>Jaden Data</strong> (Berlin). I build enterprise AI systems on AWS-LLM platforms, RAG, and event-driven microservices-always tied to real operational workflows.",
       "<ul><li><strong>Bootstrapped startup</strong> (no external VC): grew to <strong>&#x2265;€1M annual revenue</strong></li><li>Scaled engineering from <strong>0 → 10</strong> and led multiple delivery teams</li><li>Built multi-tenant systems for <strong>50+ organizations</strong> with <strong>&gt;1,000 concurrent connections</strong> and <strong>thousands of requests per second</strong></li><li>Delivered <strong>ISO 27001</strong> and <strong>SOC 2</strong> in ~3 months</li></ul>",
       "If you need help shipping or de-risking a system, I take on freelance engagements: architecture reviews, AI/LLM/RAG delivery, prompt engineering + evals, and hands-on technical leadership. See <a href=\"/en/projects/\">projects</a>, <a href=\"/en/publications/\">publications</a>, or download the CV below."
     ]
@@ -21,15 +21,15 @@
   "outsideWork": {
     "title": "Outside Work",
     "paragraphs": [
-      "I love extreme sports and outdoor activities. I am a certified skydiver (PJ(B) license), Advanced Open Water diver, International Windsurfing Instructor, and an avid snowboarder. These experiences build essential skills: risk management, clear instruction and teaching, calm under pressure, and disciplined preparation—all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.",
-      "I'm multilingual, speaking Polish (native), English (professional), and German (limited working)—helping me work effectively across international teams and with global clients."
+      "I love extreme sports and outdoor activities. I am a certified skydiver (PJ(B) license), Advanced Open Water diver, International Windsurfing Instructor, and an avid snowboarder. These experiences build essential skills: risk management, clear instruction and teaching, calm under pressure, and disciplined preparation-all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.",
+      "I'm multilingual, speaking Polish (native), English (professional), and German (limited working)-helping me work effectively across international teams and with global clients."
     ]
   },
   "philosophy": {
     "title": "Process Intelligence Philosophy",
     "paragraphs": [
-      "I've spent years watching businesses struggle with AI adoption. The problem isn't the technology—it's understanding that <strong>AI must serve your processes, not replace them</strong>. That's why every solution we build at Jaden Data starts with understanding how work actually gets done.",
-      "As an AI Architect and CTO, I specialize in <strong>enterprise LLM platforms</strong>, <strong>retrieval-augmented generation</strong>, and <strong>secure cloud architectures</strong>. I've architected advanced, multi-tenant AI platforms integrating AWS Bedrock, AWS SageMaker, Azure ML Studio, OpenAI, and Mistral—delivering seamless connectivity and enabling cross-platform collaboration. Built event-driven microservices architectures leveraging AWS Fargate (ECS, ECR), Lambda, SNS, SQS, and CloudWatch, optimized for cost-efficiency and serverless autoscaling.",
+      "I've spent years watching businesses struggle with AI adoption. The problem isn't the technology-it's understanding that <strong>AI must serve your processes, not replace them</strong>. That's why every solution we build at Jaden Data starts with understanding how work actually gets done.",
+      "As an AI Architect and CTO, I specialize in <strong>enterprise LLM platforms</strong>, <strong>retrieval-augmented generation</strong>, and <strong>secure cloud architectures</strong>. I've architected advanced, multi-tenant AI platforms integrating AWS Bedrock, AWS SageMaker, Azure ML Studio, OpenAI, and Mistral-delivering seamless connectivity and enabling cross-platform collaboration. Built event-driven microservices architectures leveraging AWS Fargate (ECS, ECR), Lambda, SNS, SQS, and CloudWatch, optimized for cost-efficiency and serverless autoscaling.",
       "I pioneered the development of state-of-the-art Retrieval-Augmented Generation (RAG) services, automating vector database creation from client files using Pinecone, pgvector, and Milvus. Designed and implemented robust AI process and RAG pipeline testing frameworks (Testbed) for quantitative and qualitative assessment. Developed \"Prompt Wizard,\" a sophisticated tool that automates LLM prompt optimization, significantly enhancing prompt engineering workflows for enterprise users.",
       "But technical capability is just the foundation. The real value comes from applying these capabilities to transform operations: turning hours of manual work into minutes of automated intelligence, enabling faster decision-making, and building systems that adapt and learn with your business."
     ]

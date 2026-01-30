@@ -5,9 +5,9 @@
   },
   "hero": {
     "title": "Kontakt",
-    "subtitle": "Gemeinsam verantwortungsvolle KI-Lösungen entwickeln"
+    "subtitle": "Verantwortungsvolle KI-Lösungen entwickeln"
   },
-  "intro": "Wählen Sie unten den schnellsten Weg. Ich bin offen für Beratung, Architektur-Reviews und ausgewählte Umsetzungsprojekte — mit Fokus auf Enterprise-KI-Plattformen.",
+  "intro": "Wählen Sie unten den schnellsten Weg. Ich bin offen für Beratung, Architektur-Reviews und ausgewählte Umsetzungsprojekte - mit Fokus auf Enterprise-KI-Plattformen.",
   "primaryCta": {
     "title": "Kurz sprechen – diese Woche?",
     "description": "Am schnellsten ist ein kurzer Termin. Alternativ können Sie mir eine Nachricht mit Kontext senden – ich melde mich zurück.",
@@ -19,8 +19,8 @@
     "items": {
       "bookCall": {
         "title": "Termin buchen",
-        "description": "Wählen Sie einen passenden Slot. Öffnet Calendly in einem neuen Tab.",
-        "button": "Calendly öffnen"
+        "description": "Wählen Sie einen passenden Slot. Öffnet den Kalender in einem neuen Tab.",
+        "button": "Kalender öffnen"
       },
       "linkedin": {
         "title": "LinkedIn",
@@ -63,7 +63,7 @@
     ]
   },
   "cta": {
-    "text1": "Ich arbeite mit Unternehmen, die Enterprise-KI-Lösungen aufbauen — mit Fokus auf solide Architektur, Security by Design und skalierbare Umsetzung.",
+    "text1": "Ich arbeite mit Startups, wachsenden Unternehmen und etablierten Firmen, die KI-Lösungen aufbauen - mit Fokus auf solide Architektur, Security by Design und skalierbare Umsetzung.",
     "text2": "Aktueller Schwerpunkt: LLM-Plattform-Entwicklung, Prompt Engineering im großen Stil und KI-Governance-Frameworks."
   }
 }

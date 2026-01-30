@@ -269,11 +269,9 @@ const calendlyUrl =
               </a>
             ))
         }
-        <a href="/tools/" class="mobile-nav-link"> Tools </a>
+        <a href="/tools/" class="mobile-nav-link">Tools</a>
         <div class="mobile-nav-actions">
-          <div class="mobile-language-wrapper">
-            <LanguageSwitcher lang={lang} pathMap={pathMap} />
-          </div>
+          <LanguageSwitcher lang={lang} pathMap={pathMap} mobile={true} />
           <button
             aria-label={i18n[lang].toggleThemeText}
             class="mobile-theme-toggle"
@@ -876,7 +874,8 @@ const calendlyUrl =
     }
 
     .desktop-nav,
-    .desktop-actions {
+    .desktop-actions,
+    .tools-link {
       display: none;
     }
 

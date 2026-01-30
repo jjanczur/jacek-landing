@@ -16,7 +16,7 @@
           "items": [
             {
               "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
-              "description": "BAR/NDSS Workshop 2018. Ein Forschungstool zur Erkennung von Taint-basierten Sicherheitslücken in Binärcode — kombiniert statische Analyse mit dynamischem Taint-Tracking. Bietet eine DSL für Taint-Policies und wurde an realen Programmen erprobt.",
+              "description": "BAR/NDSS Workshop 2018. Ein Forschungstool zur Erkennung von Taint-basierten Sicherheitslücken in Binärcode - kombiniert statische Analyse mit dynamischem Taint-Tracking. Bietet eine DSL für Taint-Policies und wurde an realen Programmen erprobt.",
               "role": "Autor und Maintainer des Repositories.",
               "links": [
                 {
@@ -52,7 +52,7 @@
           "items": [
             {
               "title": "Utility NFTs more than simple JPEGs?",
-              "description": "Medium, 1. Februar 2023. Definiert „Utility-NFTs\" und zeigt deren praktischen Nutzen jenseits reiner Sammlerstücke — etwa als Zugangsberechtigungen oder Rollen. Mit Implikationen für NFT-Marktplätze.",
+              "description": "Medium, 1. Februar 2023. Definiert „Utility-NFTs\" und zeigt deren praktischen Nutzen jenseits reiner Sammlerstücke - etwa als Zugangsberechtigungen oder Rollen. Mit Implikationen für NFT-Marktplätze.",
               "links": [
                 {
                   "label": "Medium-Artikel",
@@ -98,7 +98,7 @@
         {
           "title": "Multi-Modell-Routing für KI",
           "date": "2023-12-10",
-          "excerpt": "Intelligente Routing-Strategien für Multi-Modell-KI-Deployments. Kostenoptimierung bei gleichzeitig hoher Performance und Qualität — über verschiedene Modellanbieter hinweg.",
+          "excerpt": "Intelligente Routing-Strategien für Multi-Modell-KI-Deployments. Kostenoptimierung bei gleichzeitig hoher Performance und Qualität - über verschiedene Modellanbieter hinweg.",
           "tags": ["Multi-Modell", "Kostenoptimierung", "Architektur"]
         },
         {

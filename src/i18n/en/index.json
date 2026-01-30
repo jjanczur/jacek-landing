@@ -6,14 +6,14 @@
   "hero": {
     "title": "AI Architect & CTO",
     "subtitle": "Transforming operational complexity into competitive advantage",
-    "tagline": "Co-founder at Jaden Data — building enterprise AI on AWS (and available for consulting)",
+    "tagline": "Co-founder at Jaden Data - building enterprise AI on AWS (and available for consulting)",
     "cta": {
       "primary": "Get in touch",
       "secondary": "View projects"
     }
   },
   "positioning": {
-    "p1": "I'm the Co-founder & CTO of <strong>Jaden Data</strong>. We build process intelligence—AI-native systems that improve how work gets done in real enterprise operations. We don’t start with “AI features”; we start with your workflow and make it faster, safer, and measurable.",
+    "p1": "I'm Jacek, the Co-founder & CTO of <strong>Jaden Data</strong>. I build process intelligence-AI-native systems that improve how work gets done in real business operations of your company. I start with your workflow and make it faster, safer, and measurable.",
     "p2": "My core strengths are <strong>AI/ML</strong> and <strong>cloud architecture</strong>: enterprise LLM platforms, RAG systems, and event-driven microservices on <strong>AWS</strong> (Lambda, ECS/Fargate, SNS/SQS). I integrate multi-model stacks (OpenAI, Azure OpenAI, Bedrock, Mistral) and deliver for regulated environments (ISO 27001, SOC 2). If you need help shipping, I also take on architecture reviews, prompt engineering + evals, and technical leadership."
   },
   "highlights": {
@@ -21,7 +21,7 @@
     "items": [
       {
         "title": "Enterprise AI Platforms",
-        "description": "Multi-tenant systems serving 50+ organizations with >1,000 concurrent connections and thousands of requests per second—built for mission-critical operations."
+        "description": "Multi-tenant systems serving 50+ organizations with >1,000 concurrent connections and thousands of requests per second-built for mission-critical operations."
       },
       {
         "title": "AWS Architecture (Serverless + Microservices)",
@@ -29,11 +29,11 @@
       },
       {
         "title": "Industry-Specific Solutions",
-        "description": "Delivered impact across manufacturing, pharma, finance, and enterprise operations—always tied to a measurable business outcome."
+        "description": "Delivered impact across manufacturing, pharma, finance, startups, and growing companies-always tied to a measurable business outcome."
       },
       {
         "title": "Security & Compliance",
-        "description": "Security isn’t an afterthought—it's part of the design. Delivered ISO 27001 and SOC 2 for enterprise platforms under tight timelines."
+        "description": "Security isn’t an afterthought-it's part of the design. Delivered ISO 27001 and SOC 2 for enterprise platforms under tight timelines."
       },
       {
         "title": "LLMs, RAG, and Evaluations",
@@ -44,7 +44,7 @@
         "description": "Scaled an engineering team from 0→10, led delivery end-to-end, and translate business needs into architecture and execution plans teams can ship."
       }
     ],
-    "note": "Certified skydiver and diver; wind/kitesurf instructor; snowboarder. These experiences build risk management, clear instruction, calm under pressure, and disciplined preparation—skills that translate directly to technical leadership and building systems that businesses depend on."
+    "note": "Certified skydiver and diver; wind/kitesurf instructor; snowboarder. These experiences build risk management, clear instruction, calm under pressure, and disciplined preparation-skills that translate directly to technical leadership and building systems that businesses depend on."
   },
   "featured": {
     "title": "Process Intelligence in Action",
@@ -67,7 +67,7 @@
       },
       {
         "title": "AI Architecture Patterns",
-        "description": "Practical lessons from enterprise LLM deployments—how to design systems that serve business processes and stay reliable in production.",
+        "description": "Practical lessons from enterprise LLM deployments-how to design systems that serve business processes and stay reliable in production.",
         "link": "Watch talks →",
         "url": "/talks/"
       }
@@ -75,7 +75,7 @@
   },
   "contactCta": {
     "title": "Ready to Transform Your Operations?",
-    "description": "If you need help with AWS architecture, enterprise LLM/RAG delivery, prompt engineering + evaluations, or technical leadership (team/process), let’s start with a quick call. Best via email or LinkedIn.",
+    "description": "Whether you are a startup, growing company, or established business-if you need help with AWS architecture, LLM/RAG delivery, prompt engineering + evaluations, or technical leadership, let us start with a quick call.",
     "button": "Get in touch"
   },
   "faq": {
@@ -84,39 +84,48 @@
     "items": [
       {
         "question": "Who is Jacek Janczura?",
-        "answer": "Jacek Janczura is an AI Architect & CTO based in Berlin, Germany. He is the Co-founder & CTO at Jaden Data, building AI-native systems for process intelligence and enterprise operations."
+        "answer": "Jacek Janczura is an AI Architect & CTO based in Berlin, Germany. He is the Co-founder & CTO at Jaden Data, building AI-native systems for process intelligence and enterprise operations.",
+        "links": ["about"]
       },
       {
         "question": "What is “process intelligence”?",
-        "answer": "Process intelligence means starting from how work actually gets done and then enhancing workflows with AI, automation, and data-driven decisioning—so AI serves the process (not the other way around)."
+        "answer": "Process intelligence means starting from how work actually gets done and then enhancing workflows with AI, automation, and data-driven decisioning-so AI serves the process (not the other way around).",
+        "links": ["about"]
       },
       {
         "question": "What do you build?",
-        "answer": "Enterprise LLM platforms, RAG systems, and event-driven cloud architectures—often as multi-tenant SaaS products and process automation systems integrated into real operations."
+        "answer": "Enterprise LLM platforms, RAG systems, and event-driven cloud architectures-often as multi-tenant SaaS products and process automation systems integrated into real operations.",
+        "links": ["projects"]
       },
       {
         "question": "What scale have you operated at?",
-        "answer": "Built platforms serving 50+ organizations, handling >1,000 concurrent connections and thousands of requests per second with high-throughput, event-driven microservices on AWS."
+        "answer": "Built platforms serving 50+ organizations, handling >1,000 concurrent connections and thousands of requests per second with high-throughput, event-driven microservices on AWS.",
+        "links": ["projects"]
       },
       {
         "question": "Which industries have you delivered for?",
-        "answer": "Manufacturing, pharmaceutical, financial services and banking, venture capital, real estate, insurance, legal, automotive, e-commerce, telecommunications, energy/cleantech, logistics, and supply chain."
+        "answer": "Manufacturing, pharmaceutical, financial services and banking, venture capital, real estate, insurance, legal, automotive, e-commerce, telecommunications, energy/cleantech, logistics, and supply chain.",
+        "links": ["projects"]
       },
       {
         "question": "What is your experience with LLMs and RAG?",
-        "answer": "Designed and shipped enterprise LLM stacks across OpenAI/Azure/Bedrock/Mistral and pioneered RAG services with automated vector database creation using Pinecone, pgvector, and Milvus, including evaluation/test frameworks for AI pipelines."
+        "answer": "Designed and shipped enterprise LLM stacks across OpenAI/Azure/Bedrock/Mistral and pioneered RAG services with automated vector database creation using Pinecone, pgvector, and Milvus, including evaluation/test frameworks for AI pipelines.",
+        "links": ["projects", "consulting"]
       },
       {
         "question": "Do you work with security and compliance?",
-        "answer": "Yes. Delivered ISO 27001 and SOC 2 in ~3 months for enterprise platforms. Multi-tenant security and RBAC are core architectural concerns in my work."
+        "answer": "Yes. Delivered ISO 27001 and SOC 2 in ~3 months for enterprise platforms. Multi-tenant security and RBAC are core architectural concerns in my work.",
+        "links": ["consulting"]
       },
       {
         "question": "How can we work together?",
-        "answer": "I take on freelance work such as architecture reviews (AWS/cloud, LLM/RAG, security, scalability/cost), prompt engineering and evals, hands-on AI delivery, and interim technical leadership / team support."
+        "answer": "I take on freelance work such as architecture reviews (AWS/cloud, LLM/RAG, security, scalability/cost), prompt engineering and evals, hands-on AI delivery, and interim technical leadership / team support.",
+        "links": ["consulting", "contact"]
       },
       {
         "question": "How can I contact you?",
-        "answer": "Use the Contact page or reach out via LinkedIn. Share a short problem statement and your target timeline—I'll suggest the fastest way to help."
+        "answer": "Use the Contact page or reach out via LinkedIn. Share a short problem statement and your target timeline-I'll suggest the fastest way to help.",
+        "links": ["contact"]
       }
     ]
   }

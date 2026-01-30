@@ -49,8 +49,8 @@
       "tagline": "Narzędzia enterprise do stabilnych pipeline’ów LLM",
       "description": [
         "Zbudowałem framework do testowania i oceny (Testbed), który zamienia LLM-y z „magii” w inżynierię: deterministyczne testy, metryki, oceny jakości i testy regresji dla RAG oraz pipeline’ów wieloetapowych.",
-        "„Prompt Wizard” przyspiesza iterację i optymalizację promptów, a jednocześnie wymusza wersjonowanie i testowalność — tak, żeby jakość nie znikała po pierwszym wdrożeniu.",
-        "Cel: prompt engineering jako praktyka inżynieryjna, nie jednorazowe eksperymenty — żeby zespoły mogły skalować wdrożenia i dowozić stabilne wyniki."
+        "„Prompt Wizard” przyspiesza iterację i optymalizację promptów, a jednocześnie wymusza wersjonowanie i testowalność - tak, żeby jakość nie znikała po pierwszym wdrożeniu.",
+        "Cel: prompt engineering jako praktyka inżynieryjna, nie jednorazowe eksperymenty - żeby zespoły mogły skalować wdrożenia i dowozić stabilne wyniki."
       ],
       "industries": "Enterprise AI, RAG, pipeline’y LLM",
       "tech": "LLM evals, testy RAG, deterministyczne przypadki, prompt engineering, metryki",
@@ -64,9 +64,9 @@
       "role": "Lider projektu (ML) i Data Scientist",
       "tagline": "Automatyczne dopasowanie produktów zamiast ręcznej selekcji",
       "description": [
-        "Dla RP Group (oświetlenie awaryjne) zbudowałem system ML, który dopasowuje zapytania klientów do najlepszych produktów — zastępując czasochłonny dobór przez ekspertów powtarzalnym rankingiem.",
+        "Dla RP Group (oświetlenie awaryjne) zbudowałem system ML, który dopasowuje zapytania klientów do najlepszych produktów - zastępując czasochłonny dobór przez ekspertów powtarzalnym rankingiem.",
         "Zbudowałem solidny zbiór danych dzięki ekstrakcji wspieranej LLM (API entAIngine) i inżynierii cech (25+ cech). Przebadałem 5 modeli z tuningiem hiperparametrów.",
-        "Najlepszy model: tuning Random Forest z 70,7% Top‑1 (MRR 0,835; AUC‑ROC 0,923) — dobry ranking przy zachowaniu interpretowalności i sensownej złożoności wdrożenia."
+        "Najlepszy model: tuning Random Forest z 70,7% Top‑1 (MRR 0,835; AUC‑ROC 0,923) - dobry ranking przy zachowaniu interpretowalności i sensownej złożoności wdrożenia."
       ],
       "industries": "Produkcja, dopasowanie katalogu produktów, operacje sprzedażowe",
       "tech": "Python, Scikit-Learn, Random Forest, ensemble, inżynieria cech, ekstrakcja wspierana LLM",
@@ -97,7 +97,7 @@
       "tagline": "Wieloagentowe systemy bez pisania kodu",
       "description": [
         "Platforma no-code, która pozwala zespołom operacyjnym (customer service, HR, ops) projektować i uruchamiać multi-agentowe workflow bez wsparcia zespołu engineering.",
-        "Fokus na orkiestrację i niezawodność: jasne role agentów, kontrolowane handoffy i punkty ewaluacji — tak, żeby dało się iterować bez chaosu i skalować wyniki między zespołami."
+        "Fokus na orkiestrację i niezawodność: jasne role agentów, kontrolowane handoffy i punkty ewaluacji - tak, żeby dało się iterować bez chaosu i skalować wyniki między zespołami."
       ],
       "industries": "Operacje, obsługa klienta, automatyzacja HR, procesy korporacyjne",
       "tech": "Agenci AI, no-code, wizualne przepływy, orkiestracja multi-agent, ewaluacje",
@@ -111,8 +111,8 @@
       "role": "Współzałożyciel i architekt",
       "tagline": "Due diligence i portfolio intelligence jako produkt",
       "description": [
-        "Platforma dla VC łącząca deep research z automatyzacją specyficzną dla procesów inwestycyjnych — żeby szybciej dowozić due diligence i analizy rynkowe.",
-        "Wstępnie skonfigurowane agenty wspierają analizę konkurencji, tracking portfela, automatyzację deal flow i market mapping — zamieniając rozproszony research w wiedzę instytucjonalną."
+        "Platforma dla VC łącząca deep research z automatyzacją specyficzną dla procesów inwestycyjnych - żeby szybciej dowozić due diligence i analizy rynkowe.",
+        "Wstępnie skonfigurowane agenty wspierają analizę konkurencji, tracking portfela, automatyzację deal flow i market mapping - zamieniając rozproszony research w wiedzę instytucjonalną."
       ],
       "industries": "Venture capital, aniołowie biznesu, CVC, analiza inwestycyjna",
       "tech": "Agenci AI, automatyzacja due diligence, inteligencja portfelowa, mapowanie rynku, systemy deal-flow",
@@ -128,7 +128,7 @@
       "description": [
         "Projekt finansowany z EU Horizon 2020: platforma pozwalająca uruchamiać analitykę na prywatnych danych bez przejmowania nad nimi kontroli („bring the code to the data”), z mocnym naciskiem na audytowalność i bezpieczeństwo.",
         "Zaprojektowałem end-to-end workflow (agreement → execution → evaluation) i modularną architekturę mikrousług oraz niezmienny audit trail na blockchainie.",
-        "Wykorzystałem confidential computing (TEE / Intel SGX) i szyfrowanie danych w spoczynku do privacy-preserving przetwarzania między organizacjami — zwalidowane z interesariuszami UE."
+        "Wykorzystałem confidential computing (TEE / Intel SGX) i szyfrowanie danych w spoczynku do privacy-preserving przetwarzania między organizacjami - zwalidowane z interesariuszami UE."
       ],
       "industries": "Analityka międzyorganizacyjna, współpraca na danych, branże wrażliwe na prywatność",
       "tech": "Blockchain, confidential computing (TEE), szyfrowanie, audytowalne workflow, mikrousługi",

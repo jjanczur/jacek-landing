@@ -65,7 +65,7 @@ Every solution starts with understanding how work actually gets done. Technical 
 **Key Projects at Jaden Data:**
 
 #### entAIngine (2022 - Present)
-CTO of a SaaS platform for AI process automation. Transforms mission-critical back office operations through intelligent automation, knowledge-aware chatbots, and sophisticated document workflows. Built for businesses that demand the highest standards of security, compliance, and performance—ISO 27001 and SOC2 Type 2 certified with complete data sovereignty. Serving 50+ organizations with 99.9% uptime.
+CTO of a SaaS platform for AI process automation. Transforms mission-critical back office operations through intelligent automation, knowledge-aware chatbots, and sophisticated document workflows. Built for businesses that demand the highest standards of security, compliance, and performance-ISO 27001 and SOC2 Type 2 certified with complete data sovereignty. Serving 50+ organizations with 99.9% uptime.
 
 **Industries:** Production & Manufacturing, Pharmaceutical, Financial Services, Enterprise Operations
 **Tech:** AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC
@@ -542,7 +542,7 @@ Awarded 4 years in the row for exceptional academic performance in computer scie
 - International Windsurfing Instructor
 - Avid snowboarder
 
-These experiences build essential skills: **risk management, clear instruction and teaching, calm under pressure, and disciplined preparation**—all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.
+These experiences build essential skills: **risk management, clear instruction and teaching, calm under pressure, and disciplined preparation**-all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.
 
 ### Transferable Skills from Activities
 - Risk assessment and management

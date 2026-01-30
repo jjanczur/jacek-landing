@@ -8,42 +8,74 @@ export interface Props {
     pl: string;
     de: string;
   };
+  mobile?: boolean;
 }
 
-const { lang, pathMap } = Astro.props;
+const { lang, pathMap, mobile = false } = Astro.props;
 ---
 
-<details class="language-switcher" aria-label="Language">
-  <summary class="language-trigger" aria-label="Change language">
-    <Globe size={18} />
-  </summary>
-  <div class="language-menu" role="menu">
-    <a
-      role="menuitem"
-      href={pathMap.en}
-      aria-current={lang === 'en' ? 'true' : 'false'}
-      class="lang-item"
-    >
-      EN
-    </a>
-    <a
-      role="menuitem"
-      href={pathMap.pl}
-      aria-current={lang === 'pl' ? 'true' : 'false'}
-      class="lang-item"
-    >
-      PL
-    </a>
-    <a
-      role="menuitem"
-      href={pathMap.de}
-      aria-current={lang === 'de' ? 'true' : 'false'}
-      class="lang-item"
-    >
-      DE
-    </a>
-  </div>
-</details>
+{
+  mobile ? (
+    <nav class="language-flags" aria-label="Language">
+      <a
+        href={pathMap.en}
+        aria-current={lang === 'en' ? 'page' : undefined}
+        class:list={['flag-link', { active: lang === 'en' }]}
+        title="English"
+      >
+        🇬🇧
+      </a>
+      <a
+        href={pathMap.pl}
+        aria-current={lang === 'pl' ? 'page' : undefined}
+        class:list={['flag-link', { active: lang === 'pl' }]}
+        title="Polski"
+      >
+        🇵🇱
+      </a>
+      <a
+        href={pathMap.de}
+        aria-current={lang === 'de' ? 'page' : undefined}
+        class:list={['flag-link', { active: lang === 'de' }]}
+        title="Deutsch"
+      >
+        🇩🇪
+      </a>
+    </nav>
+  ) : (
+    <details class="language-switcher" aria-label="Language">
+      <summary class="language-trigger" aria-label="Change language">
+        <Globe size={18} />
+      </summary>
+      <div class="language-menu" role="menu">
+        <a
+          role="menuitem"
+          href={pathMap.en}
+          aria-current={lang === 'en' ? 'true' : 'false'}
+          class="lang-item"
+        >
+          EN
+        </a>
+        <a
+          role="menuitem"
+          href={pathMap.pl}
+          aria-current={lang === 'pl' ? 'true' : 'false'}
+          class="lang-item"
+        >
+          PL
+        </a>
+        <a
+          role="menuitem"
+          href={pathMap.de}
+          aria-current={lang === 'de' ? 'true' : 'false'}
+          class="lang-item"
+        >
+          DE
+        </a>
+      </div>
+    </details>
+  )
+}
 
 <style>
   .language-switcher {
@@ -117,5 +149,35 @@ const { lang, pathMap } = Astro.props;
 
   .lang-item[aria-current='true']:hover {
     background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  }
+
+  /* Mobile flag styles */
+  .language-flags {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .flag-link {
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: var(--space-1);
+    border-radius: var(--radius-m);
+    transition: all 0.2s ease;
+    opacity: 0.6;
+  }
+
+  .flag-link:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .flag-link.active {
+    opacity: 1;
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.15) 0%,
+      oklch(from var(--accent) l c h / 0.1) 100%
+    );
   }
 </style>

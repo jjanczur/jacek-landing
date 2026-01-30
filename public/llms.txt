@@ -1,4 +1,4 @@
-# janczura.com — LLM-friendly index
+# janczura.com - LLM-friendly index
 #
 # Purpose: help LLM crawlers quickly find authoritative pages about Jacek Janczura.
 # Human-friendly too. Prefer canonical URLs below.
