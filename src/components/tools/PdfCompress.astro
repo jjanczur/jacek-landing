@@ -23,9 +23,16 @@
   <!-- Settings -->
   <div class="compress-settings">
     <div class="setting-group">
-      <label class="setting-label" for="compress-preset">Compression Level</label>
+      <label class="setting-label" for="compress-preset"
+        >Compression Level</label
+      >
       <div class="preset-buttons" role="group" aria-label="Compression Level">
-        <button class="preset-button" data-preset="lossless" title="Structural optimization only — no quality loss" aria-pressed="false">
+        <button
+          class="preset-button"
+          data-preset="lossless"
+          title="Structural optimization only — no quality loss"
+          aria-pressed="false"
+        >
           Lossless
         </button>
         <button
@@ -46,13 +53,20 @@
         </button>
       </div>
       <p class="setting-hint" id="preset-hint">
-        Smart multi-strategy approach. Text in compressed pages may become non-selectable. Expected savings: 30–70% for image-heavy PDFs.
+        Smart multi-strategy approach. Text in compressed pages may become
+        non-selectable. Expected savings: 30–70% for image-heavy PDFs.
       </p>
     </div>
   </div>
 
   <!-- Upload Area -->
-  <div class="upload-area" id="pdf-upload-area" tabindex="0" role="button" aria-label="Upload PDF file">
+  <div
+    class="upload-area"
+    id="pdf-upload-area"
+    tabindex="0"
+    role="button"
+    aria-label="Upload PDF file"
+  >
     <div class="upload-content">
       <div class="upload-icon">📄</div>
       <p class="upload-text">Drag & drop your PDF here</p>
@@ -69,13 +83,27 @@
   </div>
 
   <!-- Progress Section -->
-  <div class="compress-progress" id="compress-progress" style="display: none" role="status" aria-live="polite">
+  <div
+    class="compress-progress"
+    id="compress-progress"
+    style="display: none"
+    role="status"
+    aria-live="polite"
+  >
     <div class="progress-header">
       <span id="progress-status">Compressing...</span>
       <span id="progress-percent">0%</span>
     </div>
     <div class="progress-bar-track">
-      <div class="progress-bar-fill" id="progress-bar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+      <div
+        class="progress-bar-fill"
+        id="progress-bar-fill"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+      >
+      </div>
     </div>
     <p class="progress-message" id="progress-message"></p>
   </div>
@@ -137,17 +165,21 @@
     const presetButtons = document.querySelectorAll('.preset-button');
 
     if (
-      !uploadArea || !fileInput || !progressSection ||
-      !resultSection || !errorSection
-    ) return;
+      !uploadArea ||
+      !fileInput ||
+      !progressSection ||
+      !resultSection ||
+      !errorSection
+    )
+      return;
 
     const upload = uploadArea;
     const progress = progressSection;
     const result = resultSection;
     const error = errorSection;
 
-    window.addEventListener('dragover', (e) => e.preventDefault());
-    window.addEventListener('drop', (e) => e.preventDefault());
+    window.addEventListener('dragover', e => e.preventDefault());
+    window.addEventListener('drop', e => e.preventDefault());
 
     let currentPreset: 'lossless' | 'balanced' | 'max' = 'balanced';
     let compressedBlob: Blob | null = null;
@@ -165,7 +197,11 @@
     presetButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const preset = (btn as HTMLElement).dataset.preset;
-        if (preset === 'lossless' || preset === 'balanced' || preset === 'max') {
+        if (
+          preset === 'lossless' ||
+          preset === 'balanced' ||
+          preset === 'max'
+        ) {
           currentPreset = preset;
         }
         presetButtons.forEach(b => {
@@ -249,15 +285,19 @@
         return;
       }
 
-      originalFileName = file.name
-        .replace(/\.pdf$/i, '')
-        .replace(/[^\w\s\-().äöüÄÖÜßàáâãèéêëìíîïòóôõùúûüýÿñçćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, '_')
-        .slice(0, 150)
-        .trim() || 'document';
+      originalFileName =
+        file.name
+          .replace(/\.pdf$/i, '')
+          .replace(
+            /[^\w\s\-().äöüÄÖÜßàáâãèéêëìíîïòóôõùúûüýÿñçćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g,
+            '_',
+          )
+          .slice(0, 150)
+          .trim() || 'document';
       showSection('progress');
 
       isCompressing = true;
-      presetButtons.forEach(b => (b as HTMLButtonElement).disabled = true);
+      presetButtons.forEach(b => ((b as HTMLButtonElement).disabled = true));
 
       try {
         const { compress } = await import('@quicktoolsone/pdf-compress');
@@ -297,11 +337,11 @@
               : 'An unexpected error occurred during compression.';
       } finally {
         isCompressing = false;
-        presetButtons.forEach(b => (b as HTMLButtonElement).disabled = false);
+        presetButtons.forEach(b => ((b as HTMLButtonElement).disabled = false));
       }
     }
 
-    uploadArea.addEventListener('keydown', (e) => {
+    uploadArea.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         fileInput.click();
