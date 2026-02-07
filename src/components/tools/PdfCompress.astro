@@ -1,0 +1,720 @@
+---
+// PDF Compress Component - Client-side only, lazy loaded
+---
+
+<div class="pdf-compress-wrapper">
+  <div class="tool-header">
+    <h2>PDF Compress</h2>
+    <p class="tool-description">
+      Upload a PDF and reduce its file size directly in your browser. No data is
+      sent to any server.
+    </p>
+  </div>
+
+  <div class="privacy-badge">
+    <span class="badge-icon">🔒</span>
+    <span>
+      <strong>100% Client-Side Processing:</strong> Your PDF files never leave your
+      browser. No uploads, no storage, no tracking. All compression happens locally
+      using JavaScript.
+    </span>
+  </div>
+
+  <!-- Settings -->
+  <div class="compress-settings">
+    <div class="setting-group">
+      <label class="setting-label" for="compress-preset">Compression Level</label>
+      <div class="preset-buttons" role="group" aria-label="Compression Level">
+        <button class="preset-button" data-preset="lossless" title="Structural optimization only — no quality loss" aria-pressed="false">
+          Lossless
+        </button>
+        <button
+          class="preset-button active"
+          data-preset="balanced"
+          title="Smart compression — best balance of size and quality"
+          aria-pressed="true"
+        >
+          Balanced
+        </button>
+        <button
+          class="preset-button"
+          data-preset="max"
+          title="Aggressive compression — maximum file size reduction"
+          aria-pressed="false"
+        >
+          Maximum
+        </button>
+      </div>
+      <p class="setting-hint" id="preset-hint">
+        Smart multi-strategy approach. Text in compressed pages may become non-selectable. Expected savings: 30–70% for image-heavy PDFs.
+      </p>
+    </div>
+  </div>
+
+  <!-- Upload Area -->
+  <div class="upload-area" id="pdf-upload-area" tabindex="0" role="button" aria-label="Upload PDF file">
+    <div class="upload-content">
+      <div class="upload-icon">📄</div>
+      <p class="upload-text">Drag & drop your PDF here</p>
+      <p class="upload-subtext">or</p>
+      <label class="upload-button" for="pdf-file-input">Choose File</label>
+      <input
+        type="file"
+        id="pdf-file-input"
+        accept="application/pdf"
+        class="file-input-hidden"
+      />
+      <p class="upload-limit">Maximum file size: 100 MB</p>
+    </div>
+  </div>
+
+  <!-- Progress Section -->
+  <div class="compress-progress" id="compress-progress" style="display: none" role="status" aria-live="polite">
+    <div class="progress-header">
+      <span id="progress-status">Compressing...</span>
+      <span id="progress-percent">0%</span>
+    </div>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progress-bar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+    </div>
+    <p class="progress-message" id="progress-message"></p>
+  </div>
+
+  <!-- Result Section -->
+  <div class="compress-result" id="compress-result" style="display: none">
+    <div class="result-stats">
+      <div class="stat-item">
+        <span class="stat-label">Original Size</span>
+        <span class="stat-value" id="stat-original">—</span>
+      </div>
+      <div class="stat-arrow">→</div>
+      <div class="stat-item">
+        <span class="stat-label">Compressed Size</span>
+        <span class="stat-value stat-highlight" id="stat-compressed">—</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Saved</span>
+        <span class="stat-value stat-saved" id="stat-saved">—</span>
+      </div>
+    </div>
+    <div class="result-actions">
+      <button class="download-button" id="download-compressed">
+        Download Compressed PDF
+      </button>
+      <button class="reset-button" id="compress-reset">
+        Compress Another
+      </button>
+    </div>
+  </div>
+
+  <!-- Error Section -->
+  <div class="compress-error" id="compress-error" style="display: none">
+    <p class="error-message" id="error-message"></p>
+    <button class="reset-button" id="error-reset">Try Again</button>
+  </div>
+</div>
+
+<script>
+  async function initPdfCompress() {
+    const uploadArea = document.getElementById('pdf-upload-area');
+    const fileInput = document.getElementById(
+      'pdf-file-input',
+    ) as HTMLInputElement;
+    const progressSection = document.getElementById('compress-progress');
+    const resultSection = document.getElementById('compress-result');
+    const errorSection = document.getElementById('compress-error');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressPercent = document.getElementById('progress-percent');
+    const progressMessage = document.getElementById('progress-message');
+    const statOriginal = document.getElementById('stat-original');
+    const statCompressed = document.getElementById('stat-compressed');
+    const statSaved = document.getElementById('stat-saved');
+    const downloadBtn = document.getElementById('download-compressed');
+    const resetBtn = document.getElementById('compress-reset');
+    const errorResetBtn = document.getElementById('error-reset');
+    const errorMessage = document.getElementById('error-message');
+    const presetHint = document.getElementById('preset-hint');
+    const presetButtons = document.querySelectorAll('.preset-button');
+
+    if (
+      !uploadArea || !fileInput || !progressSection ||
+      !resultSection || !errorSection
+    ) return;
+
+    const upload = uploadArea;
+    const progress = progressSection;
+    const result = resultSection;
+    const error = errorSection;
+
+    window.addEventListener('dragover', (e) => e.preventDefault());
+    window.addEventListener('drop', (e) => e.preventDefault());
+
+    let currentPreset: 'lossless' | 'balanced' | 'max' = 'balanced';
+    let compressedBlob: Blob | null = null;
+    let isCompressing = false;
+    let originalFileName = '';
+
+    const presetHints: Record<string, string> = {
+      lossless:
+        'Structural optimization only — no quality loss. Text remains selectable. Expected savings: 5–15%.',
+      balanced:
+        'Smart multi-strategy approach. Text in compressed pages may become non-selectable. Expected savings: 30–70% for image-heavy PDFs.',
+      max: 'Aggressive compression with lower DPI. Text in compressed pages may become non-selectable. Expected savings: 60–90% for image-heavy PDFs.',
+    };
+
+    presetButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = (btn as HTMLElement).dataset.preset;
+        if (preset === 'lossless' || preset === 'balanced' || preset === 'max') {
+          currentPreset = preset;
+        }
+        presetButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        if (presetHint) presetHint.textContent = presetHints[currentPreset];
+      });
+    });
+
+    function formatSize(bytes: number): string {
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+      return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+    }
+
+    function showSection(section: 'upload' | 'progress' | 'result' | 'error') {
+      upload.style.display = section === 'upload' ? '' : 'none';
+      progress.style.display = section === 'progress' ? '' : 'none';
+      result.style.display = section === 'result' ? '' : 'none';
+      error.style.display = section === 'error' ? '' : 'none';
+
+      requestAnimationFrame(() => {
+        if (section === 'result') downloadBtn?.focus();
+        if (section === 'error') errorResetBtn?.focus();
+      });
+    }
+
+    function reset() {
+      showSection('upload');
+      fileInput.value = '';
+      compressedBlob = null;
+      originalFileName = '';
+      if (progressBarFill) progressBarFill.style.width = '0%';
+      if (progressMessage) progressMessage.textContent = '';
+    }
+
+    async function isPdfFile(file: File): Promise<boolean> {
+      const header = new Uint8Array(await file.slice(0, 5).arrayBuffer());
+      return (
+        header[0] === 0x25 &&
+        header[1] === 0x50 &&
+        header[2] === 0x44 &&
+        header[3] === 0x46 &&
+        header[4] === 0x2d
+      );
+    }
+
+    async function handleFile(file: File) {
+      if (isCompressing) return;
+
+      if (file.type !== 'application/pdf' && file.type !== '') {
+        showSection('error');
+        if (errorMessage)
+          errorMessage.textContent = 'Please select a valid PDF file.';
+        return;
+      }
+
+      if (file.size === 0) {
+        showSection('error');
+        if (errorMessage)
+          errorMessage.textContent = 'The selected file is empty.';
+        return;
+      }
+
+      if (!(await isPdfFile(file))) {
+        showSection('error');
+        if (errorMessage)
+          errorMessage.textContent =
+            'The selected file does not appear to be a valid PDF.';
+        return;
+      }
+
+      if (file.size > 100 * 1024 * 1024) {
+        showSection('error');
+        if (errorMessage)
+          errorMessage.textContent =
+            'File is too large. Maximum size is 100 MB.';
+        return;
+      }
+
+      originalFileName = file.name
+        .replace(/\.pdf$/i, '')
+        .replace(/[^\w\s\-().äöüÄÖÜßàáâãèéêëìíîïòóôõùúûüýÿñçćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, '_')
+        .slice(0, 150)
+        .trim() || 'document';
+      showSection('progress');
+
+      isCompressing = true;
+      presetButtons.forEach(b => (b as HTMLButtonElement).disabled = true);
+
+      try {
+        const { compress } = await import('@quicktoolsone/pdf-compress');
+        const buffer = await file.arrayBuffer();
+
+        const result = await compress(buffer, {
+          preset: currentPreset,
+          onProgress: (event: { progress: number; message?: string }) => {
+            const pct = Math.round(event.progress);
+            if (progressBarFill) {
+              progressBarFill.style.width = `${pct}%`;
+              progressBarFill.setAttribute('aria-valuenow', String(pct));
+            }
+            if (progressPercent) progressPercent.textContent = `${pct}%`;
+            if (progressMessage && event.message)
+              progressMessage.textContent = event.message;
+          },
+        });
+
+        compressedBlob = new Blob([result.pdf], { type: 'application/pdf' });
+
+        if (statOriginal)
+          statOriginal.textContent = formatSize(result.stats.originalSize);
+        if (statCompressed)
+          statCompressed.textContent = formatSize(result.stats.compressedSize);
+        if (statSaved)
+          statSaved.textContent = `${result.stats.percentageSaved.toFixed(1)}%`;
+
+        showSection('result');
+      } catch (err) {
+        console.error('PDF compression failed:', err);
+        showSection('error');
+        if (errorMessage)
+          errorMessage.textContent =
+            err instanceof Error
+              ? `Compression failed: ${err.message}`
+              : 'An unexpected error occurred during compression.';
+      } finally {
+        isCompressing = false;
+        presetButtons.forEach(b => (b as HTMLButtonElement).disabled = false);
+      }
+    }
+
+    uploadArea.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    uploadArea.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      uploadArea.classList.add('drag-over');
+    });
+
+    uploadArea.addEventListener('dragleave', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      uploadArea.classList.remove('drag-over');
+    });
+
+    uploadArea.addEventListener('drop', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      uploadArea.classList.remove('drag-over');
+      const files = e.dataTransfer?.files;
+      if (files && files.length > 0) handleFile(files[0]);
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files && fileInput.files.length > 0) {
+        handleFile(fileInput.files[0]);
+      }
+    });
+
+    downloadBtn?.addEventListener('click', () => {
+      if (!compressedBlob) return;
+      const url = URL.createObjectURL(compressedBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${originalFileName}-compressed.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+
+    resetBtn?.addEventListener('click', reset);
+    errorResetBtn?.addEventListener('click', reset);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPdfCompress);
+  } else {
+    initPdfCompress();
+  }
+</script>
+
+<style>
+  .pdf-compress-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .tool-header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .tool-header h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tool-description {
+    color: var(--text);
+    opacity: 0.8;
+    font-size: var(--font-size-base);
+  }
+
+  .privacy-badge {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.08) 0%,
+      oklch(from var(--accent) l c h / 0.04) 100%
+    );
+    border: 1px solid oklch(from var(--primary) l c h / 0.2);
+    border-radius: var(--radius-l);
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+  }
+
+  .privacy-badge strong {
+    color: var(--primary);
+  }
+
+  .badge-icon {
+    flex-shrink: 0;
+    font-size: var(--font-size-xl);
+  }
+
+  /* Settings */
+  .compress-settings {
+    margin-bottom: var(--space-6);
+  }
+
+  .setting-group {
+    text-align: center;
+  }
+
+  .setting-label {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+  }
+
+  .preset-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .preset-button {
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-m);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: var(--font-weight-normal);
+  }
+
+  .preset-button:hover {
+    background: var(--bg);
+    border-color: var(--primary);
+  }
+
+  .preset-button.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .preset-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .setting-hint {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* Upload Area */
+  .upload-area {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-8);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.02) 100%
+    );
+  }
+
+  .upload-area:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .upload-area:hover,
+  .upload-area.drag-over {
+    border-color: var(--primary);
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.06) 100%
+    );
+  }
+
+  .upload-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .upload-text {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-1);
+  }
+
+  .upload-subtext {
+    color: var(--text);
+    opacity: 0.6;
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .upload-button {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-m);
+    cursor: pointer;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    transition: all 0.2s ease;
+  }
+
+  .upload-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .upload-button:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .file-input-hidden {
+    display: none;
+  }
+
+  .upload-limit {
+    margin-top: var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.5;
+  }
+
+  /* Progress */
+  .compress-progress {
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .progress-bar-track {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--space-3);
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  .progress-message {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+    margin: 0;
+    min-height: 1.4em;
+  }
+
+  /* Result */
+  .compress-result {
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+  }
+
+  .result-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: var(--space-1);
+  }
+
+  .stat-value {
+    display: block;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .stat-highlight {
+    color: var(--primary);
+  }
+
+  .stat-saved {
+    color: oklch(0.6 0.2 145);
+  }
+
+  .stat-arrow {
+    font-size: var(--font-size-2xl);
+    color: var(--text);
+    opacity: 0.4;
+  }
+
+  .result-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .download-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-m);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .download-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .reset-button {
+    background: var(--muted);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-m);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .reset-button:hover {
+    border-color: var(--primary);
+    background: var(--bg);
+  }
+
+  /* Error */
+  .compress-error {
+    background: oklch(from var(--error) l c h / 0.1);
+    border: 1px solid oklch(from var(--error) l c h / 0.3);
+    border-radius: var(--radius-l);
+    padding: var(--space-6);
+    text-align: center;
+  }
+
+  .error-message {
+    color: var(--error, oklch(0.6 0.2 25));
+    margin-bottom: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .upload-area {
+      padding: var(--space-6);
+    }
+
+    .result-stats {
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .stat-arrow {
+      transform: rotate(90deg);
+    }
+
+    .preset-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .preset-button {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+</style>

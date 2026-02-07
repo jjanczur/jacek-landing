@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Shield, FileText, GitCompare, Code } from 'lucide-astro';
+import { Shield, FileText, GitCompare, Code, FileDown } from 'lucide-astro';
 import MarkdownEditor from '../components/tools/MarkdownEditor.astro';
 import TextCompare from '../components/tools/TextCompare.astro';
 import JsonTools from '../components/tools/JsonTools.astro';
+import PdfCompress from '../components/tools/PdfCompress.astro';
 
 const title = 'Developer Tools - Jacek Janczura';
 const description =
-  'Free frontend-only developer tools: Markdown Editor, Text Compare, and JSON Tools. All processing happens in your browser - no data is stored or transmitted.';
+  'Free frontend-only developer tools: Markdown Editor, Text Compare, JSON Tools, and PDF Compress. All processing happens in your browser - no data is stored or transmitted.';
 ---
 
 <BaseLayout title={title} description={description} lang="en">
@@ -65,6 +66,18 @@ const description =
         </p>
         <a href="#json-tools" class="tool-link">Open Tool →</a>
       </div>
+
+      <div class="tool-card" data-tool="pdf-compress">
+        <div class="tool-icon">
+          <FileDown size={32} />
+        </div>
+        <h2>PDF Compress</h2>
+        <p>
+          Reduce PDF file size directly in your browser. Choose from lossless,
+          balanced, or maximum compression presets.
+        </p>
+        <a href="#pdf-compress" class="tool-link">Open Tool →</a>
+      </div>
     </div>
   </section>
 
@@ -83,6 +96,12 @@ const description =
   <section id="json-tools" class="tool-section">
     <div class="container">
       <JsonTools />
+    </div>
+  </section>
+
+  <section id="pdf-compress" class="tool-section">
+    <div class="container">
+      <PdfCompress />
     </div>
   </section>
 </BaseLayout>
@@ -159,7 +178,7 @@ const description =
 
   .tools-grid .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-6);
     align-items: stretch;
   }
@@ -229,7 +248,7 @@ const description =
     border-top: none;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
     .tools-grid .container {
       grid-template-columns: repeat(2, 1fr);
     }
