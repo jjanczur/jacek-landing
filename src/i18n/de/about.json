@@ -13,7 +13,7 @@
   },
   "bio": {
     "paragraphs": [
-      "Ich bin Jacek, Mitgründer & CTO von <strong>Jaden Data</strong> (Berlin). Ich baue Enterprise-KI auf AWS - LLM-Plattformen, RAG und ereignisgesteuerte Microservices - immer entlang echter operativer Workflows.",
+      "Ich bin Jacek, Mitgründer & CTO von <strong>Jaden Data</strong>. Ich baue Enterprise-KI auf AWS - LLM-Plattformen, RAG und ereignisgesteuerte Microservices - immer entlang echter operativer Workflows.",
       "<ul><li><strong>Bootstrapped Startup</strong> (ohne externes VC): <strong>&#x2265; 1 Mio. € Jahresumsatz</strong></li><li>Engineering von <strong>0 → 10</strong> skaliert und mehrere Teams geführt</li><li>Mandantenfähige Systeme für <strong>50+ Organisationen</strong> mit <strong>&gt; 1.000 gleichzeitigen Verbindungen</strong> und <strong>tausenden Requests pro Sekunde</strong></li><li><strong>ISO 27001</strong> und <strong>SOC 2</strong> in ~3 Monaten geliefert</li></ul>",
       "Wenn du ein System schneller shippen oder das Risiko reduzieren willst, unterstütze ich auch freelance: Architektur‑Reviews, LLM/RAG‑Delivery, Prompt Engineering + Evals und hands‑on Technical Leadership. Schau in <a href=\"/de/projects/\">Projekte</a>, <a href=\"/de/publications/\">Publikationen</a> oder lade unten den Lebenslauf herunter."
     ]

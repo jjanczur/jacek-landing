@@ -13,7 +13,7 @@
   },
   "bio": {
     "paragraphs": [
-      "I'm Jacek, the Co-founder & CTO of <strong>Jaden Data</strong> (Berlin). I build enterprise AI systems on AWS-LLM platforms, RAG, and event-driven microservices-always tied to real operational workflows.",
+      "I'm Jacek, the Co-founder & CTO of <strong>Jaden Data</strong>. I build enterprise AI systems on AWS-LLM platforms, RAG, and event-driven microservices-always tied to real operational workflows.",
       "<ul><li><strong>Bootstrapped startup</strong> (no external VC): grew to <strong>&#x2265;€1M annual revenue</strong></li><li>Scaled engineering from <strong>0 → 10</strong> and led multiple delivery teams</li><li>Built multi-tenant systems for <strong>50+ organizations</strong> with <strong>&gt;1,000 concurrent connections</strong> and <strong>thousands of requests per second</strong></li><li>Delivered <strong>ISO 27001</strong> and <strong>SOC 2</strong> in ~3 months</li></ul>",
       "If you need help shipping or de-risking a system, I take on freelance engagements: architecture reviews, AI/LLM/RAG delivery, prompt engineering + evals, and hands-on technical leadership. See <a href=\"/en/projects/\">projects</a>, <a href=\"/en/publications/\">publications</a>, or download the CV below."
     ]
