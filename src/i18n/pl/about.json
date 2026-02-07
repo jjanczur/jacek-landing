@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "O mnie | Jacek Janczura",
-    "description": "Współzałożyciel i CTO Jaden Data. Inżynier AI i architekt chmury AWS - buduję platformy LLM/RAG i systemy rozproszone. Dostępny do przeglądów architektury, prompt engineering i konsultingu AI."
+    "description": "Współzałożyciel i CTO Jaden Data. Inżynier AI i architekt chmury AWS - buduję platformy LLM/RAG i systemy rozproszone. Świadczę usługi konsultingowe: przeglądy architektury, prompt engineering i AI."
   },
   "hero": {
     "title": "O mnie",
@@ -13,7 +13,7 @@
   },
   "bio": {
     "paragraphs": [
-      "Jestem Jacek, współzałożyciel i CTO <strong>Jaden Data</strong> (Berlin). Buduję enterprise AI na AWS: platformy LLM, RAG i zdarzeniowe mikrousługi - zawsze osadzone w realnych procesach operacyjnych.",
+      "Mam na imię Jacek, jestem współzałożycielem i CTO <strong>Jaden Data</strong> (Berlin). Buduję enterprise AI na AWS: platformy LLM, RAG i zdarzeniowe mikrousługi - zawsze osadzone w realnych procesach operacyjnych.",
       "<ul><li><strong>Bootstrapped startup</strong> (bez zewnętrznego VC): <strong>&#x2265; 1 mln € rocznie</strong></li><li>Zbudowałem zespół engineering od <strong>0 → 10</strong> i prowadziłem kilka zespołów</li><li>Platformy dla <strong>50+ organizacji</strong> (&gt; 1 000 równoczesnych połączeń, tysiące RPS)</li><li>Dowieźliśmy <strong>ISO 27001</strong> i <strong>SOC 2</strong> w ~3 miesiące</li></ul>",
       "Jeśli chcesz dowieźć projekt szybciej albo zmniejszyć ryzyko architektury, jestem dostępny do współpracy freelance: przeglądy architektury, delivery LLM/RAG, prompt engineering + ewaluacje i hands-on leadership. Zobacz <a href=\"/pl/projects/\">projekty</a>, <a href=\"/pl/publications/\">publikacje</a> albo pobierz CV poniżej."
     ]

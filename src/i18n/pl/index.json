@@ -1,19 +1,19 @@
 {
   "meta": {
     "title": "Architekt AI i CTO | Jacek Janczura",
-    "description": "Inżynier AI i architekt chmury AWS. Współzałożyciel i CTO w Jaden Data - buduję platformy LLM/RAG i systemy rozproszone. Dostępny do przeglądów architektury, prompt engineering i konsultingu AI."
+    "description": "Inżynier AI i architekt chmury AWS. Współzałożyciel i CTO w Jaden Data - buduję platformy LLM/RAG i systemy rozproszone. Świadczę usługi konsultingowe: przeglądy architektury, prompt engineering i AI."
   },
   "hero": {
     "title": "Architekt AI & CTO",
     "subtitle": "Zamieniam złożoność operacyjną w przewagę konkurencyjną",
-    "tagline": "Współzałożyciel Jaden Data - AI klasy enterprise na AWS (i dostępny do konsultingu)",
+    "tagline": "Współzałożyciel Jaden Data - AI klasy enterprise na AWS (świadczę usługi konsultingowe)",
     "cta": {
       "primary": "Skontaktuj się",
       "secondary": "Zobacz projekty"
     }
   },
   "positioning": {
-    "p1": "Jestem Jacek, współzałożyciel i CTO <strong>Jaden Data</strong>. Buduję inteligencję procesową - systemy AI, które usprawniają realną pracę w Twojej firmie. Zaczynam od procesu i robię go szybszym, bezpieczniejszym i mierzalnym.",
+    "p1": "Mam na imię Jacek, jestem współzałożycielem i CTO <strong>Jaden Data</strong>. Buduję inteligencję procesową - systemy AI, które usprawniają realną pracę w Twojej firmie. Zaczynam od procesu i robię go szybszym, bezpieczniejszym i mierzalnym.",
     "p2": "Moje mocne strony to <strong>AI/ML</strong> i <strong>architektura chmurowa</strong>: platformy LLM klasy enterprise, RAG oraz zdarzeniowe mikrousługi na <strong>AWS</strong> (Lambda, ECS/Fargate, SNS/SQS). Integruję wiele modeli (OpenAI, Azure OpenAI, Bedrock, Mistral) i dowożę rozwiązania dla środowisk regulowanych (ISO 27001, SOC 2 Type 2). Mogę też pomóc jako konsultant: przegląd architektury, prompt engineering + ewaluacje albo wsparcie jako lider techniczny."
   },
   "highlights": {
@@ -25,23 +25,23 @@
       },
       {
         "title": "Architektura AWS (serverless + microservices)",
-        "description": "Zdarzeniowe systemy na AWS (Lambda, ECS/Fargate, SNS/SQS): wysoka przepustowość, niezawodność i kontrola kosztów."
+        "description": "Systemy zdarzeniowe na AWS (Lambda, ECS/Fargate, SNS/SQS): wysoka przepustowość, niezawodność i kontrola kosztów."
       },
       {
         "title": "Rozwiązania branżowe",
-        "description": "Mierzalny wpływ w produkcji, farmacji, finansach, startupach i rozwijających się firmach - zawsze powiązany z konkretnym KPI."
+        "description": "Rozwiązania mające wymierny wpływ na sektory produkcji, farmację, finanse, sprawdzające się w startupach jak i rozwiniętych firmach - zawsze powiązane z konkretnym KPI."
       },
       {
         "title": "Bezpieczeństwo i zgodność",
-        "description": "Bezpieczeństwo to część projektu, nie „po fakcie”. Dowiozłem ISO 27001 oraz SOC 2 Type 2 w krótkim czasie."
+        "description": "Bezpieczeństwo to część projektu od samego początku. Odpowiadałem za uzyskanie ISO 27001 oraz SOC 2 Type 2 w bardzo krótkim czasie."
       },
       {
         "title": "LLM, RAG i ewaluacje",
-        "description": "Stosy LLM (multi-model) + RAG, a do tego powtarzalna ocena jakości: testy, metryki i regresja, żeby zachowanie nie „odpływało”."
+        "description": "Stosy LLM (multi-model) + RAG, a do tego powtarzalna ocena jakości: testy, metryki i regresja, żeby jakość nie spadała z czasem."
       },
       {
-        "title": "Doświadczone przywództwo techniczne",
-        "description": "Zbudowałem zespół od 0→10, prowadzę delivery end-to-end i tłumaczę potrzeby biznesu na plan + architekturę, którą da się dowieźć."
+        "title": "Doświadczenie i przywództwo techniczne",
+        "description": "Zbudowałem zespół od 0→10, prowadzę delivery end-to-end i przekładam potrzeby biznesowe klienta na realny i wykonalny plan i architekturę."
       }
     ],
     "note": "Certyfikowany spadochroniarz i nurek, instruktor windsurfingu i kitesurfingu, snowboardzista. Te pasje uczą zarządzania ryzykiem, jasnej komunikacji, spokoju pod presją i zdyscyplinowanego przygotowania - umiejętności, które przenoszę na prowadzenie zespołów technicznych i budowę systemów, od których zależy biznes."
@@ -51,12 +51,12 @@
     "items": [
       {
         "title": "entAIngine",
-        "description": "Platforma enterprise AI na AWS do automatyzacji procesów. Wielotenantowa, wysokoprzepustowa i gotowa na wymagania regulowane (ISO 27001, SOC 2 Type 2).",
+        "description": "Platforma enterprise AI na AWS do automatyzacji procesów. Wielotenantowa, wysokoprzepustowa i gotowa na wymagania regulacyjne (ISO 27001, SOC 2 Type 2).",
         "link": "Zobacz wszystkie projekty →"
       },
       {
         "title": "Przeglądy architektury",
-        "description": "Krótka, konkretna analiza, która zmniejsza ryzyko: architektura AWS, LLM/RAG, bezpieczeństwo, skalowanie, koszty i plan dowiezienia.",
+        "description": "Krótka, konkretna analiza, która zmniejsza ryzyko: architektura AWS, LLM/RAG, bezpieczeństwo, skalowanie, koszty i plan realizacji.",
         "link": "Zacznijmy rozmowę →",
         "url": "/contact/"
       },
@@ -84,12 +84,12 @@
     "items": [
       {
         "question": "Kim jest Jacek Janczura?",
-        "answer": "Jacek Janczura to Architekt AI i CTO z Berlina. Jest współzałożycielem i CTO w Jaden Data, gdzie buduje AI‑native systemy do process intelligence i automatyzacji procesów w przedsiębiorstwach.",
+        "answer": "Jacek Janczura to Architekt AI, współzałożyciel Jaden Data GmbH i CTO, który buduje AI‑native systemy do process intelligence i automatyzacji procesów w przedsiębiorstwach.",
         "links": ["about"]
       },
       {
         "question": "Czym jest „process intelligence”?",
-        "answer": "Process intelligence to podejście, w którym zaczynamy od zrozumienia, jak realnie działa praca w firmie, a dopiero potem usprawniamy procesy dzięki AI, automatyzacji i decyzjom opartym o dane - AI ma wspierać proces, a nie go zastępować.",
+        "answer": "Process intelligence to podejście, w którym zaczynamy od zrozumienia, jak realnie działa organizacja pracy w firmie, a dopiero potem usprawniamy procesy dzięki AI, automatyzacji i decyzjom opartym o dane - AI ma wspierać proces, a nie go zastępować.",
         "links": ["about"]
       },
       {

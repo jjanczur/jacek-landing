@@ -6,7 +6,7 @@
   "hero": {
     "title": "KI-Architekt & CTO",
     "subtitle": "Aus komplexen Abläufen echte Wettbewerbsvorteile machen",
-    "tagline": "Mitgründer bei Jaden Data - Enterprise‑KI auf AWS (und verfügbar für Consulting)",
+    "tagline": "Mitgründer bei Jaden Data - Enterprise‑KI auf AWS (und verfügbar für KI‑Beratung)",
     "cta": {
       "primary": "Kontakt aufnehmen",
       "secondary": "Projekte ansehen"
@@ -84,7 +84,7 @@
     "items": [
       {
         "question": "Wer ist Jacek Janczura?",
-        "answer": "Jacek Janczura ist KI-Architekt & CTO mit Sitz in Berlin. Er ist Mitgründer und CTO bei Jaden Data und baut KI-native Systeme für Prozessintelligenz und Enterprise-Operations.",
+        "answer": "Jacek Janczura ist KI-Architekt & CTO. Er ist Mitgründer und CTO bei Jaden Data und baut KI-native Systeme für Prozessintelligenz und Enterprise-Operations.",
         "links": ["about"]
       },
       {
