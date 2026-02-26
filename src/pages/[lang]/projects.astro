@@ -11,6 +11,7 @@ import {
   Link as LinkIcon,
   ExternalLink,
   Github,
+  TrendingUp,
 } from 'lucide-astro';
 
 export async function getStaticPaths() {
@@ -42,6 +43,7 @@ interface ProjectItem {
   industries: string;
   tech: string;
   impact: string;
+  featured?: boolean;
   links?: ProjectLink[];
 }
 
@@ -91,7 +93,7 @@ const iconMap: Record<string, any> = {
     </div>
   </section>
 
-  <section class="projects-grid">
+  <section class="projects-section">
     <div class="container">
       <div class="projects-intro">
         <p>
@@ -101,69 +103,89 @@ const iconMap: Record<string, any> = {
         </p>
       </div>
 
-      {
-        t.projects.map(project => {
-          const Icon = iconMap[project.name];
-          return (
-            <article class="project-card">
-              <div class="project-header">
-                <div class="project-title-group">
-                  <h2 class="project-name">
-                    <span class="project-icon">
-                      {Icon && <Icon size={24} />}
-                    </span>
-                    {project.name}
-                  </h2>
-                  <div class="project-meta">
-                    <span class="project-period">{project.period}</span>
-                    <span class="project-role">{project.role ?? t.role}</span>
-                    <span class="project-industry">{project.industry}</span>
-                    <span class="project-company">{t.company}</span>
+      <div class="projects-list">
+        {
+          t.projects.map(project => {
+            const Icon = iconMap[project.name];
+            const isFeatured = (project as any).featured === true;
+            const techTags = project.tech.split(',').map(t => t.trim());
+            return (
+              <article class={`project-card ${isFeatured ? 'project-card--featured' : ''}`}>
+                {isFeatured && <div class="featured-badge">Flagship Product</div>}
+                <div class="project-header">
+                  <div class="project-title-group">
+                    <h2 class="project-name">
+                      <span class="project-icon">
+                        {Icon && <Icon size={24} />}
+                      </span>
+                      {project.name}
+                    </h2>
+                    <div class="project-meta">
+                      <span class="project-period">{project.period}</span>
+                      <span class="project-role">{project.role ?? t.role}</span>
+                      <span class="project-industry">{project.industry}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="project-content">
-                <p class="project-tagline">{project.tagline}</p>
-                {project.description.map(para => (
-                  <p>{para}</p>
-                ))}
-              </div>
-              <div class="project-details">
-                <div class="project-industries">
-                  <strong>{t.labels.industries}</strong> {project.industries}
-                </div>
-                <div class="project-tech">
-                  <strong>{t.labels.tech}</strong> {project.tech}
-                </div>
-                <div class="project-impact">
-                  <strong>{t.labels.impact}</strong> {project.impact}
-                </div>
-              </div>
-              {project.links && project.links.length > 0 && (
-                <div class="project-links">
-                  {project.links.map(link => (
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.type === 'website' && <ExternalLink size={16} />}
-                      {link.type === 'repository' && <Github size={16} />}
-                      {link.type === 'blog' && <ExternalLink size={16} />}
-                      {link.label}
-                    </a>
+
+                <div class="project-content">
+                  <p class="project-tagline">{project.tagline}</p>
+                  {project.description.map(para => (
+                    <p>{para}</p>
                   ))}
                 </div>
-              )}
-            </article>
-          );
-        })
-      }
+
+                <div class="project-impact-box">
+                  <div class="impact-icon">
+                    <TrendingUp size={18} />
+                  </div>
+                  <div class="impact-text">
+                    <strong>{t.labels.impact}</strong> {project.impact}
+                  </div>
+                </div>
+
+                <div class="project-details">
+                  <div class="project-tech-tags">
+                    <strong class="detail-label">{t.labels.tech}</strong>
+                    <div class="tech-pills">
+                      {techTags.map(tag => (
+                        <span class="tech-pill">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="project-industries-row">
+                    <strong class="detail-label">{t.labels.industries}</strong>
+                    <span>{project.industries}</span>
+                  </div>
+                </div>
+
+                {project.links && project.links.length > 0 && (
+                  <div class="project-links">
+                    {project.links.map(link => (
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.type === 'website' && <ExternalLink size={16} />}
+                        {link.type === 'repository' && <Github size={16} />}
+                        {link.type === 'blog' && <ExternalLink size={16} />}
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </article>
+            );
+          })
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* Hero */
   .projects-hero {
     padding: var(--space-8) 0;
     background: linear-gradient(
@@ -238,7 +260,8 @@ const iconMap: Record<string, any> = {
     margin-right: auto;
   }
 
-  .projects-grid {
+  /* Section */
+  .projects-section {
     padding: var(--space-8) 0;
     background: linear-gradient(
       180deg,
@@ -248,16 +271,54 @@ const iconMap: Record<string, any> = {
     );
   }
 
+  .projects-intro {
+    text-align: center;
+    padding: var(--space-4) 0 var(--space-6) 0;
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .projects-intro::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 1px;
+  }
+
+  .projects-intro p {
+    font-size: var(--font-size-lg);
+    color: var(--text);
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .projects-intro strong {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Project list */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+  }
+
+  /* Project Card */
   .project-card {
     background: linear-gradient(
       135deg,
       var(--bg) 0%,
       oklch(from var(--primary) l c h / 0.02) 100%
     );
-    border: 1px solid transparent;
+    border: 1px solid var(--border);
     border-radius: var(--radius-l);
-    padding: var(--space-6);
-    margin-bottom: var(--space-6);
+    padding: var(--space-6) var(--space-7);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -269,7 +330,7 @@ const iconMap: Record<string, any> = {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(
       90deg,
       var(--primary),
@@ -280,44 +341,58 @@ const iconMap: Record<string, any> = {
     transition: opacity 0.3s ease;
   }
 
-  .project-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      135deg,
-      oklch(from var(--primary) l c h / 0.05) 0%,
-      transparent 100%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
   .project-card:hover {
-    border-color: oklch(from var(--primary) l c h / 0.3);
+    border-color: oklch(from var(--primary) l c h / 0.25);
     box-shadow:
-      0 8px 24px oklch(from var(--primary) l c h / 0.15),
+      0 8px 24px oklch(from var(--primary) l c h / 0.1),
       var(--shadow-2);
-    transform: translateY(-4px);
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.05) 100%
-    );
+    transform: translateY(-2px);
   }
 
   .project-card:hover::before {
     opacity: 1;
   }
 
-  .project-card:hover::after {
-    opacity: 1;
+  /* Featured card */
+  .project-card--featured {
+    border-color: oklch(from var(--primary) l c h / 0.2);
+    background: linear-gradient(
+      135deg,
+      var(--bg) 0%,
+      oklch(from var(--primary) l c h / 0.04) 50%,
+      oklch(from var(--accent) l c h / 0.02) 100%
+    );
+    box-shadow: 0 4px 16px oklch(from var(--primary) l c h / 0.08);
   }
 
+  .project-card--featured::before {
+    opacity: 1;
+    height: 4px;
+  }
+
+  .project-card--featured:hover {
+    box-shadow:
+      0 12px 32px oklch(from var(--primary) l c h / 0.15),
+      var(--shadow-3);
+  }
+
+  .featured-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-s);
+    margin-bottom: var(--space-3);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
   .project-header {
     margin-bottom: var(--space-4);
   }
@@ -325,7 +400,7 @@ const iconMap: Record<string, any> = {
   .project-title-group {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .project-name {
@@ -341,116 +416,73 @@ const iconMap: Record<string, any> = {
     z-index: 1;
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .project-icon {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-m);
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.1) 0%,
+      oklch(from var(--accent) l c h / 0.05) 100%
+    );
     color: var(--primary);
     transition: all 0.3s ease;
     flex-shrink: 0;
   }
 
   .project-card:hover .project-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1);
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.15) 0%,
+      oklch(from var(--accent) l c h / 0.1) 100%
+    );
     color: var(--accent);
   }
 
   .project-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-3);
+    gap: var(--space-2);
     align-items: center;
   }
 
-  .project-period {
+  .project-period,
+  .project-industry {
     font-size: var(--font-size-sm);
     color: var(--text);
-    opacity: 0.8;
+    opacity: 0.75;
     font-weight: var(--font-weight-normal);
-    padding: var(--space-1) var(--space-2);
-    background: linear-gradient(
-      135deg,
-      var(--muted) 0%,
-      oklch(from var(--primary) l c h / 0.03) 100%
-    );
+    padding: 3px var(--space-2);
+    background: var(--muted);
     border-radius: var(--radius-s);
-    border: 1px solid transparent;
   }
 
   .project-role {
     font-size: var(--font-size-sm);
     color: white;
     font-weight: var(--font-weight-bold);
-    padding: var(--space-1) var(--space-2);
+    padding: 3px var(--space-2);
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    border: 1px solid transparent;
     border-radius: var(--radius-s);
-    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
   }
 
-  .project-industry {
-    font-size: var(--font-size-sm);
-    color: var(--text);
-    opacity: 0.8;
-    font-weight: var(--font-weight-normal);
-    padding: var(--space-1) var(--space-2);
-    background: linear-gradient(
-      135deg,
-      var(--muted) 0%,
-      oklch(from var(--primary) l c h / 0.05) 100%
-    );
-    border-radius: var(--radius-s);
-    border: 1px solid transparent;
-  }
-
-  .project-company {
-    font-size: var(--font-size-sm);
-    color: var(--text);
-    opacity: 0.7;
-    font-weight: var(--font-weight-normal);
-    padding: var(--space-1) var(--space-2);
-    background: linear-gradient(
-      135deg,
-      var(--muted) 0%,
-      oklch(from var(--primary) l c h / 0.03) 100%
-    );
-    border-radius: var(--radius-s);
-    border: 1px solid transparent;
-    font-style: italic;
-  }
-
-  .projects-intro {
-    text-align: center;
-    padding: var(--space-4) 0 var(--space-6) 0;
-    margin-bottom: var(--space-4);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .projects-intro p {
-    font-size: var(--font-size-base);
-    color: var(--text);
-    opacity: 0.9;
-    margin: 0;
-  }
-
-  .projects-intro strong {
-    color: var(--primary);
-    font-weight: var(--font-weight-bold);
-  }
-
+  /* Content */
   .project-tagline {
     font-size: var(--font-size-lg);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text);
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--space-3);
     font-style: italic;
     position: relative;
     z-index: 1;
+    opacity: 0.85;
   }
 
   .project-content {
@@ -469,98 +501,122 @@ const iconMap: Record<string, any> = {
     margin-bottom: 0;
   }
 
-  .project-details {
+  /* Impact callout */
+  .project-impact-box {
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     gap: var(--space-3);
-    margin-bottom: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--border);
+    padding: var(--space-4);
+    margin-bottom: var(--space-5);
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.06) 0%,
+      oklch(from var(--accent) l c h / 0.03) 100%
+    );
+    border-left: 3px solid var(--primary);
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
     position: relative;
     z-index: 1;
   }
 
-  .project-details::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      var(--accent),
-      var(--primary),
-      transparent
-    );
-    opacity: 0.5;
+  .impact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    flex-shrink: 0;
+    margin-top: 1px;
   }
 
-  .project-industries,
-  .project-tech,
-  .project-impact {
+  .impact-text {
     font-size: var(--font-size-sm);
     line-height: 1.6;
+    color: var(--text);
   }
 
-  .project-industries {
-    padding-bottom: var(--space-2);
-    border-bottom: 1px solid var(--border);
-    margin-bottom: var(--space-2);
-    position: relative;
-  }
-
-  .project-industries::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      oklch(from var(--primary) l c h / 0.3),
-      transparent
-    );
-  }
-
-  .project-industries strong,
-  .project-tech strong,
-  .project-impact strong {
+  .impact-text strong {
     color: var(--primary);
     font-weight: var(--font-weight-bold);
-    margin-right: var(--space-2);
+    display: block;
+    margin-bottom: 2px;
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
+  /* Details section */
+  .project-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    position: relative;
+    z-index: 1;
+  }
+
+  .detail-label {
+    display: block;
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Tech pills */
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tech-pill {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.08) 0%,
+      oklch(from var(--accent) l c h / 0.04) 100%
+    );
+    border: 1px solid oklch(from var(--primary) l c h / 0.15);
+    color: var(--text);
+    font-weight: var(--font-weight-normal);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .tech-pill:hover {
+    background: linear-gradient(
+      135deg,
+      oklch(from var(--primary) l c h / 0.15) 0%,
+      oklch(from var(--accent) l c h / 0.08) 100%
+    );
+    border-color: oklch(from var(--primary) l c h / 0.3);
+  }
+
+  .project-industries-row {
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.8;
+  }
+
+  /* Links */
   .project-links {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
-    padding-top: var(--space-3);
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
     border-top: 1px solid var(--border);
     position: relative;
     z-index: 1;
-  }
-
-  .project-links::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      var(--accent),
-      var(--primary),
-      transparent
-    );
-    opacity: 0.5;
   }
 
   .project-links a {
@@ -571,15 +627,11 @@ const iconMap: Record<string, any> = {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-sm);
     text-decoration: none;
-    padding: var(--space-2) var(--space-3);
-    border: 1px solid var(--border);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid oklch(from var(--primary) l c h / 0.25);
     border-radius: var(--radius-m);
     transition: all 0.3s ease;
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.02) 100%
-    );
+    background: var(--bg);
     position: relative;
     overflow: hidden;
   }
@@ -622,6 +674,7 @@ const iconMap: Record<string, any> = {
     flex-shrink: 0;
   }
 
+  /* Responsive */
   @media (max-width: 600px) {
     .project-card {
       padding: var(--space-4);
@@ -631,14 +684,19 @@ const iconMap: Record<string, any> = {
       font-size: var(--font-size-xl);
     }
 
+    .project-icon {
+      width: 32px;
+      height: 32px;
+    }
+
     .project-meta {
       flex-direction: column;
       align-items: flex-start;
       gap: var(--space-2);
     }
 
-    .project-details {
-      gap: var(--space-2);
+    .project-impact-box {
+      padding: var(--space-3);
     }
 
     .project-links {
