@@ -19,9 +19,9 @@ This knowledge base consolidates information from multiple CV versions and perso
 
 ## Professional Summary
 
-Experienced AI engineer, Cloud Architect, and CTO with a passion for distributed systems, real-time data processing, and serverless architectures. Co-founder and lead architect at Jaden Data and JadenX GmbH, where he designed and deployed scalable AI platforms, integrating models from AWS, Azure, and OpenAI. Specialized in microservices, Retrieval-Augmented Generation (RAG) services, and optimizing cost and performance for high-throughput systems.
+Experienced AI engineer, Cloud Architect, Fullstack Developer, and CTO with a passion for distributed systems, real-time data processing, and serverless architectures. Co-founder and lead architect at Jaden Data GmbH (sibling company: JadenX GmbH), where he designed and deployed scalable AI platforms integrating models from AWS, Azure, and OpenAI. Specialized in microservices, Retrieval-Augmented Generation (RAG) services, and optimizing cost and performance for high-throughput systems.
 
-A strong proponent of SOLID principles and TDD, led teams, automated processes for industries like insurance, banking, and automotive, and ensured compliance with ISO27001 and SOC2. Skilled in bridging technical and business needs to deliver innovative, robust solutions.
+A strong proponent of SOLID principles and TDD. Led teams and automated processes for industries including insurance, banking, and automotive while ensuring compliance with ISO 27001 and SOC 2. Skilled in bridging technical and business needs to deliver innovative, robust solutions.
 
 ### Philosophy: Process Intelligence
 
@@ -42,33 +42,43 @@ Every solution starts with understanding how work actually gets done. Technical 
 - Led the company through ISO27001 and SOC2 security, compliance and audits, achieving certifications within a tight 3-month deadline
 
 **Technical Leadership:**
+- Led the architectural redesign of a large, entangled frontend monolith into a microfrontends architecture, improving team autonomy, deployment independence, and codebase maintainability
+- Designed and implemented multiple frontend pages and features using React, Next.js, TypeScript, and Supabase, driving projects from initial concept to production
 - Architected and led the implementation of an advanced, multi-tenant AI platform integrating with AI/ML models from AWS Bedrock, AWS SageMaker, Azure ML Studio, OpenAI, and Mistral, delivering seamless connectivity and enabling cross-platform collaboration
 - Designed and deployed an event-driven microservices architecture for AI process automation, leveraging AWS technologies such as Fargate (ECS, ECR), Lambda, SNS, SQS, and CloudWatch, alongside EC2 and S3 for storage and computation
-- Auditing AWS infrastructure and made sure it follows AWS Well-Architected Framework
-- Optimized for cost-efficiency and serverless autoscaling, the platform successfully managed over 1,000 concurrent connections and processed thousands of requests per second
+- Audited AWS infrastructure and ensured alignment with the AWS Well-Architected Framework
+- Optimized the platform for cost-efficiency and serverless autoscaling, achieving over 1,000 concurrent connections and thousands of requests per second
 - Pioneered the development of a state-of-the-art Retrieval-Augmented Generation (RAG) service, automating the creation of vector databases from client files using Pinecone, pgvector, and Milvus for advanced document retrieval and contextual data augmentation
 - Designed and implemented a robust AI process and RAG pipeline testing framework (Testbed), enabling quantitative and qualitative assessment of AI pipelines through deterministic test cases
 - Developed "Prompt Wizard," a sophisticated tool that automates the optimization of LLM prompts, significantly enhancing prompt engineering workflows for enterprise users
 - Delivered custom AI solutions across insurance, legal, automotive, and property industries
 
 **Management & Strategy:**
-- Team Management: Oversaw multiple development teams, ensuring seamless collaboration and fostering an environment of innovation and excellence
-- Architecture Design: Spearheaded the design and implementation of sophisticated architectures tailored to client needs
-- Quality Assurance: Implemented stringent quality control measures, ensuring all delivered solutions met and exceeded industry standards
-- Strategic Leadership: Formulated and executed technology strategies that align with the company's objectives
-- Innovation and R&D: Cultivated an atmosphere of constant learning and innovation
-- Stakeholder Communication: Fostered strong relationships with clients, shareholders, and partners
-- Resource Allocation & Budgeting: Managed the company's technical budget, ensuring optimized resource allocation
-- Risk Management: Proactively identified, evaluated, and mitigated risks associated with technical operations
-- Mentorship & Training: Initiated mentorship programs, continuously uplifting the skills and knowledge of team members
+- Managed multiple development teams across frontend, backend, and AI workstreams, coordinating cross-team deliverables and sprint planning
+- Designed and delivered client-specific system architectures, translating business requirements into technical solutions for 50+ organizations
+- Established code review standards, CI/CD quality gates, and testing requirements that ensured production-grade deliverables across all client projects
+- Defined and executed the company's technology strategy and product roadmap, aligning engineering priorities with business goals and revenue targets
+- Drove R&D initiatives including RAG pipeline testing (Testbed), Prompt Wizard, and multi-model AI orchestration
+- Managed stakeholder communication across clients, shareholders, and partners, including technical pre-sales, project kick-offs, and executive reporting
+- Owned the company's technical budget, making cost-optimization decisions across AWS infrastructure, third-party APIs, and team resourcing
+- Identified and mitigated technical risks across client projects, including security audits, infrastructure failover planning, and compliance readiness
+- Mentored junior and mid-level engineers through structured code reviews, pair programming, and internal knowledge-sharing sessions
+- Onboarded engineering teams with secure usage of AI-assisted development tools (Cursor, Claude Code, Antigravity), establishing guidelines for responsible AI integration in the development workflow
+- Managed the full Atlassian stack (Jira, Bitbucket, Confluence) for agile project management, sprint planning, code reviews, and internal knowledge documentation
 
 **Key Projects at Jaden Data:**
 
 #### entAIngine (2022 - Present)
-CTO of a SaaS platform for AI process automation. Transforms mission-critical back office operations through intelligent automation, knowledge-aware chatbots, and sophisticated document workflows. Built for businesses that demand the highest standards of security, compliance, and performance-ISO 27001 and SOC2 Type 2 certified with complete data sovereignty. Serving 50+ organizations with 99.9% uptime.
+CTO of a SaaS platform for AI process automation. Transforms mission-critical back office operations through intelligent automation, knowledge-aware chatbots, and sophisticated document workflows. Built for businesses that demand the highest standards of security, compliance, and performance—ISO 27001 and SOC2 Type 2 certified with complete data sovereignty. Serving 50+ organizations with 99.9% uptime.
 
+**Website:** https://www.entaingine.com/
 **Industries:** Production & Manufacturing, Pharmaceutical, Financial Services, Enterprise Operations
 **Tech:** AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC
+
+**Azure AI Integration:**
+- **Azure AI Foundry:** Deploy and manage LLM models and Azure-native AI services for enterprise customers
+- **Multi-Platform AI Orchestration:** Seamlessly integrate Azure AI models alongside OpenAI, AWS Bedrock, and Mistral services
+- **Enterprise AI Governance:** Implement secure, compliant AI deployment pipelines with Azure's enterprise-grade security and compliance frameworks
 
 #### entAIgent (2023)
 No-Code AI Agent Platform. Empowers operations teams, customer service, and HR departments to create sophisticated multi-agent AI systems without technical expertise. Through intuitive drag-and-drop design, teams build coordinated AI agents specialized for specific roles.
@@ -78,21 +88,48 @@ No-Code AI Agent Platform. Empowers operations teams, customer service, and HR d
 #### Flowhive AI (2022-2023)
 All-in-One AI Workspace. Unified access to leading AI models (GPT, Claude, Gemini, Llama, Mistral) in a single collaborative workspace. Deep research capabilities including internet-scanning AI agents, agentic workflows, and knowledge management.
 
+**Website:** https://www.flowhive.ai/
 **Tech:** Multi-Model Access, Side-by-Side Comparison, AI Agents, Knowledge Management, Team Collaboration
 
 #### Flowhive VC (2023)
 AI for Venture Capital. Portfolio management meets process intelligence. Pre-configured agents for company due diligence and competitive analysis, portfolio intelligence tracking, deal flow automation, and market mapping.
 
+**Website:** https://www.flowhive.vc/
 **Tech:** AI Agents, Due Diligence Automation, Portfolio Intelligence, Market Mapping, Deal Flow Systems
 
 #### Valuation Engine (2022)
 AI-Powered Property Valuation. Specialized AI platform for real estate appraisers and valuers. Save 2+ hours per appraisal with AI-driven research. Generates appraisal-ready reports in 2-3 minutes per property.
 
+**Website:** https://www.valuationengine.ai/
 **Tech:** Real Estate AI, Location Analysis, Market Intelligence, Report Generation, Multi-Source Data Integration
 
---- Other projects under Jaden Data ---
+#### AI Transformation Consulting & Training (2024-2025) <!-- Note: Service offered through Jaden Data -->
+**Role: AI Transformation Lead & Trainer**
 
- #### RP-Matcher: ML Product Matching System for RP Group (2025-2026) <!-- Note: Project done as part of Jaden Data-->
+**Service Overview:**
+Jaden Data service providing end-to-end AI transformation for enterprise engineering teams. Combines hands-on training with organizational setup of AI development infrastructure, security standards, and best practices.
+
+**Key Client: Bosch** (+ other enterprise clients)
+- Trained engineering teams on **prompt engineering** techniques and responsible AI usage
+- Introduced and onboarded teams to **AI-assisted development tools** including Cursor, Claude Code, and Copilot
+- Established **security standards and best practices** for enterprise AI tool adoption
+- Set up **MCP (Model Context Protocol) best practices and custom skills** in internal Claude Code and Cursor instances
+- Designed organizational guidelines for responsible and secure AI integration in development workflows
+
+**Regular Training Program:**
+- Conducts recurring workshops and trainings on **prompt engineering** for software engineers
+- Teaches engineers how to effectively use **AI IDEs** (Cursor, Claude Code) with proper context management
+- Focuses on **responsible AI tool usage**, security awareness, and maximizing developer productivity
+- Covers best practices for context engineering, custom instructions, and AI-assisted code review
+
+**Impact:**
+- Accelerated AI adoption across multiple enterprise engineering organizations
+- Enabled engineering teams to integrate AI tools securely into their existing development workflows
+- Established repeatable frameworks for enterprise AI tool governance and training
+
+**Tech:** Cursor, Claude Code, MCP, Copilot, Prompt Engineering, AI Security Standards, Enterprise AI Governance
+
+#### RP-Matcher: ML Product Matching System for RP Group (2025-2026) <!-- Note: Project done as part of Jaden Data-->
 **Role: ML Engineer & Data Scientist | Project Lead**
 
 **Client:** RP Group (Emergency Lighting Solutions)
@@ -246,6 +283,27 @@ Technical project lead blockchain for supply chain management using Ethereum and
 
 **Tech:** Ethereum, Hyperledger Fabric, Java, Supply Chain, Package Tracking
 
+#### iExec Azure Deployment Project <!-- Note: Project done as part of Jaden Data-->
+**Role: Team Lead & Azure Solutions Architect**
+**Timeframe: 2023-2024**
+**Client: iExec (French Blockchain Company)**
+
+Led the technical team that prepared Azure offers for end-to-end fullstack deployment of iExec's distributed network infrastructure. This project involved designing and implementing comprehensive Azure marketplace solutions that enable customers to deploy iExec's decentralized cloud computing platform through Azure's commercial marketplace.
+
+**Key Contributions:**
+- **Azure Marketplace Solutions:** Designed and led implementation of end-to-end deployment offerings for iExec's distributed computing network on Azure infrastructure
+- **Fullstack Architecture:** Developed complete deployment pipelines covering infrastructure provisioning, network configuration, and application deployment
+- **Team Leadership:** Managed cross-functional team responsible for Azure integration, marketplace publishing, and customer deployment support
+- **Technical Implementation:** Built automated deployment scripts, ARM templates, and CI/CD pipelines for seamless customer onboarding
+- **Marketplace Integration:** Ensured compliance with Azure marketplace requirements and standards for enterprise-grade offerings
+
+**Business Impact:**
+- Enabled iExec customers to deploy distributed computing infrastructure directly through Azure marketplace
+- Streamlined deployment process for enterprise customers requiring decentralized computing capabilities
+- Established Azure as a preferred deployment platform for iExec's blockchain-based cloud computing solutions
+
+**Tech Stack:** Azure Resource Manager (ARM), Azure Marketplace, Azure Kubernetes Service (AKS), Azure Functions, Azure Storage, Azure CLI, GitHub Actions, Infrastructure as Code
+
 ---
 
 ### Software Engineer | idealo internet GmbH
@@ -262,7 +320,7 @@ idealo internet GmbH (subsidiary of Axel Springer SE) is Germany's most popular 
 - **Education of engineers** in team-local and company-wide context
 - **Close cooperation with UX/UI designers**
 - **Creation, executing and analysis of A/B tests**
-- **Analysis of customer inside lounges**
+- **Analysis of customer insight lounges**
 
 **Major Achievements:**
 - **Internationalization of SSO Systems:** Significantly contributed to the internationalization of idealo's Single Sign-On (SSO) systems, which led to an **increase of more than 300% in customer acquisition**
@@ -295,13 +353,13 @@ idealo internet GmbH (subsidiary of Axel Springer SE) is Germany's most popular 
 ### Blockchain Engineer | TU Berlin - Deutsche Telekom Innovation Laboratories (T-Labs)
 **Berlin, Germany | May 2019 - April 2020**
 
-- Development of the system architecture for blockchain-based package tracking
-- Implementation and deployment of a distributed Hyperledger blockchain network
-- Implementation of the chaincode (smart contracts) for the package tracking system
-- Dockerization of blockchain network and multiple microservices
-- Implementation of the secured REST API for interaction with Hyperledger fabric network
-- Implementation of the proxy micro-service to allow mobile application and ERP system interaction with the blockchain
-- Implementation of an authentication micro-service for blockchain, mobile app, and other services
+- Designed the system architecture for a blockchain-based package tracking system
+- Deployed a distributed Hyperledger Fabric blockchain network across multiple nodes
+- Developed chaincode (smart contracts) for package tracking, enabling immutable shipment records
+- Dockerized the blockchain network and all supporting microservices for reproducible deployments
+- Built a secured REST API for interaction with the Hyperledger Fabric network
+- Developed a proxy microservice enabling mobile application and ERP system integration with the blockchain
+- Implemented an authentication microservice handling identity management across blockchain, mobile app, and API services
 
 **Technologies:** Hyperledger Composer, Hyperledger Fabric, Node.js, JavaScript (ES6), Express.js, Docker/Docker-Compose, JWT, PostgreSQL
 
@@ -323,7 +381,7 @@ idealo internet GmbH (subsidiary of Axel Springer SE) is Germany's most popular 
 - Worked directly with ING Bank and ING Group on cutting-edge analytics solutions
 
 **Major Project: "Model Bank" - Real-Time Behavioral Marketing Platform**
-e
+
 **Project Significance:**
 One of the **first real-time user behavior analysis implementations in the world** for the banking sector.
 
@@ -441,19 +499,31 @@ Extensive blockchain experience across multiple domains, from EU-funded research
 - **Multi-Model Integration (OpenAI, Azure, Bedrock, Mistral)**
 - **AI Pipeline Design & Testing**
 - **LLM-Assisted Data Extraction & Processing**
+- **AI Development Tools:** Cursor, Claude Code, Antigravity, Copilot
+- **AI Tools Governance:** Secure team onboarding, responsible AI usage guidelines, enterprise AI adoption strategies, MCP best practices and custom skills setup
+- **AI Training & Transformation:** Prompt engineering workshops, AI IDE training (Cursor, Claude Code), context engineering, enterprise AI adoption programs
+- **GenAI Code Generation:** Copilot for code assistance, GitHub Actions for CI/CD automation, Copilot integration in development workflows
 
 ### Cloud & Infrastructure
 - **AWS:** Lambda, ECS/Fargate, ECR, Bedrock, SageMaker, SNS, SQS, CloudWatch, EC2, S3, API Gateway, Beanstalk, IAM, CDK
-- **Azure:** Kubernetes, EntraID, Azure Functions, Storage Accounts, Azure ML Studio
+- **Azure:** Kubernetes (AKS), EntraID, Azure Functions, Storage Accounts, Azure ML Studio, Azure AI Foundry, Azure Marketplace, ARM Templates, Azure CLI
 - **Event-Driven Microservices Architecture**
 - **Serverless Architecture**
-- **Infrastructure as Code (IaC) using AWS CDK**
+- **Infrastructure as Code (IaC) using AWS CDK and Azure ARM Templates**
 - **AWS Well-Architected Framework**
+- **Azure Marketplace Solutions:** Design and deployment of enterprise-grade marketplace offerings for distributed systems
 
 ### Backend Development
 - **Languages:** Java, Kotlin, Python, JavaScript (ES6)
 - **Frameworks:** Spring (Boot, Security, Cloud), Hibernate, FastAPI, Express.js
 - **APIs:** REST, WebSockets, gRPC
+
+### Frontend Development
+- **Languages:** TypeScript, JavaScript (ES6+)
+- **Frameworks:** React, Next.js
+- **Backend-as-a-Service:** Supabase (PostgreSQL, Auth, Realtime, Edge Functions)
+- **Architecture:** Microfrontends, Component-Based Design, Module Federation
+- **Capabilities:** End-to-end feature implementation, project initialization, UI/UX collaboration
 
 ### Blockchain & Distributed Ledger Technology
 - **Platforms:** Ethereum (Solidity), Quorum, Hyperledger Fabric, Hyperledger Composer, IOTA
@@ -472,6 +542,11 @@ Extensive blockchain experience across multiple domains, from EU-funded research
 - **Databases (SQL):** PostgreSQL, MySQL, MariaDB, H2
 - **Databases (NoSQL):** MongoDB, Cassandra
 - **Event-Driven Architectures:** Thousands of events per second processing
+
+### Project Management & Collaboration
+- **Atlassian Stack:** Jira, Bitbucket, Confluence
+- **Agile Methodologies:** Scrum, Sprint Planning, Backlog Management
+- **Code Review & Documentation:** Bitbucket PRs, Confluence knowledge bases
 
 ### DevOps & Testing
 - **Containers:** Docker, Kubernetes
@@ -542,7 +617,7 @@ Awarded 4 years in the row for exceptional academic performance in computer scie
 - International Windsurfing Instructor
 - Avid snowboarder
 
-These experiences build essential skills: **risk management, clear instruction and teaching, calm under pressure, and disciplined preparation**-all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.
+These experiences build essential skills: **risk management, clear instruction and teaching, calm under pressure, and disciplined preparation**—all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.
 
 ### Transferable Skills from Activities
 - Risk assessment and management

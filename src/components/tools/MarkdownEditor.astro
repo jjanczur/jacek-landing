@@ -75,49 +75,11 @@
       <button id="pdf-settings-close" class="modal-close">&times;</button>
     </div>
     <div class="modal-body">
-      <!-- Preset Selection -->
-      <div class="preset-section">
-        <label class="section-label">Export Preset:</label>
-        <div class="preset-cards">
-          <button
-            type="button"
-            class="preset-card"
-            data-preset="quick"
-            title="Low quality, 1x scale, JPEG - Best for drafts and quick sharing"
-          >
-            <span class="preset-icon">&#9889;</span>
-            <span class="preset-name">Quick Export</span>
-            <span class="preset-desc">Smaller file</span>
-          </button>
-          <button
-            type="button"
-            class="preset-card"
-            data-preset="balanced"
-            title="Medium quality, 2x scale, JPEG - Good balance of quality and size"
-          >
-            <span class="preset-icon">&#9878;</span>
-            <span class="preset-name">Balanced</span>
-            <span class="preset-desc">Recommended</span>
-          </button>
-          <button
-            type="button"
-            class="preset-card"
-            data-preset="high"
-            title="High quality, 3x scale, PNG - Best for printing and archiving"
-          >
-            <span class="preset-icon">&#9733;</span>
-            <span class="preset-name">High Quality</span>
-            <span class="preset-desc">Larger file</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Page Settings (always visible) -->
       <div class="setting-group">
         <label for="pdf-format">Page Format:</label>
         <select id="pdf-format" class="pdf-modal-select">
-          <option value="a4">A4</option>
-          <option value="a3">A3</option>
+          <option value="A4">A4</option>
+          <option value="A3">A3</option>
           <option value="letter">Letter</option>
           <option value="legal">Legal</option>
         </select>
@@ -131,60 +93,17 @@
         </select>
       </div>
 
-      <!-- Advanced Settings (collapsible) -->
-      <details id="advanced-settings" class="advanced-settings">
-        <summary class="advanced-toggle">
-          <span>Advanced Settings</span>
-          <span class="toggle-icon">&#9662;</span>
-        </summary>
-        <div class="advanced-content">
-          <div class="setting-group">
-            <label for="pdf-margin">Margin (mm):</label>
-            <input type="number" id="pdf-margin" min="0" max="50" value="15" />
-          </div>
+      <div class="setting-group">
+        <label for="pdf-margin">Margin (mm):</label>
+        <input type="number" id="pdf-margin" min="0" max="50" value="15" />
+      </div>
 
-          <div class="setting-group">
-            <label for="pdf-quality">Image Quality:</label>
-            <select id="pdf-quality" class="pdf-modal-select">
-              <option value="0.7">Low (0.7)</option>
-              <option value="0.85">Medium (0.85)</option>
-              <option value="0.98">High (0.98)</option>
-            </select>
-          </div>
-
-          <div class="setting-group">
-            <label for="pdf-scale">Scale Factor:</label>
-            <select id="pdf-scale" class="pdf-modal-select">
-              <option value="1">1x</option>
-              <option value="2">2x</option>
-              <option value="3">3x</option>
-            </select>
-          </div>
-
-          <div class="setting-group">
-            <label class="checkbox-label">
-              <input type="checkbox" id="pdf-links-enabled" checked />
-              Enable hyperlinks
-            </label>
-          </div>
-
-          <div class="setting-group">
-            <label class="checkbox-label">
-              <input type="checkbox" id="pdf-compression" checked />
-              Enable compression
-            </label>
-          </div>
-
-          <div class="setting-group">
-            <label for="pdf-image-format">Image Format:</label>
-            <select id="pdf-image-format" class="pdf-modal-select">
-              <option value="jpeg">JPEG (Smaller)</option>
-              <option value="png">PNG (Better quality)</option>
-              <option value="webp">WebP (Modern)</option>
-            </select>
-          </div>
-        </div>
-      </details>
+      <div class="setting-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="pdf-links-enabled" checked />
+          Enable hyperlinks
+        </label>
+      </div>
     </div>
     <div class="modal-footer">
       <button id="pdf-settings-save" class="save-button">Save Settings</button>
@@ -197,7 +116,6 @@
 
 <script>
   let marked: any = null;
-  let html2pdf: any = null;
 
   // Load marked dynamically with basic functionality
   async function loadMarked() {
@@ -214,16 +132,6 @@
     return marked;
   }
 
-  // Load html2pdf dynamically
-  async function loadHtml2Pdf() {
-    if (!html2pdf) {
-      const html2pdfModule = await import('html2pdf.js');
-      // html2pdf.js exports a default function
-      html2pdf = html2pdfModule.default || html2pdfModule;
-    }
-    return html2pdf;
-  }
-
   function initMarkdownEditor() {
     const input = document.getElementById(
       'markdown-input',
@@ -237,12 +145,6 @@
     const pdfSettingsClose = document.getElementById('pdf-settings-close');
     const pdfSettingsSave = document.getElementById('pdf-settings-save');
     const pdfSettingsReset = document.getElementById('pdf-settings-reset');
-    const pdfCompressionSelect = document.getElementById(
-      'pdf-compression',
-    ) as HTMLSelectElement;
-    const pdfImageFormatSelect = document.getElementById(
-      'pdf-image-format',
-    ) as HTMLSelectElement;
     const lineNumbersToggle = document.getElementById(
       'markdown-line-numbers',
     ) as HTMLInputElement;
@@ -256,23 +158,20 @@
       bindLineNumberScroll(input, editorLineNumbers);
     }
 
-    // PDF settings optimized for smaller file sizes and A4 fit
+    // PDF settings
     let pdfSettings = {
-      format: 'a4',
+      format: 'A4',
       orientation: 'portrait',
-      margin: 15, // Smaller margins for more content per page
-      quality: 0.7, // Lower quality for smaller files
-      scale: 1, // Lower scale for smaller files
+      margin: 15,
       enableLinks: true,
-      compression: true, // Enable compression
-      imageFormat: 'jpeg', // JPEG is smaller than PNG
     };
 
     // Load PDF settings from localStorage
     const savedSettings = localStorage.getItem('markdown-pdf-settings');
     if (savedSettings) {
       try {
-        pdfSettings = { ...pdfSettings, ...JSON.parse(savedSettings) };
+        const saved = JSON.parse(savedSettings) as Partial<typeof pdfSettings>;
+        pdfSettings = { ...pdfSettings, ...saved };
       } catch {
         // Ignore localStorage errors
       }
@@ -349,7 +248,6 @@
     function openPdfSettingsModal() {
       if (!pdfSettingsModal) return;
 
-      // Populate form with current settings
       const formatSelect = document.getElementById(
         'pdf-format',
       ) as HTMLSelectElement;
@@ -359,12 +257,6 @@
       const marginInput = document.getElementById(
         'pdf-margin',
       ) as HTMLInputElement;
-      const qualitySelect = document.getElementById(
-        'pdf-quality',
-      ) as HTMLSelectElement;
-      const scaleSelect = document.getElementById(
-        'pdf-scale',
-      ) as HTMLSelectElement;
       const linksCheckbox = document.getElementById(
         'pdf-links-enabled',
       ) as HTMLInputElement;
@@ -372,13 +264,7 @@
       if (formatSelect) formatSelect.value = pdfSettings.format;
       if (orientationSelect) orientationSelect.value = pdfSettings.orientation;
       if (marginInput) marginInput.value = pdfSettings.margin.toString();
-      if (qualitySelect) qualitySelect.value = pdfSettings.quality.toString();
-      if (scaleSelect) scaleSelect.value = pdfSettings.scale.toString();
       if (linksCheckbox) linksCheckbox.checked = pdfSettings.enableLinks;
-      if (pdfCompressionSelect)
-        pdfCompressionSelect.value = pdfSettings.compression.toString();
-      if (pdfImageFormatSelect)
-        pdfImageFormatSelect.value = pdfSettings.imageFormat;
 
       pdfSettingsModal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
@@ -390,50 +276,6 @@
       document.body.style.overflow = '';
     }
 
-    // Preset definitions
-    const presets = {
-      quick: { quality: 0.7, scale: 1, imageFormat: 'jpeg', margin: 15 },
-      balanced: { quality: 0.85, scale: 2, imageFormat: 'jpeg', margin: 15 },
-      high: { quality: 0.98, scale: 3, imageFormat: 'png', margin: 15 },
-    };
-
-    function applyPreset(presetName: keyof typeof presets) {
-      const preset = presets[presetName];
-      if (!preset) return;
-
-      const qualitySelect = document.getElementById(
-        'pdf-quality',
-      ) as HTMLSelectElement;
-      const scaleSelect = document.getElementById(
-        'pdf-scale',
-      ) as HTMLSelectElement;
-      const marginInput = document.getElementById(
-        'pdf-margin',
-      ) as HTMLInputElement;
-
-      if (qualitySelect) qualitySelect.value = preset.quality.toString();
-      if (scaleSelect) scaleSelect.value = preset.scale.toString();
-      if (pdfImageFormatSelect) pdfImageFormatSelect.value = preset.imageFormat;
-      if (marginInput) marginInput.value = preset.margin.toString();
-
-      // Update active state
-      document.querySelectorAll('.preset-card').forEach(card => {
-        card.classList.remove('active');
-        if ((card as HTMLElement).dataset.preset === presetName) {
-          card.classList.add('active');
-        }
-      });
-    }
-
-    // Setup preset card click handlers
-    document.querySelectorAll('.preset-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const presetName = (card as HTMLElement).dataset
-          .preset as keyof typeof presets;
-        applyPreset(presetName);
-      });
-    });
-
     function savePdfSettings() {
       const formatSelect = document.getElementById(
         'pdf-format',
@@ -444,28 +286,17 @@
       const marginInput = document.getElementById(
         'pdf-margin',
       ) as HTMLInputElement;
-      const qualitySelect = document.getElementById(
-        'pdf-quality',
-      ) as HTMLSelectElement;
-      const scaleSelect = document.getElementById(
-        'pdf-scale',
-      ) as HTMLSelectElement;
       const linksCheckbox = document.getElementById(
         'pdf-links-enabled',
       ) as HTMLInputElement;
 
       pdfSettings = {
-        format: formatSelect?.value || 'a4',
+        format: formatSelect?.value || 'A4',
         orientation: orientationSelect?.value || 'portrait',
         margin: parseInt(marginInput?.value || '15'),
-        quality: parseFloat(qualitySelect?.value || '0.7'),
-        scale: parseInt(scaleSelect?.value || '1'),
         enableLinks: linksCheckbox?.checked ?? true,
-        compression: pdfCompressionSelect?.value === 'true',
-        imageFormat: pdfImageFormatSelect?.value || 'jpeg',
       };
 
-      // Save to localStorage
       try {
         localStorage.setItem(
           'markdown-pdf-settings',
@@ -480,17 +311,12 @@
 
     function resetPdfSettings() {
       pdfSettings = {
-        format: 'a4',
+        format: 'A4',
         orientation: 'portrait',
-        margin: 15, // Optimized for smaller files
-        quality: 0.7, // Lower quality for smaller files
-        scale: 1, // Lower scale for smaller files
+        margin: 15,
         enableLinks: true,
-        compression: true,
-        imageFormat: 'jpeg',
       };
 
-      // Save defaults
       try {
         localStorage.setItem(
           'markdown-pdf-settings',
@@ -580,328 +406,94 @@
       }
     });
 
-    downloadPdfBtn?.addEventListener('click', async () => {
+    downloadPdfBtn?.addEventListener('click', () => {
       if (!preview) return;
 
-      const btn = downloadPdfBtn as HTMLButtonElement;
-      const originalText = btn.textContent;
-      btn.textContent = 'Generating...';
-      btn.disabled = true;
+      const { format, orientation, margin, enableLinks } = pdfSettings;
 
-      try {
-        const html2pdfLib = await loadHtml2Pdf();
+      const printWindow = window.open('', '_blank', 'width=900,height=700');
+      if (!printWindow) return;
 
-        // Create a temporary container optimized for A4 and small file sizes
-        const tempContainer = document.createElement('div');
-        tempContainer.style.width = '210mm'; // A4 width
-        tempContainer.style.maxWidth = '210mm'; // Ensure it doesn't exceed A4
-        tempContainer.style.fontFamily = 'system-ui, -apple-system, sans-serif';
-        tempContainer.style.color = '#000';
-        tempContainer.style.backgroundColor = '#fff';
-        tempContainer.style.lineHeight = '1.4'; // Tighter line height for more content
-        tempContainer.style.boxSizing = 'border-box';
-        tempContainer.style.padding = '0'; // No padding, let PDF margins handle spacing
+      const linkStyle = enableLinks ? 'a { color: #0969da; }' : 'a { color: inherit; text-decoration: none; pointer-events: none; }';
 
-        // Instead of cloning, create clean HTML for PDF generation
-        const cleanHtml = preview.innerHTML
-          .replace(/oklch\([^)]+\)/g, '#000') // Replace oklch colors
-          .replace(/--[^:;]+:[^;]+;?/g, '') // Remove CSS custom properties
-          .replace(/var\(--[^)]+\)/g, '#000'); // Replace CSS variables
+      const html = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>markdown-document</title>
+  <style>
+    @page {
+      size: ${format} ${orientation};
+      margin: ${margin}mm;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, Arial, sans-serif;
+      font-size: 12pt;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+      margin: 0;
+    }
+    h1 { font-size: 24pt; margin: 1.2em 0 0.4em; page-break-after: avoid; }
+    h2 { font-size: 18pt; margin: 1.2em 0 0.4em; page-break-after: avoid; }
+    h3 { font-size: 14pt; margin: 1em 0 0.4em; page-break-after: avoid; }
+    h4, h5, h6 { font-size: 12pt; margin: 1em 0 0.4em; font-weight: bold; page-break-after: avoid; }
+    p { margin: 0.7em 0; }
+    pre {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 4px;
+      padding: 0.8em 1em;
+      font-size: 10pt;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      word-break: break-word;
+      page-break-inside: avoid;
+      margin: 0.8em 0;
+    }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 10pt;
+      background: #f6f8fa;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+    }
+    pre code { background: none; padding: 0; border-radius: 0; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0.8em 0;
+      page-break-inside: avoid;
+      font-size: 11pt;
+    }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+    th { background: #f6f8fa; font-weight: bold; }
+    blockquote {
+      border-left: 4px solid #ccc;
+      margin: 0.8em 0;
+      padding-left: 1em;
+      color: #555;
+      font-style: italic;
+    }
+    ul, ol { margin: 0.7em 0; padding-left: 2em; page-break-inside: avoid; }
+    li { margin: 0.25em 0; }
+    img { max-width: 100%; }
+    hr { border: none; border-top: 1px solid #ddd; margin: 1.2em 0; }
+    ${linkStyle}
+  </style>
+</head>
+<body>${preview.innerHTML}</body>
+</html>`;
 
-        tempContainer.innerHTML = cleanHtml;
+      printWindow.document.write(html);
+      printWindow.document.close();
 
-        // Apply PDF-specific styles to the cloned content
-        const style = document.createElement('style');
-        style.textContent = `
-          * {
-            color: #000 !important;
-            background: transparent !important;
-            box-sizing: border-box !important;
-            font-size: 11px !important; /* Smaller for more content per page */
-            line-height: 1.3 !important; /* Tighter for smaller files */
-          }
-
-          /* Page layout */
-          body, div {
-            max-width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-
-          /* Ensure content doesn't overflow - optimized spacing */
-          p, li, span {
-            max-width: 100% !important;
-            overflow-wrap: break-word !important;
-            word-wrap: break-word !important;
-            hyphens: auto !important;
-            margin: 4px 0 !important;
-            padding: 0 !important;
-          }
-
-          /* Proper heading sizes for PDF - optimized for smaller files */
-          h1 { font-size: 18px !important; margin: 16px 0 8px 0 !important; font-weight: bold !important; }
-          h2 { font-size: 16px !important; margin: 14px 0 6px 0 !important; font-weight: bold !important; }
-          h3 { font-size: 14px !important; margin: 12px 0 4px 0 !important; font-weight: bold !important; }
-          h4 { font-size: 13px !important; margin: 10px 0 4px 0 !important; font-weight: bold !important; }
-          h5 { font-size: 12px !important; margin: 8px 0 4px 0 !important; font-weight: bold !important; }
-          h6 { font-size: 11px !important; margin: 6px 0 4px 0 !important; font-weight: bold !important; }
-
-          /* Constrain table width */
-          table {
-            max-width: 100% !important;
-            table-layout: auto !important;
-            font-size: 11px !important;
-            margin: 10px 0 !important;
-          }
-
-          /* Code blocks - optimized for smaller files */
-          pre {
-            font-size: 9px !important;
-            line-height: 1.2 !important;
-            margin: 8px 0 !important;
-            padding: 6px !important;
-            white-space: pre-wrap !important;
-            word-break: break-all !important;
-            max-width: 100% !important;
-            background: #f8f8f8 !important;
-          }
-
-          code {
-            font-size: 9px !important;
-            padding: 1px 3px !important;
-            background: #f0f0f0 !important;
-          }
-
-          /* Force all colors to black for PDF compatibility */
-          h1, h2, h3, h4, h5, h6, p, li, span, div, a {
-            color: #000 !important;
-          }
-
-          /* Code highlighting - use safe colors */
-          .hljs {
-            background: #f6f8fa !important;
-            color: #000 !important;
-          }
-
-          .hljs-keyword {
-            color: #d73a49 !important;
-          }
-
-          .hljs-string {
-            color: #032f62 !important;
-          }
-
-          .hljs-comment {
-            color: #6a737d !important;
-          }
-
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1em 0;
-          }
-          th, td {
-            border: 1px solid #333;
-            padding: 8px;
-            text-align: left;
-          }
-          th {
-            background: #f0f0f0 !important;
-            font-weight: bold;
-          }
-          ul, ol {
-            margin: 1em 0;
-            padding-left: 2em;
-          }
-          li {
-            margin: 0.5em 0;
-          }
-          h1, h2, h3, h4, h5, h6 {
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-            font-weight: bold;
-          }
-          code {
-            background: #f5f5f5 !important;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-family: monospace;
-            color: #000 !important;
-          }
-          pre {
-            background: #f5f5f5 !important;
-            padding: 1em;
-            border-radius: 4px;
-            overflow-x: auto;
-            color: #000 !important;
-            white-space: pre-wrap !important;
-            word-break: break-all !important;
-            max-width: 100% !important;
-          }
-
-          pre code {
-            white-space: pre-wrap !important;
-            word-break: break-all !important;
-          }
-          blockquote {
-            border-left: 4px solid #333;
-            padding-left: 1em;
-            margin: 1em 0;
-            font-style: italic;
-            color: #000 !important;
-          }
-
-          /* PDF-specific styling for better output */
-          .pdf-code-block {
-            background: #f6f8fa !important;
-            border: 1px solid #d1d9e0 !important;
-            border-radius: 6px !important;
-            padding: 16px !important;
-            margin: 16px 0 !important;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
-            font-size: 12px !important;
-            line-height: 1.45 !important;
-            overflow-x: auto !important;
-            color: #000 !important;
-          }
-
-          .pdf-blockquote {
-            border-left: 3px solid #ccc !important;
-            padding-left: 12px !important;
-            margin: 8px 0 !important;
-            color: #666 !important;
-            font-style: italic !important;
-            font-size: 10px !important;
-          }
-
-          .pdf-table {
-            border-collapse: collapse !important;
-            width: 100% !important;
-            margin: 16px 0 !important;
-          }
-
-          .pdf-table th,
-          .pdf-table td {
-            border: 1px solid #ccc !important;
-            padding: 4px 6px !important;
-            text-align: left !important;
-            font-size: 9px !important;
-          }
-
-          .pdf-table th {
-            background: #f0f0f0 !important;
-            font-weight: 600 !important;
-          }
-
-          .pdf-list {
-            padding-left: 18px !important;
-            margin: 8px 0 !important;
-          }
-
-          /* Page breaks - optimized for smaller files */
-          .html2pdf__page-break {
-            page-break-before: always !important;
-            height: 1px !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            visibility: hidden !important;
-            display: none !important;
-          }
-
-          /* Ensure lists don't break awkwardly */
-          ul, ol {
-            page-break-inside: avoid !important;
-            margin: 8px 0 !important;
-            padding-left: 20px !important;
-          }
-
-          /* Prevent headings from being at the bottom of pages */
-          h1, h2, h3 {
-            page-break-after: avoid !important;
-          }
-
-          /* Table handling */
-          tr {
-            page-break-inside: avoid !important;
-          }
-
-          /* Override any custom CSS variables and modern color functions */
-          [style*="oklch"],
-          [style*="--"] {
-            color: #000 !important;
-            background: transparent !important;
-            font-size: 12px !important;
-          }
-        `;
-        tempContainer.appendChild(style);
-
-        // Temporarily add to document for rendering
-        document.body.appendChild(tempContainer);
-
-        // Generate PDF with advanced settings
-        const opt = {
-          margin: pdfSettings.margin,
-          filename: 'markdown-document.pdf',
-          image: {
-            type: pdfSettings.imageFormat, // jpeg, png, or webp
-            quality: pdfSettings.quality,
-          },
-          enableLinks: pdfSettings.enableLinks,
-          html2canvas: {
-            scale: pdfSettings.scale,
-            useCORS: true,
-            logging: false,
-            allowTaint: false, // Better security
-            backgroundColor: '#ffffff', // Ensure white background
-            width: pdfSettings.orientation === 'landscape' ? 842 : 595, // A4 in pixels at 72 DPI for smaller files
-            height: pdfSettings.orientation === 'landscape' ? 595 : 842,
-            windowWidth: 800, // Lower resolution for smaller files
-            windowHeight: 600,
-            scrollX: 0,
-            scrollY: 0,
-            // Performance optimizations for smaller files
-            foreignObjectRendering: false, // Faster rendering
-            removeContainer: true, // Clean up after rendering
-            letterRendering: false, // Faster rendering, smaller files
-            imageTimeout: 0, // Don't wait for images
-          },
-          jsPDF: {
-            unit: 'mm',
-            format: pdfSettings.format,
-            orientation: pdfSettings.orientation,
-            compress: pdfSettings.compression, // User-controlled compression
-            precision: 1, // Lower precision for smaller files
-            userUnit: 1.0, // User unit
-            compressPDF: pdfSettings.compression, // Additional compression
-            putOnlyUsedFonts: true, // Only embed used fonts
-            floatPrecision: 2, // Lower float precision
-          },
-          pagebreak: {
-            mode: ['avoid-all', 'css', 'legacy'], // Multiple pagebreak strategies
-            before: '.html2pdf__page-break',
-            after: '.html2pdf__page-break',
-            avoid: 'h1, h2, h3, .pdf-code-block, table, .pdf-blockquote', // Avoid breaking these elements
-          },
-        };
-
-        await html2pdfLib().set(opt).from(tempContainer).save();
-
-        // Clean up
-        document.body.removeChild(tempContainer);
-
-        btn.textContent = 'Downloaded!';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to generate PDF:', err);
-        btn.textContent = 'Error';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }, 2000);
-      }
+      // Allow styles to load before printing
+      setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+      }, 300);
     });
 
     // Set initial sample content
