@@ -110,8 +110,12 @@ const iconMap: Record<string, any> = {
             const isFeatured = (project as any).featured === true;
             const techTags = project.tech.split(',').map(t => t.trim());
             return (
-              <article class={`project-card ${isFeatured ? 'project-card--featured' : ''}`}>
-                {isFeatured && <div class="featured-badge">Flagship Product</div>}
+              <article
+                class={`project-card ${isFeatured ? 'project-card--featured' : ''}`}
+              >
+                {isFeatured && (
+                  <div class="featured-badge">Flagship Product</div>
+                )}
                 <div class="project-header">
                   <div class="project-title-group">
                     <h2 class="project-name">

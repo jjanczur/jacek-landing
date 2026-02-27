@@ -159,29 +159,8 @@
         "type": "scholarship",
         "title": "Stypendium Rektora dla najlepszych studentów",
         "subtitle": "Politechnika Warszawska",
-        "date": "2017",
-        "description": "Przyznane za wybitne wyniki w nauce i zaangażowanie na kierunku informatyka."
-      },
-      {
-        "type": "scholarship",
-        "title": "Stypendium Rektora dla najlepszych studentów",
-        "subtitle": "Politechnika Warszawska",
-        "date": "2016",
-        "description": "Przyznane za bardzo dobre wyniki w nauce i konsekwentnie wysoką średnią ocen."
-      },
-      {
-        "type": "scholarship",
-        "title": "Stypendium Rektora dla najlepszych studentów",
-        "subtitle": "Politechnika Warszawska",
-        "date": "2015",
-        "description": "Przyznane za bardzo dobre wyniki w nauce i aktywność na rzecz społeczności akademickiej."
-      },
-      {
-        "type": "scholarship",
-        "title": "Stypendium Rektora dla najlepszych studentów",
-        "subtitle": "Politechnika Warszawska",
-        "date": "2014",
-        "description": "Jedno z najbardziej prestiżowych stypendiów przyznawane na podstawie wyników w nauce."
+        "date": "2014, 2015, 2016, 2017",
+        "description": "Najbardziej prestiżowe stypendium dla studentów — przyznawane przez cztery kolejne lata za wybitne wyniki w nauce na kierunku informatyka."
       }
     ]
   }
