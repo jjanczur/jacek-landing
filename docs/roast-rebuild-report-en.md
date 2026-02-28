@@ -1529,3 +1529,57 @@ We track: PR velocity, defect rate, review cycle time, test coverage, and AI too
 *To fill this template: Document your next guardrails engagement in real-time. Capture before/after states, specific configurations deployed, and any metrics available (even qualitative feedback counts).*
 
 ---
+
+## F) Implementation Backlog
+
+Top 20 tasks, prioritized. P0 = do this week. P1 = do this month. P2 = do when P0/P1 are done.
+
+| # | Priority | Owner | Effort | Page/Section/Component | What to Change | Acceptance Criteria |
+|---|----------|-------|--------|----------------------|----------------|-------------------|
+| 1 | **P0** | Copy | S | Homepage hero (`index.json:hero`) | Replace `"AI Architect & CTO"` / `"Transforming operational complexity..."` / `"Co-founder at Jaden Data..."` with AI transformation messaging. Use one of the 3 hero options from Section D. | Hero communicates "AI enablement for engineering teams" in 5 seconds. No mention of "process intelligence." |
+| 2 | **P0** | Copy | S | Consulting hero (`consulting.json:hero`) | Replace `"Senior engineering leadership for complex systems (AI included, not required)"` with AI transformation headline. Kill the hedge. | Hero says AI transformation / enablement clearly. No parenthetical hedging. |
+| 3 | **P0** | Copy | S | Consulting engagements (`consulting.json:engagements`) | Move "Developer Productivity & Safe AI Tooling" from position #4 to position #1. Rename to "AI Engineering Enablement." Remove "(optionally)" from the description. | AI enablement is the first offer listed. No "optionally" language. |
+| 4 | **P0** | Copy | S | Homepage FAQ (`index.json:faq`) | Delete the entire FAQ section. Replace with "Is this for you?" disqualifier block (from Section B messaging hierarchy). | FAQ section is gone. Disqualifier section exists with for/not-for criteria. |
+| 5 | **P0** | Copy | S | Homepage highlights note (`index.json:highlights.note`) | Delete the extreme sports note from homepage. | No extreme sports content on homepage. |
+| 6 | **P0** | Copy | M | Homepage highlights (`index.json:highlights`) | Replace 6 generic capability cards with 3 outcome-focused cards: (1) Train your devs on AI best practices, (2) Ship guardrails so AI agents can't break prod, (3) Measure the gains, kill the slop. | 3 cards, each with outcome headline + 1-sentence description. Cards mention Cursor/Claude Code/MCP/guardrails. |
+| 7 | **P0** | Copy | S | NavBar brand (`NavBar.astro:213`) | Change `"AI Architect & Consultant"` to `"AI Transformation for Engineering Teams"` | Brand subtitle says "AI Transformation for Engineering Teams" on every page. |
+| 8 | **P0** | Copy | S | Homepage positioning (`index.json:positioning`) | Replace dense paragraphs with the "AFTER" version from Section D homepage rewrite. Mention Cursor, Claude Code, Bosch, guardrails. | Positioning block is scannable (under 60 words), mentions AI tools by name, references Bosch. |
+| 9 | **P1** | Copy | M | Homepage featured (`index.json:featured`) | Replace "Process Intelligence in Action" section with "How It Works" 4-step process (Assess → Enable → Secure → Scale). | 4 sequential steps, each with 1-sentence description. Section title is "How It Works." |
+| 10 | **P1** | Copy/Design | M | Homepage (new section) | Add proof bar section: Bosch logo/name + "50+ organizations" + "ISO 27001/SOC 2" + optional "€1M+ bootstrapped." | Proof bar exists between "How It Works" and disqualifier. At least 3 metrics visible. |
+| 11 | **P1** | Copy | M | Projects page (`projects.json`) | Add Bosch AI Transformation engagement as first project entry. Use the case study template from Section E. | Bosch is listed as the first or second project. Describes AI training/enablement work. |
+| 12 | **P1** | Copy | S | Projects hero (`projects.json:hero`) | Rename page from "Projects" to "Results." Update hero subtitle to reference AI transformation outcomes. | Page title says "Results." Subtitle references client outcomes, not portfolio. |
+| 13 | **P1** | Copy | S | Contact focus areas (`contact.json:focus`) | Replace 4 focus areas with AI transformation topics (AI Engineering Enablement, Secure AI Rollout, AI Transformation Program, Architecture & Technical Leadership). | Focus areas match the 3 offers from Section C + architecture catch-all. |
+| 14 | **P1** | Copy | S | Contact hero (`contact.json:hero`) | Replace `"Let's build responsibly-engineered AI"` with action-oriented subtitle. | Subtitle is a call to action, not a mood statement. |
+| 15 | **P1** | Copy | S | Consulting good fit (`consulting.json:goodFit`) | Rewrite "Good fit" list for AI transformation buyers (per Section D consulting rewrite). | "Good fit" criteria reference engineering team size, AI tool adoption stage, regulated industries. |
+| 16 | **P1** | Dev | S | Writing page / publications | Remove Technical Notes placeholder section (4 cards with no linked content). | No placeholder cards visible on `/en/writing/`. |
+| 17 | **P1** | Dev | S | Orphan pages | Set up 301 redirects: `/en/publications/` → `/en/writing/` and `/en/talks/` → `/en/writing/`. | Both URLs redirect. No duplicate content. |
+| 18 | **P1** | Copy | S | About philosophy (`about.json:philosophy`) | Replace 4-paragraph philosophy section with 3-sentence credibility statement (from Section D about page rewrite). | Philosophy section is max 3 sentences. Mentions Bosch, 50+ orgs, AI enablement. |
+| 19 | **P2** | Copy | L | Writing page | Write 1-2 real articles on AI enablement topics (e.g., "How to Roll Out Cursor Securely" or "What Engineering Leaders Get Wrong About AI Adoption"). | At least 1 new article published that targets AI transformation keywords. |
+| 20 | **P2** | Copy/Design | M | Nav structure (`NavBar.astro:navLinks`) | Reduce nav from 7 items to 5: How I Help (replace Consulting), Results (replace Projects), About, Writing, Contact. Remove Tools from main nav (move to footer). | Nav has 5 items + Book a Call CTA. No "Tools" in main nav. |
+
+---
+
+### Priority Summary
+
+| Priority | Count | Theme |
+|----------|-------|-------|
+| **P0** | 8 | Core messaging — hero copy, positioning, nav brand. Can be done in 1 day. |
+| **P1** | 9 | Structural changes — new sections, page renames, proof bar, redirects. 1–2 weeks. |
+| **P2** | 3 | Content creation and nav restructure. 2–4 weeks. |
+
+**Total estimated effort to transform the EN site messaging:**
+- P0 (8 tasks, mostly S): **1–2 days** of focused copy work
+- P0 + P1 (17 tasks): **1–2 weeks** with copy + light dev work
+- All 20 tasks: **3–4 weeks** including content creation
+
+---
+
+## End of Report
+
+**Summary:** Your site is a CTO's portfolio pretending to be a consulting offer. The fix is straightforward: replace "AI Architect & CTO" positioning with "AI Transformation for Engineering Teams," surface the Bosch proof, add AI tool terminology (Cursor, Claude Code, MCP, guardrails), restructure around 3 productized offers, and delete everything that dilutes the story (Process Intelligence, FAQ, extreme sports, blockchain content).
+
+The 8 P0 tasks can be done in a day. They will transform how your site reads. Do those first. Everything else follows.
+
+---
+
+*Report generated from repository source code analysis. All quotes reference `src/i18n/en/*.json` files and `src/components/*.astro` components. Knowledge-base claims sourced from `docs/knowledge-base.md`. Items marked "NEEDS PROOF" require real data before publishing.*
