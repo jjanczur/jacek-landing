@@ -551,3 +551,703 @@ The consulting hero says "Senior engineering leadership for complex systems (AI 
 12. What is your timeline pressure — is there a board deadline, competitive threat, or regulatory trigger?
 
 ---
+
+## D) Page-by-Page Roast + Fixes
+
+---
+
+### Page 1: `/en/` (Homepage)
+
+**Purpose:** Convert visitors into booked calls by communicating what you do, for whom, and why they should trust you.
+
+**Current message (key lines):**
+- Hero: `"AI Architect & CTO"` / `"Transforming operational complexity into competitive advantage"`
+- Tagline: `"Co-founder at Jaden Data - building enterprise AI on AWS (and available for consulting)"`
+- Section: `"Where Process Intelligence Meets Technical Excellence"` — 6 capability cards
+- Section: `"Process Intelligence in Action"` — 4 mixed cards (product, service, project, talk)
+- CTA: `"Ready to Transform Your Operations?"`
+- FAQ: 9 questions including "Who is Jacek Janczura?"
+
+**Roast:**
+- The hero is a job title, not a value proposition. It answers "who are you?" instead of "what do you do for me?"
+- "Transforming operational complexity into competitive advantage" — this is the LinkedIn bio equivalent of "synergy." Delete.
+- The parenthetical "(and available for consulting)" literally tells the visitor your consulting is secondary.
+- Six highlight cards with no hierarchy: Enterprise AI Platforms, AWS Architecture, Industry-Specific Solutions, Security & Compliance, LLMs/RAG, Senior Technical Leadership. This is a skills dump. A CTO reading these sees "generalist."
+- The extreme sports note on the homepage is baffling in a professional context.
+- The FAQ is self-referential and wastes the highest-value real estate on the page.
+- Zero mentions of: training, enablement, Cursor, Claude Code, MCP, guardrails, agent safety, Bosch.
+- The two positioning paragraphs are dense walls of text that bury the lede in AWS service names.
+
+**Conversion blockers (ordered):**
+1. No clear offer — visitor can't tell what service you're selling
+2. No buyer-specific language — nothing speaks to "VP Engineering evaluating AI adoption"
+3. No proof — no logos, no testimonials, no named clients
+4. Skills dump instead of outcome hierarchy — 6 cards of equal weight
+5. FAQ wastes prime CTA real estate
+6. Dense paragraphs kill scan-ability
+
+**Actionable fixes (ordered):**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Replace hero title + subtitle + tagline with outcome-driven messaging | S |
+| 2 | Replace 6 highlight cards with 3 outcome cards (train / secure / measure) | M |
+| 3 | Replace "Process Intelligence in Action" with "How It Works" 4-step process | M |
+| 4 | Add proof bar: Bosch logo + "50+ organizations" + "ISO 27001/SOC 2" | M |
+| 5 | Delete FAQ section, replace with "Is this for you?" disqualifier | S |
+| 6 | Delete extreme sports note from homepage | S |
+| 7 | Rewrite CTA section with specific, time-bound language | S |
+| 8 | Add Cursor/Claude Code/MCP/guardrails keywords throughout | S |
+
+**Paste-ready copy:**
+
+**Hero headline — 3 options:**
+
+| Style | Copy |
+|-------|------|
+| Direct | **Your engineering team is underusing AI. I fix that.** |
+| Enterprise | **AI Transformation for Engineering Organizations** |
+| Technical | **Train your devs on AI tools. Set up guardrails. Ship 3–5x faster.** |
+
+**Subheadline — 2 options:**
+
+1. *"I help engineering orgs adopt Cursor, Claude Code, and Copilot — with the security guardrails, training, and quality standards that make it stick."*
+2. *"Hands-on AI enablement: prompt engineering, context management, secure IDE rollout, and measurable throughput gains. Trained Bosch. Built platforms for 50+ orgs."*
+
+**Primary CTA — 3 options:**
+
+1. `Book 30 Minutes` (direct, low commitment)
+2. `See How I Help Engineering Teams` (discovery-oriented, links to How I Help page)
+3. `Get an AI Readiness Assessment` (value-first, implies a deliverable)
+
+**Key section rewrite — Before → After:**
+
+**BEFORE (current positioning block):**
+> "I'm Jacek, the Co-founder & CTO of Jaden Data. I build process intelligence-AI-native systems that improve how work gets done in real business operations of your company. I start with your workflow and make it faster, safer, and measurable."
+
+**AFTER:**
+> "Engineering teams are adopting AI tools without structure — and getting inconsistent code, security blind spots, and zero measurable improvement. I run enablement programs that fix this: hands-on training on Cursor, Claude Code, and Copilot; guardrails so AI agents can't break prod; and rollout playbooks that deliver 3–5x throughput gains without quality collapse. I've trained enterprise teams (including Bosch) and built AI platforms for 50+ organizations."
+
+**IA/UX edits:**
+
+New section order:
+1. Hero (headline + subheadline + CTA)
+2. "The Problem" (3 pain-point cards: ad-hoc adoption / security gaps / no measurable ROI)
+3. "3 Outcomes" (train devs / ship guardrails / measure gains)
+4. "How It Works" (Assess → Enable → Secure → Scale)
+5. Proof bar (Bosch + 50+ orgs + ISO 27001/SOC 2 + bootstrapped to €1M+)
+6. "Is this for you?" (for / not-for disqualifier)
+7. CTA ("Book 30 Minutes")
+
+What to remove: FAQ, 6-card highlights, "Process Intelligence in Action," extreme sports, dense positioning paragraphs.
+
+Where proof goes: Proof bar between "How It Works" and disqualifier. Format: horizontal logo bar + 3-4 key metrics in large type.
+
+**Trust signals to add:**
+- Bosch logo (with permission) or text: "Trained engineering teams at Bosch"
+- "50+ organizations served"
+- "ISO 27001 & SOC 2 certified platforms"
+- "€1M+ revenue, bootstrapped" (credibility signal — optional)
+
+**SEO:**
+- Title: `AI Transformation for Engineering Teams | Jacek Janczura`
+- Meta: `Train your engineering team on AI tools (Cursor, Claude Code, Copilot). Guardrails, security, and measurable throughput gains. Trained Bosch. 50+ enterprise clients.`
+- Internal links: hero CTA → /en/consulting/ (or new "How I Help"), secondary → /en/projects/ (reframed as Results)
+
+**A11y quick hits:**
+1. Hero gradient text needs sufficient contrast — test against WCAG AA (currently using `background-clip: text` which can fail)
+2. CTA buttons need visible focus indicators (`:focus-visible` exists in CSS but verify contrast)
+3. Add `aria-label` to proof bar metrics if using large-type numbers without surrounding text
+
+**Acceptance criteria:**
+- [ ] Hero headline communicates "AI enablement for engineering teams" within 5 seconds
+- [ ] Page mentions Cursor, Claude Code, or Copilot at least once above the fold
+- [ ] At least one named client (Bosch) or "enterprise clients" reference visible
+- [ ] CTA leads directly to Calendly or booking flow
+- [ ] FAQ section is removed
+- [ ] Extreme sports note is removed from homepage
+
+---
+
+### Page 2: `/en/about/` (About)
+
+**Purpose:** Build credibility and personal trust for visitors who want background before buying.
+
+**Current message (key lines):**
+- Hero: `"About"` / `"Process-first AI and cloud architecture"`
+- Bio: 3 paragraphs — "I'm Jacek, Co-founder & CTO of Jaden Data..." with bullet list of stats
+- Philosophy section: 4 long paragraphs about "Process Intelligence"
+- Career Journey: 4 paragraphs covering Jaden Data → idealo → T-Labs → SAS
+- Specializations: 6 categories (AI & ML, Cloud, Security, Leadership, Dev, Languages)
+- Timeline: 4 career entries
+- Awards: Hackathon 2nd place + scholarship
+
+**Roast:**
+- "Process-first AI and cloud architecture" as a subtitle — this is your internal mental model, not something a buyer relates to.
+- The Philosophy section is 200+ words of self-indulgent prose. It lists every AWS service you've used. Nobody reads this.
+- Career Journey repeats the Timeline below it. Two different formats showing the same career — pick one.
+- Specializations section lists 36 items across 6 categories. This is a CV skills section, not a consulting About page.
+- The "Languages & Certifications" category includes "International Windsurfing Instructor" and "PJ(B) Skydive License" — these are in your specializations grid alongside "ISO 27001/SOC 2."
+- The Hackathon award (2nd place, 2020, hate speech detection) has nothing to do with AI transformation.
+- Zero mention of the Bosch training engagement anywhere on this page.
+
+**Conversion blockers (ordered):**
+1. Philosophy section is unreadable and doesn't advance the sale
+2. Duplicate career presentation (Career Journey paragraphs + Timeline)
+3. Skills dump (36 specialization items) — no hierarchy, no relevance signal
+4. No mention of AI enablement/training/Bosch — the actual service
+5. Windsurfing instructor in the specializations grid
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Rewrite hero subtitle to reference AI transformation | S |
+| 2 | Kill Philosophy section — replace with 3-sentence credibility statement | S |
+| 3 | Remove Career Journey paragraphs — keep Timeline only | S |
+| 4 | Collapse Specializations from 6 categories to 3, remove irrelevant items | M |
+| 5 | Add Bosch engagement to Timeline as most recent entry | S |
+| 6 | Move extreme sports to a single sentence, remove from specializations | S |
+
+**Paste-ready copy:**
+
+**Hero headline — 3 options:**
+
+| Style | Copy |
+|-------|------|
+| Direct | **About Jacek** |
+| Enterprise | **Background & Credentials** |
+| Technical | **CTO turned AI transformation consultant** |
+
+**Subheadline — 2 options:**
+1. *"Trained Bosch. Built platforms for 50+ orgs. Now I help engineering teams adopt AI properly."*
+2. *"From building enterprise AI platforms to enabling the teams that use them."*
+
+**Primary CTA — 3 options:**
+1. `See How I Help` (→ Consulting/How I Help page)
+2. `Book a Call` (→ Calendly)
+3. `Download CV` (keep existing, but deprioritize)
+
+**Key section rewrite — Before → After:**
+
+**BEFORE (Philosophy section, first paragraph):**
+> "I've spent years watching businesses struggle with AI adoption. The problem isn't the technology-it's understanding that AI must serve your processes, not replace them. That's why every solution we build at Jaden Data starts with understanding how work actually gets done."
+
+**AFTER:**
+> "I spent 5 years as CTO building AI platforms for 50+ enterprises (ISO 27001, SOC 2, €1M+ bootstrapped). Now I take that experience and apply it to the other side of the problem: helping engineering teams adopt AI tools securely and effectively. I've trained teams at Bosch on prompt engineering, AI IDE usage, MCP patterns, and security standards. That's the work I do now."
+
+**IA/UX edits:**
+
+New section order:
+1. Hero (name + subtitle + 3-sentence credibility summary)
+2. Timeline (career entries — add Bosch/AI Training as latest, keep 4 total)
+3. Key metrics bar (50+ orgs, €1M+ bootstrapped, ISO 27001/SOC 2, 10-person team built)
+4. Outside Work (1 sentence — "Certified skydiver, diver, windsurfing instructor.")
+5. Downloads (CV PDF)
+
+Remove: Philosophy section, Career Journey paragraphs (redundant with Timeline), Specializations grid, Awards.
+
+**Trust signals to add:**
+- Bosch as a named training client (top of timeline)
+- Key metrics in large type (visual anchor)
+
+**SEO:**
+- Title: `About Jacek Janczura | AI Transformation Consultant`
+- Meta: `CTO turned AI transformation consultant. Trained Bosch engineering teams. Built AI platforms for 50+ organizations. ISO 27001/SOC 2. Berlin-based.`
+
+**A11y quick hits:**
+1. Timeline entries use `<ul>` inside `<p>` via HTML strings — this produces invalid nesting
+2. Employer reference PDF download needs `aria-label` describing the file
+3. Gradient text headings need contrast verification
+
+**Acceptance criteria:**
+- [ ] Bosch engagement is the most recent entry in the timeline
+- [ ] Philosophy section is removed or reduced to 3 sentences
+- [ ] Specializations grid is removed or collapsed to 3 focused categories
+- [ ] Page clearly positions Jacek as an AI transformation consultant, not just a CTO
+
+---
+
+### Page 3: `/en/projects/` (Projects)
+
+**Purpose:** Demonstrate depth and credibility through past work.
+
+**Current message (key lines):**
+- Hero: `"Projects"` / `"Selected work across enterprise AI platforms, ML systems, and privacy-first architectures"`
+- Intro: `"Selected projects built at Jaden Data, where I serve as Co-founder & CTO."`
+- 7 projects: entAIngine, Prompt Wizard & Testbed, RP-Matcher, Valuation Engine, entAIgent, Flowhive VC, KnowledgeX
+
+**Roast:**
+- Every single project is something you *built*. Zero projects demonstrate your *training/enablement* work.
+- The Bosch engagement — training engineering teams on AI tools — is not listed. This is your most relevant proof for the positioning you want.
+- The intro says "Selected projects built at Jaden Data" — framing everything as in-house product work, not client services.
+- KnowledgeX (2021-2022, blockchain) and Flowhive VC (2023, VC tooling) dilute the AI transformation narrative.
+- No metrics format — the impact is buried in paragraph text, not scannable.
+
+**Conversion blockers (ordered):**
+1. No training/enablement case studies — the core offer has zero proof on this page
+2. Framed as "things I built" not "results I delivered for clients"
+3. Blockchain project from 2021 confuses the positioning
+4. Impact metrics buried in prose, not visually highlighted
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Add Bosch AI Transformation engagement as first project | M |
+| 2 | Rename page from "Projects" to "Results" | S |
+| 3 | Rewrite intro to frame as client outcomes, not portfolio | S |
+| 4 | Add visual metrics callouts (60% faster, 50+ orgs, etc.) | M |
+| 5 | Move KnowledgeX to bottom or archive section | S |
+| 6 | Add 2-3 micro case study templates for future proof | M |
+
+**Paste-ready copy:**
+
+**Hero headline — 3 options:**
+
+| Style | Copy |
+|-------|------|
+| Direct | **Results** |
+| Enterprise | **Client Outcomes & Technical Depth** |
+| Technical | **What happens when engineering teams adopt AI properly** |
+
+**Subheadline — 2 options:**
+1. *"Selected engagements: from training enterprise teams on AI tools to building the platforms they use."*
+2. *"Training, guardrails, and platforms — proof that this approach works."*
+
+**Primary CTA — 3 options:**
+1. `Start a Conversation` (→ Contact)
+2. `Book a Call` (→ Calendly)
+3. `See How I Help` (→ Consulting/How I Help)
+
+**Key section rewrite — new Bosch project entry (NEEDS PROOF for specific metrics):**
+
+> ### AI Transformation — Bosch (+ Enterprise Clients)
+> **2024–2025 | AI Transformation Lead & Trainer**
+>
+> Trained engineering teams at Bosch and other enterprise clients on AI-assisted development:
+> - **Prompt engineering** techniques and responsible AI usage for software engineers
+> - **AI IDE onboarding:** Cursor, Claude Code, and Copilot — with proper context management
+> - **MCP best practices** and custom skills setup for internal tooling
+> - **Security standards** for enterprise AI tool adoption
+> - Established organizational guidelines for responsible, secure AI integration in development workflows
+>
+> **Impact:** Accelerated AI adoption across multiple enterprise engineering organizations. Enabled teams to integrate AI tools securely into existing workflows. Established repeatable frameworks for enterprise AI governance. *(NEEDS PROOF: specific metrics — engineers trained, throughput improvement, adoption rate)*
+
+**IA/UX edits:**
+
+New section order:
+1. Hero + intro (reframed as "Results")
+2. AI Transformation engagements (Bosch first)
+3. Platform & product depth (entAIngine, Prompt Wizard)
+4. ML & data projects (RP-Matcher)
+5. Earlier work (Valuation Engine, KnowledgeX — collapsed/archived)
+
+Remove or archive: Flowhive VC, entAIgent (too tangential to AI transformation story).
+
+**Trust signals to add:**
+- "Bosch" as a named client
+- Visual metric callouts: "50+ organizations," "60% faster offer prep," "99.9% uptime"
+
+**SEO:**
+- Title: `Results & Case Studies | Jacek Janczura — AI Transformation`
+- Meta: `AI transformation results: trained Bosch engineering teams, built platforms for 50+ orgs. Enterprise AI enablement, guardrails, and measurable throughput gains.`
+
+**A11y quick hits:**
+1. Project cards need heading hierarchy (`h2` for project names, not just styled `div`)
+2. External links (entAIngine website, KnowledgeX blog) need `rel="noopener noreferrer"` — verify
+3. Impact metrics should use `<strong>` or `aria-label` for screen reader emphasis
+
+**Acceptance criteria:**
+- [ ] Bosch AI training engagement is visible as the first or second entry
+- [ ] Page title/heading says "Results" (not "Projects")
+- [ ] At least one metric is visually highlighted per project
+- [ ] Intro frames work as client outcomes, not portfolio
+
+---
+
+### Page 4: `/en/writing/` (Writing & Talks)
+
+**Purpose:** Establish thought leadership and drive organic traffic via content.
+
+**Current message (key lines):**
+- Hero: `"Writing & Talks"` / `"Technical insights, publications, and practical lessons from enterprise deployments"`
+- 3 talks: "AI Architecture Patterns" (2024), "Distributed Systems at Scale" (2023), "Blockchain & Bitcoin" (2022)
+- Publications: 2 peer-reviewed papers (Saluki 2018, DeCoCo 2020)
+- Articles: 2 Medium posts (NFTs 2023, KnowledgeX 2022)
+- Technical Notes: 4 placeholder cards with no linked content
+
+**Roast:**
+- The blockchain talk and NFT article actively damage your AI transformation positioning.
+- Both peer-reviewed papers are about blockchain/security (2018, 2020) — interesting academically, irrelevant commercially.
+- The 4 technical notes are **placeholders with no content**. "Prompt Engineering at Scale" — great topic, but clicking it goes nowhere. This is worse than having nothing.
+- No content about AI enablement, team training, guardrails, or the topics your buyers care about.
+- The page title "Writing & Talks" is generic. No signal about what kind of writing.
+
+**Conversion blockers (ordered):**
+1. Placeholder content with no actual articles — trust killer
+2. Blockchain/NFT content dilutes AI positioning
+3. No AI enablement or training content
+4. No content that matches what your target buyer would search for
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Remove or hide Technical Notes placeholders immediately | S |
+| 2 | Push blockchain talk and NFT article to bottom or remove | S |
+| 3 | Write 1-2 real articles on AI enablement topics (highest ROI content investment) | L |
+| 4 | Record a new talk/video about AI tool training or guardrails | L |
+| 5 | Rename page to "Writing & Talks — AI Engineering" | S |
+
+**Paste-ready copy:**
+
+**Hero headline — 3 options:**
+
+| Style | Copy |
+|-------|------|
+| Direct | **Writing & Talks** |
+| Enterprise | **Insights on AI Transformation** |
+| Technical | **Practical lessons from enabling engineering teams with AI** |
+
+**Subheadline — 2 options:**
+1. *"Talks, articles, and lessons from training teams and building AI platforms."*
+2. *"How engineering teams adopt AI tools — the real-world version."*
+
+**Primary CTA — 3 options:**
+1. `Book a Call` (→ Calendly)
+2. `See How I Help` (→ How I Help page)
+3. `Subscribe for Updates` (if you set up an email list — high ROI)
+
+**IA/UX edits:**
+
+New section order:
+1. Hero (reframed for AI transformation)
+2. Talks (AI Architecture Patterns first; remove or deprioritize blockchain)
+3. Publications (peer-reviewed only — these show academic depth)
+4. Articles (remove NFT article; keep KnowledgeX if relevant)
+
+Remove: Technical Notes section entirely (until real content exists), NFT article, blockchain talk (or move to collapsed archive).
+
+**Trust signals to add:**
+- "Speaker at IEEE BRAINS 2020" (peer-reviewed conference — legitimate)
+- Conference logos if available
+
+**SEO:**
+- Title: `AI Engineering Talks & Articles | Jacek Janczura`
+- Meta: `Talks and writing on AI transformation, engineering enablement, and enterprise AI platforms. Conference speaker at IEEE BRAINS. Practical lessons from training teams at Bosch and building platforms for 50+ orgs.`
+
+**A11y quick hits:**
+1. YouTube embeds need proper `title` attributes (currently using `videoTitle` — verify rendering)
+2. Tag chips (`<span class="tag">`) are non-interactive — ensure they don't appear focusable
+3. Date strings should use `<time>` elements with `datetime` attributes
+
+**Acceptance criteria:**
+- [ ] Technical Notes placeholder section is removed
+- [ ] Blockchain talk is deprioritized or removed
+- [ ] NFT article is removed
+- [ ] Page communicates AI transformation expertise through content selection
+
+---
+
+### Page 5: `/en/consulting/` (Consulting)
+
+**Purpose:** Convert interested visitors into booked calls by explaining the service offering.
+
+**Current message (key lines):**
+- Hero: `"Consulting"` / `"Senior engineering leadership for complex systems (AI included, not required)"`
+- Intro: `"I help teams ship secure, reliable software"`
+- 4 engagement types: Fractional CTO, Architecture Review, Delivery Sprint, Developer Productivity & Safe AI Tooling
+- 3 "How I approach delivery" steps
+- "Good fit" list: AWS platforms, event-driven systems, multi-tenant SaaS, reliability, AI features
+- CTA: `"Want to discuss a project?"` / `"Book a call"`
+
+**Roast:**
+- The hero subtitle — "(AI included, not required)" — is the most damaging line on the entire site. It's a hedge that undermines your positioning. You are literally telling AI transformation buyers "I may or may not do what you need."
+- "I help teams ship secure, reliable software" — this is indistinguishable from 10,000 other engineering consultants.
+- Developer Productivity & Safe AI Tooling — your ACTUAL core offer — is listed LAST of four engagement types. It's buried under Fractional CTO, Architecture Review, and Delivery Sprint.
+- The "Good fit" list describes infrastructure buyers, not AI transformation buyers.
+- "How I approach delivery" is generic (goals → design → iterate) — could be on any consultant's site.
+- The CTA says "Want to discuss a project?" — but you're selling a program, not a project.
+
+**Conversion blockers (ordered):**
+1. Hero actively hedges away from AI — the core offer
+2. Core AI enablement offer is buried at position #4 of 4
+3. "Good fit" criteria don't match AI transformation buyers
+4. Generic consulting language throughout — zero differentiation
+5. No proof, no case studies, no named clients on this page
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Rewrite hero to lead with AI transformation | S |
+| 2 | Move AI enablement to position #1 (or make it the whole page) | M |
+| 3 | Restructure around 3 offers from Section C | M |
+| 4 | Rewrite "Good fit" for AI transformation buyers | S |
+| 5 | Add proof: Bosch reference, metrics, client count | M |
+| 6 | Add disqualifier section ("Not for you if…") | S |
+
+**Paste-ready copy:**
+
+**Hero headline — 3 options:**
+
+| Style | Copy |
+|-------|------|
+| Direct | **How I Help** |
+| Enterprise | **AI Transformation Services** |
+| Technical | **Enable your engineering team to use AI properly, safely, and profitably** |
+
+**Subheadline — 2 options:**
+1. *"Training, guardrails, and rollout playbooks for engineering organizations adopting AI tools."*
+2. *"From ad-hoc AI experiments to structured, secure, measurable adoption."*
+
+**Primary CTA — 3 options:**
+1. `Book 30 Minutes` (→ Calendly)
+2. `Get an AI Readiness Assessment` (→ Contact with pre-filled context)
+3. `See Results` (→ Results/Projects page)
+
+**Key section rewrite — Before → After:**
+
+**BEFORE (current intro):**
+> "I help teams ship secure, reliable software-cloud platforms, distributed systems, and AI capabilities (LLM/RAG/evals) when they deliver real business value. My focus is production outcomes: clear architecture decisions, speed of delivery without regressions, cost/performance, security/compliance, and an approach that fits how your organization actually operates."
+
+**AFTER:**
+> "Your engineering team is adopting AI tools — or about to. I make sure they do it right. I run enablement programs that train developers on AI best practices (prompt engineering, context management, Cursor/Claude Code/Copilot), set up security guardrails so agents can't break prod, and deliver rollout playbooks that scale across your org. Target outcome: 3–5x throughput improvement with quality maintained. Trained Bosch. Built platforms for 50+ organizations."
+
+**IA/UX edits:**
+
+New section order:
+1. Hero (AI transformation headline + subheadline)
+2. 3 Offers (Enablement Sprint / Secure Rollout / Full Transformation — from Section C, condensed)
+3. "How It Works" (Assess → Enable → Secure → Scale)
+4. "This is for you if…" / "Not for you if…"
+5. Proof bar (Bosch + metrics)
+6. CTA (Book a Call)
+
+Remove: Generic "Fractional CTO" and "Delivery Sprint" as lead offers. If you want to keep them, put them in a "Also available" section below the fold.
+
+**Trust signals to add:**
+- "Trained engineering teams at Bosch"
+- "ISO 27001 & SOC 2 — I've delivered compliance, not just talked about it"
+- Key metric: "50+ organizations"
+
+**SEO:**
+- Title: `AI Transformation Consulting | Jacek Janczura`
+- Meta: `AI transformation for engineering teams: training on Cursor/Claude Code/Copilot, security guardrails, rollout playbooks. Trained Bosch. 50+ enterprise clients. Book a call.`
+
+**A11y quick hits:**
+1. Engagement cards need proper heading levels (currently may be styled divs)
+2. "Book a call" CTA link to external Calendly needs `aria-label="Book a 30-minute call via Calendly"`
+3. Icon-only elements (if any) need text alternatives
+
+**Acceptance criteria:**
+- [ ] Hero does not contain "(AI included, not required)" or any hedging language
+- [ ] AI enablement is the primary (first) offer, not the last
+- [ ] Bosch is mentioned as a named client
+- [ ] "Good fit" criteria describe AI transformation buyers
+- [ ] Page mentions Cursor, Claude Code, and/or Copilot
+
+---
+
+### Page 6: `/en/contact/` (Contact)
+
+**Purpose:** Convert intent into a booked call or message.
+
+**Current message (key lines):**
+- Hero: `"Contact"` / `"Let's build responsibly-engineered AI"`
+- Intro: `"Pick the fastest way below. I'm open to advisory, architecture reviews, and select delivery engagements focused on enterprise AI platforms."`
+- Quick options: Book a call, LinkedIn, GitHub
+- Message form: email + message fields
+- Focus areas: AI Platform Architecture, Technical Leadership, Security & Compliance, System Design
+
+**Roast:**
+- "Let's build responsibly-engineered AI" — this is a CSR slogan, not a CTA. A CTO with budget doesn't come to your contact page to "build responsibly." They come to book a call.
+- "I'm open to advisory, architecture reviews, and select delivery engagements" — the word "select" is a weird flex for someone who wants more clients.
+- Focus areas don't mention training, enablement, guardrails, or AI transformation — the thing you want to sell.
+- GitHub link on a consulting contact page is noise. Your buyer is a VP of Engineering, not an open-source contributor evaluating your code.
+- The form has no context prompt — it says "Your message" with no guidance on what to include.
+
+**Conversion blockers (ordered):**
+1. Hero subtitle is a mood statement, not a call to action
+2. Focus areas misaligned with actual offer
+3. No urgency or specificity in the CTA
+4. GitHub link is irrelevant for the target buyer
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Rewrite hero subtitle to be action-oriented | S |
+| 2 | Replace focus areas with AI transformation topics | S |
+| 3 | Remove GitHub from quick options (keep on About/footer) | S |
+| 4 | Add suggested message template to form | S |
+| 5 | Add "What to expect" after booking (sets expectations) | S |
+
+**Paste-ready copy:**
+
+**Hero headline — 3 options:**
+
+| Style | Copy |
+|-------|------|
+| Direct | **Let's Talk** |
+| Enterprise | **Start a Conversation** |
+| Technical | **Book 30 minutes — tell me what your team needs** |
+
+**Subheadline — 2 options:**
+1. *"The fastest way: book a call. I'll ask about your team, your tools, and your timeline — and tell you honestly if I can help."*
+2. *"I respond within 24 hours. Include your team size, current AI tool usage, and what outcome you're looking for."*
+
+**Primary CTA — 3 options:**
+1. `Book a 30-Minute Call` (→ Calendly)
+2. `Send a Message` (→ form scroll)
+3. `Message on LinkedIn` (→ LinkedIn)
+
+**Key section rewrite — Focus Areas Before → After:**
+
+**BEFORE:**
+> - AI Platform Architecture
+> - Technical Leadership
+> - Security & Compliance
+> - System Design
+
+**AFTER:**
+> - **AI Engineering Enablement** — Train your team on AI tools and best practices
+> - **Secure AI Rollout** — Guardrails, policies, and agent safety for your org
+> - **AI Transformation Program** — End-to-end enablement for engineering organizations
+> - **Architecture & Technical Leadership** — When you also need system design support
+
+**IA/UX edits:**
+
+New section order:
+1. Hero (action-oriented headline)
+2. Book a Call (Calendly — primary, prominent)
+3. "What to expect" (3 bullets: "I'll ask about your team" / "We'll scope the engagement" / "You'll get a proposal within 48 hours")
+4. Message form (with suggested template)
+5. LinkedIn (secondary contact option)
+
+Remove: GitHub link, current focus areas.
+
+**Trust signals to add:**
+- "I respond within 24 hours"
+- "Typical first call: 30 minutes, no obligation"
+
+**SEO:**
+- Title: `Contact Jacek Janczura | AI Transformation Consulting`
+- Meta: `Book a 30-minute call to discuss AI transformation for your engineering team. Training, guardrails, and rollout playbooks. Response within 24 hours.`
+
+**A11y quick hits:**
+1. Form fields need visible labels (not just placeholder text)
+2. Form submit button needs clear loading/success/error states
+3. External links (Calendly, LinkedIn) need indication they open in new tabs
+
+**Acceptance criteria:**
+- [ ] Hero subtitle is action-oriented, not a mood statement
+- [ ] Focus areas match AI transformation offer
+- [ ] GitHub removed from primary contact options
+- [ ] "What to expect" section exists to reduce booking friction
+
+---
+
+### Page 7: `/en/publications/` (Publications — orphan page)
+
+**Purpose:** Standalone publications page (content duplicated in `/en/writing/`).
+
+**Current message:** Same content as the publications portion of `/en/writing/`.
+
+**Roast:**
+- This page is an orphan — not linked from the nav. It exists but nobody finds it.
+- Its content is already aggregated in `/en/writing/`.
+- It splits SEO link equity with `/en/writing/`.
+
+**Conversion blockers:**
+1. Orphan page — no nav link, no discovery path
+2. Duplicate content with `/en/writing/`
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | 301 redirect `/en/publications/` → `/en/writing/` | S |
+| 2 | Or: delete the page entirely | S |
+
+**Acceptance criteria:**
+- [ ] `/en/publications/` either redirects to `/en/writing/` or is removed
+
+---
+
+### Page 8: `/en/talks/` (Talks — orphan page)
+
+**Purpose:** Standalone talks page (content duplicated in `/en/writing/`).
+
+**Same analysis as Page 7.** Orphan, duplicate content, splits link equity.
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | 301 redirect `/en/talks/` → `/en/writing/` | S |
+| 2 | Or: delete the page entirely | S |
+
+**Acceptance criteria:**
+- [ ] `/en/talks/` either redirects to `/en/writing/` or is removed
+
+---
+
+### Page 9: `/en/privacy/` (Privacy Policy)
+
+**Purpose:** Legal compliance (GDPR).
+
+**Roast:** This is a privacy policy. It's fine. No roast needed — it's legally functional. Minor points:
+- Mentions Google Fonts which may set cookies — verify if self-hosting fonts is possible for cleaner privacy posture.
+- Mentions YouTube privacy-enhanced mode — good.
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Consider self-hosting Google Fonts to eliminate that data processor | M |
+
+**Acceptance criteria:**
+- [ ] Privacy policy accurately reflects current data processors
+
+---
+
+### Page 10: `/en/imprint/` (Imprint)
+
+**Purpose:** German legal requirement (Impressum).
+
+**Roast:** Legal page. Fine as-is. One note:
+- Location says "Poland" but you're Berlin-based according to knowledge-base.md. Verify which is current/correct for legal purposes.
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Verify location accuracy (Poland vs Berlin) | S |
+
+**Acceptance criteria:**
+- [ ] Location matches your actual legal address
+
+---
+
+### Page 11: `/tools/` (Tools)
+
+**Purpose:** Utility tools page (language-independent).
+
+**Roast:**
+- This page is in the nav but has no obvious connection to your AI transformation positioning.
+- It's language-independent (no `/en/` prefix) which breaks the i18n pattern.
+- If it's developer tools, it could actually support your positioning — but only if framed correctly.
+
+**Actionable fixes:**
+
+| # | Fix | Effort |
+|---|-----|--------|
+| 1 | Move to footer or remove from main nav | S |
+| 2 | If keeping: add framing that connects it to your AI enablement work | M |
+
+**Acceptance criteria:**
+- [ ] Tools page is either reframed to support AI positioning or moved out of primary nav
+
+---
