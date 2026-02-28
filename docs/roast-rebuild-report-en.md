@@ -1251,3 +1251,281 @@ Remove: GitHub link, current focus areas.
 - [ ] Tools page is either reframed to support AI positioning or moved out of primary nav
 
 ---
+
+## E) Paste-Ready Blocks
+
+### Block 1: "How I Help Teams Use AI Without Breaking Prod"
+
+*(Guardrails + process — for homepage or "How I Help" page)*
+
+---
+
+**The problem isn't AI tools. It's unstructured AI adoption.**
+
+Your engineers are already using Cursor, Claude Code, and Copilot. Some of them are great at it. Most are prompting and praying. A few are doing things that should terrify your security team.
+
+Here's what goes wrong without structure:
+
+- **AI agents with production access.** An engineer gives their AI IDE a database connection string. The agent runs a DELETE query. On prod. On a Friday.
+- **Over-permissioned tokens.** AI tools configured with admin-level API keys because "it was easier." One prompt injection away from data exfiltration.
+- **Vibecoded slop.** AI generates code that passes a quick glance but fails under load, skips edge cases, or introduces subtle security vulnerabilities that no one catches because "the AI wrote it."
+- **Zero cost discipline.** One engineer's "agent swarm" experiment burns through $3,000 in API tokens over a weekend. Nobody notices until the invoice.
+- **No measurement.** You gave everyone AI tools. Are they faster? Shipping more? Shipping better? You have no idea because you never set up metrics.
+
+**What I do about it:**
+
+I run enablement programs for engineering organizations. Not keynotes. Not "AI strategy" decks. Hands-on work:
+
+1. **Train your developers** on how to actually use AI tools: context management, prompt engineering, tool-specific skills (Cursor rules, CLAUDE.md configs, MCP servers), and secure workflows.
+2. **Set up guardrails** that are enforced, not aspirational: least-privilege tokens, sandboxed execution, approval flows for high-risk actions, audit logs, and prompt-injection defenses.
+3. **Build a rollout playbook** that scales: pilot team → early adopters → general availability, with quality gates, cost controls, and metrics at every stage.
+4. **Maintain the quality bar:** AI-generated code meets the same test, review, and architecture standards as human-written code. No exceptions. No "AI slop."
+
+**The result:** Your team ships 3–5x faster. Your security posture improves. Your AI spend is predictable. And when I leave, the playbooks, templates, and trained champions stay.
+
+---
+
+### Block 2: "Enablement Curriculum" (modules, 60–90 min each)
+
+*(For "How I Help" page or Offer 1 detail page)*
+
+---
+
+**Module 1: Foundations — How AI Coding Tools Actually Work** *(60 min)*
+
+- What LLMs can and can't do — setting realistic expectations
+- Context windows: what they are, why they matter, how to manage them
+- The difference between prompting and context engineering
+- Hands-on: each participant solves a real task from your codebase with their AI tool
+- Takeaway: "What changed in my workflow today" exercise
+
+**Module 2: Prompt Engineering for Software Engineers** *(90 min)*
+
+- Writing instructions that work: specificity, constraints, examples, chain-of-thought
+- Context management strategies: what to include, what to exclude, when to start fresh
+- Working with rules/policies: `.cursorrules`, `CLAUDE.md`, `.github/copilot-instructions.md`
+- Multi-step prompting: breaking complex tasks into reliable sequences
+- Hands-on: rewrite a bad prompt from your actual codebase into a good one
+- Takeaway: prompt engineering cheat sheet (repo-ready)
+
+**Module 3: AI IDE Mastery — Cursor, Claude Code, Copilot** *(90 min)*
+
+- Tool-specific deep dives: each tool's strengths, weaknesses, and ideal use cases
+- Cursor: rules, composer, context providers, codebase indexing
+- Claude Code: CLAUDE.md, slash commands, MCP integration, hooks
+- Copilot: suggestions, chat, workspace context, instruction files
+- Hands-on: configure your AI tool for your specific repo
+- Takeaway: per-repo configuration files committed to your codebase
+
+**Module 4: MCP Patterns and Custom Skills** *(60 min)*
+
+- What MCP (Model Context Protocol) is and why it matters
+- Setting up MCP servers for your stack: database access, API integration, documentation
+- Building custom skills/tools that your AI IDE can use
+- Security implications: what MCP servers should and shouldn't have access to
+- Hands-on: build one MCP server relevant to your team's workflow
+- Takeaway: MCP server template + integration guide
+
+**Module 5: Quality, Testing, and Review for AI-Generated Code** *(60 min)*
+
+- The "AI slop" problem: why AI code passes a quick glance but fails in production
+- Review workflow: what to look for in AI-generated PRs
+- Testing requirements: unit, integration, edge cases — no exceptions for AI code
+- Architecture standards: keeping AI-generated code consistent with your system design
+- Hands-on: review 3 AI-generated PRs and identify issues
+- Takeaway: AI code review checklist (repo-ready)
+
+**Module 6: Cost Discipline and Operational Awareness** *(60 min)*
+
+- Understanding AI tool costs: tokens, API calls, model selection
+- Prompt hygiene: reducing unnecessary context, avoiding retrieval bloat
+- Caching strategies: when and how to cache AI responses
+- Loop budgets: preventing runaway agent loops ("Ralph loops") that burn money
+- Agent swarms: when they're justified vs. when they're expensive theater
+- Hands-on: audit one week of your team's AI tool usage and identify waste
+- Takeaway: cost monitoring setup + budget alert template
+
+---
+
+### Block 3: "Security & Governance"
+
+*(For Offer 2 detail page or standalone "Guardrails" section)*
+
+---
+
+**AI tools are powerful. Unguarded AI tools are a liability.**
+
+Here's what a proper AI security and governance framework looks like — and what I deliver:
+
+**Least Privilege**
+Every AI tool gets the minimum permissions required for its task. No admin tokens. No production database access. No filesystem write permissions unless explicitly needed and sandboxed.
+
+- Token scoping: per-tool, per-environment, per-team
+- Permission matrices: what each tool can access, documented and enforced
+- Regular access reviews: quarterly audit of AI tool permissions
+
+**Sandboxing**
+AI agent execution happens in isolated environments. If an agent goes rogue, the blast radius is contained.
+
+- Container-based isolation for agent workloads
+- Network segmentation: AI tools can't reach production services
+- Resource limits: CPU, memory, and API call caps per agent session
+- Filesystem isolation: agents operate in temp directories, not your codebase root
+
+**Approval Workflows**
+High-risk AI actions require human approval before execution.
+
+- Defined risk categories: what counts as "high risk" (deployments, data access, infra changes, external API calls)
+- Approval gates: PR review required for AI-generated code touching critical paths
+- Escalation paths: what happens when an AI tool tries to do something it shouldn't
+
+**Audit Logs**
+Everything the AI tools do is logged, searchable, and retained.
+
+- What prompt was sent, what response was received, what code was generated
+- Which engineer initiated the action, which tool was used, what permissions were active
+- Retention policy: how long logs are kept, who can access them
+- Alerting: automated flags for unusual patterns (bulk data access, prod queries, etc.)
+
+**Evals and Red Teaming**
+You test your AI systems the same way you test your software.
+
+- Eval harness: automated test suites for AI-generated code quality and security
+- Red-team scenarios: "what happens if the AI is tricked into X?"
+- Prompt injection testing: input validation and output filtering for AI-facing interfaces
+- Regression testing: does this week's AI output maintain last week's quality?
+
+**Data Handling Rules**
+What data can be sent to which AI providers, under what conditions.
+
+- Data classification: public, internal, confidential, restricted
+- Provider-specific rules: what data can go to OpenAI, Anthropic, Azure, etc.
+- On-prem vs. cloud: when data must stay in your infrastructure
+- PII handling: automatic detection and redaction before AI processing
+
+---
+
+### Block 4: "Quality Bar: No AI Slop"
+
+*(For homepage section or Offer 1/3 detail page)*
+
+---
+
+**The dirty secret of AI-assisted development: most of it produces worse code.**
+
+Not because the tools are bad. Because teams use them without standards. Here's what "AI slop" looks like:
+
+- Code that passes a quick glance but has subtle bugs, missing edge cases, and implicit assumptions
+- Functions that "work" but violate your architecture (wrong layer, wrong patterns, wrong abstractions)
+- Tests that test the happy path and nothing else — because the AI only generates what you ask for
+- Copy-paste code across files because the AI doesn't understand your DRY conventions
+- Security vulnerabilities: unvalidated input, SQL injection, XSS — generated by an AI that doesn't know your threat model
+
+**How I maintain the quality bar:**
+
+**1. AI code gets the same review standard as human code.**
+No "the AI wrote it" exemption. Every PR goes through the same review process. Reviewers are trained on what to look for in AI-generated code specifically.
+
+**2. Tests are mandatory.**
+AI-generated code ships with tests. Unit tests, integration tests, edge cases. The AI can help write them, but a human verifies coverage. No test, no merge.
+
+**3. Architecture standards are documented and enforced.**
+Before the AI writes code, it has context: your architecture decisions, your patterns, your conventions. This is what `.cursorrules`, `CLAUDE.md`, and `copilot-instructions.md` are for — and I help you write them.
+
+**4. Cost discipline prevents wasteful loops.**
+When an AI agent loops 47 times to solve a problem that should take 3 steps, something is wrong. We set loop budgets, monitor iteration counts, and flag runaway processes.
+
+**5. Metrics prove it.**
+We track: PR velocity, defect rate, review cycle time, test coverage, and AI tool adoption. If AI tools are making your team faster without making them sloppier, the numbers show it. If not, we adjust.
+
+---
+
+### Block 5: Micro Case-Study Templates
+
+*(5 templates — use ONLY proof from knowledge-base.md; label gaps)*
+
+---
+
+#### Case Study 1: Bosch — AI Engineering Enablement
+
+**Problem:** Enterprise engineering teams needed to adopt AI-assisted development tools (Cursor, Claude Code, Copilot) but lacked structured training, security standards, and organizational guidelines for responsible usage.
+
+**Constraints:** Enterprise environment with strict security requirements. Multiple engineering teams with varying skill levels. Need for standardized approach across the organization.
+
+**Approach:**
+- Trained engineering teams on prompt engineering techniques and responsible AI usage
+- Onboarded teams to AI-assisted development tools (Cursor, Claude Code, Copilot)
+- Established security standards and best practices for enterprise AI tool adoption
+- Set up MCP best practices and custom skills for internal tooling
+- Designed organizational guidelines for secure AI integration in development workflows
+
+**Outcome:** Accelerated AI adoption across multiple enterprise engineering organizations. Enabled teams to integrate AI tools securely into existing workflows. Established repeatable frameworks for enterprise AI governance and training.
+
+*NEEDS REAL EXAMPLE: Specific metrics — number of engineers trained, throughput improvement percentage, adoption rate 30/60/90 days post-training, specific security incidents prevented.*
+
+---
+
+#### Case Study 2: entAIngine — Enterprise AI Platform
+
+**Problem:** Enterprises in manufacturing, pharma, and financial services needed AI-powered process automation (document workflows, knowledge-aware assistants) but couldn't trust systems that lacked security certification and high-availability guarantees.
+
+**Constraints:** ISO 27001 and SOC 2 compliance required. Multi-tenant architecture needed for 50+ organizations. High throughput (>1,000 concurrent connections, thousands RPS). Data sovereignty as first-class requirement.
+
+**Approach:**
+- Designed multi-tenant SaaS platform on AWS with event-driven microservices (Lambda, ECS/Fargate, SNS/SQS)
+- Integrated multi-model LLM stack (OpenAI, Azure OpenAI, Bedrock, Mistral)
+- Built RAG pipelines with automated vector database creation (Pinecone, pgvector, Milvus)
+- Delivered ISO 27001 and SOC 2 certification within ~3 months
+- Designed and implemented RAG pipeline testing framework (Testbed) and Prompt Wizard for prompt optimization
+
+**Outcome:** Serving 50+ organizations with 99.9% uptime. ISO 27001/SOC 2 certified. Production-grade reliability enabling faster AI adoption across enterprise workflows.
+
+---
+
+#### Case Study 3: RP Group — ML Product Matching
+
+**Problem:** Emergency lighting manufacturer needed to match customer inquiries (P93 files) with appropriate product offers (P94 files) — a process that required scarce domain experts and took significant time per offer.
+
+**Constraints:** Specialized domain (emergency lighting). Limited training data (96 document pairs initially). Need for interpretable, deployable model — not a black box.
+
+**Approach:**
+- Built LLM-assisted data extraction pipeline using entAIngine API
+- Engineered 25+ domain-specific features (difference, ratio, compatibility features)
+- Benchmarked 5 ML models with hyperparameter optimization (GridSearchCV)
+- Selected tuned Random Forest for interpretability and strong ranking quality
+
+**Outcome:** 60% reduction in offer preparation time. 70.7% Top-1 accuracy (MRR 0.835, AUC-ROC 0.923). Eliminated dependency on human expertise for product selection, enabling the company to scale operations.
+
+---
+
+#### Case Study 4: idealo — International Login Rollout
+
+**Problem:** Germany's largest price comparison portal (18M monthly active users) needed to internationalize its Single Sign-On system across 6 European countries to drive customer acquisition.
+
+**Constraints:** 18M monthly users — zero-downtime rollout required. Multiple countries with different regulatory requirements. High-performance real-time systems (Kafka, NoSQL, WebSockets).
+
+**Approach:**
+- Contributed to multi-country login rollout architecture
+- Built real-time systems and enterprise microservices (Java/Kotlin, Spring Boot)
+- Ran A/B tests to validate rollout impact
+- Participated in on-prem → AWS migration
+
+**Outcome:** 1.4M new accounts created in 3 months (700% over forecast). 300%+ increase in customer acquisition from SSO internationalization.
+
+---
+
+#### Case Study 5: [AI Guardrails Implementation] — NEEDS REAL EXAMPLE
+
+**Problem:** *NEEDS REAL EXAMPLE: Engineering organization using AI tools without security standards, experiencing [specific incidents or risks].*
+
+**Constraints:** *NEEDS REAL EXAMPLE: Regulated industry, existing compliance requirements, team size, tool inventory.*
+
+**Approach:**
+- *NEEDS REAL EXAMPLE: Specific guardrails implemented — token scoping, sandboxing, approval workflows, audit logging.*
+- *NEEDS REAL EXAMPLE: Policy documents delivered, eval harness built, red-team scenarios tested.*
+
+**Outcome:** *NEEDS REAL EXAMPLE: Measurable improvements — security incidents prevented, compliance audit passed, cost savings from prompt optimization, adoption rate with guardrails in place.*
+
+*To fill this template: Document your next guardrails engagement in real-time. Capture before/after states, specific configurations deployed, and any metrics available (even qualitative feedback counts).*
+
+---
