@@ -249,3 +249,97 @@ The consulting hero says "Senior engineering leadership for complex systems (AI 
 | **ADD** | AI enablement terminology everywhere | Cursor, Claude Code, MCP, guardrails, agent safety — the words buyers search for |
 
 ---
+
+## B) Rebuild Blueprint
+
+### New Nav Structure
+
+**Current (8 items + CTA):** Home · Projects · Writing & Talks · Tools · About · Consulting · Contact · [Book a call]
+
+**Proposed (5 items + CTA):**
+
+| # | Label | Maps to | Rationale |
+|---|-------|---------|-----------|
+| 1 | **How I Help** | New page (replaces Consulting) | Lead with the offer. Primary conversion path. |
+| 2 | **Results** | Replaces Projects — reframed as proof | Buyers want evidence, not a portfolio |
+| 3 | **About** | Slimmed About (cut philosophy, cut 60% of timeline) | Background context only |
+| 4 | **Writing** | Existing `/en/writing/` minus blockchain talk | Thought leadership, SEO |
+| 5 | **Contact** | Existing `/en/contact/` rewritten | Streamlined booking flow |
+| CTA | **Book a Call** | Calendly link (keep) | Direct conversion |
+
+**Removed from nav:** Home (logo links home), Tools (move to footer or About), Publications (merged into Writing), Talks (merged into Writing).
+
+**Why:** Hick's Law — fewer choices = faster decisions. Every nav item should either sell or prove. "Tools" and separate "Publications"/"Talks" pages do neither.
+
+---
+
+### New Homepage Section Order
+
+| Order | Section | Purpose | Est. screen height |
+|-------|---------|---------|-------------------|
+| 1 | **Hero** | One-liner + subheadline + CTA | 100vh |
+| 2 | **The Problem** | 3 pain points your buyer feels right now | 30vh |
+| 3 | **3 Outcomes** | What changes after working with you | 40vh |
+| 4 | **How It Works** | 3–4 step process (Assess → Enable → Secure → Scale) | 40vh |
+| 5 | **Proof Bar** | Client logos / named engagements / key metrics | 20vh |
+| 6 | **Skeptic Section** | "This is for you if…" / "Not for you if…" disqualifier | 30vh |
+| 7 | **CTA** | "Book 30 minutes" with Calendly embed or link | 20vh |
+
+**Removed from homepage:** FAQ, 6-card highlights grid, "Process Intelligence in Action" mixed grid, extreme sports note, dense positioning paragraphs.
+
+---
+
+### New Messaging Hierarchy
+
+#### One-Liner (14 words)
+> **"I help engineering teams adopt AI tools safely — and ship 3–5x faster."**
+
+#### 3 Outcome Bullets (buyer-facing)
+
+1. **Your devs actually know how to use AI** — not just "prompt and pray," but structured context management, tool-specific skills, MCP patterns, and secure IDE workflows.
+2. **Your AI tools can't break prod** — guardrails, least-privilege tokens, sandboxed agents, approval flows, audit logs, and prompt-injection defenses are in place before rollout.
+3. **You get measurable speed without the slop** — target 3–5x throughput improvement with quality maintained via tests, reviews, architecture standards, and cost discipline.
+
+#### 3 "How It Works" Bullets (implementation-forward)
+
+1. **Assess (1–2 days):** I audit your team's current AI usage, security posture, tool stack, and workflow bottlenecks. You get a gap report and a prioritized rollout plan.
+2. **Enable + Secure (2–4 weeks):** Hands-on training on prompt engineering, context management, AI IDE mastery (Cursor, Claude Code, Copilot). Simultaneously: guardrail setup — sandboxing, RBAC, audit logging, eval harnesses, data-handling policies.
+3. **Scale + Measure (2–4 weeks):** Rollout playbook across teams. Cost discipline (prompt hygiene, caching, retrieval limits, loop budgets). Quality gates. Ongoing metrics to prove ROI.
+
+#### Skeptical-CTO Disqualifier Paragraph
+
+> **"I don't build your product for you.** I enable your engineering team to use AI tools properly, safely, and profitably — then I leave. If you want a contractor to write features, hire a contractor. If you want a keynote speaker to inspire your all-hands, hire a speaker. I work with engineering leaders who have a real team, a real codebase, and a real urgency to adopt AI without the security nightmares and quality collapse that come from unstructured rollouts. Typical engagement: 4–12 weeks. If your team is under 10 engineers or you don't have executive buy-in, we're probably not a fit."
+
+---
+
+### Proof Plan
+
+#### Proof We Have (from knowledge-base.md)
+
+| Proof point | Source | Where to use |
+|-------------|--------|-------------|
+| Trained Bosch engineering teams on prompt engineering, AI IDEs (Cursor, Claude Code, Copilot), MCP best practices, security standards | knowledge-base.md: "AI Transformation Consulting & Training (2024-2025)" | Homepage proof bar, How I Help page, case study |
+| Regular recurring training program for software engineers | knowledge-base.md: same section | How I Help page, offer descriptions |
+| ISO 27001 + SOC 2 achieved in ~3 months | knowledge-base.md: Jaden Data section | Trust signal on every page |
+| 50+ organizations served via entAIngine | knowledge-base.md: entAIngine section | Proof bar metric |
+| €1M+ ARR bootstrapped (no VC) | knowledge-base.md: Company Building | About page credibility |
+| 0→10 engineering team scaling | knowledge-base.md | About page credibility |
+| RP-Matcher: 60% reduction in offer prep time | knowledge-base.md: RP-Matcher section | Results page case study |
+| idealo SSO: 1.4M accounts in 3 months (700% over forecast) | knowledge-base.md: idealo section | Results page (earlier career proof) |
+| >1,000 concurrent connections, thousands RPS | knowledge-base.md: entAIngine | Technical credibility signal |
+| Dual M.Sc. (TU Berlin + Warsaw) | knowledge-base.md: Education | About page |
+
+#### Proof Missing — NEEDS PROOF
+
+| What's missing | Why it matters | How to get it quickly |
+|----------------|---------------|----------------------|
+| **Bosch testimonial or quote** | Named enterprise client quoting results is the #1 trust signal for enterprise buyers | Ask your Bosch contact for a 2-sentence quote. Even "Jacek helped our team adopt AI tools securely" is enough. |
+| **Before/after throughput metrics from any engagement** | "3–5x faster" claim needs evidence. Without data it's a promise, not proof. | Measure PR velocity, cycle time, or DORA metrics before and after a training engagement. Even 1 team's data suffices. |
+| **Number of engineers trained** | Scale signal. "Trained 5 people" vs "trained 200 people" are very different. | Count total engineers across all training engagements (Bosch + others). |
+| **Specific guardrails/policies delivered** | Makes the security offer concrete. "We set up guardrails" is vague. "We delivered a 40-page AI governance policy + eval harness" is specific. | Screenshot or anonymized excerpt of a policy doc or eval harness you've delivered. |
+| **Client logos permission** | Logo bars are the single fastest trust signal on a consulting site. | Ask Bosch + 2-3 other clients for logo usage permission. Even "Enterprise clients include [Bosch logo]" is transformative. |
+| **AI tool adoption rate post-training** | Proves training sticks. "We trained 80 devs and 6 months later 72 still use the tools daily." | Survey or tool-usage analytics from a past client. |
+| **Cost savings from prompt hygiene / caching** | Proves cost discipline claim. | Measure token spend before/after implementing caching or prompt optimization for any client. |
+| **Recording of a training session or workshop (even partial)** | "See how I teach" is powerful. Removes buyer uncertainty about training quality. | Record 10 minutes of your next workshop (with permission) and post as gated or public content. |
+
+---
