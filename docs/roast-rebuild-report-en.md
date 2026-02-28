@@ -343,3 +343,211 @@ The consulting hero says "Senior engineering leadership for complex systems (AI 
 | **Recording of a training session or workshop (even partial)** | "See how I teach" is powerful. Removes buyer uncertainty about training quality. | Record 10 minutes of your next workshop (with permission) and post as gated or public content. |
 
 ---
+
+## C) Offer Menu
+
+### Offer 1: AI Engineering Enablement Sprint
+
+**Tagline:** *"Get your engineering team from zero to competent with AI tools in 2 weeks."*
+
+**Who it's for:**
+- Engineering orgs (10–500 devs) adopting AI coding tools (Cursor, Claude Code, Copilot) for the first time or formalizing ad-hoc usage
+- VP/Director of Engineering who has budget for AI tooling but no internal expertise to train the team
+- Teams in regulated industries (finance, pharma, manufacturing) where "just try it" is not an option
+
+**Who it's NOT for:**
+- Solo developers or teams under 10 (the ROI math doesn't justify an external trainer)
+- Organizations that want a motivational keynote, not hands-on skills transfer
+- Teams that have already completed structured AI tool training and need advanced agent orchestration (→ see Offer 3)
+
+**Outcomes:**
+1. Every participating engineer can use at least one AI coding tool (Cursor, Claude Code, or Copilot) with structured context management — not just "type a prompt and hope"
+2. Team has shared prompt engineering standards: how to write instructions, manage context windows, use tools/skills, configure rules/policies
+3. Engineers understand MCP patterns and can set up custom skills/servers for their codebase
+4. Team has a shared vocabulary and playbook for AI-assisted development that persists after I leave
+
+**Deliverables:**
+| # | Artifact | Format |
+|---|----------|--------|
+| 1 | **AI Tool Training Workshops** (3–5 sessions, 60–90 min each) | Live + recorded, with exercises |
+| 2 | **Prompt Engineering Playbook** | Markdown/Notion doc — context management, instruction patterns, tool-specific tips |
+| 3 | **AI IDE Configuration Guide** | Per-tool (Cursor rules, Claude Code CLAUDE.md, Copilot instructions) — repo-ready templates |
+| 4 | **MCP Pattern Library** | Reference implementations for common MCP servers/skills relevant to your stack |
+| 5 | **Skills Assessment** (before/after) | Survey + practical exercise to measure competency improvement |
+| 6 | **Team Adoption Dashboard Template** | Simple spreadsheet/doc tracking tool usage, confidence levels, blockers |
+
+**Timeline:** 1–2 weeks (can extend to 3 for large teams requiring multiple cohorts)
+
+**Client inputs required:**
+- Access to codebase (read-only is fine) so training examples use real code
+- List of participating engineers + their current AI tool experience level
+- Preferred AI tool(s) and any existing licenses
+- 60–90 min blocks on team calendar for workshops
+- A technical point-of-contact who can answer stack/infra questions
+- Any existing coding standards, review guidelines, or style guides
+
+**Risks + mitigations:**
+| Risk | Mitigation |
+|------|-----------|
+| Low attendance / engagement | Require management sponsorship + calendar blocks pre-booked before engagement starts |
+| Tool not available (license/procurement delays) | Pre-qualify tool availability in scoping call; provide free-tier alternatives for training |
+| Training doesn't stick | Deliver playbook + templates that live in the repo; include 2-week async follow-up |
+| Team too large for one cohort | Split into 2–3 cohorts; train senior devs first as internal champions |
+
+**Pre-qualification questions:**
+1. How many engineers will participate in the training?
+2. Which AI coding tools do you currently use (if any)? Are licenses already procured?
+3. What is your primary tech stack and language(s)?
+4. Do you have existing coding standards, review processes, or style guides?
+5. Is there executive sponsorship for this initiative (i.e., will engineers have dedicated time)?
+6. Are you in a regulated industry with specific compliance requirements?
+7. What does success look like for you 30 days after the training ends?
+8. Have any engineers already adopted AI tools informally? What happened?
+9. What is your preferred timeline for the engagement?
+10. Is there a specific AI-related incident or concern that triggered this initiative?
+
+---
+
+### Offer 2: Secure AI IDE & Agent Rollout
+
+**Tagline:** *"Guardrails so your AI tools can't touch prod, leak data, or run up a $50k bill."*
+
+**Who it's for:**
+- Engineering orgs that are already using (or about to use) AI coding tools and need security/governance before scaling
+- Security/compliance teams who've been asked "is it safe to use Cursor?" and don't have an answer
+- CTOs who had an "oh shit" moment when they discovered what AI agents can do without guardrails
+
+**Who it's NOT for:**
+- Teams that don't use AI tools yet (→ start with Offer 1)
+- Organizations that want a policy document but won't enforce it (I build enforceable guardrails, not shelf-ware)
+- Companies with fewer than 10 engineers (overhead too high relative to risk)
+
+**Outcomes:**
+1. AI tools are configured with least-privilege access — no agent can touch prod databases, delete filesystems, or access over-permissioned tokens
+2. Sandboxing is in place — AI agent execution happens in isolated environments with resource limits
+3. Approval workflows exist for high-risk AI actions (deployments, data access, infrastructure changes)
+4. Audit logging captures what AI tools do, what prompts were used, and what code was generated
+5. Prompt-injection defenses are implemented for any AI-facing interfaces
+6. Data handling rules are documented and enforced (what data can/cannot be sent to AI providers)
+
+**Deliverables:**
+| # | Artifact | Format |
+|---|----------|--------|
+| 1 | **AI Security Policy Document** | Written policy: what's allowed, what's not, escalation paths, incident response |
+| 2 | **Guardrail Configuration** | Implemented configs: tool permissions, sandboxing rules, token scoping |
+| 3 | **Approval Workflow Design** | Documented + implemented flow for high-risk AI actions |
+| 4 | **Audit Log Setup** | Configured logging for AI tool usage with retention + alerting |
+| 5 | **Eval Harness / Red-Team Playbook** | Test suite for AI-generated code quality + security; red-team scenarios for agent safety |
+| 6 | **Prompt-Injection Defense Guide** | Input validation, output filtering, and testing patterns for AI-facing interfaces |
+| 7 | **Data Classification Matrix** | What data can be sent to which AI providers, under what conditions |
+| 8 | **Rollout Checklist** | Step-by-step checklist for safely enabling AI tools per team/repo |
+
+**Timeline:** 2–4 weeks (depends on number of tools and complexity of existing infrastructure)
+
+**Client inputs required:**
+- Current AI tool inventory (what's being used, by whom, with what permissions)
+- Infrastructure access (to audit current permissions, tokens, network configs)
+- Security/compliance requirements (ISO 27001, SOC 2, GDPR, industry-specific)
+- Existing security policies and incident response procedures
+- Access to a security/compliance stakeholder for policy review
+- List of "crown jewels" (prod DBs, customer data stores, deployment pipelines) that need protection
+
+**Risks + mitigations:**
+| Risk | Mitigation |
+|------|-----------|
+| Guardrails too restrictive → devs bypass them | Co-design with engineering leads; test with pilot group before org-wide rollout |
+| Existing permissions are a mess (hard to audit) | Start with a permissions inventory sprint; prioritize high-risk access first |
+| AI provider policies change | Design guardrails as abstractions (not hard-coded to one provider); include review cadence |
+| Resistance from "move fast" culture | Frame as enablement, not restriction: "guardrails let you move fast safely" + show throughput data |
+
+**Pre-qualification questions:**
+1. Which AI tools are currently in use across your engineering org?
+2. Do you have an existing AI usage policy? Is it enforced or aspirational?
+3. What are your compliance requirements (ISO 27001, SOC 2, HIPAA, etc.)?
+4. Have you had any AI-related security incidents or near-misses?
+5. Who owns AI governance in your organization today?
+6. What is your current approach to managing API keys/tokens for AI tools?
+7. Do AI tools currently have access to production environments or customer data?
+8. What is the approval process for new tools in your engineering org?
+9. Do you have logging/observability for AI tool usage currently?
+10. What is your biggest fear about AI tool adoption at scale?
+
+---
+
+### Offer 3: AI Transformation Program
+
+**Tagline:** *"From ad-hoc AI experiments to org-wide adoption in 8–12 weeks."*
+
+**Who it's for:**
+- Engineering organizations (50–500+ devs) that want a structured, multi-wave AI adoption program — not a one-off training
+- Companies where the CEO/CTO has mandated "adopt AI" but there's no plan for how
+- Organizations that tried Offer 1 or Offer 2-style work internally and want someone to own the whole program
+
+**Who it's NOT for:**
+- Small teams (<20 engineers) — the program overhead is too high; start with Offer 1
+- Companies without executive sponsorship — this requires org-level commitment
+- Organizations that want to outsource engineering to AI (this program enables humans, not replaces them)
+
+**Outcomes:**
+1. Phased rollout plan executed across the engineering org (pilot → early adopters → general availability)
+2. All engineers trained on AI tools with competency verified
+3. Security guardrails and governance in place and enforced
+4. Measurable throughput improvement tracked via agreed metrics (PR velocity, cycle time, or custom)
+5. Cost discipline: prompt budgets, caching strategies, retrieval limits, loop controls — so AI spend is predictable
+6. Quality bar maintained: AI-generated code meets the same test, review, and architecture standards as human-written code
+7. Internal champions identified and trained to sustain the program after I leave
+
+**Deliverables:**
+| # | Artifact | Format |
+|---|----------|--------|
+| 1 | **Transformation Roadmap** | Phased plan: pilot → early adopters → GA with milestones and gates |
+| 2 | **Full Training Curriculum** (all Offer 1 deliverables) | Workshops, playbooks, IDE configs, MCP patterns |
+| 3 | **Full Security Package** (all Offer 2 deliverables) | Policy, guardrails, audit logs, eval harness, red-team playbook |
+| 4 | **Cost Model & Budget Framework** | Token budgets per team, caching strategy, retrieval limits, loop budget controls |
+| 5 | **Quality Standards Document** | AI code review checklist, test requirements, architecture standards for AI-generated code |
+| 6 | **Metrics Dashboard** | Tracking throughput, quality, cost, and adoption across teams |
+| 7 | **Champion Training Program** | Internal trainers identified and prepared to sustain the program |
+| 8 | **Executive Report** | ROI analysis, adoption metrics, recommendations for next phase |
+| 9 | **Repo Templates** | .cursorrules, CLAUDE.md, .github/copilot-instructions.md — configured per-repo |
+| 10 | **Runbook: "What to do when AI generates bad code"** | Incident patterns, escalation, and review workflow |
+
+**Timeline:** 8–12 weeks, structured as:
+- **Weeks 1–2:** Assessment + roadmap + pilot team selection
+- **Weeks 3–6:** Pilot team training + guardrail setup + initial metrics baseline
+- **Weeks 7–10:** Rollout to early adopters + security hardening + cost optimization
+- **Weeks 11–12:** General availability prep + champion training + executive report
+
+**Client inputs required:**
+- Executive sponsor with authority to allocate engineering time
+- Engineering org chart and team structure
+- Current tool inventory, licenses, and infrastructure access
+- Compliance requirements and existing security policies
+- Agreed success metrics (e.g., PR velocity, cycle time, defect rate, AI tool adoption rate)
+- Dedicated internal project manager or point-of-contact
+- Budget for AI tool licenses (if not already procured)
+
+**Risks + mitigations:**
+| Risk | Mitigation |
+|------|-----------|
+| Executive sponsorship weakens mid-program | Weekly executive check-in; early wins in pilot phase to maintain momentum |
+| Pilot team isn't representative | Select pilot team jointly; ensure mix of skill levels and team types |
+| Metrics gaming ("AI-assisted" PRs that aren't really) | Use multiple metrics; spot-check with code reviews; survey-based qualitative data |
+| Cost overruns from AI usage | Implement budget controls in Week 3; alert thresholds; weekly cost reviews |
+| Quality regression during ramp-up | Mandatory review for AI-generated code in early phases; gradual autonomy as quality proves out |
+| Program stalls after I leave | Champion training is a core deliverable; handoff includes playbooks, templates, and recorded training |
+
+**Pre-qualification questions:**
+1. How many engineers are in your organization, and how are they structured (teams, squads, etc.)?
+2. What is the executive mandate for AI adoption? Who sponsors it?
+3. What AI tools have been tried so far? What worked and what didn't?
+4. Do you have existing engineering metrics (DORA, PR velocity, cycle time)?
+5. What is your biggest concern about org-wide AI adoption?
+6. What is your compliance landscape (regulated industry, certifications, data sovereignty)?
+7. Do you have internal training infrastructure (LMS, recorded sessions, onboarding programs)?
+8. What is your budget range for this initiative (tools + consulting)?
+9. Have any teams already adopted AI tools informally? What has the experience been?
+10. What does "done" look like for you — what would make this program a success?
+11. Is there internal resistance to AI adoption? From whom and why?
+12. What is your timeline pressure — is there a board deadline, competitive threat, or regulatory trigger?
+
+---
