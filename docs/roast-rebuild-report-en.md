@@ -293,12 +293,14 @@ The consulting hero says "Senior engineering leadership for complex systems (AI 
 
 #### One-Liner (14 words)
 > **"I help engineering teams adopt AI tools safely — and ship 3–5x faster."**
+>
+> *(NEEDS PROOF: The "3–5x" figure is a target from the positioning brief. It requires before/after throughput metrics from at least one engagement to substantiate. See Proof Missing table.)*
 
 #### 3 Outcome Bullets (buyer-facing)
 
-1. **Your devs actually know how to use AI** — not just "prompt and pray," but structured context management, tool-specific skills, MCP patterns, and secure IDE workflows.
-2. **Your AI tools can't break prod** — guardrails, least-privilege tokens, sandboxed agents, approval flows, audit logs, and prompt-injection defenses are in place before rollout.
-3. **You get measurable speed without the slop** — target 3–5x throughput improvement with quality maintained via tests, reviews, architecture standards, and cost discipline.
+1. **Your devs actually know how to use AI** — not just "prompt and pray," but structured context management, tool-specific skills, MCP patterns, and secure IDE workflows. *(Backed by knowledge-base.md: Bosch training, MCP setup, prompt engineering workshops.)*
+2. **Your AI tools can't break prod** — guardrails, least-privilege tokens, sandboxed agents, approval flows, audit logs, and prompt-injection defenses are in place before rollout. *(NEEDS PROOF: knowledge-base.md confirms "security standards and best practices" and "guidelines for responsible AI integration." The specific guardrail artifacts — sandboxing, least-privilege tokens, audit logs, prompt-injection defenses — are proposed based on positioning brief but need documented proof of delivery. Add examples from Bosch or other engagements.)*
+3. **You get measurable speed without the slop** — target 3–5x throughput improvement with quality maintained via tests, reviews, architecture standards, and cost discipline. *(NEEDS PROOF: "3–5x" is a target, not a measured result. knowledge-base.md confirms test frameworks (Testbed), code review standards, and CI/CD quality gates — but no before/after throughput metrics exist.)*
 
 #### 3 "How It Works" Bullets (implementation-forward)
 
@@ -1350,6 +1352,8 @@ I run enablement programs for engineering organizations. Not keynotes. Not "AI s
 ### Block 3: "Security & Governance"
 
 *(For Offer 2 detail page or standalone "Guardrails" section)*
+
+> **NEEDS PROOF note:** knowledge-base.md confirms you established "security standards and best practices for enterprise AI tool adoption" and "organizational guidelines for responsible and secure AI integration" at Bosch + other clients. It also confirms ISO 27001/SOC 2 delivery and RBAC/multi-tenant security work. However, the *specific* guardrail artifacts below (sandboxing configs, least-privilege token scoping, prompt-injection test suites, audit log setups) are proposed based on the positioning brief and your general security background — not documented as delivered artifacts. Before publishing this block, add concrete examples of what you've actually delivered: specific policy docs, config files, eval harnesses, or anonymized screenshots.
 
 ---
 
