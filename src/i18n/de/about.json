@@ -159,29 +159,8 @@
         "type": "scholarship",
         "title": "Rektorstipendium für Bestleistungen",
         "subtitle": "Technische Universität Warschau",
-        "date": "2017",
-        "description": "Ausgezeichnet für herausragende akademische Leistungen und Engagement im Informatikstudium."
-      },
-      {
-        "type": "scholarship",
-        "title": "Rektorstipendium für Bestleistungen",
-        "subtitle": "Technische Universität Warschau",
-        "date": "2016",
-        "description": "Gewürdigt für durchgängig exzellente akademische Leistungen."
-      },
-      {
-        "type": "scholarship",
-        "title": "Rektorstipendium für Bestleistungen",
-        "subtitle": "Technische Universität Warschau",
-        "date": "2015",
-        "description": "Ausgezeichnet für akademische Leistungen und Beiträge zum Universitätsleben."
-      },
-      {
-        "type": "scholarship",
-        "title": "Rektorstipendium für Bestleistungen",
-        "subtitle": "Technische Universität Warschau",
-        "date": "2014",
-        "description": "Das renommierteste Stipendium für Studierende - vergeben auf Basis akademischer Verdienste."
+        "date": "2014, 2015, 2016, 2017",
+        "description": "Das renommierteste Stipendium für Studierende — vier Jahre in Folge verliehen für herausragende akademische Leistungen im Informatikstudium."
       }
     ]
   }

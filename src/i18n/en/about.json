@@ -5,7 +5,7 @@
   },
   "hero": {
     "title": "About",
-    "subtitle": "Process-first AI and cloud architecture"
+    "subtitle": "Building AI that works for how you actually operate"
   },
   "downloads": {
     "title": "Downloads",
@@ -13,34 +13,32 @@
   },
   "bio": {
     "paragraphs": [
-      "I'm Jacek, the Co-founder & CTO of <strong>Jaden Data</strong>. I build enterprise AI systems on AWS-LLM platforms, RAG, and event-driven microservices-always tied to real operational workflows.",
-      "<ul><li><strong>Bootstrapped startup</strong> (no external VC): grew to <strong>&#x2265;€1M annual revenue</strong></li><li>Scaled engineering from <strong>0 → 10</strong> and led multiple delivery teams</li><li>Built multi-tenant systems for <strong>50+ organizations</strong> with <strong>&gt;1,000 concurrent connections</strong> and <strong>thousands of requests per second</strong></li><li>Delivered <strong>ISO 27001</strong> and <strong>SOC 2</strong> in ~3 months</li></ul>",
-      "If you need help shipping or de-risking a system, I take on freelance engagements: architecture reviews, AI/LLM/RAG delivery, prompt engineering + evals, and hands-on technical leadership. See <a href=\"/en/projects/\">projects</a>, <a href=\"/en/publications/\">publications</a>, or download the CV below."
-    ]
-  },
-  "outsideWork": {
-    "title": "Outside Work",
-    "paragraphs": [
-      "I love extreme sports and outdoor activities. I am a certified skydiver (PJ(B) license), Advanced Open Water diver, International Windsurfing Instructor, and an avid snowboarder. These experiences build essential skills: risk management, clear instruction and teaching, calm under pressure, and disciplined preparation-all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.",
-      "I'm multilingual, speaking Polish (native), English (professional), and German (limited working)-helping me work effectively across international teams and with global clients."
+      "I'm Jacek — Co-founder & CTO of <strong>Jaden Data</strong>, based in Berlin. I design and ship enterprise AI systems: LLM platforms, RAG pipelines, event-driven microservices on AWS — all anchored to real business processes, not demo workflows.",
+      "We bootstrapped Jaden Data without external VC and grew it to <strong>€1M+ annual revenue</strong>. I scaled the engineering team from <strong>0 to 10</strong>, led architecture and delivery for <strong>50+ organizations</strong>, and achieved <strong>ISO 27001</strong> and <strong>SOC 2</strong> certification in about three months.",
+      "I also take on select consulting engagements: architecture reviews, AI/LLM/RAG delivery, prompt engineering + evals, and hands-on technical leadership. Check out the <a href=\"/en/projects/\">projects</a>, <a href=\"/en/publications/\">publications</a>, or grab the CV below."
     ]
   },
   "philosophy": {
-    "title": "Process Intelligence Philosophy",
+    "title": "How I Think About AI",
     "paragraphs": [
-      "I've spent years watching businesses struggle with AI adoption. The problem isn't the technology-it's understanding that <strong>AI must serve your processes, not replace them</strong>. That's why every solution we build at Jaden Data starts with understanding how work actually gets done.",
-      "As an AI Architect and CTO, I specialize in <strong>enterprise LLM platforms</strong>, <strong>retrieval-augmented generation</strong>, and <strong>secure cloud architectures</strong>. I've architected advanced, multi-tenant AI platforms integrating AWS Bedrock, AWS SageMaker, Azure ML Studio, OpenAI, and Mistral-delivering seamless connectivity and enabling cross-platform collaboration. Built event-driven microservices architectures leveraging AWS Fargate (ECS, ECR), Lambda, SNS, SQS, and CloudWatch, optimized for cost-efficiency and serverless autoscaling.",
-      "I pioneered the development of state-of-the-art Retrieval-Augmented Generation (RAG) services, automating vector database creation from client files using Pinecone, pgvector, and Milvus. Designed and implemented robust AI process and RAG pipeline testing frameworks (Testbed) for quantitative and qualitative assessment. Developed \"Prompt Wizard,\" a sophisticated tool that automates LLM prompt optimization, significantly enhancing prompt engineering workflows for enterprise users.",
-      "But technical capability is just the foundation. The real value comes from applying these capabilities to transform operations: turning hours of manual work into minutes of automated intelligence, enabling faster decision-making, and building systems that adapt and learn with your business."
+      "Most AI adoption fails not because the tech is bad, but because nobody mapped it to how work actually gets done. My approach is simple: <strong>AI must serve your processes, not replace them</strong>.",
+      "That means starting with operations — understanding the bottlenecks, the manual steps, the decision points — and then building systems that fit. The result: hours of manual work become minutes of automated intelligence, and teams trust the output because it matches their workflow."
     ]
   },
   "career": {
     "title": "Career Journey",
     "paragraphs": [
-      "My biggest milestone was building <strong>Jaden Data</strong> from zero to a profitable, bootstrapped company (&#x2265;€1M annual revenue) while scaling engineering from 0 to 10. I lead architecture and delivery for enterprise AI: multi-tenant SaaS, high-throughput distributed systems on AWS, and reliable LLM/RAG pipelines.",
-      "<ul><li><strong>Enterprise AI on AWS</strong>: event-driven microservices (Lambda, ECS/Fargate, SNS/SQS), multi-model LLM integrations (OpenAI, Azure OpenAI, Bedrock, Mistral)</li><li><strong>Security + compliance</strong>: ISO 27001 and SOC 2 delivered under tight timelines</li><li><strong>Practical LLM engineering</strong>: prompt + RAG evaluation tooling so teams can ship safely</li></ul>",
-      "Before Jaden Data, I worked as a <strong>Software Engineer</strong> at <strong>idealo</strong>, contributing to international login rollout (6 countries) and building real-time systems (Kafka/NoSQL/WebSockets) and enterprise microservices (Java/Kotlin, Spring Boot) with 24/7 on-call responsibility.",
-      "Earlier, I built blockchain and distributed systems at <strong>T-Labs (Deutsche Telekom)</strong> and delivered real-time analytics systems for banking at <strong>SAS Institute</strong>. I hold a dual M.Sc. in Computer Science (TU Berlin + Warsaw University of Technology)."
+      "At <strong>Jaden Data</strong> (2021–present), I've been building from zero: company, product, and team. Our flagship, <strong>entAIngine</strong>, is a multi-tenant SaaS platform for AI process automation — serving 50+ organizations with 99.9% uptime across manufacturing, pharma, finance, and enterprise ops. I also led projects like <strong>KnowledgeX</strong> (EU Horizon 2020 funded), <strong>Flowhive AI/VC</strong>, and <strong>Valuation Engine</strong>.",
+      "Before that, I was a <strong>Software Engineer at idealo</strong> (Axel Springer), Germany's largest price comparison portal with 18M+ monthly users. I helped ship the multi-country login rollout across 6 countries — <strong>1.4M new accounts in 3 months</strong> (700% over forecast). Built real-time systems on Kafka, enterprise microservices in Java/Kotlin with Spring Boot, and was part of idealo's on-prem to AWS migration.",
+      "Earlier, I worked as a <strong>Blockchain Engineer at T-Labs</strong> (Deutsche Telekom Innovation Laboratories), designing and deploying Hyperledger Fabric networks for package tracking. And at <strong>SAS Institute</strong>, I was part of the founding team for one of the first real-time behavioral marketing platforms in banking — processing thousands of events per second for ING Bank, with one of the first SAS ESP implementations in the EU.",
+      "I hold a dual <strong>M.Sc. in Computer Science</strong> from TU Berlin (grade 1.3/A) and Warsaw University of Technology (grade 1.0/A, Honors Diploma), plus a B.Sc. in Electronics and Computer Engineering."
+    ]
+  },
+  "outsideWork": {
+    "title": "Outside Work",
+    "paragraphs": [
+      "When I'm not building systems, you'll find me jumping out of planes (certified skydiver, PJ(B) license), diving (Advanced Open Water), teaching windsurfing (International Instructor certification), or snowboarding. These aren't just hobbies — the risk management, calm-under-pressure instincts, and clear teaching skills carry directly into technical leadership and crisis handling.",
+      "I speak Polish (native), English (professional/IELTS certified), and German (conversational) — which helps when working across international teams and with clients across Europe."
     ]
   },
   "specializations": {
@@ -52,64 +50,64 @@
           "LLM Platform Architecture",
           "Prompt Engineering & RAG",
           "Multi-Model Integration (OpenAI, Azure, Bedrock, Mistral)",
-          "AI Pipeline Design & Testing",
+          "AI Pipeline Design & Testing (Testbed, Prompt Wizard)",
           "Vector Databases (Pinecone, pgvector, Milvus)",
-          "Prompt Optimization Tools"
+          "ML Systems (Scikit-Learn, Ensemble Methods)"
         ]
       },
       {
         "title": "Cloud & Infrastructure",
         "items": [
-          "AWS (Lambda, ECS/Fargate, Bedrock, SageMaker)",
-          "Azure ML Studio & OpenAI",
+          "AWS (Lambda, ECS/Fargate, Bedrock, SageMaker, CDK)",
+          "Azure (AKS, AI Foundry, ML Studio, Marketplace)",
           "Event-Driven Microservices",
           "Serverless Architecture",
-          "High-Throughput Design",
-          "Cost-Optimization Strategies"
+          "High-Throughput Design (1,000+ concurrent)",
+          "Cost-Optimization & Well-Architected Framework"
         ]
       },
       {
         "title": "Security & Compliance",
         "items": [
-          "ISO 27001/SOC 2",
+          "ISO 27001 / SOC 2 Type 2",
           "Multi-Tenant Security & RBAC",
           "GDPR & Data Privacy",
           "Security Audits & Risk Assessment",
-          "Compliance Implementation",
-          "Audit Trail Design"
+          "Confidential Computing (TEEs)",
+          "Blockchain Audit Trails"
         ]
       },
       {
-        "title": "Leadership & Process Intelligence",
+        "title": "Leadership & Strategy",
         "items": [
           "Process-First Architecture",
-          "Team Building & Scaling (0→10 developers)",
-          "Technical Leadership",
-          "Business-Outcome Focus",
-          "Strategic Planning & Execution",
-          "Stakeholder Management"
+          "Team Building & Scaling (0 → 10 developers)",
+          "Technical Pre-Sales & Client Architecture",
+          "AI Transformation Training (Cursor, Claude Code)",
+          "Stakeholder Communication",
+          "Budget & Vendor Management"
         ]
       },
       {
-        "title": "Development & Technologies",
+        "title": "Full-Stack Development",
         "items": [
+          "React, Next.js, TypeScript",
           "Java & Kotlin (Spring Boot)",
-          "Python & Node.js",
-          "Microservices & REST APIs",
+          "Python (FastAPI) & Node.js",
           "Real-Time Systems (Kafka, WebSockets)",
-          "Blockchain (Hyperledger, Ethereum)",
-          "Database Design (SQL, NoSQL)"
+          "Blockchain (Hyperledger, Ethereum, Solidity)",
+          "SQL & NoSQL (PostgreSQL, MongoDB, Cassandra)"
         ]
       },
       {
         "title": "Languages & Certifications",
         "items": [
-          "Polish (Native), English (Professional)",
-          "German (Limited Working)",
-          "IELTS Certification",
+          "Polish (Native), English (Professional/IELTS)",
+          "German (Conversational)",
           "SAS Certified Base Programmer",
           "International Windsurfing Instructor",
-          "PJ(B) Skydive License"
+          "PJ(B) Skydive License",
+          "Advanced Open Water Diver"
         ]
       }
     ]
@@ -118,30 +116,42 @@
     "title": "Timeline",
     "items": [
       {
-        "date": "Mar 2021–Present",
+        "date": "Mar 2021 – Present",
         "title": "Co-founder & CTO",
-        "company": "Jaden Data GmbH",
-        "description": "<ul><li><strong>Bootstrapped</strong> (no external VC) to profitability (&#x2265;€1M annual revenue)</li><li>Scaled engineering from <strong>0 → 10</strong> and led multiple teams</li><li>Built multi-tenant enterprise AI on AWS for 50+ organizations (&gt;1,000 concurrent connections; thousands RPS)</li><li>Delivered <strong>ISO 27001</strong> and <strong>SOC 2</strong> in ~3 months</li><li>Key projects: <strong>entAIngine</strong> (2022–Present), <strong>KnowledgeX</strong> (2021–2022, EU Horizon 2020 funded)</li></ul>"
+        "company": "Jaden Data GmbH, Berlin",
+        "description": "<ul><li><strong>Bootstrapped</strong> to profitability — €1M+ annual revenue, no VC</li><li>Scaled engineering <strong>0 → 10</strong>, led frontend, backend, and AI teams</li><li>Multi-tenant AI platform for <strong>50+ organizations</strong> (1,000+ concurrent connections)</li><li><strong>ISO 27001 + SOC 2</strong> certified in ~3 months</li><li>Key products: <strong>entAIngine</strong>, <strong>Flowhive AI</strong>, <strong>Valuation Engine</strong>, <strong>KnowledgeX</strong> (EU Horizon 2020)</li></ul>"
       },
       {
-        "date": "Apr 2020–Jun 2021",
+        "date": "Apr 2020 – Jun 2021",
         "title": "Software Engineer",
-        "company": "idealo internet GmbH",
-        "description": "<ul><li>Contributed to the multi-country login rollout (6 countries), resulting in <strong>1.4M new accounts in 3 months</strong> (700% over forecast)</li><li>Built real-time systems (Kafka/NoSQL/WebSockets) and enterprise microservices + REST APIs (Java/Kotlin, Spring Boot)</li><li>Ran A/B tests and supported 24/7 reliability through on-call</li><li>Participated in idealo’s migration from on-prem to AWS</li></ul>",
+        "company": "idealo internet GmbH (Axel Springer), Berlin",
+        "description": "<ul><li>Multi-country login rollout (6 countries): <strong>1.4M new accounts in 3 months</strong> (700% over forecast)</li><li>Real-time systems (Kafka, NoSQL, WebSockets) and enterprise microservices (Java/Kotlin, Spring Boot)</li><li>A/B testing, customer insight analysis, 24/7 on-call</li><li>Participated in on-prem → AWS migration</li></ul>",
         "hasReference": true,
         "referenceText": "Download Employer Reference"
       },
       {
-        "date": "May 2019–Apr 2020",
-        "title": "Blockchain Developer",
-        "company": "T-Labs, Telekom Innovation Laboratories",
-        "description": "<ul><li>Designed system architecture for blockchain-based package tracking</li><li>Implemented and deployed a distributed Hyperledger Fabric network with chaincode (smart contracts)</li><li>Dockerized the blockchain network + microservices and built secure REST APIs</li><li>Tech: Hyperledger Fabric/Composer, Node.js, Express.js, Docker, JWT, PostgreSQL</li></ul>"
+        "date": "May 2019 – Apr 2020",
+        "title": "Blockchain Engineer",
+        "company": "TU Berlin / Deutsche Telekom Innovation Laboratories (T-Labs)",
+        "description": "<ul><li>Designed system architecture for blockchain-based package tracking</li><li>Deployed distributed Hyperledger Fabric network with chaincode (smart contracts)</li><li>Dockerized the full stack + built secured REST APIs and proxy microservices</li></ul>"
       },
       {
-        "date": "Sep 2016–Sep 2018",
-        "title": "Software Engineer",
-        "company": "SAS Institute",
-        "description": "<ul><li>Built real-time behavioral marketing and decisioning systems for banking at high throughput</li><li>Processed thousands of events per second with Kafka + stream processing</li><li>Delivered GDPR-friendly data lineage for compliance and auditability</li></ul>"
+        "date": "Sep 2016 – Sep 2018",
+        "title": "Associate Technical Consultant",
+        "company": "SAS Institute, Warsaw",
+        "description": "<ul><li>Founding team for <strong>one of the first real-time behavioral marketing platforms</strong> in banking (ING Bank)</li><li>Processed thousands of events/sec (Kafka, SAS ESP, Flink) — one of the first SAS ESP implementations in the EU</li><li>International consulting: Madrid (ING Bank) and Amsterdam (ING Group)</li><li>Built GDPR lineage plugin adopted across ING Group internationally</li></ul>"
+      },
+      {
+        "date": "Oct 2017 – Sep 2020",
+        "title": "M.Sc. Computer Science (Double Degree)",
+        "company": "TU Berlin (1.3/A) & Warsaw University of Technology (1.0/A, Honors)",
+        "description": "Distributed Systems, Security, Machine Learning, Software Engineering, Data Engineering"
+      },
+      {
+        "date": "Oct 2013 – Jun 2017",
+        "title": "B.Sc. Electronics & Computer Engineering",
+        "company": "Warsaw University of Technology (1.0/A)",
+        "description": "Including exchange semester at TU Hamburg-Harburg (2015–2016)"
       }
     ]
   },
@@ -150,17 +160,17 @@
     "items": [
       {
         "type": "featured",
-        "title": "2nd Place - Berlin Legal Tech Hackathon 2020",
+        "title": "2nd Place — Berlin Legal Tech Hackathon",
         "subtitle": "Hate Speech Online",
         "date": "Feb 2020",
-        "description": "Led a team to develop an innovative solution for detecting and moderating online hate speech. Our platform combined natural language processing with real-time content analysis to provide actionable insights for legal compliance and content moderation."
+        "description": "Led a team building an NLP-powered platform for detecting and moderating online hate speech, combining real-time content analysis with legal compliance insights."
       },
       {
         "type": "scholarship",
-        "title": "University President's Undergraduate Scholarship",
-        "subtitle": "Warsaw University of Technology, 2014-2017",
-        "date": "2014-2017",
-        "description": "Most prestigious undergraduate scholarship awarded four years in a row for exceptional academic performance in computer science."
+        "title": "University President's Scholarship",
+        "subtitle": "Warsaw University of Technology",
+        "date": "2014, 2015, 2016, 2017",
+        "description": "Most prestigious undergraduate scholarship — awarded four consecutive years for exceptional academic performance in computer science."
       }
     ]
   }
