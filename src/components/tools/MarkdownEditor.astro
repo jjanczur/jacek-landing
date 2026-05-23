@@ -414,7 +414,9 @@
       const printWindow = window.open('', '_blank', 'width=900,height=700');
       if (!printWindow) return;
 
-      const linkStyle = enableLinks ? 'a { color: #0969da; }' : 'a { color: inherit; text-decoration: none; pointer-events: none; }';
+      const linkStyle = enableLinks
+        ? 'a { color: #0969da; }'
+        : 'a { color: inherit; text-decoration: none; pointer-events: none; }';
 
       const html = `<!DOCTYPE html>
 <html>

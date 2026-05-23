@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Beratung | Jacek Janczura",
-    "description": "CTO- & Cloud-Consulting: AWS-Architektur, verteilte Systeme, Reliability (SLO/Observability), Cost/Performance, Security/Compliance und AI (LLM/RAG/Evals), wenn es sinnvoll ist. Formate: Fractional Leadership, Architektur-Reviews, Delivery Sprints, Developer Enablement."
+    "description": "Unabhängiger KI-Architekt & Fractional CTO (Warschau). CTO- & Cloud-Consulting: AWS-Architektur, verteilte Systeme, Reliability (SLO/Observability), Cost/Performance, Security/Compliance und AI (LLM/RAG/Evals), wenn es sinnvoll ist. Formate: Fractional Leadership, Architektur-Reviews, Delivery Sprints, Developer Enablement."
   },
   "hero": {
     "title": "Beratung",
     "subtitle": "Senior Engineering Leadership für komplexe Systeme (AI, wenn sinnvoll)"
   },
   "intro": {
-    "p1": "Ich helfe Teams, <strong>sichere und zuverlässige Software</strong> zu shippen - Cloud-Plattformen, verteilte Systeme und AI-Funktionen (LLM/RAG/Evals), wenn sie echten Mehrwert liefern.",
+    "p1": "Ich bin unabhängiger KI-Architekt und Fractional CTO mit Sitz in Warschau - zuvor Mitgründer und CTO von Jaden Data. Ich helfe Teams, <strong>sichere und zuverlässige Software</strong> zu shippen - Cloud-Plattformen, verteilte Systeme und AI-Funktionen (LLM/RAG/Evals), wenn sie echten Mehrwert liefern.",
     "p2": "Mein Fokus ist <strong>Produktion</strong>: klare Architekturentscheidungen mit transparenten Trade-offs, schnelles Delivery ohne Regressionen, Cost/Performance, Security/Compliance - und ein Vorgehen, das zu deiner Organisation passt."
   },
   "engagements": {

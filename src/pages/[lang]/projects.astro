@@ -37,6 +37,7 @@ interface ProjectItem {
   period: string;
   industry: string;
   role?: string;
+  company?: string;
   tagline: string;
   description: string[];
   industries: string;
@@ -118,7 +119,9 @@ const iconMap: Record<string, any> = {
                     <span class="project-period">{project.period}</span>
                     <span class="project-role">{project.role ?? t.role}</span>
                     <span class="project-industry">{project.industry}</span>
-                    <span class="project-company">{t.company}</span>
+                    <span class="project-company">
+                      {project.company ?? t.company}
+                    </span>
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@
     "title": "Projekty",
     "subtitle": "Wybrane realizacje: enterprise AI, systemy ML i architektury privacy-first"
   },
-  "intro": "Wybrane projekty z {company}, gdzie jestem współzałożycielem i CTO.",
+  "intro": "Wybrane realizacje w dwóch etapach: projekty prowadzone jako współzałożyciel i CTO {company} (do 2024) oraz projekty realizowane od tego czasu niezależnie - jako konsulting/kontraktowanie.",
   "company": "Jaden Data",
   "role": "Współzałożyciel i CTO",
   "labels": {
@@ -62,6 +62,7 @@
       "period": "2025–2026",
       "industry": "System dopasowania produktów (ML)",
       "role": "Lider projektu (ML) i Data Scientist",
+      "company": "Niezależny konsulting",
       "tagline": "Automatyczne dopasowanie produktów zamiast ręcznej selekcji",
       "description": [
         "Dla RP Group (oświetlenie awaryjne) zbudowałem system ML, który dopasowuje zapytania klientów do najlepszych produktów - zastępując czasochłonny dobór przez ekspertów powtarzalnym rankingiem.",

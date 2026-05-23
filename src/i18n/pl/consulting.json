@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Konsulting | Jacek Janczura",
-    "description": "Konsulting CTO & Cloud: architektura AWS, systemy rozproszone, niezawodność (SLO/observability), cost/performance, security/compliance oraz AI (LLM/RAG/evals) wtedy, gdy ma to sens. Formy współpracy: fractional leadership, architecture reviews, delivery sprinty, developer enablement."
+    "description": "Niezależny architekt AI i fractional CTO (Warszawa). Konsulting CTO & Cloud: architektura AWS, systemy rozproszone, niezawodność (SLO/observability), cost/performance, security/compliance oraz AI (LLM/RAG/evals) wtedy, gdy ma to sens. Formy współpracy: fractional leadership, architecture reviews, delivery sprinty, developer enablement."
   },
   "hero": {
     "title": "Konsulting",
     "subtitle": "Senior engineering leadership dla złożonych systemów (AI, gdy ma sens)"
   },
   "intro": {
-    "p1": "Pomagam zespołom dowozić <strong>bezpieczne, niezawodne systemy</strong> - platformy chmurowe, systemy rozproszone i funkcje AI (LLM/RAG/evals), jeśli realnie poprawiają produkt albo proces.",
+    "p1": "Jestem niezależnym architektem AI i fractional CTO z Warszawy - wcześniej współzałożyciel i CTO Jaden Data. Pomagam zespołom dowozić <strong>bezpieczne, niezawodne systemy</strong> - platformy chmurowe, systemy rozproszone i funkcje AI (LLM/RAG/evals), jeśli realnie poprawiają produkt albo proces.",
     "p2": "Skupiam się na <strong>produkcji</strong>: decyzje architektoniczne z jasno opisanymi trade‑offami, szybki delivery bez regresji, cost/performance, security/compliance oraz sposób pracy dopasowany do tego, jak Twoja organizacja naprawdę działa."
   },
   "engagements": {

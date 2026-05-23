@@ -7,7 +7,7 @@
     "title": "Projects",
     "subtitle": "Selected work across enterprise AI platforms, ML systems, and privacy-first architectures"
   },
-  "intro": "Selected projects built at {company}, where I serve as Co-founder & CTO.",
+  "intro": "Selected work across two phases: projects I led as Co-founder & CTO of {company} (until 2024), and projects delivered since then as independent consulting/contracting work.",
   "company": "Jaden Data",
   "role": "Co-founder & CTO",
   "labels": {
@@ -62,6 +62,7 @@
       "period": "2025–2026",
       "industry": "ML Product Matching System",
       "role": "Project Lead (ML) & Data Scientist",
+      "company": "Independent Consulting",
       "tagline": "Automated product matching to eliminate manual offer preparation",
       "description": [
         "For RP Group (emergency lighting), built a machine-learning system that matches customer inquiries to the best-fitting products-replacing time-consuming expert-driven selection with repeatable ranking.",

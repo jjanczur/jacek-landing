@@ -1,19 +1,19 @@
 {
   "meta": {
-    "title": "KI-Architekt & CTO | Jacek Janczura",
-    "description": "KI‑Ingenieur und AWS‑Cloud‑Architekt. Mitgründer & CTO bei Jaden Data: Enterprise‑LLM/RAG‑Plattformen und verteilte Systeme. Verfügbar für Architektur‑Reviews, Prompt Engineering und KI‑Beratung."
+    "title": "KI-Architekt & Berater | Jacek Janczura",
+    "description": "Unabhängiger KI-Architekt und Berater (Fractional CTO) mit Sitz in Warschau. Mitgründer von Jaden Data, CTO bis 2024 - heute Gesellschafter und Berater. Enterprise‑LLM/RAG‑Plattformen, verteilte Systeme, Architektur‑Reviews und KI‑Beratung."
   },
   "hero": {
-    "title": "KI-Architekt & CTO",
+    "title": "KI-Architekt & Berater",
     "subtitle": "Aus komplexen Abläufen echte Wettbewerbsvorteile machen",
-    "tagline": "Mitgründer bei Jaden Data - Enterprise‑KI auf AWS (und verfügbar für KI‑Beratung)",
+    "tagline": "Unabhängiger KI-Architekt & Fractional CTO mit Sitz in Warschau - Mitgründer von Jaden Data (heute Berater & Gesellschafter)",
     "cta": {
       "primary": "Kontakt aufnehmen",
       "secondary": "Projekte ansehen"
     }
   },
   "positioning": {
-    "p1": "Ich bin Jacek, Mitgründer & CTO von <strong>Jaden Data</strong>. Ich baue Prozessintelligenz - KI-native Systeme, die reale Abläufe in Ihrem Unternehmen messbar verbessern. Ich starte mit dem Prozess und mache ihn schneller, sicherer und messbar.",
+    "p1": "Ich bin Jacek, unabhängiger KI-Architekt und Berater mit Sitz in Warschau. Ich habe <strong>Jaden Data</strong> mitgegründet und war bis Juni 2024 CTO - ich bleibe Gesellschafter und arbeite weiterhin als Berater mit dem Team. Ich baue Prozessintelligenz - KI-native Systeme, die reale Abläufe in Ihrem Unternehmen messbar verbessern. Ich starte mit dem Prozess und mache ihn schneller, sicherer und messbar.",
     "p2": "Meine Stärken sind <strong>KI/ML</strong> und <strong>Cloud‑Architektur</strong>: Enterprise‑LLM‑Plattformen, RAG‑Systeme und ereignisgesteuerte Microservices auf <strong>AWS</strong> (Lambda, ECS/Fargate, SNS/SQS). Ich integriere Multi‑Modell‑Stacks (OpenAI, Azure OpenAI, Bedrock, Mistral) und liefere für regulierte Umfelder (ISO 27001, SOC 2 Type 2). Außerdem unterstütze ich als Freelancer: Architektur‑Reviews, Prompt Engineering + Evals und technische Führung."
   },
   "highlights": {
@@ -84,7 +84,7 @@
     "items": [
       {
         "question": "Wer ist Jacek Janczura?",
-        "answer": "Jacek Janczura ist KI-Architekt & CTO. Er ist Mitgründer und CTO bei Jaden Data und baut KI-native Systeme für Prozessintelligenz und Enterprise-Operations.",
+        "answer": "Jacek Janczura ist unabhängiger KI-Architekt und Berater (Fractional CTO) mit Sitz in Warschau. Er hat Jaden Data GmbH mitgegründet und war bis 2024 CTO; er bleibt Gesellschafter und Berater - und baut KI-native Systeme für Prozessintelligenz und Enterprise-Operations.",
         "links": ["about"]
       },
       {
