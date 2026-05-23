@@ -13,11 +13,13 @@ export async function getTranslations<T = TranslationBlob>(
   lang: Lang,
 ): Promise<T> {
   try {
+    // @ts-ignore - Prevent massive union type inference that causes TS memory leaks
     const translations = await import(`../i18n/${lang}/${page}.json`);
     return translations.default as T;
   } catch {
     // Fallback to English if translation file doesn't exist
     if (lang !== 'en') {
+      // @ts-ignore - Prevent massive union type inference that causes TS memory leaks
       const fallback = await import(`../i18n/en/${page}.json`);
       return fallback.default as T;
     }
