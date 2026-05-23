@@ -1,38 +1,38 @@
 {
   "meta": {
     "title": "Publikacje | Jacek Janczura",
-    "description": "Recenzowane publikacje naukowe, artykuły i notatki techniczne o architekturze AI, systemach rozproszonych i inżynierii oprogramowania."
+    "description": "Recenzowane publikacje, artykuły i notatki z zakresu architektury AI, systemów rozproszonych i inżynierii oprogramowania."
   },
   "hero": {
     "title": "Publikacje",
-    "subtitle": "Recenzowane badania, artykuły i spostrzeżenia techniczne"
+    "subtitle": "Publikacje naukowe, teksty i techniczne notatki z placu boju"
   },
   "sections": {
     "publications": {
-      "title": "Publikacje i artykuły",
+      "title": "Artykuły i Publikacje",
       "groups": {
         "peerReviewed": {
-          "title": "Publikacje recenzowane",
+          "title": "Recenzowane naukowo",
           "items": [
             {
               "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
-              "description": "BAR/NDSS Workshop 2018. Narzędzie badawcze do wykrywania podatności typu taint w kodzie binarnym, łączące analizę statyczną z dynamicznym śledzeniem taint. Udostępnia DSL do definiowania polityk taint. Przetestowane na rzeczywistych programach.",
-              "role": "Autor/opiekun repozytorium.",
+              "description": "BAR/NDSS Workshop 2018. Narzędzie badawcze, które wyłapuje podatności typu taint bezpośrednio w kodzie binarnym. Miksuje analizę statyczną z dynamicznym śledzeniem i dorzuca własny język (DSL) do polityk bezpieczeństwa. Działanie udowodnione na prawdziwym kodzie.",
+              "role": "Autor / opiekun repo",
               "links": [
                 {
                   "label": "Repozytorium GitHub",
                   "url": "https://github.com/jjanczur/Saluki"
                 },
                 {
-                  "label": "Artykuł",
+                  "label": "Paper",
                   "url": "https://www.ndss-symposium.org/wp-content/uploads/2018/07/bar2018_19_Gotovchits_paper.pdf"
                 }
               ]
             },
             {
               "title": "DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases",
-              "description": "IEEE BRAINS 2020. Zdecentralizowany mechanizm rozliczeń za zakupy treści cyfrowych oparty na blockchainie. Przejrzyste, programowalne wypłaty i architektura smart kontraktów.",
-              "role": "Autor/współautor.",
+              "description": "IEEE BRAINS 2020. Model zdecentralizowanych rozliczeń za treści cyfrowe oparty na blockchainie. Skupia się na tym, jak projektować smart kontrakty tak, by wypłaty za content były przejrzyste i programowalne.",
+              "role": "Autor / współautor",
               "doi": "10.1109/BRAINS49436.2020.9223299",
               "links": [
                 {
@@ -48,11 +48,11 @@
           ]
         },
         "articles": {
-          "title": "Artykuły i poradniki",
+          "title": "Artykuły i Poradniki",
           "items": [
             {
               "title": "Utility NFTs more than simple JPEGs?",
-              "description": "Medium, 1 lutego 2023. Definiuję pojęcie „utility NFTs\" i pokazuję ich zastosowania wykraczające poza kolekcjonerstwo (np. przepustki, uprawnienia). Wnioski dla platform i rynków.",
+              "description": "Medium, 1 lutego 2023. Głośno o NFT, ale czy jest z tego pożytek? Artykuł rozkłada na czynniki pierwsze „utility NFTs” – pokazując, jak dają realną wartość (np. dostęp czy uprawnienia) i co to zmienia dla marketplace'ów.",
               "links": [
                 {
                   "label": "Artykuł na Medium",
@@ -62,50 +62,45 @@
             },
             {
               "title": "How to run your python code in KnowledgeX",
-              "description": "Medium, 17 lutego 2022. Jak uruchamiać zadania Pythona na KnowledgeX z wykorzystaniem iExec i TEE (Trusted Execution Environments). Omawiam szablony Docker, weryfikację workerów i audytowalność.",
+              "description": "Medium, 17 lutego 2022. Praktyczny przewodnik, jak bezpiecznie odpalać taski w Pythonie na KnowledgeX używając iExec i TEEs. Od obrazów w Dockerze, przez weryfikację workerów, aż po audytowalność – pigułka wiedzy dla devów i data scientistów.",
               "links": [
                 {
                   "label": "Wpis na blogu",
                   "url": "https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c"
                 }
               ]
-            },
-            {
-              "title": "REL_2020_02_APP_web.pdf",
-              "description": "Tymczasowo: Tytuł i abstrakt do potwierdzenia.",
-              "placeholder": true
             }
           ]
         }
       }
     },
     "notes": {
-      "title": "Notatki techniczne",
-      "intro": "Okazjonalne notatki i spostrzeżenia z pracy z systemami AI, architekturami rozproszonymi i oprogramowaniem korporacyjnym. Mniej formalne niż prezentacje, ale zawierają cenne wnioski i obserwacje.",
+      "title": "Tech Notes",
+      "intro": "Czasem coś zapisuję – luźne notatki i przemyślenia z pracy nad systemami AI, rozproszonymi architekturami i softem enterprise. Mniej oficjalne niż prezentacje, ale pełne mięsa i lekcji wyniesionych z błędów.",
       "items": [
         {
-          "title": "Prompt engineering na dużą skalę",
+          "title": "Prompt Engineering at Scale",
           "date": "2024-02-15",
-          "excerpt": "Budowa systemu optymalizacji promptów, który skaluje się w zespołach i utrzymuje spójność wyników AI. Wnioski z wdrożenia „Prompt Wizard\" dla zastosowań korporacyjnych.",
+          "excerpt": "Jak zbudować system do optymalizacji promptów, który ogarnie pracę wielu zespołów, a AI nadal będzie odpowiadać spójnie. Garść wniosków z wdrożenia „Prompt Wizarda” w dużej organizacji.",
           "tags": ["Prompt Engineering", "AI Governance", "Enterprise"]
         },
         {
-          "title": "Potoki AI sterowane zdarzeniami",
+          "title": "Event-Driven AI Pipelines",
           "date": "2024-01-22",
-          "excerpt": "Projektowanie odpornych przepływów pracy AI z wykorzystaniem wzorców architektury sterowanej zdarzeniami. Jak SQS/SNS pomaga w zarządzaniu backpressure w potokach AI i zapewnia niezawodne przetwarzanie.",
-          "tags": ["Event-driven", "Potoki AI", "AWS"]
+          "excerpt": "Architektura event-driven jako ratunek dla kruchych procesów AI. O tym, jak SQS i SNS pomagają ogarnąć backpressure i sprawiają, że pipeline'y przestają się dławić.",
+          "tags": ["Event-Driven", "AI Pipelines", "AWS"]
         },
         {
-          "title": "Routing wielomodelowy AI",
+          "title": "Multi-Model AI Routing",
           "date": "2023-12-10",
-          "excerpt": "Inteligentne strategie routingu dla wdrożeń wielomodelowych AI. Optymalizacja kosztów przy zachowaniu wydajności i jakości u różnych dostawców modeli.",
-          "tags": ["Multi-model", "Optymalizacja kosztów", "Architektura"]
+          "excerpt": "Inteligentny routing zapytań przy wdrożeniach multi-model. Jak przyciąć koszty, nie poświęcając wydajności ani jakości, żonglując dostawcami modeli w tle.",
+          "tags": ["Multi-Model", "Optymalizacja Kosztów", "Architektura"]
         },
         {
-          "title": "Bezpieczeństwo platform AI",
+          "title": "Security for AI Platforms",
           "date": "2023-11-18",
-          "excerpt": "Kluczowe zagadnienia bezpieczeństwa platform AI: prywatność danych, kontrola dostępu, ścieżki audytu i automatyzacja zgodności w aplikacjach AI-first.",
-          "tags": ["Bezpieczeństwo AI", "Compliance", "Prywatność"]
+          "excerpt": "Fundamenty bezpieczeństwa platform AI w skrócie: ochrona prywatności danych, kontrola dostępu, logi audytowe i jak zautomatyzować compliance bez zatrzymywania developmentu.",
+          "tags": ["AI Security", "Compliance", "Prywatność"]
         }
       ]
     }
@@ -115,11 +110,11 @@
     "links": "Linki:",
     "link": "Link:",
     "doi": "DOI:",
-    "placeholder": "Tymczasowo:"
+    "placeholder": "Placeholder:"
   },
-  "cta": "Te publikacje i notatki odzwierciedlają wnioski i obserwacje z budowy systemów AI. Zapraszam również do sekcji {talksLink} i {projectsLink}.",
+  "cta": "Te publikacje i notatki to taki dziennik pokładowy z moich doświadczeń przy budowaniu systemów AI. Jeśli szukasz czegoś w innej formie, sprawdź moje {talksLink} oraz {projectsLink}.",
   "ctaLinks": {
-    "talks": "prezentacje",
+    "talks": "wystąpienia",
     "projects": "projekty"
   }
 }

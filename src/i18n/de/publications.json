@@ -1,26 +1,26 @@
 {
   "meta": {
     "title": "Publikationen | Jacek Janczura",
-    "description": "Begutachtete Forschungsarbeiten, Fachartikel und technische Notizen zu KI-Architektur, verteilten Systemen und Software-Engineering."
+    "description": "Begutachtete Forschungsarbeiten, Artikel und technische Notizen zu AI-Architektur, verteilten Systemen und Software-Engineering."
   },
   "hero": {
     "title": "Publikationen",
-    "subtitle": "Begutachtete Forschung, Fachartikel und technische Einblicke"
+    "subtitle": "Papers, Artikel und Insights aus der Praxis"
   },
   "sections": {
     "publications": {
-      "title": "Publikationen & Beiträge",
+      "title": "Papers & Artikel",
       "groups": {
         "peerReviewed": {
-          "title": "Begutachtete Veröffentlichungen",
+          "title": "Peer-Reviewed",
           "items": [
             {
               "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
-              "description": "BAR/NDSS Workshop 2018. Ein Forschungstool zur Erkennung von Taint-basierten Sicherheitslücken in Binärcode - kombiniert statische Analyse mit dynamischem Taint-Tracking. Bietet eine DSL für Taint-Policies und wurde an realen Programmen erprobt.",
-              "role": "Autor und Maintainer des Repositories.",
+              "description": "BAR/NDSS Workshop 2018. Ein Forschungstool, um Taint-basierte Security-Lücken direkt im Binärcode zu finden. Der Ansatz mischt statische Analyse mit dynamischem Taint-Tracking und bringt eine eigene DSL für Taint-Policies mit. An echten Programmen validiert.",
+              "role": "Autor & Maintainer des Repos",
               "links": [
                 {
-                  "label": "GitHub-Repository",
+                  "label": "GitHub Repo",
                   "url": "https://github.com/jjanczur/Saluki"
                 },
                 {
@@ -31,8 +31,8 @@
             },
             {
               "title": "DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases",
-              "description": "IEEE BRAINS 2020. Ein Blockchain-basierter, dezentraler Vergütungsmechanismus für digitale Inhalte mit transparenten, programmierbaren Auszahlungen und Smart-Contract-Architektur.",
-              "role": "Autor/Co-Autor.",
+              "description": "IEEE BRAINS 2020. Ein dezentrales, Blockchain-basiertes Vergütungsmodell für digitale Inhalte. Zeigt, wie man Payouts transparent macht und programmierbare Smart Contracts sauber für Content-Käufe designt.",
+              "role": "Autor/Co-Autor",
               "doi": "10.1109/BRAINS49436.2020.9223299",
               "links": [
                 {
@@ -48,64 +48,59 @@
           ]
         },
         "articles": {
-          "title": "Artikel & Anleitungen",
+          "title": "Artikel & Guides",
           "items": [
             {
               "title": "Utility NFTs more than simple JPEGs?",
-              "description": "Medium, 1. Februar 2023. Definiert „Utility-NFTs\" und zeigt deren praktischen Nutzen jenseits reiner Sammlerstücke - etwa als Zugangsberechtigungen oder Rollen. Mit Implikationen für NFT-Marktplätze.",
+              "description": "Medium, 1. Februar 2023. Ein Deep Dive in „Utility NFTs“. Geht der Frage nach, wie NFTs einen echten Nutzen (z. B. Zugangsberechtigungen oder Rollen) über reine Sammlerwerte hinaus bieten können und was das für Marktplätze bedeutet.",
               "links": [
                 {
-                  "label": "Medium-Artikel",
+                  "label": "Medium Artikel",
                   "url": "https://medium.com/@jacekjanczura/utility-nfts-more-than-simple-jpegs-janczura-382a78e540d4"
                 }
               ]
             },
             {
               "title": "How to run your python code in KnowledgeX",
-              "description": "Medium, 17. Februar 2022. Anleitung zur Ausführung von Python-Jobs auf KnowledgeX via iExec und TEE. Behandelt Docker-Templates, Worker-Verifikation und Auditierbarkeit für Entwickler und Data Scientists.",
+              "description": "Medium, 17. Februar 2022. Ein Praxis-Guide, wie man Python-Jobs über iExec und Trusted Execution Environments (TEEs) auf KnowledgeX sicher ausführt. Behandelt Docker-Templates, Worker-Verifikation und wie man als Entwickler die volle Auditierbarkeit behält.",
               "links": [
                 {
-                  "label": "Blogbeitrag",
+                  "label": "Blog Post",
                   "url": "https://blog.knowledgex.eu/how-to-run-your-python-code-in-knowledgex-749e2651370c"
                 }
               ]
-            },
-            {
-              "title": "REL_2020_02_APP_web.pdf",
-              "description": "Vorläufig: Titel und Abstract noch ausstehend. [Bestätigung aus Originalquelle erforderlich].",
-              "placeholder": true
             }
           ]
         }
       }
     },
     "notes": {
-      "title": "Technische Notizen",
-      "intro": "Gelegentliche technische Notizen und Erkenntnisse aus der Arbeit mit KI-Systemen, verteilten Architekturen und Enterprise-Software. Weniger formal als Vorträge, aber mit wertvollen Beobachtungen aus der Praxis.",
+      "title": "Tech Notes",
+      "intro": "Hier sammle ich hin und wieder lose Notizen und Learnings, die bei der Arbeit an AI-Systemen, verteilten Architekturen und Enterprise-Software anfallen. Weniger formal als ein Paper, aber oft näher an der Praxis.",
       "items": [
         {
-          "title": "Prompt Engineering im Unternehmenseinsatz",
+          "title": "Prompt Engineering at Scale",
           "date": "2024-02-15",
-          "excerpt": "Wie man ein Prompt-Optimierungssystem aufbaut, das teamübergreifend skaliert und konsistente KI-Ergebnisse liefert. Erkenntnisse aus der Entwicklung eines „Prompt-Assistenten\" für Enterprise-Anwendungsfälle.",
-          "tags": ["Prompt Engineering", "KI-Governance", "Enterprise"]
+          "excerpt": "Wie man ein Prompt-Optimierungs-System baut, das auch dann noch skaliert und konsistente Ergebnisse liefert, wenn mehrere Teams daran arbeiten. Meine Lessons Learned aus der Entwicklung eines „Prompt Wizards“ für Enterprise-Use-Cases.",
+          "tags": ["Prompt Engineering", "AI Governance", "Enterprise"]
         },
         {
-          "title": "Event-Driven KI-Pipelines",
+          "title": "Event-Driven AI Pipelines",
           "date": "2024-01-22",
-          "excerpt": "Design robuster KI-Workflows mit ereignisgesteuerten Architekturmustern. Wie SQS/SNS den Backpressure in KI-Pipelines abfedern und zuverlässige Verarbeitung sicherstellen.",
-          "tags": ["Event-Driven", "KI-Pipelines", "AWS"]
+          "excerpt": "Wie man KI-Workflows durch Event-Driven Architektur robuster macht. Ein Blick darauf, wie SQS und SNS dabei helfen, Backpressure in AI-Pipelines abzufedern und eine verlässliche Datenverarbeitung sicherzustellen.",
+          "tags": ["Event-Driven", "AI Pipelines", "AWS"]
         },
         {
-          "title": "Multi-Modell-Routing für KI",
+          "title": "Multi-Model AI Routing",
           "date": "2023-12-10",
-          "excerpt": "Intelligente Routing-Strategien für Multi-Modell-KI-Deployments. Kostenoptimierung bei gleichzeitig hoher Performance und Qualität - über verschiedene Modellanbieter hinweg.",
-          "tags": ["Multi-Modell", "Kostenoptimierung", "Architektur"]
+          "excerpt": "Smarte Routing-Strategien, wenn man mehrere AI-Modelle gleichzeitig im Einsatz hat. Wie man Kosten massiv optimiert, ohne bei verschiedenen Providern an Qualität oder Speed einzubüßen.",
+          "tags": ["Multi-Model", "Cost Optimization", "Architecture"]
         },
         {
-          "title": "Sicherheit für KI-Plattformen",
+          "title": "Security for AI Platforms",
           "date": "2023-11-18",
-          "excerpt": "Zentrale Sicherheitsaspekte für KI-Plattformen: Datenschutz, Zugriffskontrolle, Audit-Trails und automatisierte Compliance in KI-first-Anwendungen.",
-          "tags": ["KI-Sicherheit", "Compliance", "Datenschutz"]
+          "excerpt": "Die harten Basics für AI-Plattformen: Privacy-Konzepte, sauberes Access Control, Audit Trails und wie man Compliance in modernen AI-First-Applikationen von Anfang an automatisiert.",
+          "tags": ["AI Security", "Compliance", "Privacy"]
         }
       ]
     }
@@ -115,9 +110,9 @@
     "links": "Links:",
     "link": "Link:",
     "doi": "DOI:",
-    "placeholder": "Vorläufig:"
+    "placeholder": "Placeholder:"
   },
-  "cta": "Diese Publikationen und Notizen spiegeln laufendes Lernen und Beobachtungen aus der Entwicklung von KI-Systemen wider. Für strukturiertere Inhalte siehe die Bereiche {talksLink} und {projectsLink}.",
+  "cta": "Diese Publikationen und Notizen sind eine Art Logbuch meiner Learnings aus dem Bau von KI-Systemen. Wenn du es kompakter magst, schau dir am besten die {talksLink} oder {projectsLink} an.",
   "ctaLinks": {
     "talks": "Vorträge",
     "projects": "Projekte"

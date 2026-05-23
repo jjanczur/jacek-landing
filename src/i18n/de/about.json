@@ -1,11 +1,11 @@
 {
   "meta": {
     "title": "Über mich | Jacek Janczura",
-    "description": "Unabhängiger KI-Architekt und Berater (Fractional CTO) mit Sitz in Warschau. Mitgründer von Jaden Data, CTO bis 2024 - heute Gesellschafter und Berater. Verfügbar für Architektur‑Reviews, Prompt Engineering und KI‑Beratung."
+    "description": "Unabhängiger AI Architect und Fractional CTO aus Warschau. Mitgründer und ehemaliger CTO von Jaden Data. Freelancer für Architektur‑Reviews, Prompt Engineering und Enterprise-AI-Consulting."
   },
   "hero": {
     "title": "Über mich",
-    "subtitle": "Prozessorientierte KI und Cloud-Architektur"
+    "subtitle": "Process-First AI und Cloud-Architektur"
   },
   "downloads": {
     "title": "Downloads",
@@ -13,48 +13,48 @@
   },
   "bio": {
     "paragraphs": [
-      "Ich bin Jacek, unabhängiger KI-Architekt und Berater mit Sitz in Warschau, Polen. Ich habe <strong>Jaden Data</strong> mitgegründet und war bis Juni 2024 CTO; ich bleibe Gesellschafter und arbeite weiterhin als Berater mit dem Team. Seitdem arbeite ich unabhängig mit Kunden an Enterprise-KI-Systemen auf AWS - LLM-Plattformen, RAG und ereignisgesteuerte Microservices - immer entlang echter operativer Workflows.",
-      "<ul><li><strong>Bootstrapped Startup</strong> (ohne externes VC): <strong>&#x2265; 1 Mio. € Jahresumsatz</strong></li><li>Engineering von <strong>0 → 10</strong> skaliert und mehrere Teams geführt</li><li>Mandantenfähige Systeme für <strong>50+ Organisationen</strong> mit <strong>&gt; 1.000 gleichzeitigen Verbindungen</strong> und <strong>tausenden Requests pro Sekunde</strong></li><li><strong>ISO 27001</strong> und <strong>SOC 2</strong> in ~3 Monaten geliefert</li></ul>",
-      "Wenn du ein System schneller shippen oder das Risiko reduzieren willst, unterstütze ich auch freelance: Architektur‑Reviews, LLM/RAG‑Delivery, Prompt Engineering + Evals und hands‑on Technical Leadership. Schau in <a href=\"/de/projects/\">Projekte</a>, <a href=\"/de/publications/\">Publikationen</a> oder lade unten den Lebenslauf herunter."
+      "Hi, ich bin Jacek – unabhängiger AI Architect und Consultant in Warschau. Ich habe <strong>Jaden Data</strong> mitgegründet und dort bis Juni 2024 als CTO gearbeitet. Heute unterstütze ich das Team weiterhin als Berater und Gesellschafter. Seitdem arbeite ich als Freelancer mit Kunden an Enterprise-AI-Systemen auf AWS: LLM-Plattformen, RAG und event-driven Microservices – immer mit starkem Fokus auf echte operative Prozesse.",
+      "<ul><li><strong>Bootstrapped Startup</strong> (ohne externes VC): <strong>&#x2265; 1 Mio. € Jahresumsatz</strong></li><li>Engineering-Team von <strong>0 → 10</strong> skaliert und Delivery für mehrere Squads verantwortet</li><li>Mandantenfähige Systeme für <strong>50+ Organisationen</strong> mit <strong>&gt; 1.000 parallelen Verbindungen</strong> und <strong>tausenden Requests pro Sekunde</strong> gebaut</li><li><strong>ISO 27001</strong> und <strong>SOC 2</strong> in knackigen ~3 Monaten umgesetzt</li></ul>",
+      "Wenn du ein System schneller shippen oder technische Risiken minimieren willst, bin ich als Freelancer am Start: Architektur-Reviews, LLM/RAG-Delivery, Prompt Engineering + Evals und hands-on Technical Leadership. Schau dir meine <a href=\"/de/projects/\">Projekte</a> an, lies meine <a href=\"/de/publications/\">Publikationen</a> oder lade unten meinen Lebenslauf herunter."
     ]
   },
   "outsideWork": {
-    "title": "Abseits der Arbeit",
+    "title": "Abseits des Bildschirms",
     "paragraphs": [
-      "Meine Leidenschaft gilt Extremsport und Outdoor-Aktivitäten: Ich bin lizenzierter Fallschirmspringer (PJ(B)-Lizenz), Advanced Open Water Diver, internationaler Windsurf-Instruktor und begeisterter Snowboarder. Diese Erfahrungen trainieren Schlüsselkompetenzen: Risikobewusstsein, klare Kommunikation, Ruhe unter Druck und disziplinierte Vorbereitung - alles direkt übertragbar auf technische Führung, Team-Mentoring und Krisenmanagement im Enterprise-Umfeld.",
-      "Ich spreche Polnisch (Muttersprache), Englisch (professionell) und Deutsch (eingeschränkt beruflich) - das erleichtert die Zusammenarbeit in internationalen Teams und mit Kunden aus unterschiedlichen Ländern."
+      "Ich liebe Extremsport und bin gerne draußen. Ich bin lizenzierter Fallschirmspringer (PJ(B)), Advanced Open Water Diver, internationaler Windsurf-Instructor und begeisterter Snowboarder. Diese Hobbys haben mir einiges beigebracht: Risikomanagement, klare Kommunikation, Ruhe unter Druck und harte Disziplin bei der Vorbereitung. Genau diese Skills brauche ich auch beim Technical Leadership, im Team-Mentoring und im Krisenmanagement in Enterprise-Umgebungen.",
+      "Sprachlich bin ich flexibel aufgestellt: Polnisch (Muttersprache), Englisch (verhandlungssicher) und Deutsch (konversationssicher) – das macht die Zusammenarbeit in internationalen Teams und mit globalen Kunden extrem einfach."
     ]
   },
   "philosophy": {
-    "title": "Mein Ansatz: Prozessintelligenz",
+    "title": "Meine Philosophie: Process Intelligence",
     "paragraphs": [
-      "Seit Jahren beobachte ich, wie Unternehmen bei der KI-Einführung straucheln. Das Problem ist selten die Technologie selbst - es fehlt das Verständnis, dass <strong>KI den Prozessen dienen muss, nicht sie ersetzen</strong>. Deshalb beginnt jedes Projekt - auch die Plattformen, die wir bei Jaden Data gebaut haben - mit der Frage: Wie läuft die Arbeit wirklich ab?",
-      "Als KI-Architekt und Berater spezialisiere ich mich auf <strong>Enterprise-LLM-Plattformen</strong>, <strong>Retrieval-Augmented Generation</strong> und <strong>sichere Cloud-Architekturen</strong>. Ich habe mandantenfähige KI-Plattformen konzipiert, die AWS Bedrock, AWS SageMaker, Azure ML Studio, OpenAI und Mistral integrieren - für nahtlose Konnektivität und plattformübergreifende Zusammenarbeit. Dazu ereignisgesteuerte Microservice-Architekturen mit AWS Fargate (ECS, ECR), Lambda, SNS, SQS und CloudWatch - kostenoptimiert und serverlos skalierend.",
-      "Ich habe moderne RAG-Dienste entwickelt, die Vektordatenbanken automatisch aus Kundendateien erstellen (Pinecone, pgvector, Milvus). Dazu robuste Test-Frameworks für KI-Prozesse und RAG-Pipelines („Testbed\") zur quantitativen und qualitativen Bewertung. Außerdem „Prompt Wizard\" - ein Tool zur automatisierten Prompt-Optimierung, das Enterprise-Nutzern spürbar Zeit spart.",
-      "Technik ist die Grundlage. Der eigentliche Wert entsteht, wenn wir damit Abläufe transformieren: aus Stunden manueller Arbeit werden Minuten intelligenter Automatisierung, Entscheidungen fallen schneller, und Systeme lernen mit dem Geschäft mit."
+      "Ich beobachte seit Jahren, wie Unternehmen bei der AI-Adoption straucheln. Das Problem ist fast nie die Technologie – es ist das fehlende Verständnis dafür, dass <strong>AI eure Prozesse unterstützen muss, statt sie einfach nur blind ersetzen zu wollen</strong>. Deshalb fange ich bei jedem Projekt – genau wie bei den Plattformen, die wir bei Jaden Data gebaut haben – immer bei der Frage an: Wie wird die Arbeit eigentlich im echten Leben erledigt?",
+      "Als AI Architect und Consultant bin ich auf <strong>Enterprise-LLM-Plattformen</strong>, <strong>RAG (Retrieval-Augmented Generation)</strong> und <strong>bombensichere Cloud-Architekturen</strong> spezialisiert. Ich habe mandantenfähige AI-Plattformen konzipiert, die AWS Bedrock, SageMaker, Azure ML Studio, OpenAI und Mistral nativ verheiraten. Darunter liegen meist event-driven Microservices auf AWS Fargate, Lambda, SNS und SQS – voll auf Serverless, Autoscaling und Kostenkontrolle getrimmt.",
+      "Im RAG-Umfeld habe ich Systeme gebaut, die Vektordatenbanken (Pinecone, pgvector, Milvus) komplett automatisiert aus Kundendokumenten füttern. Dazu kamen solide Test-Frameworks („Testbed“) für quantitative und qualitative Evals, damit AI-Pipelines stabil bleiben. Außerdem habe ich mit dem „Prompt Wizard“ ein Tool entwickelt, das Prompt-Optimierung für Enterprise-User automatisiert und spürbar vereinfacht.",
+      "Aber Technik allein reicht nicht. Der echte Mehrwert entsteht erst, wenn wir damit eure Operations transformieren: Wenn aus Stunden voller Handarbeit plötzlich Minuten intelligenter Automatisierung werden, Entscheidungen viel schneller fallen und wir Systeme bauen, die mit eurem Business mitwachsen."
     ]
   },
   "career": {
-    "title": "Werdegang",
+    "title": "Mein Weg",
     "paragraphs": [
-      "Meine Karriere dreht sich darum, technische Exzellenz in Geschäftserfolg zu übersetzen. Bei <strong>idealo</strong> habe ich produktionsreife Produkte von der Idee bis zum Release entwickelt - Echtzeit-Lösungen mit Kafka, NoSQL und WebSockets. Login-Feature für 6 Länder - 1,4 Mio. neue Accounts in 3 Monaten (700 % über Prognose). Enterprise-Microservices in Java und Kotlin mit Spring Boot - idealo-Anwendungen liefen 24/7 zuverlässig durch On-Call.",
-      "Bei <strong>T-Labs (Deutsche Telekom)</strong> habe ich Systemarchitektur für Blockchain-basiertes Paket-Tracking entwickelt. Verteiltes Hyperledger-Netzwerk mit Chaincode (Smart Contracts) implementiert und deployt. REST-API, Proxy für Mobile/ERP sowie Auth-Service entwickelt - wie verteilte Systeme neue Formen der Zusammenarbeit ermöglichen.",
-      "Bei <strong>SAS Institute</strong> habe ich für Bankenkunden eine der ersten Plattformen zur Echtzeit‑Bewertung von Nutzeraktionen mit ML‑Modellen in dieser Größenordnung umgesetzt. Analyse von Zahlungs- und Verhaltensmustern bei tausenden Events pro Sekunde (Kafka + Stream Processing) sowie DSGVO‑Lineage für Compliance und Auditierbarkeit.",
-      "Dualer M.Sc. in Informatik (TU Berlin, PW Warschau). Arbeit über Architektur, Sicherheit, Team-Management und Delivery - Enterprise-Systeme müssen technische Exzellenz und messbare Geschäftsergebnisse liefern."
+      "Mein größter Meilenstein war die Gründung von <strong>Jaden Data</strong>. Ich habe das Unternehmen von null auf über 1 Mio. € Jahresumsatz (komplett bootstrapped) mitaufgebaut und das Engineering-Team auf 10 Leute skaliert – als CTO bis Juni 2024. Dort war ich für die Architektur und Delivery von Enterprise-AI verantwortlich: Multi-Tenant-SaaS, hochperformante verteilte Systeme auf AWS und extrem stabile LLM/RAG-Pipelines. Seit Mitte 2024 arbeite ich von Warschau aus als unabhängiger AI Architect und Fractional CTO – und bleibe Jaden Data als Berater und Shareholder eng verbunden.",
+      "<ul><li><strong>Enterprise AI auf AWS</strong>: Event-driven Microservices (Lambda, ECS/Fargate, SNS/SQS) und Multi-Model-LLM-Setups (OpenAI, Azure, Bedrock, Mistral)</li><li><strong>Security + Compliance</strong>: ISO 27001 und SOC 2 unter massivem Zeitdruck erfolgreich zertifiziert</li><li><strong>Praxisnahes LLM Engineering</strong>: Evals für Prompts und RAG, damit Teams ohne Bauchschmerzen releasen können</li></ul>",
+      "Vor Jaden Data war ich <strong>Software Engineer</strong> bei <strong>idealo</strong>. Dort habe ich unter anderem den internationalen Login-Rollout (6 Länder) mit 1,4 Mio. neuen Accounts in 3 Monaten gepusht. Außerdem habe ich Real-Time-Systeme (Kafka, NoSQL, WebSockets) und Enterprise-Microservices (Java/Kotlin, Spring Boot) gebaut – inklusive 24/7 On-Call-Verantwortung.",
+      "Davor lag mein Fokus auf Blockchain und verteilten Systemen bei <strong>T-Labs (Deutsche Telekom)</strong>, und bei <strong>SAS Institute</strong> habe ich Real-Time-Analytics-Systeme für Banken entwickelt. Mein akademischer Background: Ein dualer M.Sc. in Informatik (TU Berlin & TU Warschau)."
     ]
   },
   "specializations": {
     "title": "Spezialisierungen",
     "categories": [
       {
-        "title": "KI & Machine Learning",
+        "title": "AI & Machine Learning",
         "items": [
-          "LLM‑Plattformarchitektur",
+          "LLM-Plattform-Architektur",
           "Prompt Engineering & RAG",
-          "Multi‑Modell‑Integration (OpenAI, Azure, Bedrock, Mistral)",
-          "KI‑Pipeline‑Design & ‑Tests",
+          "Multi-Model-Integration (OpenAI, Azure, Bedrock, Mistral)",
+          "Design & Testing von AI-Pipelines",
           "Vektordatenbanken (Pinecone, pgvector, Milvus)",
-          "Tools zur Prompt‑Optimierung"
+          "Tools zur Prompt-Optimierung"
         ]
       },
       {
@@ -62,54 +62,54 @@
         "items": [
           "AWS (Lambda, ECS/Fargate, Bedrock, SageMaker)",
           "Azure ML Studio & OpenAI",
-          "Ereignisgesteuerte Microservices",
-          "Serverless‑Architektur",
-          "High‑Throughput‑Design",
-          "Kostenoptimierung"
+          "Event-Driven Microservices",
+          "Serverless-Architektur",
+          "High-Throughput-Systemdesign",
+          "Hardcore Kostenoptimierung"
         ]
       },
       {
-        "title": "Sicherheit & Compliance",
+        "title": "Security & Compliance",
         "items": [
-          "ISO 27001/SOC 2",
-          "Multi‑Tenant‑Sicherheit & RBAC",
-          "DSGVO & Datenschutz",
-          "Sicherheitsaudits & Risikobewertung",
-          "Compliance‑Implementierung",
-          "Audit‑Trail‑Design"
+          "ISO 27001 & SOC 2",
+          "Multi-Tenant Security & RBAC",
+          "GDPR / DSGVO & Privacy",
+          "Security Audits & Risk Assessment",
+          "Compliance-Umsetzung in Tech",
+          "Audit-Trail-Design"
         ]
       },
       {
-        "title": "Führung & Prozessintelligenz",
+        "title": "Leadership & Delivery",
         "items": [
-          "Process‑First‑Architektur",
-          "Teamaufbau & Skalierung (0→10 Entwickler)",
-          "Technische Führung",
-          "Business‑Outcome‑Fokus",
-          "Strategische Planung & Umsetzung",
-          "Stakeholder‑Management"
+          "Process-First-Architektur",
+          "Teamaufbau & Skalierung (0→10 Devs)",
+          "Hands-on Technical Leadership",
+          "Klarer Fokus auf Business Outcomes",
+          "Strategie & Execution",
+          "Stakeholder-Management"
         ]
       },
       {
-        "title": "Entwicklung & Technologien",
+        "title": "Tech Stack & Development",
         "items": [
           "Java & Kotlin (Spring Boot)",
           "Python & Node.js",
           "Microservices & REST APIs",
-          "Echtzeitsysteme (Kafka, WebSockets)",
+          "Real-Time Systeme (Kafka, WebSockets)",
           "Blockchain (Hyperledger, Ethereum)",
-          "Datenbankdesign (SQL, NoSQL)"
+          "Datenbank-Design (SQL, NoSQL)"
         ]
       },
       {
-        "title": "Sprachen & Zertifizierungen",
+        "title": "Sprachen & Zertifikate",
         "items": [
-          "Polnisch (Muttersprache), Englisch (beruflich)",
-          "Deutsch (eingeschränkt beruflich)",
-          "IELTS",
+          "Polnisch (Muttersprache), Englisch (fließend)",
+          "Deutsch (konversationssicher)",
+          "IELTS-Zertifikat",
           "SAS Certified Base Programmer",
-          "Internationaler Windsurf‑Instructor",
-          "PJ(B) Fallschirmsprung‑Lizenz"
+          "Internationaler Windsurf-Instructor",
+          "PJ(B) Fallschirmsprung-Lizenz"
         ]
       }
     ]
@@ -119,75 +119,54 @@
     "items": [
       {
         "date": "Jun 2024 – heute",
-        "title": "Unabhängiger KI-Architekt & Berater (Fractional CTO)",
-        "company": "Unabhängig · Warschau, Polen",
-        "description": "<ul><li>Unabhängige Beratung und Contracting: Enterprise-KI, AWS-Architektur, LLM/RAG-Delivery</li><li>Fractional CTO / Senior Engineering Leadership, Architektur-Reviews und Hands-on-Delivery</li><li>Laufende Zusammenarbeit mit <strong>Jaden Data</strong> als Berater und Gesellschafter</li><li>Aktuelle Arbeit: <strong>RP-Matcher</strong> (2025–2026, ML-Produktmatching für RP Group)</li></ul>"
+        "title": "Unabhängiger AI Architect & Consultant (Fractional CTO)",
+        "company": "Freelance · Warschau, Polen",
+        "description": "<ul><li>Consulting und Contracting für Enterprise-AI, AWS-Architekturen und LLM/RAG-Delivery</li><li>Fractional CTO, Senior Engineering Leadership, Architektur-Reviews und direkte Umsetzungen</li><li>Weiterhin als Berater und Gesellschafter eng mit <strong>Jaden Data</strong> verbunden</li><li>Aktuelles Highlight: <strong>RP-Matcher</strong> (2025–2026, Machine Learning Produkt-Matching für RP Group)</li></ul>"
       },
       {
         "date": "Mär 2021 – Jun 2024",
         "title": "Mitgründer & CTO",
         "company": "Jaden Data GmbH",
-        "description": "<ul><li><strong>Bootstrapped</strong> (ohne externes VC) bis profitabel (&#x2265; 1 Mio. € Jahresumsatz)</li><li>Engineering von <strong>0 → 10</strong> skaliert und mehrere Teams geführt</li><li>Mandantenfähige Enterprise‑KI auf AWS für 50+ Organisationen (&gt;1.000 Verbindungen; tausende RPS)</li><li><strong>ISO 27001</strong> und <strong>SOC 2</strong> in ~3 Monaten geliefert</li><li>Key Projects: <strong>entAIngine</strong> (2022–heute), <strong>KnowledgeX</strong> (2021–2022, EU Horizon 2020)</li></ul>"
+        "description": "<ul><li>Voll <strong>bootstrapped</strong> (ohne VCs) in die Profitabilität geführt (&#x2265; 1 Mio. € Jahresumsatz)</li><li>Engineering von <strong>0 auf 10</strong> skaliert und die Teams geleitet</li><li>Mandantenfähige Enterprise-AI-Lösungen auf AWS für 50+ Organisationen aufgebaut (&gt;1.000 Connections, tausende RPS)</li><li><strong>ISO 27001</strong> und <strong>SOC 2</strong> in ca. 3 Monaten erfolgreich durchs Audit geboxt</li><li>Schlüsselprojekte: <strong>entAIngine</strong> (2022–heute), <strong>KnowledgeX</strong> (2021–2022, gefördert durch EU Horizon 2020)</li></ul>"
       },
       {
         "date": "Apr 2020 – Jun 2021",
         "title": "Software Engineer",
         "company": "idealo internet GmbH",
-        "description": "<ul><li>Beitrag zum Multi‑Country‑Login‑Rollout (6 Länder) mit <strong>1,4 Mio. neuen Accounts in 3 Monaten</strong> (700% über Forecast)</li><li>Real‑Time Systeme (Kafka/NoSQL/WebSockets) und Enterprise‑Microservices + REST APIs (Java/Kotlin, Spring Boot)</li><li>A/B‑Tests und 24/7‑Reliability durch On‑Call</li><li>Teilnahme an der Migration von On‑Premise zu AWS</li></ul>",
+        "description": "<ul><li>Maßgeblich am internationalen Login-Rollout (6 Länder) beteiligt, der <strong>1,4 Mio. neue Accounts in 3 Monaten</strong> brachte (700 % über Plan)</li><li>Echtzeitsysteme (Kafka/NoSQL/WebSockets) und Enterprise-Microservices (Java/Kotlin, Spring Boot) entwickelt</li><li>Verantwortung für A/B-Tests und 24/7-Reliability via On-Call übernommen</li><li>Aktiver Teil der großen idealo-Migration von On-Premise in die AWS-Cloud</li></ul>",
         "hasReference": true,
-        "referenceText": "Arbeitszeugnis herunterladen"
+        "referenceText": "Arbeitszeugnis ansehen"
       },
       {
         "date": "Mai 2019 – Apr 2020",
-        "title": "Blockchain-Entwickler",
+        "title": "Blockchain Developer",
         "company": "T-Labs, Telekom Innovation Laboratories",
-        "description": "<ul><li>Systemarchitektur für blockchain‑basiertes Paket‑Tracking entworfen</li><li>Verteiltes Hyperledger‑Fabric‑Netzwerk mit Chaincode (Smart Contracts) implementiert und deployed</li><li>Blockchain‑Netzwerk + Microservices dockerisiert und sichere REST APIs gebaut</li><li>Tech: Hyperledger Fabric/Composer, Node.js, Express.js, Docker, JWT, PostgreSQL</li></ul>"
+        "description": "<ul><li>Systemarchitektur für ein Blockchain-basiertes Paket-Tracking-System designt</li><li>Ein verteiltes Hyperledger-Fabric-Netzwerk inklusive Smart Contracts (Chaincode) implementiert und deployed</li><li>Die gesamte Blockchain und Microservices dockerisiert und über sichere REST-APIs angebunden</li><li>Tech: Hyperledger Fabric/Composer, Node.js, Express.js, Docker, JWT, PostgreSQL</li></ul>"
       },
       {
         "date": "Sep 2016 – Sep 2018",
         "title": "Software Engineer",
         "company": "SAS Institute",
-        "description": "<ul><li>Real‑Time Behavioral Marketing & Decisioning Systeme für Banking bei hoher Last gebaut</li><li>Tausende Events pro Sekunde mit Kafka + Stream Processing verarbeitet</li><li>GDPR‑freundliche Data Lineage für Compliance und Auditability geliefert</li></ul>"
+        "description": "<ul><li>Real-Time Behavioral Marketing- und Decisioning-Systeme für Banken entwickelt, ausgelegt auf massiven Throughput</li><li>Tausende Events pro Sekunde über Kafka und Stream-Processing sauber verarbeitet</li><li>Eine DSGVO-konforme Data-Lineage für volle Auditierbarkeit und Compliance gebaut</li></ul>"
       }
     ]
   },
   "awards": {
-    "title": "Auszeichnungen",
+    "title": "Auszeichnungen & Meilensteine",
     "items": [
       {
         "type": "featured",
         "title": "2. Platz - Berlin Legal Tech Hackathon 2020",
         "subtitle": "Hate Speech Online",
         "date": "Feb 2020",
-        "description": "Teamleitung bei der Entwicklung einer innovativen Lösung zur Erkennung und Moderation von Online-Hassrede. Die Plattform kombinierte Natural Language Processing mit Echtzeit-Inhaltsanalyse - praxistauglich für rechtliche Compliance und Content-Moderation."
+        "description": "Ich habe ein Team geleitet, das eine innovative Lösung zur automatischen Erkennung von Hate Speech im Netz entwickelt hat. Wir kombinierten NLP mit Echtzeitanalysen, um Content-Moderatoren und Legal-Teams direkt verwertbare Insights zu liefern."
       },
       {
         "type": "scholarship",
-        "title": "Rektorstipendium für Bestleistungen",
-        "subtitle": "Technische Universität Warschau",
-        "date": "2017",
-        "description": "Ausgezeichnet für herausragende akademische Leistungen und Engagement im Informatikstudium."
-      },
-      {
-        "type": "scholarship",
-        "title": "Rektorstipendium für Bestleistungen",
-        "subtitle": "Technische Universität Warschau",
-        "date": "2016",
-        "description": "Gewürdigt für durchgängig exzellente akademische Leistungen."
-      },
-      {
-        "type": "scholarship",
-        "title": "Rektorstipendium für Bestleistungen",
-        "subtitle": "Technische Universität Warschau",
-        "date": "2015",
-        "description": "Ausgezeichnet für akademische Leistungen und Beiträge zum Universitätsleben."
-      },
-      {
-        "type": "scholarship",
-        "title": "Rektorstipendium für Bestleistungen",
-        "subtitle": "Technische Universität Warschau",
-        "date": "2014",
-        "description": "Das renommierteste Stipendium für Studierende - vergeben auf Basis akademischer Verdienste."
+        "title": "Rektorstipendium der Universität",
+        "subtitle": "Technische Universität Warschau, 2014-2017",
+        "date": "2014-2017",
+        "description": "Das höchste Stipendium für Bachelorstudenten, das mir vier Jahre in Folge für exzellente akademische Leistungen im Bereich Informatik verliehen wurde."
       }
     ]
   }

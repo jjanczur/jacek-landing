@@ -1,19 +1,19 @@
 {
   "meta": {
     "title": "Projekte | Jacek Janczura",
-    "description": "Ausgewählte Projekte: Enterprise-AI-Plattformen, ML-Systeme und privacy-first Architekturen. AWS, LLM/RAG und messbarer Impact. Verfügbar für Architektur-Reviews, Prompt Engineering und KI-Beratung."
+    "description": "Ausgewählte Projekte: Von Enterprise-AI-Plattformen bis hin zu ML-Systemen – entwickelt auf AWS mit Fokus auf messbaren Impact. Verfügbar für Architektur-Reviews, LLM/RAG-Projekte und AI-Consulting."
   },
   "hero": {
     "title": "Projekte",
-    "subtitle": "Ausgewählte Arbeit: Enterprise‑KI, ML‑Systeme und privacy-first Architekturen"
+    "subtitle": "Ausgewählte Arbeiten aus den Bereichen Enterprise AI, ML-Systeme und Privacy-First-Architekturen"
   },
-  "intro": "Ausgewählte Arbeit in zwei Phasen: Projekte als Mitgründer & CTO von {company} (bis 2024) und Projekte, die ich seitdem unabhängig umgesetzt habe - als Beratung/Contracting.",
+  "intro": "Hier findest du ausgewählte Projekte aus zwei Phasen: Die Zeit als Mitgründer und CTO von {company} (bis 2024) sowie Projekte, die ich seitdem als unabhängiger Berater und Contractor umgesetzt habe.",
   "company": "Jaden Data",
   "role": "Mitgründer & CTO",
   "labels": {
     "industries": "Branchen:",
     "tech": "Tech:",
-    "impact": "Wirkung:",
+    "impact": "Impact:",
     "website": "Website",
     "repository": "Repository",
     "blog": "Blog"
@@ -22,18 +22,18 @@
     {
       "name": "Taufolio",
       "period": "2025–heute",
-      "industry": "KI-gestützte Aktienanalyse",
+      "industry": "AI Equity Research",
       "role": "Gründer",
       "company": "Taufolio",
-      "tagline": "KI-Aktienresearch – fundiert auf SEC-Filings",
+      "tagline": "AI-gestütztes Aktienresearch – direkt aus echten SEC-Filings",
       "description": [
-        "Ein Gründerprojekt: eine KI-Plattform für Aktienresearch, die SEC-Filings, Earnings-Call-Transkripte und öffentliche Unternehmensdokumente in belegte, nachprüfbare Research-Berichte für Privatanleger verwandelt-ohne Beraterzulassung oder institutionellen Zugang.",
-        "Zwei Modi für unterschiedliche Anforderungen: ein ca. 20-sekündiger Snapshot für das schnelle Screening und ein ca. 3-minütiger Full Report zu Geschäftsmodell, Wettbewerbsvorteil (Moat), Tonalität des Managements, Q&A aus Earnings Calls und Risiken jenseits der Finanzkennzahlen. Zusätzliche Funktionen: Ticker-Vergleich, monatliche automatische Portfolio-Recaps und Quartalsvergleiche (Report-Diffs).",
-        "Auf Vertrauen statt Vermutung ausgelegt: Einlesen von SEC EDGAR (10-K, 10-Q, 8-K), Earnings-Transkripte über Azure Document Intelligence, Marktdaten mit Yahoo-Finance/Finnhub-Failover sowie paralleles Multi-Agenten-Drafting (Claude, Gemini, GPT) mit Abgleich und Quellenverankerung-jede wesentliche Aussage ist mit ihrem Quelldokument verlinkt."
+        "Eines meiner Gründerprojekte: Eine AI-Plattform für Aktienresearch, die SEC-Filings, Earnings-Call-Transkripte und offizielle Dokumente in zitierfähige und überprüfbare Reports für Privatanleger verwandelt – komplett ohne Beraterzulassung oder institutionellen Zugang.",
+        "Die Plattform bietet zwei Modi: Einen ca. 20-sekündigen Snapshot für das schnelle Screening und einen ca. 3-minütigen Deep Dive, der das Geschäftsmodell, den Moat, die Tonalität des Managements, Q&As aus den Calls und versteckte Risiken beleuchtet. Dazu kommen Features wie der Ticker Compare, automatisierte monatliche Portfolio-Recaps und Report-Diffs im Quartalsvergleich.",
+        "Der Fokus liegt voll auf Vertrauen statt Halluzination: Daten kommen via SEC EDGAR (10-K, 10-Q, 8-K) und Azure Document Intelligence, Marktdaten über Yahoo Finance/Finnhub. Unter der Haube arbeiten mehrere Agenten (Claude, Gemini, GPT) parallel, gleichen sich ab und verankern jede wichtige Aussage direkt mit der Quelle."
       ],
-      "industries": "Privatanleger & Retail-Investing, Fundamentale Aktienanalyse, Privatfinanzen",
-      "tech": "Multi-Agenten-LLMs (Claude, Gemini, GPT), SEC EDGAR, Azure Document Intelligence, Yahoo Finance/Finnhub, Quellenverankerung, RAG",
-      "impact": "Ersetzt 6–8 Stunden manueller qualitativer Recherche pro Unternehmen durch strukturierte Ergebnisse in ca. 3 Minuten (oder einen ca. 20-sekündigen Snapshot); quellenbasierte Belege senken das Halluzinationsrisiko gegenüber allgemeinen Chatbots.",
+      "industries": "Privatanleger & Retail-Investing, Fundamentale Aktienanalyse, Personal Finance",
+      "tech": "Multi-Agent-LLMs (Claude, Gemini, GPT), SEC EDGAR, Azure Document Intelligence, Yahoo Finance/Finnhub, Citation Anchoring, RAG",
+      "impact": "Macht aus 6–8 Stunden manueller Recherche pro Unternehmen einen sauberen Report in 3 Minuten (oder 20 Sekunden für den Snapshot). Die harte Verankerung in Originalquellen reduziert das Halluzinationsrisiko von Standard-Chatbots massiv.",
       "links": [
         {
           "type": "website",
@@ -45,17 +45,17 @@
     {
       "name": "entAIngine",
       "period": "2022–heute",
-      "industry": "Enterprise‑KI‑Plattform",
-      "role": "CTO & Lead‑Architekt",
-      "tagline": "Die KI-Engine für Enterprise-Prozessautomatisierung",
+      "industry": "Enterprise AI Plattform",
+      "role": "CTO & Lead Architect",
+      "tagline": "Die AI-Engine für unternehmenskritische Prozessautomatisierung",
       "description": [
-        "Eine mandantenfähige SaaS‑Plattform für KI‑gestützte Prozessautomatisierung: wissensbasierte Assistenten, Dokumenten‑Workflows und tiefe Integration in echte Backoffice‑Abläufe (nicht nur Demo‑Flows).",
-        "Auf AWS als ereignisgesteuerte Microservices gebaut (Lambda, ECS/Fargate, SNS/SQS) mit Multi‑Modell‑LLM‑Integrationen (OpenAI, Azure OpenAI, Bedrock, Mistral). Konzipiert für hohe Last (>1.000 gleichzeitige Verbindungen; tausende Requests pro Sekunde) mit Kostenkontrolle und Zuverlässigkeit.",
-        "Enterprise‑Security und Compliance by design: ISO 27001 und SOC 2, plus Datensouveränität als feste Anforderung."
+        "Eine mandantenfähige SaaS-Plattform für AI-getriebene Prozessautomatisierung: Von smarten Assistenten über Dokumenten-Workflows bis hin zur echten Integration in Backoffice-Abläufe (keine reinen Demo-Flows).",
+        "Aufgesetzt auf AWS mit event-driven Microservices (Lambda, ECS/Fargate, SNS/SQS) und Multi-Model-LLM-Integration (OpenAI, Azure, Bedrock, Mistral). Entwickelt für richtig hohe Last (>1.000 parallele Connections, tausende Requests pro Sekunde) bei voller Kosten- und Stabilitätskontrolle.",
+        "Security und Compliance by Design: Ich habe ISO 27001 und SOC 2 für die Plattform umgesetzt, Datensouveränität war von Tag eins an Prio 1."
       ],
-      "industries": "Produktion & Fertigung, Pharma, Finanzdienstleistungen, Unternehmensoperationen",
+      "industries": "Manufacturing, Pharma, Financial Services, Enterprise Operations",
       "tech": "AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC",
-      "impact": "Über 50 Unternehmen mit 99,9 % Verfügbarkeit; ISO 27001/SOC 2-Zertifizierung in ca. 3 Monaten; produktionsreife Zuverlässigkeit für schnellere KI-Einführung in Unternehmensabläufen.",
+      "impact": "Betreibt kritische Workflows für 50+ Organisationen mit 99,9 % Uptime. ISO 27001 und SOC 2 in nur ca. 3 Monaten durchgezogen – eine stabile Basis für schnelle AI-Adoption im Enterprise-Sektor.",
       "links": [
         {
           "type": "website",
@@ -67,96 +67,96 @@
     {
       "name": "Prompt Wizard & Testbed",
       "period": "2022–heute",
-      "industry": "LLM‑Evaluation & Prompt Engineering",
-      "role": "Architekt & Entwickler",
-      "tagline": "Enterprise‑Tooling für verlässliche LLM‑Pipelines",
+      "industry": "LLM Evaluation & Prompt Engineering",
+      "role": "Architect & Builder",
+      "tagline": "Enterprise-Tooling für verlässliche LLM-Pipelines",
       "description": [
-        "Ein internes Test‑ und Evaluations‑Framework (Testbed), das LLM‑Systeme messbar und reproduzierbar macht: deterministische Testfälle, Metriken, qualitative/quantitative Bewertung und Regressionstests für RAG und Multi‑Step‑Pipelines.",
-        "„Prompt Wizard“ beschleunigt Prompt‑Iteration und Optimierung und sorgt gleichzeitig für Versionierung und Testbarkeit - damit Qualität nicht beim ersten Release verloren geht.",
-        "Ziel: Prompt Engineering als Engineering‑Disziplin statt ad‑hoc Experimente - damit Teams sicher shippen und Performance stabil bleibt."
+        "Ich habe ein internes Testing- und Evaluations-Framework (Testbed) gebaut, das LLM-Systeme messbar und wiederholbar macht: Deterministische Testfälle, harte Metriken, qualitative/quantitative Evals und Regression-Testing für RAG und Multi-Step-Pipelines.",
+        "Dazu kam der „Prompt Wizard“, um Iterationen zu beschleunigen und gleichzeitig saubere Versionierung und Testbarkeit sicherzustellen. „Works on my machine“ gibt es hier nicht mehr.",
+        "Das Ziel: Prompt Engineering aus der Experimentier-Ecke holen und zur echten Engineering-Disziplin machen – damit Teams skalieren können, ohne dass die Performance nach dem ersten Release einbricht."
       ],
-      "industries": "Enterprise AI, RAG, Multi‑Step LLM‑Pipelines",
-      "tech": "LLM Evals, RAG Testing, deterministische Testfälle, Prompt Engineering, Metriken",
-      "impact": "Schnellere Iteration ohne Regressionen in Produktion; höhere Release‑Sicherheit; bessere Prompt‑Qualität durch testbasierte Evaluierung statt Bauchgefühl.",
+      "industries": "Enterprise AI, RAG, Multi-Step LLM Pipelines",
+      "tech": "LLM Evals, RAG Testing, Deterministische Testfälle, Prompt Engineering, Metriken",
+      "impact": "Viel schnellere Iteration ohne Angst vor Regressionen in Produktion. Die Qualität der Prompts ist deutlich gestiegen, da sie auf echtem Testing basieren statt auf Bauchgefühl.",
       "links": []
     },
     {
       "name": "RP-Matcher",
       "period": "2025–2026",
-      "industry": "ML‑Produktmatching",
-      "role": "Projektleitung (ML) & Data Scientist",
-      "company": "Unabhängige Beratung",
-      "tagline": "Automatisches Produktmatching statt manueller Expertenauswahl",
+      "industry": "ML Product Matching",
+      "role": "Project Lead (ML) & Data Scientist",
+      "company": "Unabhängiges Consulting",
+      "tagline": "Automatisches Produkt-Matching, das die manuelle Angebotserstellung ersetzt",
       "description": [
-        "Für RP Group (Notbeleuchtung) habe ich ein ML‑System entwickelt, das Kundenanfragen automatisch den passenden Produkten zuordnet - und damit zeitaufwändige, expertengetriebene Auswahl durch ein reproduzierbares Ranking ersetzt.",
-        "Robuste Datengrundlage durch LLM‑gestützte Extraktion (entAIngine API) und domain‑spezifisches Feature Engineering (25+ Features). Fünf Modelle mit Hyperparameter‑Optimierung benchmarked.",
-        "Bestes Modell: getunter Random Forest mit 70,7% Top‑1 (MRR 0,835; AUC‑ROC 0,923) - starke Ranking‑Qualität bei guter Interpretierbarkeit und pragmatischem Deployment."
+        "Für die RP Group (Notbeleuchtung) habe ich ein Machine-Learning-System entwickelt, das eingehende Kundenanfragen automatisch den passendsten Produkten zuordnet. Das spart enorm viel Zeit, die Experten sonst für die manuelle Auswahl brauchen.",
+        "Die Datengrundlage entstand durch LLM-gestützte Extraktion (via entAIngine API) und massives Domain-Feature-Engineering (25+ Features). Danach wurden fünf Modelle gegeneinander gebenchmarkt und optimiert.",
+        "Das Gewinner-Modell: Ein getunter Random Forest mit 70,7 % Top-1 Accuracy (MRR 0,835; AUC-ROC 0,923). Starke Ranking-Qualität bei voller Interpretierbarkeit und sauberem Deployment."
       ],
-      "industries": "Fertigung, Produktkatalog‑Matching, Sales Operations",
-      "tech": "Python, Scikit‑Learn, Random Forest, Ensembles, Feature Engineering, LLM‑gestützte Extraktion",
-      "impact": "60% weniger Zeit für Angebotserstellung; geringere Abhängigkeit von Expertenwissen; skalierbarer Matching‑Prozess mit messbarer Genauigkeit.",
+      "industries": "Manufacturing, Product Catalog Matching, Sales Operations",
+      "tech": "Python, Scikit-Learn, Random Forest, Ensembles, Feature Engineering, LLM-Assisted Extraction",
+      "impact": "Die Angebotserstellung geht jetzt 60 % schneller. Das System nimmt den Domain-Experten viel Routine ab und der Matching-Prozess skaliert endlich.",
       "links": []
     },
     {
       "name": "Valuation Engine",
       "period": "2022",
-      "industry": "KI‑gestützte Immobilienbewertung",
-      "role": "Lead‑Architekt",
-      "tagline": "Über 2 Stunden pro Gutachten sparen - mit KI‑gestützter Recherche",
+      "industry": "AI-Powered Property Valuation",
+      "role": "Lead Architect",
+      "tagline": "Spar über 2 Stunden pro Gutachten dank AI-Recherche",
       "description": [
-        "KI‑Plattform für Immobiliengutachter, die die zeitintensiven Teile der Bewertung automatisiert: Recherche, Standortanalyse und Entwurf des Berichts.",
-        "Aus Stunden manueller Arbeit werden 2–3 Minuten strukturierter Output pro Objekt (Makro/Mikro‑Insights, Markt‑Kontext, gutachtensfähige Report‑Bausteine).",
-        "Für professionelle Workflows gebaut: Multi‑Source‑Integration und Qualitätskontrollen, damit Ergebnisse konsistent und gut prüfbar bleiben."
+        "Eine AI-Plattform für Immobiliengutachter, die die nervigsten und zeitfressendsten Teile der Bewertung automatisiert: Recherche, Standortanalysen und das eigentliche Schreiben des Berichts.",
+        "Das System drückt stundenlange Handarbeit auf 2–3 Minuten pro Objekt runter und liefert strukturierten Output (Makro-/Mikro-Standort, Marktkontext und direkt verwertbare Report-Bausteine).",
+        "Komplett auf Profi-Workflows ausgelegt: Multi-Source-Datenintegration und Qualitätskontrollen sorgen für konsistente, überprüfbare Ergebnisse."
       ],
-      "industries": "Immobilienbewertung, Property Valuation, Investmentfirmen, Banken & Sicherheitenbewertung",
-      "tech": "Real‑Estate‑KI, Standortanalyse, Marktintelligenz, Berichtsgenerierung, Multi‑Source‑Datenintegration",
-      "impact": "Über 2 Stunden pro Gutachten eingespart; höhere Konsistenz und einfachere Prüfung; Ergebnisse in 2–3 Minuten pro Objekt.",
+      "industries": "Real Estate Appraisal, Property Valuation, Investmentfirmen, Banken & Sicherheitenbewertung",
+      "tech": "Real Estate AI, Standortanalyse, Market Intelligence, Report Generation, Multi-Source Data Integration",
+      "impact": "Spart im Schnitt 2+ Stunden pro Gutachten. Die Ergebnisse sind konsistenter, leichter zu prüfen und nach 2–3 Minuten auf dem Tisch.",
       "links": []
     },
     {
       "name": "entAIgent",
       "period": "2023",
-      "industry": "No‑Code‑Plattform für KI‑Agenten",
+      "industry": "No-Code AI Agent Plattform",
       "role": "Mitgründer & Architekt",
-      "tagline": "Multi‑Agent‑Systeme ohne Code bauen",
+      "tagline": "Multi-Agent-Systeme bauen, komplett ohne Code",
       "description": [
-        "Eine No‑Code‑Plattform, mit der Operations‑Teams (Customer Service, HR, Ops) Multi‑Agent‑Workflows entwerfen und betreiben können - ohne Engineering‑Support.",
-        "Fokus auf Orchestrierung und Zuverlässigkeit: klare Rollen, kontrollierte Handoffs und Evaluations‑Hooks, damit Teams sauber iterieren und Ergebnisse über Abteilungen skalieren können."
+        "Eine No-Code-Plattform, die Operations-Teams (Customer Service, HR, Ops) befähigt, eigene Multi-Agent-Workflows zu designen und zu launchen – ohne dass sie dafür Entwickler brauchen.",
+        "Der Fokus lag auf Orchestrierung und Zuverlässigkeit: Klare Rollenverteilung zwischen Agenten, saubere Handoffs und eingebaute Evals, damit Iterationen nicht im Chaos enden."
       ],
-      "industries": "Operations, Kundenservice, HR‑Automatisierung, Unternehmens‑Workflows",
-      "tech": "KI‑Agenten, No‑Code, visuelle Workflows, Multi‑Agent‑Orchestrierung, Evals",
-      "impact": "Schnellere PoCs und Iteration; konsistentere Ergebnisse durch strukturierte Multi‑Agent‑Koordination.",
+      "industries": "Operations, Customer Service, HR Automation, Enterprise Workflows",
+      "tech": "AI Agents, No-Code, visuelle Workflows, Multi-Agent Orchestration, Evals",
+      "impact": "Viel schnellere PoCs und Iterationszyklen. Die strukturierte Multi-Agent-Koordination sorgt für deutlich konstantere Ergebnisse.",
       "links": []
     },
     {
       "name": "Flowhive VC",
       "period": "2023",
-      "industry": "KI für Venture Capital",
+      "industry": "AI für Venture Capital",
       "role": "Mitgründer & Architekt",
-      "tagline": "Due Diligence und Portfolio‑Intelligence als Produkt",
+      "tagline": "Due Diligence und Portfolio-Intelligence in einem Produkt",
       "description": [
-        "Eine VC‑Plattform, die Deep Research mit investment‑spezifischer Automatisierung kombiniert - für schnellere Due Diligence und Marktanalysen.",
-        "Vorkonfigurierte Agenten unterstützen Wettbewerbsanalyse, Portfolio‑Tracking, Deal‑Flow‑Automatisierung und Market Mapping - aus verstreutem Research wird institutionelles Wissen."
+        "Eine Plattform speziell für VCs, die Deep Research mit Investment-Automatisierung verknüpft, um Due Diligence und Marktanalysen radikal zu beschleunigen.",
+        "Vorkonfigurierte Agenten übernehmen Competitive Analysis, Portfolio Tracking, Deal-Flow-Automatisierung und Market Mapping. Aus verstreuten Research-Fetzen wird echtes institutionelles Wissen."
       ],
-      "industries": "Venture Capital, Business Angels, Corporate Venture Arms, Investmentanalyse",
-      "tech": "KI‑Agenten, Due‑Diligence‑Automatisierung, Portfolio‑Intelligenz, Markt‑Mapping, Deal‑Flow‑Systeme",
-      "impact": "Schnellere Deal‑Bewertung und ein wiederholbarer Research‑Workflow im Team.",
+      "industries": "Venture Capital, Angel Investing, Corporate Venture Arms, Investment Analysis",
+      "tech": "AI Agents, Due Diligence Automatisierung, Portfolio Intelligence, Market Mapping, Deal Flow Systeme",
+      "impact": "Viel schnellere Deal-Bewertungen und endlich ein wiederholbarer, sauberer Research-Workflow fürs gesamte Team.",
       "links": []
     },
     {
       "name": "KnowledgeX",
       "period": "2021–2022",
-      "industry": "Trusted Data Processing (EU‑gefördert)",
-      "role": "CTO & Lead‑Architekt",
-      "tagline": "Datenkollaboration ohne Offenlegung sensibler Informationen",
+      "industry": "Trusted Data Processing (EU-gefördert)",
+      "role": "CTO & Lead Architect",
+      "tagline": "Sichere Daten-Kollaboration ohne Offenlegung von Secrets",
       "description": [
-        "Ein EU Horizon 2020‑Projekt, das organisationsübergreifende Analytik ermöglicht, ohne die Kontrolle über Daten abzugeben - „bring the code to the data“ mit starker Auditierbarkeit und Security.",
-        "Konzipiert end‑to‑end Workflows (Agreement → Execution → Evaluation) und eine modulare Microservice‑Architektur plus unveränderlichen Audit‑Trail via Blockchain.",
-        "Mit Confidential Computing (TEEs / Intel SGX) und Verschlüsselung für Daten at rest - validiert mit EU‑Stakeholdern."
+        "Ein von der EU (Horizon 2020) gefördertes Projekt: Die Plattform erlaubt es Organisationen, Analysen auf sensiblen Daten laufen zu lassen, ohne dass die Daten den Besitzer wechseln. Das Motto: „Bring the code to the data“ – mit maximaler Auditierbarkeit.",
+        "Ich habe die end-to-end Workflows (Agreement → Execution → Evaluation) und die Microservice-Architektur entworfen, abgesichert durch einen unveränderlichen Audit-Trail auf der Blockchain.",
+        "Mit Confidential Computing (TEEs / Intel SGX) und starker Verschlüsselung wurde Privacy-Preserving-Processing über Unternehmensgrenzen hinweg realisiert und erfolgreich mit EU-Stakeholdern validiert."
       ],
-      "industries": "Organisationsübergreifende Analytik, Datenkollaboration, datenschutzsensible Branchen",
+      "industries": "Cross-Organizational Analytics, Data Collaboration, Privacy-sensitive Branchen",
       "tech": "Blockchain, Confidential Computing (TEEs), Verschlüsselung, auditierbare Workflows, Microservices",
-      "impact": "Privacy‑preserving Datenverarbeitung über Organisationsgrenzen hinweg; unveränderlicher Audit‑Trail für Compliance und Vertrauen; validiert im EU‑Forschungsumfeld.",
+      "impact": "Privacy-preserving Datenverarbeitung über Organisationsgrenzen hinweg; starker Audit-Trail für Compliance und Trust; erfolgreich im Rahmen des EU-Forschungsprojekts validiert.",
       "links": [
         {
           "type": "blog",

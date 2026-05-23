@@ -1,29 +1,29 @@
 {
   "meta": {
-    "title": "Vorträge | Jacek Janczura",
-    "description": "Technische Vorträge zu KI-Architektur, verteilten Systemen und Blockchain. Praxiswissen aus Enterprise-Projekten."
+    "title": "Talks | Jacek Janczura",
+    "description": "Tech-Talks über AI-Architektur, verteilte Systeme und Blockchain. Praxiserfahrungen aus Enterprise-Deployments."
   },
   "hero": {
-    "title": "Vorträge",
-    "subtitle": "Praxiswissen aus Enterprise-Projekten"
+    "title": "Talks",
+    "subtitle": "Praxiserfahrungen aus Enterprise-Deployments"
   },
   "talks": [
     {
-      "title": "KI-Architekturmuster",
-      "event": "Konferenzvortrag",
+      "title": "AI Architecture Patterns",
+      "event": "Conference Talk",
       "date": "2024",
-      "description": "Praktische Erkenntnisse aus LLM-Deployments im Enterprise-Umfeld: Multi-Tenant-Architektur, Kostenoptimierung, Observability und skalierbare Governance-Patterns.",
+      "description": "Praxiserfahrungen aus Enterprise-LLM-Deployments: Multi-Tenant-Architektur, Kostenoptimierung, Observability und Governance-Patterns, die wirklich skalieren.",
       "youtubeId": "Sf61QaWJDjA",
-      "videoTitle": "KI-Architekturmuster – LLM-Deployments im Unternehmen",
-      "tags": ["KI-Architektur", "LLM", "Enterprise", "Skalierbarkeit"]
+      "videoTitle": "AI Architecture Patterns – Enterprise LLM Deployments",
+      "tags": ["AI-Architektur", "LLM", "Enterprise", "Skalierbarkeit"]
     },
     {
-      "title": "Verteilte Systeme at Scale",
-      "event": "Tech-Konferenz",
+      "title": "Distributed Systems at Scale",
+      "event": "Tech Conference",
       "date": "2023",
-      "description": "Trade-offs zwischen Durchsatz, Latenz und Resilienz in modernen verteilten Systemen. Event-Driven-Architekturen, Backpressure-Mechanismen und Observability-Patterns.",
+      "description": "Trade-offs zwischen Throughput, Latenz und Resilienz in modernen verteilten Systemen. Event-driven Architekturen, Backpressure-Mechanismen und Observability-Patterns.",
       "youtubeId": "fPp66mtx_60",
-      "videoTitle": "Verteilte Systeme at Scale – Architekturmuster",
+      "videoTitle": "Distributed Systems at Scale – Architekturmuster",
       "tags": [
         "Verteilte Systeme",
         "Event-Driven",
@@ -35,9 +35,9 @@
       "title": "Blockchain & Bitcoin",
       "event": "idealo Tech Talks",
       "date": "2022",
-      "description": "Grundlagen der Blockchain-Technologie und Bitcoin, Enterprise-Anwendungsfälle, Smart Contracts und praktische Integration in moderne Softwarearchitekturen.",
+      "description": "Grundlagen der Blockchain-Technologie und Bitcoin. Enterprise-Use-Cases, Smart Contracts und praktische Anwendungen in modernen Softwarearchitekturen.",
       "youtubeId": "6WzFtN3xWF4",
-      "videoTitle": "Blockchain & Bitcoin – Grundlagen und Enterprise-Anwendungen",
+      "videoTitle": "Blockchain & Bitcoin – Grundlagen und Enterprise-Use-Cases",
       "tags": ["Blockchain", "Bitcoin", "Enterprise", "Smart Contracts"]
     }
   ]

@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Projekty | Jacek Janczura",
-    "description": "Wybrane projekty: platformy enterprise AI, systemy ML i architektury privacy-first. AWS, LLM/RAG i mierzalny wpływ na procesy. Świadczę usługi konsultingowe: przeglądy architektury, prompt engineering i AI."
+    "description": "Wybrane projekty: od platform enterprise AI po systemy ML – budowane na AWS z naciskiem na mierzalny wpływ na biznes. Pomagam przy przeglądach architektury, wdrożeniach LLM/RAG i doradztwie AI."
   },
   "hero": {
     "title": "Projekty",
-    "subtitle": "Wybrane realizacje: enterprise AI, systemy ML i architektury privacy-first"
+    "subtitle": "Wybrane realizacje z obszaru Enterprise AI, systemów ML oraz architektur privacy-first"
   },
-  "intro": "Wybrane realizacje w dwóch etapach: projekty prowadzone jako współzałożyciel i CTO {company} (do 2024) oraz projekty realizowane od tego czasu niezależnie - jako konsulting/kontraktowanie.",
+  "intro": "Poniżej znajdziesz wybrane projekty z dwóch etapów: z czasu, gdy byłem współzałożycielem i CTO {company} (do 2024), oraz te, które zrealizowałem później jako niezależny konsultant i kontraktor.",
   "company": "Jaden Data",
   "role": "Współzałożyciel i CTO",
   "labels": {
@@ -25,15 +25,15 @@
       "industry": "Analiza akcji oparta na AI",
       "role": "Założyciel",
       "company": "Taufolio",
-      "tagline": "Raporty analityczne o akcjach oparte na AI – ugruntowane w raportach SEC",
+      "tagline": "Raporty analityczne giełdowe oparte na AI – ugruntowane w dokumentach SEC",
       "description": [
-        "Projekt założycielski: platforma AI do analizy akcji, która zamienia raporty SEC, transkrypcje z konferencji wynikowych i publiczne dokumenty spółek w cytowane, weryfikowalne raporty analityczne dla inwestorów indywidualnych-bez licencji doradcy ani dostępu instytucjonalnego.",
-        "Dwa tryby do różnych potrzeb: ok. 20-sekundowy Snapshot do szybkiego przeglądu oraz ok. 3-minutowy pełny raport obejmujący model biznesowy, przewagę konkurencyjną (moat), ton wypowiedzi zarządu, sekcję Q&A z konferencji wynikowych oraz ryzyka wykraczające poza dane finansowe. Dodatkowe funkcje: porównywanie spółek (Ticker Compare), miesięczne automatyczne podsumowania portfela i porównania kwartał do kwartału (report diff).",
-        "Zaprojektowana z myślą o wiarygodności, a nie zgadywaniu: wczytywanie danych z SEC EDGAR (10-K, 10-Q, 8-K), transkrypcje przez Azure Document Intelligence, dane rynkowe z przełączaniem Yahoo Finance/Finnhub oraz równoległe redagowanie przez wielu agentów (Claude, Gemini, GPT) z uzgadnianiem i zakotwiczaniem cytatów-każde istotne stwierdzenie linkuje do dokumentu źródłowego."
+        "Mój projekt autorski: platforma AI dla inwestorów indywidualnych, która bierze raporty SEC, transkrypcje z konferencji wynikowych i publiczne dokumenty spółek, a następnie generuje weryfikowalne, oparte na konkretnych źródłach raporty analityczne. I to wszystko bez doradcy czy dostępu instytucjonalnego.",
+        "Oferuje dwa tryby: ok. 20-sekundowy Snapshot do szybkiego przeglądu, oraz ok. 3-minutowy głęboki Deep Dive. Pokrywa model biznesowy, przewagę konkurencyjną (moat), ton wypowiedzi zarządu, Q&A z konferencji i ukryte ryzyka. Do tego dorzuciłem porównywanie spółek, miesięczne podsumowania portfela i weryfikację zmian z kwartału na kwartał.",
+        "Zbudowana pod zaufanie, nie halucynacje: zaciąga dane bezpośrednio z SEC EDGAR (10-K, 10-Q, 8-K), mieli transkrypcje przez Azure Document Intelligence i weryfikuje rynek przez Yahoo Finance/Finnhub. Całość draftuje równolegle kilku agentów (Claude, Gemini, GPT), którzy uzgadniają wnioski i wklejają linki do źródeł do każdego konkretnego stwierdzenia."
       ],
-      "industries": "Inwestorzy indywidualni i detaliczni, Fundamentalna analiza akcji, Finanse osobiste",
+      "industries": "Inwestorzy detaliczni, Fundamentale analizy akcji, Finanse osobiste",
       "tech": "Wieloagentowe LLM (Claude, Gemini, GPT), SEC EDGAR, Azure Document Intelligence, Yahoo Finance/Finnhub, Zakotwiczanie cytatów, RAG",
-      "impact": "Zastępuje 6–8 godzin ręcznej analizy jakościowej jednej spółki ustrukturyzowanym wynikiem w ok. 3 minuty (lub ok. 20-sekundowym snapshotem); cytaty oparte na źródłach ograniczają ryzyko halucynacji w porównaniu z ogólnymi chatbotami.",
+      "impact": "To, co wcześniej zajmowało 6–8 godzin ręcznej analizy, teraz masz ustrukturyzowane w 3 minuty. Oparcie się w 100% na źródłach drastycznie obniża ryzyko halucynacji w stosunku do zwykłych ChatGPT.",
       "links": [
         {
           "type": "website",
@@ -47,15 +47,15 @@
       "period": "2022 – obecnie",
       "industry": "Platforma AI klasy enterprise",
       "role": "CTO i główny architekt",
-      "tagline": "Silnik AI do automatyzacji procesów biznesowych",
+      "tagline": "Silnik AI do automatyzacji kluczowych procesów biznesowych",
       "description": [
-        "Wielotenantowa platforma SaaS do automatyzacji procesów z AI: asystenci oparci o wiedzę, obiegi dokumentów i głęboka integracja z realnymi procesami back-office (nie „demo workflow”).",
-        "Zbudowana na AWS jako zdarzeniowe mikrousługi (Lambda, ECS/Fargate, SNS/SQS) z integracją wielu modeli LLM (OpenAI, Azure OpenAI, Bedrock, Mistral). Zaprojektowana pod wysoką przepustowość (>1 000 równoczesnych połączeń; tysiące żądań na sekundę) z kontrolą kosztów i niezawodnością.",
-        "Bezpieczeństwo i zgodność jako element architektury: ISO 27001 i SOC 2 oraz suwerenność danych jako wymaganie od początku."
+        "Wielotenantowa platforma SaaS do procesów opartych na AI: od asystentów z bazą wiedzy, przez obiegi dokumentów, po faktyczną integrację z procesami back-office (to nie były zwykłe demówki).",
+        "Zbudowałem to na AWS z wykorzystaniem architektury event-driven (Lambda, ECS/Fargate, SNS/SQS) i integrując mnóstwo modeli LLM (OpenAI, Azure, Bedrock, Mistral). Platforma projektowana pod ogromny ruch (>1000 jednoczesnych połączeń, tysiące requestów/s) i ostrą kontrolę kosztów.",
+        "Od pierwszego dnia security to był priorytet: w 3 miesiące dowieźliśmy certyfikację ISO 27001 i SOC 2, z mocnym akcentem na suwerenność danych dla enterprise."
       ],
-      "industries": "Produkcja i przemysł, farmacja, usługi finansowe, operacje korporacyjne",
+      "industries": "Produkcja, farmacja, usługi finansowe, korporacje",
       "tech": "AWS Lambda, ECS/Fargate, SNS/SQS, OpenAI, Azure, Bedrock, Mistral, RAG, RBAC",
-      "impact": "Obsługa ponad 50 organizacji przy dostępności 99,9%; certyfikacja ISO 27001/SOC 2 w około 3 miesiące; niezawodność produkcyjna umożliwiająca szybszą adopcję AI w procesach biznesowych.",
+      "impact": "Utrzymuje platformę dla 50+ organizacji z 99.9% uptime'em. Błyskawiczna certyfikacja ISO/SOC 2 udowodniła, że AI można wdrażać bezpiecznie w bardzo wymagającym środowisku.",
       "links": [
         {
           "type": "website",
@@ -69,15 +69,15 @@
       "period": "2022 – obecnie",
       "industry": "Ewaluacja LLM i prompt engineering",
       "role": "Architekt i autor",
-      "tagline": "Narzędzia enterprise do stabilnych pipeline’ów LLM",
+      "tagline": "Sensowne narzędzia do opanowania chaosu w LLM-ach",
       "description": [
-        "Zbudowałem framework do testowania i oceny (Testbed), który zamienia LLM-y z „magii” w inżynierię: deterministyczne testy, metryki, oceny jakości i testy regresji dla RAG oraz pipeline’ów wieloetapowych.",
-        "„Prompt Wizard” przyspiesza iterację i optymalizację promptów, a jednocześnie wymusza wersjonowanie i testowalność - tak, żeby jakość nie znikała po pierwszym wdrożeniu.",
-        "Cel: prompt engineering jako praktyka inżynieryjna, nie jednorazowe eksperymenty - żeby zespoły mogły skalować wdrożenia i dowozić stabilne wyniki."
+        "Zbudowałem wewnątrzfirmowy Testbed, żeby systemy LLM w końcu stały się testowalne i przewidywalne. Żadnego zgadywania: deterministyczne testy, twarde metryki, testy regresji dla RAGów i długich workflowów wieloagentowych.",
+        "„Prompt Wizard” powstał po to, żeby prompty można było szybciej optymalizować, sensownie wersjonować i co najważniejsze – porządnie testować. Koniec z „u mnie na laptopie działa”.",
+        "Cel: zamienić prompt engineering z magicznych zaklęć w solidny proces inżynierski, żeby zespoły nie bały się wypuszczać zmian na produkcję."
       ],
-      "industries": "Enterprise AI, RAG, pipeline’y LLM",
-      "tech": "LLM evals, testy RAG, deterministyczne przypadki, prompt engineering, metryki",
-      "impact": "Szybsza iteracja bez „psucia” zachowania w produkcji; większa pewność wydań; lepsza jakość promptów dzięki ocenie opartej o testy, a nie intuicję.",
+      "industries": "Enterprise AI, RAG, Skomplikowane LLM pipelines",
+      "tech": "LLM evals, testy RAG, deterministyczne test cases, prompt engineering, metryki",
+      "impact": "Szybsza iteracja i dużo mniejszy strach przed deployem. Jakość promptów diametralnie skoczyła w górę, bo opiera się na twardych metrykach, a nie odczuciach.",
       "links": []
     },
     {
@@ -86,77 +86,77 @@
       "industry": "System dopasowania produktów (ML)",
       "role": "Lider projektu (ML) i Data Scientist",
       "company": "Niezależny konsulting",
-      "tagline": "Automatyczne dopasowanie produktów zamiast ręcznej selekcji",
+      "tagline": "Algorytm ML wyręczający inżynierów w dopasowywaniu produktów",
       "description": [
-        "Dla RP Group (oświetlenie awaryjne) zbudowałem system ML, który dopasowuje zapytania klientów do najlepszych produktów - zastępując czasochłonny dobór przez ekspertów powtarzalnym rankingiem.",
-        "Zbudowałem solidny zbiór danych dzięki ekstrakcji wspieranej LLM (API entAIngine) i inżynierii cech (25+ cech). Przebadałem 5 modeli z tuningiem hiperparametrów.",
-        "Najlepszy model: tuning Random Forest z 70,7% Top‑1 (MRR 0,835; AUC‑ROC 0,923) - dobry ranking przy zachowaniu interpretowalności i sensownej złożoności wdrożenia."
+        "Dla RP Group (producenta oświetlenia awaryjnego) postawiłem system ML, który automatycznie dopasowuje zapytania klientów do konkretnych produktów z katalogu, wyręczając w tym doświadczonych ekspertów.",
+        "Żeby to miało ręce i nogi, wykorzystałem LLM-y do zrobienia inteligentnej ekstrakcji danych (przez API entAIngine) i wykręciłem 25+ cech (feature engineering). Przetestowałem 5 modeli z porządnym tuningiem hiperparametrów.",
+        "Wygrał zoptymalizowany Random Forest z wynikiem 70,7% Top-1 Accuracy (MRR 0,835; AUC-ROC 0,923). Model świetnie rankuje, a jednocześnie da się wytłumaczyć, dlaczego podjął taką a nie inną decyzję."
       ],
-      "industries": "Produkcja, dopasowanie katalogu produktów, operacje sprzedażowe",
-      "tech": "Python, Scikit-Learn, Random Forest, ensemble, inżynieria cech, ekstrakcja wspierana LLM",
-      "impact": "60% skrócenie czasu przygotowania ofert; mniejsza zależność od ekspertów domenowych; skalowalny proces dopasowania z mierzalną skutecznością.",
+      "industries": "Produkcja, Dopasowanie produktów, Automatyzacja sprzedaży",
+      "tech": "Python, Scikit-Learn, Random Forest, ensemble, feature engineering, LLM-Assisted Extraction",
+      "impact": "Czas przygotowania oferty spadł o 60%. Wiedza nie jest już zablokowana tylko w głowach ekspertów, a cały proces można swobodnie skalować.",
       "links": []
     },
     {
       "name": "Valuation Engine",
       "period": "2022",
-      "industry": "Wycena nieruchomości wspierana AI",
+      "industry": "Wycena nieruchomości z AI",
       "role": "Główny architekt",
-      "tagline": "Oszczędź 2+ godziny na operat dzięki AI",
+      "tagline": "Oszczędność 2+ godzin na każdym operacie",
       "description": [
-        "Platforma AI dla rzeczoznawców i wyceniających, która automatyzuje najbardziej czasochłonne elementy wyceny: research, analizę lokalizacji i tworzenie raportu.",
-        "Zamienia godziny ręcznej pracy w 2–3 minuty uporządkowanego wyniku na nieruchomość (macro/micro insights, kontekst rynkowy, raport gotowy do dalszej pracy).",
-        "Zaprojektowana pod workflow rzeczoznawców: integracje wieloźródłowe i kontrola jakości, żeby wyniki były spójne i łatwe do weryfikacji."
+        "Zbudowałem platformę AI, która wyręcza rzeczoznawców majątkowych w najnudniejszej robocie: zbieraniu danych, analizie lokalizacji i klepaniu powtarzalnych raportów.",
+        "Godziny ręcznej pracy kurczą się do 2–3 minut, a rzeczoznawca dostaje ustrukturyzowany output (makro/mikro dane o okolicy, kontekst rynkowy, i wygenerowane bloki tekstu).",
+        "Wszystko skrojone pod profesjonalny workflow: integracja mnóstwa źródeł danych i mechanizmy kontroli jakości, by rzeczoznawca mógł łatwo sprawdzić wyniki."
       ],
-      "industries": "Wycena nieruchomości, firmy inwestycyjne, banki i ocena zabezpieczeń",
-      "tech": "Real-estate AI, analiza lokalizacji, inteligencja rynkowa, generowanie raportów, integracje wieloźródłowe",
-      "impact": "2+ godziny oszczędności na operat; większa spójność i łatwiejszy przegląd; wynik w 2–3 minuty na nieruchomość.",
+      "industries": "Wycena nieruchomości, firmy inwestycyjne, bankowość",
+      "tech": "Real-estate AI, analiza lokalizacji, wywiad rynkowy, generowanie raportów, integracja danych",
+      "impact": "Rzeczoznawcy zyskują z powrotem ponad 2 godziny na każdym raporcie. Generowany draft jest spójny, łatwy do sprawdzenia i ląduje na biurku w parę minut.",
       "links": []
     },
     {
       "name": "entAIgent",
       "period": "2023",
-      "industry": "Platforma no-code dla agentów AI",
+      "industry": "Platforma No-Code do agentów AI",
       "role": "Współzałożyciel i architekt",
-      "tagline": "Wieloagentowe systemy bez pisania kodu",
+      "tagline": "Odpalaj multi-agentowe systemy bez kodowania",
       "description": [
-        "Platforma no-code, która pozwala zespołom operacyjnym (customer service, HR, ops) projektować i uruchamiać multi-agentowe workflow bez wsparcia zespołu engineering.",
-        "Fokus na orkiestrację i niezawodność: jasne role agentów, kontrolowane handoffy i punkty ewaluacji - tak, żeby dało się iterować bez chaosu i skalować wyniki między zespołami."
+        "Stworzyłem platformę no-code po to, by zespoły operacyjne (HR, Customer Service) mogły same wyklikiwać workflowy wspierane przez wielu agentów AI, bez angażowania programistów.",
+        "Główny cel: orkiestracja, żeby to wszystko nie wybuchło. Agenci mają jasne role, wiedzą kiedy przekazać pałeczkę, a system wbudowanych ewaluacji pozwala iterować bez obaw, że nowa wersja zepsuje starą."
       ],
-      "industries": "Operacje, obsługa klienta, automatyzacja HR, procesy korporacyjne",
-      "tech": "Agenci AI, no-code, wizualne przepływy, orkiestracja multi-agent, ewaluacje",
-      "impact": "Szybsze PoC i iteracje; bardziej powtarzalne rezultaty dzięki ustrukturyzowanej koordynacji agentów.",
+      "industries": "Customer Service, HR, automatyzacja procesów biznesowych",
+      "tech": "Agenci AI, No-Code, systemy wieloagentowe, ewaluacje",
+      "impact": "Można postawić PoC błyskawicznie. Koniec z chaosem – agenci dogadują się w ustrukturyzowany sposób.",
       "links": []
     },
     {
       "name": "Flowhive VC",
       "period": "2023",
-      "industry": "AI dla venture capital",
+      "industry": "AI dla Venture Capital",
       "role": "Współzałożyciel i architekt",
-      "tagline": "Due diligence i portfolio intelligence jako produkt",
+      "tagline": "Platforma Due Diligence i analizy startupów",
       "description": [
-        "Platforma dla VC łącząca deep research z automatyzacją specyficzną dla procesów inwestycyjnych - żeby szybciej dowozić due diligence i analizy rynkowe.",
-        "Wstępnie skonfigurowane agenty wspierają analizę konkurencji, tracking portfela, automatyzację deal flow i market mapping - zamieniając rozproszony research w wiedzę instytucjonalną."
+        "Postawiliśmy platformę skrojoną pod fundusze VC. Łączy moc LLM-ów z automatyzacją procesów inwestycyjnych, potężnie przyspieszając due diligence.",
+        "Wbudowani agenci ogarniają analizę konkurencji, tracking startupów, flow transakcyjny i mapowanie rynku. Wiedza, która zazwyczaj ginęła w notesach inwestorów, teraz staje się wiedzową bazą całego funduszu."
       ],
-      "industries": "Venture capital, aniołowie biznesu, CVC, analiza inwestycyjna",
-      "tech": "Agenci AI, automatyzacja due diligence, inteligencja portfelowa, mapowanie rynku, systemy deal-flow",
-      "impact": "Szybsza ocena transakcji i bardziej powtarzalny workflow researchu w zespole.",
+      "industries": "Venture Capital, Aniołowie biznesu, CVC, Analiza inwestycyjna",
+      "tech": "Agenci AI, Automatyzacja Due Diligence, Mapowanie rynku",
+      "impact": "Fundusz o wiele szybciej przepycha spółki przez rurkę inwestycyjną i wreszcie ma spójny, wspólny proces researchu.",
       "links": []
     },
     {
       "name": "KnowledgeX",
-      "period": "2021 – 2022",
+      "period": "2021–2022",
       "industry": "Zaufane przetwarzanie danych (projekt UE)",
       "role": "CTO i główny architekt",
-      "tagline": "Bezpieczna współpraca na danych bez ujawniania wrażliwych informacji",
+      "tagline": "Analiza wrażliwych danych bez dzielenia się nimi",
       "description": [
-        "Projekt finansowany z EU Horizon 2020: platforma pozwalająca uruchamiać analitykę na prywatnych danych bez przejmowania nad nimi kontroli („bring the code to the data”), z mocnym naciskiem na audytowalność i bezpieczeństwo.",
-        "Zaprojektowałem end-to-end workflow (agreement → execution → evaluation) i modularną architekturę mikrousług oraz niezmienny audit trail na blockchainie.",
-        "Wykorzystałem confidential computing (TEE / Intel SGX) i szyfrowanie danych w spoczynku do privacy-preserving przetwarzania między organizacjami - zwalidowane z interesariuszami UE."
+        "Potężny projekt w ramach unijnego programu Horizon 2020. Platforma umożliwiająca firmom analitykę danych, których ze względów prawnych czy biznesowych nie chcą fizycznie udostępniać. Model „bring the code to the data”, spięty mocnym security.",
+        "Zaprojektowałem wszystko end-to-end: od umowy, po odpalenie kodu i weryfikację. Użyłem mikrousług a za wiarygodny i niezmienny log zdarzeń (audit trail) odpowiadał blockchain.",
+        "Spięliśmy to używając Confidential Computing (Intel SGX) i mocnego szyfrowania, żeby móc bezpiecznie procesować dane pomiędzy różnymi podmiotami w UE."
       ],
-      "industries": "Analityka międzyorganizacyjna, współpraca na danych, branże wrażliwe na prywatność",
-      "tech": "Blockchain, confidential computing (TEE), szyfrowanie, audytowalne workflow, mikrousługi",
-      "impact": "Przetwarzanie danych bez ich ujawniania; niezmienny audit trail dla zgodności i zaufania; prototyp zwalidowany w kontekście projektu badawczego UE.",
+      "industries": "Analiza danych B2B, prywatność, branże wysoce regulowane",
+      "tech": "Blockchain, Confidential Computing (Intel SGX), mocna kryptografia, audytowalność",
+      "impact": "Udało się pokazać działający model, w którym firmy mogą analizować wspólne zbiory danych nie naruszając prywatności i uzyskując nienaruszalny log akcji, potwierdzony z europejskimi partnerami.",
       "links": [
         {
           "type": "blog",

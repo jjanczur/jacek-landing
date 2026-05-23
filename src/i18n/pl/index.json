@@ -1,130 +1,130 @@
 {
   "meta": {
-    "title": "Architekt AI i konsultant | Jacek Janczura",
-    "description": "Niezależny architekt AI i konsultant (fractional CTO) z Warszawy. Współzałożyciel Jaden Data, CTO do 2024 - obecnie udziałowiec i konsultant. Platformy LLM/RAG, systemy rozproszone, przeglądy architektury i konsulting AI."
+    "title": "Architekt AI i Konsultant | Jacek Janczura",
+    "description": "Niezależny Architekt AI i konsultant (Fractional CTO) z Warszawy. Współzałożyciel i były CTO Jaden Data (obecnie doradca i udziałowiec). Specjalizuję się w platformach enterprise LLM/RAG, systemach rozproszonych, przeglądach architektury i doradztwie AI."
   },
   "hero": {
-    "title": "Architekt AI i konsultant",
+    "title": "Architekt AI i Konsultant",
     "subtitle": "Zamieniam złożoność operacyjną w przewagę konkurencyjną",
-    "tagline": "Niezależny architekt AI i fractional CTO z Warszawy - współzałożyciel Jaden Data (obecnie konsultant i udziałowiec)",
+    "tagline": "Niezależny Architekt AI i Fractional CTO z Warszawy – współzałożyciel Jaden Data (obecnie doradca i udziałowiec)",
     "cta": {
       "primary": "Skontaktuj się",
       "secondary": "Zobacz projekty"
     }
   },
   "positioning": {
-    "p1": "Mam na imię Jacek, jestem niezależnym architektem AI i konsultantem z Warszawy. Współzałożyłem <strong>Jaden Data</strong> i pełniłem funkcję CTO do czerwca 2024 - pozostaję udziałowcem i nadal współpracuję z zespołem jako konsultant. Buduję inteligencję procesową - systemy AI, które usprawniają realną pracę w Twojej firmie. Zaczynam od procesu i robię go szybszym, bezpieczniejszym i mierzalnym.",
-    "p2": "Moje mocne strony to <strong>AI/ML</strong> i <strong>architektura chmurowa</strong>: platformy LLM klasy enterprise, RAG oraz zdarzeniowe mikrousługi na <strong>AWS</strong> (Lambda, ECS/Fargate, SNS/SQS). Integruję wiele modeli (OpenAI, Azure OpenAI, Bedrock, Mistral) i dowożę rozwiązania dla środowisk regulowanych (ISO 27001, SOC 2 Type 2). Mogę też pomóc jako konsultant: przegląd architektury, prompt engineering + ewaluacje albo wsparcie jako lider techniczny."
+    "p1": "Cześć, jestem Jacek – niezależny architekt AI i konsultant w Warszawie. Współzałożyłem <strong>Jaden Data</strong> i pełniłem rolę CTO do czerwca 2024. Nadal wspieram zespół jako konsultant i udziałowiec. Buduję rozwiązania z zakresu Process Intelligence – natywne systemy AI, które realnie usprawniają sposób, w jaki pracuje się w Twojej firmie. Zaczynam od Twoich workflowów i sprawiam, że działają szybciej, bezpieczniej i są w pełni mierzalne.",
+    "p2": "Moje główne kompetencje to <strong>AI/ML</strong> i <strong>architektura chmurowa</strong>: platformy LLM klasy enterprise, systemy RAG i event-driven mikrokosmos na <strong>AWS</strong> (Lambda, ECS/Fargate, SNS/SQS). Integruję środowiska multi-model (OpenAI, Azure OpenAI, Bedrock, Mistral) i dostarczam rozwiązania gotowe na rygorystyczne audyty bezpieczeństwa (ISO 27001, SOC 2). Jeśli potrzebujesz wsparcia, robię też przeglądy architektury, prompt engineering z ewaluacją i pełnię rolę lidera technicznego."
   },
   "highlights": {
-    "title": "Technologia w służbie procesu",
+    "title": "Gdzie Process Intelligence spotyka inżynieryjną jakość",
     "items": [
       {
-        "title": "Platformy enterprise AI",
-        "description": "Wielotenantowe systemy dla 50+ organizacji, >1 000 równoczesnych połączeń i tysiące żądań na sekundę - pod krytyczne procesy."
+        "title": "Platformy Enterprise AI",
+        "description": "Systemy multi-tenant obsługujące ponad 50 organizacji, >1000 jednoczesnych połączeń i tysiące zapytań na sekundę – zbudowane z myślą o krytycznych procesach biznesowych."
       },
       {
-        "title": "Architektura AWS (serverless + microservices)",
-        "description": "Systemy zdarzeniowe na AWS (Lambda, ECS/Fargate, SNS/SQS): wysoka przepustowość, niezawodność i kontrola kosztów."
+        "title": "Architektura AWS (Serverless + Microservices)",
+        "description": "Rozwiązania event-driven na AWS (Lambda, ECS/Fargate, SNS/SQS) projektowane pod wysoką przepustowość, niezawodność i kontrolę kosztów."
       },
       {
         "title": "Rozwiązania branżowe",
-        "description": "Rozwiązania mające wymierny wpływ na sektory produkcji, farmację, finanse, sprawdzające się w startupach jak i rozwiniętych firmach - zawsze powiązane z konkretnym KPI."
+        "description": "Dostarczam realną wartość w produkcji, farmacji, finansach, startupach i scale-upach – zawsze w powiązaniu z mierzalnymi celami biznesowymi."
       },
       {
         "title": "Bezpieczeństwo i zgodność",
-        "description": "Bezpieczeństwo to część projektu od samego początku. Odpowiadałem za uzyskanie ISO 27001 oraz SOC 2 Type 2 w bardzo krótkim czasie."
+        "description": "Bezpieczeństwo to nie dodatek, to fundament projektu. Wdrożyłem ISO 27001 i SOC 2 dla platform enterprise pod dużą presją czasu."
       },
       {
         "title": "LLM, RAG i ewaluacje",
-        "description": "Stosy LLM (multi-model) + RAG, a do tego powtarzalna ocena jakości: testy, metryki i regresja, żeby jakość nie spadała z czasem."
+        "description": "Stosy LLM wspierające wiele modeli i pipeline'y RAG połączone ze zautomatyzowanym testowaniem (metryki, testy regresji), by zagwarantować stabilność zachowań AI."
       },
       {
         "title": "Doświadczenie i przywództwo techniczne",
-        "description": "Zbudowałem zespół od 0→10, prowadzę delivery end-to-end i przekładam potrzeby biznesowe klienta na realny i wykonalny plan i architekturę."
+        "description": "Zbudowałem zespół inżynierski od 0 do 10 osób, zarządzałem procesem delivery end-to-end i potrafię przełożyć wizję biznesową na solidną architekturę i plany wdrożeniowe."
       }
     ],
-    "note": "Certyfikowany spadochroniarz i nurek, instruktor windsurfingu i kitesurfingu, snowboardzista. Te pasje uczą zarządzania ryzykiem, jasnej komunikacji, spokoju pod presją i zdyscyplinowanego przygotowania - umiejętności, które przenoszę na prowadzenie zespołów technicznych i budowę systemów, od których zależy biznes."
+    "note": "Certyfikowany spadochroniarz, nurek, instruktor wind/kitesurfingu i snowboardzista. Te pasje uczą zarządzania ryzykiem, jasnej komunikacji, zachowania spokoju pod presją i żelaznej dyscypliny – to skille, które bezpośrednio przekładają się na prowadzenie zespołów IT i budowę systemów, na których firmy mogą polegać."
   },
   "featured": {
-    "title": "AI w praktyce",
+    "title": "Process Intelligence w akcji",
     "items": [
       {
         "title": "entAIngine",
-        "description": "Platforma enterprise AI na AWS do automatyzacji procesów. Wielotenantowa, wysokoprzepustowa i gotowa na wymagania regulacyjne (ISO 27001, SOC 2 Type 2).",
+        "description": "Platforma Enterprise AI na AWS do automatyzacji kluczowych procesów. Multi-tenant, wysoka przepustowość i pełna gotowość do audytów regulacyjnych (ISO 27001, SOC 2).",
         "link": "Zobacz wszystkie projekty →"
       },
       {
         "title": "Przeglądy architektury",
-        "description": "Krótka, konkretna analiza, która zmniejsza ryzyko: architektura AWS, LLM/RAG, bezpieczeństwo, skalowanie, koszty i plan realizacji.",
+        "description": "Krótkie i merytoryczne przeglądy zmniejszające ryzyko: architektura cloud, design LLM/RAG, bezpieczeństwo, skalowalność, koszty i plany wdrożenia.",
         "link": "Zacznijmy rozmowę →",
         "url": "/contact/"
       },
       {
-        "title": "Systemy ML (RP‑Matcher)",
-        "description": "System dopasowania produktów (ML), który skrócił przygotowanie ofert o 60% i ma mierzalną skuteczność rankingu (70,7% Top‑1; MRR 0,835).",
+        "title": "Systemy ML (RP-Matcher)",
+        "description": "System dopasowywania produktów (ML), który o 60% przyspieszył przygotowywanie ofert i zauważalnie poprawił trafność rekomendacji (70,7% Top-1; MRR 0,835).",
         "link": "Zobacz wszystkie projekty →"
       },
       {
         "title": "Wzorce architektury AI",
-        "description": "Praktyczne wnioski z wdrożeń LLM w enterprise - jak projektować systemy, które wspierają procesy i są stabilne w produkcji.",
+        "description": "Praktyczne lekcje z wdrażania LLMów w firmach – jak projektować systemy, które wspierają procesy biznesowe i są absolutnie stabilne na produkcji.",
         "link": "Zobacz prezentacje →",
         "url": "/talks/"
       }
     ]
   },
   "contactCta": {
-    "title": "Gotowy na transformację Twoich procesów?",
-    "description": "Niezależnie czy jesteś startupem, rozwijającą się firmą, czy dużym przedsiębiorstwem - jeśli potrzebujesz wsparcia z architekturą AWS, delivery LLM/RAG, prompt engineering + ewaluacjami albo leadership - zacznijmy od krótkiej rozmowy.",
+    "title": "Gotowy na transformację procesów w swojej firmie?",
+    "description": "Niezależnie od tego, czy jesteś startupem, scale-upem, czy dojrzałą korporacją – jeśli potrzebujesz pomocy z architekturą AWS, wdrożeniami LLM/RAG, ewaluacją modeli AI lub wsparcia technicznego, zdzwońmy się.",
     "button": "Skontaktuj się"
   },
   "faq": {
     "title": "FAQ",
-    "intro": "Szybkie odpowiedzi na najczęstsze pytania. Więcej szczegółów znajdziesz na stronach O mnie, Projekty i Wystąpienia.",
+    "intro": "Szybkie odpowiedzi na częste pytania. Więcej detali znajdziesz w zakładkach About, Projekty i Wystąpienia.",
     "items": [
       {
         "question": "Kim jest Jacek Janczura?",
-        "answer": "Jacek Janczura to niezależny architekt AI i konsultant (fractional CTO) z Warszawy. Współzałożył Jaden Data GmbH i był jej CTO do 2024 roku; pozostaje udziałowcem i konsultantem - buduje AI‑native systemy do process intelligence i automatyzacji procesów w przedsiębiorstwach.",
+        "answer": "Jestem niezależnym Architektem AI i konsultantem (Fractional CTO) w Warszawie. Współzałożyłem Jaden Data GmbH i do 2024 roku pełniłem tam rolę CTO. Obecnie jestem udziałowcem i doradcą. Buduję natywne systemy AI optymalizujące procesy w firmach.",
         "links": ["about"]
       },
       {
         "question": "Czym jest „process intelligence”?",
-        "answer": "Process intelligence to podejście, w którym zaczynamy od zrozumienia, jak realnie działa organizacja pracy w firmie, a dopiero potem usprawniamy procesy dzięki AI, automatyzacji i decyzjom opartym o dane - AI ma wspierać proces, a nie go zastępować.",
+        "answer": "Process Intelligence oznacza dla mnie wyjście od tego, jak faktycznie wykonuje się pracę, a następnie usprawnienie tych workflowów poprzez AI i automatyzację. AI służy procesowi, a nie na odwrót.",
         "links": ["about"]
       },
       {
         "question": "Co budujesz?",
-        "answer": "Platformy LLM klasy enterprise, systemy RAG oraz zdarzeniowe architektury chmurowe - często jako wielotenantowe produkty SaaS i systemy automatyzacji zintegrowane z realnymi operacjami.",
+        "answer": "Platformy enterprise LLM, systemy RAG oraz event-driven architektury chmurowe – zazwyczaj w formie multi-tenantowych rozwiązań SaaS wplecionych bezpośrednio w operacje firmy.",
         "links": ["projects"]
       },
       {
         "question": "W jakiej skali działały Twoje systemy?",
-        "answer": "Budowałem platformy dla 50+ organizacji, obsługujące >1 000 równoczesnych połączeń i tysiące zapytań na sekundę w zdarzeniowych mikrousługach na AWS.",
+        "answer": "Budowałem platformy obsługujące 50+ organizacji, ponad 1000 równoczesnych połączeń i tysiące requestów na sekundę z użyciem wydajnych mikrousług event-driven na AWS.",
         "links": ["projects"]
       },
       {
         "question": "Dla jakich branż realizowałeś projekty?",
-        "answer": "Produkcja i przemysł, farmacja, finanse i bankowość, venture capital, nieruchomości, ubezpieczenia, legal, automotive, e‑commerce, telekomunikacja, energetyka/cleantech, logistyka i supply chain.",
+        "answer": "Przemysł, farmacja, finanse, venture capital, nieruchomości, ubezpieczenia, prawo, automotive, e-commerce, telco, energetyka, logistyka i supply chain.",
         "links": ["projects"]
       },
       {
         "question": "Jakie masz doświadczenie z LLM i RAG?",
-        "answer": "Projektowałem i wdrażałem enterprise stacki LLM (OpenAI/Azure/Bedrock/Mistral) oraz rozwijałem usługi RAG z automatycznym tworzeniem baz wektorowych (Pinecone, pgvector, Milvus) i frameworkami do testowania/oceny pipeline’ów AI.",
+        "answer": "Projektowałem stacki LLM obejmujące m.in. OpenAI, Azure, Bedrock i Mistral. Tworzyłem serwisy RAG z automatycznym zarządzaniem bazami wektorowymi (Pinecone, pgvector, Milvus) oraz frameworki do ewaluacji modeli.",
         "links": ["projects", "consulting"]
       },
       {
         "question": "Czy zajmujesz się bezpieczeństwem i compliance?",
-        "answer": "Tak. Dostarczałem ISO 27001 i SOC 2 Type 2 w ~3 miesiące dla platform enterprise; bezpieczeństwo wielotenantowe i RBAC to u mnie fundament architektury.",
+        "answer": "Tak. Przeprowadziłem firmę przez certyfikację ISO 27001 i SOC 2 w zaledwie 3 miesiące. Bezpieczeństwo wielodostępne (multi-tenant) i rygorystyczne RBAC to rdzeń mojego podejścia do architektury.",
         "links": ["consulting"]
       },
       {
         "question": "Jak możemy współpracować?",
-        "answer": "Realizuję projekty freelance: przeglądy architektury (AWS/cloud, LLM/RAG, security, skalowanie/koszt), prompt engineering i evale, hands-on delivery AI oraz wsparcie liderów technicznych / zespołów.",
+        "answer": "Pracuję jako freelancer przy przeglądach architektury (AWS/Cloud, LLM/RAG, security, koszty), prompt engineeringu z ewaluacją, bezpośrednich wdrożeniach AI, a także w roli Interim CTO i wsparciu zespołów.",
         "links": ["consulting", "contact"]
       },
       {
         "question": "Jak się z Tobą skontaktować?",
-        "answer": "Najlepiej przez stronę Kontakt lub LinkedIn. Napisz krótko, z czym się mierzysz i jaki masz termin - zaproponuję najszybszy sposób pomocy.",
+        "answer": "Napisz do mnie przez formularz kontaktowy albo na LinkedIn. Przedstaw krótko z czym się mierzysz i jak wygląda Twój deadline, a ja podpowiem, jak najszybciej będę mógł pomóc.",
         "links": ["contact"]
       }
     ]

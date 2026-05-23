@@ -1,123 +1,123 @@
 {
   "meta": {
     "title": "Polityka prywatności | Jacek Janczura",
-    "description": "Polityka prywatności janczura.com. Informacje o gromadzeniu i przetwarzaniu danych oraz Twoich prawach wynikających z RODO."
+    "description": "Polityka prywatności janczura.com. Krótko o tym, jakie dane zbieram i jakie masz prawa według RODO."
   },
   "hero": {
     "title": "Polityka prywatności",
     "lastUpdated": "Ostatnia aktualizacja:"
   },
-  "intro": "Niniejsza polityka wyjaśnia, jakie dane są gromadzone podczas korzystania z tej strony, w jakim celu oraz jak możesz realizować swoje prawa.",
+  "intro": "Tutaj dowiesz się w prostych słowach, co się dzieje z Twoimi danymi podczas przeglądania tej strony, po co to wszystko i jakie masz prawa.",
   "sections": {
     "information": {
-      "title": "1. Jakie informacje są zbierane",
-      "text": "Strona została zaprojektowana z myślą o prywatności. Nie stosuję skryptów śledzących ani narzędzi analitycznych. Automatycznie mogą być zbierane jedynie:",
+      "title": "1. Jakie dane zbieram",
+      "text": "Strona powstała z myślą o prywatności, dlatego nie ładuję tutaj żadnych trackerów ani ciężkich narzędzi analitycznych. Jedyne, co dzieje się automatycznie, to:",
       "items": [
         {
           "title": "Logi serwera:",
-          "text": "GitHub Pages (dostawca hostingu) może rejestrować adres IP, typ przeglądarki i czas dostępu. Jest to standardowe działanie serwerów webowych."
+          "text": "Strona leży na GitHub Pages. Przy wejściu serwer automatycznie zapisuje Twój adres IP, rodzaj przeglądarki i czas wejścia. To standard na każdym serwerze i nie mam na to wpływu."
         },
         {
-          "title": "Dane z formularza kontaktowego:",
-          "text": "Jeśli wypełnisz formularz, Twój adres e-mail i wiadomość są przetwarzane przez Formspree i przekazywane do mnie zgodnie z ich polityką prywatności."
+          "title": "Formularz kontaktowy:",
+          "text": "Gdy wysyłasz wiadomość przez formularz, Twój e-mail i treść lecą przez usługę Formspree prosto na moją skrzynkę, zgodnie z ich własną polityką."
         },
         {
           "title": "Umawianie spotkań (Calendly):",
-          "text": "Jeśli zdecydujesz się umówić spotkanie, możesz zostać przekierowany/-a do Calendly (zewnętrznego dostawcy umawiania). Calendly może przetwarzać dane osobowe i ustawiać cookies zgodnie ze swoimi zasadami."
+          "text": "Jeżeli chcesz umówić calla, przekieruję Cię do Calendly. Tam już działają ich zasady przetwarzania danych i cookies."
         },
         {
-          "title": "Cookies i localStorage:",
-          "text": "Strona nie ustawia własnych cookies śledzących. Filmy YouTube są osadzone w trybie privacy-enhanced (youtube-nocookie.com). Google Fonts może ustawiać cookies zgodnie ze swoją polityką. Jeśli zdecydujesz się umówić spotkanie przez Calendly, Calendly może ustawiać cookies zgodnie ze swoimi zasadami. localStorage służy wyłącznie do zapamiętania preferencji motywu (jasny/ciemny)."
+          "title": "Cookies i LocalStorage:",
+          "text": "Nie ładuję żadnych własnych ciasteczek śledzących. Filmy z YouTube są wklejone w trybie z wyłączonym śledzeniem (youtube-nocookie.com). Google Fonts pobiera czcionki i w teorii może coś logować. W Twojej przeglądarce (LocalStorage) zapisuję tylko informację o tym, czy wolisz jasny czy ciemny motyw strony."
         }
       ]
     },
     "usage": {
-      "title": "2. Cel przetwarzania danych",
-      "text": "Zebrane dane są wykorzystywane wyłącznie do:",
+      "title": "2. Po co mi te dane",
+      "text": "Jeśli już jakieś dane do mnie trafią, używam ich wyłącznie do:",
       "items": [
-        "Odpowiadania na zgłoszenia z formularza kontaktowego",
-        "Zapewnienia prawidłowego działania i bezpieczeństwa strony",
-        "Wypełnienia obowiązków prawnych"
+        "Odpisywania na wiadomości z formularza",
+        "Dbania o to, by strona działała szybko i bezpiecznie",
+        "Spełnienia obowiązków prawnych"
       ],
-      "note": "Nie sprzedaję ani nie udostępniam danych osobowych podmiotom trzecim w celach marketingowych."
+      "note": "Ważne: Nigdy nie sprzedaję Twoich danych ani nie udostępniam ich agencjom reklamowym."
     },
     "thirdParty": {
-      "title": "3. Usługi zewnętrzne",
-      "text": "Strona korzysta z następujących usług zewnętrznych:",
+      "title": "3. Zewnętrzne narzędzia",
+      "text": "Żeby ta strona działała dobrze, pod spodem korzystam z kilku narzędzi:",
       "items": [
         {
           "title": "GitHub Pages:",
-          "text": "Hosting; ich polityka prywatności dotyczy logów serwera."
+          "text": "Tu hostowana jest strona, więc to oni logują ruch na serwerze."
         },
         {
           "title": "Formspree:",
-          "text": "Obsługa formularza kontaktowego; dane trafiają do mnie e-mailem."
+          "text": "Serwis, który łapie to, co wpisujesz w formularzu i podsyła mi na e-mail."
         },
         {
           "title": "Calendly:",
-          "text": "Umawianie spotkań (opcjonalnie). Jeśli zdecydujesz się umówić spotkanie, możesz zostać przekierowany/-a do Calendly. Na ich stronie obowiązują polityki prywatności i cookies Calendly."
+          "text": "Narzędzie do umawiania kalendarzy. Przetwarza dane na własnych zasadach."
         },
         {
           "title": "Google Fonts:",
-          "text": "Dostarczanie czcionek; Google może zbierać pewne dane o użyciu."
+          "text": "Dostarcza ładne czcionki. Google może przy okazji zbierać np. IP."
         },
         {
           "title": "YouTube:",
-          "text": "Osadzanie filmów w trybie privacy-enhanced (youtube-nocookie.com) w celu minimalizacji cookies."
+          "text": "Wykorzystuję wersję no-cookie, żeby zminimalizować śledzenie przed odpaleniem wideo."
         }
       ],
-      "cookieNote": "Informacja o cookies: Strona nie używa cookies śledzących ani marketingowych. Jeśli korzystasz z usług zewnętrznych (np. Calendly) poprzez linki zewnętrzne, obowiązują zasady danego dostawcy."
+      "cookieNote": "Słówko o ciastkach: Strona jest czysta od reklamowych cookies. Jeśli klikniesz link prowadzący do Calendly albo odpalisz wideo, aktywują się zasady tamtych serwisów."
     },
     "rights": {
       "title": "4. Twoje prawa (RODO)",
-      "text": "Jako użytkownik masz prawo do:",
+      "text": "Masz pełne prawo do swoich danych. Zawsze możesz:",
       "items": [
         {
-          "title": "Dostępu:",
-          "text": "uzyskania informacji o przetwarzanych danych."
+          "title": "Zapytać:",
+          "text": "co dokładnie o Tobie przechowuję."
         },
         {
-          "title": "Sprostowania:",
-          "text": "poprawienia nieprawidłowych danych."
+          "title": "Poprawić:",
+          "text": "swoje dane, jeśli się nie zgadzają."
         },
         {
-          "title": "Usunięcia:",
-          "text": "żądania usunięcia swoich danych."
+          "title": "Usunąć:",
+          "text": "wszystko, co do mnie napisałeś/aś."
         },
         {
-          "title": "Ograniczenia przetwarzania:",
-          "text": "ograniczenia sposobu wykorzystania danych."
+          "title": "Ograniczyć przetwarzanie:",
+          "text": "jeśli nie chcesz, abym coś z Twoimi danymi robił."
         },
         {
-          "title": "Przenoszenia danych:",
-          "text": "otrzymania danych w ustrukturyzowanym formacie."
+          "title": "Przenieść dane:",
+          "text": "zażądać eksportu w zrozumiałym formacie."
         },
         {
-          "title": "Sprzeciwu:",
-          "text": "wniesienia sprzeciwu wobec przetwarzania."
+          "title": "Zgłosić sprzeciw:",
+          "text": "wobec tego, co robię z Twoimi danymi."
         }
       ],
-      "contactText": "Aby skorzystać z tych praw, skontaktuj się przez formularz kontaktowy lub adres e-mail podany w sekcji kontakt."
+      "contactText": "Żeby z tego skorzystać, po prostu napisz do mnie przez formularz kontaktowy albo na maila z zakładki z informacjami prawnymi."
     },
     "retention": {
-      "title": "5. Okres przechowywania danych",
-      "text": "Dane osobowe są przechowywane tylko tak długo, jak jest to niezbędne do realizacji celów opisanych w niniejszej polityce lub wymagane przez przepisy prawa. Zgłoszenia z formularza kontaktowego są zwykle przechowywane do momentu zakończenia sprawy."
+      "title": "5. Jak długo trzymam dane",
+      "text": "Tylko tyle, ile trzeba. Wiadomości z formularza trzymam zazwyczaj do momentu załatwienia sprawy. Gdy zamkniemy temat, zwykle to archiwizuję lub usuwam."
     },
     "security": {
       "title": "6. Bezpieczeństwo",
-      "text": "Stosuję odpowiednie środki bezpieczeństwa, jednak żadna metoda transmisji danych przez internet nie jest w 100% bezpieczna. Strona korzysta z szyfrowania HTTPS, a usługi zewnętrzne są dobierane z uwzględnieniem ich standardów bezpieczeństwa."
+      "text": "Cały ruch leci przez zaszyfrowane HTTPS. Pamiętaj jednak, że w internecie nikt nie da 100% gwarancji. Korzystam tylko ze znanych, sprawdzonych narzędzi, które mają własne certyfikaty bezpieczeństwa."
     },
     "children": {
       "title": "7. Prywatność dzieci",
-      "text": "Strona nie jest skierowana do osób poniżej 16. roku życia. Nie gromadzę świadomie danych osobowych dzieci."
+      "text": "To jest strona dla dorosłych profesjonalistów. Nie zbieram celowo danych od osób poniżej 16. roku życia."
     },
     "changes": {
-      "title": "8. Zmiany w polityce prywatności",
-      "text": "Niniejsza polityka może być aktualizowana. Data „Ostatnia aktualizacja\" u góry strony wskazuje, kiedy wprowadzono zmiany. Dalsze korzystanie ze strony po zmianach oznacza akceptację zaktualizowanych zasad."
+      "title": "8. Zmiany w polityce",
+      "text": "Czasem coś zmienię w kodzie albo zmienią się przepisy, więc ta strona też może przejść aktualizację. Data na samej górze zawsze mówi, kiedy to było poprawiane ostatni raz."
     },
     "contact": {
       "title": "9. Kontakt",
-      "text": "W przypadku pytań dotyczących niniejszej polityki lub chęci skorzystania ze swoich praw, proszę o kontakt przez formularz na stronie kontaktowej lub dane podane w sekcji informacje prawne."
+      "text": "Masz pytania do tego, co tu napisałem? Pisz śmiało przez formularz kontaktowy na stronie głównej."
     }
   }
 }

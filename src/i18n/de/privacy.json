@@ -1,123 +1,123 @@
 {
   "meta": {
-    "title": "Datenschutzerklärung | Jacek Janczura",
-    "description": "Datenschutzerklärung für janczura.com. Informationen zur Datenerhebung, Verarbeitung und Ihren Rechten gemäß DSGVO."
+    "title": "Datenschutz | Jacek Janczura",
+    "description": "Datenschutzerklärung für janczura.com. Infos dazu, welche Daten erfasst werden und welche Rechte du nach der DSGVO hast."
   },
   "hero": {
-    "title": "Datenschutzerklärung",
-    "lastUpdated": "Letzte Aktualisierung:"
+    "title": "Datenschutz",
+    "lastUpdated": "Letztes Update:"
   },
-  "intro": "Diese Datenschutzerklärung informiert Sie darüber, welche personenbezogenen Daten beim Besuch dieser Website erhoben werden, wie sie verwendet werden und welche Rechte Sie haben.",
+  "intro": "Hier erfährst du kurz und knapp, was mit deinen Daten passiert, wenn du auf dieser Website unterwegs bist, und welche Rechte du hast.",
   "sections": {
     "information": {
-      "title": "1. Welche Daten werden erhoben",
-      "text": "Diese Website wurde mit Fokus auf Datenschutz entwickelt. Es werden keine Tracking-Skripte oder Analytics-Tools eingesetzt. Automatisch erfasst werden lediglich:",
+      "title": "1. Welche Daten erfasst werden",
+      "text": "Diese Website ist bewusst datensparsam gebaut. Ich setze keine Tracking-Skripte oder fette Analytics-Tools ein. Was automatisch im Hintergrund passiert, ist folgendes:",
       "items": [
         {
           "title": "Server-Logs:",
-          "text": "GitHub Pages (Hosting-Anbieter) kann IP-Adresse, Browsertyp und Zugriffszeiten protokollieren. Dies ist Standard und liegt nicht unter meiner direkten Kontrolle."
+          "text": "Die Seite liegt bei GitHub Pages. Dieser Anbieter protokolliert beim Seitenaufruf automatisch Dinge wie deine IP-Adresse, den Browsertyp und die Uhrzeit. Das ist Standard bei Webservern und liegt nicht in meiner Hand."
         },
         {
-          "title": "Kontaktformulardaten:",
-          "text": "Wenn Sie das Kontaktformular nutzen, werden Ihre E-Mail-Adresse und Nachricht von Formspree verarbeitet und mir per E-Mail zugestellt - gemäß deren Datenschutzrichtlinie."
+          "title": "Kontaktformular:",
+          "text": "Wenn du mir über das Formular schreibst, verarbeitet der Dienst Formspree deine Mail-Adresse und die Nachricht und schickt sie mir per E-Mail weiter (gemäß der Formspree-Datenschutzerklärung)."
         },
         {
           "title": "Terminbuchung (Calendly):",
-          "text": "Wenn Sie einen Termin buchen möchten, werden Sie ggf. zu Calendly (einem Drittanbieter für Terminbuchungen) weitergeleitet. Calendly kann personenbezogene Daten verarbeiten und Cookies gemäß den eigenen Richtlinien setzen."
+          "text": "Wenn du dir einen Call eintragen willst, wirst du ggf. zu Calendly weitergeleitet. Dort gelten die Datenschutz- und Cookie-Regeln von Calendly."
         },
         {
-          "title": "Cookies und LocalStorage:",
-          "text": "Es werden keine Tracking-Cookies gesetzt. YouTube-Videos sind im Privacy-Enhanced-Modus (youtube-nocookie.com) eingebettet. Google Fonts kann gemäß eigener Richtlinie Cookies setzen. Wenn Sie einen Termin über Calendly buchen, kann Calendly Cookies gemäß den eigenen Richtlinien setzen. LocalStorage speichert ausschließlich Ihre Theme-Präferenz (hell/dunkel)."
+          "title": "Cookies & LocalStorage:",
+          "text": "Ich setze selbst keine Tracking-Cookies. YouTube-Videos sind im erweiterten Datenschutzmodus (youtube-nocookie.com) eingebettet. Google Fonts lädt die Schriften und kann theoretisch Logs schreiben. Im LocalStorage deines Browsers speichere ich nur, ob du den Dark Mode oder Light Mode bevorzugst."
         }
       ]
     },
     "usage": {
-      "title": "2. Verwendung der Daten",
-      "text": "Erhobene Daten werden ausschließlich verwendet für:",
+      "title": "2. Wofür ich die Daten nutze",
+      "text": "Wenn überhaupt Daten anfallen, nutze ich sie nur für:",
       "items": [
-        "Beantwortung von Kontaktanfragen",
-        "Sicherstellung der Funktionalität und Sicherheit der Website",
-        "Erfüllung gesetzlicher Verpflichtungen"
+        "Um dir auf deine Nachrichten zu antworten",
+        "Damit die Website sicher und flüssig läuft",
+        "Um rechtliche Vorgaben einzuhalten"
       ],
-      "note": "Ihre Daten werden nicht verkauft oder zu Marketingzwecken an Dritte weitergegeben."
+      "note": "Ich verkaufe deine Daten nicht und gebe sie auch nicht für Marketingzwecke an Dritte weiter."
     },
     "thirdParty": {
-      "title": "3. Externe Dienste",
-      "text": "Diese Website nutzt folgende Drittanbieter-Dienste:",
+      "title": "3. Externe Tools & Dienste",
+      "text": "Folgende externe Dienste sind auf der Website eingebunden:",
       "items": [
         {
           "title": "GitHub Pages:",
-          "text": "Hosting-Anbieter; deren Datenschutzrichtlinie gilt für Server-Logs."
+          "text": "Der Hosting-Provider. Deren Datenschutzerklärung gilt für die Server-Logs."
         },
         {
           "title": "Formspree:",
-          "text": "Verarbeitung des Kontaktformulars; Ihre Anfragen werden mir per E-Mail zugestellt."
+          "text": "Nimmt die Kontaktformulare entgegen und schickt sie an mein Postfach."
         },
         {
           "title": "Calendly:",
-          "text": "Terminbuchung (optional). Wenn Sie einen Termin buchen möchten, werden Sie ggf. zu Calendly weitergeleitet. Es gelten die Datenschutz- und Cookie-Richtlinien von Calendly auf deren Website."
+          "text": "Für die einfache Terminfindung. Die Datenverarbeitung passiert bei Calendly."
         },
         {
           "title": "Google Fonts:",
-          "text": "Bereitstellung von Schriftarten; Google kann dabei Nutzungsdaten erheben."
+          "text": "Liefert die Schriftarten. Google kann dabei unter Umständen IP-Daten loggen."
         },
         {
           "title": "YouTube:",
-          "text": "Video-Einbettung im Privacy-Enhanced-Modus (youtube-nocookie.com), um Cookies zu minimieren."
+          "text": "Ist so eingebettet, dass YouTube erst dann Daten bekommt, wenn du das Video wirklich abspielst (youtube-nocookie.com)."
         }
       ],
-      "cookieNote": "Hinweis zu Cookies: Diese Website nutzt keine Tracking- oder Marketing-Cookies. Wenn Sie Drittanbieter-Dienste (z. B. Calendly) über externe Links nutzen, gelten die jeweiligen Richtlinien des Anbieters."
+      "cookieNote": "Info zu Cookies: Diese Website nutzt von Haus aus keine Tracking-Cookies. Wenn du externe Links oder Dienste (wie Calendly) klickst, gelten die Cookie-Regeln der jeweiligen Anbieter."
     },
     "rights": {
-      "title": "4. Ihre Rechte nach DSGVO",
-      "text": "Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:",
+      "title": "4. Deine Rechte (DSGVO)",
+      "text": "Du hast natürlich Rechte, wenn es um deine Daten geht:",
       "items": [
         {
           "title": "Auskunft:",
-          "text": "über die zu Ihrer Person gespeicherten Daten."
+          "text": "Du kannst jederzeit fragen, welche Daten ich von dir habe."
         },
         {
           "title": "Berichtigung:",
-          "text": "unrichtiger personenbezogener Daten."
+          "text": "Wenn Daten falsch sind, kannst du sie korrigieren lassen."
         },
         {
           "title": "Löschung:",
-          "text": "Ihrer Daten."
+          "text": "Du kannst verlangen, dass ich deine Daten lösche."
         },
         {
           "title": "Einschränkung:",
-          "text": "der Verarbeitung."
+          "text": "Du kannst verlangen, dass Daten nur noch eingeschränkt verarbeitet werden."
         },
         {
           "title": "Datenübertragbarkeit:",
-          "text": "Erhalt Ihrer Daten in einem strukturierten, maschinenlesbaren Format."
+          "text": "Du hast das Recht, deine Daten in einem maschinenlesbaren Format zu bekommen."
         },
         {
           "title": "Widerspruch:",
-          "text": "gegen die Verarbeitung."
+          "text": "Du kannst der Verarbeitung deiner Daten widersprechen."
         }
       ],
-      "contactText": "Zur Ausübung Ihrer Rechte nutzen Sie bitte das Kontaktformular oder die Angaben im Impressum."
+      "contactText": "Wenn du eines dieser Rechte nutzen willst, schreib mir einfach über das Kontaktformular oder die Mail-Adresse im Impressum."
     },
     "retention": {
-      "title": "5. Speicherdauer",
-      "text": "Personenbezogene Daten werden nur so lange gespeichert, wie es für die genannten Zwecke erforderlich ist oder gesetzlich vorgeschrieben. Anfragen über das Kontaktformular werden in der Regel bis zur Klärung des Anliegens aufbewahrt."
+      "title": "5. Wie lange speichere ich Daten?",
+      "text": "Ich behalte personenbezogene Daten nur so lange, wie es für den Zweck nötig (z. B. um auf deine Mail zu antworten) oder gesetzlich vorgeschrieben ist. Sobald dein Anliegen geklärt ist, räume ich in der Regel auf."
     },
     "security": {
       "title": "6. Sicherheit",
-      "text": "Ich treffe angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer Daten. Dennoch ist keine Datenübertragung im Internet vollständig sicher. Diese Website nutzt HTTPS-Verschlüsselung; externe Dienste werden unter Berücksichtigung ihrer Sicherheitsstandards ausgewählt."
+      "text": "Die Website nutzt natürlich HTTPS, damit die Übertragung verschlüsselt ist. 100%ige Sicherheit gibt es im Netz leider nie, aber ich habe die eingesetzten Tools (wie Formspree) nach vernünftigen Security-Standards ausgesucht."
     },
     "children": {
-      "title": "7. Datenschutz bei Minderjährigen",
-      "text": "Diese Website richtet sich nicht an Personen unter 16 Jahren. Es werden keine personenbezogenen Daten von Kindern wissentlich erhoben."
+      "title": "7. Minderjährige",
+      "text": "Diese Seite richtet sich nicht an Kinder und Jugendliche unter 16 Jahren. Ich sammle nicht wissentlich Daten von Minderjährigen."
     },
     "changes": {
-      "title": "8. Änderungen dieser Datenschutzerklärung",
-      "text": "Diese Datenschutzerklärung kann gelegentlich aktualisiert werden. Das Datum „Letzte Aktualisierung\" oben zeigt den aktuellen Stand. Die fortgesetzte Nutzung der Website nach Änderungen gilt als Zustimmung zur aktualisierten Fassung."
+      "title": "8. Updates dieser Erklärung",
+      "text": "Manchmal ändert sich die Technik oder das Gesetz, dann passe ich diese Erklärung an. Das Datum oben zeigt dir immer den neuesten Stand."
     },
     "contact": {
       "title": "9. Kontakt",
-      "text": "Bei Fragen zu dieser Datenschutzerklärung oder zur Ausübung Ihrer Rechte nutzen Sie bitte das Kontaktformular oder die Kontaktdaten im Impressum."
+      "text": "Wenn du Fragen zum Datenschutz hast, meld dich gerne über das Kontaktformular oder schau ins Impressum für weitere Kontaktdaten."
     }
   }
 }

@@ -1,69 +1,69 @@
 {
   "meta": {
     "title": "Kontakt | Jacek Janczura",
-    "description": "Kontakt für Architektur-Reviews, Beratung und Umsetzungsprojekte rund um Enterprise-KI-Plattformen und technische Führung."
+    "description": "Lass uns über AI-Architektur-Reviews, Consulting und Delivery-Projekte sprechen. Verfügbar für das Design von Enterprise-AI-Plattformen und Technical Leadership."
   },
   "hero": {
     "title": "Kontakt",
-    "subtitle": "Verantwortungsvolle KI-Lösungen entwickeln"
+    "subtitle": "Lass uns verantwortungsvolle AI-Lösungen bauen"
   },
-  "intro": "Wählen Sie unten den schnellsten Weg. Ich bin offen für Beratung, Architektur-Reviews und ausgewählte Umsetzungsprojekte - mit Fokus auf Enterprise-KI-Plattformen.",
+  "intro": "Wähl einfach den schnellsten Weg unten. Ich stehe für Beratung, Architektur-Reviews und ausgewählte Umsetzungsprojekte rund um Enterprise-AI-Plattformen zur Verfügung.",
   "primaryCta": {
-    "title": "Kurz sprechen – diese Woche?",
-    "description": "Am schnellsten ist ein kurzer Termin. Alternativ können Sie mir eine Nachricht mit Kontext senden – ich melde mich zurück.",
-    "bookCall": "Termin buchen",
+    "title": "Lass uns diese Woche sprechen",
+    "description": "Am schnellsten geht es mit einem kurzen Call. Oder schreib mir einfach eine Nachricht mit ein bisschen Kontext und ich melde mich bei dir.",
+    "bookCall": "Call buchen",
     "sendMessage": "Nachricht senden"
   },
   "quickOptions": {
     "title": "Schnelle Optionen",
     "items": {
       "bookCall": {
-        "title": "Termin buchen",
-        "description": "Wählen Sie einen passenden Slot. Öffnet den Kalender in einem neuen Tab.",
+        "title": "Call buchen",
+        "description": "Such dir einfach einen passenden Slot aus. Öffnet den Kalender in einem neuen Tab.",
         "button": "Kalender öffnen"
       },
       "linkedin": {
         "title": "LinkedIn",
-        "description": "Für Networking und professionelle Gespräche.",
+        "description": "Fürs Netzwerken und professionellen Austausch.",
         "button": "Auf LinkedIn schreiben"
       },
       "github": {
         "title": "GitHub",
-        "description": "Für Open‑Source‑Beiträge und technische Diskussionen.",
+        "description": "Für Open-Source-Beiträge und technische Diskussionen.",
         "button": "GitHub ansehen"
       }
     }
   },
   "message": {
-    "title": "Nachricht senden",
-    "description": "Beschreiben Sie kurz Ziel, Ausgangslage, Constraints (Security/Compliance) und Timeline.",
-    "emailLabel": "Ihre E‑Mail:",
-    "messageLabel": "Ihre Nachricht:",
+    "title": "Schreib mir eine Nachricht",
+    "description": "Teile mir kurz dein Anliegen, eventuelle Einschränkungen (wie Security/Compliance) und deine zeitliche Vorstellung mit.",
+    "emailLabel": "Deine E-Mail:",
+    "messageLabel": "Deine Nachricht:",
     "submit": "Nachricht senden"
   },
   "focus": {
     "title": "Schwerpunkte",
     "items": [
       {
-        "title": "KI-Plattform-Architektur",
-        "description": "Multi-Tenant-LLM-Plattformen, RAG-Systeme und KI-Pipeline-Design"
+        "title": "AI-Plattform-Architektur",
+        "description": "Multi-Tenant-LLM-Plattformen, RAG-Systeme und Design von AI-Pipelines"
       },
       {
-        "title": "Technische Führung",
+        "title": "Technical Leadership",
         "description": "Teamaufbau, Code-Review-Kultur und Optimierung von Delivery-Prozessen"
       },
       {
         "title": "Sicherheit & Compliance",
-        "description": "ISO 27001/SOC 2-Implementierung und KI-spezifische Risikobewertung"
+        "description": "ISO 27001/SOC 2-Implementierung und AI-spezifisches Risikomanagement"
       },
       {
         "title": "Systemdesign",
-        "description": "Ereignisgesteuerte Microservices, verteilte Systeme und Performance-Optimierung"
+        "description": "Event-driven Microservices, verteilte Systeme und Performance-Optimierung"
       }
     ]
   },
   "cta": {
-    "text1": "Ich arbeite mit Startups, wachsenden Unternehmen und etablierten Firmen, die KI-Lösungen aufbauen - mit Fokus auf solide Architektur, Security by Design und skalierbare Umsetzung.",
-    "text2": "Aktueller Schwerpunkt: LLM-Plattform-Entwicklung, Prompt Engineering im großen Stil und KI-Governance-Frameworks."
+    "text1": "Ich arbeite mit Startups, Scale-ups und Enterprise-Unternehmen zusammen, die AI-Lösungen bauen – mit starkem Fokus auf robuste Architektur, Security-by-Design und skalierbare Umsetzung.",
+    "text2": "Aktueller Fokus: LLM-Plattformen, Prompt Engineering at scale und AI-Governance-Frameworks."
   }
 }
