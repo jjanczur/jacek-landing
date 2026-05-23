@@ -11,6 +11,7 @@ import {
   Link as LinkIcon,
   ExternalLink,
   Github,
+  LineChart,
 } from 'lucide-astro';
 
 export async function getStaticPaths() {
@@ -73,6 +74,7 @@ const { lang } = Astro.props;
 const t = await getTranslations<ProjectsTranslations>('projects', lang);
 
 const iconMap: Record<string, any> = {
+  Taufolio: LineChart,
   entAIngine: Brain,
   entAIgent: Zap,
   'Flowhive AI': Layers,

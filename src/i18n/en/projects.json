@@ -20,6 +20,29 @@
   },
   "projects": [
     {
+      "name": "Taufolio",
+      "period": "2025–Present",
+      "industry": "AI Equity Research",
+      "role": "Founder",
+      "company": "Taufolio",
+      "tagline": "AI equity research reports — grounded in SEC filings",
+      "description": [
+        "A founder project: an AI equity research platform that turns SEC filings, earnings-call transcripts and public company documents into cited, verifiable research reports for individual investors-no advisory credentials or institutional access required.",
+        "Two modes for different needs: a ~20-second Snapshot for fast screening, and a ~3-minute Full Report covering business model, competitive moat, management tone, earnings-call Q&A and risks beyond the financials. Additional tooling includes Ticker Compare, monthly portfolio auto-recaps and quarter-over-quarter report diffs.",
+        "Engineered for trust over guesswork: SEC EDGAR ingestion (10-K, 10-Q, 8-K), earnings transcripts via Azure Document Intelligence, market data with Yahoo Finance/Finnhub failover, and parallel multi-agent drafting (Claude, Gemini, GPT) with reconciliation and citation anchoring-every material claim links back to its source document."
+      ],
+      "industries": "Retail & Individual Investing, Fundamental Equity Research, Personal Finance",
+      "tech": "Multi-Agent LLMs (Claude, Gemini, GPT), SEC EDGAR, Azure Document Intelligence, Yahoo Finance/Finnhub, Citation Anchoring, RAG",
+      "impact": "Replaces 6–8 hours of manual qualitative research per company with structured output in ~3 minutes (or a ~20-second snapshot); source-grounded citations reduce hallucination risk versus general chatbots.",
+      "links": [
+        {
+          "type": "website",
+          "url": "https://www.taufolio.com",
+          "label": "Website"
+        }
+      ]
+    },
+    {
       "name": "entAIngine",
       "period": "2022–Present",
       "industry": "Enterprise AI Platform",

@@ -20,6 +20,29 @@
   },
   "projects": [
     {
+      "name": "Taufolio",
+      "period": "2025 – obecnie",
+      "industry": "Analiza akcji oparta na AI",
+      "role": "Założyciel",
+      "company": "Taufolio",
+      "tagline": "Raporty analityczne o akcjach oparte na AI – ugruntowane w raportach SEC",
+      "description": [
+        "Projekt założycielski: platforma AI do analizy akcji, która zamienia raporty SEC, transkrypcje z konferencji wynikowych i publiczne dokumenty spółek w cytowane, weryfikowalne raporty analityczne dla inwestorów indywidualnych-bez licencji doradcy ani dostępu instytucjonalnego.",
+        "Dwa tryby do różnych potrzeb: ok. 20-sekundowy Snapshot do szybkiego przeglądu oraz ok. 3-minutowy pełny raport obejmujący model biznesowy, przewagę konkurencyjną (moat), ton wypowiedzi zarządu, sekcję Q&A z konferencji wynikowych oraz ryzyka wykraczające poza dane finansowe. Dodatkowe funkcje: porównywanie spółek (Ticker Compare), miesięczne automatyczne podsumowania portfela i porównania kwartał do kwartału (report diff).",
+        "Zaprojektowana z myślą o wiarygodności, a nie zgadywaniu: wczytywanie danych z SEC EDGAR (10-K, 10-Q, 8-K), transkrypcje przez Azure Document Intelligence, dane rynkowe z przełączaniem Yahoo Finance/Finnhub oraz równoległe redagowanie przez wielu agentów (Claude, Gemini, GPT) z uzgadnianiem i zakotwiczaniem cytatów-każde istotne stwierdzenie linkuje do dokumentu źródłowego."
+      ],
+      "industries": "Inwestorzy indywidualni i detaliczni, Fundamentalna analiza akcji, Finanse osobiste",
+      "tech": "Wieloagentowe LLM (Claude, Gemini, GPT), SEC EDGAR, Azure Document Intelligence, Yahoo Finance/Finnhub, Zakotwiczanie cytatów, RAG",
+      "impact": "Zastępuje 6–8 godzin ręcznej analizy jakościowej jednej spółki ustrukturyzowanym wynikiem w ok. 3 minuty (lub ok. 20-sekundowym snapshotem); cytaty oparte na źródłach ograniczają ryzyko halucynacji w porównaniu z ogólnymi chatbotami.",
+      "links": [
+        {
+          "type": "website",
+          "url": "https://www.taufolio.com",
+          "label": "Strona"
+        }
+      ]
+    },
+    {
       "name": "entAIngine",
       "period": "2022 – obecnie",
       "industry": "Platforma AI klasy enterprise",

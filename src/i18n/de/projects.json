@@ -20,6 +20,29 @@
   },
   "projects": [
     {
+      "name": "Taufolio",
+      "period": "2025–heute",
+      "industry": "KI-gestützte Aktienanalyse",
+      "role": "Gründer",
+      "company": "Taufolio",
+      "tagline": "KI-Aktienresearch – fundiert auf SEC-Filings",
+      "description": [
+        "Ein Gründerprojekt: eine KI-Plattform für Aktienresearch, die SEC-Filings, Earnings-Call-Transkripte und öffentliche Unternehmensdokumente in belegte, nachprüfbare Research-Berichte für Privatanleger verwandelt-ohne Beraterzulassung oder institutionellen Zugang.",
+        "Zwei Modi für unterschiedliche Anforderungen: ein ca. 20-sekündiger Snapshot für das schnelle Screening und ein ca. 3-minütiger Full Report zu Geschäftsmodell, Wettbewerbsvorteil (Moat), Tonalität des Managements, Q&A aus Earnings Calls und Risiken jenseits der Finanzkennzahlen. Zusätzliche Funktionen: Ticker-Vergleich, monatliche automatische Portfolio-Recaps und Quartalsvergleiche (Report-Diffs).",
+        "Auf Vertrauen statt Vermutung ausgelegt: Einlesen von SEC EDGAR (10-K, 10-Q, 8-K), Earnings-Transkripte über Azure Document Intelligence, Marktdaten mit Yahoo-Finance/Finnhub-Failover sowie paralleles Multi-Agenten-Drafting (Claude, Gemini, GPT) mit Abgleich und Quellenverankerung-jede wesentliche Aussage ist mit ihrem Quelldokument verlinkt."
+      ],
+      "industries": "Privatanleger & Retail-Investing, Fundamentale Aktienanalyse, Privatfinanzen",
+      "tech": "Multi-Agenten-LLMs (Claude, Gemini, GPT), SEC EDGAR, Azure Document Intelligence, Yahoo Finance/Finnhub, Quellenverankerung, RAG",
+      "impact": "Ersetzt 6–8 Stunden manueller qualitativer Recherche pro Unternehmen durch strukturierte Ergebnisse in ca. 3 Minuten (oder einen ca. 20-sekündigen Snapshot); quellenbasierte Belege senken das Halluzinationsrisiko gegenüber allgemeinen Chatbots.",
+      "links": [
+        {
+          "type": "website",
+          "url": "https://www.taufolio.com",
+          "label": "Website"
+        }
+      ]
+    },
+    {
       "name": "entAIngine",
       "period": "2022–heute",
       "industry": "Enterprise‑KI‑Plattform",
