@@ -8,7 +8,7 @@ This knowledge base consolidates information from multiple CV versions and perso
 
 - **Full Name:** Jacek Janczura
 - **Current Role:** CTO & Co-Founder @ Jaden Data / entAIngine
-- **Location:** Berlin, Germany
+- **Location:** Warsaw, Poland
 - **Email:** in .env file
 - **LinkedIn:** https://www.linkedin.com/in/jacekjanczura
 - **GitHub:** https://github.com/jjanczur
