@@ -149,11 +149,21 @@ const structuredData = {
     <!-- Preconnect to same origin for faster asset loading (though CSS will be inlined) -->
     <link rel="preconnect" href={baseUrl} />
     <link rel="dns-prefetch" href={baseUrl} />
-    <!-- External font resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <!-- Self-hosted fonts: preload primary (latin) variable weights, same-origin -->
+    <link
+      rel="preload"
+      href="/fonts/dm-sans-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/rubik-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -204,40 +214,8 @@ const structuredData = {
     <link rel="alternate" hreflang="de" href={alternateUrls.de} />
     <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
 
-    <!-- DNS prefetch and preconnect for YouTube thumbnails -->
-    <link rel="dns-prefetch" href="https://i.ytimg.com" />
-    <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
-
-    <!-- Google Fonts - Load asynchronously to avoid render blocking -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-      rel="stylesheet"
-      media="print"
-      id="google-fonts-link"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
-    <script is:inline>
-      // Load Google Fonts asynchronously
-      (function () {
-        const link = document.getElementById('google-fonts-link');
-        if (link) {
-          link.onload = function () {
-            this.media = 'all';
-          };
-          // Fallback: if onload doesn't fire, set media after a short delay
-          setTimeout(function () {
-            if (link.media === 'print') {
-              link.media = 'all';
-            }
-          }, 100);
-        }
-      })();
-    </script>
+    <!-- Fonts are self-hosted (see @font-face in src/styles/tokens.css):
+         Geist (body) + Fraunces (headings). No third-party font requests. -->
 
     <!-- JSON-LD Structured Data -->
     <script
@@ -252,7 +230,7 @@ const structuredData = {
     <!-- Note: frame-ancestors is only valid in HTTP headers, not meta tags -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; font-src 'self'; connect-src 'self'"
     />
 
     <!-- Theme initialization -->
