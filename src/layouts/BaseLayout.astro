@@ -52,9 +52,9 @@ const structuredData = {
       '@id': 'https://janczura.com/#person',
       name: 'Jacek Janczura',
       alternateName: 'Jacek Janczura',
-      jobTitle: 'AI Architect & Consultant',
+      jobTitle: 'AI Architect, Consultant & Fractional CTO',
       description:
-        'Independent AI Architect & consultant (fractional CTO) based in Warsaw. Co-founded Jaden Data and served as CTO until 2024; now a shareholder and consulting partner. Specializing in enterprise LLM platforms, RAG systems, and secure cloud architectures.',
+        'Independent AI Architect, consultant, and fractional CTO. Co-founded Jaden Data and served as CTO until 2024; now a shareholder and consulting partner. Brings enterprise-grade AI to regulated markets — advanced RAG, vector and graph databases, chatbots at scale — with security and compliance (pentests, ISO 27001, SOC 2) and the leadership to ship it.',
       url: 'https://janczura.com',
       image: 'https://janczura.com/images/headshot.jpg',
       sameAs: [
@@ -67,6 +67,11 @@ const structuredData = {
         'LLM Platforms',
         'Retrieval-Augmented Generation',
         'RAG Systems',
+        'Vector Databases',
+        'Graph Databases',
+        'Enterprise Chatbots',
+        'Penetration Testing',
+        'Fractional CTO',
         'Cloud Architecture',
         'AWS',
         'Azure',
@@ -215,7 +220,7 @@ const structuredData = {
     <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
 
     <!-- Fonts are self-hosted (see @font-face in src/styles/tokens.css):
-         Geist (body) + Fraunces (headings). No third-party font requests. -->
+         DM Sans (body) + Rubik (headings). No third-party font requests. -->
 
     <!-- JSON-LD Structured Data -->
     <script
@@ -243,6 +248,44 @@ const structuredData = {
         // localStorage not available, use default light theme
         document.documentElement.dataset.theme = 'light';
       }
+    </script>
+
+    <!-- Scroll reveal: enable the hidden state synchronously (so there is no
+         flash of pre-revealed content), then reveal elements as they enter the
+         viewport. Skipped entirely under reduced motion or without IO support,
+         which leaves all .reveal content visible. -->
+    <script is:inline>
+      (function () {
+        try {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+            return;
+          if (!('IntersectionObserver' in window)) return;
+          document.documentElement.classList.add('reveal-on');
+          const setup = function () {
+            const io = new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                  }
+                });
+              },
+              { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+            );
+            document.querySelectorAll('.reveal').forEach(function (el) {
+              io.observe(el);
+            });
+          };
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setup);
+          } else {
+            setup();
+          }
+        } catch {
+          /* reveal is a progressive enhancement; ignore failures */
+        }
+      })();
     </script>
 
     <!-- Service Worker Registration for caching static assets -->

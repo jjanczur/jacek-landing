@@ -1,1210 +1,1196 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Picture } from 'astro:assets';
-import {
-  Building2,
-  Workflow,
-  Factory,
-  Shield,
-  TrendingUp,
-  Network,
-  Brain,
-  Home,
-  BarChart,
-  Code,
-  Mail,
-  ArrowRight,
-} from 'lucide-astro';
-import { getTranslations, getSupportedLangs } from '../../utils/i18n';
-import type { Lang } from '../../utils/i18n';
-import headshotImage from '../../assets/images/headshot.jpg';
+import { getSupportedLangs } from '../../utils/i18n';
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   return getSupportedLangs().map(lang => ({
     params: { lang },
     props: { lang },
   }));
 }
 
-interface Props {
-  lang: Lang;
-}
-
-interface IndexHighlightItem {
-  title: string;
-  description: string;
-}
-
-interface IndexFeaturedItem {
-  title: string;
-  description: string;
-  link: string;
-  url?: string;
-}
-
-interface IndexFaqItem {
-  question: string;
-  answer: string;
-  links?: string[];
-}
-
-interface IndexTranslations {
-  meta: {
-    title: string;
-    description: string;
-  };
-  hero: {
-    title: string;
-    subtitle: string;
-    tagline: string;
-    cta: {
-      primary: string;
-      secondary: string;
-    };
-  };
-  positioning: {
-    p1: string;
-    p2: string;
-  };
-  highlights: {
-    title: string;
-    items: IndexHighlightItem[];
-    note: string;
-  };
-  featured: {
-    title: string;
-    items: IndexFeaturedItem[];
-  };
-  contactCta: {
-    title: string;
-    description: string;
-    button: string;
-  };
-  faq: {
-    title: string;
-    intro: string;
-    items: IndexFaqItem[];
-  };
-}
-
 const { lang } = Astro.props;
-const t = await getTranslations<IndexTranslations>('index', lang);
 
-const highlightIcons = [
-  Building2,
-  Workflow,
-  Factory,
-  Shield,
-  TrendingUp,
-  Network,
+// ------------------------------------------------------------------ *
+// COPY — every human-visible string, per language.                    *
+// Non-text fields (src, to, prefix, suffix, decimals, display,        *
+// staticOnly) are IDENTICAL across languages; only labels/notes are   *
+// transcreated. English is the source of truth and unchanged.         *
+// ------------------------------------------------------------------ *
+const copy = {
+  en: {
+    metaTitle: 'Jacek Janczura — AI Architect & Interim Head of AI',
+    metaDescription:
+      "I've shipped production AI for Norges Bank, APG (€500B+ AUM) and Boehringer Ingelheim's R&D — places that audit every line. I de-risk inherited stacks, put AI where it earns its keep, close the compliance gaps, and leave your team running it without me.",
+    eyebrow: 'AI Architect · Interim Head of AI',
+    heroTitle:
+      'A central bank trusted my code.\n<span class="hero-title-em">Your inherited stack can too.</span>',
+    tierLine:
+      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim R&D · certified AI provider for Bosch',
+    subhead:
+      "I've shipped production AI for Norges Bank, APG — a €500B+ Dutch pension fund — and Boehringer Ingelheim's R&D — places that audit every line. I bring that same standard into companies mid-change: de-risk the legacy system, put AI where it earns its keep, close the compliance gaps, and leave your team able to run the whole thing without me.",
+    ctaPrimary: "See what I've shipped",
+    ctaGhost: 'Book a 30-min fit call',
+    availabilityAria: 'Availability',
+    availability: 'Currently consulting · open to the right permanent CTO role',
+    wallHeading: 'Twelve institutions that audit every line',
+    wallSub:
+      "A national central bank, APG's €500B+ pension fund, and Boehringer Ingelheim's R&D don't take things on trust. Here's who has.",
+    statsHeading: 'Proof in numbers',
+    methodHeading: 'The same standard, inside a company mid-change',
+    methodCards: [
+      {
+        title: 'De-risk the legacy system',
+        body: 'Map what the inherited stack actually does, isolate the fragile parts, and make change safe before touching AI at all.',
+      },
+      {
+        title: 'Put AI where it earns its keep',
+        body: 'An ML product-matcher cut offer-prep time 60%. Multi-country SSO drove 1.4M new accounts and +300% acquisition. AI on outcomes, not demos.',
+      },
+      {
+        title: 'Close the compliance gaps',
+        body: 'ISO 27001 and SOC 2 achieved in ~3 months. Multi-tenant AI on AWS at 1,000+ concurrent connections and 99.9% uptime for 50+ orgs.',
+      },
+      {
+        title: 'Leave your team able to run it',
+        body: "Built a company 0 → €1M+ and a 0 → 10 engineering team. Trained Bosch's engineers to code with AI. You keep the capability, not a dependency on me.",
+      },
+    ],
+    fitHeading: 'Bring that standard into your stack',
+    fitSub:
+      "A 30-minute fit call: what you've inherited, where AI actually pays off, and how fast you'd be running it without me.",
+    fitCtaPrimary: 'Book a 30-min fit call',
+    fitCtaGhost: "See what I've shipped",
+    fitNote: 'Currently consulting · open to the right permanent CTO role',
+    wall: [
+      { note: "Norway's central bank" },
+      { note: '€500B+ AUM · pension fund' },
+      { note: 'Pharma R&D' },
+      { note: 'Development bank' },
+      { note: 'Certified AI provider' },
+      { note: 'Current' },
+      { note: 'Banking' },
+      { note: 'Telecom' },
+      { note: 'E-commerce' },
+      { note: 'Automotive' },
+      { note: 'Analytics' },
+      { note: 'Certification' },
+    ],
+    stats: [
+      { label: 'company revenue I built from zero' },
+      { label: 'organizations on one multi-tenant platform' },
+      { label: 'accounts in 3 months at idealo (+700% vs forecast)' },
+      { label: 'requests served at 99.9% uptime' },
+      {
+        label: 'ISO 27001 + SOC 2 — I led my company through both in ~3 months',
+      },
+    ],
+  },
+  pl: {
+    metaTitle: 'Jacek Janczura — AI Architect i Interim Head of AI',
+    metaDescription:
+      'Wdrażałem produkcyjne AI dla Norges Bank, APG (€500B+ AUM) i działu R&D Boehringer Ingelheim — miejsc, gdzie audytują każdą linijkę kodu. Odblokowuję odziedziczone stacki, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poradzi sobie beze mnie.',
+    eyebrow: 'AI Architect · Interim Head of AI',
+    heroTitle:
+      'Bank centralny zaufał mojemu kodowi.\n<span class="hero-title-em">Twój odziedziczony stack też może.</span>',
+    tierLine:
+      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim R&D · certyfikowany dostawca AI dla Bosch',
+    subhead:
+      'Wdrażałem produkcyjne AI dla Norges Bank, APG — holenderskiego funduszu emerytalnego z €500B+ w zarządzaniu — i działu R&D Boehringer Ingelheim, czyli tam, gdzie audytują każdą linijkę. Ten sam standard wnoszę do firm w środku transformacji: odblokowuję legacy, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poprowadzi całość beze mnie.',
+    ctaPrimary: 'Zobacz, co wdrożyłem',
+    ctaGhost: 'Umów 30-min rozmowę',
+    availabilityAria: 'Dostępność',
+    availability: 'Obecnie konsultuję · otwarty na właściwą stałą rolę CTO',
+    wallHeading: 'Dwanaście instytucji, które audytują każdą linijkę',
+    wallSub:
+      'Narodowy bank centralny, fundusz emerytalny APG z €500B+ i R&D Boehringer Ingelheim niczego nie biorą na słowo. Oto kto mi zaufał.',
+    statsHeading: 'Dowody w liczbach',
+    methodHeading: 'Ten sam standard, w firmie w środku transformacji',
+    methodCards: [
+      {
+        title: 'Odblokuj legacy',
+        body: 'Rozpisuję, co odziedziczony stack naprawdę robi, izoluję kruche fragmenty i sprawiam, że zmiana jest bezpieczna — zanim w ogóle dotknę AI.',
+      },
+      {
+        title: 'Wdróż AI tam, gdzie na siebie zarabia',
+        body: 'Machine Learning do dopasowywania produktów skrócił przygotowanie ofert o 60%. SSO w wielu krajach dało 1,4 mln nowych kont i +300% pozyskania. AI od wyników, nie od dem.',
+      },
+      {
+        title: 'Domknij luki compliance',
+        body: 'ISO 27001 i SOC 2 zdobyte w ~3 miesiące. Multi-tenant AI na AWS przy 1000+ jednoczesnych połączeń i 99,9% uptime dla 50+ organizacji.',
+      },
+      {
+        title: 'Zostaw zespół, który to poprowadzi',
+        body: 'Zbudowałem firmę od 0 do €1M+ i zespół inżynierski od 0 do 10 osób. Nauczyłem inżynierów Bosch kodować z AI. Zostaje Ci kompetencja, nie zależność ode mnie.',
+      },
+    ],
+    fitHeading: 'Wnieś ten standard do swojego stacku',
+    fitSub:
+      '30-minutowa rozmowa: co odziedziczyłeś, gdzie AI naprawdę się zwraca i jak szybko poprowadzisz to beze mnie.',
+    fitCtaPrimary: 'Umów 30-min rozmowę',
+    fitCtaGhost: 'Zobacz, co wdrożyłem',
+    fitNote: 'Obecnie konsultuję · otwarty na właściwą stałą rolę CTO',
+    wall: [
+      { note: 'Bank centralny Norwegii' },
+      { note: '€500B+ AUM · fundusz emerytalny' },
+      { note: 'R&D w pharmie' },
+      { note: 'Bank rozwoju' },
+      { note: 'Certyfikowany dostawca AI' },
+      { note: 'Obecnie' },
+      { note: 'Bankowość' },
+      { note: 'Telekomunikacja' },
+      { note: 'E-commerce' },
+      { note: 'Motoryzacja' },
+      { note: 'Analityka' },
+      { note: 'Certyfikacja' },
+    ],
+    stats: [
+      { label: 'przychodu firmy, którą zbudowałem od zera' },
+      { label: 'organizacji na jednej platformie multi-tenant' },
+      { label: 'kont w 3 miesiące w idealo (+700% vs prognoza)' },
+      { label: 'obsłużonych żądań przy 99,9% uptime' },
+      {
+        label:
+          'ISO 27001 + SOC 2 — przeprowadziłem swoją firmę przez oba w ~3 miesiące',
+      },
+    ],
+  },
+  de: {
+    metaTitle: 'Jacek Janczura — AI Architect & Interim Head of AI',
+    metaDescription:
+      'Ich habe produktives AI für die Norges Bank, APG (€500B+ AUM) und Boehringer Ingelheims R&D in Betrieb genommen — Orte, an denen jede Zeile geprüft wird. Ich entschärfe geerbte Stacks, setze AI dort ein, wo sie sich rechnet, schließe die Compliance-Lücken und hinterlasse ein Team, das den Laden ohne mich betreibt.',
+    eyebrow: 'AI Architect · Interim Head of AI',
+    heroTitle:
+      'Eine Zentralbank hat meinem Code vertraut.\n<span class="hero-title-em">Dein geerbter Stack kann das auch.</span>',
+    tierLine:
+      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim R&D · zertifizierter AI-Anbieter für Bosch',
+    subhead:
+      'Ich habe produktives AI für die Norges Bank, APG — einen niederländischen Pensionsfonds mit €500B+ AUM — und Boehringer Ingelheims R&D ausgeliefert: Orte, an denen jede Zeile geprüft wird. Denselben Standard bringe ich in Unternehmen mitten im Umbruch: das Legacy-System entschärfen, AI dort einsetzen, wo sie sich rechnet, die Compliance-Lücken schließen — und ein Team hinterlassen, das das Ganze ohne mich betreibt.',
+    ctaPrimary: 'Sieh, was ich geliefert habe',
+    ctaGhost: '30-min Fit-Call buchen',
+    availabilityAria: 'Verfügbarkeit',
+    availability:
+      'Aktuell als Berater tätig · offen für die richtige feste CTO-Rolle',
+    wallHeading: 'Zwölf Institutionen, die jede Zeile prüfen',
+    wallSub:
+      'Eine nationale Zentralbank, APGs €500B+ Pensionsfonds und Boehringer Ingelheims R&D nehmen nichts auf gut Glauben. Hier ist, wer es getan hat.',
+    statsHeading: 'Belege in Zahlen',
+    methodHeading: 'Derselbe Standard, in einem Unternehmen mitten im Umbruch',
+    methodCards: [
+      {
+        title: 'Das Legacy-System entschärfen',
+        body: 'Erst kartiere ich, was der geerbte Stack tatsächlich tut, isoliere die fragilen Teile und mache Änderungen sicher — bevor ich AI überhaupt anfasse.',
+      },
+      {
+        title: 'AI dort einsetzen, wo sie sich rechnet',
+        body: 'Ein ML-Produktmatcher hat die Angebotsvorbereitung um 60% verkürzt. Multi-Country-SSO brachte 1,4 Mio. neue Accounts und +300% Neukundengewinnung. AI an Ergebnissen gemessen, nicht an Demos.',
+      },
+      {
+        title: 'Die Compliance-Lücken schließen',
+        body: 'ISO 27001 und SOC 2 in ~3 Monaten erreicht. Multi-tenant AI auf AWS mit 1.000+ gleichzeitigen Verbindungen und 99,9% Uptime für 50+ Organisationen.',
+      },
+      {
+        title: 'Ein Team hinterlassen, das es betreibt',
+        body: 'Ein Unternehmen von 0 → €1M+ und ein Engineering-Team von 0 → 10 aufgebaut. Boschs Engineers beigebracht, mit AI zu coden. Dir bleibt die Fähigkeit — keine Abhängigkeit von mir.',
+      },
+    ],
+    fitHeading: 'Bring diesen Standard in deinen Stack',
+    fitSub:
+      '30 Minuten Fit-Call: was du geerbt hast, wo AI sich wirklich auszahlt und wie schnell du es ohne mich betreibst.',
+    fitCtaPrimary: '30-min Fit-Call buchen',
+    fitCtaGhost: 'Sieh, was ich geliefert habe',
+    fitNote:
+      'Aktuell als Berater tätig · offen für die richtige feste CTO-Rolle',
+    wall: [
+      { note: 'Norwegens Zentralbank' },
+      { note: '€500B+ AUM · Pensionsfonds' },
+      { note: 'Pharma R&D' },
+      { note: 'Förderbank' },
+      { note: 'Zertifizierter AI-Anbieter' },
+      { note: 'Aktuell' },
+      { note: 'Banking' },
+      { note: 'Telekommunikation' },
+      { note: 'E-Commerce' },
+      { note: 'Automotive' },
+      { note: 'Analytics' },
+      { note: 'Zertifizierung' },
+    ],
+    stats: [
+      { label: 'Unternehmensumsatz, den ich von null aufgebaut habe' },
+      { label: 'Organisationen auf einer Multi-tenant-Plattform' },
+      { label: 'Accounts in 3 Monaten bei idealo (+700% vs. Prognose)' },
+      { label: 'Requests bei 99,9% Uptime bedient' },
+      {
+        label:
+          'ISO 27001 + SOC 2 — mein Unternehmen habe ich durch beide in ~3 Monaten geführt',
+      },
+    ],
+  },
+};
+
+const t = copy[lang];
+
+// Wall of proof — named institutions. Order tuned so the wall reads as a
+// coherent block: central bank + pension + pharma anchor the top row.
+// Non-text fields (name, src) are IDENTICAL across languages; only `note`
+// is translated (merged from `t.wall`).
+const wallBase = [
+  { name: 'Norges Bank', src: '/logos/norges-bank.svg' },
+  { name: 'APG', src: '/logos/apg.png' },
+  { name: 'Boehringer Ingelheim', src: '/logos/boehringer-ingelheim.png' },
+  { name: 'KfW', src: '/logos/kfw.png' },
+  { name: 'Bosch', src: '/logos/bosch.svg' },
+  { name: 'Red Bull', src: '/logos/redbull.svg' },
+  { name: 'ING', src: '/logos/ing.svg' },
+  { name: 'Deutsche Telekom', src: '/logos/telekom.svg' },
+  { name: 'idealo', src: '/logos/idealo.png' },
+  { name: 'Stellantis', src: '/logos/stellantis.png' },
+  { name: 'SAS', src: '/logos/sas.svg' },
+  { name: 'TÜV Nord', src: '/logos/tuv-nord.png' },
 ];
-const featuredIcons = [Brain, Home, BarChart, Code];
+const wall = wallBase.map((org, i) => ({ ...org, note: t.wall[i].note }));
 
-const faqLinkLabels: Record<string, Record<string, string>> = {
-  about: { en: 'About', pl: 'O mnie', de: 'Über mich' },
-  projects: { en: 'Projects', pl: 'Projekty', de: 'Projekte' },
-  consulting: { en: 'Consulting', pl: 'Konsulting', de: 'Beratung' },
-  contact: { en: 'Contact', pl: 'Kontakt', de: 'Kontakt' },
-};
-
-const faqStructuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  inLanguage: lang,
-  mainEntity: (t.faq?.items || []).map(item => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
-  })),
-};
+// Count-up stats. `to` is numeric target; prefix/suffix render around it.
+// Non-text fields (to, prefix, suffix, decimals, display, staticOnly) are
+// IDENTICAL across languages; only `label` is translated (merged from t.stats).
+const statsBase = [
+  {
+    to: 1,
+    prefix: '€',
+    suffix: 'M+',
+    decimals: 0,
+  },
+  {
+    to: 50,
+    prefix: '',
+    suffix: '+',
+    decimals: 0,
+  },
+  {
+    to: 1.4,
+    prefix: '',
+    suffix: 'M',
+    decimals: 1,
+  },
+  {
+    to: 1000,
+    prefix: '',
+    suffix: 's / sec',
+    decimals: 0,
+  },
+  {
+    to: 2,
+    prefix: '',
+    suffix: '',
+    decimals: 0,
+    display: 'ISO 27001 + SOC 2',
+    staticOnly: true,
+  },
+];
+const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
 ---
 
-<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
-  {
-    (t.faq?.items?.length || 0) > 0 && (
-      <script
-        is:inline
-        type="application/ld+json"
-        set:html={JSON.stringify(faqStructuredData)}
-      />
-    )
-  }
+<BaseLayout title={t.metaTitle} description={t.metaDescription} lang={lang}>
+  <section class="proof-hero">
+    <!-- Ambient wash sits behind everything; purely decorative -->
+    <div class="hero-wash" aria-hidden="true"></div>
 
-  <section class="hero">
-    <div class="hero-background">
-      <canvas class="network-canvas"></canvas>
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">{t.eyebrow}</p>
+
+      <h1 class="hero-title reveal" set:html={t.heroTitle} />
+
+      <p class="tier-line reveal">
+        {t.tierLine}
+      </p>
+
+      <p class="subhead reveal">
+        {t.subhead}
+      </p>
+
+      <div class="cta-row reveal">
+        <a class="btn btn-primary" href="#wall">{t.ctaPrimary}</a>
+        <a class="btn btn-ghost" href="#fit-call">{t.ctaGhost}</a>
+      </div>
+
+      <p class="status-pill reveal" aria-label={t.availabilityAria}>
+        <span class="status-dot" aria-hidden="true"></span>
+        {t.availability}
+      </p>
     </div>
+  </section>
+
+  <!-- WALL OF PROOF — the signature moment -->
+  <section id="wall" class="wall-section" aria-labelledby="wall-heading">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">{t.hero.title}</h1>
-          <p class="hero-subtitle">{t.hero.subtitle}</p>
-          <p class="hero-tagline">{t.hero.tagline}</p>
-          <div class="hero-cta">
-            <a href={`/${lang}/contact/`} class="cta-button">
-              <Mail size={18} />
-              {t.hero.cta.primary}
-            </a>
-            <a href={`/${lang}/projects/`} class="cta-link">
-              {t.hero.cta.secondary}
-              <ArrowRight size={16} />
-            </a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <Picture
-            src={headshotImage}
-            alt="Jacek Janczura"
-            class="headshot"
-            widths={[280, 560]}
-            sizes="(max-width: 900px) 200px, 280px"
-            formats={['avif', 'webp']}
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-          />
-        </div>
+      <div class="wall-head reveal">
+        <h2 id="wall-heading" class="wall-heading">
+          {t.wallHeading}
+        </h2>
+        <p class="wall-sub">
+          {t.wallSub}
+        </p>
+      </div>
+
+      <!-- The spotlight sweep is drawn on this layer; it never blocks clicks -->
+      <div class="wall" data-wall>
+        <div class="wall-spotlight" aria-hidden="true"></div>
+        <ul class="wall-grid" role="list">
+          {
+            wall.map((org, i) => (
+              <li class="chip-cell" data-chip style={`--i:${i}`}>
+                <span class="chip">
+                  <img
+                    class="chip-logo"
+                    src={org.src}
+                    alt={org.name}
+                    width="140"
+                    height="52"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="chip-note">{org.note}</span>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="positioning">
-    <div class="container content">
-      <p set:html={t.positioning.p1} />
-      <p set:html={t.positioning.p2} />
-    </div>
-  </section>
-
-  <section class="highlights">
+  <!-- Count-up numbers -->
+  <section class="stats-section" aria-labelledby="stats-heading">
     <div class="container">
-      <h2>{t.highlights.title}</h2>
-      <div class="highlights-grid">
+      <h2 id="stats-heading" class="visually-hidden">{t.statsHeading}</h2>
+      <div class="stats-grid" data-stats>
         {
-          t.highlights.items.map((item, idx) => {
-            const Icon = highlightIcons[idx];
-            return (
-              <div class="highlight-card">
-                <div class="highlight-icon">
-                  <Icon size={32} />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+          stats.map(s => (
+            <div class="stat reveal">
+              <div
+                class="stat-value"
+                data-count
+                data-to={s.to}
+                data-decimals={s.decimals}
+                data-prefix={s.prefix}
+                data-suffix={s.suffix}
+                data-static={s.staticOnly ? s.display : ''}
+              >
+                {s.staticOnly
+                  ? s.display
+                  : `${s.prefix}${s.to.toFixed(s.decimals)}${s.suffix}`}
               </div>
-            );
-          })
-        }
-      </div>
-      <p class="highlights-note">{t.highlights.note}</p>
-    </div>
-  </section>
-
-  <section class="featured-work">
-    <div class="container">
-      <h2>{t.featured.title}</h2>
-      <div class="featured-grid">
-        {
-          t.featured.items.map((item, idx) => {
-            const Icon = featuredIcons[idx];
-            const url = item.url || '/projects/';
-            return (
-              <a href={`/${lang}${url}`} class="featured-item">
-                <div class="featured-icon">
-                  <Icon size={28} />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <span class="featured-link">{item.link}</span>
-              </a>
-            );
-          })
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-cta">
-    <div class="container content">
-      <h2>{t.contactCta.title}</h2>
-      <p>{t.contactCta.description}</p>
-      <a href={`/${lang}/contact/`} class="cta-button">
-        <Mail size={18} />
-        {t.contactCta.button}
-      </a>
-    </div>
-  </section>
-
-  <section class="faq" id="faq">
-    <div class="container">
-      <h2>{t.faq.title}</h2>
-      <p class="faq-intro">{t.faq.intro}</p>
-      <div class="faq-list">
-        {
-          t.faq.items.map((item, idx) => (
-            <details class="faq-item" open={idx === 0}>
-              <summary class="faq-question">{item.question}</summary>
-              <div class="faq-answer">
-                <p>{item.answer}</p>
-                {item.links && item.links.length > 0 && (
-                  <div class="faq-links">
-                    {item.links.map(link => (
-                      <a href={`/${lang}/${link}/`} class="faq-link">
-                        {faqLinkLabels[link]?.[lang] || link}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </details>
+              <div class="stat-label">{s.label}</div>
+            </div>
           ))
         }
       </div>
     </div>
   </section>
+
+  <!-- What I actually do with that standard -->
+  <section class="method-section" aria-labelledby="method-heading">
+    <div class="container">
+      <h2 id="method-heading" class="method-heading reveal">
+        {t.methodHeading}
+      </h2>
+      <div class="method-grid">
+        <article class="method-card reveal">
+          <span class="method-index" aria-hidden="true">01</span>
+          <h3>{t.methodCards[0].title}</h3>
+          <p>
+            {t.methodCards[0].body}
+          </p>
+        </article>
+        <article class="method-card reveal">
+          <span class="method-index" aria-hidden="true">02</span>
+          <h3>{t.methodCards[1].title}</h3>
+          <p>
+            {t.methodCards[1].body}
+          </p>
+        </article>
+        <article class="method-card reveal">
+          <span class="method-index" aria-hidden="true">03</span>
+          <h3>{t.methodCards[2].title}</h3>
+          <p>
+            {t.methodCards[2].body}
+          </p>
+        </article>
+        <article class="method-card reveal">
+          <span class="method-index" aria-hidden="true">04</span>
+          <h3>{t.methodCards[3].title}</h3>
+          <p>
+            {t.methodCards[3].body}
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fit-call CTA -->
+  <section id="fit-call" class="fit-section">
+    <div class="container">
+      <div class="fit-card reveal">
+        <h2 class="fit-heading">{t.fitHeading}</h2>
+        <p class="fit-sub">
+          {t.fitSub}
+        </p>
+        <div class="cta-row cta-row-center">
+          <a class="btn btn-primary" href="#fit-call">{t.fitCtaPrimary}</a>
+          <a class="btn btn-ghost" href="#wall">{t.fitCtaGhost}</a>
+        </div>
+        <p class="fit-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          {t.fitNote}
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
-<script is:inline>
-  // Network animation script - Canvas-based like jadendata.com
-  (function () {
-    function initNetwork() {
-      const canvas = document.querySelector('.network-canvas');
-      if (!canvas) return;
-
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-
-      // Resize canvas to match container
-      function resizeCanvas() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-      }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      // Get primary color from CSS and convert to RGB
-      function getPrimaryColorRGB() {
-        // Create a temporary element to get computed color
-        const temp = document.createElement('div');
-        temp.style.color = 'var(--primary)';
-        temp.style.position = 'absolute';
-        temp.style.visibility = 'hidden';
-        document.body.appendChild(temp);
-
-        const computed = getComputedStyle(temp).color;
-        document.body.removeChild(temp);
-
-        // Parse rgb/rgba string
-        const match = computed.match(/\d+/g);
-        if (match && match.length >= 3) {
-          return {
-            r: parseInt(match[0]),
-            g: parseInt(match[1]),
-            b: parseInt(match[2]),
-          };
-        }
-
-        // Fallback to purple if parsing fails
-        return { r: 139, g: 92, b: 246 };
-      }
-
-      const color = getPrimaryColorRGB();
-      // Much more subtle - less visible dots and lines
-      const dotColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.15)`;
-      const lineColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.08)`;
-
-      // Create dots in grid pattern (like jadendata.com) - optimized for performance
-      const dots = [];
-      const gridSpacing = 180; // Increased spacing for fewer dots (better performance)
-      const cols = Math.ceil(canvas.width / gridSpacing) + 1;
-      const rows = Math.ceil(canvas.height / gridSpacing) + 1;
-
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          dots.push({
-            x: gridSpacing * i + (Math.random() - 0.5) * 60,
-            y: gridSpacing * j + (Math.random() - 0.5) * 60,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-          });
-        }
-      }
-
-      // Check for reduced motion preference
-      const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)',
-      ).matches;
-
-      let animationFrame;
-      function animate() {
-        if (prefersReducedMotion) {
-          // Draw static network for reduced motion
-          draw();
-          return;
-        }
-
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Update and draw dots
-        dots.forEach(dot => {
-          // Update position
-          dot.x += dot.vx;
-          dot.y += dot.vy;
-
-          // Bounce off edges
-          if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
-          if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
-
-          // Keep within bounds
-          dot.x = Math.max(0, Math.min(canvas.width, dot.x));
-          dot.y = Math.max(0, Math.min(canvas.height, dot.y));
-        });
-
-        // Draw network
-        draw();
-
-        animationFrame = requestAnimationFrame(animate);
-      }
-
-      function draw() {
-        // Draw lines between nearby dots
-        // Optimized: use squared distance to avoid expensive sqrt calculation
-        ctx.strokeStyle = lineColor;
-        ctx.lineWidth = 1;
-        const maxDistanceSquared = 150 * 150; // Pre-calculate squared distance
-
-        // Optimize: only check nearby dots using spatial partitioning
-        // For small numbers of dots, this is still efficient
-        for (let i = 0; i < dots.length; i++) {
-          for (let j = i + 1; j < dots.length; j++) {
-            const dx = dots[i].x - dots[j].x;
-            const dy = dots[i].y - dots[j].y;
-            const distanceSquared = dx * dx + dy * dy;
-
-            // Use squared distance comparison (avoids Math.sqrt)
-            if (distanceSquared < maxDistanceSquared) {
-              ctx.beginPath();
-              ctx.moveTo(dots[i].x, dots[i].y);
-              ctx.lineTo(dots[j].x, dots[j].y);
-              ctx.stroke();
-            }
-          }
-        }
-
-        // Draw dots - batch operations
-        ctx.fillStyle = dotColor;
-        ctx.beginPath();
-        dots.forEach(dot => {
-          ctx.moveTo(dot.x + 2, dot.y);
-          ctx.arc(dot.x, dot.y, 2, 0, 2 * Math.PI);
-        });
-        ctx.fill();
-      }
-
-      // Start animation with initial timestamp
-      animationFrame = requestAnimationFrame(animate);
-
-      // Cleanup on unmount
-      return () => {
-        window.removeEventListener('resize', resizeCanvas);
-        if (animationFrame) cancelAnimationFrame(animationFrame);
-      };
-    }
-
-    // Wait for DOM to be ready, then use Intersection Observer to start animation only when visible
-    function startNetworkWhenVisible() {
-      const canvas = document.querySelector('.network-canvas');
-      if (!canvas) return;
-
-      // Use Intersection Observer to start animation only when hero section is visible
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              initNetwork();
-              observer.disconnect(); // Only initialize once
-            }
-          });
-        },
-        { threshold: 0.1 },
-      );
-
-      // Observe the hero section (parent of canvas)
-      const heroSection = canvas.closest('.hero');
-      if (heroSection) {
-        observer.observe(heroSection);
-      } else {
-        // Fallback: initialize immediately if hero section not found
-        initNetwork();
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', startNetworkWhenVisible);
-    } else {
-      startNetworkWhenVisible();
-    }
-  })();
-</script>
-
 <style>
-  .hero {
-    padding: var(--space-8) 0;
-    text-align: center;
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.05) 30%,
-      oklch(from var(--accent) l c h / 0.03) 60%,
-      var(--muted) 100%
-    );
+  /* ------------------------------------------------------------------ *
+   * HERO                                                                *
+   * ------------------------------------------------------------------ */
+  .proof-hero {
     position: relative;
     overflow: hidden;
+    padding: var(--space-9) 0 var(--space-8);
+    isolation: isolate;
   }
 
-  .hero::before {
-    content: '';
+  /* Soft two-tone ambient wash — decorative, no motion */
+  .hero-wash {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-      ellipse at top right,
-      oklch(from var(--primary) l c h / 0.08) 0%,
-      transparent 50%
-    );
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    overflow: hidden;
+    inset: -20% -10% auto -10%;
+    height: 130%;
+    z-index: -1;
+    background:
+      radial-gradient(
+        60% 55% at 18% 12%,
+        color-mix(in oklab, var(--primary) 22%, transparent) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        55% 50% at 88% 8%,
+        color-mix(in oklab, var(--accent) 26%, transparent) 0%,
+        transparent 62%
+      );
     pointer-events: none;
   }
 
-  .network-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4; /* Reduced overall opacity */
+  .hero-inner {
+    max-width: 940px;
   }
 
-  :root[data-theme='dark'] .network-canvas {
-    opacity: 0.5;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .network-canvas {
-      opacity: 0.2;
-    }
-  }
-
-  .hero .container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: var(--space-8);
-    align-items: center;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .hero-text {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-image {
-    position: relative;
-    z-index: 1;
-  }
-
-  .headshot {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary);
-    box-shadow: 0 8px 24px oklch(from var(--primary) l c h / 0.2);
-    transition: transform 0.3s ease;
-  }
-
-  .headshot:hover {
-    transform: scale(1.05);
-  }
-
-  @media (max-width: 900px) {
-    .hero-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: var(--space-6);
-    }
-
-    .hero-image {
-      display: flex;
-      justify-content: center;
-    }
-
-    .headshot {
-      width: 200px;
-      height: 200px;
-    }
+  .eyebrow {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    margin: 0 0 var(--space-4);
   }
 
   .hero-title {
-    font-size: var(--font-size-hero);
-    margin-bottom: var(--space-3);
-    background: linear-gradient(
-      135deg,
-      var(--text) 0%,
-      var(--primary) 50%,
-      var(--text) 100%
-    );
+    font-size: clamp(2rem, 6.2vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+
+  .hero-title-em {
+    display: block;
+    background: linear-gradient(100deg, var(--primary) 0%, var(--accent) 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: gradient-shift 8s ease infinite;
+    color: transparent;
   }
 
-  @keyframes gradient-shift {
-    0%,
-    100% {
-      background-position: 0% center;
-    }
-    50% {
-      background-position: 100% center;
-    }
-  }
-
-  .hero-subtitle {
-    font-size: var(--font-size-xl);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: var(--space-2);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .hero-tagline {
-    font-size: var(--font-size-lg);
+  .tier-line {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
     color: var(--text);
-    opacity: 0.8;
-    margin-bottom: var(--space-6);
-    font-weight: var(--font-weight-normal);
-    font-style: italic;
+    opacity: 0.72;
+    margin: 0 0 var(--space-5);
+    max-width: 60ch;
   }
 
-  .hero-cta {
+  .subhead {
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+    max-width: 62ch;
+    margin: 0 0 var(--space-6);
+  }
+
+  /* ------------------------------------------------------------------ *
+   * BUTTONS                                                             *
+   * ------------------------------------------------------------------ */
+  .cta-row {
     display: flex;
-    gap: var(--space-4);
-    justify-content: center;
     flex-wrap: wrap;
-  }
-
-  .cta-button {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: white;
-    padding: var(--space-3) var(--space-6);
-    border-radius: var(--radius-m);
-    text-decoration: none;
-    font-weight: var(--font-weight-bold);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.5s ease;
-  }
-
-  .cta-button:hover {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-    text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px oklch(from var(--primary) l c h / 0.4);
-  }
-
-  .cta-button:hover::before {
-    left: 100%;
-  }
-
-  .cta-button:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
-
-  .cta-link {
-    color: var(--primary);
-    padding: var(--space-3) var(--space-6);
-    border: 1px solid var(--primary);
-    border-radius: var(--radius-m);
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .cta-link:hover {
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-  }
-
-  .cta-link:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
-
-  .positioning {
-    padding: var(--space-8) 0;
-    background: var(--bg);
-    position: relative;
-    animation: fadeInUp 0.6s ease-out;
-  }
-
-  .positioning::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-  }
-
-  .highlights {
-    padding: var(--space-8) 0;
-    background: var(--muted);
-    position: relative;
-    animation: fadeInUp 0.6s ease-out 0.1s both;
-  }
-
-  .highlights::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      transparent
-    );
-    opacity: 0.3;
-  }
-
-  .highlights h2 {
-    text-align: center;
+    gap: var(--space-3);
     margin-bottom: var(--space-6);
-    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
-
-  .highlights-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-5);
-    max-width: var(--content-width);
-    margin: 0 auto;
-  }
-
-  .highlight-card {
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.02) 100%
-    );
-    padding: var(--space-5);
-    border-radius: var(--radius-l);
-    box-shadow: var(--shadow-1);
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .highlight-card:nth-child(1),
-  .highlight-card:nth-child(4) {
-    background: linear-gradient(
-      135deg,
-      oklch(from var(--primary) l c h / 0.05) 0%,
-      var(--bg) 100%
-    );
-    border: 1px solid oklch(from var(--primary) l c h / 0.15);
-  }
-
-  .highlight-icon {
-    margin-bottom: var(--space-3);
-    display: flex;
+  .cta-row-center {
     justify-content: center;
+    margin-bottom: var(--space-5);
+  }
+
+  .btn {
+    --btn-bg: var(--primary);
+    display: inline-flex;
     align-items: center;
-    color: var(--primary);
-    transition: all 0.3s ease;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-m);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition:
+      transform 0.22s var(--ease-out),
+      box-shadow 0.22s var(--ease-out),
+      background-color 0.22s var(--ease-out),
+      border-color 0.22s var(--ease-out);
+  }
+  .btn:hover {
+    text-decoration: none;
+  }
+  .btn:active {
+    transform: scale(0.97);
   }
 
-  .highlight-card:hover .highlight-icon {
-    transform: scale(1.1) rotate(5deg);
-    color: var(--accent);
-  }
-
-  .highlight-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(
-      90deg,
-      var(--primary),
-      var(--accent),
-      var(--primary)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .highlight-card:hover {
-    transform: translateY(-4px);
-    border-color: oklch(from var(--primary) l c h / 0.2);
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
     box-shadow: var(--shadow-2);
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.05) 100%
-    );
+  }
+  .btn-ghost {
+    background: color-mix(in oklab, var(--bg) 70%, transparent);
+    color: var(--text);
+    border-color: var(--border);
   }
 
-  .highlight-card:hover::before {
-    opacity: 1;
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-3);
+    }
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-1);
+    }
   }
 
-  .highlight-card h3 {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: var(--space-3);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .highlights-note {
-    text-align: center;
+  /* ------------------------------------------------------------------ *
+   * STATUS PILL (currently consulting · open to permanent CTO)         *
+   * ------------------------------------------------------------------ */
+  .status-pill,
+  .fit-note {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     font-size: var(--font-size-sm);
     color: var(--text);
-    opacity: 0.8;
-    margin-top: var(--space-4);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .featured-work {
-    padding: var(--space-8) 0;
-    background: var(--bg);
-    animation: fadeInUp 0.6s ease-out 0.2s both;
-  }
-
-  .featured-work h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-6);
-    max-width: var(--content-width);
-    margin: 0 auto;
-  }
-
-  .featured-item {
-    display: block;
-    padding: var(--space-5);
+    opacity: 0.85;
+    padding: var(--space-2) var(--space-4);
     border: 1px solid var(--border);
-    border-radius: var(--radius-l);
-    transition: all 0.3s ease;
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.01) 100%
-    );
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--bg) 60%, transparent);
+    margin: 0;
+  }
+  .fit-note {
+    margin-top: var(--space-5);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent);
+    flex: none;
+    animation: pulse 2.4s var(--ease-out) infinite;
+  }
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 55%, transparent);
+    }
+    70% {
+      box-shadow: 0 0 0 7px color-mix(in oklab, var(--accent) 0%, transparent);
+    }
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent);
+    }
+  }
+
+  /* ------------------------------------------------------------------ *
+   * WALL OF PROOF                                                       *
+   * ------------------------------------------------------------------ */
+  .wall-section {
+    padding: var(--space-8) 0 var(--space-9);
+  }
+
+  .wall-head {
+    max-width: 60ch;
+    margin: 0 auto var(--space-7);
+    text-align: center;
+  }
+  .wall-heading {
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-3);
+    text-wrap: balance;
+  }
+  .wall-sub {
+    color: var(--text);
+    opacity: 0.72;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    margin: 0;
+  }
+
+  .wall {
     position: relative;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .featured-icon {
-    margin-bottom: var(--space-3);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: var(--primary);
-    transition: all 0.3s ease;
-  }
-
-  .featured-item:hover .featured-icon {
-    transform: scale(1.1);
-    color: var(--accent);
-  }
-
-  .featured-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    border-radius: var(--radius-l);
+    padding: clamp(var(--space-4), 3vw, var(--space-6));
     background: linear-gradient(
-      135deg,
-      oklch(from var(--primary) l c h / 0.05) 0%,
-      transparent 100%
+      180deg,
+      color-mix(in oklab, var(--muted) 70%, transparent),
+      color-mix(in oklab, var(--muted) 30%, transparent)
+    );
+    border: 1px solid var(--border);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* The moving spotlight — a soft radial highlight positioned by JS via
+     --mx/--my (percent). Sits above the tile background, below the chips'
+     brightening, and never intercepts pointer events. */
+  .wall-spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      34% 46% at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--primary) 26%, transparent) 0%,
+      color-mix(in oklab, var(--accent) 14%, transparent) 40%,
+      transparent 72%
     );
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.6s var(--ease-out);
   }
-
-  .featured-item:hover {
-    border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-2);
-    text-decoration: none;
-  }
-
-  .featured-item:hover::before {
+  .wall.is-lit .wall-spotlight {
     opacity: 1;
   }
 
-  .featured-item:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
-
-  .featured-item h3 {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: var(--space-3);
-    font-size: var(--font-size-xl);
+  .wall-grid {
     position: relative;
     z-index: 1;
-  }
-
-  .featured-link {
-    color: var(--primary);
-    font-weight: var(--font-weight-bold);
-    margin-top: var(--space-3);
-    display: inline-block;
-    transition: transform 0.2s ease;
-  }
-
-  .featured-item:hover .featured-link {
-    transform: translateX(4px);
-  }
-
-  .contact-cta {
-    padding: var(--space-8) 0;
-    background: var(--muted);
-    text-align: center;
-    position: relative;
-    animation: fadeInUp 0.6s ease-out 0.3s both;
-  }
-
-  .contact-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      var(--accent),
-      var(--primary),
-      transparent
-    );
-    opacity: 0.4;
-  }
-
-  .contact-cta h2 {
-    margin-bottom: var(--space-3);
-    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .contact-cta p {
-    margin-bottom: var(--space-5);
-    font-size: var(--font-size-lg);
-  }
-
-  @media (max-width: 600px) {
-    .hero-cta {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .highlights-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .featured-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  /* FAQ */
-  .faq {
-    padding: var(--space-8) 0;
-    background: var(--bg);
-    position: relative;
-    animation: fadeInUp 0.6s ease-out 0.4s both;
-  }
-
-  .highlight-card {
-    animation: fadeIn 0.5s ease-out both;
-  }
-
-  .highlight-card:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .highlight-card:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-
-  .highlight-card:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-
-  .highlight-card:nth-child(4) {
-    animation-delay: 0.25s;
-  }
-
-  .highlight-card:nth-child(5) {
-    animation-delay: 0.3s;
-  }
-
-  .highlight-card:nth-child(6) {
-    animation-delay: 0.35s;
-  }
-
-  .featured-item {
-    animation: fadeIn 0.5s ease-out both;
-  }
-
-  .featured-item:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .featured-item:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-
-  .featured-item:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-
-  .featured-item:nth-child(4) {
-    animation-delay: 0.25s;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .positioning,
-    .highlights,
-    .featured-work,
-    .contact-cta,
-    .faq,
-    .highlight-card,
-    .featured-item {
-      animation: none;
-    }
-  }
-
-  .faq::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      transparent
-    );
-    opacity: 0.25;
-  }
-
-  .faq h2 {
-    text-align: center;
-    margin-bottom: var(--space-3);
-    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .faq-intro {
-    max-width: 720px;
-    margin: 0 auto var(--space-6) auto;
-    text-align: center;
-    opacity: 0.85;
-  }
-
-  .faq-list {
-    max-width: var(--content-width);
-    margin: 0 auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
-    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    gap: clamp(var(--space-3), 2vw, var(--space-4));
   }
 
-  .faq-item {
+  .chip-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .chip {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: var(--radius-l);
+    padding: var(--space-4) var(--space-5);
+    box-shadow: var(--shadow-1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Brighten as the spotlight passes: driven by --lit (0..1) from JS */
+    filter: brightness(calc(1 + var(--lit, 0) * 0.06));
+    transition:
+      transform 0.3s var(--ease-out),
+      box-shadow 0.3s var(--ease-out),
+      filter 0.3s var(--ease-out);
+    will-change: transform, filter;
+  }
+
+  .chip-logo {
+    max-width: 100%;
+    width: auto;
+    height: clamp(30px, 5vw, 46px);
+    object-fit: contain;
+    display: block;
+  }
+
+  .chip-note {
+    font-size: var(--font-size-xs);
+    color: var(--text);
+    opacity: 0.6;
+    text-align: center;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
+  /* Staggered entrance: cells start collapsed, JS adds .is-in per-cell with a
+     per-index delay via --i. Fallback keeps them visible (see reduced-motion
+     + the no-anim default below). */
+  .chip-cell {
+    opacity: 1;
+  }
+  .js-anim .chip-cell {
+    opacity: 0;
+    transform: translateY(16px) scale(0.94);
+    transition:
+      opacity 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out);
+    transition-delay: calc(var(--i) * 55ms);
+  }
+  .js-anim .chip-cell.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .chip-cell:hover .chip {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-3);
+    }
+  }
+
+  /* ------------------------------------------------------------------ *
+   * STATS                                                              *
+   * ------------------------------------------------------------------ */
+  .stats-section {
+    padding: 0 0 var(--space-9);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: clamp(var(--space-4), 3vw, var(--space-6));
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-8);
+  }
+  .stat {
+    min-width: 0;
+    text-align: left;
+  }
+  .stat-value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 5.5vw, 3.1rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(120deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: var(--space-3);
+    word-break: break-word;
+  }
+  .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.75;
+    line-height: 1.5;
+  }
+
+  /* ------------------------------------------------------------------ *
+   * METHOD                                                             *
+   * ------------------------------------------------------------------ */
+  .method-section {
+    padding: var(--space-8) 0 var(--space-9);
+    background: color-mix(in oklab, var(--muted) 45%, transparent);
+  }
+  .method-heading {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    letter-spacing: -0.01em;
+    margin: 0 auto var(--space-7);
+    max-width: 24ch;
+    text-wrap: balance;
+  }
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(var(--space-4), 2.5vw, var(--space-5));
+  }
+  .method-card {
+    position: relative;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-l);
-    box-shadow: var(--shadow-1);
+    padding: var(--space-6) var(--space-5) var(--space-5);
+    min-width: 0;
+    overflow: hidden;
+    transition:
+      transform 0.3s var(--ease-out),
+      box-shadow 0.3s var(--ease-out),
+      border-color 0.3s var(--ease-out);
+  }
+  .method-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out);
+  }
+  .method-index {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    letter-spacing: 0.08em;
+  }
+  .method-card h3 {
+    font-size: var(--font-size-lg);
+    margin: var(--space-2) 0 var(--space-3);
+    letter-spacing: -0.01em;
+  }
+  .method-card p {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    opacity: 0.82;
+    line-height: 1.6;
+    margin: 0;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .method-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-3);
+      border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
+    }
+    .method-card:hover::before {
+      transform: scaleX(1);
+    }
+  }
+
+  /* ------------------------------------------------------------------ *
+   * FIT CALL                                                           *
+   * ------------------------------------------------------------------ */
+  .fit-section {
+    padding: var(--space-9) 0 var(--space-10);
+  }
+  .fit-card {
+    position: relative;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(var(--space-6), 6vw, var(--space-9)) var(--space-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(
+        70% 120% at 50% 0%,
+        color-mix(in oklab, var(--primary) 12%, transparent),
+        transparent 70%
+      ),
+      var(--bg);
+    box-shadow: var(--shadow-2);
     overflow: hidden;
   }
-
-  .faq-question {
-    cursor: pointer;
-    padding: var(--space-4) var(--space-5);
-    font-weight: var(--font-weight-bold);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
-  }
-
-  .faq-question::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-item[open] .faq-question {
-    background: linear-gradient(
-      135deg,
-      oklch(from var(--primary) l c h / 0.05) 0%,
-      transparent 100%
-    );
-  }
-
-  .faq-answer {
-    padding: 0 var(--space-5) var(--space-5) var(--space-5);
-  }
-
-  .faq-answer p {
+  .fit-heading {
+    font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+    letter-spacing: -0.02em;
     margin: 0 0 var(--space-3);
+    text-wrap: balance;
+  }
+  .fit-sub {
+    color: var(--text);
+    opacity: 0.8;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    max-width: 52ch;
+    margin: 0 auto var(--space-6);
   }
 
-  .faq-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
-  .faq-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 10px;
-    border-radius: var(--radius-m);
-    border: 1px solid var(--border);
-    color: var(--primary);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    transition: all 0.2s ease;
-  }
-
-  .faq-link:hover {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-    text-decoration: none;
-  }
-
-  .faq-item:focus-within {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
-
-  @media (max-width: 600px) {
-    .faq-question {
-      padding: var(--space-4);
+  /* ------------------------------------------------------------------ *
+   * REDUCED MOTION — every animation gets a visible static fallback    *
+   * ------------------------------------------------------------------ */
+  @media (prefers-reduced-motion: reduce) {
+    .status-dot {
+      animation: none;
     }
-    .faq-answer {
-      padding: 0 var(--space-4) var(--space-4) var(--space-4);
+    /* Wall + chips fully visible, no sweep. */
+    .js-anim .chip-cell {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .wall.is-lit .wall-spotlight {
+      opacity: 0 !important;
+    }
+    .chip {
+      filter: none !important;
+    }
+    .btn,
+    .method-card,
+    .method-card::before {
+      transition: none !important;
     }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    const reduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    /* ---------------------------------------------------------------- *
+     * 1. STAGGERED CHIP ENTRANCE                                        *
+     * The wall only opts into the hidden start-state when JS runs AND   *
+     * motion is allowed, so no-JS / reduced-motion keeps chips visible. *
+     * ---------------------------------------------------------------- */
+    const wall = document.querySelector('[data-wall]');
+    if (wall && !reduced) {
+      const grid = wall.querySelector('.wall-grid');
+      if (grid) {
+        grid.classList.add('js-anim');
+        const cells = wall.querySelectorAll('[data-chip]');
+        const revealChips = function () {
+          cells.forEach(function (cell) {
+            cell.classList.add('is-in');
+          });
+        };
+        if ('IntersectionObserver' in window) {
+          const io = new IntersectionObserver(
+            function (entries, obs) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  revealChips();
+                  obs.disconnect();
+                }
+              });
+            },
+            { threshold: 0.2 },
+          );
+          io.observe(wall);
+        } else {
+          revealChips();
+        }
+      }
+    }
+
+    /* ---------------------------------------------------------------- *
+     * 2. SPOTLIGHT SWEEP                                                *
+     * A soft radial highlight glides across the wall on a slow looping  *
+     * path (Lissajous-style so it never feels linear). rAF-driven,      *
+     * paused when the wall is off-screen, and never started under       *
+     * reduced motion. Each chip brightens by proximity to the light.    *
+     * ---------------------------------------------------------------- */
+    const spotlight = wall ? wall.querySelector('.wall-spotlight') : null;
+    const chips = wall ? wall.querySelectorAll('.chip') : null;
+
+    if (wall && spotlight && chips && chips.length && !reduced) {
+      let rafId = null;
+      let start = null;
+      let onScreen = false;
+      let chipBoxes = [];
+      let wallBox = null;
+
+      const measure = function () {
+        wallBox = wall.getBoundingClientRect();
+        chipBoxes = [];
+        chips.forEach(function (chip) {
+          const r = chip.getBoundingClientRect();
+          chipBoxes.push({
+            el: chip,
+            cx: r.left + r.width / 2 - wallBox.left,
+            cy: r.top + r.height / 2 - wallBox.top,
+          });
+        });
+      };
+
+      const frame = function (t) {
+        if (start === null) start = t;
+        if (!wallBox || wallBox.width === 0) {
+          rafId = window.requestAnimationFrame(frame);
+          return;
+        }
+        const elapsed = (t - start) / 1000;
+        // Two out-of-phase sines => a smooth wandering path, ~11s period.
+        const px = 50 + 42 * Math.sin(elapsed * 0.57);
+        const py = 50 + 30 * Math.sin(elapsed * 0.83 + 1.1);
+        spotlight.style.setProperty('--mx', px.toFixed(2) + '%');
+        spotlight.style.setProperty('--my', py.toFixed(2) + '%');
+
+        // Light position in px within the wall.
+        const lx = (px / 100) * wallBox.width;
+        const ly = (py / 100) * wallBox.height;
+        const radius = Math.max(wallBox.width, wallBox.height) * 0.34;
+
+        for (let k = 0; k < chipBoxes.length; k++) {
+          const c = chipBoxes[k];
+          const dx = c.cx - lx;
+          const dy = c.cy - ly;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          // 1 at the centre of the light, easing to 0 at the radius edge.
+          let lit = 1 - dist / radius;
+          if (lit < 0) lit = 0;
+          c.el.style.setProperty('--lit', (lit * lit).toFixed(3));
+        }
+        rafId = window.requestAnimationFrame(frame);
+      };
+
+      const play = function () {
+        if (rafId === null) {
+          measure();
+          start = null;
+          rafId = window.requestAnimationFrame(frame);
+        }
+      };
+      const pause = function () {
+        if (rafId !== null) {
+          window.cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      };
+
+      // Only run while the wall is in view (perf + battery).
+      if ('IntersectionObserver' in window) {
+        const vio = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              onScreen = entry.isIntersecting;
+              wall.classList.toggle('is-lit', onScreen);
+              if (onScreen) {
+                play();
+              } else {
+                pause();
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        vio.observe(wall);
+      } else {
+        onScreen = true;
+        wall.classList.add('is-lit');
+        play();
+      }
+
+      // Keep chip geometry correct on resize; cheap debounce.
+      let resizeTimer = null;
+      window.addEventListener(
+        'resize',
+        function () {
+          if (resizeTimer) window.clearTimeout(resizeTimer);
+          resizeTimer = window.setTimeout(function () {
+            if (onScreen) measure();
+          }, 150);
+        },
+        { passive: true },
+      );
+
+      // Pause when the tab is hidden.
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          pause();
+        } else if (onScreen) {
+          play();
+        }
+      });
+    }
+
+    /* ---------------------------------------------------------------- *
+     * 3. COUNT-UP NUMBERS                                               *
+     * Numbers ease to their final value the first time each stat        *
+     * scrolls into view. Under reduced motion (or no IO) we skip the    *
+     * animation and the server-rendered final value simply stays.       *
+     * ---------------------------------------------------------------- */
+    const counters = document.querySelectorAll('[data-count]');
+
+    const formatValue = function (el, value) {
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+      return prefix + value.toFixed(decimals) + suffix;
+    };
+
+    const runCount = function (el) {
+      const staticText = el.getAttribute('data-static');
+      if (staticText) return; // non-numeric stat, already correct
+      const to = parseFloat(el.getAttribute('data-to') || '0');
+      if (reduced || !Number.isFinite(to)) {
+        el.textContent = formatValue(el, to);
+        return;
+      }
+      const duration = 1500;
+      let t0 = null;
+      const step = function (ts) {
+        if (t0 === null) t0 = ts;
+        const p = Math.min((ts - t0) / duration, 1);
+        // easeOutExpo — fast then settles, feels precise not springy.
+        const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+        el.textContent = formatValue(el, to * eased);
+        if (p < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          el.textContent = formatValue(el, to);
+        }
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    if (counters.length) {
+      if (reduced || !('IntersectionObserver' in window)) {
+        counters.forEach(function (el) {
+          const staticText = el.getAttribute('data-static');
+          if (!staticText) {
+            const to = parseFloat(el.getAttribute('data-to') || '0');
+            el.textContent = formatValue(el, to);
+          }
+        });
+      } else {
+        const cio = new IntersectionObserver(
+          function (entries, obs) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                runCount(entry.target);
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.6 },
+        );
+        counters.forEach(function (el) {
+          cio.observe(el);
+        });
+      }
+    }
+  })();
+</script>

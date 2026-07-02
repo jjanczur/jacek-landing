@@ -1,0 +1,1136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSupportedLangs } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return getSupportedLangs().map(lang => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props;
+
+const logos = [
+  { src: '/logos/bosch.svg', alt: 'Bosch' },
+  { src: '/logos/redbull.svg', alt: 'Red Bull' },
+  { src: '/logos/kfw.png', alt: 'KfW' },
+  { src: '/logos/boehringer-ingelheim.png', alt: 'Boehringer Ingelheim' },
+  { src: '/logos/ing.svg', alt: 'ING' },
+  { src: '/logos/apg.png', alt: 'APG' },
+  { src: '/logos/norges-bank.svg', alt: 'Norges Bank' },
+];
+
+const copy = {
+  en: {
+    metaTitle: 'Jacek Janczura — AI Systems Architect & Fractional CTO',
+    metaDescription:
+      "I've shipped the multi-tenant RAG system you're trying to build. Event-driven AWS, 1,000+ concurrent connections, thousands of requests a second, 99.9% uptime, for 50+ regulated organizations.",
+    eyebrow: 'AI Systems Architect · Fractional CTO',
+    heroTitle:
+      'I\'ve shipped the AI system<br class="br-desktop" /> you\'re trying to build.',
+    heroSub:
+      'Multi-tenant RAG on event-driven AWS — 1,000+ concurrent connections, thousands of requests a second, 99.9% uptime, for 50+ regulated organizations. I design the architecture, build the pipelines and evals, wire the audit trails, and lead the engineers who own it. <strong>Not another proof-of-concept.</strong>',
+    ctaPrimary: 'Walk through the architecture',
+    ctaGhost: "Send me your pipeline; I'll tell you where it breaks",
+    availability: 'Currently consulting · open to the right permanent CTO role',
+    diagramTitle: 'Live system',
+    diagramHealth: '99.9% uptime',
+    throughputLabel: 'live throughput',
+    svgAriaLabel:
+      'Architecture diagram: Client to API Gateway to Lambda and Fargate to RAG Service to Vector and Graph databases and LLM providers OpenAI, Bedrock, Azure and Mistral.',
+    proofKicker: 'Systems shipped for',
+    stats: [
+      { value: '1,000+', label: 'concurrent connections' },
+      { value: 'thousands', label: 'requests / second' },
+      { value: '99.9%', label: 'uptime' },
+      { value: '50+', label: 'regulated orgs' },
+    ],
+    details: [
+      {
+        num: '01',
+        heading: 'I design the architecture.',
+        body: 'Event-driven on AWS, built to survive real load: 1,000+ concurrent connections and thousands of requests a second at 99.9% uptime. The diagram on this page is the shape of a real production system — request in, retrieval and reasoning across vector and graph stores, model calls fanned out across OpenAI, Bedrock, Azure and Mistral.',
+      },
+      {
+        num: '02',
+        heading: 'I build the pipelines and evals.',
+        body: 'RAG that earns trust: chunking and retrieval you can defend, evals that catch regressions before your users do, and audit trails wired in from day one. I took my company through ISO 27001 and SOC 2 in ~3 months — because in regulated markets, compliance is part of the architecture, not an afterthought.',
+      },
+      {
+        num: '03',
+        heading: 'I lead the engineers who own it.',
+        body: "I've built a company from 0 to €1M+ revenue and a team from 0 to 10. At idealo, multi-country SSO I led drove 1.4M new accounts in three months — +700% versus forecast. I hand systems over to teams that keep shipping after I've moved on.",
+      },
+    ],
+    ctaTitle: "Send me your pipeline. I'll tell you where it breaks.",
+    ctaSub:
+      "A short, specific read of your RAG or event-driven setup — retrieval, evals, scaling, and the compliance gaps you'll hit in a regulated market. No slides, no proof-of-concept theatre.",
+    ctaActionPrimary: 'Send me your pipeline',
+    ctaActionGhost: 'Walk the architecture again',
+  },
+  pl: {
+    metaTitle: 'Jacek Janczura — AI Systems Architect i Fractional CTO',
+    metaDescription:
+      'Zbudowałem i wdrożyłem multi-tenant system RAG, który dopiero próbujesz postawić. Event-driven na AWS, ponad 1000 jednoczesnych połączeń, tysiące requestów na sekundę, 99,9% uptime, dla ponad 50 organizacji z branż regulowanych.',
+    eyebrow: 'AI Systems Architect · Fractional CTO',
+    heroTitle:
+      'Zbudowałem system AI,<br class="br-desktop" /> który dopiero chcesz postawić.',
+    heroSub:
+      "Multi-tenant RAG na event-driven AWS — ponad 1000 jednoczesnych połączeń, tysiące requestów na sekundę, 99,9% uptime, dla ponad 50 organizacji z branż regulowanych. Projektuję architekturę, buduję pipeline'y i evale, podpinam audit traile i prowadzę inżynierów, którzy potem to utrzymują. <strong>Nie kolejne proof-of-concept.</strong>",
+    ctaPrimary: 'Przejdź przez architekturę',
+    ctaGhost: 'Podeślij mi swój pipeline — powiem Ci, gdzie się posypie',
+    availability: 'Obecnie doradzam · otwarty na właściwą stałą rolę CTO',
+    diagramTitle: 'System live',
+    diagramHealth: '99,9% uptime',
+    throughputLabel: 'przepustowość na żywo',
+    svgAriaLabel:
+      'Diagram architektury: Client do API Gateway do Lambda i Fargate do RAG Service do baz Vector i Graph oraz dostawców LLM OpenAI, Bedrock, Azure i Mistral.',
+    proofKicker: 'Systemy wdrożone dla',
+    stats: [
+      { value: '1,000+', label: 'jednoczesnych połączeń' },
+      { value: 'thousands', label: 'requestów / sekundę' },
+      { value: '99.9%', label: 'uptime' },
+      { value: '50+', label: 'organizacji regulowanych' },
+    ],
+    details: [
+      {
+        num: '01',
+        heading: 'Projektuję architekturę.',
+        body: 'Event-driven na AWS, zbudowane tak, by wytrzymać prawdziwe obciążenie: ponad 1000 jednoczesnych połączeń i tysiące requestów na sekundę przy 99,9% uptime. Diagram na tej stronie to kształt realnego systemu produkcyjnego — request wchodzi, retrieval i reasoning w bazach wektorowych i grafowych, wywołania modeli rozłożone między OpenAI, Bedrock, Azure i Mistral.',
+      },
+      {
+        num: '02',
+        heading: "Buduję pipeline'y i evale.",
+        body: 'RAG, który zasługuje na zaufanie: chunking i retrieval, których obronisz przed każdym, evale wyłapujące regresje, zanim zrobią to Twoi użytkownicy, i audit traile podpięte od pierwszego dnia. Przeprowadziłem swoją firmę przez ISO 27001 i SOC 2 w około 3 miesiące — bo na rynkach regulowanych compliance to część architektury, a nie coś doklejanego na końcu.',
+      },
+      {
+        num: '03',
+        heading: 'Prowadzę inżynierów, którzy potem to utrzymują.',
+        body: 'Zbudowałem firmę od zera do ponad 1 mln € przychodu i zespół od zera do 10 osób. W idealo prowadziłem wielokrajowe SSO, które w trzy miesiące dało 1,4 mln nowych kont — +700% względem prognozy. Przekazuję systemy zespołom, które dalej dowożą, kiedy mnie już nie ma.',
+      },
+    ],
+    ctaTitle: 'Podeślij mi swój pipeline. Powiem Ci, gdzie się posypie.',
+    ctaSub:
+      'Krótka, konkretna analiza Twojego setupu RAG albo event-driven — retrieval, evale, skalowanie i luki w compliance, na które trafisz na rynku regulowanym. Bez slajdów, bez teatru z proof-of-concept.',
+    ctaActionPrimary: 'Podeślij mi swój pipeline',
+    ctaActionGhost: 'Przejdź przez architekturę jeszcze raz',
+  },
+  de: {
+    metaTitle: 'Jacek Janczura — AI Systems Architect & Fractional CTO',
+    metaDescription:
+      'Das Multi-tenant-RAG-System, das du gerade bauen willst, habe ich schon in Produktion gebracht. Event-driven auf AWS, über 1.000 gleichzeitige Verbindungen, Tausende Requests pro Sekunde, 99,9% Uptime, für über 50 regulierte Organisationen.',
+    eyebrow: 'AI Systems Architect · Fractional CTO',
+    heroTitle:
+      'Das AI-System, das du bauen willst,<br class="br-desktop" /> läuft bei mir schon.',
+    heroSub:
+      'Multi-tenant RAG auf event-driven AWS — über 1.000 gleichzeitige Verbindungen, Tausende Requests pro Sekunde, 99,9% Uptime, für über 50 regulierte Organisationen. Ich entwerfe die Architektur, baue die Pipelines und Evals, verdrahte die Audit-Trails und führe die Engineers, die das Ganze am Ende besitzen. <strong>Kein weiteres Proof-of-Concept.</strong>',
+    ctaPrimary: 'Geh mit mir durch die Architektur',
+    ctaGhost: 'Schick mir deine Pipeline — ich sag dir, wo sie bricht',
+    availability:
+      'Aktuell als Berater tätig · offen für die richtige feste CTO-Rolle',
+    diagramTitle: 'Live-System',
+    diagramHealth: '99,9% Uptime',
+    throughputLabel: 'Live-Durchsatz',
+    svgAriaLabel:
+      'Architekturdiagramm: Client zu API Gateway zu Lambda und Fargate zu RAG Service zu Vector- und Graph-Datenbanken sowie den LLM-Providern OpenAI, Bedrock, Azure und Mistral.',
+    proofKicker: 'Systeme ausgeliefert für',
+    stats: [
+      { value: '1,000+', label: 'gleichzeitige Verbindungen' },
+      { value: 'thousands', label: 'Requests / Sekunde' },
+      { value: '99.9%', label: 'Uptime' },
+      { value: '50+', label: 'regulierte Organisationen' },
+    ],
+    details: [
+      {
+        num: '01',
+        heading: 'Ich entwerfe die Architektur.',
+        body: 'Event-driven auf AWS, gebaut, um echte Last auszuhalten: über 1.000 gleichzeitige Verbindungen und Tausende Requests pro Sekunde bei 99,9% Uptime. Das Diagramm auf dieser Seite ist die Form eines echten Produktionssystems — Request rein, Retrieval und Reasoning über Vector- und Graph-Stores, Modell-Calls verteilt über OpenAI, Bedrock, Azure und Mistral.',
+      },
+      {
+        num: '02',
+        heading: 'Ich baue die Pipelines und Evals.',
+        body: 'RAG, das Vertrauen verdient: Chunking und Retrieval, die du verteidigen kannst, Evals, die Regressionen abfangen, bevor deine Nutzer sie merken, und Audit-Trails, von Tag eins an verdrahtet. Ich habe meine Firma in rund 3 Monaten durch ISO 27001 und SOC 2 gebracht — denn in regulierten Märkten ist Compliance Teil der Architektur, kein nachträglicher Gedanke.',
+      },
+      {
+        num: '03',
+        heading: 'Ich führe die Engineers, die das System besitzen.',
+        body: 'Ich habe eine Firma von 0 auf über 1 Mio. € Umsatz und ein Team von 0 auf 10 aufgebaut. Bei idealo trieb das länderübergreifende SSO, das ich verantwortet habe, in drei Monaten 1,4 Mio. neue Accounts — +700% gegenüber Forecast. Ich übergebe Systeme an Teams, die weiter ausliefern, wenn ich längst weiter bin.',
+      },
+    ],
+    ctaTitle: 'Schick mir deine Pipeline. Ich sag dir, wo sie bricht.',
+    ctaSub:
+      'Ein kurzer, konkreter Blick auf dein RAG- oder event-driven Setup — Retrieval, Evals, Skalierung und die Compliance-Lücken, auf die du in einem regulierten Markt triffst. Keine Slides, kein Proof-of-Concept-Theater.',
+    ctaActionPrimary: 'Schick mir deine Pipeline',
+    ctaActionGhost: 'Nochmal durch die Architektur',
+  },
+};
+
+const t = copy[lang];
+const stats = t.stats;
+---
+
+<BaseLayout title={t.metaTitle} description={t.metaDescription} lang={lang}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow reveal">{t.eyebrow}</p>
+        <h1
+          class="hero__title reveal"
+          style="--reveal-delay: 60ms"
+          set:html={t.heroTitle}
+        />
+        <p
+          class="hero__sub reveal"
+          style="--reveal-delay: 120ms"
+          set:html={t.heroSub}
+        />
+        <div class="hero__cta reveal" style="--reveal-delay: 180ms">
+          <a href="#architecture" class="btn btn--primary">
+            {t.ctaPrimary}
+          </a>
+          <a href="#pipeline" class="btn btn--ghost">
+            {t.ctaGhost}
+          </a>
+        </div>
+        <p class="availability reveal" style="--reveal-delay: 240ms">
+          <span class="availability__dot" aria-hidden="true"></span>
+          {t.availability}
+        </p>
+      </div>
+
+      <!-- Signature animation: self-drawing architecture diagram -->
+      <div class="hero__diagram reveal" style="--reveal-delay: 120ms">
+        <div class="diagram-card" id="diagram-card">
+          <div class="diagram-card__head">
+            <span class="diagram-card__title">{t.diagramTitle}</span>
+            <span class="diagram-card__health" id="health-readout">
+              <span class="diagram-card__pulse" aria-hidden="true"></span>
+              {t.diagramHealth}
+            </span>
+          </div>
+
+          <div class="diagram-stage">
+            <svg
+              class="arch"
+              id="arch-svg"
+              viewBox="0 0 480 420"
+              role="img"
+              aria-label={t.svgAriaLabel}
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <defs>
+                <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="var(--primary)"></stop>
+                  <stop offset="1" stop-color="var(--accent)"></stop>
+                </linearGradient>
+              </defs>
+
+              <!-- Edges (drawn first, behind nodes) -->
+              <g
+                class="edges"
+                fill="none"
+                stroke="url(#edgeGrad)"
+                stroke-width="2"
+              >
+                <path class="edge" data-from="0" d="M90 48 H240 V96"></path>
+                <path class="edge" data-from="1" d="M240 132 V150 H150 V174"
+                ></path>
+                <path class="edge" data-from="1" d="M240 132 V150 H330 V174"
+                ></path>
+                <path class="edge" data-from="2" d="M150 210 V228 H240 V252"
+                ></path>
+                <path class="edge" data-from="2" d="M330 210 V228 H240 V252"
+                ></path>
+                <path class="edge" data-from="3" d="M240 288 V306 H120 V330"
+                ></path>
+                <path class="edge" data-from="3" d="M240 288 V306 H360 V330"
+                ></path>
+                <path class="edge" data-from="4" d="M240 288 V372"></path>
+              </g>
+
+              <!-- Data-flow pulse dots (positioned by JS along edges) -->
+              <g class="pulses" fill="var(--accent)"></g>
+
+              <!-- Nodes. Position lives on the outer <g> (transform attribute);
+                   the inner .node-fx carries the CSS entrance transform so the
+                   two never collide. -->
+              <g class="nodes" font-family="var(--font-heading)">
+                <g class="node" data-step="0" transform="translate(30 30)">
+                  <g class="node-fx">
+                    <rect width="120" height="36" rx="9"></rect>
+                    <text x="60" y="23">Client</text>
+                  </g>
+                </g>
+                <g
+                  class="node node--gw"
+                  data-step="1"
+                  transform="translate(170 96)"
+                >
+                  <g class="node-fx">
+                    <rect width="140" height="36" rx="9"></rect>
+                    <text x="70" y="23">API Gateway</text>
+                  </g>
+                </g>
+                <g class="node" data-step="2" transform="translate(90 174)">
+                  <g class="node-fx">
+                    <rect width="120" height="36" rx="9"></rect>
+                    <text x="60" y="23">Lambda</text>
+                  </g>
+                </g>
+                <g class="node" data-step="2" transform="translate(270 174)">
+                  <g class="node-fx">
+                    <rect width="120" height="36" rx="9"></rect>
+                    <text x="60" y="23">Fargate</text>
+                  </g>
+                </g>
+                <g
+                  class="node node--core"
+                  data-step="3"
+                  transform="translate(160 252)"
+                >
+                  <g class="node-fx">
+                    <rect width="160" height="36" rx="9"></rect>
+                    <text x="80" y="23">RAG Service</text>
+                  </g>
+                </g>
+                <g class="node" data-step="4" transform="translate(50 330)">
+                  <g class="node-fx">
+                    <rect width="140" height="36" rx="9"></rect>
+                    <text x="70" y="23">Vector DB</text>
+                  </g>
+                </g>
+                <g class="node" data-step="4" transform="translate(290 330)">
+                  <g class="node-fx">
+                    <rect width="140" height="36" rx="9"></rect>
+                    <text x="70" y="23">Graph DB</text>
+                  </g>
+                </g>
+                <g
+                  class="node node--llm"
+                  data-step="4"
+                  transform="translate(140 384)"
+                >
+                  <g class="node-fx">
+                    <rect width="200" height="28" rx="9"></rect>
+                    <text x="100" y="19"
+                      >OpenAI · Bedrock · Azure · Mistral</text
+                    >
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <div class="diagram-card__foot">
+            <div class="throughput">
+              <span class="throughput__value" id="throughput">~0 req/sec</span>
+              <span class="throughput__label">{t.throughputLabel}</span>
+            </div>
+            <div class="meter" aria-hidden="true">
+              <span class="meter__fill" id="meter-fill"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof wall: named clients -->
+  <section class="proof" id="proof">
+    <div class="container">
+      <p class="proof__kicker reveal">{t.proofKicker}</p>
+      <ul class="logo-wall reveal" style="--reveal-delay: 60ms">
+        {
+          logos.map((logo, i) => (
+            <li class="logo-chip" style={`--chip-delay: ${i * 55}ms`}>
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </li>
+          ))
+        }
+      </ul>
+
+      <dl class="stat-row reveal" style="--reveal-delay: 120ms">
+        {
+          stats.map(s => (
+            <div class="stat">
+              <dt class="stat__value">{s.value}</dt>
+              <dd class="stat__label">{s.label}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Architecture walk-through anchor -->
+  <section class="detail" id="architecture">
+    <div class="container detail__grid">
+      <article class="detail__col reveal">
+        <span class="detail__num">{t.details[0].num}</span>
+        <h2>{t.details[0].heading}</h2>
+        <p>
+          {t.details[0].body}
+        </p>
+      </article>
+      <article class="detail__col reveal" style="--reveal-delay: 80ms">
+        <span class="detail__num">{t.details[1].num}</span>
+        <h2>{t.details[1].heading}</h2>
+        <p>
+          {t.details[1].body}
+        </p>
+      </article>
+      <article class="detail__col reveal" style="--reveal-delay: 160ms">
+        <span class="detail__num">{t.details[2].num}</span>
+        <h2>{t.details[2].heading}</h2>
+        <p>
+          {t.details[2].body}
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pipeline CTA anchor -->
+  <section class="cta" id="pipeline">
+    <div class="container cta__inner reveal">
+      <h2 class="cta__title">
+        {t.ctaTitle}
+      </h2>
+      <p class="cta__sub">
+        {t.ctaSub}
+      </p>
+      <div class="cta__actions">
+        <a
+          href="mailto:hello@janczura.com?subject=Pipeline%20review"
+          class="btn btn--primary"
+        >
+          {t.ctaActionPrimary}
+        </a>
+        <a href="#architecture" class="btn btn--ghost">{t.ctaActionGhost}</a>
+      </div>
+      <p class="availability availability--foot">
+        <span class="availability__dot" aria-hidden="true"></span>
+        {t.availability}
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: var(--space-9) 0 var(--space-8);
+    overflow: hidden;
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 6.4vw, 3.4rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-5);
+  }
+
+  .hero__sub {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--text);
+    max-width: 46ch;
+    margin: 0 0 var(--space-6);
+  }
+  .hero__sub strong {
+    color: var(--primary);
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-m);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition:
+      transform 0.22s var(--ease-out),
+      box-shadow 0.22s var(--ease-out),
+      background-color 0.22s var(--ease-out),
+      border-color 0.22s var(--ease-out);
+  }
+  .btn:hover {
+    text-decoration: none;
+  }
+  .btn--primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: var(--shadow-2);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-3);
+    }
+    .btn--ghost:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+  }
+
+  /* Availability pill */
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--muted-fg, var(--text));
+    opacity: 0.85;
+    margin: 0;
+  }
+  .availability__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: availPulse 2.6s var(--ease-out) infinite;
+    flex: none;
+  }
+  @keyframes availPulse {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in oklch, var(--accent) 55%, transparent);
+    }
+    70% {
+      box-shadow: 0 0 0 7px color-mix(in oklch, var(--accent) 0%, transparent);
+    }
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in oklch, var(--accent) 0%, transparent);
+    }
+  }
+
+  /* ---------- Diagram card ---------- */
+  .hero__diagram {
+    min-width: 0;
+  }
+  .diagram-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-3);
+    padding: var(--space-4);
+    position: relative;
+    overflow: hidden;
+  }
+  /* faint grid texture so it reads as an "instrument", not a box */
+  .diagram-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(
+        color-mix(in oklch, var(--border) 45%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklch, var(--border) 45%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 26px 26px;
+    opacity: 0.35;
+    pointer-events: none;
+    mask-image: radial-gradient(120% 90% at 50% 0%, #000 40%, transparent 100%);
+  }
+  .diagram-card > * {
+    position: relative;
+  }
+
+  .diagram-card__head,
+  .diagram-card__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  .diagram-card__head {
+    margin-bottom: var(--space-2);
+  }
+  .diagram-card__title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.7;
+  }
+  .diagram-card__health {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .diagram-card__pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: availPulse 2.6s var(--ease-out) infinite;
+  }
+
+  .diagram-stage {
+    width: 100%;
+  }
+  .arch {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Nodes */
+  .arch .node rect {
+    fill: var(--bg);
+    stroke: var(--border);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+  }
+  .arch .node--gw rect,
+  .arch .node--core rect {
+    stroke: var(--primary);
+  }
+  .arch .node--core rect {
+    fill: color-mix(in oklch, var(--primary) 10%, var(--bg));
+  }
+  .arch .node--llm rect {
+    fill: color-mix(in oklch, var(--accent) 12%, var(--bg));
+    stroke: var(--accent);
+  }
+  .arch .node text {
+    fill: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    text-anchor: middle;
+    font-family: var(--font-heading);
+  }
+  .arch .node--llm text {
+    font-size: 11px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Foot: throughput + meter */
+  .diagram-card__foot {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+  .throughput {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .throughput__value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+  }
+  .throughput__label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+  .meter {
+    flex: 1;
+    max-width: 160px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--muted);
+    overflow: hidden;
+  }
+  .meter__fill {
+    display: block;
+    height: 100%;
+    width: 8%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.4s var(--ease-out);
+  }
+
+  /* ---------- Proof wall ---------- */
+  .proof {
+    padding: var(--space-7) 0 var(--space-8);
+    border-top: 1px solid var(--border);
+  }
+  .proof__kicker {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    margin: 0 0 var(--space-5);
+  }
+  .logo-wall {
+    list-style: none;
+    margin: 0 0 var(--space-7);
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+  @media (min-width: 640px) {
+    .logo-wall {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+  }
+  .logo-chip {
+    background: #fff;
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    min-height: 68px;
+    transition:
+      transform 0.28s var(--ease-out),
+      box-shadow 0.28s var(--ease-out);
+  }
+  .reveal-on .logo-chip {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  .reveal-on .logo-wall.is-visible .logo-chip {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.55s var(--ease-out) var(--chip-delay, 0ms),
+      transform 0.55s var(--ease-out) var(--chip-delay, 0ms);
+  }
+  .logo-chip img {
+    max-width: 100%;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .logo-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-2);
+    }
+  }
+
+  /* Stat row */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin: 0;
+  }
+  @media (min-width: 560px) {
+    .stat-row {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .stat {
+    text-align: center;
+    padding: var(--space-4) var(--space-2);
+    border-radius: var(--radius-m);
+    background: var(--muted);
+    overflow-wrap: break-word;
+  }
+  .stat__value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.35rem, 3.5vw, 1.7rem);
+    color: var(--primary);
+    margin: 0;
+    line-height: 1.1;
+  }
+  .stat__label {
+    margin: var(--space-1) 0 0;
+    font-size: var(--font-size-sm);
+    opacity: 0.72;
+  }
+
+  /* ---------- Detail columns ---------- */
+  .detail {
+    padding: var(--space-8) 0;
+  }
+  .detail__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: var(--space-6);
+  }
+  .detail__num {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .detail__col h2 {
+    font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+    margin: var(--space-2) 0 var(--space-3);
+    letter-spacing: -0.01em;
+  }
+  .detail__col p {
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    padding: var(--space-8) 0 var(--space-9);
+    border-top: 1px solid var(--border);
+  }
+  .cta__inner {
+    text-align: center;
+    max-width: 720px;
+  }
+  .cta__title {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    letter-spacing: -0.015em;
+    margin: 0 0 var(--space-4);
+  }
+  .cta__sub {
+    opacity: 0.82;
+    margin: 0 auto var(--space-5);
+    max-width: 52ch;
+  }
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-bottom: var(--space-5);
+  }
+  .availability--foot {
+    justify-content: center;
+  }
+
+  /* ---------- Responsive ---------- */
+  .br-desktop {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .br-desktop {
+      display: inline;
+    }
+  }
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-7);
+    }
+    .hero {
+      padding-top: var(--space-8);
+    }
+    .diagram-card {
+      max-width: 460px;
+      margin: 0 auto;
+    }
+  }
+
+  /* ---------- Reduced motion: static, everything visible ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .availability__dot,
+    .diagram-card__pulse {
+      animation: none;
+    }
+    .reveal-on .logo-chip {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .meter__fill {
+      transition: none;
+    }
+    .btn {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const svg = document.getElementById('arch-svg');
+    const card = document.getElementById('diagram-card');
+    const throughputEl = document.getElementById('throughput');
+    const meterFill = document.getElementById('meter-fill');
+    if (!svg || !card) return;
+
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const edges = Array.prototype.slice.call(svg.querySelectorAll('.edge'));
+    const nodes = Array.prototype.slice.call(svg.querySelectorAll('.node'));
+    const pulseGroup = svg.querySelector('.pulses');
+
+    // ---- Static fallback for reduced motion: draw everything, final numbers ----
+    if (reduce) {
+      edges.forEach(function (e) {
+        e.style.strokeDasharray = 'none';
+        e.style.strokeDashoffset = '0';
+        e.style.opacity = '1';
+      });
+      nodes.forEach(function (n) {
+        const fx = n.querySelector('.node-fx');
+        if (fx) fx.style.opacity = '1';
+      });
+      if (throughputEl) throughputEl.textContent = '~3,200 req/sec';
+      if (meterFill) meterFill.style.width = '80%';
+      return;
+    }
+
+    // ---- Prime nodes + edges hidden, ready to reveal ----
+    nodes.forEach(function (n) {
+      const fx = n.querySelector('.node-fx');
+      if (!fx) return;
+      fx.style.opacity = '0';
+      fx.style.transformBox = 'fill-box';
+      fx.style.transformOrigin = 'center';
+      fx.style.transform = 'translateY(8px) scale(0.96)';
+      fx.style.transition =
+        'opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out)';
+    });
+
+    edges.forEach(function (e) {
+      const len = e.getTotalLength ? e.getTotalLength() : 300;
+      e.style.strokeDasharray = len;
+      e.style.strokeDashoffset = len;
+      e.style.opacity = '0.9';
+      e.style.transition = 'stroke-dashoffset 0.6s var(--ease-out)';
+    });
+
+    // ---- Data-flow pulse dots (rAF along edges) ----
+    const dots = edges.map(function (edge) {
+      const c = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'circle',
+      );
+      c.setAttribute('r', '3');
+      c.setAttribute('fill', 'var(--accent)');
+      c.style.opacity = '0';
+      if (pulseGroup) pulseGroup.appendChild(c);
+      return {
+        el: c,
+        edge: edge,
+        len: edge.getTotalLength ? edge.getTotalLength() : 300,
+        // staggered start + varied speed so flow feels organic
+        t: Math.random(),
+        speed: 0.28 + Math.random() * 0.22,
+      };
+    });
+
+    let running = false;
+    let rafId = null;
+    let last = 0;
+
+    function tickDots(now) {
+      if (!running) return;
+      const dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016;
+      last = now;
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        d.t += d.speed * dt;
+        if (d.t > 1) d.t -= 1;
+        const p = d.edge.getPointAtLength(d.t * d.len);
+        d.el.setAttribute('cx', p.x);
+        d.el.setAttribute('cy', p.y);
+        // fade at ends so dots don't pop
+        const edgeFade = Math.min(d.t, 1 - d.t) * 6;
+        d.el.style.opacity = String(Math.min(0.9, edgeFade));
+      }
+      rafId = window.requestAnimationFrame(tickDots);
+    }
+
+    function startDots() {
+      if (running) return;
+      running = true;
+      last = 0;
+      rafId = window.requestAnimationFrame(tickDots);
+    }
+    function stopDots() {
+      running = false;
+      if (rafId) window.cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+
+    // ---- Throughput + uptime counters (interval, cheap) ----
+    let counterTimer = null;
+    let displayed = 0;
+    const target = 3200;
+
+    function fmt(n) {
+      return '~' + Math.round(n).toLocaleString('en-US') + ' req/sec';
+    }
+
+    function startCounters() {
+      // ramp up to target, then breathe subtly around it
+      let phase = 'ramp';
+      let breatheT = 0;
+      counterTimer = window.setInterval(function () {
+        if (phase === 'ramp') {
+          displayed += (target - displayed) * 0.14 + 4;
+          if (displayed >= target - 12) {
+            displayed = target;
+            phase = 'breathe';
+          }
+        } else {
+          breatheT += 0.18;
+          // gentle +/- 220 wander, never shouty
+          displayed =
+            target + Math.sin(breatheT) * 180 + Math.sin(breatheT * 2.3) * 40;
+        }
+        if (throughputEl) throughputEl.textContent = fmt(displayed);
+        if (meterFill) {
+          const pct = 12 + (Math.min(displayed, 4000) / 4000) * 76;
+          meterFill.style.width = pct.toFixed(1) + '%';
+        }
+      }, 90);
+    }
+    function stopCounters() {
+      if (counterTimer) window.clearInterval(counterTimer);
+      counterTimer = null;
+    }
+
+    // ---- Orchestrated reveal: edges draw, nodes pop, staggered ----
+    let played = false;
+    function play() {
+      if (played) return;
+      played = true;
+
+      // group nodes by step for staggered entrance
+      const steps = {};
+      nodes.forEach(function (n) {
+        const s = n.getAttribute('data-step') || '0';
+        (steps[s] = steps[s] || []).push(n);
+      });
+
+      const stepKeys = Object.keys(steps).sort();
+      const base = 120;
+      stepKeys.forEach(function (key, idx) {
+        const group = steps[key];
+        window.setTimeout(
+          function () {
+            group.forEach(function (n, j) {
+              window.setTimeout(function () {
+                const fx = n.querySelector('.node-fx');
+                if (fx) {
+                  fx.style.opacity = '1';
+                  fx.style.transform = 'none';
+                }
+              }, j * 60);
+            });
+            // draw the edges leaving this step after its nodes appear
+            window.setTimeout(function () {
+              edges
+                .filter(function (e) {
+                  return e.getAttribute('data-from') === key;
+                })
+                .forEach(function (e, k) {
+                  window.setTimeout(function () {
+                    e.style.strokeDashoffset = '0';
+                  }, k * 70);
+                });
+            }, 180);
+          },
+          base + idx * 260,
+        );
+      });
+
+      // once the flow is drawn, bring it alive
+      window.setTimeout(
+        function () {
+          startDots();
+          startCounters();
+        },
+        base + stepKeys.length * 260 + 300,
+      );
+    }
+
+    // ---- Pause work when the card is off-screen (perf) ----
+    const io =
+      'IntersectionObserver' in window
+        ? new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  play();
+                  if (played && !running) startDots();
+                  if (played && !counterTimer) startCounters();
+                } else {
+                  stopDots();
+                  stopCounters();
+                }
+              });
+            },
+            { threshold: 0.25 },
+          )
+        : null;
+
+    if (io) {
+      io.observe(card);
+    } else {
+      play();
+    }
+
+    // stop loops when tab hidden
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        stopDots();
+        stopCounters();
+      } else if (played) {
+        startDots();
+        startCounters();
+      }
+    });
+  })();
+</script>

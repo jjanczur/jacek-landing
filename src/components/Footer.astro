@@ -21,6 +21,16 @@ const legalLinks = {
 };
 
 const links = legalLinks[lang];
+
+const landingLinks = {
+  en: { turnaround: 'Tech turnaround', builder: 'AI systems architecture' },
+  pl: {
+    turnaround: 'Modernizacja i turnaround',
+    builder: 'Architektura systemów AI',
+  },
+  de: { turnaround: 'Tech-Turnaround', builder: 'AI-Systemarchitektur' },
+};
+const landings = landingLinks[lang];
 ---
 
 <footer class="footer">
@@ -32,6 +42,13 @@ const links = legalLinks[lang];
         <span class="legal-separator">•</span>
         <a href={`/${lang}/imprint/`} class="legal-link">{links.imprint}</a>
       </div>
+      <nav class="legal-links landing-links" aria-label="Other landing pages">
+        <a href={`/${lang}/turnaround/`} class="legal-link">
+          {landings.turnaround}
+        </a>
+        <span class="legal-separator">•</span>
+        <a href={`/${lang}/builder/`} class="legal-link">{landings.builder}</a>
+      </nav>
     </div>
 
     <div class="footer-right">

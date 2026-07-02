@@ -15,8 +15,8 @@
   src: url('/fonts/dm-sans-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: 'DM Sans';
@@ -40,8 +40,8 @@
   src: url('/fonts/rubik-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: 'Rubik';
@@ -98,6 +98,13 @@
   --space-6: 32px;
   --space-7: 48px;
   --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Motion - strong custom curves (built-in easings lack punch) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
   /* Font sizes */
   --font-size-xs: 0.75rem;
@@ -135,6 +142,17 @@
   --highlight: var(--highlight-dark);
   --muted: var(--muted-dark);
   --border: var(--border-dark);
+}
+
+/* Phones: scale down display type globally via the tokens, so every page's
+   hero/section headings shrink to fit without per-page media queries.
+   (The homepage hero title uses its own clamp() and is unaffected.) */
+@media (max-width: 600px) {
+  :root {
+    --font-size-hero: 1.95rem;
+    --font-size-2xl: 1.55rem;
+    --font-size-xl: 1.3rem;
+  }
 }
 
 /* Base styles */
@@ -220,6 +238,24 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+/* Scroll reveal — base hidden state is applied ONLY when JS enables it
+   (adds .reveal-on to <html>) and motion is allowed. Without JS or under
+   reduced motion the class is never added, so content stays fully visible. */
+.reveal-on .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-on .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -229,5 +265,11 @@ a:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Safety net: never leave revealed content hidden */
+  .reveal-on .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

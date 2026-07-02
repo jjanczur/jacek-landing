@@ -1,0 +1,197 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+// Logos live in /public/logos/. Order interleaves recognizable brands.
+const logos = [
+  { src: '/logos/redbull.svg', alt: 'Red Bull' },
+  { src: '/logos/bosch.svg', alt: 'Bosch' },
+  { src: '/logos/ing.svg', alt: 'ING' },
+  { src: '/logos/telekom.svg', alt: 'Deutsche Telekom' },
+  { src: '/logos/boehringer-ingelheim.png', alt: 'Boehringer Ingelheim' },
+  { src: '/logos/software-ag.svg', alt: 'Software AG' },
+  { src: '/logos/sas.svg', alt: 'SAS' },
+  { src: '/logos/kfw.png', alt: 'KfW Bankengruppe' },
+  { src: '/logos/stellantis.png', alt: 'Stellantis' },
+  { src: '/logos/idealo.png', alt: 'idealo' },
+  { src: '/logos/imf.png', alt: 'International Monetary Fund' },
+  { src: '/logos/tuv-nord.png', alt: 'TÜV Nord' },
+  { src: '/logos/apg.png', alt: 'APG' },
+  { src: '/logos/rp-group.png', alt: 'RP Group' },
+  { src: '/logos/kenstone.jpeg', alt: 'Kenstone' },
+];
+---
+
+<section class="worked-with reveal">
+  <div class="container">
+    <p class="worked-with-title">{title}</p>
+    <div class="marquee">
+      <ul class="marquee-track" role="list">
+        {
+          logos.map(logo => (
+            <li class="logo-chip">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                loading="eager"
+                decoding="async"
+              />
+            </li>
+          ))
+        }
+        {
+          /* Duplicate set for a seamless loop; hidden from AT and from static view */
+        }
+        {
+          logos.map(logo => (
+            <li class="logo-chip dup" aria-hidden="true">
+              <img src={logo.src} alt="" loading="eager" decoding="async" />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .worked-with {
+    padding: var(--space-7) 0;
+    background: var(--bg);
+  }
+
+  .worked-with-title {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text);
+    opacity: 0.55;
+    margin: 0 0 var(--space-5);
+  }
+
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    /* Fade the rails so logos appear/disappear softly */
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    width: max-content;
+    margin: 0;
+    padding: var(--space-2) 0;
+    list-style: none;
+    animation: marquee-scroll 60s linear infinite;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .logo-chip {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 84px;
+    min-width: 150px;
+    padding: 0 var(--space-5);
+    background: #fff;
+    /* No border frame — a soft shadow alone separates the tile (and keeps
+       logos legible on the dark theme, where chips stay white). */
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-2);
+    transition:
+      transform 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out);
+  }
+
+  .logo-chip img {
+    height: 58px;
+    width: auto;
+    max-width: 230px;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.75;
+    transition:
+      filter 0.3s ease,
+      opacity 0.3s ease,
+      transform 0.25s var(--ease-out);
+  }
+
+  /* Gate hover behind real pointers so touch taps don't trigger it */
+  @media (hover: hover) and (pointer: fine) {
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .logo-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-3);
+    }
+
+    .logo-chip:hover img {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      gap: var(--space-4);
+    }
+
+    /* No scrolling means no need for the duplicate set */
+    .logo-chip.dup {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .logo-chip {
+      height: 76px;
+      min-width: 130px;
+      padding: 0 var(--space-4);
+    }
+    .logo-chip img {
+      height: 48px;
+      max-width: 180px;
+    }
+  }
+</style>
