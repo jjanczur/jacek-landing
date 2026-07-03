@@ -22,6 +22,21 @@ const legalLinks = {
 
 const links = legalLinks[lang];
 
+const siteNav = {
+  en: { consulting: 'Consulting', writing: 'Writing & Talks', tools: 'Tools' },
+  pl: {
+    consulting: 'Konsulting',
+    writing: 'Pisanie i Wystąpienia',
+    tools: 'Narzędzia',
+  },
+  de: {
+    consulting: 'Beratung',
+    writing: 'Schreiben & Vorträge',
+    tools: 'Tools',
+  },
+};
+const nav = siteNav[lang];
+
 const landingLinks = {
   en: { turnaround: 'Tech turnaround', builder: 'AI systems architecture' },
   pl: {
@@ -36,6 +51,13 @@ const landings = landingLinks[lang];
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-left">
+      <nav class="footer-nav" aria-label="Site links">
+        <a href={`/${lang}/consulting/`} class="footer-nav-link">
+          {nav.consulting}
+        </a>
+        <a href={`/${lang}/writing/`} class="footer-nav-link">{nav.writing}</a>
+        <a href="/tools/" class="footer-nav-link">{nav.tools}</a>
+      </nav>
       <p class="copyright">© 2024 Jacek Janczura</p>
       <div class="legal-links">
         <a href={`/${lang}/privacy/`} class="legal-link">{links.privacy}</a>
@@ -130,6 +152,25 @@ const landings = landingLinks[lang];
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    transition: color 0.2s;
+  }
+
+  .footer-nav-link:hover {
+    color: var(--primary);
   }
 
   .copyright {

@@ -12,26 +12,19 @@ const navLinks = {
   en: [
     { href: '/en/', label: 'Home' },
     { href: '/en/projects/', label: 'Projects' },
-    { href: '/en/writing/', label: 'Writing & Talks' },
-    { href: '/tools/', label: 'Tools' },
     { href: '/en/about/', label: 'About' },
-    { href: '/en/consulting/', label: 'Consulting' },
     { href: '/en/contact/', label: 'Contact' },
   ],
   pl: [
     { href: '/pl/', label: 'Strona główna' },
     { href: '/pl/projects/', label: 'Projekty' },
-    { href: '/pl/writing/', label: 'Pisanie i Wystąpienia' },
     { href: '/pl/about/', label: 'O mnie' },
-    { href: '/pl/consulting/', label: 'Konsulting' },
     { href: '/pl/contact/', label: 'Kontakt' },
   ],
   de: [
     { href: '/de/', label: 'Startseite' },
     { href: '/de/projects/', label: 'Projekte' },
-    { href: '/de/writing/', label: 'Schreiben & Vorträge' },
     { href: '/de/about/', label: 'Über mich' },
-    { href: '/de/consulting/', label: 'Beratung' },
     { href: '/de/contact/', label: 'Kontakt' },
   ],
 };
@@ -217,18 +210,13 @@ const calendlyUrl =
       <!-- Desktop Navigation -->
       <nav class="nav-links desktop-nav" aria-label={i18n[lang].mainNavAria}>
         {
-          navLinks[lang]
-            .filter(link => link.href !== '/tools/')
-            .map(link => (
-              <a href={link.href} class="nav-link">
-                {link.label}
-              </a>
-            ))
+          navLinks[lang].map(link => (
+            <a href={link.href} class="nav-link">
+              {link.label}
+            </a>
+          ))
         }
       </nav>
-
-      <!-- Tools Link (positioned to the right of main nav) -->
-      <a href="/tools/" class="nav-link tools-link"> Tools </a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -261,15 +249,12 @@ const calendlyUrl =
           {i18n[lang].bookCall}
         </a>
         {
-          navLinks[lang]
-            .filter(link => link.href !== '/tools/')
-            .map(link => (
-              <a href={link.href} class="mobile-nav-link">
-                {link.label}
-              </a>
-            ))
+          navLinks[lang].map(link => (
+            <a href={link.href} class="mobile-nav-link">
+              {link.label}
+            </a>
+          ))
         }
-        <a href="/tools/" class="mobile-nav-link">Tools</a>
         <div class="mobile-nav-actions">
           <LanguageSwitcher lang={lang} pathMap={pathMap} mobile={true} />
           <button
@@ -649,10 +634,6 @@ const calendlyUrl =
     gap: var(--space-6);
   }
 
-  .tools-link {
-    flex-shrink: 0;
-  }
-
   .desktop-actions {
     display: flex;
     align-items: center;
@@ -874,8 +855,7 @@ const calendlyUrl =
     }
 
     .desktop-nav,
-    .desktop-actions,
-    .tools-link {
+    .desktop-actions {
       display: none;
     }
 

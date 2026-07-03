@@ -176,6 +176,9 @@ const copy = {
 
 const t = copy[lang];
 
+const calendlyUrl =
+  'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
+
 const milestones = t.milestones;
 
 const logos = [
@@ -265,7 +268,12 @@ const stats = [
 
       <div class="hero__cta reveal" style="--reveal-delay: 220ms;">
         <a class="btn btn--primary" href="#plan">{t.ctaPrimary}</a>
-        <a class="btn btn--ghost" href="#fit">{t.ctaSecondary}</a>
+        <a
+          class="btn btn--ghost"
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer">{t.ctaSecondary}</a
+        >
       </div>
 
       <p class="availability reveal" style="--reveal-delay: 300ms;">
@@ -418,7 +426,12 @@ const stats = [
       <p class="close__sub">{t.closeSub}</p>
       <div class="close__cta">
         <a class="btn btn--primary" href="#plan">{t.ctaPrimary}</a>
-        <a class="btn btn--ghost" href="#fit">{t.ctaSecondary}</a>
+        <a
+          class="btn btn--ghost"
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer">{t.ctaSecondary}</a
+        >
       </div>
       <p class="availability availability--foot">
         <span class="availability__pulse" aria-hidden="true"></span>
