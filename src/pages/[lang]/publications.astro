@@ -514,6 +514,7 @@ const t = await getTranslations<PublicationsTranslations>('publications', lang);
     border-radius: var(--radius-l);
     padding: var(--space-5);
     margin-bottom: var(--space-4);
+    overflow-wrap: break-word;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -670,11 +671,11 @@ const t = await getTranslations<PublicationsTranslations>('publications', lang);
 
   @media (max-width: 600px) {
     .notes-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .publications-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

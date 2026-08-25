@@ -1,33 +1,45 @@
 User-agent: *
 Allow: /
+Disallow: /media/
 
-# Explicitly allow common LLM scrapers and AI crawlers
+# Explicitly allow common LLM scrapers and AI crawlers.
+# NOTE: a matching per-agent block REPLACES the `*` block entirely — it is not
+# merged — so every block below has to repeat the /media/ exclusion.
 User-agent: GPTBot
 Allow: /
+Disallow: /media/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /media/
 
 User-agent: CCBot
 Allow: /
+Disallow: /media/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /media/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /media/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /media/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /media/
 
 User-agent: Perplexity
 Allow: /
+Disallow: /media/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /media/
 
 # Sitemap
 Sitemap: https://janczura.com/sitemap-index.xml

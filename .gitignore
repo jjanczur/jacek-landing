@@ -70,3 +70,7 @@ Desktop.ini
 
 # Snyk Security Extension - AI Rules (auto-generated)
 .github/instructions/snyk_rules.instructions.md
+
+# Local-only: maps the UUID logo filenames back to the companies they belong to.
+# Deliberately NOT committed — this repository is public.
+/logo-map.local.json

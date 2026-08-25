@@ -17,6 +17,15 @@
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Client logos. Filenames are UUIDs, so they are safe to cache forever.
+# X-Robots-Tag keeps the marks out of image search; note it does NOTHING on
+# GitHub Pages (which ignores this file entirely) — the page-level
+# `noimageindex` in BaseLayout.astro is what actually applies today. This block
+# exists so the behaviour is correct if the site ever moves to Cloudflare Pages.
+/media/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Robots-Tag: noindex, noimageindex
+
 # CSS and JS from Astro build - cache for 1 year
 # Note: assets directory is configured in astro.config.mjs
 /_astro/*

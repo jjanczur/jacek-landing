@@ -1,53 +1,72 @@
 {
   "meta": {
-    "title": "Architekt AI i Konsultant | Jacek Janczura",
-    "description": "Niezależny Architekt AI i konsultant (Fractional CTO) z Warszawy. Współzałożyciel i były CTO Jaden Data (obecnie doradca i udziałowiec). Specjalizuję się w platformach enterprise LLM/RAG, systemach rozproszonych, przeglądach architektury i doradztwie AI."
+    "title": "Architekt AI, Konsultant i Fractional CTO | Jacek Janczura",
+    "description": "Wprowadzam AI klasy enterprise na rynki regulowane — zaawansowany RAG, bazy wektorowe i grafowe oraz chatboty, które się skalują — z bezpieczeństwem i zgodnością (pentesty, ISO 27001, SOC 2) oraz przywództwem, które to dowozi. Niezależny Architekt AI, konsultant i Fractional CTO."
   },
   "hero": {
-    "title": "Architekt AI i Konsultant",
-    "subtitle": "Zamieniam złożoność operacyjną w przewagę konkurencyjną",
-    "tagline": "Niezależny Architekt AI i Fractional CTO z Warszawy – współzałożyciel Jaden Data (obecnie doradca i udziałowiec)",
+    "eyebrow": "Architekt AI · Konsultant · Fractional CTO",
+    "title": "Wprowadź AI do firmy — bezpiecznie i na dużą skalę.",
+    "subtitle": "Projektuję produkcyjne AI dla rynków regulowanych i prowadzę zespoły, które je dowożą — 5× szybciej, bez kompromisów w bezpieczeństwie, jakości i kontroli.",
     "cta": {
       "primary": "Skontaktuj się",
       "secondary": "Zobacz projekty"
-    }
+    },
+    "stats": [
+      {
+        "label": "produktywność deweloperów",
+        "countTo": 5,
+        "suffix": "×"
+      },
+      {
+        "label": "dostarczona zgodność",
+        "value": "ISO 27001 · SOC 2"
+      },
+      {
+        "label": "branże regulowane",
+        "countTo": 3
+      },
+      {
+        "label": "praktyczne przywództwo",
+        "value": "Fractional CTO"
+      }
+    ]
   },
   "positioning": {
-    "p1": "Cześć, jestem Jacek – niezależny architekt AI i konsultant w Warszawie. Współzałożyłem <strong>Jaden Data</strong> i pełniłem rolę CTO do czerwca 2024. Nadal wspieram zespół jako konsultant i udziałowiec. Buduję rozwiązania z zakresu Process Intelligence – natywne systemy AI, które realnie usprawniają sposób, w jaki pracuje się w Twojej firmie. Zaczynam od Twoich workflowów i sprawiam, że działają szybciej, bezpieczniej i są w pełni mierzalne.",
-    "p2": "Moje główne kompetencje to <strong>AI/ML</strong> i <strong>architektura chmurowa</strong>: platformy LLM klasy enterprise, systemy RAG i event-driven mikrokosmos na <strong>AWS</strong> (Lambda, ECS/Fargate, SNS/SQS). Integruję środowiska multi-model (OpenAI, Azure OpenAI, Bedrock, Mistral) i dostarczam rozwiązania gotowe na rygorystyczne audyty bezpieczeństwa (ISO 27001, SOC 2). Jeśli potrzebujesz wsparcia, robię też przeglądy architektury, prompt engineering z ewaluacją i pełnię rolę lidera technicznego."
+    "p1": "Projektuję i dowożę produkcyjne AI dla firm i skalujących się startupów na silnie regulowanych rynkach — <strong>automotive, bankowość i farmacja</strong>. Zaawansowany RAG na <strong>bazach wektorowych i grafowych</strong> oraz chatboty skalujące się do dużych organizacji – budowane z bezpieczeństwem i observability od pierwszego dnia.",
+    "p2": "Jako konsultant i <strong>Fractional CTO</strong> prowadzę zespoły inżynierskie, porządkuję procesy IT i przeprowadzam firmy przez testy penetracyjne aż do <strong>ISO 27001</strong> i <strong>SOC 2</strong> – ostatnio aż do akwizycji. Uczę też zespoły, jak właściwie korzystać z AI: ustawiam procesy, automatyzuję kontrolę jakości i skanowanie bezpieczeństwa (SAST, SCA, DAST), żeby Twoi deweloperzy pracowali ~5× szybciej bez utraty jakości."
   },
   "highlights": {
-    "title": "Gdzie Process Intelligence spotyka inżynieryjną jakość",
+    "title": "Od architektury po audyt",
     "items": [
       {
-        "title": "Platformy Enterprise AI",
-        "description": "Systemy multi-tenant obsługujące ponad 50 organizacji, >1000 jednoczesnych połączeń i tysiące zapytań na sekundę – zbudowane z myślą o krytycznych procesach biznesowych."
+        "title": "Zaawansowany RAG i systemy wiedzy",
+        "description": "Retrieval, który pozostaje osadzony w faktach i precyzyjny – zaawansowany RAG na bazach wektorowych i grafowych, by odpowiedzi cytowały realne źródła zamiast halucynować."
       },
       {
-        "title": "Architektura AWS (Serverless + Microservices)",
-        "description": "Rozwiązania event-driven na AWS (Lambda, ECS/Fargate, SNS/SQS) projektowane pod wysoką przepustowość, niezawodność i kontrolę kosztów."
-      },
-      {
-        "title": "Rozwiązania branżowe",
-        "description": "Dostarczam realną wartość w produkcji, farmacji, finansach, startupach i scale-upach – zawsze w powiązaniu z mierzalnymi celami biznesowymi."
+        "title": "Chatboty enterprise, które skalują",
+        "description": "Asystenci, którzy wytrzymują realne obciążenie i obsługują duże organizacje na silnie regulowanych rynkach – niezawodni, obserwowalni i zgodni z marką."
       },
       {
         "title": "Bezpieczeństwo i zgodność",
-        "description": "Bezpieczeństwo to nie dodatek, to fundament projektu. Wdrożyłem ISO 27001 i SOC 2 dla platform enterprise pod dużą presją czasu."
+        "description": "Bezpieczeństwo to część projektu: testy penetracyjne, ISO 27001 i SOC 2 – systemy AI, które bez obaw pokażesz audytorowi."
       },
       {
-        "title": "LLM, RAG i ewaluacje",
-        "description": "Stosy LLM wspierające wiele modeli i pipeline'y RAG połączone ze zautomatyzowanym testowaniem (metryki, testy regresji), by zagwarantować stabilność zachowań AI."
+        "title": "Fractional CTO i przywództwo zespołu",
+        "description": "Prowadzę zespoły inżynierskie, wyznaczam kierunek techniczny i mentoruję – doświadczona ręka na sterze, gdy Twoja mapa drogowa AI nabiera kształtu."
       },
       {
-        "title": "Doświadczenie i przywództwo techniczne",
-        "description": "Zbudowałem zespół inżynierski od 0 do 10 osób, zarządzałem procesem delivery end-to-end i potrafię przełożyć wizję biznesową na solidną architekturę i plany wdrożeniowe."
+        "title": "Dostarczanie przyspieszone przez AI",
+        "description": "Spraw, by deweloperzy byli ~5× produktywniejsi dzięki AI bez utraty jakości – automatyczne review, SAST/SCA/DAST i pełna observability w standardzie."
+      },
+      {
+        "title": "Startup → gotowość do akwizycji",
+        "description": "Uporządkuj procesy IT i bezpieczeństwa, przez pentesty aż po certyfikacje, aż Twoja firma będzie wystarczająco czysta, by przejść due diligence przy akwizycji."
       }
     ],
     "note": "Certyfikowany spadochroniarz, nurek, instruktor wind/kitesurfingu i snowboardzista. Te pasje uczą zarządzania ryzykiem, jasnej komunikacji, zachowania spokoju pod presją i żelaznej dyscypliny – to skille, które bezpośrednio przekładają się na prowadzenie zespołów IT i budowę systemów, na których firmy mogą polegać."
   },
   "featured": {
-    "title": "Process Intelligence w akcji",
+    "title": "Wybrane projekty",
     "items": [
       {
         "title": "entAIngine",
@@ -74,8 +93,8 @@
     ]
   },
   "contactCta": {
-    "title": "Gotowy na transformację procesów w swojej firmie?",
-    "description": "Niezależnie od tego, czy jesteś startupem, scale-upem, czy dojrzałą korporacją – jeśli potrzebujesz pomocy z architekturą AWS, wdrożeniami LLM/RAG, ewaluacją modeli AI lub wsparcia technicznego, zdzwońmy się.",
+    "title": "Gotowy, by wprowadzić AI do swojej firmy?",
+    "description": "Niezależnie od tego, czy skalujesz startup, czy zarządzasz operacjami w korporacji – jeśli potrzebujesz produkcyjnego AI, bezpieczeństwa i zgodności albo Fractional CTO, który poprowadzi, zdzwońmy się.",
     "button": "Skontaktuj się"
   },
   "faq": {
@@ -84,17 +103,17 @@
     "items": [
       {
         "question": "Kim jest Jacek Janczura?",
-        "answer": "Jestem niezależnym Architektem AI i konsultantem (Fractional CTO) w Warszawie. Współzałożyłem Jaden Data GmbH i do 2024 roku pełniłem tam rolę CTO. Obecnie jestem udziałowcem i doradcą. Buduję natywne systemy AI optymalizujące procesy w firmach.",
+        "answer": "Jacek Janczura to niezależny Architekt AI, konsultant i Fractional CTO. Współzałożył Jaden Data GmbH i do 2024 roku pełnił tam rolę CTO; obecnie jest udziałowcem i doradcą – buduje bezpieczne AI klasy enterprise dla firm na silnie regulowanych rynkach.",
         "links": ["about"]
       },
       {
-        "question": "Czym jest „process intelligence”?",
-        "answer": "Process Intelligence oznacza dla mnie wyjście od tego, jak faktycznie wykonuje się pracę, a następnie usprawnienie tych workflowów poprzez AI i automatyzację. AI służy procesowi, a nie na odwrót.",
-        "links": ["about"]
+        "question": "Jak zwiększasz produktywność deweloperów dzięki AI?",
+        "answer": "Wprowadzając AI do procesu wytwarzania w odpowiedni sposób – łącząc asystentów i automatyzację z mocnymi barierkami: automatyczne code review, skanowanie bezpieczeństwa (SAST, SCA, DAST), testy i observability. Zespoły dowożą szybciej (często ~5×) bez utraty jakości i kontroli.",
+        "links": ["consulting"]
       },
       {
         "question": "Co budujesz?",
-        "answer": "Platformy enterprise LLM, systemy RAG oraz event-driven architektury chmurowe – zazwyczaj w formie multi-tenantowych rozwiązań SaaS wplecionych bezpośrednio w operacje firmy.",
+        "answer": "Platformy enterprise LLM, systemy RAG na bazach wektorowych i grafowych, skalujące się chatboty oraz event-driven architektury chmurowe – zazwyczaj jako multi-tenantowe rozwiązania SaaS wplecione bezpośrednio w operacje firmy.",
         "links": ["projects"]
       },
       {
@@ -104,22 +123,22 @@
       },
       {
         "question": "Dla jakich branż realizowałeś projekty?",
-        "answer": "Przemysł, farmacja, finanse, venture capital, nieruchomości, ubezpieczenia, prawo, automotive, e-commerce, telco, energetyka, logistyka i supply chain.",
+        "answer": "Przede wszystkim silnie regulowane rynki – automotive, bankowość/finanse i farmacja – a także przemysł, venture capital, nieruchomości, ubezpieczenia, prawo, e-commerce, telco, energetyka, logistyka i supply chain.",
         "links": ["projects"]
       },
       {
-        "question": "Jakie masz doświadczenie z LLM i RAG?",
-        "answer": "Projektowałem stacki LLM obejmujące m.in. OpenAI, Azure, Bedrock i Mistral. Tworzyłem serwisy RAG z automatycznym zarządzaniem bazami wektorowymi (Pinecone, pgvector, Milvus) oraz frameworki do ewaluacji modeli.",
+        "question": "Jakie masz doświadczenie z LLM, RAG i bazami wektorowymi/grafowymi?",
+        "answer": "Projektowałem stacki LLM obejmujące m.in. OpenAI, Azure, Bedrock i Mistral oraz tworzyłem serwisy RAG z automatycznym zarządzaniem bazami wektorowymi (Pinecone, pgvector, Milvus) – plus retrieval oparty o grafy i frameworki do testowania pipeline'ów AI.",
         "links": ["projects", "consulting"]
       },
       {
         "question": "Czy zajmujesz się bezpieczeństwem i compliance?",
-        "answer": "Tak. Przeprowadziłem firmę przez certyfikację ISO 27001 i SOC 2 w zaledwie 3 miesiące. Bezpieczeństwo wielodostępne (multi-tenant) i rygorystyczne RBAC to rdzeń mojego podejścia do architektury.",
+        "answer": "Tak. Przeprowadzam firmy przez testy penetracyjne, a certyfikację ISO 27001 i SOC 2 wdrożyłem w ok. 3 miesiące dla platform enterprise – ostatnio jako element przygotowania startupów do akwizycji. Bezpieczeństwo multi-tenant i rygorystyczne RBAC to rdzeń mojego podejścia do architektury.",
         "links": ["consulting"]
       },
       {
         "question": "Jak możemy współpracować?",
-        "answer": "Pracuję jako freelancer przy przeglądach architektury (AWS/Cloud, LLM/RAG, security, koszty), prompt engineeringu z ewaluacją, bezpośrednich wdrożeniach AI, a także w roli Interim CTO i wsparciu zespołów.",
+        "answer": "Wchodzę w rolę Fractional CTO i lidera technicznego, robię przeglądy architektury (cloud, LLM/RAG, security, skalowanie/koszty), bezpośrednie wdrożenia AI, programy security/compliance oraz AI enablement dla zespołów inżynierskich.",
         "links": ["consulting", "contact"]
       },
       {

@@ -1,0 +1,1372 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSupportedLangs } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return getSupportedLangs().map(lang => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props;
+
+const copy = {
+  en: {
+    metaTitle: 'Interim Head of AI · Tech Turnaround — Jacek Janczura',
+    metaDescription:
+      'Interim Head of AI for companies mid-turnaround: migrate off the monolith, close the compliance gaps auditors flag, pass ISO 27001 and SOC 2 in about three months — without freezing the roadmap. Then a clean handoff to a team that runs it.',
+    eyebrow: 'Interim Head of AI · Tech Turnaround',
+    heroTitle:
+      'Modernize the stack — and pass the audit —\n        <span class="hero__title-em">without freezing the roadmap.</span>',
+    heroSub:
+      "I step into companies mid-turnaround and take legacy debt off the\n        critical path: migrate off the monolith, close the compliance gaps\n        auditors flag, and add AI only where it moves a number. I've led\n        companies through pentests to <strong>ISO 27001</strong> and\n        <strong>SOC 2</strong> certification in about three months — while they kept\n        shipping. Then I hand you a team that runs it without me.",
+    ctaPrimary: 'Map your first 90 days',
+    ctaSecondary: 'Book a 30-min fit call',
+    availability: 'Currently consulting · open to the right permanent CTO role',
+    proofLabel: 'Trusted on turnarounds for',
+    // Positionally merged with `logoBase` below — order is load-bearing.
+    logoAlts: [
+      'National central bank',
+      'European pension fund',
+      'Development bank',
+      'Global pharmaceutical group',
+      'Industrial technology group',
+      'Global beverage brand',
+      'European retail bank',
+      'E-commerce price comparison platform',
+    ],
+    proofLegal:
+      'All trademarks are the property of their respective owners. Logos indicate completed engagements delivered as an independent contractor; no partnership, sponsorship or endorsement is implied.',
+    credentials: ['ISO 27001', 'SOC 2', '99.9% uptime', '50+ orgs'],
+    stats: [
+      { label: 'Built from zero', sub: 'company revenue, 0 → €1M+' },
+      { label: 'Certifications delivered', sub: 'ISO 27001 + SOC 2' },
+      { label: 'Turnaround time', sub: 'pentest → certified' },
+      { label: 'Organizations served', sub: 'multi-tenant on AWS' },
+      { label: 'Uptime held', sub: 'thousands of req/s' },
+    ],
+    planEyebrow: 'The first 90 days',
+    planTitle: 'A plan that assembles itself.',
+    planLede:
+      'Not a discovery phase that never ends. A dated path from "we\'re not\n          sure what\'s on fire" to "the team owns it" — the same one I\'ve led\n          companies through, from pentests to ISO 27001 and SOC 2 certification,\n          in about three months.',
+    milestones: [
+      {
+        tag: 'Week 1',
+        title: 'Risk & architecture read',
+        body: 'I map the monolith, the dependency graph, and the gaps auditors will flag. You get the real picture — not the org chart.',
+      },
+      {
+        tag: 'Weeks 2–4',
+        title: 'Standards & CI/CD quality gates live',
+        body: 'Automated quality gates, security baselines, and a working path off the critical dependencies. The team keeps shipping.',
+      },
+      {
+        tag: 'Weeks 5–8',
+        title: 'Measurable wins + a board-ready roadmap',
+        body: 'Legacy debt moves off the critical path, one metric moves, and the board gets a roadmap they can fund.',
+      },
+      {
+        tag: 'Handoff',
+        title: 'A team that runs it without me',
+        body: 'Ownership stays inside the company. A clear end, not a perpetual retainer.',
+      },
+    ],
+    planWork:
+      '<strong>How I work:</strong> In your Slack and your code review, making the\n        calls — then a clean handoff. A clear end, not a perpetual retainer.',
+    closeTitle: 'Bring me in while it still matters.',
+    closeSub:
+      "Thirty minutes to see if it's a fit — I'll tell you straight whether an\n        interim CTO is what you need, or whether you'd be better off hiring.",
+  },
+  pl: {
+    metaTitle: 'Interim Head of AI · Naprawa techu — Jacek Janczura',
+    metaDescription:
+      'Interim Head of AI dla firm w trakcie naprawy: zejście z monolitu, domknięcie luk compliance, które wytkną audytorzy, i przejście ISO 27001 oraz SOC 2 w około trzy miesiące — bez zamrażania roadmapy. Na koniec czyste przekazanie zespołowi, który to utrzyma.',
+    eyebrow: 'Interim Head of AI · Naprawa techu',
+    heroTitle:
+      'Zmodernizuj stack — i przejdź audyt —\n        <span class="hero__title-em">bez zamrażania roadmapy.</span>',
+    heroSub:
+      'Wchodzę do firm w trakcie naprawy i ściągam legacy debt ze ścieżki\n        krytycznej: schodzę z monolitu, domykam luki compliance, które\n        wytkną audytorzy, i dodaję AI tylko tam, gdzie ruszy konkretną liczbę.\n        Przeprowadziłem firmy od pentestów do certyfikacji <strong>ISO 27001</strong>\n        i <strong>SOC 2</strong> w około trzy miesiące — nie przerywając\n        dowożenia. Na koniec zostawiam Ci zespół, który utrzyma to beze mnie.',
+    ctaPrimary: 'Rozpisz swoje pierwsze 90 dni',
+    ctaSecondary: 'Umów 30-min rozmowę',
+    availability: 'Aktualnie konsultuję · otwarty na właściwą stałą rolę CTO',
+    proofLabel: 'Zaufali mi przy naprawach',
+    // Positionally merged with `logoBase` below — order is load-bearing.
+    logoAlts: [
+      'Narodowy bank centralny',
+      'Europejski fundusz emerytalny',
+      'Bank rozwoju',
+      'Globalny koncern farmaceutyczny',
+      'Koncern technologii przemysłowych',
+      'Globalna marka napojów',
+      'Europejski bank detaliczny',
+      'Platforma porównywania cen e-commerce',
+    ],
+    proofLegal:
+      'Wszystkie znaki towarowe należą do ich właścicieli. Logotypy oznaczają zrealizowane projekty wykonane jako niezależny wykonawca; nie oznaczają partnerstwa, sponsoringu ani rekomendacji.',
+    credentials: ['ISO 27001', 'SOC 2', '99.9% uptime', '50+ firm'],
+    stats: [
+      { label: 'Zbudowane od zera', sub: 'przychód firmy, 0 → €1M+' },
+      { label: 'Dostarczone certyfikaty', sub: 'ISO 27001 + SOC 2' },
+      { label: 'Czas naprawy', sub: 'pentest → certyfikat' },
+      { label: 'Obsłużonych firm', sub: 'multi-tenant na AWS' },
+      { label: 'Utrzymany uptime', sub: 'tysiące req/s' },
+    ],
+    planEyebrow: 'Pierwsze 90 dni',
+    planTitle: 'Plan, który układa się sam.',
+    planLede:
+      'Bez fazy discovery, która nie ma końca. Konkretna, datowana droga od\n          „nie wiemy, co się pali" do „zespół ma to pod kontrolą" — dokładnie\n          ta sama, którą przeprowadziłem firmy od pentestów do certyfikacji\n          ISO 27001 i SOC 2, w około trzy miesiące.',
+    milestones: [
+      {
+        tag: 'Tydzień 1',
+        title: 'Prześwietlenie ryzyka i architektury',
+        body: 'Mapuję monolit, graf zależności i luki, które wytkną audytorzy. Dostajesz prawdziwy obraz — nie schemat organizacyjny.',
+      },
+      {
+        tag: 'Tygodnie 2–4',
+        title: 'Standardy i quality gates w CI/CD na produkcji',
+        body: 'Automatyczne quality gates, bazowe standardy bezpieczeństwa i realna droga wyjścia z krytycznych zależności. Zespół dalej dowozi.',
+      },
+      {
+        tag: 'Tygodnie 5–8',
+        title: 'Mierzalne wygrane + roadmapa dla zarządu',
+        body: 'Legacy debt schodzi ze ścieżki krytycznej, jedna metryka rusza, a zarząd dostaje roadmapę, którą może sfinansować.',
+      },
+      {
+        tag: 'Przekazanie',
+        title: 'Zespół, który prowadzi to beze mnie',
+        body: 'Odpowiedzialność zostaje w firmie. Jasny koniec, nie bezterminowy retainer.',
+      },
+    ],
+    planWork:
+      '<strong>Jak pracuję:</strong> Na Twoim Slacku i w Twoim code review, podejmując\n        decyzje — a potem czyste przekazanie. Jasny koniec, nie bezterminowy retainer.',
+    closeTitle: 'Weź mnie na pokład, póki to jeszcze coś zmienia.',
+    closeSub:
+      'Trzydzieści minut, żeby sprawdzić, czy pasujemy — powiem Ci wprost, czy\n        potrzebujesz interim CTO, czy lepiej wyjdziesz na zatrudnieniu kogoś na stałe.',
+  },
+  de: {
+    metaTitle: 'Interim Head of AI · Tech-Turnaround — Jacek Janczura',
+    metaDescription:
+      'Interim Head of AI für Unternehmen mitten im Turnaround: weg vom Monolithen, die Compliance-Lücken schließen, die Auditoren aufdecken, ISO 27001 und SOC 2 in rund drei Monaten bestehen — ohne die Roadmap einzufrieren. Danach eine saubere Übergabe an ein Team, das es weiterführt.',
+    eyebrow: 'Interim Head of AI · Tech-Turnaround',
+    heroTitle:
+      'Stack modernisieren — und das Audit bestehen —\n        <span class="hero__title-em">ohne die Roadmap einzufrieren.</span>',
+    heroSub:
+      'Ich steige in Unternehmen mitten im Turnaround ein und hole Legacy Debt\n        vom kritischen Pfad: weg vom Monolithen, die Compliance-Lücken schließen,\n        die Auditoren aufdecken, und AI nur dort ergänzen, wo sie eine Zahl bewegt.\n        Ich habe Unternehmen von Pentests bis zur <strong>ISO 27001</strong>- und\n        <strong>SOC 2</strong>-Zertifizierung geführt — in rund drei Monaten, während\n        sie weiter ausgeliefert haben. Danach übergebe ich dir ein Team, das es\n        ohne mich weiterführt.',
+    ctaPrimary: 'Deine ersten 90 Tage planen',
+    ctaSecondary: '30-Min-Kennenlerncall buchen',
+    availability:
+      'Aktuell beratend tätig · offen für die richtige feste CTO-Rolle',
+    proofLabel: 'Bei Turnarounds vertraut von',
+    // Positionally merged with `logoBase` below — order is load-bearing.
+    logoAlts: [
+      'Nationale Zentralbank',
+      'Europäischer Pensionsfonds',
+      'Förderbank',
+      'Globaler Pharmakonzern',
+      'Industrietechnologiekonzern',
+      'Globale Getränkemarke',
+      'Europäische Privatkundenbank',
+      'E-Commerce-Preisvergleichsplattform',
+    ],
+    proofLegal:
+      'Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Die Logos kennzeichnen abgeschlossene Projekte, die als freier Auftragnehmer erbracht wurden; eine Partnerschaft, Förderung oder Empfehlung wird nicht impliziert.',
+    credentials: ['ISO 27001', 'SOC 2', '99,9% uptime', '50+ Orgs'],
+    stats: [
+      { label: 'Von null aufgebaut', sub: 'Firmenumsatz, 0 → €1M+' },
+      { label: 'Zertifizierungen geliefert', sub: 'ISO 27001 + SOC 2' },
+      { label: 'Turnaround-Dauer', sub: 'Pentest → zertifiziert' },
+      { label: 'Organisationen betreut', sub: 'multi-tenant auf AWS' },
+      { label: 'Uptime gehalten', sub: 'tausende req/s' },
+    ],
+    planEyebrow: 'Die ersten 90 Tage',
+    planTitle: 'Ein Plan, der sich von selbst zusammensetzt.',
+    planLede:
+      'Keine Discovery-Phase, die nie endet. Ein datierter Weg von „wir wissen\n          nicht genau, wo es brennt" zu „das Team hat es im Griff" — genau der,\n          auf dem ich Unternehmen von Pentests bis zur ISO-27001- und\n          SOC-2-Zertifizierung geführt habe, in rund drei Monaten.',
+    milestones: [
+      {
+        tag: 'Woche 1',
+        title: 'Risiko- und Architektur-Check',
+        body: 'Ich kartiere den Monolithen, den Dependency-Graph und die Lücken, die Auditoren aufdecken werden. Du bekommst das echte Bild — nicht das Orgchart.',
+      },
+      {
+        tag: 'Woche 2–4',
+        title: 'Standards und CI/CD-Quality-Gates live',
+        body: 'Automatisierte Quality Gates, Security-Baselines und ein gangbarer Weg weg von den kritischen Dependencies. Das Team liefert weiter aus.',
+      },
+      {
+        tag: 'Woche 5–8',
+        title: 'Messbare Erfolge + eine Roadmap fürs Board',
+        body: 'Legacy Debt verlässt den kritischen Pfad, eine Kennzahl bewegt sich, und das Board bekommt eine Roadmap, die es finanzieren kann.',
+      },
+      {
+        tag: 'Übergabe',
+        title: 'Ein Team, das es ohne mich weiterführt',
+        body: 'Die Verantwortung bleibt im Unternehmen. Ein klares Ende, kein Retainer auf Dauer.',
+      },
+    ],
+    planWork:
+      '<strong>Wie ich arbeite:</strong> In deinem Slack und deinem Code-Review, ich\n        treffe die Entscheidungen — dann eine saubere Übergabe. Ein klares Ende, kein Retainer auf Dauer.',
+    closeTitle: 'Hol mich rein, solange es noch etwas ändert.',
+    closeSub:
+      'Dreißig Minuten, um zu sehen, ob es passt — ich sage dir klar, ob ein\n        Interim-CTO das ist, was du brauchst, oder ob du mit einer Festanstellung besser fährst.',
+  },
+};
+
+const t = copy[lang];
+
+const calendlyUrl =
+  'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
+
+const milestones = t.milestones;
+
+// ORDER IS LOAD-BEARING — merged positionally with the translated `logoAlts`.
+// `w`/`h` are the asset's intrinsic size, used only to reserve the aspect ratio
+// and avoid CLS; CSS decides the rendered size.
+const logoBase = [
+  { src: '/media/0a1b52260b574b1eb6896d0a54b55b11.webp', w: 744, h: 133 },
+  { src: '/media/26a6930244564dbfbcf739144d3ee697.webp', w: 548, h: 186 },
+  { src: '/media/1281e65db12c45469e14f9d21293fc0f.webp', w: 529, h: 186 },
+  { src: '/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp', w: 622, h: 186 },
+  { src: '/media/28105d45d9344ea18b2923eed7f69bb3.webp', w: 744, h: 166 },
+  { src: '/media/08e6a6fe611f43c2a0f29358faf97629.webp', w: 744, h: 176 },
+  { src: '/media/83c4ed8c667b41939165458511d46e3f.webp', w: 550, h: 186 },
+  { src: '/media/8b8ae90132304dc3be81b75e313e6285.webp', w: 611, h: 186 },
+];
+const logos = logoBase.map((logo, i) => ({ ...logo, alt: t.logoAlts[i] }));
+
+const credentials = t.credentials;
+
+const stats = [
+  {
+    value: 1,
+    prefix: '€',
+    suffix: 'M+',
+    label: t.stats[0].label,
+    sub: t.stats[0].sub,
+    decimals: 0,
+  },
+  {
+    value: 2,
+    prefix: '',
+    suffix: '',
+    label: t.stats[1].label,
+    sub: t.stats[1].sub,
+    decimals: 0,
+  },
+  {
+    value: 3,
+    prefix: '~',
+    suffix: ' mo',
+    label: t.stats[2].label,
+    sub: t.stats[2].sub,
+    decimals: 0,
+  },
+  {
+    value: 50,
+    prefix: '',
+    suffix: '+',
+    label: t.stats[3].label,
+    sub: t.stats[3].sub,
+    decimals: 0,
+  },
+  {
+    value: 99.9,
+    prefix: '',
+    suffix: '%',
+    label: t.stats[4].label,
+    sub: t.stats[4].sub,
+    decimals: 1,
+  },
+];
+---
+
+<BaseLayout
+  title={t.metaTitle}
+  description={t.metaDescription}
+  lang={lang}
+  noImageIndex
+>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="aurora" aria-hidden="true">
+      <span class="aurora__blob aurora__blob--a"></span>
+      <span class="aurora__blob aurora__blob--b"></span>
+      <span class="aurora__blob aurora__blob--c"></span>
+      <span class="aurora__grid"></span>
+    </div>
+
+    <div class="container hero__inner">
+      <p class="eyebrow reveal">
+        <span class="eyebrow__dot" aria-hidden="true"></span>
+        {t.eyebrow}
+      </p>
+
+      <h1
+        class="hero__title reveal"
+        style="--reveal-delay: 60ms;"
+        set:html={t.heroTitle}
+      />
+
+      <p
+        class="hero__sub reveal"
+        style="--reveal-delay: 140ms;"
+        set:html={t.heroSub}
+      />
+
+      <div class="hero__cta reveal" style="--reveal-delay: 220ms;">
+        <a class="btn btn--primary" href="#plan">{t.ctaPrimary}</a>
+        <a
+          class="btn btn--ghost"
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer">{t.ctaSecondary}</a
+        >
+      </div>
+
+      <p class="availability reveal" style="--reveal-delay: 300ms;">
+        <span class="availability__pulse" aria-hidden="true"></span>
+        {t.availability}
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= PROOF STRIP ================= -->
+  <section class="proof">
+    <div class="container">
+      <p class="proof__label reveal">{t.proofLabel}</p>
+      <ul class="proof__logos reveal" style="--reveal-delay: 60ms;">
+        {
+          logos.map(logo => (
+            <li class="chip">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.w}
+                height={logo.h}
+                loading="lazy"
+                decoding="async"
+              />
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="proof__creds reveal" style="--reveal-delay: 120ms;">
+        {credentials.map(c => <li class="cred">{c}</li>)}
+      </ul>
+      <p class="proof__legal">{t.proofLegal}</p>
+    </div>
+  </section>
+
+  <!-- ================= STATS COUNT-UP ================= -->
+  <section class="stats">
+    <div class="container">
+      <ul class="stats__grid">
+        {
+          stats.map((s, i) => (
+            <li class="stat reveal" style={`--reveal-delay: ${i * 60}ms;`}>
+              <span
+                class="stat__value"
+                data-countup
+                data-to={s.value}
+                data-prefix={s.prefix}
+                data-suffix={s.suffix}
+                data-decimals={s.decimals}
+              >
+                {s.prefix}0{s.suffix}
+              </span>
+              <span class="stat__label">{s.label}</span>
+              <span class="stat__sub">{s.sub}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= SIGNATURE: 90-DAY ROADMAP ================= -->
+  <section class="plan" id="plan">
+    <div class="container">
+      <header class="plan__head reveal">
+        <p class="plan__eyebrow">{t.planEyebrow}</p>
+        <h2 class="plan__title">{t.planTitle}</h2>
+        <p class="plan__lede" set:html={t.planLede} />
+      </header>
+
+      <div class="roadmap reveal" style="--reveal-delay: 80ms;" data-roadmap>
+        <!-- SVG timeline: drawn line + travelling dot + milestone nodes -->
+        <svg
+          class="roadmap__svg"
+          viewBox="0 0 1000 120"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <defs>
+            <linearGradient id="tr-line" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="var(--primary)"></stop>
+              <stop offset="100%" stop-color="var(--accent)"></stop>
+            </linearGradient>
+            <filter id="tr-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="6" result="b"></feGaussianBlur>
+              <feMerge>
+                <feMergeNode in="b"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Rail (static faint track) -->
+          <line class="roadmap__rail" x1="40" y1="60" x2="960" y2="60"></line>
+          <!-- Progress line drawn via stroke-dashoffset -->
+          <line
+            class="roadmap__progress"
+            data-progress-line
+            x1="40"
+            y1="60"
+            x2="960"
+            y2="60"></line>
+
+          <!-- Milestone node markers on the rail -->
+          <g class="roadmap__nodes">
+            <circle class="roadmap__node" data-node="0" cx="40" cy="60" r="7"
+            ></circle>
+            <circle class="roadmap__node" data-node="1" cx="347" cy="60" r="7"
+            ></circle>
+            <circle class="roadmap__node" data-node="2" cx="653" cy="60" r="7"
+            ></circle>
+            <circle class="roadmap__node" data-node="3" cx="960" cy="60" r="7"
+            ></circle>
+          </g>
+
+          <!-- Travelling glow dot -->
+          <circle
+            class="roadmap__runner"
+            data-runner
+            cx="40"
+            cy="60"
+            r="5"
+            filter="url(#tr-glow)"></circle>
+        </svg>
+
+        <ol class="roadmap__cards">
+          {
+            milestones.map((m, i) => (
+              <li class="mstone" data-mstone={i}>
+                <span class="mstone__tag">{m.tag}</span>
+                <h3 class="mstone__title">{m.title}</h3>
+                <p class="mstone__body">{m.body}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <p
+        class="plan__work reveal"
+        style="--reveal-delay: 120ms;"
+        set:html={t.planWork}
+      />
+    </div>
+  </section>
+
+  <!-- ================= CLOSING CTA ================= -->
+  <section class="close" id="fit">
+    <div class="container close__inner reveal">
+      <h2 class="close__title">{t.closeTitle}</h2>
+      <p class="close__sub">{t.closeSub}</p>
+      <div class="close__cta">
+        <a class="btn btn--primary" href="#plan">{t.ctaPrimary}</a>
+        <a
+          class="btn btn--ghost"
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer">{t.ctaSecondary}</a
+        >
+      </div>
+      <p class="availability availability--foot">
+        <span class="availability__pulse" aria-hidden="true"></span>
+        {t.availability}
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ===================== HERO ===================== */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-9) 0 var(--space-8);
+    isolation: isolate;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .eyebrow__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 6.2vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-5);
+    max-width: 20ch;
+  }
+
+  .hero__title-em {
+    display: block;
+    background: linear-gradient(
+      100deg,
+      var(--primary),
+      color-mix(in oklab, var(--accent) 70%, var(--primary))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero__sub {
+    font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+    color: color-mix(in oklab, var(--text) 82%, transparent);
+    max-width: 62ch;
+    margin: 0 0 var(--space-6);
+  }
+
+  .hero__sub strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  /* ---- Aurora / calm animated gradient behind hero ---- */
+  .aurora {
+    position: absolute;
+    inset: -20% -10% 0;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(2px);
+  }
+
+  .aurora__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.5;
+    will-change: transform;
+  }
+
+  .aurora__blob--a {
+    top: -8%;
+    left: 4%;
+    width: 46vw;
+    height: 46vw;
+    max-width: 620px;
+    max-height: 620px;
+    background: radial-gradient(
+      circle at 30% 30%,
+      color-mix(in oklab, var(--primary) 55%, transparent),
+      transparent 68%
+    );
+    animation: drift-a 22s var(--ease-in-out) infinite alternate;
+  }
+
+  .aurora__blob--b {
+    top: 6%;
+    right: 2%;
+    width: 40vw;
+    height: 40vw;
+    max-width: 540px;
+    max-height: 540px;
+    background: radial-gradient(
+      circle at 60% 40%,
+      color-mix(in oklab, var(--accent) 60%, transparent),
+      transparent 66%
+    );
+    animation: drift-b 26s var(--ease-in-out) infinite alternate;
+  }
+
+  .aurora__blob--c {
+    bottom: -18%;
+    left: 32%;
+    width: 38vw;
+    height: 38vw;
+    max-width: 500px;
+    max-height: 500px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in oklab, var(--highlight) 42%, transparent),
+      transparent 70%
+    );
+    animation: drift-c 30s var(--ease-in-out) infinite alternate;
+  }
+
+  .aurora__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklab, var(--border) 55%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--border) 55%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 30%,
+      #000 0%,
+      transparent 75%
+    );
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 30%,
+      #000 0%,
+      transparent 75%
+    );
+    opacity: 0.5;
+  }
+
+  @keyframes drift-a {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(4%, 6%, 0) scale(1.12);
+    }
+  }
+  @keyframes drift-b {
+    from {
+      transform: translate3d(0, 0, 0) scale(1.05);
+    }
+    to {
+      transform: translate3d(-5%, 4%, 0) scale(0.95);
+    }
+  }
+  @keyframes drift-c {
+    from {
+      transform: translate3d(0, 0, 0) scale(0.95);
+    }
+    to {
+      transform: translate3d(3%, -5%, 0) scale(1.1);
+    }
+  }
+
+  /* ---- Availability pill ---- */
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: color-mix(in oklab, var(--text) 78%, transparent);
+    background: color-mix(in oklab, var(--muted) 70%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+  }
+
+  .availability__pulse {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+
+  .availability__pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse-ring 2.4s var(--ease-out) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    70%,
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
+  /* ===================== BUTTONS ===================== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-m);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition:
+      transform 0.18s var(--ease-out),
+      box-shadow 0.28s var(--ease-out),
+      background-color 0.28s var(--ease-out),
+      border-color 0.28s var(--ease-out);
+  }
+
+  .btn:hover {
+    text-decoration: none;
+  }
+
+  .btn--primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: var(--shadow-2);
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-3);
+      background: color-mix(in oklab, var(--primary) 90%, #000);
+    }
+    .btn--ghost:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      background: color-mix(in oklab, var(--primary) 8%, transparent);
+    }
+  }
+
+  /* ===================== PROOF STRIP ===================== */
+  .proof {
+    padding: var(--space-7) 0 var(--space-6);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proof__label {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--text) 55%, transparent);
+    margin: 0 0 var(--space-5);
+  }
+
+  .proof__logos {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: 0;
+    margin: 0 0 var(--space-5);
+  }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: var(--radius-l);
+    padding: var(--space-3) var(--space-4);
+    box-shadow: var(--shadow-1);
+    height: 64px;
+    min-width: 0;
+    transition:
+      transform 0.24s var(--ease-out),
+      box-shadow 0.24s var(--ease-out);
+  }
+
+  .chip img {
+    max-height: 32px;
+    max-width: 130px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .chip:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-2);
+    }
+  }
+
+  /* Nominative-use notice — see the matching rule on the homepage wall. */
+  .proof__legal {
+    margin: var(--space-5) auto 0;
+    max-width: 60ch;
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+    opacity: 0.45;
+    text-align: center;
+    text-wrap: pretty;
+  }
+
+  .proof__creds {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0;
+    margin: 0;
+  }
+
+  .cred {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    padding: var(--space-1) var(--space-3);
+    border-radius: 999px;
+    color: var(--primary);
+    background: color-mix(in oklab, var(--primary) 10%, transparent);
+    border: 1px solid color-mix(in oklab, var(--primary) 24%, transparent);
+  }
+
+  /* ===================== STATS ===================== */
+  .stats {
+    padding: var(--space-8) 0;
+  }
+
+  .stats__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-5);
+    padding: 0;
+    margin: 0;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    background: color-mix(in oklab, var(--muted) 50%, transparent);
+  }
+
+  .stat__value {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat__label {
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    color: var(--text);
+  }
+
+  .stat__sub {
+    font-size: var(--font-size-sm);
+    color: color-mix(in oklab, var(--text) 58%, transparent);
+  }
+
+  /* ===================== PLAN / ROADMAP ===================== */
+  .plan {
+    padding: var(--space-8) 0 var(--space-9);
+  }
+
+  .plan__head {
+    max-width: 60ch;
+    margin: 0 0 var(--space-8);
+  }
+
+  .plan__eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 var(--space-3);
+  }
+
+  .plan__title {
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+  }
+
+  .plan__lede {
+    font-size: clamp(1rem, 1.6vw, 1.12rem);
+    color: color-mix(in oklab, var(--text) 76%, transparent);
+    margin: 0;
+  }
+
+  .roadmap {
+    position: relative;
+  }
+
+  .roadmap__svg {
+    display: block;
+    width: 100%;
+    height: 90px;
+    overflow: visible;
+    margin-bottom: var(--space-3);
+  }
+
+  .roadmap__rail {
+    stroke: var(--border);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .roadmap__progress {
+    stroke: url(#tr-line);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    /* pathLength normalized via JS-set dash values */
+  }
+
+  .roadmap__node {
+    fill: var(--bg);
+    stroke: var(--border);
+    stroke-width: 2.5;
+    transition:
+      fill 0.4s var(--ease-out),
+      stroke 0.4s var(--ease-out),
+      r 0.4s var(--ease-out);
+  }
+
+  .roadmap__node.is-lit {
+    fill: var(--primary);
+    stroke: color-mix(in oklab, var(--primary) 40%, var(--bg));
+  }
+
+  .roadmap__runner {
+    fill: var(--accent);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out);
+  }
+
+  .roadmap.is-running .roadmap__runner {
+    opacity: 1;
+  }
+
+  .roadmap__cards {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-4);
+    padding: 0;
+    margin: 0;
+  }
+
+  .mstone {
+    position: relative;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    background: var(--bg);
+    /* default state under NO-JS or reduced motion: fully visible */
+    opacity: 1;
+    transform: none;
+  }
+
+  /* JS-armed animated entrance (class added only when motion allowed) */
+  .roadmap.is-armed .mstone {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out),
+      border-color 0.55s var(--ease-out),
+      box-shadow 0.55s var(--ease-out);
+  }
+
+  .roadmap.is-armed .mstone.is-lit {
+    opacity: 1;
+    transform: none;
+    border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+    box-shadow: var(--shadow-2);
+  }
+
+  .mstone::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: var(--space-5);
+    right: var(--space-5);
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .roadmap.is-armed .mstone.is-lit::before,
+  .mstone.is-lit::before {
+    transform: scaleX(1);
+  }
+
+  .mstone__tag {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .mstone__title {
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--space-2);
+    line-height: 1.25;
+  }
+
+  .mstone__body {
+    font-size: var(--font-size-sm);
+    color: color-mix(in oklab, var(--text) 70%, transparent);
+    margin: 0;
+  }
+
+  .plan__work {
+    margin: var(--space-7) 0 0;
+    padding: var(--space-4) var(--space-5);
+    border-left: 3px solid var(--accent);
+    background: color-mix(in oklab, var(--muted) 55%, transparent);
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+    font-size: clamp(1rem, 1.6vw, 1.1rem);
+    color: color-mix(in oklab, var(--text) 84%, transparent);
+    max-width: 68ch;
+  }
+
+  .plan__work strong {
+    color: var(--text);
+  }
+
+  /* ===================== CLOSE ===================== */
+  .close {
+    padding: var(--space-9) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .close__inner {
+    max-width: 60ch;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .close__title {
+    font-size: clamp(1.7rem, 4.4vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+  }
+
+  .close__sub {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: color-mix(in oklab, var(--text) 76%, transparent);
+    margin: 0 0 var(--space-6);
+  }
+
+  .close__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-bottom: var(--space-5);
+  }
+
+  .availability--foot {
+    margin: 0 auto;
+  }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 900px) {
+    .stats__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .roadmap__cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    /* On tablet/phone the horizontal timeline reads awkwardly — hide the
+       drawn rail and let the milestone cards carry the sequence. */
+    .roadmap__svg {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero {
+      padding: var(--space-8) 0 var(--space-7);
+    }
+    .stats__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .roadmap__cards {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .btn {
+      width: 100%;
+    }
+    .hero__cta,
+    .close__cta {
+      flex-direction: column;
+    }
+  }
+
+  /* ===================== REDUCED MOTION ===================== */
+  @media (prefers-reduced-motion: reduce) {
+    .aurora__blob {
+      animation: none;
+    }
+    .availability__pulse::after {
+      animation: none;
+    }
+    /* Show the finished roadmap statically: full progress line, lit nodes,
+       lit cards, no travelling dot. */
+    .roadmap__progress {
+      stroke-dasharray: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+    .roadmap__runner {
+      opacity: 0 !important;
+    }
+    .roadmap__node {
+      fill: var(--primary) !important;
+      stroke: color-mix(in oklab, var(--primary) 40%, var(--bg)) !important;
+    }
+    .roadmap .mstone {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .mstone::before {
+      transform: scaleX(1) !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const reduce = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    /* ---------- 1. Count-up stats ---------- */
+    const counters = document.querySelectorAll('[data-countup]');
+
+    const runCount = el => {
+      if (!el) return;
+      const to = parseFloat(el.getAttribute('data-to') || '0');
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+
+      if (reduce) {
+        el.textContent = prefix + to.toFixed(decimals) + suffix;
+        return;
+      }
+
+      const duration = 1100;
+      const start = performance.now();
+      let rafId = 0;
+
+      const tick = now => {
+        const t = Math.min((now - start) / duration, 1);
+        // easeOutCubic
+        const eased = 1 - Math.pow(1 - t, 3);
+        const val = to * eased;
+        el.textContent = prefix + val.toFixed(decimals) + suffix;
+        if (t < 1) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          el.textContent = prefix + to.toFixed(decimals) + suffix;
+          cancelAnimationFrame(rafId);
+        }
+      };
+      rafId = requestAnimationFrame(tick);
+    };
+
+    if (counters.length) {
+      if (reduce || !('IntersectionObserver' in window)) {
+        counters.forEach(runCount);
+      } else {
+        const cObs = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                runCount(entry.target);
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+        counters.forEach(c => cObs.observe(c));
+      }
+    }
+
+    /* ---------- 2. Signature 90-day roadmap ---------- */
+    const roadmap = document.querySelector('[data-roadmap]');
+
+    if (roadmap) {
+      const line = roadmap.querySelector('[data-progress-line]');
+      const runner = roadmap.querySelector('[data-runner]');
+      const nodes = Array.from(roadmap.querySelectorAll('[data-node]'));
+      const cards = Array.from(roadmap.querySelectorAll('[data-mstone]'));
+
+      // Node x-positions in the SVG viewBox (must mirror the markup).
+      const NODE_X = [40, 347, 653, 960];
+      const RUN_Y = 60;
+      const totalLen = NODE_X[NODE_X.length - 1] - NODE_X[0];
+
+      const lightUpAll = () => {
+        nodes.forEach(n => n.classList.add('is-lit'));
+        cards.forEach(c => c.classList.add('is-lit'));
+      };
+
+      if (reduce || !line) {
+        // Static finished state (CSS reduced-motion rules also cover this).
+        lightUpAll();
+      } else {
+        // Prime the progress line as an undrawn dash.
+        line.style.strokeDasharray = String(totalLen);
+        line.style.strokeDashoffset = String(totalLen);
+        roadmap.classList.add('is-armed');
+
+        let rafId = 0;
+        let started = false;
+
+        const play = () => {
+          if (started) return;
+          started = true;
+          roadmap.classList.add('is-running');
+
+          const duration = 2400; // <= keep it calm and deliberate
+          const startTs = performance.now();
+          // Fractions along the rail where each milestone sits.
+          const nodeFrac = NODE_X.map(x => (x - NODE_X[0]) / totalLen);
+          const lit = nodes.map(() => false);
+
+          const step = now => {
+            const t = Math.min((now - startTs) / duration, 1);
+            // easeInOutCubic — the line accelerates then settles.
+            const eased =
+              t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+            // Draw the progress line.
+            line.style.strokeDashoffset = String(totalLen * (1 - eased));
+
+            // Move the glowing runner dot along the rail.
+            const x = NODE_X[0] + totalLen * eased;
+            runner.setAttribute('cx', x.toFixed(2));
+            runner.setAttribute('cy', String(RUN_Y));
+
+            // Light each node + card as the dot reaches it (natural stagger).
+            nodeFrac.forEach((f, i) => {
+              if (!lit[i] && eased >= f - 0.001) {
+                lit[i] = true;
+                if (nodes[i]) nodes[i].classList.add('is-lit');
+                if (cards[i]) cards[i].classList.add('is-lit');
+              }
+            });
+
+            if (t < 1) {
+              rafId = requestAnimationFrame(step);
+            } else {
+              // Ensure everything is settled and the runner rests on the end.
+              line.style.strokeDashoffset = '0';
+              lightUpAll();
+              runner.setAttribute('cx', String(NODE_X[NODE_X.length - 1]));
+              cancelAnimationFrame(rafId);
+            }
+          };
+          rafId = requestAnimationFrame(step);
+        };
+
+        const stop = () => {
+          if (rafId) cancelAnimationFrame(rafId);
+        };
+
+        // Play on load, but only once it's actually in view (and pause the
+        // rAF loop if the tab/section is scrolled away before it starts).
+        if ('IntersectionObserver' in window) {
+          const rObs = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  play();
+                  obs.disconnect();
+                } else if (!started) {
+                  stop();
+                }
+              });
+            },
+            { threshold: 0.35 },
+          );
+          rObs.observe(roadmap);
+        } else {
+          play();
+        }
+
+        // Safety: if the tab is hidden mid-run, cancel; resume by replaying
+        // to the finished state when it returns (no partial flicker).
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            stop();
+          } else if (started) {
+            line.style.strokeDashoffset = '0';
+            lightUpAll();
+          }
+        });
+      }
+    }
+  })();
+</script>

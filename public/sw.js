@@ -1,6 +1,6 @@
 // Service Worker for caching static assets with long TTLs
 // Cache version - increment when you want to force cache refresh
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `janczura-static-${CACHE_VERSION}`;
 
 // Assets to cache immediately on install
