@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://janczura.com',
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap({ filter: page => !/\/(pl|de)\//.test(page) })],
   trailingSlash: 'always',
   build: {
     // Inline stylesheets to eliminate render-blocking CSS requests

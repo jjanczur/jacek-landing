@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { Calendar } from 'lucide-astro';
+import { PUBLISHED_LANGS } from '../utils/i18n';
 
 export interface Props {
   lang: 'en' | 'pl' | 'de';
@@ -58,6 +59,8 @@ const pathMap = {
 
 const calendlyUrl =
   'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
+
+const showLanguageSwitcher = PUBLISHED_LANGS.length > 1;
 ---
 
 <script is:inline>
@@ -256,7 +259,11 @@ const calendlyUrl =
           ))
         }
         <div class="mobile-nav-actions">
-          <LanguageSwitcher lang={lang} pathMap={pathMap} mobile={true} />
+          {
+            showLanguageSwitcher && (
+              <LanguageSwitcher lang={lang} pathMap={pathMap} mobile={true} />
+            )
+          }
           <button
             aria-label={i18n[lang].toggleThemeText}
             class="mobile-theme-toggle"
@@ -279,7 +286,11 @@ const calendlyUrl =
         <Calendar size={16} />
         {i18n[lang].bookCall}
       </a>
-      <LanguageSwitcher lang={lang} pathMap={pathMap} />
+      {
+        showLanguageSwitcher && (
+          <LanguageSwitcher lang={lang} pathMap={pathMap} />
+        )
+      }
       <button
         aria-label={i18n[lang].toggleThemeText}
         class="theme-toggle"

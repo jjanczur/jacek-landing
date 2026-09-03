@@ -1,5 +1,20 @@
 export type Lang = 'en' | 'pl' | 'de';
 
+/**
+ * Languages that are currently published. Site owner's instruction: only
+ * English is live; Polish and German routes still build (so their URLs
+ * exist and can serve redirect shells) but are not offered as real content.
+ */
+export const PUBLISHED_LANGS: Lang[] = ['en'];
+
+/**
+ * Whether a given language is currently published (i.e. should render its
+ * normal document body rather than a redirect shell to English).
+ */
+export function isPublished(lang: Lang): boolean {
+  return PUBLISHED_LANGS.includes(lang);
+}
+
 // Default return type for translation JSON blobs.
 // Many pages don't provide a typed schema yet, so we intentionally use a permissive type.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
