@@ -1,173 +1,244 @@
 {
   "meta": {
-    "title": "About | Jacek Janczura",
-    "description": "Co-founder & CTO of Jaden Data until June 2024, fractional CTO and consulting partner since. Enterprise AI for regulated markets: LLM platforms, RAG, event-driven systems on AWS, ISO 27001 and SOC 2, and the leadership to ship it."
+    "title": "About Jacek Janczura — Founder-CTO, enterprise AI",
+    "description": "Co-founder & CTO of Jaden Data until June 2024, fractional CTO and consulting partner since. Real-time banking systems, distributed ledgers at T-Labs, login at scale at idealo, then a bootstrapped enterprise AI company, its platform, its certifications and its engineering team."
   },
   "hero": {
-    "title": "About",
-    "subtitle": "Process-first AI and cloud architecture"
+    "eyebrow": "Founder-CTO · Enterprise AI · Technology leadership",
+    "title": "How I got here, <em>and how I work.</em>",
+    "sub": "<strong>Co-founder &amp; CTO of Jaden Data until June 2024 · fractional CTO and consulting partner since.</strong> We bootstrapped the company past €1M in annual revenue with no external capital; I grew engineering from 0 to 10, took it through ISO 27001 and SOC 2 Type 2 in about three months, and ran a platform that served 50+ organisations at 99.9% uptime.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "ghost": {
+      "href": "/docs/Jacek_Janczura_CV.pdf",
+      "label": "Download the CV (PDF)",
+      "external": true
+    },
+    "availability": "Open to CTO and Head of AI roles · remote-first, on-site when it matters"
   },
-  "downloads": {
-    "title": "Downloads",
-    "cv": "Download CV (PDF)"
-  },
-  "bio": {
+  "narrative": {
+    "eyebrow": "Background",
+    "title": "The route I took",
+    "portraitAlt": "Jacek Janczura",
     "paragraphs": [
-      "I'm Jacek, a founder-CTO working on enterprise AI. I co-founded <strong>Jaden Data</strong> and served as its CTO until June 2024; since then I have been its fractional CTO and consulting partner and work with clients on enterprise AI systems on AWS — LLM platforms, RAG, and event-driven microservices — always tied to real operational workflows.",
-      "<ul><li><strong>Bootstrapped startup</strong> (no external VC): grew to <strong>&#x2265;€1M annual revenue</strong></li><li>Scaled engineering from <strong>0 → 10</strong> and led multiple delivery teams</li><li>Built multi-tenant systems for <strong>50+ organizations</strong> with <strong>&gt;1,000 concurrent connections</strong> and <strong>thousands of requests per second</strong></li><li>Delivered <strong>ISO 27001</strong> and <strong>SOC 2</strong> in ~3 months</li></ul>",
-      "If you need help shipping or de-risking a system, I take on freelance engagements: architecture reviews, AI/LLM/RAG delivery, prompt engineering + evals, and hands-on technical leadership. See <a href=\"/en/projects/\">projects</a>, <a href=\"/en/publications/\">publications</a>, or download the CV below."
+      "I started out where mistakes are expensive. At SAS Institute I worked on a real-time behavioural analysis project for ING, designing pipelines that handled thousands of events per second on Kafka, Flink and Camel — one of the first SAS Event Stream Processing implementations in the European Union — and I wrote a data-lineage plugin for GDPR reporting that analysts across ING Group ended up using. At Deutsche Telekom's T-Labs I designed and deployed a distributed Hyperledger Fabric network for package tracking, with the chaincode, the secured REST API and the identity service around it. At idealo I was a key contributor to the six-country login rollout that created 1.4M accounts in three months, 700% above forecast, and I carried on-call duty for services that were not allowed to fail.",
+      "In 2021 I left to co-found <strong>Jaden Data</strong>, and was its CTO until June 2024. We bootstrapped it — no external capital — past €1M in annual revenue, and I grew engineering from 0 to 10 across frontend, backend and AI. I owned the technology strategy and the product roadmap, the architecture of our platform and of the client systems built on it, the technical budget, security and compliance, technical pre-sales and project kick-offs, and the reporting that went to clients and shareholders. The platform ran for 50+ organisations at 99.9% uptime, and we passed ISO 27001 and SOC 2 Type 2 in about three months without pausing delivery. Not all of it was AI: the same team delivered regulated distributed systems, including a cross-ledger CBDC bridge with Norges Bank and research platforms funded under EU Horizon 2020.",
+      "Since June 2024 I have been Jaden Data's fractional CTO and consulting partner, and I take engagements directly: interim technology leadership, architecture and risk reviews, production AI for document-heavy workflows and customer-facing assistants, and getting engineering teams to work with AI tools well and securely. I still write code — RP-Matcher, the machine-learning matcher that cut offer preparation time by 60% for RP Group, and Taufolio, which I am building now. What I want next is the permanent version of the job I already did: a CTO or Head of AI role where the technology, the team and the outcome sit with the same person."
     ]
   },
-  "outsideWork": {
-    "title": "Outside Work",
-    "paragraphs": [
-      "I love extreme sports and outdoor activities. I am a certified skydiver (PJ(B) license), Advanced Open Water diver, International Windsurfing Instructor, and an avid snowboarder. These experiences build essential skills: risk management, clear instruction and teaching, calm under pressure, and disciplined preparation-all of which translate directly to technical leadership, team mentoring, and crisis handling in high-stakes enterprise environments.",
-      "I'm multilingual, speaking Polish (native), English (professional), and German (limited working)-helping me work effectively across international teams and with global clients."
+  "operate": {
+    "eyebrow": "How I operate",
+    "title": "Four things that do not change",
+    "steps": [
+      {
+        "title": "Start with the workflow, not the model",
+        "body": "Before anything is designed I sit with the people doing the job and map the process, the baseline, the bottleneck, the risk and the economics. At KfW that produced one specification template and one evaluation template used across a portfolio of proofs of concept, so results could be compared instead of argued about."
+      },
+      {
+        "title": "Ship the smallest loop that really runs",
+        "body": "One end-to-end path through real data, real systems and real governance beats a broad prototype. At APG the first assistant was assembled in a day from platform components; the twelve sprints that followed went into integration, user validation and the on-premises deployment."
+      },
+      {
+        "title": "Treat evaluation, security and observability as product capabilities",
+        "body": "They belong in the build, not in a phase at the end: deterministic and model-graded test sets, retrieval metrics, error taxonomies, human-review thresholds, role-based access control and audit trails. ISO 27001 and SOC 2 Type 2 were run as an engineering programme alongside delivery, not as a document exercise."
+      },
+      {
+        "title": "Leave a stronger team and a reusable system",
+        "body": "Every deployment should make the next one cheaper: shared components, evaluation harnesses, delivery standards and written decisions. Code review, CI/CD quality gates and testing requirements were in place before the team grew, so quality never depended on one person."
+      }
     ]
   },
-  "philosophy": {
-    "title": "Process Intelligence Philosophy",
-    "paragraphs": [
-      "I've spent years watching businesses struggle with AI adoption. The problem isn't the technology-it's understanding that <strong>AI must serve your processes, not replace them</strong>. That's why every solution I build-and the platforms we built at Jaden Data-starts with understanding how work actually gets done.",
-      "As an AI Architect and consultant, I specialize in <strong>enterprise LLM platforms</strong>, <strong>retrieval-augmented generation</strong>, and <strong>secure cloud architectures</strong>. I've architected advanced, multi-tenant AI platforms integrating AWS Bedrock, AWS SageMaker, Azure ML Studio, OpenAI, and Mistral-delivering seamless connectivity and enabling cross-platform collaboration. Built event-driven microservices architectures leveraging AWS Fargate (ECS, ECR), Lambda, SNS, SQS, and CloudWatch, optimized for cost-efficiency and serverless autoscaling.",
-      "I pioneered the development of state-of-the-art Retrieval-Augmented Generation (RAG) services, automating vector database creation from client files using Pinecone, pgvector, and Milvus. Designed and implemented robust AI process and RAG pipeline testing frameworks (Testbed) for quantitative and qualitative assessment. Developed \"Prompt Wizard,\" a sophisticated tool that automates LLM prompt optimization, significantly enhancing prompt engineering workflows for enterprise users.",
-      "But technical capability is just the foundation. The real value comes from applying these capabilities to transform operations: turning hours of manual work into minutes of automated intelligence, enabling faster decision-making, and building systems that adapt and learn with your business."
+  "scope": {
+    "eyebrow": "Leadership scope",
+    "title": "What I have owned",
+    "lede": "Not an aspiration list. Each of these was mine to decide, budget, staff and answer for.",
+    "items": [
+      {
+        "title": "Strategy and roadmaps",
+        "body": "Defined and ran the technology strategy and product roadmap at Jaden Data, aligned with revenue targets and the delivery calendar, and decided what the platform would and would not do."
+      },
+      {
+        "title": "Technical pre-sales and customer architecture",
+        "body": "Discovery, executive workshops, demos, architecture and security reviews, scoping and business cases. Four procurement workflows at Bosch Global Services went from scoped use case to production this way."
+      },
+      {
+        "title": "Team building and mentoring",
+        "body": "Hired and led engineering from 0 to 10 across frontend, backend and AI workstreams, with structured code review, pair programming and internal knowledge sharing."
+      },
+      {
+        "title": "Engineering standards",
+        "body": "Code-review rules, CI/CD quality gates and testing requirements set before the team grew, plus the redesign of an entangled frontend monolith into micro-frontends so teams could deploy independently."
+      },
+      {
+        "title": "Technical budgets",
+        "body": "Owned the technical budget: cloud spend, third-party model and API costs, and resourcing across parallel client deliveries in a company with no external funding."
+      },
+      {
+        "title": "Risk and compliance",
+        "body": "ISO 27001 and SOC 2 Type 2 in about three months, multi-tenant isolation and role-based access control, GDPR, on-premises and data-sovereign deployments, security audits and failover planning."
+      },
+      {
+        "title": "Executive communication",
+        "body": "Reporting to clients, shareholders and partners. At Bosch Global Services I raised the stakeholder cadence from bi-weekly to weekly and split it into parallel sub-groups, so dependencies stopped blocking delivery."
+      },
+      {
+        "title": "Production delivery",
+        "body": "Accountable for systems in production, not pilots: 50+ organisations on one platform at 99.9% uptime, an on-premises MVP for APG, four tendering and contracting workflows live at Bosch Global Services."
+      }
     ]
   },
-  "career": {
-    "title": "Career Journey",
-    "paragraphs": [
-      "My biggest milestone was co-founding <strong>Jaden Data</strong> and building it from zero to a profitable, bootstrapped company (&#x2265;€1M annual revenue) while scaling engineering from 0 to 10, serving as CTO until June 2024. There I led architecture and delivery for enterprise AI: multi-tenant SaaS, high-throughput distributed systems on AWS, and reliable LLM/RAG pipelines. Since mid-2024 I work as a fractional CTO and consulting partner — with Jaden Data and with clients directly — as an independent technology leader.",
-      "<ul><li><strong>Enterprise AI on AWS</strong>: event-driven microservices (Lambda, ECS/Fargate, SNS/SQS), multi-model LLM integrations (OpenAI, Azure OpenAI, Bedrock, Mistral)</li><li><strong>Security + compliance</strong>: ISO 27001 and SOC 2 delivered under tight timelines</li><li><strong>Practical LLM engineering</strong>: prompt + RAG evaluation tooling so teams can ship safely</li></ul>",
-      "Before Jaden Data, I worked as a <strong>Software Engineer</strong> at <strong>idealo</strong>, contributing to international login rollout (6 countries) and building real-time systems (Kafka/NoSQL/WebSockets) and enterprise microservices (Java/Kotlin, Spring Boot) with 24/7 on-call responsibility.",
-      "Earlier, I built blockchain and distributed systems at <strong>T-Labs (Deutsche Telekom)</strong> and delivered real-time analytics systems for banking at <strong>SAS Institute</strong>. I hold a dual M.Sc. in Computer Science (TU Berlin + Warsaw University of Technology)."
-    ]
-  },
-  "specializations": {
-    "title": "Specializations",
-    "categories": [
+  "depth": {
+    "eyebrow": "Technical depth",
+    "title": "What I can still do myself",
+    "items": [
       {
-        "title": "AI & Machine Learning",
-        "items": [
-          "LLM Platform Architecture",
-          "Prompt Engineering & RAG",
-          "Multi-Model Integration (OpenAI, Azure, Bedrock, Mistral)",
-          "AI Pipeline Design & Testing",
-          "Vector Databases (Pinecone, pgvector, Milvus)",
-          "Prompt Optimization Tools"
-        ]
+        "title": "AI systems",
+        "body": "Multi-step LLM processes on an event-driven platform: parallel extraction into JSON, reconciliation, then generation with source references preserved; retrieval with reranking and page-level citations; structured-output prompting with strict language control; MCP-based tools exposed to agent clients."
       },
       {
-        "title": "Cloud & Infrastructure",
-        "items": [
-          "AWS (Lambda, ECS/Fargate, Bedrock, SageMaker)",
-          "Azure ML Studio & OpenAI",
-          "Event-Driven Microservices",
-          "Serverless Architecture",
-          "High-Throughput Design",
-          "Cost-Optimization Strategies"
-        ]
+        "title": "Evaluation",
+        "body": "Testbed, the framework I designed for AI processes and retrieval pipelines: deterministic test cases, quantitative and qualitative scoring, error taxonomies, human-in-the-loop validation, and launch criteria that weigh quality against latency and cost."
       },
       {
-        "title": "Security & Compliance",
-        "items": [
-          "ISO 27001/SOC 2",
-          "Multi-Tenant Security & RBAC",
-          "GDPR & Data Privacy",
-          "Security Audits & Risk Assessment",
-          "Compliance Implementation",
-          "Audit Trail Design"
-        ]
+        "title": "Cloud and distributed systems",
+        "body": "Event-driven microservices on AWS (Lambda, ECS/Fargate, SNS/SQS, CloudWatch) behind a multi-tenant platform with role-based access control, over 1,000 concurrent connections and thousands of requests per second at 99.9% uptime, with a provider-independent model layer across OpenAI, Azure, AWS Bedrock, Google Gemini and Mistral."
       },
       {
-        "title": "Leadership & Process Intelligence",
-        "items": [
-          "Process-First Architecture",
-          "Team Building & Scaling (0→10 developers)",
-          "Technical Leadership",
-          "Business-Outcome Focus",
-          "Strategic Planning & Execution",
-          "Stakeholder Management"
-        ]
+        "title": "Data, streaming and machine learning",
+        "body": "Kafka, Flink and Camel for real-time processing; PostgreSQL, pgvector, Pinecone and Milvus for retrieval; and classical machine learning where it wins — the tuned RP-Matcher ensemble reached 70.7% top-1 accuracy and a mean reciprocal rank of 0.835 on 25+ engineered features."
       },
       {
-        "title": "Development & Technologies",
-        "items": [
-          "Java & Kotlin (Spring Boot)",
-          "Python & Node.js",
-          "Microservices & REST APIs",
-          "Real-Time Systems (Kafka, WebSockets)",
-          "Blockchain (Hyperledger, Ethereum)",
-          "Database Design (SQL, NoSQL)"
-        ]
-      },
-      {
-        "title": "Languages & Certifications",
-        "items": [
-          "Polish (Native), English (Professional)",
-          "German (Limited Working)",
-          "IELTS Certification",
-          "SAS Certified Base Programmer",
-          "International Windsurfing Instructor",
-          "PJ(B) Skydive License"
-        ]
+        "title": "Security and compliance engineering",
+        "body": "ISO 27001 and SOC 2 Type 2, multi-tenant isolation and role-based access control, GDPR and data lineage, on-premises deployment under financial regulation, audit trails and security reviews."
       }
     ]
   },
   "timeline": {
-    "title": "Timeline",
+    "eyebrow": "Timeline",
+    "title": "Roles, and what came out of them",
+    "lede": "One business outcome and one technical contribution per role.",
     "items": [
       {
-        "date": "Jun 2024–Present",
-        "title": "Fractional CTO & Consulting Partner",
-        "company": "Jaden Data · independent engagements · remote-first",
-        "description": "<ul><li>Independent consulting and contracting on enterprise AI, AWS architecture, and LLM/RAG delivery</li><li>Fractional CTO / senior engineering leadership, architecture reviews, and hands-on delivery</li><li>Fractional CTO and consulting partner at <strong>Jaden Data</strong></li><li>Recent work: <strong>RP-Matcher</strong> (2025–2026, ML product matching for RP Group)</li></ul>"
+        "period": "Jun 2024 – present",
+        "title": "Fractional CTO & consulting partner",
+        "org": "Jaden Data and direct client engagements",
+        "outcome": "RP-Matcher cut offer preparation time by 60% for RP Group and removed the dependency on one expert for product selection.",
+        "contribution": "Built and benchmarked five model families with hyperparameter search; the tuned ensemble reached 70.7% top-1 accuracy and a mean reciprocal rank of 0.835 on 25+ engineered features."
       },
       {
-        "date": "Mar 2021–Jun 2024",
+        "period": "Mar 2021 – Jun 2024",
         "title": "Co-founder & CTO",
-        "company": "Jaden Data GmbH",
-        "description": "<ul><li><strong>Bootstrapped</strong> (no external VC) to profitability (&#x2265;€1M annual revenue)</li><li>Scaled engineering from <strong>0 → 10</strong> and led multiple teams</li><li>Built multi-tenant enterprise AI on AWS for 50+ organizations (&gt;1,000 concurrent connections; thousands RPS)</li><li>Delivered <strong>ISO 27001</strong> and <strong>SOC 2</strong> in ~3 months</li><li>Key projects: <strong>entAIngine</strong> (2022–Present), <strong>KnowledgeX</strong> (2021–2022, EU Horizon 2020 funded)</li></ul>"
+        "org": "Jaden Data",
+        "outcome": "A bootstrapped company at €1M+ annual revenue with 50+ organisations on the platform, ISO 27001 and SOC 2 Type 2 in about three months, and engineering grown from 0 to 10.",
+        "contribution": "Architected the multi-tenant, provider-independent AI platform on event-driven AWS, and led the redesign of an entangled frontend monolith into micro-frontends."
       },
       {
-        "date": "Apr 2020–Jun 2021",
+        "period": "Apr 2020 – Jun 2021",
         "title": "Software Engineer",
-        "company": "idealo internet GmbH",
-        "description": "<ul><li>Contributed to the multi-country login rollout (6 countries), resulting in <strong>1.4M new accounts in 3 months</strong> (700% over forecast)</li><li>Built real-time systems (Kafka/NoSQL/WebSockets) and enterprise microservices + REST APIs (Java/Kotlin, Spring Boot)</li><li>Ran A/B tests and supported 24/7 reliability through on-call</li><li>Participated in idealo’s migration from on-prem to AWS</li></ul>",
-        "hasReference": true,
-        "referenceText": "Download Employer Reference"
+        "org": "idealo",
+        "outcome": "Key contributor to the six-country login rollout: 1.4M accounts in three months, 700% above forecast.",
+        "contribution": "Real-time services on Kafka, WebSockets and NoSQL, production microservices and REST APIs in Java and Kotlin with Spring Boot, and on-call duty for 24/7 availability.",
+        "href": "/docs/EmployerReference-Jacek.pdf"
       },
       {
-        "date": "May 2019–Apr 2020",
-        "title": "Blockchain Developer",
-        "company": "T-Labs, Telekom Innovation Laboratories",
-        "description": "<ul><li>Designed system architecture for blockchain-based package tracking</li><li>Implemented and deployed a distributed Hyperledger Fabric network with chaincode (smart contracts)</li><li>Dockerized the blockchain network + microservices and built secure REST APIs</li><li>Tech: Hyperledger Fabric/Composer, Node.js, Express.js, Docker, JWT, PostgreSQL</li></ul>"
+        "period": "May 2019 – Apr 2020",
+        "title": "Blockchain Engineer",
+        "org": "Deutsche Telekom Innovation Laboratories (T-Labs)",
+        "outcome": "A package-tracking system with an immutable shipment record that partner mobile apps and ERP systems could both work against.",
+        "contribution": "Designed the architecture, deployed a distributed Hyperledger Fabric network with chaincode, and built the secured REST API, the proxy service and the authentication service around it."
       },
       {
-        "date": "Sep 2016–Sep 2018",
-        "title": "Software Engineer",
-        "company": "SAS Institute",
-        "description": "<ul><li>Built real-time behavioral marketing and decisioning systems for banking at high throughput</li><li>Processed thousands of events per second with Kafka + stream processing</li><li>Delivered GDPR-friendly data lineage for compliance and auditability</li></ul>"
+        "period": "Sep 2016 – Sep 2018",
+        "title": "Associate Technical Consultant",
+        "org": "SAS Institute · banking clients including ING",
+        "outcome": "A GDPR data-lineage plugin adopted by analysts across ING Group internationally, and one of the first SAS Event Stream Processing implementations in the European Union.",
+        "contribution": "Designed and implemented real-time decisioning pipelines handling thousands of events per second on Kafka, Flink and Camel."
       }
     ]
   },
-  "awards": {
-    "title": "Awards & Honors",
-    "items": [
+  "credentials": {
+    "eyebrow": "On paper",
+    "title": "Education, awards and publications",
+    "groups": [
       {
-        "type": "featured",
-        "title": "2nd Place - Berlin Legal Tech Hackathon 2020",
-        "subtitle": "Hate Speech Online",
-        "date": "Feb 2020",
-        "description": "Led a team to develop an innovative solution for detecting and moderating online hate speech. Our platform combined natural language processing with real-time content analysis to provide actionable insights for legal compliance and content moderation."
+        "title": "Education",
+        "items": [
+          {
+            "title": "M.Sc. Computer Science",
+            "meta": "Technische Universität Berlin · 2017 – 2020",
+            "note": "Distributed systems, security and machine learning; thesis on blockchain-based monetisation of digital content."
+          },
+          {
+            "title": "M.Sc. Computer Science",
+            "meta": "Warsaw University of Technology · 2017 – 2020",
+            "note": "Double-degree programme; honours diploma."
+          },
+          {
+            "title": "B.Sc. Electronics and Computer Engineering",
+            "meta": "Warsaw University of Technology · 2013 – 2017",
+            "note": "Electronics, programming and computer architecture, with an engineering-practice focus."
+          }
+        ]
       },
       {
-        "type": "scholarship",
-        "title": "University President's Undergraduate Scholarship",
-        "subtitle": "Warsaw University of Technology, 2014-2017",
-        "date": "2014-2017",
-        "description": "Most prestigious undergraduate scholarship awarded four years in a row for exceptional academic performance in computer science."
+        "title": "Awards",
+        "items": [
+          {
+            "title": "Second place, Berlin Legal Tech Hackathon",
+            "meta": "2020",
+            "note": "Led the team that built a prototype for detecting and moderating online hate speech, combining language processing with real-time content analysis."
+          },
+          {
+            "title": "University President's undergraduate scholarship",
+            "meta": "Warsaw University of Technology · 2014 – 2017",
+            "note": "Awarded four years in a row for academic performance during my undergraduate studies."
+          }
+        ]
+      },
+      {
+        "title": "Publications",
+        "items": [
+          {
+            "title": "KnowledgeX: Trusted Inter-organizational Data Processing",
+            "meta": "2022, Berlin"
+          },
+          {
+            "title": "DeCoCo: Blockchain-based Decentralized Compensation of Digital Content Purchases",
+            "meta": "2020, Paris, France"
+          },
+          {
+            "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
+            "meta": "2018, Berlin"
+          }
+        ]
       }
+    ],
+    "links": [
+      { "href": "/en/publications/", "label": "All publications" },
+      { "href": "/en/talks/", "label": "Talks" }
     ]
+  },
+  "outside": {
+    "eyebrow": "Off the clock",
+    "title": "Outside work",
+    "paragraphs": [
+      "I spend my free time in the air and in the water: certified skydiver (PJ(B) licence), Advanced Open Water diver, International Windsurfing Instructor, and a snowboarder whenever there is snow.",
+      "I speak Polish natively, English fluently and German conversationally, and I work remote-first, on-site when it matters."
+    ]
+  },
+  "band": {
+    "title": "Two ways to work with me",
+    "sub": "Hiring a technology leader, or building something that has to run in production? Pick the door that fits.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "secondary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "note": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
   }
 }
