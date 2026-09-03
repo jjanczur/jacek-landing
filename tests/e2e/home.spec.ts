@@ -55,6 +55,9 @@ test.describe('home', () => {
     await expect(pillars.first().locator('.pillar__proof')).toContainText(
       'Bosch Global Services',
     );
+    await expect(page.locator('.pillars h2')).toHaveText(
+      /From customer boardroom to production code/,
+    );
   });
 
   // enabled when the case-study routes merge (Task 4/5)

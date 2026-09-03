@@ -13,6 +13,7 @@ const { pillars } = Astro.props;
 
 <section class="pillars section">
   <div class="container">
+    <slot name="header" />
     <ol class="pillar-grid">
       {
         pillars.map((pillar, i) => (
@@ -48,6 +49,11 @@ const { pillars } = Astro.props;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: clamp(var(--space-4), 2.5vw, var(--space-5));
+  }
+
+  /* Extra breathing room when a header is slotted in above the grid. */
+  :global(.section-header) + .pillar-grid {
+    margin-top: var(--space-7);
   }
 
   .pillar__card {
@@ -128,35 +134,6 @@ const { pillars } = Astro.props;
   @media (prefers-reduced-motion: reduce) {
     .pillar__card,
     .pillar__arrow {
-      transition: none;
-    }
-  }
-
-  /* ------------------------------------------------------------------ *
-   * SCROLL-DRIVEN REVEAL — browsers that support view() timelines get   *
-   * a scroll-linked fade/rise per pillar instead of the JS/Intersection *
-   * Observer reveal; everywhere else falls back to the sitewide         *
-   * .reveal system (see tokens.css).                                    *
-   * ------------------------------------------------------------------ */
-  @supports (animation-timeline: view()) {
-    @keyframes pillar-in {
-      from {
-        opacity: 0;
-        transform: translateY(var(--reveal-distance));
-      }
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-    .pillar {
-      animation: pillar-in linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 40%;
-    }
-    .reveal-on .pillar.reveal {
-      opacity: 1;
-      transform: none;
       transition: none;
     }
   }

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
 import PillarGrid from '../../components/PillarGrid.astro';
 import LogoWall from '../../components/LogoWall.astro';
 import StatStrip from '../../components/StatStrip.astro';
@@ -29,7 +30,14 @@ const t = await getTranslations('home', lang);
 >
   <Hero {...t.hero} />
 
-  <PillarGrid pillars={t.pillars.items} />
+  <PillarGrid pillars={t.pillars.items}>
+    <SectionHeader
+      slot="header"
+      eyebrow={t.pillars.eyebrow}
+      title={t.pillars.title}
+      align="center"
+    />
+  </PillarGrid>
 
   <LogoWall
     heading={t.wall.heading}
