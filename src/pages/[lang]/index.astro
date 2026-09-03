@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
-import CtaBand from '../../components/CtaBand.astro';
+import PillarGrid from '../../components/PillarGrid.astro';
 import LogoWall from '../../components/LogoWall.astro';
 import StatStrip from '../../components/StatStrip.astro';
+import StepList from '../../components/StepList.astro';
+import DoorPair from '../../components/DoorPair.astro';
+import CtaBand from '../../components/CtaBand.astro';
 import { getSupportedLangs, getTranslations } from '../../utils/i18n';
 
 export function getStaticPaths() {
@@ -15,79 +18,6 @@ export function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-// ------------------------------------------------------------------ *
-// COPY — every human-visible string, per language.                    *
-// Non-text fields (src, to, prefix, suffix, decimals, display,        *
-// staticOnly) are IDENTICAL across languages; only labels/notes are   *
-// transcreated. English is the source of truth and unchanged.         *
-// ------------------------------------------------------------------ *
-const copy = {
-  en: {
-    methodHeading: 'The same standard, inside a company mid-change',
-    methodCards: [
-      {
-        title: 'De-risk the legacy system',
-        body: 'Map what the inherited stack actually does, isolate the fragile parts, and make change safe before touching AI at all.',
-      },
-      {
-        title: 'Put AI where it earns its keep',
-        body: "An ML product-matcher cut offer-prep time 60%. As a key contributor to idealo's six-country login rollout: 1.4M new accounts in three months, +300% acquisition. AI on outcomes, not demos.",
-      },
-      {
-        title: 'Close the compliance gaps',
-        body: 'ISO 27001 and SOC 2 achieved in ~3 months. Multi-tenant AI on AWS at 1,000+ concurrent connections and 99.9% uptime for 50+ orgs.',
-      },
-      {
-        title: 'Leave your team able to run it',
-        body: "Built a company 0 → €1M+ and a 0 → 10 engineering team. Trained Bosch's engineers to code with AI. You keep the capability, not a dependency on me.",
-      },
-    ],
-  },
-  pl: {
-    methodHeading: 'Ten sam standard, w firmie w środku transformacji',
-    methodCards: [
-      {
-        title: 'Odblokuj legacy',
-        body: 'Rozpisuję, co odziedziczony stack naprawdę robi, izoluję kruche fragmenty i sprawiam, że zmiana jest bezpieczna — zanim w ogóle dotknę AI.',
-      },
-      {
-        title: 'Wdróż AI tam, gdzie na siebie zarabia',
-        body: 'Machine Learning do dopasowywania produktów skrócił przygotowanie ofert o 60%. Jako jeden z kluczowych współautorów wdrożenia logowania idealo w sześciu krajach: 1,4 mln nowych kont w trzy miesiące i +300% pozyskania. AI od wyników, nie od dem.',
-      },
-      {
-        title: 'Domknij luki compliance',
-        body: 'ISO 27001 i SOC 2 zdobyte w ~3 miesiące. Multi-tenant AI na AWS przy 1000+ jednoczesnych połączeń i 99,9% uptime dla 50+ organizacji.',
-      },
-      {
-        title: 'Zostaw zespół, który to poprowadzi',
-        body: 'Zbudowałem firmę od 0 do €1M+ i zespół inżynierski od 0 do 10 osób. Nauczyłem inżynierów Bosch kodować z AI. Zostaje Ci kompetencja, nie zależność ode mnie.',
-      },
-    ],
-  },
-  de: {
-    methodHeading: 'Derselbe Standard, in einem Unternehmen mitten im Umbruch',
-    methodCards: [
-      {
-        title: 'Das Legacy-System entschärfen',
-        body: 'Erst kartiere ich, was der geerbte Stack tatsächlich tut, isoliere die fragilen Teile und mache Änderungen sicher — bevor ich AI überhaupt anfasse.',
-      },
-      {
-        title: 'AI dort einsetzen, wo sie sich rechnet',
-        body: 'Ein ML-Produktmatcher hat die Angebotsvorbereitung um 60% verkürzt. Als maßgeblicher Mitwirkender am Login-Rollout von idealo in sechs Ländern: 1,4 Mio. neue Accounts in drei Monaten und +300% Neukundengewinnung. AI an Ergebnissen gemessen, nicht an Demos.',
-      },
-      {
-        title: 'Die Compliance-Lücken schließen',
-        body: 'ISO 27001 und SOC 2 in ~3 Monaten erreicht. Multi-tenant AI auf AWS mit 1.000+ gleichzeitigen Verbindungen und 99,9% Uptime für 50+ Organisationen.',
-      },
-      {
-        title: 'Ein Team hinterlassen, das es betreibt',
-        body: 'Ein Unternehmen von 0 → €1M+ und ein Engineering-Team von 0 → 10 aufgebaut. Boschs Engineers beigebracht, mit AI zu coden. Dir bleibt die Fähigkeit — keine Abhängigkeit von mir.',
-      },
-    ],
-  },
-};
-
-const local = copy[lang];
 const t = await getTranslations('home', lang);
 ---
 
@@ -99,6 +29,8 @@ const t = await getTranslations('home', lang);
 >
   <Hero {...t.hero} />
 
+  <PillarGrid pillars={t.pillars.items} />
+
   <LogoWall
     heading={t.wall.heading}
     lede={t.wall.lede}
@@ -108,129 +40,15 @@ const t = await getTranslations('home', lang);
 
   <StatStrip heading={t.stats.heading} stats={t.stats.items} columns={6} />
 
-  <!-- What I actually do with that standard -->
-  <section class="method-section" aria-labelledby="method-heading">
-    <div class="container">
-      <h2 id="method-heading" class="method-heading reveal">
-        {local.methodHeading}
-      </h2>
-      <div class="method-grid">
-        <article class="method-card reveal">
-          <span class="method-index" aria-hidden="true">01</span>
-          <h3>{local.methodCards[0].title}</h3>
-          <p>
-            {local.methodCards[0].body}
-          </p>
-        </article>
-        <article class="method-card reveal">
-          <span class="method-index" aria-hidden="true">02</span>
-          <h3>{local.methodCards[1].title}</h3>
-          <p>
-            {local.methodCards[1].body}
-          </p>
-        </article>
-        <article class="method-card reveal">
-          <span class="method-index" aria-hidden="true">03</span>
-          <h3>{local.methodCards[2].title}</h3>
-          <p>
-            {local.methodCards[2].body}
-          </p>
-        </article>
-        <article class="method-card reveal">
-          <span class="method-index" aria-hidden="true">04</span>
-          <h3>{local.methodCards[3].title}</h3>
-          <p>
-            {local.methodCards[3].body}
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <StepList
+    eyebrow={t.method.eyebrow}
+    title={t.method.title}
+    steps={t.method.steps}
+  />
+
+  <!-- Featured case studies land here once the case-study collection merges (Task 5) -->
+
+  <DoorPair doors={t.doors} />
 
   <CtaBand {...t.band} />
 </BaseLayout>
-
-<style>
-  /* ------------------------------------------------------------------ *
-   * METHOD                                                             *
-   * ------------------------------------------------------------------ */
-  .method-section {
-    padding: var(--space-8) 0 var(--space-9);
-    background: color-mix(in oklab, var(--muted) 45%, transparent);
-  }
-  .method-heading {
-    text-align: center;
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
-    letter-spacing: -0.01em;
-    margin: 0 auto var(--space-7);
-    max-width: 24ch;
-    text-wrap: balance;
-  }
-  .method-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-    gap: clamp(var(--space-4), 2.5vw, var(--space-5));
-  }
-  .method-card {
-    position: relative;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-l);
-    padding: var(--space-6) var(--space-5) var(--space-5);
-    min-width: 0;
-    overflow: hidden;
-    transition:
-      transform 0.3s var(--ease-out),
-      box-shadow 0.3s var(--ease-out),
-      border-color 0.3s var(--ease-out);
-  }
-  .method-card::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s var(--ease-out);
-  }
-  .method-index {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: var(--font-size-sm);
-    color: var(--primary);
-    letter-spacing: 0.08em;
-  }
-  .method-card h3 {
-    font-size: var(--font-size-lg);
-    margin: var(--space-2) 0 var(--space-3);
-    letter-spacing: -0.01em;
-  }
-  .method-card p {
-    font-size: var(--font-size-sm);
-    color: var(--text);
-    opacity: 0.82;
-    line-height: 1.6;
-    margin: 0;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .method-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-3);
-      border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
-    }
-    .method-card:hover::before {
-      transform: scaleX(1);
-    }
-  }
-
-  /* ------------------------------------------------------------------ *
-   * REDUCED MOTION — every animation gets a visible static fallback    *
-   * ------------------------------------------------------------------ */
-  @media (prefers-reduced-motion: reduce) {
-    .method-card,
-    .method-card::before {
-      transition: none !important;
-    }
-  }
-</style>

@@ -10,7 +10,7 @@ export interface LogoItem {
 }
 export interface LogoGroup {
   title: string;
-  legal: string;
+  legal?: string;
   items: LogoItem[];
 }
 export interface Props {
@@ -67,7 +67,7 @@ let running = 0;
                 );
               })}
             </ul>
-            <p class="logo-wall__legal">{group.legal}</p>
+            {group.legal && <p class="logo-wall__legal">{group.legal}</p>}
           </div>
         ))
       }

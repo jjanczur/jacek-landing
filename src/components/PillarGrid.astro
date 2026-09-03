@@ -1,0 +1,163 @@
+---
+export interface Pillar {
+  title: string;
+  body: string;
+  proof: string;
+  href?: string;
+}
+export interface Props {
+  pillars: Pillar[];
+}
+const { pillars } = Astro.props;
+---
+
+<section class="pillars section">
+  <div class="container">
+    <ol class="pillar-grid">
+      {
+        pillars.map((pillar, i) => (
+          <li class="pillar reveal" style={`--reveal-delay: ${i * 60}ms`}>
+            <div class="pillar__card">
+              <span class="pillar__index" aria-hidden="true">
+                0{i + 1}
+              </span>
+              <h3>{pillar.title}</h3>
+              <p class="pillar__body">{pillar.body}</p>
+              <p class="pillar__proof">{pillar.proof}</p>
+              {pillar.href && (
+                <a class="pillar__link" href={pillar.href}>
+                  See the case
+                  <span class="pillar__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .pillar-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(var(--space-4), 2.5vw, var(--space-5));
+  }
+
+  .pillar__card {
+    height: 100%;
+    background: var(--surface-1);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    padding: var(--space-6) var(--space-5) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    transition:
+      transform 0.25s var(--ease-out),
+      border-color 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out);
+  }
+
+  .pillar__index {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    color: var(--primary);
+  }
+
+  .pillar__card h3 {
+    font-size: var(--font-size-lg);
+    margin: var(--space-2) 0 var(--space-3);
+    letter-spacing: -0.01em;
+  }
+
+  .pillar__body {
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.78);
+    line-height: 1.6;
+    margin: 0 0 var(--space-4);
+  }
+
+  .pillar__proof {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: var(--space-4);
+    margin: auto 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .pillar__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .pillar__link:hover {
+    text-decoration: underline;
+  }
+
+  .pillar__arrow {
+    display: inline-block;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .pillar:hover .pillar__card {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-2);
+    }
+    .pillar:hover .pillar__arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pillar__card,
+    .pillar__arrow {
+      transition: none;
+    }
+  }
+
+  /* ------------------------------------------------------------------ *
+   * SCROLL-DRIVEN REVEAL — browsers that support view() timelines get   *
+   * a scroll-linked fade/rise per pillar instead of the JS/Intersection *
+   * Observer reveal; everywhere else falls back to the sitewide         *
+   * .reveal system (see tokens.css).                                    *
+   * ------------------------------------------------------------------ */
+  @supports (animation-timeline: view()) {
+    @keyframes pillar-in {
+      from {
+        opacity: 0;
+        transform: translateY(var(--reveal-distance));
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .pillar {
+      animation: pillar-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    .reveal-on .pillar.reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>

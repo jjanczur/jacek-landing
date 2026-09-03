@@ -1,0 +1,106 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+export interface Step {
+  title: string;
+  body: string;
+}
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  steps: Step[];
+}
+const { eyebrow, title, steps } = Astro.props;
+---
+
+<section class="method section" aria-labelledby="method-heading">
+  <div class="container">
+    <SectionHeader
+      eyebrow={eyebrow}
+      title={title}
+      align="center"
+      id="method-heading"
+    />
+    <ol class="step-list">
+      {
+        steps.map((step, i) => (
+          <li class="step reveal" style={`--reveal-delay: ${i * 60}ms`}>
+            <span class="step__index" aria-hidden="true">
+              0{i + 1}
+            </span>
+            <h3 class="step__title">{step.title}</h3>
+            <p class="step__body">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .step-list {
+    position: relative;
+    list-style: none;
+    margin: var(--space-7) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 900px) {
+    .step-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-7);
+    }
+    /* Connecting hairline: a quiet cross dividing the 2x2 grid, reading
+       the four steps as one continuous loop rather than four cards. */
+    .step-list::before,
+    .step-list::after {
+      content: '';
+      position: absolute;
+      background: var(--line);
+      pointer-events: none;
+    }
+    .step-list::before {
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      transform: translateX(-50%);
+    }
+    .step-list::after {
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      transform: translateY(-50%);
+    }
+  }
+
+  .step {
+    min-width: 0;
+  }
+
+  .step__index {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    color: var(--primary);
+  }
+
+  .step__title {
+    font-size: var(--font-size-lg);
+    margin: var(--space-2) 0 var(--space-3);
+    letter-spacing: -0.01em;
+  }
+
+  .step__body {
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.78);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 42ch;
+  }
+</style>

@@ -14,6 +14,74 @@
     "ghost": { "href": "/en/case-studies/", "label": "See the case studies" },
     "availability": "Open to CTO and Head of AI roles · selected fractional and delivery engagements"
   },
+  "pillars": {
+    "eyebrow": "What I own",
+    "title": "From customer boardroom to production code",
+    "items": [
+      {
+        "title": "Customer & commercial",
+        "body": "Discovery, executive workshops, technical pre-sales, architecture and security reviews, scoping and business cases.",
+        "proof": "Four procurement workflows taken from scoped use case to production at Bosch Global Services; a seven-PoC portfolio at KfW run on one spec and one evaluation template.",
+        "href": "/en/case-studies/bosch-procurement-ai/"
+      },
+      {
+        "title": "Architecture & delivery",
+        "body": "AI systems, enterprise integration, evaluation, observability, reliability and production rollout.",
+        "proof": "entAIngine on event-driven AWS: 50+ organisations, 99.9% uptime. A pension-letter assistant prototyped in a day and taken to an on-premises production MVP in twelve sprints.",
+        "href": "/en/case-studies/apg-pension-assistant/"
+      },
+      {
+        "title": "Team & operating model",
+        "body": "Hiring, mentoring, delivery standards, roadmaps, budgets, escalation and handover.",
+        "proof": "Engineering grown from 0 to 10 inside a bootstrapped €1M+ company; code-review and CI/CD gates; ISO 27001 and SOC 2 in about three months.",
+        "href": "/en/case-studies/jaden-data-company-building/"
+      },
+      {
+        "title": "Field-to-product leverage",
+        "body": "Reusable integrations, evaluation frameworks, deployment playbooks and product feedback from every deployment.",
+        "proof": "Reusable platform components turned a one-day prototype into a product; Testbed and Prompt Wizard came out of repeated customer needs; KfW templates were reused across seven proofs of concept.",
+        "href": "/en/case-studies/kfw-genai-portfolio/"
+      }
+    ]
+  },
+  "method": {
+    "eyebrow": "How I work",
+    "title": "The same loop, every deployment",
+    "steps": [
+      {
+        "title": "Find the workflow that matters",
+        "body": "Map the process, baseline, bottleneck, risk and economics before choosing a model."
+      },
+      {
+        "title": "Win technical trust",
+        "body": "Lead the demos, architecture reviews, integration design and security conversations with engineering and executive stakeholders."
+      },
+      {
+        "title": "Ship the production loop",
+        "body": "Build the smallest end-to-end system that proves business value under real data, systems and governance constraints."
+      },
+      {
+        "title": "Make the next deployment cheaper",
+        "body": "Turn repeated patterns into shared components, standards, evaluation harnesses and product roadmap input."
+      }
+    ]
+  },
+  "doors": [
+    {
+      "eyebrow": "Hiring",
+      "title": "Hiring a technology leader?",
+      "body": "Company building, customer-facing technical leadership and production AI, with the evidence laid out.",
+      "href": "/en/about/",
+      "label": "What I have led"
+    },
+    {
+      "eyebrow": "Building",
+      "title": "Building or fixing a system?",
+      "body": "Interim leadership, production AI for document-heavy workflows and assistants, and engineering enablement.",
+      "href": "/en/consulting/",
+      "label": "How we can work together"
+    }
+  ],
   "band": {
     "title": "Two ways to work with me",
     "sub": "Hiring a technology leader, or building something that has to run in production? Pick the door that fits.",
@@ -33,7 +101,6 @@
     "groups": [
       {
         "title": "Clients, delivered as Co-founder & CTO of Jaden Data",
-        "legal": "All trademarks are the property of their respective owners. Logos indicate organisations for which Jacek delivered work as Co-founder & CTO of Jaden Data. No partnership, sponsorship or endorsement is implied.",
         "items": [
           {
             "src": "/media/0a1b52260b574b1eb6896d0a54b55b11.webp",
@@ -95,7 +162,6 @@
       },
       {
         "title": "Earlier: employers and their clients",
-        "legal": "Logos indicate organisations Jacek worked for as an employee or consultant before founding Jaden Data (including a retail bank served through an analytics vendor). No partnership, sponsorship or endorsement is implied.",
         "items": [
           {
             "src": "/media/8b8ae90132304dc3be81b75e313e6285.webp",

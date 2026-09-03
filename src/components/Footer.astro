@@ -61,6 +61,10 @@ const year = new Date().getFullYear();
         <a href="/tools/" class="footer-nav-link">{nav.tools}</a>
       </nav>
       <p class="copyright">© {year} Jacek Janczura</p>
+      <p class="footer-attribution">
+        Logos are the property of their respective owners and mark organisations
+        Jacek has delivered work for; no endorsement is implied.
+      </p>
       <div class="legal-links">
         <a href={`/${lang}/privacy/`} class="legal-link">{links.privacy}</a>
         <span class="legal-separator">•</span>
@@ -179,6 +183,13 @@ const year = new Date().getFullYear();
     color: var(--text);
     margin: 0;
     font-size: var(--font-size-sm);
+  }
+
+  .footer-attribution {
+    font-size: var(--font-size-xs);
+    color: oklch(from var(--text) l c h / 0.55);
+    max-width: 60ch;
+    margin-top: var(--space-2);
   }
 
   .legal-links {
