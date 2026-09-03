@@ -1,17 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Button from '../../components/Button.astro';
+import ContactPanel from '../../components/ContactPanel.astro';
 import { getTranslations, getSupportedLangs } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
-import {
-  Calendar,
-  Linkedin,
-  Github,
-  Code,
-  Users,
-  Shield,
-  Network,
-  Send,
-} from 'lucide-astro';
 
 export async function getStaticPaths() {
   return getSupportedLangs().map(lang => ({
@@ -24,793 +17,175 @@ interface Props {
   lang: Lang;
 }
 
-interface ContactFocusItem {
+// Mirror of ContactPanel's field props (declared locally so the page does not
+// import types across .astro module boundaries).
+interface ContactField {
+  name: string;
+  label: string;
+  type: 'text' | 'email' | 'textarea' | 'select';
+  required?: boolean;
+  placeholder?: string;
+  rows?: number;
+  options?: string[];
+  autocomplete?: string;
+}
+
+interface ContactPath {
+  eyebrow: string;
   title: string;
-  description: string;
+  lede: string;
+  points: string[];
+  cta?: { href: string; label: string; external?: boolean };
+  form: {
+    title: string;
+    submit: string;
+    note: string;
+    subject: string;
+    fields: ContactField[];
+  };
+  switchTo: { href: string; label: string };
 }
 
 interface ContactTranslations {
-  meta: {
-    title: string;
-    description: string;
-  };
+  meta: { title: string; description: string };
   hero: {
+    eyebrow: string;
     title: string;
-    subtitle: string;
+    sub: string;
+    primary: { href: string; label: string };
+    ghost: { href: string; label: string };
+    availability: string;
   };
-  intro: string;
-  primaryCta: {
+  quick: {
     title: string;
-    description: string;
-    bookCall: string;
-    sendMessage: string;
+    body: string;
+    calendly: string;
+    linkedin: string;
+    github: string;
   };
-  quickOptions: {
-    title: string;
-    items: {
-      bookCall: {
-        title: string;
-        description: string;
-        button: string;
-      };
-      linkedin: {
-        title: string;
-        description: string;
-        button: string;
-      };
-      github: {
-        title: string;
-        description: string;
-        button: string;
-      };
-    };
-  };
-  message: {
-    title: string;
-    description: string;
-    emailLabel: string;
-    messageLabel: string;
-    submit: string;
-  };
-  focus: {
-    title: string;
-    items: ContactFocusItem[];
-  };
-  cta: {
-    text1: string;
-    text2: string;
-  };
+  hiring: ContactPath;
+  project: ContactPath;
+  privacyNote: string;
 }
 
 const { lang } = Astro.props;
 const t = await getTranslations<ContactTranslations>('contact', lang);
 
-const calendlyUrl =
+const FORMSPREE_ACTION = 'https://formspree.io/f/myzngpqa';
+const CALENDLY_URL =
   'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
 ---
 
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
-  <section class="contact-hero">
-    <div class="container">
-      <h1>{t.hero.title}</h1>
-      <p class="contact-subtitle">{t.hero.subtitle}</p>
-    </div>
-  </section>
+  <Hero {...t.hero} />
 
-  <section class="contact-content">
-    <div class="container content">
-      <div class="contact-intro">
-        <p>{t.intro}</p>
+  <section class="contact-quick">
+    <div class="container contact-quick__inner reveal">
+      <div>
+        <h2 class="contact-quick__title">{t.quick.title}</h2>
+        <p class="contact-quick__body">{t.quick.body}</p>
       </div>
-
-      <div class="primary-cta">
-        <h2>{t.primaryCta.title}</h2>
-        <p class="primary-cta-description">{t.primaryCta.description}</p>
-        <div class="primary-cta-actions">
-          <a
-            href={calendlyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="primary-cta-button"
-          >
-            <Calendar size={18} />
-            {t.primaryCta.bookCall}
-          </a>
-          <a href="#message" class="secondary-cta-link">
-            {t.primaryCta.sendMessage}
-          </a>
-        </div>
-      </div>
-
-      <div class="quick-options">
-        <h2>{t.quickOptions.title}</h2>
-        <div class="quick-options-grid">
-          <div class="contact-method">
-            <div class="contact-icon">
-              <Calendar size={32} />
-            </div>
-            <h3>{t.quickOptions.items.bookCall.title}</h3>
-            <p>{t.quickOptions.items.bookCall.description}</p>
-            <a
-              href={calendlyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-link"
-            >
-              {t.quickOptions.items.bookCall.button}
-            </a>
-          </div>
-
-          <div class="contact-method">
-            <div class="contact-icon">
-              <Linkedin size={32} />
-            </div>
-            <h3>{t.quickOptions.items.linkedin.title}</h3>
-            <p>{t.quickOptions.items.linkedin.description}</p>
-            <a
-              href="https://linkedin.com/in/jacekjanczura"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-link"
-            >
-              {t.quickOptions.items.linkedin.button}
-            </a>
-          </div>
-
-          <div class="contact-method">
-            <div class="contact-icon">
-              <Github size={32} />
-            </div>
-            <h3>{t.quickOptions.items.github.title}</h3>
-            <p>{t.quickOptions.items.github.description}</p>
-            <a
-              href="https://github.com/jjanczur"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-link"
-            >
-              {t.quickOptions.items.github.button}
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div id="message" class="message-section">
-        <h2>{t.message.title}</h2>
-        <p class="message-description">{t.message.description}</p>
-        <form
-          action="https://formspree.io/f/myzngpqa"
-          method="POST"
-          class="contact-form message-form"
+      <div class="contact-quick__actions">
+        <Button href={CALENDLY_URL} variant="primary" external
+          >{t.quick.calendly}</Button
         >
-          <label class="form-label">
-            {t.message.emailLabel}
-            <input type="email" name="email" class="form-input" required />
-          </label>
-          <label class="form-label">
-            {t.message.messageLabel}
-            <textarea name="message" class="form-textarea" rows="6" required
-            ></textarea>
-          </label>
-          <button type="submit" class="form-submit">
-            <Send size={18} />
-            {t.message.submit}
-          </button>
-        </form>
-      </div>
-
-      <div class="contact-focus">
-        <h2>{t.focus.title}</h2>
-        <div class="focus-grid">
-          {
-            t.focus.items.map((item, index) => (
-              <div class="focus-item">
-                <div class="focus-icon">
-                  {index === 0 && <Code size={24} />}
-                  {index === 1 && <Users size={24} />}
-                  {index === 2 && <Shield size={24} />}
-                  {index === 3 && <Network size={24} />}
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-
-      <div class="contact-cta">
-        <p>{t.cta.text1}</p>
-        <p>{t.cta.text2}</p>
+        <a
+          class="contact-quick__link"
+          href="https://linkedin.com/in/jacekjanczura"
+          target="_blank"
+          rel="noopener noreferrer">{t.quick.linkedin}</a
+        >
+        <a
+          class="contact-quick__link"
+          href="https://github.com/jjanczur"
+          target="_blank"
+          rel="noopener noreferrer">{t.quick.github}</a
+        >
       </div>
     </div>
   </section>
+
+  <div class="section contact-paths">
+    <div class="container contact-paths__inner">
+      <ContactPanel
+        id="hiring"
+        eyebrow={t.hiring.eyebrow}
+        title={t.hiring.title}
+        lede={t.hiring.lede}
+        points={t.hiring.points}
+        cta={t.hiring.cta}
+        action={FORMSPREE_ACTION}
+        path="hiring"
+        subject={t.hiring.form.subject}
+        formTitle={t.hiring.form.title}
+        submit={t.hiring.form.submit}
+        note={t.hiring.form.note}
+        fields={t.hiring.form.fields}
+        switchTo={t.hiring.switchTo}
+      />
+      <ContactPanel
+        id="project"
+        eyebrow={t.project.eyebrow}
+        title={t.project.title}
+        lede={t.project.lede}
+        points={t.project.points}
+        action={FORMSPREE_ACTION}
+        path="project"
+        subject={t.project.form.subject}
+        formTitle={t.project.form.title}
+        submit={t.project.form.submit}
+        note={t.project.form.note}
+        fields={t.project.form.fields}
+        switchTo={t.project.switchTo}
+      />
+      <p class="contact-paths__privacy reveal" set:html={t.privacyNote} />
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
-  .contact-hero {
-    padding: var(--space-8) 0;
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.05) 30%,
-      oklch(from var(--accent) l c h / 0.03) 60%,
-      var(--muted) 100%
-    );
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-      ellipse at top right,
-      oklch(from var(--primary) l c h / 0.08) 0%,
-      transparent 50%
-    );
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .contact-hero .container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-hero h1 {
-    font-size: var(--font-size-hero);
-    margin-bottom: var(--space-3);
-    background: linear-gradient(
-      135deg,
-      var(--text) 0%,
-      var(--primary) 50%,
-      var(--text) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: gradient-shift 8s ease infinite;
-  }
-
-  @keyframes gradient-shift {
-    0%,
-    100% {
-      background-position: 0% center;
-    }
-    50% {
-      background-position: 100% center;
-    }
-  }
-
-  .contact-subtitle {
-    font-size: var(--font-size-xl);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0;
-    font-weight: var(--font-weight-bold);
-    max-width: var(--content-width);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .contact-content {
-    padding: var(--space-8) 0;
-    background: linear-gradient(
-      180deg,
-      var(--bg) 0%,
-      oklch(from var(--muted) l c h / 0.3) 50%,
-      var(--bg) 100%
-    );
-  }
-
-  .contact-intro {
-    text-align: center;
-    margin-bottom: var(--space-8);
-  }
-
-  .contact-intro p {
-    font-size: var(--font-size-lg);
-    line-height: 1.7;
-    margin-bottom: 0;
-    max-width: var(--content-width);
-    margin-left: auto;
-    margin-right: auto;
-    color: var(--text);
-  }
-
-  .primary-cta {
-    margin: var(--space-6) 0 var(--space-8) 0;
-    padding: var(--space-6);
-    border-radius: var(--radius-l);
-    border: 1px solid var(--border);
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.04) 60%,
-      oklch(from var(--accent) l c h / 0.02) 100%
-    );
-    box-shadow: var(--shadow-1);
-    text-align: center;
-  }
-
-  .primary-cta h2 {
-    margin-bottom: var(--space-2);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-2xl);
-  }
-
-  .primary-cta-description {
-    margin: 0 auto var(--space-4) auto;
-    max-width: var(--content-width);
-    line-height: 1.7;
-    opacity: 0.9;
-  }
-
-  .primary-cta-actions {
-    display: flex;
-    gap: var(--space-3);
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .primary-cta-button {
-    padding: var(--space-3) var(--space-5);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: white;
-    border: none;
-    border-radius: var(--radius-m);
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-bold);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.2);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .primary-cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
-    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-    text-decoration: none;
-  }
-
-  .secondary-cta-link {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: var(--font-weight-bold);
-    padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius-m);
-    border: 1px solid var(--border);
-    background: linear-gradient(
-      135deg,
-      oklch(from var(--primary) l c h / 0.06) 0%,
-      oklch(from var(--accent) l c h / 0.03) 100%
-    );
-    transition: all 0.2s ease;
-  }
-
-  .secondary-cta-link:hover {
-    background: var(--muted);
-    text-decoration: none;
-    transform: translateY(-1px);
-  }
-
-  .quick-options {
-    margin-bottom: var(--space-8);
-  }
-
-  .quick-options h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-2xl);
-  }
-
-  .quick-options-grid {
+  .contact-quick__inner {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-5);
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+  }
+  @media (min-width: 800px) {
+    .contact-quick__inner {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--space-6);
+    }
+  }
+  .contact-quick__title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+  }
+  .contact-quick__body {
+    margin: 0;
+    max-width: 52ch;
+    color: oklch(from var(--text) l c h / 0.78);
+  }
+  .contact-quick__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .contact-quick__link {
+    font-size: var(--font-size-sm);
+  }
+
+  .contact-paths__inner {
+    display: grid;
     gap: var(--space-6);
   }
-
-  .message-section {
-    scroll-margin-top: 84px;
-    margin-bottom: var(--space-8);
-    border-radius: var(--radius-l);
-    border: 1px solid var(--border);
-    background: var(--bg);
-    padding: var(--space-6);
-    box-shadow: var(--shadow-1);
-  }
-
-  .message-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-3);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-2xl);
-  }
-
-  .message-description {
-    text-align: center;
-    max-width: var(--content-width);
-    margin: 0 auto var(--space-4) auto;
-    opacity: 0.9;
-    line-height: 1.7;
-  }
-
-  .message-form {
-    max-width: 780px;
-    margin: 0 auto;
-  }
-
-  .contact-method {
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.02) 100%
-    );
-    padding: var(--space-5);
-    border: 1px solid transparent;
-    border-radius: var(--radius-l);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-method::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      var(--primary),
-      var(--accent),
-      var(--primary)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .contact-method::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      135deg,
-      oklch(from var(--primary) l c h / 0.05) 0%,
-      transparent 100%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  .contact-method:hover {
-    border-color: oklch(from var(--primary) l c h / 0.3);
-    box-shadow:
-      0 8px 24px oklch(from var(--primary) l c h / 0.15),
-      var(--shadow-2);
-    transform: translateY(-4px);
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.05) 100%
-    );
-  }
-
-  .contact-method:hover::before {
-    opacity: 1;
-  }
-
-  .contact-method:hover::after {
-    opacity: 1;
-  }
-
-  .contact-icon {
-    margin-bottom: var(--space-3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--primary);
-    transition: all 0.3s ease;
-  }
-
-  .contact-method:hover .contact-icon {
-    transform: scale(1.1) rotate(5deg);
-    color: var(--accent);
-  }
-
-  .contact-method h3 {
-    font-size: var(--font-size-xl);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: var(--space-3);
-    font-weight: var(--font-weight-bold);
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-method p {
-    margin-bottom: var(--space-3);
-    color: var(--text);
-    opacity: 0.8;
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-link {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-lg);
-    display: inline-block;
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-s);
-    background: linear-gradient(
-      135deg,
-      oklch(from var(--primary) l c h / 0.1) 0%,
-      oklch(from var(--accent) l c h / 0.05) 100%
-    );
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-link:hover {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.3);
-    text-decoration: none;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    position: relative;
-    z-index: 1;
-  }
-
-  .form-label {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    color: var(--text);
-  }
-
-  .form-input,
-  .form-textarea {
-    padding: var(--space-3);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-m);
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    background: var(--bg);
-    color: var(--text);
-    transition: all 0.2s ease;
-  }
-
-  .form-input:focus,
-  .form-textarea:focus {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 4px oklch(from var(--primary) l c h / 0.1);
-  }
-
-  .form-submit {
-    padding: var(--space-3) var(--space-4);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: white;
-    border: none;
-    border-radius: var(--radius-m);
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-bold);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px oklch(from var(--primary) l c h / 0.2);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .form-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
-    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-  }
-
-  .contact-focus {
-    margin-bottom: var(--space-8);
-  }
-
-  .contact-focus h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-2xl);
-  }
-
-  .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-5);
-  }
-
-  .focus-item {
-    text-align: center;
-    padding: var(--space-5);
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.02) 100%
-    );
-    border: 1px solid transparent;
-    border-radius: var(--radius-l);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .focus-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(
-      90deg,
-      var(--primary),
-      var(--accent),
-      var(--primary)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .focus-item:hover {
-    border-color: oklch(from var(--primary) l c h / 0.3);
-    box-shadow:
-      0 6px 20px oklch(from var(--primary) l c h / 0.12),
-      var(--shadow-1);
-    transform: translateY(-2px);
-    background: linear-gradient(
-      135deg,
-      var(--bg) 0%,
-      oklch(from var(--primary) l c h / 0.04) 100%
-    );
-  }
-
-  .focus-item:hover::before {
-    opacity: 1;
-  }
-
-  .focus-icon {
-    margin-bottom: var(--space-3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--primary);
-    transition: all 0.3s ease;
-  }
-
-  .focus-item:hover .focus-icon {
-    transform: scale(1.1) rotate(5deg);
-    color: var(--accent);
-  }
-
-  .focus-item h3 {
-    font-size: var(--font-size-lg);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: var(--space-2);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .focus-item p {
-    font-size: var(--font-size-sm);
+  .contact-paths__privacy {
     margin: 0;
-    line-height: 1.6;
-    color: var(--text);
-  }
-
-  .contact-cta {
-    background: linear-gradient(
-      135deg,
-      var(--muted) 0%,
-      oklch(from var(--primary) l c h / 0.05) 100%
-    );
-    padding: var(--space-6);
-    border-radius: var(--radius-l);
-    text-align: center;
-    border: 1px solid transparent;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      var(--accent),
-      var(--primary),
-      transparent
-    );
-    opacity: 0.5;
-  }
-
-  .contact-cta p {
-    margin-bottom: var(--space-3);
-    font-size: var(--font-size-lg);
-    line-height: 1.7;
-    color: var(--text);
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-cta p:last-child {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 600px) {
-    .focus-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .primary-cta {
-      padding: var(--space-5);
-    }
+    max-width: var(--w-prose);
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.66);
   }
 </style>
