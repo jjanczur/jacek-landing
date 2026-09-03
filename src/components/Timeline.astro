@@ -1,0 +1,103 @@
+---
+export interface TimelineItem {
+  period: string;
+  title: string;
+  org: string;
+  outcome: string;
+  contribution?: string;
+  href?: string;
+}
+export interface Props {
+  items: TimelineItem[];
+}
+const { items } = Astro.props;
+
+const isPdf = (href: string) => /\.pdf($|[?#])/i.test(href);
+const linkLabel = (href: string) =>
+  isPdf(href) ? 'Employer reference (PDF)' : 'Read the case';
+---
+
+<ol class="timeline">
+  {
+    items.map((item, i) => (
+      <li class="timeline__row reveal" style={`--reveal-delay: ${i * 60}ms`}>
+        <p class="timeline__period">{item.period}</p>
+        <div class="timeline__body">
+          <h3 class="timeline__role">
+            {item.title}
+            <span class="timeline__org">{item.org}</span>
+          </h3>
+          <p class="timeline__outcome">{item.outcome}</p>
+          {item.contribution && (
+            <p class="timeline__contribution">{item.contribution}</p>
+          )}
+          {item.href && (
+            <a
+              class="timeline__link"
+              href={item.href}
+              download={isPdf(item.href) ? '' : undefined}
+            >
+              {linkLabel(item.href)}
+            </a>
+          )}
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .timeline__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2) var(--space-6);
+    padding-block: var(--space-6);
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline__period {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.04em;
+    color: oklch(from var(--text) l c h / 0.62);
+  }
+  .timeline__role {
+    margin: 0 0 var(--space-3);
+    font-size: var(--font-size-xl);
+    letter-spacing: var(--tracking-display);
+  }
+  .timeline__org {
+    display: block;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--primary);
+  }
+  .timeline__outcome {
+    margin: 0 0 var(--space-3);
+    max-width: var(--w-prose);
+    font-size: var(--font-size-lg);
+  }
+  .timeline__contribution {
+    margin: 0;
+    max-width: var(--w-prose);
+    color: oklch(from var(--text) l c h / 0.74);
+  }
+  .timeline__link {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+  @media (min-width: 900px) {
+    .timeline__row {
+      grid-template-columns: 16rem 1fr;
+    }
+  }
+</style>

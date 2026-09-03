@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import PillarGrid from '../../components/PillarGrid.astro';
+import PrincipleList from '../../components/PrincipleList.astro';
+import Timeline from '../../components/Timeline.astro';
+import AvailabilityPill from '../../components/AvailabilityPill.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getSupportedLangs, getTranslations } from '../../utils/i18n';
+import type { Lang } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return getSupportedLangs().map(lang => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = await getTranslations('leadership', lang);
+---
+
+<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
+  <Hero {...t.hero} />
+
+  <section class="section-head">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.pillars.eyebrow}
+        title={t.pillars.title}
+        lede={t.pillars.lede}
+        id="owned"
+      />
+    </div>
+  </section>
+  <PillarGrid pillars={t.pillars.items} />
+
+  <section class="section" aria-labelledby="built">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.built.eyebrow}
+        title={t.built.title}
+        id="built"
+      />
+      <PrincipleList items={t.built.items} columns={2} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="lead">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.principles.eyebrow}
+        title={t.principles.title}
+        id="lead"
+      />
+      <PrincipleList
+        items={t.principles.items}
+        exampleLabel={t.principles.exampleLabel}
+        columns={2}
+      />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="timeline">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.timeline.eyebrow}
+        title={t.timeline.title}
+        id="timeline"
+      />
+      <Timeline items={t.timeline.items} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="hands-on">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.handsOn.eyebrow}
+        title={t.handsOn.title}
+        id="hands-on"
+      />
+      <PrincipleList items={t.handsOn.items} columns={2} />
+    </div>
+  </section>
+
+  <section class="availability-line">
+    <div class="container">
+      <AvailabilityPill
+        text={t.availability.line}
+        ariaLabel="Availability for leadership roles"
+      />
+    </div>
+  </section>
+
+  <CtaBand {...t.band} />
+</BaseLayout>
+
+<style>
+  /* PillarGrid brings its own `.section` rhythm, so the header above it only
+     pads the top and lets the grid supply the bottom. */
+  .section-head {
+    padding-block: var(--section-y) 0;
+  }
+  .availability-line {
+    padding-block: 0 var(--section-y);
+  }
+  .availability-line .container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .availability-line :global(.availability) {
+    max-width: 60ch;
+    line-height: 1.5;
+  }
+</style>
