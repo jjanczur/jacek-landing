@@ -1,0 +1,153 @@
+---
+title: 'A repeatable way to find, build and evaluate AI workflows with domain experts'
+client: 'KfW (development bank) and a KfW-funded humanitarian NGO'
+relationship: 'client'
+via: 'Jaden Data / entAIngine'
+sector: 'Development finance'
+period: '2025'
+status: 'poc'
+role: 'AI lead and solution architect'
+mandate:
+  "Designed the architecture and the multi-step AI processes for a portfolio of seven proofs of
+  concept, ran the expert-review cadence, and was accountable for each one meeting the customer's
+  acceptance criteria."
+skim: 'Seven document-heavy workflows, one spec, one evaluation template'
+category: 'enterprise-ai'
+summary:
+  'Seven proofs of concept across ministry reporting, partner-report checks, contract analysis,
+  evaluation reports, technical knowledge retrieval and humanitarian self-service, each built as a
+  multi-step process and validated by subject-matter experts on real documents.'
+keyDecisions:
+  - 'One standardised specification and one evaluation template for every proof of concept, so
+    results were comparable and expert reviews stayed weekly.'
+  - 'Fan-out / fan-in process design: parallel extraction into structured JSON, reconciliation, then
+    generation with source references in every output.'
+  - 'Data preparation over model selection: PDF and Excel pre-processing as the main lever against
+    numeric errors, and simpler output schemas after a wide single-pass extraction hallucinated.'
+outcomes:
+  - {
+      value: '~1 day',
+      label: 'saved per ministry monitoring report (out of ~90 per year)',
+      evidence: 'customer-estimate',
+    }
+  - {
+      value: '20–30%',
+      label: 'less drafting effort on an ex-post evaluation chapter',
+      evidence: 'customer-estimate',
+    }
+  - {
+      value: '~15 min',
+      label: 'saved per partner-report indicator pre-check (~180 per year)',
+      evidence: 'customer-estimate',
+    }
+  - {
+      value: '5 h → 1 h',
+      label: 'per contract deliverables review at the targeted accuracy',
+      evidence: 'projected',
+    }
+stakeholders:
+  [
+    'Portfolio managers',
+    'Technical experts',
+    'Evaluators',
+    "An NGO's programme and legal-assistance teams",
+    'IT and data owners',
+  ]
+constraints:
+  [
+    'Strict German- or English-only structured outputs',
+    'Documents of 200–500 pages',
+    'Expert time available only in weekly reviews',
+    'Per-interaction cost versus static tools had to be justified',
+  ]
+reuse:
+  [
+    'Standardised PoC specification and evaluation templates',
+    'Multi-node process patterns (parallel extraction → JSON hand-off → reconciliation → generation)',
+    'RAG with reranking and page-level citations',
+    'Prompt-injected decision-tree chatbot pattern',
+  ]
+tags:
+  [
+    'RAG',
+    'structured extraction',
+    'evaluation',
+    'multilingual assistant',
+    'document workflows',
+    'PoC governance',
+  ]
+angle: 'builder'
+featured: true
+order: 20
+---
+
+## Context
+
+KfW's development-finance teams and a KfW-funded humanitarian NGO run on documents: annual ministry
+reports, partner reports, contracts, evaluation reports, technical design archives and self-help
+guides for refugees.
+
+## Business problem
+
+Each workflow consumed expert hours in summarising, cross-checking and drafting. The question was
+not whether a language model could write a paragraph, but where generative AI removes manual effort
+reliably enough that experts would adopt it.
+
+## My mandate
+
+I designed the solution architecture and the multi-step AI processes for every proof of concept,
+wrote the prompts for extraction, reconciliation, generation, retrieval and the chatbot, and was
+accountable for each result meeting the acceptance criteria the experts set.
+
+## Stakeholders
+
+Portfolio managers writing ministry reports; technical experts checking contracts and searching
+design archives; evaluators drafting ex-post reports; the NGO's programme and legal-assistance
+staff; IT and data owners.
+
+## Constraints
+
+Outputs had to be strictly German-only or English-only and structured. Inputs ran to hundreds of
+pages. Expert time was limited to weekly review meetings. For the refugee chatbot, per-interaction
+cost had to be weighed against a static decision tree.
+
+## Decisions
+
+- Every proof of concept used one specification template (background, problem, objective, scope,
+  methodology, success metrics, dependencies) and one evaluation template (time savings, rework
+  reduction, result quality, applicability, improvement potential).
+- Processes were designed as fan-out / fan-in: parallel extraction nodes producing JSON, a
+  reconciliation step, then generation with source references preserved in every output. The
+  ministry-report PESTLE draft alone was an eight-node process with six parallel research analyses.
+- Knowledge retrieval over 300-page technical documents used vector retrieval, a reranking step with
+  relevance justification, and citations by document, file and page, exposed through a chat
+  interface with follow-up questions.
+- Contract deliverables extraction moved from a single wide table schema (which hallucinated) to an
+  n-step design: identify first, then extract attributes, with human-in-the-loop validation.
+- The refugee self-help guide became a stateful, multilingual assistant (English, Arabic, Ukrainian,
+  Bengali, Russian) by injecting the exported decision tree into the prompt and tracking the step
+  pointer in the conversation state.
+
+## Delivery
+
+Rapid prototyping on the platform, agile iterations, weekly reviews with the domain experts, every
+proof of concept validated on real documents.
+
+## Outcome
+
+Experts estimated about a day saved per ministry report, a fifth to a third less drafting effort on
+an evaluation chapter, and a quarter of an hour per partner-report pre-check; contract review was
+projected to drop from five hours to one at the targeted accuracy. Retrieval over the technical
+archive enabled research that had been impractical, and the experts asked for a production rollout
+to a wider group.
+
+## Reuse
+
+The specification and evaluation templates, the process patterns, the cited-retrieval design and the
+decision-tree assistant pattern were reused across the portfolio and later deployments.
+
+## Evidence
+
+Time savings are the experts' own estimates from the evaluation template; the contract-review figure
+is a projection at the targeted recall and precision. Outputs carried source references so every
+claim could be traced.

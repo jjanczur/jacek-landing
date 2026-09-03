@@ -17,9 +17,23 @@ export interface Props {
    * must remain indexable or social previews break.
    */
   noImageIndex?: boolean;
+  /**
+   * Extra JSON-LD node merged into the page's `structuredData['@graph']`
+   * (e.g. a CreativeWork for a case study). Only emitted on the published
+   * document branch below — the redirect shell for unpublished languages
+   * never renders structured data.
+   */
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, lang, ogImage, noImageIndex = false } = Astro.props;
+const {
+  title,
+  description,
+  lang,
+  ogImage,
+  noImageIndex = false,
+  jsonLd,
+} = Astro.props;
 
 const robotsContent = [
   'index, follow',
@@ -235,6 +249,7 @@ const structuredData = {
       isPartOf: { '@id': 'https://janczura.com/#website' },
       about: { '@id': 'https://janczura.com/#person' },
     },
+    ...(jsonLd ? [jsonLd] : []),
   ],
 };
 ---

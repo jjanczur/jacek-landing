@@ -1,0 +1,145 @@
+---
+title: 'Building Jaden Data: a bootstrapped enterprise AI company and its engineering team'
+client: 'Jaden Data'
+relationship: 'own-company'
+sector: 'Enterprise AI'
+period: '2021 – 2024 (CTO); consulting partner since'
+status: 'production'
+role: 'Co-founder & CTO'
+mandate:
+  'Owned technology strategy, product roadmap, architecture, enterprise delivery, security and
+  compliance, the technical budget and the engineering organisation from the first hire to a
+  ten-person team.'
+skim: 'Bootstrapped to €1M+, team 0→10, two certifications'
+category: 'company-building'
+summary:
+  'From zero to a profitable, bootstrapped €1M+ enterprise AI company: platform, team, delivery
+  standards, ISO 27001 and SOC 2, and a client base of 50+ organisations.'
+keyDecisions:
+  - 'Bootstrap on client delivery rather than raise capital, so the platform was shaped by paying
+    enterprise workflows from day one.'
+  - 'Build one multi-tenant, provider-independent platform (entAIngine) instead of bespoke stacks
+    per client, so each deployment made the next one cheaper.'
+  - 'Treat certification as an engineering programme: ISO 27001 and SOC 2 delivered in about three
+    months without freezing the roadmap.'
+outcomes:
+  - {
+      value: '€1M+',
+      label: 'annual revenue, bootstrapped, no external capital',
+      evidence: 'measured',
+    }
+  - {
+      value: '0 → 10',
+      label: 'engineers hired and led across frontend, backend and AI workstreams',
+      evidence: 'measured',
+    }
+  - {
+      value: '50+',
+      label: 'organisations served on one multi-tenant platform at 99.9% uptime',
+      evidence: 'measured',
+    }
+  - {
+      value: '~3 months',
+      label: 'to ISO 27001 and SOC 2 Type 2 certification',
+      evidence: 'measured',
+    }
+stakeholders:
+  [
+    'Co-founders and shareholders',
+    'Enterprise clients (procurement, pensions, development finance, pharma)',
+    'Auditors for ISO 27001 and SOC 2',
+    'Partner firms',
+  ]
+constraints:
+  [
+    'No external funding',
+    'Regulated clients with on-premises and data-sovereignty requirements',
+    'Parallel client deliveries with one small team',
+  ]
+reuse:
+  [
+    'entAIngine platform and reusable process components',
+    'Testbed evaluation framework',
+    'Prompt Wizard',
+    'Delivery standards: code review, CI/CD quality gates, testing requirements',
+  ]
+tags:
+  [
+    'company building',
+    'team building',
+    'technical strategy',
+    'ISO 27001',
+    'SOC 2',
+    'AWS',
+    'multi-tenant',
+  ]
+featured: true
+order: 10
+---
+
+## Context
+
+Jaden Data GmbH was co-founded in 2021 as a bootstrapped company delivering AI and
+distributed-systems work for regulated enterprises. I served as CTO until June 2024 and remain its
+fractional CTO and consulting partner.
+
+## Business problem
+
+Enterprises wanted AI embedded in real back-office workflows, with security, data sovereignty and
+auditability they could defend to their own auditors. Delivering that as one-off projects does not
+scale; a small company needs a platform and an operating model that make every deployment cheaper
+than the last.
+
+## My mandate
+
+I owned the technology strategy and product roadmap, the architecture of the platform and of
+client-specific systems, the technical budget (cloud, third-party APIs, resourcing), security and
+compliance, technical pre-sales and kick-offs, executive reporting to clients and shareholders, and
+the engineering organisation from the first hire onwards.
+
+## Stakeholders
+
+Co-founders and shareholders; enterprise process owners and IT security teams on the client side;
+external auditors for ISO 27001 and SOC 2; delivery partners.
+
+## Constraints
+
+No external capital, so every platform investment had to be paid for by client work. Clients in
+banking, pensions, development finance and pharma with on-premises or controlled-cloud requirements.
+Several client deliveries running in parallel with a team that grew from zero.
+
+## Decisions
+
+- Bootstrap on delivery and shape the platform around paying workflows rather than a speculative
+  product roadmap.
+- One multi-tenant, event-driven platform on AWS (Lambda, ECS/Fargate, SNS/SQS) with a
+  provider-independent model layer (OpenAI, Azure, AWS Bedrock, Google Gemini, Mistral) and
+  role-based access control, so model choice could follow quality, latency, cost and
+  data-sovereignty needs per client.
+- Certification as an engineering programme: security controls, evidence collection and process
+  changes run alongside delivery, reaching ISO 27001 and SOC 2 Type 2 in about three months.
+- Standards before headcount: code-review rules, CI/CD quality gates and testing requirements were
+  in place before the team grew, so quality did not depend on any one person.
+
+## Delivery
+
+Engineering grew from 0 to 10 across frontend, backend and AI workstreams, with structured code
+review, pair programming and internal knowledge sharing. I led the redesign of an entangled frontend
+monolith into micro-frontends to give teams deployment independence. The platform reached more than
+1,000 concurrent connections and thousands of requests per second with 99.9% uptime.
+
+## Outcome
+
+A profitable, bootstrapped company with €1M+ annual revenue, a ten-person engineering team, two
+certifications and 50+ organisations on the platform.
+
+## Reuse
+
+The platform primitives, the Testbed evaluation framework and Prompt Wizard came out of repeated
+client needs and were reused across every later deployment; the delivery standards became the
+company's operating model.
+
+## Evidence
+
+Revenue, team size, client count, uptime and certification timeline are company records. See the
+related deployments for what the platform delivered in production.

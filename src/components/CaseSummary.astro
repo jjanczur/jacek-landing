@@ -1,0 +1,155 @@
+---
+import OutcomeBadge from './OutcomeBadge.astro';
+
+interface Outcome {
+  value: string;
+  label: string;
+  evidence:
+    | 'measured'
+    | 'customer-estimate'
+    | 'projected'
+    | 'qualitative'
+    | 'benchmark';
+}
+
+export interface Props {
+  mandate: string;
+  keyDecisions: string[];
+  outcomes: Outcome[];
+  status: string;
+  relationship: string;
+  via?: string;
+}
+
+const { mandate, keyDecisions, outcomes, status, relationship, via } =
+  Astro.props;
+
+const RELATIONSHIP_LABEL: Record<string, string> = {
+  client: 'Client engagement',
+  independent: 'Independent engagement',
+  employer: 'Employment',
+  'own-company': 'Own company',
+  'research-partner': 'Research partnership',
+};
+
+const STATUS_LABEL: Record<string, string> = {
+  production: 'Production',
+  mvp: 'MVP',
+  poc: 'Proof of concept',
+  prototype: 'Prototype',
+  research: 'Research',
+};
+---
+
+<div class="case-summary reveal">
+  <p class="case-summary__meta">
+    {RELATIONSHIP_LABEL[relationship] ?? relationship}{via && ` · via ${via}`}
+    <span class="case-summary__status">{STATUS_LABEL[status] ?? status}</span>
+  </p>
+  <div class="case-summary__grid">
+    <div class="case-summary__col">
+      <h2 class="case-summary__heading">Mandate</h2>
+      <p class="case-summary__mandate">{mandate}</p>
+    </div>
+    <div class="case-summary__col">
+      <h2 class="case-summary__heading">Three decisions</h2>
+      <ol class="case-summary__decisions">
+        {
+          keyDecisions.map(decision => (
+            <li class="case-summary__decision">{decision}</li>
+          ))
+        }
+      </ol>
+    </div>
+    <div class="case-summary__col case-summary__col--outcomes">
+      <h2 class="case-summary__heading">Outcome</h2>
+      <div class="case-summary__outcomes">
+        {
+          outcomes.map(outcome => (
+            <OutcomeBadge
+              value={outcome.value}
+              label={outcome.label}
+              evidence={outcome.evidence}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .case-summary {
+    padding: clamp(20px, 3.5vw, 32px);
+    margin-bottom: var(--space-8);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+  }
+
+  .case-summary__meta {
+    margin: 0 0 var(--space-5) 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.7);
+  }
+
+  .case-summary__status {
+    padding: 0.2em 0.7em;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--font-size-xs);
+    color: var(--text);
+  }
+
+  .case-summary__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+  }
+
+  .case-summary__heading {
+    margin: 0 0 var(--space-3) 0;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .case-summary__mandate {
+    margin: 0;
+    color: oklch(from var(--text) l c h / 0.88);
+  }
+
+  .case-summary__decisions {
+    margin: 0;
+    padding-left: 1.2em;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .case-summary__decision {
+    color: oklch(from var(--text) l c h / 0.88);
+  }
+
+  .case-summary__outcomes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 900px) {
+    .case-summary__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+</style>

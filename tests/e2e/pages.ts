@@ -11,6 +11,10 @@ export const EN_PAGES = [
   '/en/publications/',
   '/en/privacy/',
   '/en/imprint/',
+  '/en/case-studies/jaden-data-company-building/',
+  '/en/case-studies/kfw-genai-portfolio/',
+  '/en/case-studies/bosch-procurement-ai/',
+  '/en/case-studies/apg-pension-assistant/',
 ];
 
 export const ALL_PAGES = [
