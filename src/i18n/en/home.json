@@ -26,5 +26,149 @@
       "label": "Send a project brief"
     },
     "note": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  },
+  "wall": {
+    "heading": "Organisations that audit every line",
+    "lede": "A national central bank, a €500B+ pension fund and a global pharma group don't take things on trust. Here's where the work has been delivered.",
+    "groups": [
+      {
+        "title": "Clients, delivered as Co-founder & CTO of Jaden Data",
+        "legal": "All trademarks are the property of their respective owners. Logos indicate organisations for which Jacek delivered work as Co-founder & CTO of Jaden Data. No partnership, sponsorship or endorsement is implied.",
+        "items": [
+          {
+            "src": "/media/0a1b52260b574b1eb6896d0a54b55b11.webp",
+            "w": 744,
+            "h": 133,
+            "alt": "National central bank",
+            "caption": "Central bank · CBDC bridge"
+          },
+          {
+            "src": "/media/26a6930244564dbfbcf739144d3ee697.webp",
+            "w": 548,
+            "h": 186,
+            "alt": "European pension fund",
+            "caption": "Pension fund · member-facing assistant"
+          },
+          {
+            "src": "/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp",
+            "w": 622,
+            "h": 186,
+            "alt": "Global pharmaceutical group",
+            "caption": "Pharma · assistant & research platform"
+          },
+          {
+            "src": "/media/1281e65db12c45469e14f9d21293fc0f.webp",
+            "w": 529,
+            "h": 186,
+            "alt": "Development bank",
+            "caption": "Development bank · GenAI portfolio"
+          },
+          {
+            "src": "/media/28105d45d9344ea18b2923eed7f69bb3.webp",
+            "w": 744,
+            "h": 166,
+            "alt": "Industrial technology group",
+            "caption": "Industrial group · procurement AI"
+          },
+          {
+            "src": "/media/08e6a6fe611f43c2a0f29358faf97629.webp",
+            "w": 744,
+            "h": 176,
+            "alt": "Global beverage brand",
+            "caption": "Venture screening · Flowhive VC"
+          },
+          {
+            "src": "/media/61e1429a033149af88693c678b929b4b.webp",
+            "w": 744,
+            "h": 158,
+            "alt": "Automotive manufacturer",
+            "caption": "Automotive · RAG evaluation"
+          },
+          {
+            "src": "/media/70c915d7d1a94b99bbd3557ff3682463.webp",
+            "w": 395,
+            "h": 186,
+            "alt": "Technical certification body",
+            "caption": "Certification · regulation analysis"
+          }
+        ]
+      },
+      {
+        "title": "Earlier: employers and their clients",
+        "legal": "Logos indicate organisations Jacek worked for as an employee or consultant before founding Jaden Data (including a retail bank served through an analytics vendor). No partnership, sponsorship or endorsement is implied.",
+        "items": [
+          {
+            "src": "/media/8b8ae90132304dc3be81b75e313e6285.webp",
+            "w": 611,
+            "h": 186,
+            "alt": "E-commerce price comparison platform",
+            "caption": "E-commerce · login at scale"
+          },
+          {
+            "src": "/media/83c4ed8c667b41939165458511d46e3f.webp",
+            "w": 550,
+            "h": 186,
+            "alt": "European retail bank",
+            "caption": "Banking · real-time decisioning"
+          },
+          {
+            "src": "/media/9612982e0292426fa1adad3310809278.webp",
+            "w": 453,
+            "h": 186,
+            "alt": "Analytics software vendor",
+            "caption": "Analytics · banking projects"
+          },
+          {
+            "src": "/media/cf06994ba7154815a933e5d11a4a1335.webp",
+            "w": 156,
+            "h": 186,
+            "alt": "European telecommunications operator",
+            "caption": "Telecom · innovation lab"
+          }
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "heading": "Proof in numbers",
+    "items": [
+      {
+        "value": "€1M+",
+        "countTo": 1,
+        "prefix": "€",
+        "suffix": "M+",
+        "decimals": 0,
+        "label": "annual revenue, bootstrapped from zero"
+      },
+      {
+        "value": "0 → 10",
+        "label": "engineers hired and led, across three workstreams"
+      },
+      {
+        "value": "50+",
+        "countTo": 50,
+        "suffix": "+",
+        "decimals": 0,
+        "label": "organisations on one multi-tenant platform"
+      },
+      {
+        "value": "99.9%",
+        "countTo": 99.9,
+        "suffix": "%",
+        "decimals": 1,
+        "label": "uptime at thousands of requests per second"
+      },
+      {
+        "value": "ISO 27001 + SOC 2",
+        "label": "both certifications delivered in about three months"
+      },
+      {
+        "value": "1.4M",
+        "countTo": 1.4,
+        "suffix": "M",
+        "decimals": 1,
+        "label": "accounts in three months at idealo, as a key contributor"
+      }
+    ]
   }
 }

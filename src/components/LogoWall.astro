@@ -1,0 +1,423 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+export interface LogoItem {
+  src: string;
+  w: number;
+  h: number;
+  alt: string;
+  caption: string;
+}
+export interface LogoGroup {
+  title: string;
+  legal: string;
+  items: LogoItem[];
+}
+export interface Props {
+  heading?: string;
+  lede?: string;
+  groups: LogoGroup[];
+  spotlight?: boolean;
+}
+const { heading, lede, groups, spotlight = false } = Astro.props;
+
+// Continuous index across all groups so the staggered entrance reads as one
+// sweep through the whole wall, not a restart per group.
+let running = 0;
+---
+
+<section class="logo-wall section" id="wall" aria-labelledby="wall-heading">
+  <div class="container">
+    {
+      heading && (
+        <SectionHeader
+          title={heading}
+          lede={lede}
+          align="center"
+          id="wall-heading"
+        />
+      )
+    }
+
+    <div class="logo-wall__frame" data-wall>
+      {spotlight && <div class="logo-wall__spotlight" aria-hidden="true" />}
+
+      {
+        groups.map(group => (
+          <div class="logo-wall__group" data-group>
+            <h3 class="logo-wall__group-title">{group.title}</h3>
+            <ul class="logo-wall__grid" role="list">
+              {group.items.map(item => {
+                const i = running++;
+                return (
+                  <li class="chip-cell" data-chip style={`--i:${i}`}>
+                    <span class="chip">
+                      <img
+                        class="chip-logo"
+                        src={item.src}
+                        alt={item.alt}
+                        width={item.w}
+                        height={item.h}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                    <span class="chip-note">{item.caption}</span>
+                  </li>
+                );
+              })}
+            </ul>
+            <p class="logo-wall__legal">{group.legal}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-wall {
+    /* section already provides block rhythm via .section */
+  }
+
+  .logo-wall__frame {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--surface-1), var(--bg));
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+  }
+
+  /* The moving spotlight — a soft radial highlight positioned by JS via
+     --mx/--my (percent). One instance sits above the frame background,
+     below the chips' own brightening, and never intercepts pointer events.
+     Spans both groups: it is one layer for the whole wall. */
+  .logo-wall__spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      34% 40% at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--primary) 22%, transparent) 0%,
+      color-mix(in oklab, var(--accent) 12%, transparent) 40%,
+      transparent 72%
+    );
+    opacity: 0;
+    transition: opacity 0.6s var(--ease-out);
+  }
+  .logo-wall__frame.is-lit .logo-wall__spotlight {
+    opacity: 1;
+  }
+
+  .logo-wall__group {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  /* Group title: small-caps eyebrow treatment, duplicated from .eyebrow */
+  .logo-wall__group-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .logo-wall__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: clamp(var(--space-3), 2vw, var(--space-4));
+  }
+
+  .chip-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+    opacity: 1;
+  }
+
+  .chip {
+    width: 100%;
+    aspect-ratio: 5 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    /* Brighten as the spotlight passes: driven by --lit (0..1) from JS */
+    filter: brightness(calc(1 + var(--lit, 0) * 0.07));
+    transition: filter 0.3s var(--ease-out);
+    will-change: filter;
+  }
+
+  .chip-logo {
+    max-width: 100%;
+    max-height: 44px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    /* Logos are dark-on-transparent; grayscale + dim keeps the wall calm */
+    filter: grayscale(1) opacity(0.78);
+    transition: filter 0.25s var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .chip-cell:hover .chip-logo {
+      filter: none;
+    }
+  }
+
+  /* Dark mode: same dark-on-transparent logos need inverting to read */
+  :root[data-theme='dark'] .chip-logo {
+    filter: grayscale(1) invert(1) opacity(0.85);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .chip-logo {
+      filter: grayscale(1) invert(1) opacity(0.85);
+    }
+  }
+
+  .chip-note {
+    font-size: var(--font-size-xs);
+    color: oklch(from var(--text) l c h / 0.6);
+    text-align: center;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
+  /* Nominative-use notice. Deliberately quiet, but present in the static
+     HTML so it is visible to anyone reviewing the page — including a human
+     triaging an automated trademark flag. */
+  .logo-wall__legal {
+    margin: var(--space-5) auto 0;
+    max-width: 60ch;
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+    color: oklch(from var(--text) l c h / 0.6);
+    text-align: center;
+    text-wrap: pretty;
+  }
+
+  /* Staggered entrance: cells start collapsed, JS adds .is-in per-cell with a
+     per-index delay via --i. Fallback keeps them visible (see reduced-motion
+     below and no-JS default above). */
+  .js-anim .chip-cell {
+    opacity: 0;
+    transform: translateY(16px) scale(0.94);
+    transition:
+      opacity 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out);
+    transition-delay: calc(var(--i) * 55ms);
+  }
+  .js-anim .chip-cell.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .chip-cell:hover .chip {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js-anim .chip-cell {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .logo-wall__frame.is-lit .logo-wall__spotlight {
+      opacity: 0 !important;
+    }
+    .chip {
+      filter: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const reduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    document.querySelectorAll('[data-wall]').forEach(function (wall) {
+      /* ---------------------------------------------------------------- *
+       * 1. STAGGERED CHIP ENTRANCE                                        *
+       * The wall only opts into the hidden start-state when JS runs AND   *
+       * motion is allowed, so no-JS / reduced-motion keeps chips visible. *
+       * ---------------------------------------------------------------- */
+      if (!reduced) {
+        const grid = wall.querySelector('.logo-wall__grid');
+        if (grid) {
+          const allGrids = wall.querySelectorAll('.logo-wall__grid');
+          allGrids.forEach(function (g) {
+            g.classList.add('js-anim');
+          });
+          const cells = wall.querySelectorAll('[data-chip]');
+          const revealChips = function () {
+            cells.forEach(function (cell) {
+              cell.classList.add('is-in');
+            });
+          };
+          if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(
+              function (entries, obs) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    revealChips();
+                    obs.disconnect();
+                  }
+                });
+              },
+              { threshold: 0.2 },
+            );
+            io.observe(wall);
+          } else {
+            revealChips();
+          }
+        }
+      }
+
+      /* ---------------------------------------------------------------- *
+       * 2. SPOTLIGHT SWEEP                                                *
+       * A soft radial highlight glides across the whole wall (both        *
+       * groups) on a slow looping path (Lissajous-style so it never feels *
+       * linear). rAF-driven, paused when the wall is off-screen, and      *
+       * never started under reduced motion. Each chip brightens by        *
+       * proximity to the light.                                           *
+       * ---------------------------------------------------------------- */
+      const spotlight = wall.querySelector('.logo-wall__spotlight');
+      const chips = wall.querySelectorAll('.chip');
+
+      if (spotlight && chips.length && !reduced) {
+        let rafId = null;
+        let start = null;
+        let onScreen = false;
+        let chipBoxes = [];
+        let wallBox = null;
+
+        const measure = function () {
+          wallBox = wall.getBoundingClientRect();
+          chipBoxes = [];
+          chips.forEach(function (chip) {
+            const r = chip.getBoundingClientRect();
+            chipBoxes.push({
+              el: chip,
+              cx: r.left + r.width / 2 - wallBox.left,
+              cy: r.top + r.height / 2 - wallBox.top,
+            });
+          });
+        };
+
+        const frame = function (t) {
+          if (start === null) start = t;
+          if (!wallBox || wallBox.width === 0) {
+            rafId = window.requestAnimationFrame(frame);
+            return;
+          }
+          const elapsed = (t - start) / 1000;
+          // Two out-of-phase sines => a smooth wandering path, ~11s period.
+          const px = 50 + 42 * Math.sin(elapsed * 0.57);
+          const py = 50 + 30 * Math.sin(elapsed * 0.83 + 1.1);
+          spotlight.style.setProperty('--mx', px.toFixed(2) + '%');
+          spotlight.style.setProperty('--my', py.toFixed(2) + '%');
+
+          // Light position in px within the wall.
+          const lx = (px / 100) * wallBox.width;
+          const ly = (py / 100) * wallBox.height;
+          const radius = Math.max(wallBox.width, wallBox.height) * 0.34;
+
+          for (let k = 0; k < chipBoxes.length; k++) {
+            const c = chipBoxes[k];
+            const dx = c.cx - lx;
+            const dy = c.cy - ly;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            // 1 at the centre of the light, easing to 0 at the radius edge.
+            let lit = 1 - dist / radius;
+            if (lit < 0) lit = 0;
+            c.el.style.setProperty('--lit', (lit * lit).toFixed(3));
+          }
+          rafId = window.requestAnimationFrame(frame);
+        };
+
+        const play = function () {
+          if (rafId === null) {
+            measure();
+            start = null;
+            rafId = window.requestAnimationFrame(frame);
+          }
+        };
+        const pause = function () {
+          if (rafId !== null) {
+            window.cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        };
+
+        // Only run while the wall is in view (perf + battery).
+        if ('IntersectionObserver' in window) {
+          const vio = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                onScreen = entry.isIntersecting;
+                wall.classList.toggle('is-lit', onScreen);
+                if (onScreen) {
+                  play();
+                } else {
+                  pause();
+                }
+              });
+            },
+            { threshold: 0.12 },
+          );
+          vio.observe(wall);
+        } else {
+          onScreen = true;
+          wall.classList.add('is-lit');
+          play();
+        }
+
+        // Keep chip geometry correct on resize; cheap debounce.
+        let resizeTimer = null;
+        window.addEventListener(
+          'resize',
+          function () {
+            if (resizeTimer) window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(function () {
+              if (onScreen) measure();
+            }, 150);
+          },
+          { passive: true },
+        );
+
+        // Pause when the tab is hidden.
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) {
+            pause();
+          } else if (onScreen) {
+            play();
+          }
+        });
+      }
+    });
+  })();
+</script>

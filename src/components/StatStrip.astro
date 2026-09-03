@@ -1,0 +1,176 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+export interface Stat {
+  value: string;
+  label: string;
+  countTo?: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+}
+export interface Props {
+  stats: Stat[];
+  heading?: string;
+  columns?: 3 | 5 | 6;
+}
+const { stats, heading, columns = 5 } = Astro.props;
+---
+
+<section class="section" aria-labelledby="stats-heading">
+  <div class="container">
+    {
+      heading && (
+        <SectionHeader title={heading} align="center" id="stats-heading" />
+      )
+    }
+    <dl class={`stat-strip stat-strip--${columns}`}>
+      {
+        stats.map(s => (
+          <div class="stat">
+            {s.countTo !== undefined ? (
+              <dt
+                class="stat__value"
+                data-count
+                data-to={s.countTo}
+                data-prefix={s.prefix || ''}
+                data-suffix={s.suffix || ''}
+                data-decimals={s.decimals ?? 0}
+              >
+                {s.value}
+              </dt>
+            ) : (
+              <dt class="stat__value" data-text>
+                {s.value}
+              </dt>
+            )}
+            <dd class="stat__label">{s.label}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .stat-strip {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6) var(--space-5);
+  }
+  @media (min-width: 700px) {
+    .stat-strip {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  /* --columns applies from 1100px, except --6 which waits for 1280px: at
+     1100–1279px, six columns crush these labels (up to 26ch) into an
+     awkward wrap, so --6 stays at 3 columns through that range. */
+  @media (min-width: 1100px) {
+    .stat-strip--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .stat-strip--5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1280px) {
+    .stat-strip--6 {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  .stat {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .stat__value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 5.5vw, 3.1rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    margin: 0 0 var(--space-2);
+  }
+  .stat__value[data-text] {
+    white-space: normal;
+    font-size: clamp(1.3rem, 3.6vw, 2.1rem);
+    line-height: 1.15;
+  }
+
+  .stat__label {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.72);
+    max-width: 26ch;
+    line-height: 1.5;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const reduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    const counters = document.querySelectorAll('[data-count][data-to]');
+    if (!counters.length) return;
+
+    const formatValue = function (el, value) {
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+      return prefix + value.toFixed(decimals) + suffix;
+    };
+
+    const runCount = function (el) {
+      const to = parseFloat(el.getAttribute('data-to') || '0');
+      if (reduced || !Number.isFinite(to)) {
+        el.textContent = formatValue(el, to);
+        return;
+      }
+      const duration = 1500;
+      let t0 = null;
+      const step = function (ts) {
+        if (t0 === null) t0 = ts;
+        const p = Math.min((ts - t0) / duration, 1);
+        // easeOutExpo — fast then settles, feels precise not springy.
+        const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+        el.textContent = formatValue(el, to * eased);
+        if (p < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          el.textContent = formatValue(el, to);
+        }
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      counters.forEach(function (el) {
+        const to = parseFloat(el.getAttribute('data-to') || '0');
+        el.textContent = formatValue(el, to);
+      });
+    } else {
+      const cio = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              runCount(entry.target);
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.6 },
+      );
+      counters.forEach(function (el) {
+        cio.observe(el);
+      });
+    }
+  })();
+</script>
