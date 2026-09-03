@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getSupportedLangs } from '../../utils/i18n';
+import Hero from '../../components/Hero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getSupportedLangs, getTranslations } from '../../utils/i18n';
 
 export function getStaticPaths() {
   return getSupportedLangs().map(lang => ({
@@ -19,21 +21,6 @@ const { lang } = Astro.props;
 // ------------------------------------------------------------------ *
 const copy = {
   en: {
-    metaTitle: 'Jacek Janczura — Founder-CTO · Enterprise AI',
-    metaDescription:
-      'Production AI for APG (€500B+ pension fund), Bosch Global Services and Boehringer Ingelheim; mission-critical distributed systems for Norges Bank and ING. Co-founder & CTO of Jaden Data until 2024, fractional CTO and consulting partner since. I de-risk inherited stacks, put AI where it earns its keep, close the compliance gaps, and leave your team running it without me.',
-    eyebrow: 'Founder-CTO · Enterprise AI · Technology leadership',
-    heroTitle:
-      'A central bank trusted my code.\n<span class="hero-title-em">Your inherited stack can too.</span>',
-    tierLine:
-      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim · AI supplier to Bosch Global Services',
-    subhead:
-      "I've shipped production AI for APG — a €500B+ Dutch pension fund — Bosch Global Services and Boehringer Ingelheim, and mission-critical distributed systems for Norges Bank and ING: places that audit every line. I co-founded Jaden Data and led it as CTO from zero to €1M+ revenue and a ten-person engineering team. I bring that same standard into companies mid-change: de-risk the legacy system, put AI where it earns its keep, close the compliance gaps, and leave your team able to run the whole thing without me.",
-    ctaPrimary: "See what I've shipped",
-    ctaGhost: 'Book a 30-min fit call',
-    availabilityAria: 'Availability',
-    availability:
-      'Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role',
     wallHeading: 'Twelve institutions that audit every line',
     wallSub:
       "A national central bank, APG's €500B+ pension fund and Boehringer Ingelheim don't take things on trust. Here's who has.",
@@ -59,13 +46,6 @@ const copy = {
         body: "Built a company 0 → €1M+ and a 0 → 10 engineering team. Trained Bosch's engineers to code with AI. You keep the capability, not a dependency on me.",
       },
     ],
-    fitHeading: 'Bring that standard into your stack',
-    fitSub:
-      "A 30-minute fit call: what you've inherited, where AI actually pays off, and how fast you'd be running it without me.",
-    fitCtaPrimary: 'Book a 30-min fit call',
-    fitCtaGhost: "See what I've shipped",
-    fitNote:
-      'Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role',
     wall: [
       { note: 'Central bank · CBDC bridge', alt: 'National central bank' },
       { note: '€500B+ AUM · pension chatbot', alt: 'European pension fund' },
@@ -112,21 +92,6 @@ const copy = {
     ],
   },
   pl: {
-    metaTitle: 'Jacek Janczura — Founder-CTO · Enterprise AI',
-    metaDescription:
-      'Produkcyjne AI dla APG (fundusz emerytalny, €500B+ AUM), Bosch Global Services i Boehringer Ingelheim; krytyczne systemy rozproszone dla Norges Bank i ING. Współzałożyciel i CTO Jaden Data do 2024, od tego czasu fractional CTO i partner konsultingowy. Odblokowuję odziedziczone stacki, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poradzi sobie beze mnie.',
-    eyebrow: 'Founder-CTO · Enterprise AI · Przywództwo technologiczne',
-    heroTitle:
-      'Bank centralny zaufał mojemu kodowi.\n<span class="hero-title-em">Twój odziedziczony stack też może.</span>',
-    tierLine:
-      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim · dostawca AI dla Bosch Global Services',
-    subhead:
-      'Wdrażałem produkcyjne AI dla APG — holenderskiego funduszu emerytalnego z €500B+ w zarządzaniu — Bosch Global Services i Boehringer Ingelheim, a także krytyczne systemy rozproszone dla Norges Bank i ING: tam, gdzie audytują każdą linijkę. Współzałożyłem Jaden Data i jako CTO poprowadziłem firmę od zera do ponad 1 mln € przychodu i dziesięcioosobowego zespołu inżynierskiego. Ten sam standard wnoszę do firm w środku transformacji: odblokowuję legacy, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poprowadzi całość beze mnie.',
-    ctaPrimary: 'Zobacz, co wdrożyłem',
-    ctaGhost: 'Umów 30-min rozmowę',
-    availabilityAria: 'Dostępność',
-    availability:
-      'Fractional CTO i partner konsultingowy · otwarty na właściwą stałą rolę CTO lub Head of AI',
     wallHeading: 'Dwanaście instytucji, które audytują każdą linijkę',
     wallSub:
       'Narodowy bank centralny, fundusz emerytalny APG z €500B+ i Boehringer Ingelheim niczego nie biorą na słowo. Oto kto mi zaufał.',
@@ -152,13 +117,6 @@ const copy = {
         body: 'Zbudowałem firmę od 0 do €1M+ i zespół inżynierski od 0 do 10 osób. Nauczyłem inżynierów Bosch kodować z AI. Zostaje Ci kompetencja, nie zależność ode mnie.',
       },
     ],
-    fitHeading: 'Wnieś ten standard do swojego stacku',
-    fitSub:
-      '30-minutowa rozmowa: co odziedziczyłeś, gdzie AI naprawdę się zwraca i jak szybko poprowadzisz to beze mnie.',
-    fitCtaPrimary: 'Umów 30-min rozmowę',
-    fitCtaGhost: 'Zobacz, co wdrożyłem',
-    fitNote:
-      'Fractional CTO i partner konsultingowy · otwarty na właściwą stałą rolę CTO lub Head of AI',
     wall: [
       { note: 'Bank centralny · most CBDC', alt: 'Narodowy bank centralny' },
       {
@@ -215,21 +173,6 @@ const copy = {
     ],
   },
   de: {
-    metaTitle: 'Jacek Janczura — Founder-CTO · Enterprise AI',
-    metaDescription:
-      'Produktives AI für APG (Pensionsfonds, €500B+ AUM), Bosch Global Services und Boehringer Ingelheim; geschäftskritische verteilte Systeme für die Norges Bank und ING. Mitgründer und CTO von Jaden Data bis 2024, seitdem Fractional CTO und Consulting-Partner. Ich entschärfe geerbte Stacks, setze AI dort ein, wo sie sich rechnet, schließe die Compliance-Lücken und hinterlasse ein Team, das den Laden ohne mich betreibt.',
-    eyebrow: 'Founder-CTO · Enterprise AI · Technologieführung',
-    heroTitle:
-      'Eine Zentralbank hat meinem Code vertraut.\n<span class="hero-title-em">Dein geerbter Stack kann das auch.</span>',
-    tierLine:
-      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim · AI-Lieferant für Bosch Global Services',
-    subhead:
-      'Ich habe produktives AI für APG — einen niederländischen Pensionsfonds mit €500B+ AUM — Bosch Global Services und Boehringer Ingelheim ausgeliefert, dazu geschäftskritische verteilte Systeme für die Norges Bank und ING: Orte, an denen jede Zeile geprüft wird. Ich habe Jaden Data mitgegründet und als CTO von null auf über 1 Mio. € Umsatz und ein zehnköpfiges Engineering-Team geführt. Denselben Standard bringe ich in Unternehmen mitten im Umbruch: das Legacy-System entschärfen, AI dort einsetzen, wo sie sich rechnet, die Compliance-Lücken schließen — und ein Team hinterlassen, das das Ganze ohne mich betreibt.',
-    ctaPrimary: 'Sieh, was ich geliefert habe',
-    ctaGhost: '30-min Fit-Call buchen',
-    availabilityAria: 'Verfügbarkeit',
-    availability:
-      'Fractional CTO & Consulting-Partner · offen für die richtige feste CTO- oder Head-of-AI-Rolle',
     wallHeading: 'Zwölf Institutionen, die jede Zeile prüfen',
     wallSub:
       'Eine nationale Zentralbank, APGs €500B+ Pensionsfonds und Boehringer Ingelheim nehmen nichts auf gut Glauben. Hier ist, wer es getan hat.',
@@ -255,13 +198,6 @@ const copy = {
         body: 'Ein Unternehmen von 0 → €1M+ und ein Engineering-Team von 0 → 10 aufgebaut. Boschs Engineers beigebracht, mit AI zu coden. Dir bleibt die Fähigkeit — keine Abhängigkeit von mir.',
       },
     ],
-    fitHeading: 'Bring diesen Standard in deinen Stack',
-    fitSub:
-      '30 Minuten Fit-Call: was du geerbt hast, wo AI sich wirklich auszahlt und wie schnell du es ohne mich betreibst.',
-    fitCtaPrimary: '30-min Fit-Call buchen',
-    fitCtaGhost: 'Sieh, was ich geliefert habe',
-    fitNote:
-      'Fractional CTO & Consulting-Partner · offen für die richtige feste CTO- oder Head-of-AI-Rolle',
     wall: [
       { note: 'Zentralbank · CBDC-Brücke', alt: 'Nationale Zentralbank' },
       {
@@ -316,15 +252,13 @@ const copy = {
   },
 };
 
-const t = copy[lang];
-
-const calendlyUrl =
-  'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
+const local = copy[lang];
+const t = await getTranslations('home', lang);
 
 // Wall of proof. Order tuned so the wall reads as a coherent block: central
 // bank + pension + pharma anchor the top row. ORDER IS LOAD-BEARING — entries
-// are merged positionally with `t.wall`, which carries the translated `note`
-// (visible caption) and `alt` (sector descriptor for the image).
+// are merged positionally with `local.wall`, which carries the translated
+// `note` (visible caption) and `alt` (sector descriptor for the image).
 // `w`/`h` are the asset's intrinsic size and exist only to reserve the right
 // aspect ratio and avoid CLS; CSS decides the rendered size.
 const wallBase = [
@@ -343,13 +277,14 @@ const wallBase = [
 ];
 const wall = wallBase.map((org, i) => ({
   ...org,
-  note: t.wall[i].note,
-  alt: t.wall[i].alt,
+  note: local.wall[i].note,
+  alt: local.wall[i].alt,
 }));
 
 // Count-up stats. `to` is numeric target; prefix/suffix render around it.
 // Non-text fields (to, prefix, suffix, decimals, display, staticOnly) are
-// IDENTICAL across languages; only `label` is translated (merged from t.stats).
+// IDENTICAL across languages; only `label` is translated (merged from
+// local.stats).
 const statsBase = [
   {
     to: 1,
@@ -384,58 +319,29 @@ const statsBase = [
     staticOnly: true,
   },
 ];
-const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
+const stats = statsBase.map((s, i) => ({
+  ...s,
+  label: local.stats[i].label,
+}));
 ---
 
 <BaseLayout
-  title={t.metaTitle}
-  description={t.metaDescription}
+  title={t.meta.title}
+  description={t.meta.description}
   lang={lang}
   noImageIndex
 >
-  <section class="proof-hero">
-    <!-- Ambient wash sits behind everything; purely decorative -->
-    <div class="hero-wash" aria-hidden="true"></div>
-
-    <div class="container hero-inner">
-      <p class="eyebrow reveal">{t.eyebrow}</p>
-
-      <h1 class="hero-title reveal" set:html={t.heroTitle} />
-
-      <p class="tier-line reveal">
-        {t.tierLine}
-      </p>
-
-      <p class="subhead reveal">
-        {t.subhead}
-      </p>
-
-      <div class="cta-row reveal">
-        <a class="btn btn-primary" href="#wall">{t.ctaPrimary}</a>
-        <a
-          class="btn btn-ghost"
-          href={calendlyUrl}
-          target="_blank"
-          rel="noopener noreferrer">{t.ctaGhost}</a
-        >
-      </div>
-
-      <p class="status-pill reveal" aria-label={t.availabilityAria}>
-        <span class="status-dot" aria-hidden="true"></span>
-        {t.availability}
-      </p>
-    </div>
-  </section>
+  <Hero {...t.hero} />
 
   <!-- WALL OF PROOF — the signature moment -->
   <section id="wall" class="wall-section" aria-labelledby="wall-heading">
     <div class="container">
       <div class="wall-head reveal">
         <h2 id="wall-heading" class="wall-heading">
-          {t.wallHeading}
+          {local.wallHeading}
         </h2>
         <p class="wall-sub">
-          {t.wallSub}
+          {local.wallSub}
         </p>
       </div>
 
@@ -464,14 +370,14 @@ const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
         </ul>
       </div>
 
-      <p class="wall-legal">{t.wallLegal}</p>
+      <p class="wall-legal">{local.wallLegal}</p>
     </div>
   </section>
 
   <!-- Count-up numbers -->
   <section class="stats-section" aria-labelledby="stats-heading">
     <div class="container">
-      <h2 id="stats-heading" class="visually-hidden">{t.statsHeading}</h2>
+      <h2 id="stats-heading" class="visually-hidden">{local.statsHeading}</h2>
       <div class="stats-grid" data-stats>
         {
           stats.map(s => (
@@ -501,254 +407,45 @@ const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
   <section class="method-section" aria-labelledby="method-heading">
     <div class="container">
       <h2 id="method-heading" class="method-heading reveal">
-        {t.methodHeading}
+        {local.methodHeading}
       </h2>
       <div class="method-grid">
         <article class="method-card reveal">
           <span class="method-index" aria-hidden="true">01</span>
-          <h3>{t.methodCards[0].title}</h3>
+          <h3>{local.methodCards[0].title}</h3>
           <p>
-            {t.methodCards[0].body}
+            {local.methodCards[0].body}
           </p>
         </article>
         <article class="method-card reveal">
           <span class="method-index" aria-hidden="true">02</span>
-          <h3>{t.methodCards[1].title}</h3>
+          <h3>{local.methodCards[1].title}</h3>
           <p>
-            {t.methodCards[1].body}
+            {local.methodCards[1].body}
           </p>
         </article>
         <article class="method-card reveal">
           <span class="method-index" aria-hidden="true">03</span>
-          <h3>{t.methodCards[2].title}</h3>
+          <h3>{local.methodCards[2].title}</h3>
           <p>
-            {t.methodCards[2].body}
+            {local.methodCards[2].body}
           </p>
         </article>
         <article class="method-card reveal">
           <span class="method-index" aria-hidden="true">04</span>
-          <h3>{t.methodCards[3].title}</h3>
+          <h3>{local.methodCards[3].title}</h3>
           <p>
-            {t.methodCards[3].body}
+            {local.methodCards[3].body}
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Fit-call CTA -->
-  <section id="fit-call" class="fit-section">
-    <div class="container">
-      <div class="fit-card reveal">
-        <h2 class="fit-heading">{t.fitHeading}</h2>
-        <p class="fit-sub">
-          {t.fitSub}
-        </p>
-        <div class="cta-row cta-row-center">
-          <a
-            class="btn btn-primary"
-            href={calendlyUrl}
-            target="_blank"
-            rel="noopener noreferrer">{t.fitCtaPrimary}</a
-          >
-          <a class="btn btn-ghost" href="#wall">{t.fitCtaGhost}</a>
-        </div>
-        <p class="fit-note">
-          <span class="status-dot" aria-hidden="true"></span>
-          {t.fitNote}
-        </p>
-      </div>
-    </div>
-  </section>
+  <CtaBand {...t.band} />
 </BaseLayout>
 
 <style>
-  /* ------------------------------------------------------------------ *
-   * HERO                                                                *
-   * ------------------------------------------------------------------ */
-  .proof-hero {
-    position: relative;
-    overflow: hidden;
-    padding: var(--space-9) 0 var(--space-8);
-    isolation: isolate;
-  }
-
-  /* Soft two-tone ambient wash — decorative, no motion */
-  .hero-wash {
-    position: absolute;
-    inset: -20% -10% auto -10%;
-    height: 130%;
-    z-index: -1;
-    background:
-      radial-gradient(
-        60% 55% at 18% 12%,
-        color-mix(in oklab, var(--primary) 22%, transparent) 0%,
-        transparent 60%
-      ),
-      radial-gradient(
-        55% 50% at 88% 8%,
-        color-mix(in oklab, var(--accent) 26%, transparent) 0%,
-        transparent 62%
-      );
-    pointer-events: none;
-  }
-
-  .hero-inner {
-    max-width: 940px;
-  }
-
-  .eyebrow {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-size: var(--font-size-sm);
-    color: var(--primary);
-    margin: 0 0 var(--space-4);
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 6.2vw, 4rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin: 0 0 var(--space-4);
-    max-width: 18ch;
-    text-wrap: balance;
-  }
-
-  .hero-title-em {
-    display: block;
-    background: linear-gradient(100deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .tier-line {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: clamp(0.85rem, 2.2vw, 1rem);
-    color: var(--text);
-    opacity: 0.72;
-    margin: 0 0 var(--space-5);
-    max-width: 60ch;
-  }
-
-  .subhead {
-    font-size: clamp(1rem, 2.4vw, 1.2rem);
-    line-height: 1.6;
-    color: var(--text);
-    opacity: 0.9;
-    max-width: 62ch;
-    margin: 0 0 var(--space-6);
-  }
-
-  /* ------------------------------------------------------------------ *
-   * BUTTONS                                                             *
-   * ------------------------------------------------------------------ */
-  .cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-bottom: var(--space-6);
-  }
-  .cta-row-center {
-    justify-content: center;
-    margin-bottom: var(--space-5);
-  }
-
-  .btn {
-    --btn-bg: var(--primary);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-5);
-    border-radius: var(--radius-m);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    text-decoration: none;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition:
-      transform 0.22s var(--ease-out),
-      box-shadow 0.22s var(--ease-out),
-      background-color 0.22s var(--ease-out),
-      border-color 0.22s var(--ease-out);
-  }
-  .btn:hover {
-    text-decoration: none;
-  }
-  .btn:active {
-    transform: scale(0.97);
-  }
-
-  .btn-primary {
-    background: var(--primary);
-    color: #fff;
-    box-shadow: var(--shadow-2);
-  }
-  .btn-ghost {
-    background: color-mix(in oklab, var(--bg) 70%, transparent);
-    color: var(--text);
-    border-color: var(--border);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-3);
-    }
-    .btn-ghost:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-      box-shadow: var(--shadow-1);
-    }
-  }
-
-  /* ------------------------------------------------------------------ *
-   * STATUS PILL (currently consulting · open to permanent CTO)         *
-   * ------------------------------------------------------------------ */
-  .status-pill,
-  .fit-note {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--font-size-sm);
-    color: var(--text);
-    opacity: 0.85;
-    padding: var(--space-2) var(--space-4);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: color-mix(in oklab, var(--bg) 60%, transparent);
-    margin: 0;
-  }
-  .fit-note {
-    margin-top: var(--space-5);
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent);
-    flex: none;
-    animation: pulse 2.4s var(--ease-out) infinite;
-  }
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 55%, transparent);
-    }
-    70% {
-      box-shadow: 0 0 0 7px color-mix(in oklab, var(--accent) 0%, transparent);
-    }
-    100% {
-      box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent);
-    }
-  }
-
   /* ------------------------------------------------------------------ *
    * WALL OF PROOF                                                       *
    * ------------------------------------------------------------------ */
@@ -1031,62 +728,9 @@ const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
   }
 
   /* ------------------------------------------------------------------ *
-   * FIT CALL                                                           *
-   * ------------------------------------------------------------------ */
-  .fit-section {
-    padding: var(--space-9) 0 var(--space-10);
-  }
-  .fit-card {
-    position: relative;
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: clamp(var(--space-6), 6vw, var(--space-9)) var(--space-5);
-    border-radius: var(--radius-l);
-    border: 1px solid var(--border);
-    background:
-      radial-gradient(
-        70% 120% at 50% 0%,
-        color-mix(in oklab, var(--primary) 12%, transparent),
-        transparent 70%
-      ),
-      var(--bg);
-    box-shadow: var(--shadow-2);
-    overflow: hidden;
-  }
-  .fit-heading {
-    font-size: clamp(1.6rem, 4.5vw, 2.6rem);
-    letter-spacing: -0.02em;
-    margin: 0 0 var(--space-3);
-    text-wrap: balance;
-  }
-  .fit-sub {
-    color: var(--text);
-    opacity: 0.8;
-    font-size: clamp(1rem, 2.2vw, 1.15rem);
-    max-width: 52ch;
-    margin: 0 auto var(--space-6);
-  }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  /* ------------------------------------------------------------------ *
    * REDUCED MOTION — every animation gets a visible static fallback    *
    * ------------------------------------------------------------------ */
   @media (prefers-reduced-motion: reduce) {
-    .status-dot {
-      animation: none;
-    }
     /* Wall + chips fully visible, no sweep. */
     .js-anim .chip-cell {
       opacity: 1 !important;
@@ -1099,7 +743,6 @@ const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
     .chip {
       filter: none !important;
     }
-    .btn,
     .method-card,
     .method-card::before {
       transition: none !important;

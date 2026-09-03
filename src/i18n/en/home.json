@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Jacek Janczura — Founder-CTO · Enterprise AI",
+    "description": "Founder-CTO working on enterprise AI. Co-founded Jaden Data and led it as CTO to €1M+ annual revenue and a ten-person engineering team; fractional CTO and consulting partner since 2024. Production AI for APG, Bosch Global Services, KfW and Boehringer Ingelheim; distributed systems for Norges Bank and ING."
+  },
+  "hero": {
+    "eyebrow": "Founder-CTO · Enterprise AI · Technology leadership",
+    "title": "I turn complex enterprise workflows into production AI, <em>and build the teams that scale it.</em>",
+    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG, Bosch Global Services, KfW and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "ghost": { "href": "/en/case-studies/", "label": "See the case studies" },
+    "availability": "Open to CTO and Head of AI roles · selected fractional and delivery engagements"
+  },
+  "band": {
+    "title": "Two ways to work with me",
+    "sub": "Hiring a technology leader, or building something that has to run in production? Pick the door that fits.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "secondary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "note": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  }
+}

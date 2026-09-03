@@ -131,6 +131,30 @@
   --breakpoint-sm: 600px;
   --breakpoint-md: 900px;
   --breakpoint-lg: 1200px;
+
+  /* Display scale (rebuild) */
+  --font-size-display: clamp(2.6rem, 5.5vw, 4.4rem);
+  --font-size-h1: clamp(2.1rem, 4vw, 3.2rem);
+  --font-size-h2: clamp(1.7rem, 2.8vw, 2.4rem);
+  --tracking-display: -0.02em;
+
+  /* Rhythm and widths */
+  --section-y: clamp(64px, 10vw, 128px);
+  --w-prose: 68ch;
+  --w-wide: 1200px;
+  --w-hero: 56rem;
+
+  /* Surfaces (light) */
+  --surface-1: oklch(from var(--bg) calc(l - 0.02) c h);
+  --surface-2: oklch(from var(--bg) calc(l - 0.045) c h);
+  --line: oklch(from var(--text) l c h / 0.12);
+  --line-strong: oklch(from var(--text) l c h / 0.24);
+  --primary-soft: oklch(from var(--primary) l c h / 0.12);
+  --accent-soft: oklch(from var(--accent) l c h / 0.14);
+
+  /* Motion */
+  --reveal-distance: 18px;
+  --stagger: 60ms;
 }
 
 /* Dark theme */
@@ -142,6 +166,10 @@
   --highlight: var(--highlight-dark);
   --muted: var(--muted-dark);
   --border: var(--border-dark);
+  --surface-1: oklch(from var(--bg) calc(l + 0.03) c h);
+  --surface-2: oklch(from var(--bg) calc(l + 0.06) c h);
+  --line: oklch(from var(--text) l c h / 0.14);
+  --line-strong: oklch(from var(--text) l c h / 0.28);
 }
 
 /* Phones: scale down display type globally via the tokens, so every page's
@@ -223,6 +251,22 @@ a:hover {
 .content {
   max-width: var(--content-width);
   margin: 0 auto;
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Focus styles */
