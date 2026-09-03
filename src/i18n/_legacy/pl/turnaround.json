@@ -1,0 +1,73 @@
+{
+  "metaTitle": "Interim CTO · Naprawa techu — Jacek Janczura",
+  "metaDescription": "Interim CTO dla firm w trakcie naprawy: zejście z monolitu, domknięcie luk compliance, które wytkną audytorzy, i przejście ISO 27001 oraz SOC 2 w około trzy miesiące — bez zamrażania roadmapy. Na koniec czyste przekazanie zespołowi, który to utrzyma.",
+  "eyebrow": "Interim CTO · Naprawa techu",
+  "heroTitle": "Zmodernizuj stack — i przejdź audyt —\n        <span class=\"hero__title-em\">bez zamrażania roadmapy.</span>",
+  "heroSub": "Wchodzę do firm w trakcie naprawy i ściągam legacy debt ze ścieżki\n        krytycznej: schodzę z monolitu, domykam luki compliance, które\n        wytkną audytorzy, i dodaję AI tylko tam, gdzie ruszy konkretną liczbę.\n        Przeprowadziłem firmy od pentestów do certyfikacji <strong>ISO 27001</strong>\n        i <strong>SOC 2</strong> w około trzy miesiące — nie przerywając\n        dowożenia. Na koniec zostawiam Ci zespół, który utrzyma to beze mnie.",
+  "ctaPrimary": "Rozpisz swoje pierwsze 90 dni",
+  "ctaSecondary": "Umów 30-min rozmowę",
+  "availability": "Fractional CTO i partner konsultingowy · otwarty na właściwą stałą rolę CTO lub Head of AI",
+  "proofLabel": "Organizacje, dla których dowoziłem",
+  "logoAlts": [
+    "Narodowy bank centralny",
+    "Europejski fundusz emerytalny",
+    "Bank rozwoju",
+    "Globalny koncern farmaceutyczny",
+    "Koncern technologii przemysłowych",
+    "Globalna marka napojów",
+    "Europejski bank detaliczny",
+    "Platforma porównywania cen e-commerce"
+  ],
+  "proofLegal": "Wszystkie znaki towarowe należą do ich właścicieli. Logotypy oznaczają organizacje, dla których Jacek realizował projekty — jako współzałożyciel i CTO Jaden Data (projekty dla klientów) lub wcześniej jako pracownik albo konsultant (idealo; ING przez SAS Institute). Nie oznaczają partnerstwa, sponsoringu ani rekomendacji.",
+  "credentials": ["ISO 27001", "SOC 2", "99.9% uptime", "50+ firm"],
+  "stats": [
+    {
+      "label": "Zbudowane od zera",
+      "sub": "przychód firmy, 0 → €1M+"
+    },
+    {
+      "label": "Dostarczone certyfikaty",
+      "sub": "ISO 27001 + SOC 2"
+    },
+    {
+      "label": "Czas naprawy",
+      "sub": "pentest → certyfikat"
+    },
+    {
+      "label": "Obsłużonych firm",
+      "sub": "multi-tenant na AWS"
+    },
+    {
+      "label": "Utrzymany uptime",
+      "sub": "tysiące req/s"
+    }
+  ],
+  "planEyebrow": "Pierwsze 90 dni",
+  "planTitle": "Plan, który układa się sam.",
+  "planLede": "Bez fazy discovery, która nie ma końca. Konkretna, datowana droga od\n          „nie wiemy, co się pali\" do „zespół ma to pod kontrolą\" — dokładnie\n          ta sama, którą przeprowadziłem firmy od pentestów do certyfikacji\n          ISO 27001 i SOC 2, w około trzy miesiące.",
+  "milestones": [
+    {
+      "tag": "Tydzień 1",
+      "title": "Prześwietlenie ryzyka i architektury",
+      "body": "Mapuję monolit, graf zależności i luki, które wytkną audytorzy. Dostajesz prawdziwy obraz — nie schemat organizacyjny."
+    },
+    {
+      "tag": "Tygodnie 2–4",
+      "title": "Standardy i quality gates w CI/CD na produkcji",
+      "body": "Automatyczne quality gates, bazowe standardy bezpieczeństwa i realna droga wyjścia z krytycznych zależności. Zespół dalej dowozi."
+    },
+    {
+      "tag": "Tygodnie 5–8",
+      "title": "Mierzalne wygrane + roadmapa dla zarządu",
+      "body": "Legacy debt schodzi ze ścieżki krytycznej, jedna metryka rusza, a zarząd dostaje roadmapę, którą może sfinansować."
+    },
+    {
+      "tag": "Przekazanie",
+      "title": "Zespół, który prowadzi to beze mnie",
+      "body": "Odpowiedzialność zostaje w firmie. Jasny koniec, nie bezterminowy retainer."
+    }
+  ],
+  "planWork": "<strong>Jak pracuję:</strong> Na Twoim Slacku i w Twoim code review, podejmując\n        decyzje — a potem czyste przekazanie. Jasny koniec, nie bezterminowy retainer.",
+  "closeTitle": "Weź mnie na pokład, póki to jeszcze coś zmienia.",
+  "closeSub": "Trzydzieści minut, żeby sprawdzić, czy pasujemy — powiem Ci wprost, czy\n        potrzebujesz interim CTO, czy lepiej wyjdziesz na zatrudnieniu kogoś na stałe."
+}
