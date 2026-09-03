@@ -81,3 +81,6 @@ Desktop.ini
 # Private working docs: canonical copies live in the private cv-magician repo.
 /docs/knowledge-base.md
 /docs/superpowers/
+
+# Parallel task worktrees
+/.worktrees/
