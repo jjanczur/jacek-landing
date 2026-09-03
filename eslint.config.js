@@ -54,6 +54,7 @@ export default [
       'node_modules/',
       '.astro/',
       'public/',
+      '.worktrees/',
       '*.config.js',
       '*.config.mjs',
       'src/env.d.ts',
