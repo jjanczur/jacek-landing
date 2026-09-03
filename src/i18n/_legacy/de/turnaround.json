@@ -1,0 +1,73 @@
+{
+  "metaTitle": "Interim CTO · Tech-Turnaround — Jacek Janczura",
+  "metaDescription": "Interim CTO für Unternehmen mitten im Turnaround: weg vom Monolithen, die Compliance-Lücken schließen, die Auditoren aufdecken, ISO 27001 und SOC 2 in rund drei Monaten bestehen — ohne die Roadmap einzufrieren. Danach eine saubere Übergabe an ein Team, das es weiterführt.",
+  "eyebrow": "Interim CTO · Tech-Turnaround",
+  "heroTitle": "Stack modernisieren — und das Audit bestehen —\n        <span class=\"hero__title-em\">ohne die Roadmap einzufrieren.</span>",
+  "heroSub": "Ich steige in Unternehmen mitten im Turnaround ein und hole Legacy Debt\n        vom kritischen Pfad: weg vom Monolithen, die Compliance-Lücken schließen,\n        die Auditoren aufdecken, und AI nur dort ergänzen, wo sie eine Zahl bewegt.\n        Ich habe Unternehmen von Pentests bis zur <strong>ISO 27001</strong>- und\n        <strong>SOC 2</strong>-Zertifizierung geführt — in rund drei Monaten, während\n        sie weiter ausgeliefert haben. Danach übergebe ich dir ein Team, das es\n        ohne mich weiterführt.",
+  "ctaPrimary": "Deine ersten 90 Tage planen",
+  "ctaSecondary": "30-Min-Kennenlerncall buchen",
+  "availability": "Fractional CTO & Consulting-Partner · offen für die richtige feste CTO- oder Head-of-AI-Rolle",
+  "proofLabel": "Organisationen, für die ich geliefert habe",
+  "logoAlts": [
+    "Nationale Zentralbank",
+    "Europäischer Pensionsfonds",
+    "Förderbank",
+    "Globaler Pharmakonzern",
+    "Industrietechnologiekonzern",
+    "Globale Getränkemarke",
+    "Europäische Privatkundenbank",
+    "E-Commerce-Preisvergleichsplattform"
+  ],
+  "proofLegal": "Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Die Logos kennzeichnen Organisationen, für die Jacek Projekte umgesetzt hat — als Mitgründer und CTO von Jaden Data (Kundenprojekte) oder zuvor als Angestellter bzw. Berater (idealo; ING über SAS Institute). Eine Partnerschaft, Förderung oder Empfehlung wird nicht impliziert.",
+  "credentials": ["ISO 27001", "SOC 2", "99,9% uptime", "50+ Orgs"],
+  "stats": [
+    {
+      "label": "Von null aufgebaut",
+      "sub": "Firmenumsatz, 0 → €1M+"
+    },
+    {
+      "label": "Zertifizierungen geliefert",
+      "sub": "ISO 27001 + SOC 2"
+    },
+    {
+      "label": "Turnaround-Dauer",
+      "sub": "Pentest → zertifiziert"
+    },
+    {
+      "label": "Organisationen betreut",
+      "sub": "multi-tenant auf AWS"
+    },
+    {
+      "label": "Uptime gehalten",
+      "sub": "tausende req/s"
+    }
+  ],
+  "planEyebrow": "Die ersten 90 Tage",
+  "planTitle": "Ein Plan, der sich von selbst zusammensetzt.",
+  "planLede": "Keine Discovery-Phase, die nie endet. Ein datierter Weg von „wir wissen\n          nicht genau, wo es brennt\" zu „das Team hat es im Griff\" — genau der,\n          auf dem ich Unternehmen von Pentests bis zur ISO-27001- und\n          SOC-2-Zertifizierung geführt habe, in rund drei Monaten.",
+  "milestones": [
+    {
+      "tag": "Woche 1",
+      "title": "Risiko- und Architektur-Check",
+      "body": "Ich kartiere den Monolithen, den Dependency-Graph und die Lücken, die Auditoren aufdecken werden. Du bekommst das echte Bild — nicht das Orgchart."
+    },
+    {
+      "tag": "Woche 2–4",
+      "title": "Standards und CI/CD-Quality-Gates live",
+      "body": "Automatisierte Quality Gates, Security-Baselines und ein gangbarer Weg weg von den kritischen Dependencies. Das Team liefert weiter aus."
+    },
+    {
+      "tag": "Woche 5–8",
+      "title": "Messbare Erfolge + eine Roadmap fürs Board",
+      "body": "Legacy Debt verlässt den kritischen Pfad, eine Kennzahl bewegt sich, und das Board bekommt eine Roadmap, die es finanzieren kann."
+    },
+    {
+      "tag": "Übergabe",
+      "title": "Ein Team, das es ohne mich weiterführt",
+      "body": "Die Verantwortung bleibt im Unternehmen. Ein klares Ende, kein Retainer auf Dauer."
+    }
+  ],
+  "planWork": "<strong>Wie ich arbeite:</strong> In deinem Slack und deinem Code-Review, ich\n        treffe die Entscheidungen — dann eine saubere Übergabe. Ein klares Ende, kein Retainer auf Dauer.",
+  "closeTitle": "Hol mich rein, solange es noch etwas ändert.",
+  "closeSub": "Dreißig Minuten, um zu sehen, ob es passt — ich sage dir klar, ob ein\n        Interim-CTO das ist, was du brauchst, oder ob du mit einer Festanstellung besser fährst."
+}
