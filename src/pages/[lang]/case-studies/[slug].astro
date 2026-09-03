@@ -1,0 +1,148 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import CaseSummary from '../../../components/CaseSummary.astro';
+import CaseFacts from '../../../components/CaseFacts.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import { getSupportedLangs } from '../../../utils/i18n';
+
+export async function getStaticPaths() {
+  const cases = (await getCollection('case-studies')).filter(
+    c => c.data.hasDetail,
+  );
+  return getSupportedLangs().flatMap(lang =>
+    cases.map(entry => ({
+      params: { lang, slug: entry.slug },
+      props: { lang, entry, all: cases },
+    })),
+  );
+}
+const { lang, entry, all } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+const related = all
+  .filter(c => c.slug !== entry.slug && c.data.category === d.category)
+  .slice(0, 3)
+  .map(c => ({
+    href: `/${lang}/case-studies/${c.slug}/`,
+    title: c.data.title,
+  }));
+const cta =
+  d.angle === 'turnaround'
+    ? {
+        href: `/${lang}/turnaround/`,
+        label: 'Interim leadership for your stack',
+      }
+    : d.angle === 'builder'
+      ? { href: `/${lang}/builder/`, label: 'Production AI for your workflow' }
+      : {
+          href: `/${lang}/contact/#hiring`,
+          label: 'Discuss a leadership role',
+        };
+const jsonLd = {
+  '@type': 'CreativeWork',
+  '@id': `https://janczura.com/${lang}/case-studies/${entry.slug}/#case`,
+  name: d.title,
+  description: d.summary,
+  author: { '@id': 'https://janczura.com/#person' },
+  about: d.client,
+  keywords: d.tags.join(', '),
+  inLanguage: 'en',
+};
+---
+
+<BaseLayout
+  title={`${d.title} — Case study — Jacek Janczura`}
+  description={d.summary}
+  lang={lang}
+  jsonLd={jsonLd}
+>
+  <Hero
+    eyebrow={`Case study · ${d.sector}`}
+    title={d.title}
+    sub={d.summary}
+    primary={cta}
+    ghost={{ href: `/${lang}/case-studies/`, label: 'All case studies' }}
+  />
+  <section class="section case-body">
+    <div class="container case-layout">
+      <div class="case-main">
+        <CaseSummary
+          mandate={d.mandate}
+          keyDecisions={d.keyDecisions}
+          outcomes={d.outcomes}
+          status={d.status}
+          relationship={d.relationship}
+          via={d.via}
+        />
+        <article class="prose reveal"><Content /></article>
+      </div>
+      <CaseFacts
+        client={d.client}
+        sector={d.sector}
+        period={d.period}
+        status={d.status}
+        role={d.role}
+        via={d.via}
+        tags={d.tags}
+        related={related}
+        cta={cta}
+      />
+    </div>
+  </section>
+  <CtaBand
+    title="Two ways to work with me"
+    primary={{
+      href: `/${lang}/contact/#hiring`,
+      label: 'Discuss a leadership role',
+    }}
+    secondary={{
+      href: `/${lang}/contact/#project`,
+      label: 'Send a project brief',
+    }}
+    note="Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  />
+</BaseLayout>
+
+<style>
+  .case-body {
+    padding-top: 0;
+  }
+
+  .case-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+    gap: var(--space-8);
+  }
+
+  .case-main {
+    min-width: 0;
+  }
+
+  .prose {
+    max-width: var(--w-prose);
+    color: oklch(from var(--text) l c h / 0.9);
+  }
+
+  .prose :global(h2) {
+    font-size: var(--font-size-xl);
+    margin-top: var(--space-7);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.2em;
+  }
+
+  .prose :global(strong) {
+    color: var(--text);
+  }
+
+  @media (max-width: 999px) {
+    .case-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

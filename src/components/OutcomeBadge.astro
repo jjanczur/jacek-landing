@@ -1,0 +1,79 @@
+---
+export interface Props {
+  value: string;
+  label: string;
+  evidence:
+    | 'measured'
+    | 'customer-estimate'
+    | 'projected'
+    | 'qualitative'
+    | 'benchmark';
+}
+const { value, label, evidence } = Astro.props;
+
+const EVIDENCE_LABEL: Record<Props['evidence'], string> = {
+  measured: 'Measured',
+  'customer-estimate': 'Customer estimate',
+  projected: 'Projected',
+  qualitative: 'Qualitative',
+  benchmark: 'Technical benchmark',
+};
+---
+
+<div class="outcome" data-evidence={evidence}>
+  <span class="outcome__value">{value}</span>
+  <span class="outcome__label">{label}</span>
+  <span class="outcome__evidence">{EVIDENCE_LABEL[evidence]}</span>
+</div>
+
+<style>
+  .outcome {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    padding: var(--space-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    background: var(--surface-1);
+  }
+
+  .outcome__value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-xl);
+    letter-spacing: var(--tracking-display);
+    color: var(--text);
+  }
+
+  .outcome__label {
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.75);
+  }
+
+  .outcome__evidence {
+    align-self: flex-start;
+    margin-top: 0.2em;
+    padding: 0.2em 0.6em;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  /* Evidence pill colour by kind: measured = accent, benchmark = primary,
+     everything else (customer-estimate, projected, qualitative) = neutral line. */
+  .outcome[data-evidence='measured'] .outcome__evidence {
+    background: var(--accent-soft);
+    border-color: transparent;
+    color: var(--text);
+  }
+  .outcome[data-evidence='benchmark'] .outcome__evidence {
+    background: var(--primary-soft);
+    border-color: transparent;
+    color: var(--primary);
+  }
+</style>
