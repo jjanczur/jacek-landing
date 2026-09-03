@@ -1,0 +1,100 @@
+---
+export interface PrincipleItem {
+  title: string;
+  body: string;
+  example?: string;
+  link?: { href: string; label: string; external?: boolean };
+}
+export interface Props {
+  items: PrincipleItem[];
+  exampleLabel?: string;
+  columns?: 2 | 3;
+}
+const { items, exampleLabel = 'In practice', columns = 2 } = Astro.props;
+---
+
+<ol class={`principles principles--${columns}`}>
+  {
+    items.map((item, i) => (
+      <li class="principle reveal" style={`--reveal-delay: ${i * 60}ms`}>
+        <h3 class="principle__title">{item.title}</h3>
+        <p class="principle__body">{item.body}</p>
+        {item.example && (
+          <p class="principle__example">
+            <span class="principle__label">{exampleLabel}</span>
+            {item.example}
+          </p>
+        )}
+        {item.link && (
+          <a
+            class="principle__link"
+            href={item.link.href}
+            target={item.link.external ? '_blank' : undefined}
+            rel={item.link.external ? 'noopener noreferrer' : undefined}
+          >
+            {item.link.label}
+          </a>
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .principles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+  @media (min-width: 800px) {
+    .principles--2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .principles--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .principle {
+    padding: var(--space-5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+  }
+  .principle__title {
+    margin: 0 0 var(--space-3);
+    font-size: var(--font-size-lg);
+    letter-spacing: var(--tracking-display);
+  }
+  .principle__body {
+    margin: 0;
+    color: oklch(from var(--text) l c h / 0.82);
+  }
+  .principle__example {
+    margin: var(--space-4) 0 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--line);
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.74);
+  }
+  .principle__label {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .principle__link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+</style>

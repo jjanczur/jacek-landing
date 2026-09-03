@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "title": "Technology Leadership & Enterprise AI — Jacek Janczura",
+    "description": "What I have led and owned: a bootstrapped enterprise AI company at €1M+ annual revenue, engineering grown from 0 to 10, ISO 27001 and SOC 2 in about three months, and production AI for a pension administrator, an industrial procurement organisation and a development bank."
+  },
+  "hero": {
+    "eyebrow": "Technology leadership · Enterprise AI",
+    "title": "From customer boardroom <em>to production code.</em>",
+    "sub": "I co-founded Jaden Data and led it as CTO to €1M+ annual revenue with no external capital, grew engineering from 0 to 10, and owned AI delivery for APG, Bosch Global Services and KfW — with earlier real-time systems work for ING through SAS Institute. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover, and I still write the code.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "ghost": {
+      "href": "/docs/Jacek_Janczura_CV.pdf",
+      "label": "Download the CV"
+    }
+  },
+  "pillars": {
+    "eyebrow": "What I have owned",
+    "title": "Four things a technology leader is accountable for",
+    "lede": "Each one with the strongest single piece of evidence I have, and the case behind it.",
+    "items": [
+      {
+        "title": "Customer & commercial",
+        "body": "Discovery, executive workshops, technical pre-sales, architecture and security reviews, scoping and business cases. I am in the room when a buyer decides whether the technology can be trusted.",
+        "proof": "Four procurement workflows at Bosch Global Services taken from a scoped use case to production, with the alignment cadence raised from bi-weekly to weekly and split into parallel sub-groups so no single dependency stalled delivery.",
+        "href": "/en/case-studies/bosch-procurement-ai/"
+      },
+      {
+        "title": "Architecture & delivery",
+        "body": "AI systems, enterprise integration, evaluation, observability, reliability, and the rollout into somebody else's production environment.",
+        "proof": "A member-facing pension assistant prototyped in a day from platform components and delivered as an on-premises MVP in twelve sprints under Dutch financial regulation; a Dutch ministry highlighted it as one of the best examples of impactful AI integration.",
+        "href": "/en/case-studies/apg-pension-assistant/"
+      },
+      {
+        "title": "Team & operating model",
+        "body": "Hiring, mentoring, delivery standards, roadmap, technical budget, escalation and handover.",
+        "proof": "Engineering grown from 0 to 10 inside a bootstrapped €1M+ company, with code-review standards and CI/CD quality gates in place before the team grew, and ISO 27001 and SOC 2 Type 2 delivered in about three months without freezing the roadmap.",
+        "href": "/en/case-studies/jaden-data-company-building/"
+      },
+      {
+        "title": "Field-to-product leverage",
+        "body": "Reusable integrations, evaluation frameworks, deployment playbooks and product feedback out of every deployment, so the next one costs less than the last.",
+        "proof": "One specification template and one evaluation template carried a seven-part proof-of-concept portfolio at KfW; the process patterns, the cited-retrieval design and the Testbed evaluation framework were reused across later deployments.",
+        "href": "/en/case-studies/kfw-genai-portfolio/"
+      }
+    ]
+  },
+  "built": {
+    "eyebrow": "Built from zero",
+    "title": "Nobody handed me a platform, a team or a client list",
+    "items": [
+      {
+        "title": "A company",
+        "body": "Jaden Data was bootstrapped: no external capital, every platform investment paid for by client delivery. It passed €1M in annual revenue while I was its CTO."
+      },
+      {
+        "title": "A product",
+        "body": "entAIngine grew out of client workflows instead of a speculative roadmap — one multi-tenant, provider-independent platform serving 50+ organisations at 99.9% uptime, rather than a bespoke stack per client."
+      },
+      {
+        "title": "A team",
+        "body": "Engineering went from my own commits to ten people across frontend, backend and AI workstreams, with structured code review, pair programming and internal knowledge sharing."
+      },
+      {
+        "title": "A delivery process",
+        "body": "Code-review standards, CI/CD quality gates and testing requirements were in place before the headcount arrived, so production quality never depended on one person being awake."
+      },
+      {
+        "title": "Client relationships",
+        "body": "Technical pre-sales, project kick-offs, weekly stakeholder cadences and executive reporting were mine to run, for clients in procurement, pensions, development finance and pharma."
+      },
+      {
+        "title": "A security posture",
+        "body": "ISO 27001 and SOC 2 Type 2 ran as an engineering programme — controls, evidence collection and process changes alongside delivery — and were certified in about three months."
+      },
+      {
+        "title": "Reusable foundations",
+        "body": "The Testbed evaluation framework, Prompt Wizard and the reusable process components came out of repeated client needs; those components are what turned a one-day prototype into a product."
+      }
+    ]
+  },
+  "principles": {
+    "eyebrow": "How I lead",
+    "title": "Four rules I do not bend",
+    "exampleLabel": "In practice",
+    "items": [
+      {
+        "title": "Understand the workflow and its baseline before choosing technology",
+        "body": "Model choice is the last decision, not the first. What does this work cost today, who does it, where does it break, and what would make the result trustworthy to the person who signs it off?",
+        "example": "At KfW every proof of concept started from one specification template — background, problem, objective, scope, methodology, success metrics, dependencies — so seven very different workflows could be compared on the same terms."
+      },
+      {
+        "title": "Ship the smallest real production loop",
+        "body": "A demo proves nothing about real data, real integrations and real governance. I build the thinnest end-to-end path a real user can run, then widen it.",
+        "example": "APG's assistant was a working prototype in one day from platform components; the twelve sprints that followed went into integration, user validation and the on-premises environment where it had to live."
+      },
+      {
+        "title": "Treat evaluation, security and observability as product capabilities",
+        "body": "If a system cannot be measured, audited and watched, it is not finished. Those parts belong in the architecture from the start, not after the pilot goes well.",
+        "example": "Testbed made AI processes and retrieval pipelines testable with deterministic cases; ISO 27001 and SOC 2 Type 2 were delivered as an engineering programme in about three months while client delivery continued."
+      },
+      {
+        "title": "Leave a stronger team and a system somebody else can run",
+        "body": "The measure of the work is what still functions after I stop attending the standup: standards, written decisions, and people who make the calls.",
+        "example": "The code-review rules, CI/CD quality gates and testing requirements outlasted my time as CTO, and the reusable components and evaluation templates are what make each new deployment cheaper than the last."
+      }
+    ]
+  },
+  "timeline": {
+    "eyebrow": "Leadership timeline",
+    "title": "Where the experience comes from",
+    "items": [
+      {
+        "period": "2021 – June 2024 as CTO; consulting partner since",
+        "title": "Co-founder & CTO",
+        "org": "Jaden Data",
+        "outcome": "Bootstrapped to €1M+ annual revenue, engineering from 0 to 10, 50+ organisations on one platform at 99.9% uptime, ISO 27001 and SOC 2 Type 2 in about three months.",
+        "contribution": "Owned technology strategy, product roadmap, platform and client architecture, security and compliance, the technical budget, and the engineering organisation from the first hire onwards.",
+        "href": "/en/case-studies/jaden-data-company-building/"
+      },
+      {
+        "period": "2020 – 2021",
+        "title": "Software Engineer",
+        "org": "idealo",
+        "outcome": "Key contributor to the six-country login rollout that created 1.4M accounts in three months, 700% above forecast.",
+        "contribution": "Real-time services on Kafka, NoSQL and WebSockets; production microservices in Java and Kotlin; on-call for a platform used by millions of people a month; part of the migration from on-premises to AWS.",
+        "href": "/docs/EmployerReference-Jacek.pdf"
+      },
+      {
+        "period": "2019 – 2020",
+        "title": "Blockchain Engineer",
+        "org": "Deutsche Telekom Innovation Laboratories (T-Labs)",
+        "outcome": "Designed and deployed a Hyperledger Fabric package-tracking network with a secured REST API and integration paths for mobile apps and ERP systems.",
+        "contribution": "System architecture, chaincode, containerised deployment of the network and its services, and an authentication service spanning blockchain, app and API."
+      },
+      {
+        "period": "2016 – 2018",
+        "title": "Associate Technical Consultant",
+        "org": "SAS Institute, on assignment with ING",
+        "outcome": "Real-time behavioural decisioning at thousands of events per second — one of the first SAS Event Stream Processing implementations in the European Union.",
+        "contribution": "Data pipelines on Kafka, Flink and Camel, and a GDPR data-lineage plugin for the ETL tooling that was adopted by analysts across ING Group."
+      }
+    ]
+  },
+  "handsOn": {
+    "eyebrow": "Still hands-on",
+    "title": "I did not stop writing code when I started leading",
+    "items": [
+      {
+        "title": "Taufolio",
+        "body": "A current build of my own: an AI equity-research system that turns SEC filings, earnings-call transcripts and market data into cited reports. Parallel multi-agent drafting with reconciliation and citation anchoring, so every material claim links back to the source document it came from.",
+        "link": {
+          "href": "https://www.taufolio.com",
+          "label": "taufolio.com",
+          "external": true
+        }
+      },
+      {
+        "title": "RP-Matcher decisions",
+        "body": "For an emergency-lighting manufacturer I engineered the features, benchmarked five model families with hyperparameter search, and chose the tuned random forest at 70.7% top-1 accuracy and 0.835 mean reciprocal rank — then wrote down what more labelled pairs would buy, instead of reaching for a deep model the dataset could not support."
+      },
+      {
+        "title": "Code and tooling in the open",
+        "body": "Repositories, experiments and the tooling I use day to day are on GitHub.",
+        "link": {
+          "href": "https://github.com/jjanczur",
+          "label": "github.com/jjanczur",
+          "external": true
+        }
+      },
+      {
+        "title": "Talks and publications",
+        "body": "Conference talks on blockchain research and applications, and peer-reviewed publications on decentralised compensation of digital content, trusted inter-organisational data processing and static vulnerability analysis.",
+        "link": { "href": "/en/talks/", "label": "Talks and publications" }
+      }
+    ]
+  },
+  "availability": {
+    "line": "Available for full-time leadership roles · remote-first, on-site when it matters · Polish (native), English (fluent), German (conversational)"
+  },
+  "band": {
+    "title": "Let's talk about the role",
+    "sub": "Tell me about the team, the product and what has to be true in the first six months. I will tell you straight whether I am the right person for it.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "secondary": {
+      "href": "/en/case-studies/",
+      "label": "Read the case studies"
+    }
+  }
+}
