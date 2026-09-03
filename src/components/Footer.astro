@@ -46,6 +46,8 @@ const landingLinks = {
   de: { turnaround: 'Tech-Turnaround', builder: 'AI-Systemarchitektur' },
 };
 const landings = landingLinks[lang];
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
@@ -58,7 +60,7 @@ const landings = landingLinks[lang];
         <a href={`/${lang}/writing/`} class="footer-nav-link">{nav.writing}</a>
         <a href="/tools/" class="footer-nav-link">{nav.tools}</a>
       </nav>
-      <p class="copyright">© 2024 Jacek Janczura</p>
+      <p class="copyright">© {year} Jacek Janczura</p>
       <div class="legal-links">
         <a href={`/${lang}/privacy/`} class="legal-link">{links.privacy}</a>
         <span class="legal-separator">•</span>

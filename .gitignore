@@ -25,6 +25,9 @@ Thumbs.db
 
 # playwright
 .playwright-mcp/
+/test-results/
+/playwright-report/
+/tests/blocklist.txt
 
 # debug
 npm-debug.log*
@@ -74,3 +77,7 @@ Desktop.ini
 # Local-only: maps the UUID logo filenames back to the companies they belong to.
 # Deliberately NOT committed — this repository is public.
 /logo-map.local.json
+
+# Private working docs: canonical copies live in the private cv-magician repo.
+/docs/knowledge-base.md
+/docs/superpowers/

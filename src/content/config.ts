@@ -3,25 +3,6 @@ import { z, defineCollection } from 'astro:content';
 const lang = z.enum(['en', 'pl', 'de']);
 
 export const collections = {
-  projects: defineCollection({
-    type: 'content',
-    schema: z.object({
-      title: z.string(),
-      period: z.string().optional(),
-      role: z.string().optional(),
-      tags: z.array(z.string()).default([]),
-      outcome: z.string().optional(),
-      image: z.string().optional(),
-      links: z
-        .object({
-          href: z.string().url().optional(),
-          repo: z.string().url().optional(),
-        })
-        .partial()
-        .optional(),
-      lang,
-    }),
-  }),
   talks: defineCollection({
     type: 'content',
     schema: z.object({

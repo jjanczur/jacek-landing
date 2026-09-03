@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Über mich | Jacek Janczura",
-    "description": "Unabhängiger AI Architect und Fractional CTO aus Warschau. Mitgründer und ehemaliger CTO von Jaden Data. Freelancer für Architektur‑Reviews, Prompt Engineering und Enterprise-AI-Consulting."
+    "description": "Unabhängiger AI Architect und Fractional CTO. Mitgründer und ehemaliger CTO von Jaden Data. Freelancer für Architektur‑Reviews, Prompt Engineering und Enterprise-AI-Consulting."
   },
   "hero": {
     "title": "Über mich",
@@ -13,7 +13,7 @@
   },
   "bio": {
     "paragraphs": [
-      "Hi, ich bin Jacek – unabhängiger AI Architect und Consultant in Warschau. Ich habe <strong>Jaden Data</strong> mitgegründet und dort bis Juni 2024 als CTO gearbeitet. Heute unterstütze ich das Team weiterhin als Berater und Gesellschafter. Seitdem arbeite ich als Freelancer mit Kunden an Enterprise-AI-Systemen auf AWS: LLM-Plattformen, RAG und event-driven Microservices – immer mit starkem Fokus auf echte operative Prozesse.",
+      "Hi, ich bin Jacek – unabhängiger AI Architect und Consultant. Ich habe <strong>Jaden Data</strong> mitgegründet und dort bis Juni 2024 als CTO gearbeitet. Heute bin ich Fractional CTO und Consulting-Partner von Jaden Data. Seitdem arbeite ich als Freelancer mit Kunden an Enterprise-AI-Systemen auf AWS: LLM-Plattformen, RAG und event-driven Microservices – immer mit starkem Fokus auf echte operative Prozesse.",
       "<ul><li><strong>Bootstrapped Startup</strong> (ohne externes VC): <strong>&#x2265; 1 Mio. € Jahresumsatz</strong></li><li>Engineering-Team von <strong>0 → 10</strong> skaliert und Delivery für mehrere Squads verantwortet</li><li>Mandantenfähige Systeme für <strong>50+ Organisationen</strong> mit <strong>&gt; 1.000 parallelen Verbindungen</strong> und <strong>tausenden Requests pro Sekunde</strong> gebaut</li><li><strong>ISO 27001</strong> und <strong>SOC 2</strong> in knackigen ~3 Monaten umgesetzt</li></ul>",
       "Wenn du ein System schneller shippen oder technische Risiken minimieren willst, bin ich als Freelancer am Start: Architektur-Reviews, LLM/RAG-Delivery, Prompt Engineering + Evals und hands-on Technical Leadership. Schau dir meine <a href=\"/de/projects/\">Projekte</a> an, lies meine <a href=\"/de/publications/\">Publikationen</a> oder lade unten meinen Lebenslauf herunter."
     ]
@@ -37,10 +37,10 @@
   "career": {
     "title": "Mein Weg",
     "paragraphs": [
-      "Mein größter Meilenstein war die Gründung von <strong>Jaden Data</strong>. Ich habe das Unternehmen von null auf über 1 Mio. € Jahresumsatz (komplett bootstrapped) mitaufgebaut und das Engineering-Team auf 10 Leute skaliert – als CTO bis Juni 2024. Dort war ich für die Architektur und Delivery von Enterprise-AI verantwortlich: Multi-Tenant-SaaS, hochperformante verteilte Systeme auf AWS und extrem stabile LLM/RAG-Pipelines. Seit Mitte 2024 arbeite ich von Warschau aus als unabhängiger AI Architect und Fractional CTO – und bleibe Jaden Data als Berater und Shareholder eng verbunden.",
+      "Mein größter Meilenstein war die Gründung von <strong>Jaden Data</strong>. Ich habe das Unternehmen von null auf über 1 Mio. € Jahresumsatz (komplett bootstrapped) mitaufgebaut und das Engineering-Team auf 10 Leute skaliert – als CTO bis Juni 2024. Dort war ich für die Architektur und Delivery von Enterprise-AI verantwortlich: Multi-Tenant-SaaS, hochperformante verteilte Systeme auf AWS und extrem stabile LLM/RAG-Pipelines. Seit Mitte 2024 arbeite ich als Fractional CTO und Consulting-Partner — mit Jaden Data und direkt mit Kunden — als unabhängiger Technologieführer.",
       "<ul><li><strong>Enterprise AI auf AWS</strong>: Event-driven Microservices (Lambda, ECS/Fargate, SNS/SQS) und Multi-Model-LLM-Setups (OpenAI, Azure, Bedrock, Mistral)</li><li><strong>Security + Compliance</strong>: ISO 27001 und SOC 2 unter massivem Zeitdruck erfolgreich zertifiziert</li><li><strong>Praxisnahes LLM Engineering</strong>: Evals für Prompts und RAG, damit Teams ohne Bauchschmerzen releasen können</li></ul>",
       "Vor Jaden Data war ich <strong>Software Engineer</strong> bei <strong>idealo</strong>. Dort habe ich unter anderem den internationalen Login-Rollout (6 Länder) mit 1,4 Mio. neuen Accounts in 3 Monaten gepusht. Außerdem habe ich Real-Time-Systeme (Kafka, NoSQL, WebSockets) und Enterprise-Microservices (Java/Kotlin, Spring Boot) gebaut – inklusive 24/7 On-Call-Verantwortung.",
-      "Davor lag mein Fokus auf Blockchain und verteilten Systemen bei <strong>T-Labs (Deutsche Telekom)</strong>, und bei <strong>SAS Institute</strong> habe ich Real-Time-Analytics-Systeme für Banken entwickelt. Mein akademischer Background: Ein dualer M.Sc. in Informatik (TU Berlin & TU Warschau)."
+      "Davor lag mein Fokus auf Blockchain und verteilten Systemen bei <strong>T-Labs (Deutsche Telekom)</strong>, und bei <strong>SAS Institute</strong> habe ich Real-Time-Analytics-Systeme für Banken entwickelt. Mein akademischer Background: Ein dualer M.Sc. in Informatik (TU Berlin & Technische Universität Warschau)."
     ]
   },
   "specializations": {
@@ -119,8 +119,8 @@
     "items": [
       {
         "date": "Jun 2024 – heute",
-        "title": "Unabhängiger AI Architect & Consultant (Fractional CTO)",
-        "company": "Freelance · Warschau, Polen",
+        "title": "Fractional CTO & Consulting-Partner",
+        "company": "Jaden Data · unabhängige Projekte · remote-first",
         "description": "<ul><li>Consulting und Contracting für Enterprise-AI, AWS-Architekturen und LLM/RAG-Delivery</li><li>Fractional CTO, Senior Engineering Leadership, Architektur-Reviews und direkte Umsetzungen</li><li>Weiterhin als Berater und Gesellschafter eng mit <strong>Jaden Data</strong> verbunden</li><li>Aktuelles Highlight: <strong>RP-Matcher</strong> (2025–2026, Machine Learning Produkt-Matching für RP Group)</li></ul>"
       },
       {

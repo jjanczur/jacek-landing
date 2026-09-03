@@ -56,6 +56,9 @@ export default [
       'public/',
       '*.config.js',
       '*.config.mjs',
+      'src/env.d.ts',
+      'tests/',
+      'playwright.config.ts',
     ],
   },
 ];

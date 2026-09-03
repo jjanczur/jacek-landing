@@ -273,3 +273,19 @@ a:focus-visible {
     transform: none !important;
   }
 }
+
+/* Print / non-scrolling renderers: never hide revealed content */
+@media print {
+  .reveal-on .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .js-anim .chip-cell {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .mstone {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

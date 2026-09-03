@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Consulting | Jacek Janczura",
-    "description": "Independent AI Architect & fractional CTO (Warsaw). CTO & Cloud consulting: distributed systems, AWS architecture, reliability/cost optimization, security/compliance, and AI (LLM/RAG/evals) where it fits. Engagements: fractional leadership, architecture reviews, delivery sprints, developer enablement."
+    "description": "Fractional CTO & consulting partner (ex Co-founder & CTO, Jaden Data). CTO & Cloud consulting: distributed systems, AWS architecture, reliability/cost optimization, security/compliance, and AI (LLM/RAG/evals) where it fits. Engagements: fractional leadership, architecture reviews, delivery sprints, developer enablement."
   },
   "hero": {
     "title": "Consulting",
     "subtitle": "Senior engineering leadership for complex systems (AI included, not required)"
   },
   "intro": {
-    "p1": "I'm an independent AI Architect and fractional CTO based in Warsaw-former co-founder and CTO of Jaden Data. I help teams ship <strong>secure, reliable software</strong>-cloud platforms, distributed systems, and AI capabilities (LLM/RAG/evals) when they deliver real business value.",
+    "p1": "I'm a founder-CTO and fractional CTO — co-founder and CTO of Jaden Data until 2024, its consulting partner since. I help teams ship <strong>secure, reliable software</strong>-cloud platforms, distributed systems, and AI capabilities (LLM/RAG/evals) when they deliver real business value.",
     "p2": "My focus is <strong>production outcomes</strong>: clear architecture decisions, speed of delivery without regressions, cost/performance, security/compliance, and an approach that fits how your organization actually operates."
   },
   "engagements": {

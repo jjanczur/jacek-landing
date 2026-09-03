@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Konsulting | Jacek Janczura",
-    "description": "Niezależny Architekt AI i fractional CTO (Warszawa). Doradzam w zakresie chmury i CTO: architektura AWS, systemy rozproszone, optymalizacja kosztów/niezawodności oraz wdrażanie AI tam, gdzie faktycznie daje to wartość."
+    "description": "Niezależny Architekt AI i fractional CTO. Doradzam w zakresie chmury i CTO: architektura AWS, systemy rozproszone, optymalizacja kosztów/niezawodności oraz wdrażanie AI tam, gdzie faktycznie daje to wartość."
   },
   "hero": {
     "title": "Konsulting",
     "subtitle": "Senior Engineering Leadership dla złożonych systemów (z AI lub bez)"
   },
   "intro": {
-    "p1": "Jestem niezależnym architektem AI i fractional CTO z Warszawy – wcześniej współzałożyłem i byłem CTO Jaden Data. Pomagam zespołom dowozić <strong>bezpieczne i niezawodne systemy</strong>. Niezależnie czy to platforma chmurowa, system rozproszony, czy funkcje AI (LLM/RAG/evals) – wdrażam technologię tam, gdzie realnie poprawia biznes.",
+    "p1": "Jestem niezależnym architektem AI i fractional CTO – wcześniej współzałożyłem i byłem CTO Jaden Data. Pomagam zespołom dowozić <strong>bezpieczne i niezawodne systemy</strong>. Niezależnie czy to platforma chmurowa, system rozproszony, czy funkcje AI (LLM/RAG/evals) – wdrażam technologię tam, gdzie realnie poprawia biznes.",
     "p2": "Mój absolutny fokus to <strong>gotowość na produkcję</strong>. Podejmuję decyzje architektoniczne z jasnymi trade-offami, zależy mi na szybkim delivery bez regresji, optymalizacji cost/performance oraz security. Dopasowuję to wszystko do tego, jak faktycznie działa Twoja organizacja."
   },
   "engagements": {

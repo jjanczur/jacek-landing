@@ -19,25 +19,26 @@ const { lang } = Astro.props;
 // ------------------------------------------------------------------ *
 const copy = {
   en: {
-    metaTitle: 'Jacek Janczura — AI Architect & Interim Head of AI',
+    metaTitle: 'Jacek Janczura — Founder-CTO · Enterprise AI',
     metaDescription:
-      "I've shipped production AI for Norges Bank, APG (€500B+ AUM) and Boehringer Ingelheim's R&D (top-20 global pharma) — places that audit every line. I de-risk inherited stacks, put AI where it earns its keep, close the compliance gaps, and leave your team running it without me.",
-    eyebrow: 'AI Architect · Interim Head of AI',
+      'Production AI for APG (€500B+ pension fund), Bosch Global Services and Boehringer Ingelheim; mission-critical distributed systems for Norges Bank and ING. Co-founder & CTO of Jaden Data until 2024, fractional CTO and consulting partner since. I de-risk inherited stacks, put AI where it earns its keep, close the compliance gaps, and leave your team running it without me.',
+    eyebrow: 'Founder-CTO · Enterprise AI · Technology leadership',
     heroTitle:
       'A central bank trusted my code.\n<span class="hero-title-em">Your inherited stack can too.</span>',
     tierLine:
-      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim R&D (top-20 global pharma) · certified AI provider for Bosch',
+      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim · AI supplier to Bosch Global Services',
     subhead:
-      "I've shipped production AI for Norges Bank, APG — a €500B+ Dutch pension fund — and Boehringer Ingelheim's R&D — one of the world's top 20 pharma companies — places that audit every line. I bring that same standard into companies mid-change: de-risk the legacy system, put AI where it earns its keep, close the compliance gaps, and leave your team able to run the whole thing without me.",
+      "I've shipped production AI for APG — a €500B+ Dutch pension fund — Bosch Global Services and Boehringer Ingelheim, and mission-critical distributed systems for Norges Bank and ING: places that audit every line. I co-founded Jaden Data and led it as CTO from zero to €1M+ revenue and a ten-person engineering team. I bring that same standard into companies mid-change: de-risk the legacy system, put AI where it earns its keep, close the compliance gaps, and leave your team able to run the whole thing without me.",
     ctaPrimary: "See what I've shipped",
     ctaGhost: 'Book a 30-min fit call',
     availabilityAria: 'Availability',
-    availability: 'Currently consulting · open to the right permanent CTO role',
+    availability:
+      'Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role',
     wallHeading: 'Twelve institutions that audit every line',
     wallSub:
-      "A national central bank, APG's €500B+ pension fund, and Boehringer Ingelheim's R&D — one of the world's top 20 pharma companies — don't take things on trust. Here's who has.",
+      "A national central bank, APG's €500B+ pension fund and Boehringer Ingelheim don't take things on trust. Here's who has.",
     wallLegal:
-      'All trademarks are the property of their respective owners. Logos indicate completed engagements delivered as an independent contractor; no partnership, sponsorship or endorsement is implied.',
+      'All trademarks are the property of their respective owners. Logos indicate organisations Jacek has delivered work for — as Co-founder & CTO of Jaden Data (client engagements), as an employee (idealo, SAS Institute, Deutsche Telekom T-Labs) or in EU research consortia. No partnership, sponsorship or endorsement is implied.',
     statsHeading: 'Proof in numbers',
     methodHeading: 'The same standard, inside a company mid-change',
     methodCards: [
@@ -47,7 +48,7 @@ const copy = {
       },
       {
         title: 'Put AI where it earns its keep',
-        body: 'An ML product-matcher cut offer-prep time 60%. Multi-country SSO drove 1.4M new accounts and +300% acquisition. AI on outcomes, not demos.',
+        body: "An ML product-matcher cut offer-prep time 60%. As a key contributor to idealo's six-country login rollout: 1.4M new accounts in three months, +300% acquisition. AI on outcomes, not demos.",
       },
       {
         title: 'Close the compliance gaps',
@@ -63,54 +64,74 @@ const copy = {
       "A 30-minute fit call: what you've inherited, where AI actually pays off, and how fast you'd be running it without me.",
     fitCtaPrimary: 'Book a 30-min fit call',
     fitCtaGhost: "See what I've shipped",
-    fitNote: 'Currently consulting · open to the right permanent CTO role',
+    fitNote:
+      'Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role',
     wall: [
-      { note: "Norway's central bank", alt: 'National central bank' },
-      { note: '€500B+ AUM · pension fund', alt: 'European pension fund' },
+      { note: 'Central bank · CBDC bridge', alt: 'National central bank' },
+      { note: '€500B+ AUM · pension chatbot', alt: 'European pension fund' },
       {
-        note: 'Top-20 global pharma · R&D',
+        note: 'Pharma · chatbot & research platform',
         alt: 'Global pharmaceutical group',
       },
-      { note: 'Development bank', alt: 'Development bank' },
-      { note: 'Certified AI provider', alt: 'Industrial technology group' },
-      { note: 'Current', alt: 'Global beverage brand' },
-      { note: 'Banking', alt: 'European retail bank' },
-      { note: 'Telecom', alt: 'European telecommunications operator' },
-      { note: 'E-commerce', alt: 'E-commerce price comparison platform' },
-      { note: 'Automotive', alt: 'Automotive manufacturer' },
-      { note: 'Analytics', alt: 'Analytics software vendor' },
-      { note: 'Certification', alt: 'Technical certification body' },
+      { note: 'Development bank · GenAI portfolio', alt: 'Development bank' },
+      {
+        note: 'AI supplier · procurement AI',
+        alt: 'Industrial technology group',
+      },
+      { note: 'Venture screening · Flowhive VC', alt: 'Global beverage brand' },
+      { note: 'Banking · real-time decisioning', alt: 'European retail bank' },
+      {
+        note: 'Telecom · innovation lab',
+        alt: 'European telecommunications operator',
+      },
+      {
+        note: 'E-commerce · login at scale',
+        alt: 'E-commerce price comparison platform',
+      },
+      { note: 'Automotive · RAG evaluation', alt: 'Automotive manufacturer' },
+      {
+        note: 'Analytics · banking projects',
+        alt: 'Analytics software vendor',
+      },
+      {
+        note: 'Certification · regulation analysis',
+        alt: 'Technical certification body',
+      },
     ],
     stats: [
       { label: 'company revenue I built from zero' },
       { label: 'organizations on one multi-tenant platform' },
-      { label: 'accounts in 3 months at idealo (+700% vs forecast)' },
-      { label: 'requests served at 99.9% uptime' },
+      {
+        label:
+          'accounts in 3 months at idealo (key contributor, +700% vs forecast)',
+      },
+      { label: 'requests per second at 99.9% uptime' },
       {
         label: 'ISO 27001 + SOC 2 — I led my company through both in ~3 months',
       },
     ],
   },
   pl: {
-    metaTitle: 'Jacek Janczura — AI Architect i Interim Head of AI',
+    metaTitle: 'Jacek Janczura — Founder-CTO · Enterprise AI',
     metaDescription:
-      'Wdrażałem produkcyjne AI dla Norges Bank, APG (€500B+ AUM) i działu R&D Boehringer Ingelheim (globalny koncern farmaceutyczny) — miejsc, gdzie audytują każdą linijkę kodu. Odblokowuję odziedziczone stacki, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poradzi sobie beze mnie.',
-    eyebrow: 'AI Architect · Interim Head of AI',
+      'Produkcyjne AI dla APG (fundusz emerytalny, €500B+ AUM), Bosch Global Services i Boehringer Ingelheim; krytyczne systemy rozproszone dla Norges Bank i ING. Współzałożyciel i CTO Jaden Data do 2024, od tego czasu fractional CTO i partner konsultingowy. Odblokowuję odziedziczone stacki, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poradzi sobie beze mnie.',
+    eyebrow: 'Founder-CTO · Enterprise AI · Przywództwo technologiczne',
     heroTitle:
       'Bank centralny zaufał mojemu kodowi.\n<span class="hero-title-em">Twój odziedziczony stack też może.</span>',
     tierLine:
-      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim R&D (globalny koncern farmaceutyczny) · certyfikowany dostawca AI dla Bosch',
+      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim · dostawca AI dla Bosch Global Services',
     subhead:
-      'Wdrażałem produkcyjne AI dla Norges Bank, APG — holenderskiego funduszu emerytalnego z €500B+ w zarządzaniu — i działu R&D Boehringer Ingelheim — jednego z 20 największych koncernów farmaceutycznych na świecie — czyli tam, gdzie audytują każdą linijkę. Ten sam standard wnoszę do firm w środku transformacji: odblokowuję legacy, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poprowadzi całość beze mnie.',
+      'Wdrażałem produkcyjne AI dla APG — holenderskiego funduszu emerytalnego z €500B+ w zarządzaniu — Bosch Global Services i Boehringer Ingelheim, a także krytyczne systemy rozproszone dla Norges Bank i ING: tam, gdzie audytują każdą linijkę. Współzałożyłem Jaden Data i jako CTO poprowadziłem firmę od zera do ponad 1 mln € przychodu i dziesięcioosobowego zespołu inżynierskiego. Ten sam standard wnoszę do firm w środku transformacji: odblokowuję legacy, wdrażam AI tam, gdzie realnie na siebie zarabia, domykam luki compliance i zostawiam zespół, który poprowadzi całość beze mnie.',
     ctaPrimary: 'Zobacz, co wdrożyłem',
     ctaGhost: 'Umów 30-min rozmowę',
     availabilityAria: 'Dostępność',
-    availability: 'Obecnie konsultuję · otwarty na właściwą stałą rolę CTO',
+    availability:
+      'Fractional CTO i partner konsultingowy · otwarty na właściwą stałą rolę CTO lub Head of AI',
     wallHeading: 'Dwanaście instytucji, które audytują każdą linijkę',
     wallSub:
-      'Narodowy bank centralny, fundusz emerytalny APG z €500B+ i R&D Boehringer Ingelheim — jednego z 20 największych koncernów farmaceutycznych na świecie — niczego nie biorą na słowo. Oto kto mi zaufał.',
+      'Narodowy bank centralny, fundusz emerytalny APG z €500B+ i Boehringer Ingelheim niczego nie biorą na słowo. Oto kto mi zaufał.',
     wallLegal:
-      'Wszystkie znaki towarowe należą do ich właścicieli. Logotypy oznaczają zrealizowane projekty wykonane jako niezależny wykonawca; nie oznaczają partnerstwa, sponsoringu ani rekomendacji.',
+      'Wszystkie znaki towarowe należą do ich właścicieli. Logotypy oznaczają organizacje, dla których Jacek realizował projekty — jako współzałożyciel i CTO Jaden Data (projekty dla klientów), jako pracownik (idealo, SAS Institute, Deutsche Telekom T-Labs) lub w konsorcjach badawczych UE. Nie oznaczają partnerstwa, sponsoringu ani rekomendacji.',
     statsHeading: 'Dowody w liczbach',
     methodHeading: 'Ten sam standard, w firmie w środku transformacji',
     methodCards: [
@@ -120,7 +141,7 @@ const copy = {
       },
       {
         title: 'Wdróż AI tam, gdzie na siebie zarabia',
-        body: 'Machine Learning do dopasowywania produktów skrócił przygotowanie ofert o 60%. SSO w wielu krajach dało 1,4 mln nowych kont i +300% pozyskania. AI od wyników, nie od dem.',
+        body: 'Machine Learning do dopasowywania produktów skrócił przygotowanie ofert o 60%. Jako jeden z kluczowych współautorów wdrożenia logowania idealo w sześciu krajach: 1,4 mln nowych kont w trzy miesiące i +300% pozyskania. AI od wyników, nie od dem.',
       },
       {
         title: 'Domknij luki compliance',
@@ -136,35 +157,57 @@ const copy = {
       '30-minutowa rozmowa: co odziedziczyłeś, gdzie AI naprawdę się zwraca i jak szybko poprowadzisz to beze mnie.',
     fitCtaPrimary: 'Umów 30-min rozmowę',
     fitCtaGhost: 'Zobacz, co wdrożyłem',
-    fitNote: 'Obecnie konsultuję · otwarty na właściwą stałą rolę CTO',
+    fitNote:
+      'Fractional CTO i partner konsultingowy · otwarty na właściwą stałą rolę CTO lub Head of AI',
     wall: [
-      { note: 'Bank centralny Norwegii', alt: 'Narodowy bank centralny' },
+      { note: 'Bank centralny · most CBDC', alt: 'Narodowy bank centralny' },
       {
-        note: '€500B+ AUM · fundusz emerytalny',
+        note: '€500B+ AUM · chatbot emerytalny',
         alt: 'Europejski fundusz emerytalny',
       },
-      { note: 'Top-20 pharma · R&D', alt: 'Globalny koncern farmaceutyczny' },
-      { note: 'Bank rozwoju', alt: 'Bank rozwoju' },
       {
-        note: 'Certyfikowany dostawca AI',
+        note: 'Farmacja · chatbot i platforma researchowa',
+        alt: 'Globalny koncern farmaceutyczny',
+      },
+      { note: 'Bank rozwoju · portfolio GenAI', alt: 'Bank rozwoju' },
+      {
+        note: 'Dostawca AI · AI w zakupach',
         alt: 'Koncern technologii przemysłowych',
       },
-      { note: 'Obecnie', alt: 'Globalna marka napojów' },
-      { note: 'Bankowość', alt: 'Europejski bank detaliczny' },
       {
-        note: 'Telekomunikacja',
+        note: 'Screening startupów · Flowhive VC',
+        alt: 'Globalna marka napojów',
+      },
+      {
+        note: 'Bankowość · decyzje w czasie rzeczywistym',
+        alt: 'Europejski bank detaliczny',
+      },
+      {
+        note: 'Telekomunikacja · laboratorium innowacji',
         alt: 'Europejski operator telekomunikacyjny',
       },
-      { note: 'E-commerce', alt: 'Platforma porównywania cen e-commerce' },
-      { note: 'Motoryzacja', alt: 'Producent samochodów' },
-      { note: 'Analityka', alt: 'Dostawca oprogramowania analitycznego' },
-      { note: 'Certyfikacja', alt: 'Jednostka certyfikująca' },
+      {
+        note: 'E-commerce · logowanie na skalę',
+        alt: 'Platforma porównywania cen e-commerce',
+      },
+      { note: 'Motoryzacja · ewaluacja RAG', alt: 'Producent samochodów' },
+      {
+        note: 'Analityka · projekty bankowe',
+        alt: 'Dostawca oprogramowania analitycznego',
+      },
+      {
+        note: 'Certyfikacja · analiza regulacji',
+        alt: 'Jednostka certyfikująca',
+      },
     ],
     stats: [
       { label: 'przychodu firmy, którą zbudowałem od zera' },
       { label: 'organizacji na jednej platformie multi-tenant' },
-      { label: 'kont w 3 miesiące w idealo (+700% vs prognoza)' },
-      { label: 'obsłużonych żądań przy 99,9% uptime' },
+      {
+        label:
+          'kont w 3 miesiące w idealo (kluczowy współautor, +700% vs prognoza)',
+      },
+      { label: 'żądań na sekundę przy 99,9% uptime' },
       {
         label:
           'ISO 27001 + SOC 2 — przeprowadziłem swoją firmę przez oba w ~3 miesiące',
@@ -172,26 +215,26 @@ const copy = {
     ],
   },
   de: {
-    metaTitle: 'Jacek Janczura — AI Architect & Interim Head of AI',
+    metaTitle: 'Jacek Janczura — Founder-CTO · Enterprise AI',
     metaDescription:
-      'Ich habe produktives AI für die Norges Bank, APG (€500B+ AUM) und Boehringer Ingelheims R&D (Top-20-Pharmakonzern) in Betrieb genommen — Orte, an denen jede Zeile geprüft wird. Ich entschärfe geerbte Stacks, setze AI dort ein, wo sie sich rechnet, schließe die Compliance-Lücken und hinterlasse ein Team, das den Laden ohne mich betreibt.',
-    eyebrow: 'AI Architect · Interim Head of AI',
+      'Produktives AI für APG (Pensionsfonds, €500B+ AUM), Bosch Global Services und Boehringer Ingelheim; geschäftskritische verteilte Systeme für die Norges Bank und ING. Mitgründer und CTO von Jaden Data bis 2024, seitdem Fractional CTO und Consulting-Partner. Ich entschärfe geerbte Stacks, setze AI dort ein, wo sie sich rechnet, schließe die Compliance-Lücken und hinterlasse ein Team, das den Laden ohne mich betreibt.',
+    eyebrow: 'Founder-CTO · Enterprise AI · Technologieführung',
     heroTitle:
       'Eine Zentralbank hat meinem Code vertraut.\n<span class="hero-title-em">Dein geerbter Stack kann das auch.</span>',
     tierLine:
-      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim R&D (Top-20-Pharmakonzern) · zertifizierter AI-Anbieter für Bosch',
+      'Norges Bank · APG (€500B+ AUM) · Boehringer Ingelheim · AI-Lieferant für Bosch Global Services',
     subhead:
-      'Ich habe produktives AI für die Norges Bank, APG — einen niederländischen Pensionsfonds mit €500B+ AUM — und Boehringer Ingelheims R&D — einer der 20 größten Pharmakonzerne der Welt — ausgeliefert: Orte, an denen jede Zeile geprüft wird. Denselben Standard bringe ich in Unternehmen mitten im Umbruch: das Legacy-System entschärfen, AI dort einsetzen, wo sie sich rechnet, die Compliance-Lücken schließen — und ein Team hinterlassen, das das Ganze ohne mich betreibt.',
+      'Ich habe produktives AI für APG — einen niederländischen Pensionsfonds mit €500B+ AUM — Bosch Global Services und Boehringer Ingelheim ausgeliefert, dazu geschäftskritische verteilte Systeme für die Norges Bank und ING: Orte, an denen jede Zeile geprüft wird. Ich habe Jaden Data mitgegründet und als CTO von null auf über 1 Mio. € Umsatz und ein zehnköpfiges Engineering-Team geführt. Denselben Standard bringe ich in Unternehmen mitten im Umbruch: das Legacy-System entschärfen, AI dort einsetzen, wo sie sich rechnet, die Compliance-Lücken schließen — und ein Team hinterlassen, das das Ganze ohne mich betreibt.',
     ctaPrimary: 'Sieh, was ich geliefert habe',
     ctaGhost: '30-min Fit-Call buchen',
     availabilityAria: 'Verfügbarkeit',
     availability:
-      'Aktuell als Berater tätig · offen für die richtige feste CTO-Rolle',
+      'Fractional CTO & Consulting-Partner · offen für die richtige feste CTO- oder Head-of-AI-Rolle',
     wallHeading: 'Zwölf Institutionen, die jede Zeile prüfen',
     wallSub:
-      'Eine nationale Zentralbank, APGs €500B+ Pensionsfonds und Boehringer Ingelheims R&D — einer der 20 größten Pharmakonzerne der Welt — nehmen nichts auf gut Glauben. Hier ist, wer es getan hat.',
+      'Eine nationale Zentralbank, APGs €500B+ Pensionsfonds und Boehringer Ingelheim nehmen nichts auf gut Glauben. Hier ist, wer es getan hat.',
     wallLegal:
-      'Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Die Logos kennzeichnen abgeschlossene Projekte, die als freier Auftragnehmer erbracht wurden; eine Partnerschaft, Förderung oder Empfehlung wird nicht impliziert.',
+      'Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Die Logos kennzeichnen Organisationen, für die Jacek Projekte umgesetzt hat — als Mitgründer und CTO von Jaden Data (Kundenprojekte), als Angestellter (idealo, SAS Institute, Deutsche Telekom T-Labs) oder in EU-Forschungskonsortien. Eine Partnerschaft, Förderung oder Empfehlung wird nicht impliziert.',
     statsHeading: 'Belege in Zahlen',
     methodHeading: 'Derselbe Standard, in einem Unternehmen mitten im Umbruch',
     methodCards: [
@@ -201,7 +244,7 @@ const copy = {
       },
       {
         title: 'AI dort einsetzen, wo sie sich rechnet',
-        body: 'Ein ML-Produktmatcher hat die Angebotsvorbereitung um 60% verkürzt. Multi-Country-SSO brachte 1,4 Mio. neue Accounts und +300% Neukundengewinnung. AI an Ergebnissen gemessen, nicht an Demos.',
+        body: 'Ein ML-Produktmatcher hat die Angebotsvorbereitung um 60% verkürzt. Als maßgeblicher Mitwirkender am Login-Rollout von idealo in sechs Ländern: 1,4 Mio. neue Accounts in drei Monaten und +300% Neukundengewinnung. AI an Ergebnissen gemessen, nicht an Demos.',
       },
       {
         title: 'Die Compliance-Lücken schließen',
@@ -218,32 +261,53 @@ const copy = {
     fitCtaPrimary: '30-min Fit-Call buchen',
     fitCtaGhost: 'Sieh, was ich geliefert habe',
     fitNote:
-      'Aktuell als Berater tätig · offen für die richtige feste CTO-Rolle',
+      'Fractional CTO & Consulting-Partner · offen für die richtige feste CTO- oder Head-of-AI-Rolle',
     wall: [
-      { note: 'Norwegens Zentralbank', alt: 'Nationale Zentralbank' },
-      { note: '€500B+ AUM · Pensionsfonds', alt: 'Europäischer Pensionsfonds' },
-      { note: 'Top-20-Pharmakonzern · R&D', alt: 'Globaler Pharmakonzern' },
-      { note: 'Förderbank', alt: 'Förderbank' },
+      { note: 'Zentralbank · CBDC-Brücke', alt: 'Nationale Zentralbank' },
       {
-        note: 'Zertifizierter AI-Anbieter',
+        note: '€500B+ AUM · Pensions-Chatbot',
+        alt: 'Europäischer Pensionsfonds',
+      },
+      {
+        note: 'Pharma · Chatbot & Research-Plattform',
+        alt: 'Globaler Pharmakonzern',
+      },
+      { note: 'Förderbank · GenAI-Portfolio', alt: 'Förderbank' },
+      {
+        note: 'AI-Lieferant · Procurement-AI',
         alt: 'Industrietechnologiekonzern',
       },
-      { note: 'Aktuell', alt: 'Globale Getränkemarke' },
-      { note: 'Banking', alt: 'Europäische Privatkundenbank' },
+      { note: 'Startup-Screening · Flowhive VC', alt: 'Globale Getränkemarke' },
       {
-        note: 'Telekommunikation',
+        note: 'Banking · Echtzeit-Entscheidungen',
+        alt: 'Europäische Privatkundenbank',
+      },
+      {
+        note: 'Telekommunikation · Innovationslabor',
         alt: 'Europäischer Telekommunikationsanbieter',
       },
-      { note: 'E-Commerce', alt: 'E-Commerce-Preisvergleichsplattform' },
-      { note: 'Automotive', alt: 'Automobilhersteller' },
-      { note: 'Analytics', alt: 'Anbieter von Analysesoftware' },
-      { note: 'Zertifizierung', alt: 'Technische Zertifizierungsstelle' },
+      {
+        note: 'E-Commerce · Login im großen Maßstab',
+        alt: 'E-Commerce-Preisvergleichsplattform',
+      },
+      { note: 'Automotive · RAG-Evaluation', alt: 'Automobilhersteller' },
+      {
+        note: 'Analytics · Banking-Projekte',
+        alt: 'Anbieter von Analysesoftware',
+      },
+      {
+        note: 'Zertifizierung · Regulierungsanalyse',
+        alt: 'Technische Zertifizierungsstelle',
+      },
     ],
     stats: [
       { label: 'Unternehmensumsatz, den ich von null aufgebaut habe' },
       { label: 'Organisationen auf einer Multi-tenant-Plattform' },
-      { label: 'Accounts in 3 Monaten bei idealo (+700% vs. Prognose)' },
-      { label: 'Requests bei 99,9% Uptime bedient' },
+      {
+        label:
+          'Accounts in 3 Monaten bei idealo (maßgeblich beteiligt, +700% vs. Prognose)',
+      },
+      { label: 'Requests pro Sekunde bei 99,9% Uptime' },
       {
         label:
           'ISO 27001 + SOC 2 — mein Unternehmen habe ich durch beide in ~3 Monaten geführt',
@@ -308,7 +372,7 @@ const statsBase = [
   {
     to: 1000,
     prefix: '',
-    suffix: 's / sec',
+    suffix: 's',
     decimals: 0,
   },
   {
@@ -848,10 +912,20 @@ const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
   }
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-    gap: clamp(var(--space-4), 3vw, var(--space-6));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6) var(--space-5);
     border-top: 1px solid var(--border);
     padding-top: var(--space-8);
+  }
+  @media (min-width: 700px) {
+    .stats-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1100px) {
+    .stats-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
   }
   .stat {
     min-width: 0;
@@ -869,7 +943,12 @@ const stats = statsBase.map((s, i) => ({ ...s, label: t.stats[i].label }));
     color: transparent;
     font-variant-numeric: tabular-nums;
     margin-bottom: var(--space-3);
-    word-break: break-word;
+    white-space: nowrap;
+  }
+  .stat-value[data-static]:not([data-static='']) {
+    white-space: normal;
+    font-size: clamp(1.3rem, 3.6vw, 2.1rem);
+    line-height: 1.15;
   }
   .stat-label {
     font-size: var(--font-size-sm);
