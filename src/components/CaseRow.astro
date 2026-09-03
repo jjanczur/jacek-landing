@@ -1,0 +1,244 @@
+---
+import OutcomeBadge from './OutcomeBadge.astro';
+
+interface Outcome {
+  value: string;
+  label: string;
+  evidence:
+    | 'measured'
+    | 'customer-estimate'
+    | 'projected'
+    | 'qualitative'
+    | 'benchmark';
+}
+
+export interface Props {
+  href?: string;
+  client: string;
+  skim: string;
+  outcome?: Outcome;
+  status: string;
+  relationship: string;
+  index: number;
+  /**
+   * Category key the filter chips match against. Not part of the brief's
+   * named prop list, but the brief's own markup for this component calls
+   * for a `data-category` attribute on the row — there is no other prop it
+   * could come from, so it is accepted here as a plain string.
+   */
+  category: string;
+}
+
+const { href, client, skim, outcome, status, relationship, index, category } =
+  Astro.props;
+
+const STATUS_LABEL: Record<string, string> = {
+  production: 'Production',
+  mvp: 'MVP',
+  poc: 'Proof of concept',
+  prototype: 'Prototype',
+  research: 'Research',
+};
+
+const RELATIONSHIP_LABEL: Record<string, string> = {
+  client: 'Client',
+  independent: 'Independent',
+  employer: 'Employment',
+  'own-company': 'Own company',
+  'research-partner': 'Research partner',
+};
+
+const Tag = href ? 'a' : 'li';
+const linkAttrs = href ? { href } : {};
+---
+
+<Tag
+  class="case-row reveal"
+  style={`--reveal-delay: ${index * 40}ms`}
+  data-category={category}
+  {...linkAttrs}
+>
+  <span class="case-row__top">
+    <span class="case-row__client">{client}</span>
+    <span class="case-row__skim">{skim}</span>
+  </span>
+  <span class="case-row__badges">
+    {
+      outcome && (
+        <span class="case-row__outcome">
+          <OutcomeBadge
+            value={outcome.value}
+            label={outcome.label}
+            evidence={outcome.evidence}
+          />
+        </span>
+      )
+    }
+    <span class="case-row__pill">{STATUS_LABEL[status] ?? status}</span>
+    <span class="case-row__pill case-row__pill--ghost">
+      {RELATIONSHIP_LABEL[relationship] ?? relationship}
+    </span>
+    {
+      href && (
+        <span class="case-row__arrow" aria-hidden="true">
+          →
+        </span>
+      )
+    }
+  </span>
+</Tag>
+
+<style>
+  :global(.case-rows) {
+    list-style: none;
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .case-row {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) minmax(220px, 2fr) auto;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    background: var(--surface-1);
+    color: var(--text);
+    text-decoration: none;
+    transition:
+      transform 160ms var(--ease-out),
+      border-color 160ms var(--ease-out),
+      box-shadow 160ms var(--ease-out);
+  }
+
+  li.case-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* The filter script sets the `hidden` attribute to hide non-matching
+     rows; without this, the `display: grid`/`flex` rules above (same
+     specificity as the UA [hidden] rule, but later in the cascade) would
+     win and keep the row visible. */
+  .case-row[hidden] {
+    display: none;
+  }
+
+  .case-row__top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    min-width: 0;
+  }
+
+  .case-row__client {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .case-row__skim {
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.72);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .case-row__badges {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .case-row__outcome {
+    display: flex;
+  }
+
+  .case-row__outcome :global(.outcome) {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5em;
+    padding: 0.35em 0.75em;
+    border-radius: 999px;
+  }
+
+  .case-row__outcome :global(.outcome__value) {
+    font-size: var(--font-size-sm);
+  }
+
+  .case-row__outcome :global(.outcome__label) {
+    display: none;
+  }
+
+  .case-row__outcome :global(.outcome__evidence) {
+    margin-top: 0;
+    padding: 0.15em 0.55em;
+    font-size: 0.65rem;
+  }
+
+  .case-row__pill {
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--text);
+  }
+
+  .case-row__pill--ghost {
+    border-color: var(--line);
+    color: oklch(from var(--text) l c h / 0.65);
+  }
+
+  .case-row__arrow {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    transition: transform 160ms var(--ease-out);
+  }
+
+  a.case-row:hover .case-row__arrow {
+    transform: translateX(3px);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a.case-row:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-2);
+      transform: translateY(-1px);
+    }
+  }
+
+  a.case-row:active {
+    transform: scale(0.99);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-row,
+    .case-row__arrow {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .case-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+
+    .case-row__badges {
+      justify-content: flex-start;
+    }
+
+    .case-row__skim {
+      white-space: normal;
+    }
+  }
+</style>
