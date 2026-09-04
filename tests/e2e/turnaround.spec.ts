@@ -16,7 +16,7 @@ test.describe('turnaround', () => {
     await page.goto('/en/turnaround/');
     await expect(page.locator('.logo-wall__group')).toHaveCount(1);
     await expect(page.locator('.logo-wall__legal')).toHaveCount(0);
-    await expect(page.locator('.chip-cell')).toHaveCount(7);
+    await expect(page.locator('.chip-cell')).toHaveCount(8);
   });
 
   test('stats render their final values in static HTML', async ({

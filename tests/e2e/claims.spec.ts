@@ -29,7 +29,6 @@ const FORBIDDEN: string[] = [
   'produkcyjne ai dla norges bank',
   'produktives ai für die norges bank',
   'delivered as an independent contractor',
-  'kfw',
 ];
 
 // City-name check runs separately from FORBIDDEN because the About pages
@@ -87,6 +86,13 @@ function readableText(html: string): string {
   const body = html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    // Close block elements into separators first: without this, adjacent
+    // list rows merge into one "sentence" and a client in one row is read
+    // as sitting beside the work described in the next.
+    .replace(
+      /<\/(li|p|a|h[1-6]|div|section|article|td|th|dd|dt|figcaption)>/gi,
+      ' | ',
+    )
     .replace(/<[^>]+>/g, ' ');
   return [title, ...metas, body].join(' | ').replace(/\s+/g, ' ').toLowerCase();
 }

@@ -63,11 +63,11 @@ test.describe('home', () => {
     await page.goto('/en/');
     const groups = page.locator('.logo-wall__group');
     await expect(groups).toHaveCount(3);
-    await expect(groups.nth(0).locator('.chip-cell')).toHaveCount(7);
+    await expect(groups.nth(0).locator('.chip-cell')).toHaveCount(8);
     await expect(groups.nth(1).locator('.chip-cell')).toHaveCount(4);
     // Independent work is attributed to its own group, not merged into the
     // engagements delivered through the company.
-    await expect(groups.nth(2).locator('.chip-cell')).toHaveCount(1);
+    await expect(groups.nth(2).locator('.chip-cell')).toHaveCount(2);
     await expect(
       groups.nth(2).locator('.logo-wall__group-title'),
     ).toContainText('Independent');
@@ -82,8 +82,8 @@ test.describe('home', () => {
     const captions = (
       await page.locator('.logo-wall .chip-note').allTextContents()
     ).map(text => text.toLowerCase());
-    expect(alts).toHaveLength(12);
-    expect(captions).toHaveLength(12);
+    expect(alts).toHaveLength(14);
+    expect(captions).toHaveLength(14);
     for (const text of [...alts, ...captions]) {
       for (const name of WALL_NAMES) {
         expect(text, `"${text}" names an organisation`).not.toContain(name);
@@ -121,7 +121,7 @@ test.describe('home', () => {
       .evaluateAll(els =>
         els.map(el => Math.round(el.getBoundingClientRect().height)),
       );
-    expect(heights.length).toBe(12);
+    expect(heights.length).toBe(14);
     // Ink-normalised, not bounding-box normalised: rendered heights must vary.
     expect(new Set(heights).size).toBeGreaterThan(1);
     for (const h of heights) {

@@ -21,8 +21,25 @@ export async function getStaticPaths() {
 const { lang, entry, all } = Astro.props;
 const { Content, headings } = await entry.render();
 const d = entry.data;
+// Two cases can share a client while only one of them names them. Listing
+// those side by side under "Related" would let a reader map the named client
+// onto the anonymous one, so they are kept out of each other's list. Slugs
+// only: naming the client here would put it back in the public source.
+const SEPARATED_PAIRS: [string, string][] = [
+  ['engineering-enablement', 'automotive-procurement-ai'],
+];
+const separated = new Set(
+  SEPARATED_PAIRS.flatMap(([a, b]) =>
+    entry.slug === a ? [b] : entry.slug === b ? [a] : [],
+  ),
+);
 const related = all
-  .filter(c => c.slug !== entry.slug && c.data.category === d.category)
+  .filter(
+    c =>
+      c.slug !== entry.slug &&
+      !separated.has(c.slug) &&
+      c.data.category === d.category,
+  )
   .slice(0, 3)
   .map(c => ({
     href: `/${lang}/case-studies/${c.slug}/`,

@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Jacek Janczura — Founder-CTO · Enterprise AI",
-    "description": "Founder-CTO working on enterprise AI. Co-founded Jaden Data and led it as CTO to €1M+ annual revenue and a ten-person engineering team; fractional CTO and consulting partner since 2024. Production AI for APG, Bosch Global Services, a German development bank and Boehringer Ingelheim; distributed systems for Norges Bank and ING."
+    "description": "Founder-CTO working on enterprise AI. Co-founded Jaden Data and led it as CTO to €1M+ annual revenue and a ten-person engineering team; fractional CTO and consulting partner since 2024. Production AI for APG, Bosch, KfW Bank and Boehringer Ingelheim; distributed systems for Norges Bank and ING."
   },
   "hero": {
     "eyebrow": "Founder-CTO · Enterprise AI · Technology leadership",
     "title": "I turn complex enterprise workflows into production AI, <em>and build the teams that scale it.</em>",
-    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG, Bosch Global Services, a German development bank and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
+    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG, Bosch, KfW Bank, Boehringer Ingelheim and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
     "primary": {
       "href": "/en/contact/#hiring",
       "label": "Discuss a leadership role"
@@ -119,7 +119,8 @@
             "h": 133,
             "alt": "National central bank",
             "caption": "Central bank · CBDC bridge",
-            "scale": 1.25
+            "scale": 1.25,
+            "href": "/en/case-studies/regulated-distributed-systems/"
           },
           {
             "src": "/media/26a6930244564dbfbcf739144d3ee697.webp",
@@ -127,15 +128,24 @@
             "h": 186,
             "alt": "European pension fund",
             "caption": "Pension fund · member-facing assistant",
-            "scale": 0.95
+            "scale": 0.95,
+            "href": "/en/case-studies/apg-pension-assistant/"
           },
           {
             "src": "/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp",
             "w": 622,
             "h": 186,
             "alt": "Global pharmaceutical group",
-            "caption": "Pharma · assistant & research platform",
+            "caption": "Pharma",
             "scale": 1.2
+          },
+          {
+            "src": "/media/1281e65db12c45469e14f9d21293fc0f.webp",
+            "w": 529,
+            "h": 186,
+            "alt": "Development bank",
+            "caption": "Development bank",
+            "scale": 0.85
           },
           {
             "src": "/media/28105d45d9344ea18b2923eed7f69bb3.webp",
@@ -143,7 +153,8 @@
             "h": 166,
             "alt": "Industrial technology group",
             "caption": "Industrial group · enterprise AI",
-            "scale": 0.9
+            "scale": 0.9,
+            "href": "/en/case-studies/engineering-enablement/"
           },
           {
             "src": "/media/08e6a6fe611f43c2a0f29358faf97629.webp",
@@ -151,7 +162,8 @@
             "h": 176,
             "alt": "Global beverage brand",
             "caption": "Venture screening · Flowhive VC",
-            "scale": 0.85
+            "scale": 0.85,
+            "href": "/en/case-studies/flowhive-vc/"
           },
           {
             "src": "/media/61e1429a033149af88693c678b929b4b.webp",
@@ -159,7 +171,8 @@
             "h": 158,
             "alt": "Automotive manufacturer",
             "caption": "Automotive · RAG evaluation",
-            "scale": 1.2
+            "scale": 1.2,
+            "href": "/en/case-studies/stellantis-rag-evaluation/"
           },
           {
             "src": "/media/70c915d7d1a94b99bbd3557ff3682463.webp",
@@ -180,7 +193,8 @@
             "h": 186,
             "alt": "E-commerce price comparison platform",
             "caption": "E-commerce · login at scale",
-            "scale": 1.0
+            "scale": 1.0,
+            "href": "/en/case-studies/idealo-and-ing-scale/"
           },
           {
             "src": "/media/83c4ed8c667b41939165458511d46e3f.webp",
@@ -188,7 +202,8 @@
             "h": 186,
             "alt": "European retail bank",
             "caption": "Banking · real-time decisioning",
-            "scale": 1.1
+            "scale": 1.1,
+            "href": "/en/case-studies/idealo-and-ing-scale/"
           },
           {
             "src": "/media/9612982e0292426fa1adad3310809278.webp",
@@ -196,7 +211,8 @@
             "h": 186,
             "alt": "Analytics software vendor",
             "caption": "Analytics · banking projects",
-            "scale": 1.0
+            "scale": 1.0,
+            "href": "/en/case-studies/idealo-and-ing-scale/"
           },
           {
             "src": "/media/cf06994ba7154815a933e5d11a4a1335.webp",
@@ -216,8 +232,17 @@
             "w": 754,
             "h": 169,
             "alt": "Enterprise software vendor",
-            "caption": "Enterprise software · SaaS-to-on-premises migration",
+            "caption": "Enterprise software",
             "scale": 1.0
+          },
+          {
+            "src": "/media/4a49918321c641a5a54a36180d149032.webp",
+            "w": 541,
+            "h": 186,
+            "alt": "Legal technology platform",
+            "caption": "Legal technology",
+            "scale": 1.0,
+            "href": "/en/case-studies/legal-ai-startup-cto-advisory/"
           }
         ]
       }

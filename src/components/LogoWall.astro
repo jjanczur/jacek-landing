@@ -8,6 +8,10 @@ export interface LogoItem {
   alt: string;
   caption: string;
   scale?: number;
+  /** Case study for this client. Set only where that case names them: a
+   *  link from a recognisable mark to an anonymised case would undo the
+   *  anonymity. Without it the chip renders as plain, unclickable content. */
+  href?: string;
 }
 export interface LogoGroup {
   title: string;
@@ -76,18 +80,37 @@ let running = 0;
                     data-chip
                     style={`--i:${i}; --logo-scale:${item.scale ?? 1}`}
                   >
-                    <span class="chip">
-                      <img
-                        class="chip-logo"
-                        src={item.src}
-                        alt={item.alt}
-                        width={item.w}
-                        height={item.h}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </span>
-                    <span class="chip-note">{item.caption}</span>
+                    {item.href ? (
+                      <a class="chip-link" href={item.href}>
+                        <span class="chip">
+                          <img
+                            class="chip-logo"
+                            src={item.src}
+                            alt={item.alt}
+                            width={item.w}
+                            height={item.h}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </span>
+                        <span class="chip-note">{item.caption}</span>
+                      </a>
+                    ) : (
+                      <>
+                        <span class="chip">
+                          <img
+                            class="chip-logo"
+                            src={item.src}
+                            alt={item.alt}
+                            width={item.w}
+                            height={item.h}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </span>
+                        <span class="chip-note">{item.caption}</span>
+                      </>
+                    )}
                   </li>
                 );
               })}
@@ -201,6 +224,28 @@ let running = 0;
     gap: var(--space-2);
     min-width: 0;
     opacity: 1;
+  }
+
+  /* Only clients whose own case study names them are linked, so the wall
+     mixes linked and plain chips. The affordance stays quiet at rest and
+     appears on hover and focus; a:focus-visible in tokens.css draws the
+     focus ring. */
+  .chip-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+    min-width: 0;
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-m);
+  }
+  .chip-link:hover .chip {
+    border-color: var(--accent);
+  }
+  .chip-link:hover .chip-note {
+    color: var(--text);
   }
 
   /* CO-1: chips are always one step away from the frame, in whichever

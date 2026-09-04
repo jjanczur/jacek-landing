@@ -37,21 +37,6 @@ const featuredCases = (await getCollection('case-studies'))
 >
   <Hero {...t.hero} />
 
-  <PillarGrid
-    pillars={t.pillars.items}
-    variant="lead"
-    surface="bare"
-    rhythm="loose"
-    divided
-  >
-    <SectionHeader
-      slot="header"
-      eyebrow={t.pillars.eyebrow}
-      title={t.pillars.title}
-      align="left"
-    />
-  </PillarGrid>
-
   <LogoWall
     heading={t.wall.heading}
     lede={t.wall.lede}
@@ -68,6 +53,21 @@ const featuredCases = (await getCollection('case-studies'))
     rhythm="tight"
     tint
   />
+
+  <PillarGrid
+    pillars={t.pillars.items}
+    variant="lead"
+    surface="bare"
+    rhythm="loose"
+    divided
+  >
+    <SectionHeader
+      slot="header"
+      eyebrow={t.pillars.eyebrow}
+      title={t.pillars.title}
+      align="left"
+    />
+  </PillarGrid>
 
   <LoopDiagram
     eyebrow={t.method.eyebrow}

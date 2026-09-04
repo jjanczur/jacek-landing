@@ -15,13 +15,26 @@ const SHAPED = [
   '/en/case-studies/jaden-data-company-building/',
 ];
 
-// The two clients the case studies still identify by industry rather than by
-// name. Every other client is named with the client's agreement, so only
-// these two are guarded here. The automotive client is scoped to case-study
-// pages on purpose: it is named in general page copy elsewhere on the site,
-// which is a different statement from attributing a specific project to it.
+// Clients the case studies identify by industry rather than by name. All of
+// them are named in general page copy and shown on the logo wall: naming
+// someone as a client is a different statement from attributing a specific
+// project to them, and only the second is restricted here.
 // Word boundaries keep hashed asset names out of the match.
-const UNNAMED_CLIENTS: RegExp[] = [/\bbosch\b/, /\bkfw\b/];
+const UNNAMED_CLIENTS: RegExp[] = [
+  /\bbosch\b/,
+  /\bkfw\b/,
+  /\bboehringer\b/,
+  /\bsoftware ag\b/,
+];
+
+// Bosch is named on exactly one case. The hackathons and the AI-accelerated
+// development training are work they are happy to have attributed; their
+// procurement and tendering case stays anonymous. The index carries the name
+// too, because it lists that case with its client label.
+const BOSCH_NAMED_PAGES = [
+  '/en/case-studies/',
+  '/en/case-studies/engineering-enablement/',
+];
 
 const EVIDENCE = [
   'Measured',
@@ -289,7 +302,10 @@ test('case-study pages identify clients by industry, not by name', async ({
       // Route slugs are URLs, not prose; the policy is about the words a
       // reader sees, so collapse case-study paths before matching.
       .replace(/\/case-studies\/[a-z0-9-]+\/?/g, '/case-studies/');
-    for (const re of UNNAMED_CLIENTS) {
+    const rules = BOSCH_NAMED_PAGES.includes(path)
+      ? UNNAMED_CLIENTS.filter(re => !re.test('bosch'))
+      : UNNAMED_CLIENTS;
+    for (const re of rules) {
       expect(haystack, `${path} matches ${re}`).not.toMatch(re);
     }
   }
@@ -332,4 +348,22 @@ test('the retired /en/projects/ URL redirects to the case-studies index', async 
   const res = await request.get('/en/projects/');
   const html = await res.text();
   expect(html).toContain('url=/en/case-studies/');
+});
+
+// A named client's case must not sit next to that same client's anonymous
+// case in the "Related" list: the pairing would identify the anonymous one.
+test('a named case and its anonymous sibling never link to each other', async ({
+  page,
+}) => {
+  const pair: [string, string] = [
+    '/en/case-studies/engineering-enablement/',
+    '/en/case-studies/automotive-procurement-ai/',
+  ];
+  for (const [from, to] of [pair, [pair[1], pair[0]] as [string, string]]) {
+    await page.goto(from);
+    await expect(
+      page.locator(`.case-facts a[href="${to}"]`),
+      `${from} links to ${to} under Related`,
+    ).toHaveCount(0);
+  }
 });
