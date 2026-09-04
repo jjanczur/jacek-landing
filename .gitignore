@@ -84,3 +84,7 @@ Desktop.ini
 
 # Parallel task worktrees
 /.worktrees/
+
+# Company-named logo source files. Never committed: the site serves only the
+# UUID-named WebP copies under public/media/ (see the logo-hygiene rule).
+/src/assets/images/logos/
