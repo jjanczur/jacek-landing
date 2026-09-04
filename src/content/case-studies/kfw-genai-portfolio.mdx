@@ -45,6 +45,11 @@ outcomes:
       label: 'per contract deliverables review at the targeted accuracy',
       evidence: 'projected',
     }
+delivery:
+  - { at: 'Spec template', label: 'One specification', note: 'scope, metrics, dependencies' }
+  - { at: '7 PoCs', label: 'Run in parallel', note: 'same terms, same evaluation template' }
+  - { at: 'Weekly', label: 'Expert review', note: 'domain experts score each output' }
+  - { at: 'Decision', label: 'Portfolio call', note: 'what to take further, what to stop' }
 stakeholders:
   [
     'Portfolio managers',
@@ -81,6 +86,8 @@ featured: true
 order: 20
 ---
 
+import DeliveryTimeline from '../../components/DeliveryTimeline.astro';
+
 ## Context
 
 KfW's development-finance teams and a KfW-funded humanitarian NGO run on documents: annual ministry
@@ -98,18 +105,6 @@ reliably enough that experts would adopt it.
 I designed the solution architecture and the multi-step AI processes for every proof of concept,
 wrote the prompts for extraction, reconciliation, generation, retrieval and the chatbot, and was
 accountable for each result meeting the acceptance criteria the experts set.
-
-## Stakeholders
-
-Portfolio managers writing ministry reports; technical experts checking contracts and searching
-design archives; evaluators drafting ex-post reports; the NGO's programme and legal-assistance
-staff; IT and data owners.
-
-## Constraints
-
-Outputs had to be strictly German-only or English-only and structured. Inputs ran to hundreds of
-pages. Expert time was limited to weekly review meetings. For the refugee chatbot, per-interaction
-cost had to be weighed against a static decision tree.
 
 ## Decisions
 
@@ -133,6 +128,8 @@ cost had to be weighed against a static decision tree.
 Rapid prototyping on the platform, agile iterations, weekly reviews with the domain experts, every
 proof of concept validated on real documents.
 
+<DeliveryTimeline items={frontmatter.delivery} />
+
 ## Outcome
 
 Experts estimated about a day saved per ministry report, a fifth to a third less drafting effort on
@@ -140,6 +137,11 @@ an evaluation chapter, and a quarter of an hour per partner-report pre-check; co
 projected to drop from five hours to one at the targeted accuracy. Retrieval over the technical
 archive enabled research that had been impractical, and the experts asked for a production rollout
 to a wider group.
+
+<blockquote class="case-pull">
+  Retrieval over the technical archive enabled research that had been impractical, and the experts
+  asked for a production rollout to a wider group.
+</blockquote>
 
 ## Reuse
 

@@ -28,8 +28,17 @@ outcomes:
       value: '50+',
       label: 'organisations running AI processes on one multi-tenant platform',
       evidence: 'measured',
+      countTo: 50,
+      suffix: '+',
     }
-  - { value: '99.9%', label: 'platform uptime', evidence: 'measured' }
+  - {
+      value: '99.9%',
+      label: 'platform uptime',
+      evidence: 'measured',
+      countTo: 99.9,
+      suffix: '%',
+      decimals: 1,
+    }
   - {
       value: '>1,000',
       label: 'concurrent connections and thousands of requests per second',
@@ -88,19 +97,6 @@ data-sovereignty bar that regulated buyers set.
 I architected the platform and led its implementation: the multi-tenant model, the event-driven
 runtime, the model integration layer, role-based access control, the retrieval service, and the
 prompt and evaluation tooling around them.
-
-## Stakeholders
-
-Client process owners who use the workflows; client IT, security and compliance teams who approve
-them; the frontend, backend and AI workstreams inside the company; and the external auditors for ISO
-27001 and SOC 2.
-
-## Constraints
-
-Tenants had to stay isolated with data sovereignty they could defend to their own auditors. The
-controls for ISO 27001 and SOC 2 Type 2 applied to the platform itself. Model providers changed
-capability and pricing faster than any release cycle. Enterprise load is bursty, so idle capacity
-had to cost close to nothing.
 
 ## Decisions
 

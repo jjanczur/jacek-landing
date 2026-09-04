@@ -27,6 +27,9 @@ outcomes:
       value: '€1M+',
       label: 'annual revenue, bootstrapped, no external capital',
       evidence: 'measured',
+      countTo: 1,
+      prefix: '€',
+      suffix: 'M+',
     }
   - {
       value: '0 → 10',
@@ -37,12 +40,19 @@ outcomes:
       value: '50+',
       label: 'organisations served on one multi-tenant platform at 99.9% uptime',
       evidence: 'measured',
+      countTo: 50,
+      suffix: '+',
     }
   - {
       value: '~3 months',
       label: 'to ISO 27001 and SOC 2 Type 2 certification',
       evidence: 'measured',
     }
+delivery:
+  - { at: '2021', label: 'Bootstrapped start', note: 'no external capital' }
+  - { at: 'Platform', label: 'One multi-tenant system', note: 'instead of a stack per client' }
+  - { at: '~3 months', label: 'ISO 27001 and SOC 2', note: 'without freezing the roadmap' }
+  - { at: 'June 2024', label: 'Handover as CTO', note: 'consulting partner since' }
 stakeholders:
   [
     'Co-founders and shareholders',
@@ -77,6 +87,8 @@ featured: true
 order: 10
 ---
 
+import DeliveryTimeline from '../../components/DeliveryTimeline.astro';
+
 ## Context
 
 Jaden Data GmbH was co-founded in 2021 as a bootstrapped company delivering AI and
@@ -96,17 +108,6 @@ I owned the technology strategy and product roadmap, the architecture of the pla
 client-specific systems, the technical budget (cloud, third-party APIs, resourcing), security and
 compliance, technical pre-sales and kick-offs, executive reporting to clients and shareholders, and
 the engineering organisation from the first hire onwards.
-
-## Stakeholders
-
-Co-founders and shareholders; enterprise process owners and IT security teams on the client side;
-external auditors for ISO 27001 and SOC 2; delivery partners.
-
-## Constraints
-
-No external capital, so every platform investment had to be paid for by client work. Clients in
-banking, pensions, development finance and pharma with on-premises or controlled-cloud requirements.
-Several client deliveries running in parallel with a team that grew from zero.
 
 ## Decisions
 
@@ -128,10 +129,17 @@ review, pair programming and internal knowledge sharing. I led the redesign of a
 monolith into micro-frontends to give teams deployment independence. The platform reached more than
 1,000 concurrent connections and thousands of requests per second with 99.9% uptime.
 
+<DeliveryTimeline items={frontmatter.delivery} />
+
 ## Outcome
 
 A profitable, bootstrapped company with €1M+ annual revenue, a ten-person engineering team, two
 certifications and 50+ organisations on the platform.
+
+<blockquote class="case-pull">
+  A profitable, bootstrapped company with €1M+ annual revenue, a ten-person engineering team, two
+  certifications and 50+ organisations on the platform.
+</blockquote>
 
 ## Reuse
 

@@ -66,6 +66,12 @@ export const collections = {
             'qualitative',
             'benchmark',
           ]),
+          // MO-8: only values that parse as a number animate. '~1 day',
+          // '20-30%' and '5 h -> 1 h' do not, and must not be given a countTo.
+          countTo: z.number().optional(),
+          prefix: z.string().optional(),
+          suffix: z.string().optional(),
+          decimals: z.number().optional(),
         }),
       ),
       stakeholders: z.array(z.string()).default([]),
@@ -77,6 +83,17 @@ export const collections = {
       featured: z.boolean().default(false),
       order: z.number(),
       lang: z.enum(['en', 'pl', 'de']).default('en'),
+      // GR-3: the delivery shape every case already states in prose.
+      delivery: z
+        .array(
+          z.object({
+            at: z.string(),
+            label: z.string(),
+            note: z.string().optional(),
+          }),
+        )
+        .max(4)
+        .optional(),
     }),
   }),
 };

@@ -8,8 +8,22 @@ export interface Props {
     | 'projected'
     | 'qualitative'
     | 'benchmark';
+  countTo?: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  showEvidence?: boolean;
 }
-const { value, label, evidence } = Astro.props;
+const {
+  value,
+  label,
+  evidence,
+  countTo,
+  prefix,
+  suffix,
+  decimals,
+  showEvidence = true,
+} = Astro.props;
 
 const EVIDENCE_LABEL: Record<Props['evidence'], string> = {
   measured: 'Measured',
@@ -21,9 +35,20 @@ const EVIDENCE_LABEL: Record<Props['evidence'], string> = {
 ---
 
 <div class="outcome" data-evidence={evidence}>
-  <span class="outcome__value">{value}</span>
+  <span
+    class="outcome__value"
+    data-count={countTo !== undefined ? '' : undefined}
+    data-to={countTo}
+    data-prefix={prefix || ''}
+    data-suffix={suffix || ''}
+    data-decimals={decimals ?? 0}>{value}</span
+  >
   <span class="outcome__label">{label}</span>
-  <span class="outcome__evidence">{EVIDENCE_LABEL[evidence]}</span>
+  {
+    showEvidence && (
+      <span class="outcome__evidence">{EVIDENCE_LABEL[evidence]}</span>
+    )
+  }
 </div>
 
 <style>
@@ -77,3 +102,47 @@ const EVIDENCE_LABEL: Record<Props['evidence'], string> = {
     color: var(--primary);
   }
 </style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const card = document.querySelector('.case-summary');
+  const values = card?.querySelectorAll('.outcome__value[data-count][data-to]');
+  if (
+    card &&
+    values &&
+    values.length &&
+    !reduced &&
+    'IntersectionObserver' in window
+  ) {
+    const fmt = (el: Element, v: number) =>
+      (el.getAttribute('data-prefix') || '') +
+      v.toFixed(parseInt(el.getAttribute('data-decimals') || '0', 10)) +
+      (el.getAttribute('data-suffix') || '');
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          obs.disconnect();
+          values.forEach(el => {
+            const to = parseFloat(el.getAttribute('data-to') || '0');
+            if (!Number.isFinite(to)) return;
+            let t0: number | null = null;
+            const step = (ts: number) => {
+              if (t0 === null) t0 = ts;
+              const p = Math.min((ts - t0) / 900, 1);
+              el.textContent = fmt(
+                el,
+                to * (p === 1 ? 1 : 1 - Math.pow(2, -10 * p)),
+              );
+              if (p < 1) window.requestAnimationFrame(step);
+              else el.textContent = fmt(el, to);
+            };
+            window.requestAnimationFrame(step);
+          });
+        }
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(card);
+  }
+</script>

@@ -1,0 +1,253 @@
+---
+export interface Milestone {
+  at: string;
+  label: string;
+  note?: string;
+}
+export interface Props {
+  items: Milestone[];
+  title?: string;
+}
+const { items, title = 'Delivery shape' } = Astro.props;
+
+// Horizontal: viewBox 0 0 900 180, rail y=60 from x=40 to x=860.
+const H_X0 = 40;
+const H_X1 = 860;
+const n = items.length;
+const hx = (i: number) =>
+  n === 1 ? H_X0 : H_X0 + ((H_X1 - H_X0) * i) / (n - 1);
+
+// Vertical: viewBox 0 0 380 <n*140>, rail x=24, first node at y=40, 140 apart.
+const V_H = n * 140;
+const vy = (i: number) => 40 + i * 140;
+---
+
+<figure class="delivery" data-delivery>
+  <figcaption class="delivery__title">{title}</figcaption>
+
+  <svg
+    class="delivery__svg delivery__svg--h"
+    viewBox="0 0 900 180"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <line class="delivery__rail" x1={H_X0} y1="60" x2={H_X1} y2="60"></line>
+    <line
+      class="delivery__progress"
+      x1={H_X0}
+      y1="60"
+      x2={H_X1}
+      y2="60"
+      pathLength="100"></line>
+    {
+      items.map((item, i) => (
+        <g
+          class="delivery__node"
+          style={`--node-delay: ${200 + (i / Math.max(n - 1, 1)) * 900}ms`}
+        >
+          <circle
+            class={`delivery__dot${i === n - 1 ? ' delivery__dot--last' : ''}`}
+            cx={hx(i)}
+            cy="60"
+            r="7"
+          />
+          <text class="delivery__at" x={hx(i)} y="98">
+            {item.at}
+          </text>
+          <text class="delivery__label" x={hx(i)} y="120">
+            {item.label}
+          </text>
+          {item.note && (
+            <text class="delivery__note" x={hx(i)} y="140">
+              {item.note}
+            </text>
+          )}
+        </g>
+      ))
+    }
+  </svg>
+
+  <svg
+    class="delivery__svg delivery__svg--v"
+    viewBox={`0 0 380 ${V_H}`}
+    aria-hidden="true"
+    focusable="false"
+  >
+    <line class="delivery__rail" x1="24" y1={vy(0)} x2="24" y2={vy(n - 1)}
+    ></line>
+    <line
+      class="delivery__progress"
+      x1="24"
+      y1={vy(0)}
+      x2="24"
+      y2={vy(n - 1)}
+      pathLength="100"></line>
+    {
+      items.map((item, i) => (
+        <g
+          class="delivery__node"
+          style={`--node-delay: ${200 + (i / Math.max(n - 1, 1)) * 900}ms`}
+        >
+          <circle
+            class={`delivery__dot${i === n - 1 ? ' delivery__dot--last' : ''}`}
+            cx="24"
+            cy={vy(i)}
+            r="7"
+          />
+          <text class="delivery__at" x="56" y={vy(i) - 6}>
+            {item.at}
+          </text>
+          <text class="delivery__label" x="56" y={vy(i) + 16}>
+            {item.label}
+          </text>
+          {item.note && (
+            <text class="delivery__note" x="56" y={vy(i) + 36}>
+              {item.note}
+            </text>
+          )}
+        </g>
+      ))
+    }
+  </svg>
+
+  <ol class="delivery__list visually-hidden">
+    {
+      items.map(item => (
+        <li>
+          <strong>{item.at}</strong> — {item.label}
+          {item.note ? ` (${item.note})` : ''}
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  .delivery {
+    margin: var(--space-6) 0;
+  }
+  .delivery__title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent); /* CO-6: this labels evidence */
+    margin-bottom: var(--space-4);
+  }
+  .delivery__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .delivery__svg--v {
+    display: none;
+    max-width: 380px;
+  }
+  @media (max-width: 900px) {
+    .delivery__svg--h {
+      display: none;
+    }
+    .delivery__svg--v {
+      display: block;
+    }
+  }
+
+  .delivery__rail {
+    stroke: var(--line-strong);
+    stroke-width: 2;
+  }
+  .delivery__progress {
+    stroke: var(--primary);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .delivery__dot {
+    fill: var(--bg);
+    stroke: var(--primary);
+    stroke-width: 2.5;
+  }
+  .delivery__dot--last {
+    fill: var(--accent);
+  }
+  .delivery__at {
+    fill: var(--primary);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .delivery__label {
+    fill: var(--text);
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .delivery__note {
+    fill: oklch(from var(--text) l c h / 0.72);
+    font-family: var(--font-body);
+    font-size: 13px;
+  }
+  .delivery__svg--h text {
+    text-anchor: middle;
+  }
+  .delivery__svg--v text {
+    text-anchor: start;
+  }
+
+  /* Motion: one 900ms draw, nodes light as the head passes, labels follow.
+     Scheduled off the single progress transition, not four observers. */
+  .delivery.is-armed .delivery__progress {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  .delivery.is-armed .delivery__node {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .delivery.is-running .delivery__progress {
+    transition: stroke-dashoffset 900ms var(--ease-in-out);
+    stroke-dashoffset: 0;
+  }
+  .delivery.is-running .delivery__node {
+    transition:
+      opacity 280ms var(--ease-out),
+      transform 280ms var(--ease-out);
+    transition-delay: var(--node-delay, 0ms);
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .delivery.is-armed .delivery__progress {
+      stroke-dasharray: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+    .delivery.is-armed .delivery__node {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced && 'IntersectionObserver' in window) {
+    document.querySelectorAll<HTMLElement>('[data-delivery]').forEach(fig => {
+      fig.classList.add('is-armed');
+      const io = new IntersectionObserver(
+        (entries, obs) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              (entry.target as HTMLElement).classList.add('is-running');
+              obs.disconnect();
+            }
+          }
+        },
+        { threshold: 0.4 },
+      );
+      io.observe(fig);
+    });
+  }
+</script>

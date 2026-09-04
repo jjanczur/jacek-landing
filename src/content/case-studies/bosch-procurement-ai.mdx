@@ -30,17 +30,28 @@ outcomes:
       value: '4',
       label: 'workflows taken from proof of concept to a production MVP',
       evidence: 'measured',
+      countTo: 4,
     }
   - {
       value: '12 weeks',
       label: 'per project: six two-week sprints, then go-live activities',
       evidence: 'measured',
+      countTo: 12,
+      suffix: ' weeks',
     }
   - {
       value: 'Weekly',
       label: 'stakeholder cadence with parallel sub-groups',
       evidence: 'qualitative',
     }
+delivery:
+  - { at: 'Scoped', label: 'Use case per workflow', note: 'tendering and contracting' }
+  - {
+      at: 'Weekly',
+      label: 'Alignment cadence',
+      note: 'raised from bi-weekly, split into sub-groups',
+    }
+  - { at: 'Production', label: 'Four workflows live', note: 'in the client environment' }
 stakeholders:
   [
     'Procurement process owners (tendering, evaluation, contracting)',
@@ -74,6 +85,8 @@ featured: true
 order: 30
 ---
 
+import DeliveryTimeline from '../../components/DeliveryTimeline.astro';
+
 ## Context
 
 Bosch Global Services runs tendering and contracting for a global industrial group. As AI supplier
@@ -91,16 +104,6 @@ I designed the solution architecture and the AI processes, wrote the prompts for
 led the four projects end to end, from proof of concept through embedding into the internal
 processes to production use by the process owners.
 
-## Stakeholders
-
-Process owners for each subsection of the tendering and contracting flow, the IT and AI
-infrastructure teams, a delivery partner and the executive sponsors.
-
-## Constraints
-
-A large and diverse set of stakeholders owning different parts of the system; integration into the
-existing procurement systems and the group's AI services; enterprise security and data handling.
-
 ## Decisions
 
 - Four projects, each a proof of concept first and then embedded into the process, each targeting
@@ -116,10 +119,17 @@ existing procurement systems and the group's AI services; enterprise security an
 Each project worked directly with its process owner group, who later used the application in
 production. The platform connected to the group's existing AI services for compatibility and scale.
 
+<DeliveryTimeline items={frontmatter.delivery} />
+
 ## Outcome
 
 An MVP deployed to production, with key steps of tendering and contracting automated and the process
 owners using the applications.
+
+<blockquote class="case-pull">
+  An MVP deployed to production, with key steps of tendering and contracting automated and the
+  process owners using the applications.
+</blockquote>
 
 ## Reuse
 
