@@ -94,10 +94,20 @@ test('the hero is a static rule field, not an animated aurora (AI-5, GR-5)', asy
   await page.goto('/en/');
   await expect(page.locator('.aurora')).toHaveCount(0);
   await expect(page.locator('.hero__rules')).toHaveCount(1);
-  const animated = await page.evaluate(
-    () =>
-      document.getAnimations().filter(a => a.playState === 'running').length,
-  );
+  // Scope this to the hero background: the page legitimately animates
+  // elsewhere (scroll reveals, the working-loop diagram).
+  const animated = await page.evaluate(() => {
+    const field = document.querySelector('.hero__rules');
+    if (!field) return -1;
+    return document
+      .getAnimations()
+      .filter(a => a.playState === 'running')
+      .filter(a => {
+        const t = (a as unknown as { effect?: { target?: Element } }).effect
+          ?.target;
+        return !!t && (t === field || field.contains(t));
+      }).length;
+  });
   expect(animated, 'nothing animates in the hero background').toBe(0);
   await expect(page.locator('.hero__rules line')).toHaveCount(14);
   await expect(page.locator('.hero__rules rect')).toHaveCount(3);

@@ -85,10 +85,13 @@ test.describe('builder', () => {
     request,
   }) => {
     const html = await (await request.get('/en/builder/')).text();
+    // JSON-LD is structured data, not JavaScript: it is never parsed or
+    // executed as script, so it does not belong in a script-weight budget.
     const inline = [
-      ...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g),
+      ...html.matchAll(/<script((?![^>]*\bsrc=)[^>]*)>([\s\S]*?)<\/script>/g),
     ]
-      .map(m => m[1])
+      .filter(m => !/type=["']application\/ld\+json["']/.test(m[1]))
+      .map(m => m[2])
       .join('');
     expect(Buffer.byteLength(inline, 'utf8')).toBeLessThan(10_240);
   });
