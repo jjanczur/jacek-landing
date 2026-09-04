@@ -19,9 +19,10 @@ const {
   availability,
   align = 'left',
 } = Astro.props;
+const hasAside = Astro.slots.has('aside');
 ---
 
-<section class={`hero hero--${align}`}>
+<section class={`hero hero--${align}${hasAside ? ' hero--with-aside' : ''}`}>
   <div class="aurora" aria-hidden="true">
     <span class="aurora__blob aurora__blob--a"></span>
     <span class="aurora__blob aurora__blob--b"></span>
@@ -29,34 +30,47 @@ const {
     <span class="aurora__grid"></span>
   </div>
   <div class="container hero__inner">
-    <p class="eyebrow reveal">{eyebrow}</p>
-    <h1
-      class="hero__title reveal"
-      style="--reveal-delay: 60ms"
-      set:html={title}
-    />
-    <p class="hero__sub reveal" style="--reveal-delay: 140ms" set:html={sub} />
-    <div class="hero__cta reveal" style="--reveal-delay: 220ms">
-      <Button href={primary.href} variant="primary" size="lg"
-        >{primary.label}</Button
-      >
+    <div class="hero__copy">
+      <p class="eyebrow reveal">{eyebrow}</p>
+      <h1
+        class="hero__title reveal"
+        style="--reveal-delay: 60ms"
+        set:html={title}
+      />
+      <p
+        class="hero__sub reveal"
+        style="--reveal-delay: 140ms"
+        set:html={sub}
+      />
+      <div class="hero__cta reveal" style="--reveal-delay: 220ms">
+        <Button href={primary.href} variant="primary" size="lg"
+          >{primary.label}</Button
+        >
+        {
+          ghost && (
+            <Button
+              href={ghost.href}
+              variant="ghost"
+              size="lg"
+              external={ghost.external}
+            >
+              {ghost.label}
+            </Button>
+          )
+        }
+      </div>
       {
-        ghost && (
-          <Button
-            href={ghost.href}
-            variant="ghost"
-            size="lg"
-            external={ghost.external}
-          >
-            {ghost.label}
-          </Button>
+        availability && (
+          <div class="reveal" style="--reveal-delay: 300ms">
+            <AvailabilityPill text={availability} />
+          </div>
         )
       }
     </div>
     {
-      availability && (
-        <div class="reveal" style="--reveal-delay: 300ms">
-          <AvailabilityPill text={availability} />
+      hasAside && (
+        <div class="hero__aside reveal" style="--reveal-delay: 120ms">
+          <slot name="aside" />
         </div>
       )
     }
@@ -120,6 +134,21 @@ const {
     flex-wrap: wrap;
     gap: var(--space-3);
     margin-bottom: var(--space-5);
+  }
+
+  .hero--with-aside .hero__inner {
+    max-width: var(--w-wide);
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .hero--with-aside .hero__inner {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+  }
+  .hero__aside {
+    min-width: 0;
   }
 
   /* ------------------------------------------------------------------ *
