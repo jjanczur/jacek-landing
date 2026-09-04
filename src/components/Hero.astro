@@ -20,15 +20,42 @@ const {
   align = 'left',
 } = Astro.props;
 const hasAside = Astro.slots.has('aside');
+
+// GR-5: 14 diagonals at 68deg, 42px apart (so 45.3px of horizontal step).
+// A line entering at (x, -100) leaves at (x + 364, 800) — 900px of rise over
+// 900/tan(68deg) of run. Static: this is seen on every page load, and by the
+// frequency rule that argues for no animation at all.
+const RULES = Array.from({ length: 14 }, (_, i) =>
+  Number((-340 + i * 45.3).toFixed(1)),
+);
+// Three nodes echoing the language of the diagrams, so the hero foreshadows them.
+const BLOCKS: [number, number][] = [
+  [352, 150],
+  [196, 386],
+  [430, 508],
+];
 ---
 
 <section class={`hero hero--${align}${hasAside ? ' hero--with-aside' : ''}`}>
-  <div class="aurora" aria-hidden="true">
-    <span class="aurora__blob aurora__blob--a"></span>
-    <span class="aurora__blob aurora__blob--b"></span>
-    <span class="aurora__blob aurora__blob--c"></span>
-    <span class="aurora__grid"></span>
-  </div>
+  {
+    !hasAside && align === 'left' && (
+      <svg
+        class="hero__rules"
+        viewBox="0 0 600 700"
+        preserveAspectRatio="xMaxYMid slice"
+        aria-hidden="true"
+        focusable="false"
+      >
+        {RULES.map(x => (
+          <line x1={x} y1="-100" x2={x + 364} y2="800" />
+        ))}
+        {BLOCKS.map(b => (
+          <rect x={b[0]} y={b[1]} width="44" height="44" rx="4" />
+        ))}
+        <circle class="hero__rules-dot" cx="229.5" cy="300" r="3" />
+      </svg>
+    )
+  }
   <div class="container hero__inner">
     <div class="hero__copy">
       <p class="eyebrow reveal">{eyebrow}</p>
@@ -78,10 +105,13 @@ const hasAside = Astro.slots.has('aside');
 </section>
 
 <style>
+  /* AI-5: a single structural wash instead of three blur(70px) layers that
+     animate transform on every page load and are invisible in both themes. */
   .hero {
     position: relative;
     overflow: hidden;
     padding-block: calc(var(--section-y) * 1.1) var(--section-y);
+    background: linear-gradient(180deg, var(--surface-1) 0%, var(--bg) 100%);
   }
 
   .hero__inner {
@@ -151,126 +181,47 @@ const hasAside = Astro.slots.has('aside');
     min-width: 0;
   }
 
-  /* ------------------------------------------------------------------ *
-   * AURORA BACKGROUND — ported from turnaround.astro                    *
-   * ------------------------------------------------------------------ */
-  .aurora {
+  /* GR-5: fills the dead right column at 1440 with structure, not blur.
+     ~1 KB of markup, zero JS, zero paint churn. Every colour is a token, so
+     light and dark both work with no override. */
+  .hero__rules {
     position: absolute;
-    inset: -20% -10% 0;
+    inset: 0 0 0 auto;
+    width: min(40%, 600px);
+    height: 100%;
     z-index: 0;
     pointer-events: none;
-    filter: blur(2px);
+    -webkit-mask-image: linear-gradient(to left, #000 10%, transparent 85%);
+    mask-image: linear-gradient(to left, #000 10%, transparent 85%);
   }
-
-  .aurora__blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(70px);
-    opacity: 0.5;
-    will-change: transform;
+  .hero__rules line {
+    stroke: var(--line);
+    stroke-width: 1;
   }
-
-  .aurora__blob--a {
-    top: -8%;
-    left: 4%;
-    width: 46vw;
-    height: 46vw;
-    max-width: 620px;
-    max-height: 620px;
-    background: radial-gradient(
-      circle at 30% 30%,
-      color-mix(in oklab, var(--primary) 55%, transparent),
-      transparent 68%
-    );
-    animation: drift-a 22s var(--ease-in-out) infinite alternate;
+  .hero__rules rect {
+    fill: var(--surface-1);
+    stroke: var(--line-strong);
+    stroke-width: 1;
   }
-
-  .aurora__blob--b {
-    top: 6%;
-    right: 2%;
-    width: 40vw;
-    height: 40vw;
-    max-width: 540px;
-    max-height: 540px;
-    background: radial-gradient(
-      circle at 60% 40%,
-      color-mix(in oklab, var(--accent) 60%, transparent),
-      transparent 66%
-    );
-    animation: drift-b 26s var(--ease-in-out) infinite alternate;
+  .hero__rules-dot {
+    fill: var(--accent);
   }
-
-  .aurora__blob--c {
-    bottom: -18%;
-    left: 32%;
-    width: 38vw;
-    height: 38vw;
-    max-width: 500px;
-    max-height: 500px;
-    background: radial-gradient(
-      circle at 50% 50%,
-      color-mix(in oklab, var(--highlight) 42%, transparent),
-      transparent 70%
-    );
-    animation: drift-c 30s var(--ease-in-out) infinite alternate;
-  }
-
-  .aurora__grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(
-        to right,
-        color-mix(in oklab, var(--border) 55%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        color-mix(in oklab, var(--border) 55%, transparent) 1px,
-        transparent 1px
-      );
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 30%,
-      #000 0%,
-      transparent 75%
-    );
-    mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 30%,
-      #000 0%,
-      transparent 75%
-    );
-    opacity: 0.5;
-  }
-
-  @keyframes drift-a {
-    from {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    to {
-      transform: translate3d(4%, 6%, 0) scale(1.12);
-    }
-  }
-  @keyframes drift-b {
-    from {
-      transform: translate3d(0, 0, 0) scale(1.05);
-    }
-    to {
-      transform: translate3d(-5%, 4%, 0) scale(0.95);
-    }
-  }
-  @keyframes drift-c {
-    from {
-      transform: translate3d(0, 0, 0) scale(0.95);
-    }
-    to {
-      transform: translate3d(3%, -5%, 0) scale(1.1);
+  @media (max-width: 760px) {
+    .hero__rules {
+      display: none;
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .aurora__blob {
-      animation: none;
-    }
+  /* AI-10: the aside column also carries the portrait on leadership.
+     Consumers today: builder (ArchDiagram) and leadership (portrait). */
+  .hero__aside--portrait {
+    max-width: 380px;
+    margin-inline: auto;
+  }
+  .hero__aside--portrait :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-l);
   }
 </style>

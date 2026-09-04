@@ -100,64 +100,6 @@ const themeInitScript = `
   }
 `;
 
-const scrollRevealScript = `
-  (function () {
-    try {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-        return;
-      if (!('IntersectionObserver' in window)) return;
-      document.documentElement.classList.add('reveal-on');
-      const setup = function () {
-        const io = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                io.unobserve(entry.target);
-              }
-            });
-          },
-          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
-        );
-        document.querySelectorAll('.reveal').forEach(function (el) {
-          io.observe(el);
-        });
-      };
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setup);
-      } else {
-        setup();
-      }
-    } catch {
-      /* reveal is a progressive enhancement; ignore failures */
-    }
-  })();
-`;
-
-const serviceWorkerScript = `
-  if ('serviceWorker' in navigator) {
-    // Use requestIdleCallback if available, otherwise defer with setTimeout
-    const registerSW = () => {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then(registration => {
-          // eslint-disable-next-line no-console
-          console.log('Service Worker registered:', registration.scope);
-        })
-        .catch(error => {
-          // eslint-disable-next-line no-console
-          console.log('Service Worker registration failed:', error);
-        });
-    };
-
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(registerSW, { timeout: 2000 });
-    } else {
-      setTimeout(registerSW, 2000);
-    }
-  }
-`;
-
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -347,18 +289,8 @@ const structuredData = {
       Note: frame-ancestors is only valid in HTTP headers, not meta tags */}
         <meta http-equiv="Content-Security-Policy" content={cspContent} />
 
-        {/* Theme initialization */}
+        {/* Theme initialization — must run before paint, so it stays inline. */}
         <script is:inline set:html={themeInitScript} />
-
-        {/* Scroll reveal: enable the hidden state synchronously (so there is no
-      flash of pre-revealed content), then reveal elements as they enter the
-      viewport. Skipped entirely under reduced motion or without IO support,
-      which leaves all .reveal content visible. */}
-        <script is:inline set:html={scrollRevealScript} />
-
-        {/* Service Worker Registration for caching static assets
-      Deferred to avoid blocking initial page load */}
-        <script is:inline set:html={serviceWorkerScript} />
         <slot name="head" />
       </head>
       <body>
@@ -393,3 +325,53 @@ const structuredData = {
     </html>
   )
 }
+
+<script>
+  // Scroll reveal: arm the hidden state synchronously, then reveal on entry.
+  // Skipped entirely under reduced motion or without IO support, which leaves
+  // every .reveal element visible. No blanket timer.
+  try {
+    if (
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      'IntersectionObserver' in window
+    ) {
+      document.documentElement.classList.add('reveal-on');
+      const setup = () => {
+        const io = new IntersectionObserver(
+          entries => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+        );
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setup);
+      } else {
+        setup();
+      }
+    }
+  } catch {
+    /* reveal is a progressive enhancement; ignore failures */
+  }
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    const registerSW = () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {
+        /* caching is best-effort */
+      });
+    };
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(registerSW, { timeout: 2000 });
+    } else {
+      window.setTimeout(registerSW, 2000);
+    }
+  }
+</script>

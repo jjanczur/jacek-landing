@@ -1,6 +1,7 @@
 export const EN_PAGES = [
   '/en/',
   '/en/case-studies/',
+  '/en/leadership/',
   '/en/about/',
   '/en/turnaround/',
   '/en/builder/',
@@ -29,8 +30,10 @@ export const ALL_PAGES = [
   '/pl/turnaround/',
   '/pl/builder/',
   '/pl/about/',
+  '/pl/leadership/',
   '/de/',
   '/de/turnaround/',
   '/de/builder/',
   '/de/about/',
+  '/de/leadership/',
 ];
