@@ -13,8 +13,14 @@ assets (PDF):
 
 primary (English):
   - https://janczura.com/en/about/
-  - https://janczura.com/en/projects/
+  - https://janczura.com/en/case-studies/
   - https://janczura.com/en/talks/
   - https://janczura.com/en/publications/
   - https://janczura.com/en/contact/
+
+case studies (English):
+  - https://janczura.com/en/case-studies/jaden-data-company-building/
+  - https://janczura.com/en/case-studies/kfw-genai-portfolio/
+  - https://janczura.com/en/case-studies/bosch-procurement-ai/
+  - https://janczura.com/en/case-studies/apg-pension-assistant/
 

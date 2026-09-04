@@ -66,6 +66,10 @@
       }
     ]
   },
+  "featured": {
+    "eyebrow": "Selected work",
+    "title": "Four deployments that show the whole loop"
+  },
   "doors": [
     {
       "eyebrow": "Hiring",

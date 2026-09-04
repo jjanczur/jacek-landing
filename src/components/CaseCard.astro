@@ -1,0 +1,237 @@
+---
+import OutcomeBadge from './OutcomeBadge.astro';
+
+interface Outcome {
+  value: string;
+  label: string;
+  evidence:
+    | 'measured'
+    | 'customer-estimate'
+    | 'projected'
+    | 'qualitative'
+    | 'benchmark';
+}
+
+export interface Props {
+  href?: string;
+  title: string;
+  client: string;
+  summary: string;
+  outcome?: Outcome;
+  status: string;
+  relationship: string;
+  sector: string;
+  /**
+   * Not part of the brief's named prop list, but the brief's own header
+   * line ("sector · period") needs a period string and there is no other
+   * prop it could come from — accepted here as a plain string, same
+   * reasoning as `category` below.
+   */
+  period: string;
+  /** Category key the filter chips match against; see CaseRow.astro. */
+  category: string;
+}
+
+const {
+  href,
+  title,
+  client,
+  summary,
+  outcome,
+  status,
+  relationship,
+  sector,
+  period,
+  category,
+} = Astro.props;
+
+const STATUS_LABEL: Record<string, string> = {
+  production: 'Production',
+  mvp: 'MVP',
+  poc: 'Proof of concept',
+  prototype: 'Prototype',
+  research: 'Research',
+};
+
+const RELATIONSHIP_LABEL: Record<string, string> = {
+  client: 'Client',
+  independent: 'Independent',
+  employer: 'Employment',
+  'own-company': 'Own company',
+  'research-partner': 'Research partner',
+};
+
+const Tag = href ? 'a' : 'div';
+const linkAttrs = href ? { href } : {};
+---
+
+<li class="case-card-item reveal" data-category={category}>
+  <Tag class="case-card" {...linkAttrs}>
+    <p class="case-card__eyebrow">
+      {sector} · {period}
+    </p>
+    <h3 class="case-card__title">{title}</h3>
+    <p class="case-card__client">{client}</p>
+    <p class="case-card__summary">{summary}</p>
+    {
+      outcome && (
+        <OutcomeBadge
+          value={outcome.value}
+          label={outcome.label}
+          evidence={outcome.evidence}
+        />
+      )
+    }
+    <p class="case-card__badges">
+      <span class="case-card__pill">{STATUS_LABEL[status] ?? status}</span>
+      <span class="case-card__pill case-card__pill--ghost">
+        {RELATIONSHIP_LABEL[relationship] ?? relationship}
+      </span>
+    </p>
+    {
+      href && (
+        <span class="case-card__cta">
+          Read the case
+          <span aria-hidden="true">→</span>
+        </span>
+      )
+    }
+  </Tag>
+</li>
+
+<style>
+  :global(.case-cards) {
+    list-style: none;
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 420px));
+    gap: clamp(var(--space-4), 2.5vw, var(--space-5));
+  }
+
+  .case-card-item {
+    min-width: 0;
+    --reveal-delay: 0ms;
+  }
+
+  /* Stagger without an index prop (not part of the brief's Props list):
+     position-based delay via nth-child, same 40ms step as CaseRow. */
+  .case-cards > .case-card-item:nth-child(2) {
+    --reveal-delay: 40ms;
+  }
+  .case-cards > .case-card-item:nth-child(3) {
+    --reveal-delay: 80ms;
+  }
+  .case-cards > .case-card-item:nth-child(4) {
+    --reveal-delay: 120ms;
+  }
+
+  .case-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6) var(--space-5) var(--space-5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+    color: var(--text);
+    text-decoration: none;
+    transition:
+      transform 160ms var(--ease-out),
+      border-color 160ms var(--ease-out),
+      box-shadow 160ms var(--ease-out);
+  }
+
+  .case-card__eyebrow {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .case-card__title {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    letter-spacing: -0.01em;
+  }
+
+  .case-card__client {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.7);
+  }
+
+  .case-card__summary {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: oklch(from var(--text) l c h / 0.82);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .case-card__badges {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .case-card__pill {
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.04em;
+    color: var(--text);
+  }
+
+  .case-card__pill--ghost {
+    border-color: var(--line);
+    color: oklch(from var(--text) l c h / 0.65);
+  }
+
+  .case-card__cta {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+  }
+
+  .case-card__cta span {
+    transition: transform 160ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a.case-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-2);
+    }
+    a.case-card:hover .case-card__cta span {
+      transform: translateX(3px);
+    }
+  }
+
+  a.case-card:active {
+    transform: scale(0.99);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-card,
+    .case-card__cta span {
+      transition: none;
+    }
+  }
+</style>

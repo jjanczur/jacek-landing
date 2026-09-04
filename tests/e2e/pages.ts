@@ -1,6 +1,6 @@
 export const EN_PAGES = [
   '/en/',
-  '/en/projects/',
+  '/en/case-studies/',
   '/en/about/',
   '/en/turnaround/',
   '/en/builder/',

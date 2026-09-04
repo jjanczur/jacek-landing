@@ -60,23 +60,22 @@ test.describe('home', () => {
     );
   });
 
-  // enabled when the case-study routes merge (Task 4/5)
-  test.fixme(
-    'pillar proof links resolve to their case studies',
-    async ({ page, request }) => {
-      await page.goto('/en/');
-      const hrefs = await page
-        .locator('.pillar__link')
-        .evaluateAll(els =>
-          els.map(el => (el as HTMLAnchorElement).getAttribute('href')),
-        );
-      expect(hrefs).toHaveLength(4);
-      for (const href of hrefs) {
-        const res = await request.get(href || '');
-        expect(res.status(), `${href}`).toBeLessThan(400);
-      }
-    },
-  );
+  test('pillar proof links resolve to their case studies', async ({
+    page,
+    request,
+  }) => {
+    await page.goto('/en/');
+    const hrefs = await page
+      .locator('.pillar__link')
+      .evaluateAll(els =>
+        els.map(el => (el as HTMLAnchorElement).getAttribute('href')),
+      );
+    expect(hrefs).toHaveLength(4);
+    for (const href of hrefs) {
+      const res = await request.get(href || '');
+      expect(res.status(), `${href}`).toBeLessThan(400);
+    }
+  });
 
   test('method section lists four steps of the working loop', async ({
     page,
@@ -95,6 +94,29 @@ test.describe('home', () => {
     await expect(doors).toHaveCount(2);
     await expect(doors.nth(0)).toHaveAttribute('href', '/en/about/');
     await expect(doors.nth(1)).toHaveAttribute('href', '/en/consulting/');
+  });
+
+  test('featured section lists four cases with resolving links', async ({
+    page,
+    request,
+  }) => {
+    await page.goto('/en/');
+    const rows = page.locator('.featured .case-rows .case-row');
+    await expect(rows).toHaveCount(4);
+    const hrefs = await page
+      .locator('.featured a.case-row__link[href]')
+      .evaluateAll(els =>
+        els.map(el => (el as HTMLAnchorElement).getAttribute('href')),
+      );
+    expect(hrefs).toHaveLength(4);
+    for (const href of hrefs) {
+      const res = await request.get(href || '');
+      expect(res.status(), `${href}`).toBeLessThan(400);
+    }
+    await expect(page.locator('.featured a.btn--ghost')).toHaveAttribute(
+      'href',
+      '/en/case-studies/',
+    );
   });
 
   test('stat strip renders six final values in static HTML', async ({
