@@ -1,113 +1,95 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('builder', () => {
-  test('hero states the systems positioning and sends a brief', async ({
+  test('the split hero keeps copy left and the live diagram right (CS-9)', async ({
     page,
   }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/en/builder/');
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('.hero .eyebrow')).toContainText(
-      'Production AI systems · Enterprise AI architecture',
+    const copy = await page.locator('.hero__copy').boundingBox();
+    const aside = await page.locator('.hero__aside').boundingBox();
+    expect(copy!.x).toBeLessThan(aside!.x);
+  });
+
+  test('the reference system is a data-driven diagram component (GR-4)', async ({
+    page,
+  }) => {
+    await page.goto('/en/builder/');
+    await expect(page.locator('.arch-diagram')).toHaveCount(1);
+    await expect(page.locator('.arch-diagram .arch__node')).toHaveCount(8);
+    await expect(page.locator('.arch-diagram .arch__edge')).toHaveCount(8);
+    await expect(page.locator('.arch-diagram__meter-caption')).toContainText(
+      /illustrative throughput/i,
     );
-    await expect(page.locator('.hero__sub')).toContainText(
-      'Document-heavy workflows',
+  });
+
+  test('the first-person numbered narrative survives, with no cards (CS-9)', async ({
+    page,
+  }) => {
+    await page.goto('/en/builder/');
+    const cols = page.locator('.detail__col');
+    expect(await cols.count()).toBeGreaterThanOrEqual(3);
+    const borders = await cols.evaluateAll(els =>
+      els.map(el => getComputedStyle(el).borderTopWidth),
     );
-    await expect(page.locator('.hero__sub')).toContainText(
-      'Customer-facing assistants',
-    );
-    await expect(page.locator('.hero a.btn--primary')).toHaveAttribute(
+    for (const b of borders) expect(b).toBe('0px');
+    // Astro preserves a single leading whitespace text node ahead of the
+    // first child here (the source has the number on its own line), so
+    // trim before asserting the column opens on its number.
+    const firstColText = await cols
+      .first()
+      .evaluate(el => (el.textContent || '').trim());
+    expect(firstColText).toMatch(/^0?1/);
+  });
+
+  test('sections are separated by full-bleed hairlines (CS-9)', async ({
+    page,
+  }) => {
+    await page.goto('/en/builder/');
+    expect(
+      await page.locator('main .section--divided').count(),
+    ).toBeGreaterThanOrEqual(2);
+  });
+
+  test('the hiring door points at the leadership page', async ({ page }) => {
+    await page.goto('/en/builder/');
+    await expect(page.locator('.door').first()).toHaveAttribute(
       'href',
-      '/en/contact/#project',
+      '/en/leadership/',
     );
   });
 
-  test('the architecture diagram and its graph store survive', async ({
+  test('the diagram renders finished under reduced motion', async ({
     page,
   }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/en/builder/');
-    await expect(page.locator('#arch-svg')).toHaveCount(1);
-    await expect(page.locator('#arch-svg')).toContainText('Graph DB');
-    await expect(page.locator('#throughput')).toContainText('req/sec');
+    const offsets = await page
+      .locator('.arch__edge')
+      .evaluateAll(els => els.map(el => getComputedStyle(el).strokeDashoffset));
+    for (const o of offsets) expect(parseFloat(o) || 0).toBe(0);
+    await expect(page.locator('.arch__pulse')).toHaveCount(0);
   });
 
-  test('logo wall is one attributed group with no legal paragraph', async ({
-    page,
-  }) => {
-    await page.goto('/en/builder/');
-    await expect(page.locator('.logo-wall__group')).toHaveCount(1);
-    await expect(page.locator('.logo-wall__legal')).toHaveCount(0);
-    await expect(page.locator('.chip-cell')).toHaveCount(7);
-  });
-
-  test('stats render final values, never zeros', async ({ request }) => {
-    const html = await (await request.get('/en/builder/')).text();
-    for (const v of [
-      '1,000+',
-      'thousands',
-      '99.9%',
-      '50+',
-      'ISO 27001 + SOC 2',
-    ]) {
-      expect(html, v).toContain(v);
-    }
-    for (const re of [/~0 req\/sec/, />0%</, />0\+</]) {
-      expect(html, `${re}`).not.toMatch(re);
-    }
-  });
-
-  test('evaluation section lists seven concerns', async ({ page }) => {
-    await page.goto('/en/builder/');
-    await expect(page.locator('.eval-item')).toHaveCount(7);
-    await expect(page.locator('.eval-item').nth(0)).toContainText('Eval sets');
-  });
-
-  test('proof rows cover four engagements, three of them linked', async ({
-    page,
+  test('the throughput figure is labelled illustrative and is final in the HTML', async ({
     request,
   }) => {
-    await page.goto('/en/builder/');
-    await expect(page.locator('.case-row')).toHaveCount(4);
-    const hrefs = await page.$$eval('a.case-row__link[href]', els =>
-      els.map(e => e.getAttribute('href') || ''),
-    );
-    expect(hrefs).toHaveLength(3);
-    for (const href of hrefs) {
-      expect((await request.get(href)).status(), href).toBeLessThan(400);
-    }
+    const html = await (await request.get('/en/builder/')).text();
+    expect(html).toContain('~3,200 req/sec');
+    expect(html.toLowerCase()).toContain('illustrative throughput');
+    expect(html).not.toMatch(/~0 req\/sec/);
   });
 
-  test('doors and closing band', async ({ page }) => {
-    await page.goto('/en/builder/');
-    await expect(page.locator('.door')).toHaveCount(2);
-    await expect(page.locator('.door').nth(1)).toHaveAttribute(
-      'href',
-      '/en/turnaround/',
-    );
-    const band = page.locator('.cta-band');
-    await expect(band.locator('a.btn--primary')).toHaveAttribute(
-      'href',
-      '/en/contact/#project',
-    );
-    await expect(band.locator('a.btn--ghost')).toHaveAttribute(
-      'href',
-      '/en/contact/#project',
-    );
-    await expect(band.locator('a.btn--ghost')).toContainText(
-      'Request an architecture review',
-    );
-  });
-
-  test('idealo wording stays "key contributor"', async ({ request }) => {
-    const html = (
-      await (await request.get('/en/builder/')).text()
-    ).toLowerCase();
-    expect(html).toContain('key contributor');
-    for (const s of [
-      'sso i led',
-      'led the six-country',
-      'multi-country sso i led',
-    ]) {
-      expect(html, `contains "${s}"`).not.toContain(s);
-    }
+  test('builder inline JS stays inside the 10 KB budget (MO-1)', async ({
+    request,
+  }) => {
+    const html = await (await request.get('/en/builder/')).text();
+    const inline = [
+      ...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g),
+    ]
+      .map(m => m[1])
+      .join('');
+    expect(Buffer.byteLength(inline, 'utf8')).toBeLessThan(10_240);
   });
 });

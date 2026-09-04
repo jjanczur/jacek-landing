@@ -22,7 +22,87 @@
     "health": "99.9% uptime",
     "throughputValue": "~3,200 req/sec",
     "throughputLabel": "illustrative throughput",
-    "svgAriaLabel": "Architecture diagram: client to API gateway to Lambda and Fargate to a retrieval service to vector and graph databases and model providers OpenAI, Bedrock, Azure and Mistral."
+    "svgAriaLabel": "Architecture diagram: client to API gateway to Lambda and Fargate to a retrieval service to vector and graph databases and model providers OpenAI, Bedrock, Azure and Mistral.",
+    "nodes": [
+      {
+        "id": "client",
+        "label": "Client",
+        "x": 30,
+        "y": 30,
+        "w": 120,
+        "step": 0
+      },
+      {
+        "id": "gateway",
+        "label": "API Gateway",
+        "x": 170,
+        "y": 96,
+        "w": 140,
+        "step": 1,
+        "emphasis": "gateway"
+      },
+      {
+        "id": "lambda",
+        "label": "Lambda",
+        "x": 90,
+        "y": 174,
+        "w": 120,
+        "step": 2
+      },
+      {
+        "id": "fargate",
+        "label": "Fargate",
+        "x": 270,
+        "y": 174,
+        "w": 120,
+        "step": 2
+      },
+      {
+        "id": "rag",
+        "label": "RAG Service",
+        "x": 160,
+        "y": 252,
+        "w": 160,
+        "step": 3,
+        "emphasis": "core"
+      },
+      {
+        "id": "vector",
+        "label": "Vector DB",
+        "x": 50,
+        "y": 330,
+        "w": 140,
+        "step": 4
+      },
+      {
+        "id": "graph",
+        "label": "Graph DB",
+        "x": 290,
+        "y": 330,
+        "w": 140,
+        "step": 4
+      },
+      {
+        "id": "providers",
+        "label": "OpenAI · Bedrock · Azure · Mistral",
+        "x": 140,
+        "y": 384,
+        "w": 200,
+        "h": 28,
+        "step": 4,
+        "emphasis": "providers"
+      }
+    ],
+    "edges": [
+      { "from": 0, "d": "M90 48 H240 V96" },
+      { "from": 1, "d": "M240 132 V150 H150 V174" },
+      { "from": 1, "d": "M240 132 V150 H330 V174" },
+      { "from": 2, "d": "M150 210 V228 H240 V252" },
+      { "from": 2, "d": "M330 210 V228 H240 V252" },
+      { "from": 3, "d": "M240 288 V306 H120 V330" },
+      { "from": 3, "d": "M240 288 V306 H360 V330" },
+      { "from": 4, "d": "M240 288 V372" }
+    ]
   },
   "wall": {
     "heading": "Systems delivered for",
@@ -219,7 +299,7 @@
       "eyebrow": "Hiring",
       "title": "Hiring a technology leader?",
       "body": "Company building, customer-facing technical leadership and production AI, with the evidence laid out.",
-      "href": "/en/about/",
+      "href": "/en/leadership/",
       "label": "What I have led"
     },
     {

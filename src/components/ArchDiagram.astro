@@ -1,0 +1,566 @@
+---
+// GR-4: the self-drawing architecture diagram, generalised from builder's
+// page-local markup so a case page can supply its own nodes/edges. The
+// geometry stays explicit (x/y/w + orthogonal path strings) rather than
+// auto-routed — see the brief's deviation note: this reproduces builder's
+// current layout byte for byte, which CS-9 makes a hard requirement.
+export interface ArchNode {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  w: number;
+  h?: number;
+  emphasis?: 'gateway' | 'core' | 'providers';
+  step: number;
+}
+export interface ArchEdge {
+  from: number;
+  d: string;
+}
+export interface Props {
+  title: string;
+  ariaLabel: string;
+  health?: string;
+  nodes: ArchNode[];
+  edges: ArchEdge[];
+  viewBox?: string;
+  meter?: { value: string; label: string; countTo?: number };
+}
+const {
+  title,
+  ariaLabel,
+  health,
+  nodes,
+  edges,
+  viewBox = '0 0 480 420',
+  meter,
+} = Astro.props;
+---
+
+<div class="arch-diagram" data-arch>
+  <div class="arch-diagram__head">
+    <span class="arch-diagram__title">{title}</span>
+    {
+      health && (
+        <span class="arch-diagram__health">
+          <span class="arch-diagram__dot" aria-hidden="true" />
+          {health}
+        </span>
+      )
+    }
+  </div>
+
+  <div class="arch-diagram__stage">
+    <svg
+      class="arch"
+      viewBox={viewBox}
+      role="img"
+      aria-label={ariaLabel}
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <defs>
+        <linearGradient id="archEdgeGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="var(--primary)"></stop>
+          <stop offset="1" stop-color="var(--accent)"></stop>
+        </linearGradient>
+      </defs>
+
+      <g
+        class="arch__edges"
+        fill="none"
+        stroke="url(#archEdgeGrad)"
+        stroke-width="2"
+        stroke-linejoin="round"
+      >
+        {edges.map(e => <path class="arch__edge" data-from={e.from} d={e.d} />)}
+      </g>
+
+      <g class="arch__pulses" fill="var(--accent)"></g>
+
+      <g class="arch__nodes">
+        {
+          nodes.map(n => (
+            <g
+              class={`arch__node${n.emphasis ? ` arch__node--${n.emphasis}` : ''}`}
+              data-step={n.step}
+              transform={`translate(${n.x} ${n.y})`}
+            >
+              <g class="arch__node-fx">
+                <rect width={n.w} height={n.h ?? 36} rx="7" />
+                <text x={n.w / 2} y={(n.h ?? 36) / 2 + 4}>
+                  {n.label}
+                </text>
+              </g>
+            </g>
+          ))
+        }
+      </g>
+    </svg>
+  </div>
+
+  {
+    meter && (
+      <div class="arch-diagram__foot">
+        <div class="arch-diagram__meter">
+          <span
+            class="arch-diagram__meter-value"
+            data-throughput
+            data-to={meter.countTo}
+          >
+            {meter.value}
+          </span>
+          <span class="arch-diagram__meter-caption">{meter.label}</span>
+        </div>
+        <div class="arch-diagram__bar" aria-hidden="true">
+          <span class="arch-diagram__bar-fill" data-meter-fill />
+        </div>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .arch-diagram {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-3);
+    padding: var(--space-4);
+    position: relative;
+    overflow: hidden;
+  }
+  /* faint grid texture so it reads as an "instrument", not a box — the one
+     texture on the site that reads as engineering rather than decoration. */
+  .arch-diagram::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(
+        color-mix(in oklch, var(--border) 45%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklch, var(--border) 45%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 26px 26px;
+    opacity: 0.35;
+    pointer-events: none;
+    mask-image: radial-gradient(120% 90% at 50% 0%, #000 40%, transparent 100%);
+  }
+  .arch-diagram > * {
+    position: relative;
+  }
+
+  .arch-diagram__head,
+  .arch-diagram__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  .arch-diagram__head {
+    margin-bottom: var(--space-2);
+  }
+  .arch-diagram__title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.7;
+  }
+  .arch-diagram__health {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  /* AI-6: a fact, not an event — the same static 6px dot as
+     AvailabilityPill, no infinite pulse ring. */
+  .arch-diagram__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .arch-diagram__stage {
+    width: 100%;
+  }
+  .arch {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Nodes */
+  .arch .arch__node rect {
+    fill: var(--bg);
+    stroke: var(--border);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+  }
+  .arch .arch__node--gateway rect,
+  .arch .arch__node--core rect {
+    stroke: var(--primary);
+  }
+  .arch .arch__node--core rect {
+    fill: color-mix(in oklch, var(--primary) 10%, var(--bg));
+  }
+  .arch .arch__node--providers rect {
+    fill: color-mix(in oklch, var(--accent) 12%, var(--bg));
+    stroke: var(--accent);
+  }
+  .arch .arch__node text {
+    fill: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    text-anchor: middle;
+    font-family: var(--font-heading);
+  }
+  .arch .arch__node--providers text {
+    font-size: 11px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Foot: throughput meter + bar */
+  .arch-diagram__foot {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+  .arch-diagram__meter {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .arch-diagram__meter-value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+  }
+  .arch-diagram__meter-caption {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+  .arch-diagram__bar {
+    flex: 1;
+    max-width: 160px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--muted);
+    overflow: hidden;
+  }
+  .arch-diagram__bar-fill {
+    display: block;
+    height: 100%;
+    width: 8%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.4s var(--ease-out);
+  }
+
+  @media (max-width: 900px) {
+    .arch-diagram {
+      max-width: 460px;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const cards = document.querySelectorAll('[data-arch]');
+    if (!cards.length) return;
+
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    cards.forEach(function (card) {
+      const svg = card.querySelector('.arch');
+      const throughputEl = card.querySelector('[data-throughput]');
+      const meterFill = card.querySelector('[data-meter-fill]');
+      if (!svg) return;
+
+      const edges = Array.prototype.slice.call(
+        svg.querySelectorAll('.arch__edge'),
+      );
+      const nodes = Array.prototype.slice.call(
+        svg.querySelectorAll('.arch__node'),
+      );
+      const pulseGroup = svg.querySelector('.arch__pulses');
+
+      // Count-up target read from the DOM (data-to), not hard-coded — this
+      // is what lets the component serve any case page's numbers.
+      const to = throughputEl
+        ? parseFloat(throughputEl.getAttribute('data-to') || '0')
+        : 0;
+      const cap = to > 0 ? to * 1.25 : 0;
+
+      function fmt(n) {
+        return '~' + Math.round(n).toLocaleString('en-US') + ' req/sec';
+      }
+      function pctFor(value) {
+        if (!cap) return 0;
+        return 12 + (Math.min(value, cap) / cap) * 76;
+      }
+
+      // ---- Static fallback for reduced motion: draw everything, and sync
+      // the bar to the value that is already sitting in the server-rendered
+      // text — no hard-coded '~3,200 req/sec' / '80%' here. ----
+      if (reduce) {
+        edges.forEach(function (e) {
+          e.style.strokeDasharray = 'none';
+          e.style.strokeDashoffset = '0';
+          e.style.opacity = '1';
+        });
+        nodes.forEach(function (n) {
+          const fx = n.querySelector('.arch__node-fx');
+          if (fx) fx.style.opacity = '1';
+        });
+        if (meterFill && to) {
+          meterFill.style.width = pctFor(to).toFixed(1) + '%';
+        }
+        return;
+      }
+
+      // ---- Prime nodes + edges hidden, ready to reveal ----
+      nodes.forEach(function (n) {
+        const fx = n.querySelector('.arch__node-fx');
+        if (!fx) return;
+        fx.style.opacity = '0';
+        fx.style.transformBox = 'fill-box';
+        fx.style.transformOrigin = 'center';
+        fx.style.transform = 'translateY(8px) scale(0.96)';
+        fx.style.transition =
+          'opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out)';
+      });
+
+      edges.forEach(function (e) {
+        const len = e.getTotalLength ? e.getTotalLength() : 300;
+        e.style.strokeDasharray = String(len);
+        e.style.strokeDashoffset = String(len);
+        e.style.opacity = '0.9';
+        e.style.transition = 'stroke-dashoffset 0.6s var(--ease-out)';
+      });
+
+      // ---- Data-flow pulse dots (rAF along edges) ----
+      const dots = edges.map(function (edge) {
+        const c = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'circle',
+        );
+        c.setAttribute('class', 'arch__pulse');
+        c.setAttribute('r', '3');
+        c.setAttribute('fill', 'var(--accent)');
+        c.style.opacity = '0';
+        if (pulseGroup) pulseGroup.appendChild(c);
+        return {
+          el: c,
+          edge: edge,
+          len: edge.getTotalLength ? edge.getTotalLength() : 300,
+          // staggered start + varied speed so flow feels organic
+          t: Math.random(),
+          speed: 0.28 + Math.random() * 0.22,
+        };
+      });
+
+      let running = false;
+      let rafId = null;
+      let last = 0;
+
+      function tickDots(now) {
+        if (!running) return;
+        const dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016;
+        last = now;
+        for (let i = 0; i < dots.length; i++) {
+          const d = dots[i];
+          d.t += d.speed * dt;
+          if (d.t > 1) d.t -= 1;
+          const p = d.edge.getPointAtLength(d.t * d.len);
+          d.el.setAttribute('cx', String(p.x));
+          d.el.setAttribute('cy', String(p.y));
+          // fade at ends so dots don't pop
+          const edgeFade = Math.min(d.t, 1 - d.t) * 6;
+          d.el.style.opacity = String(Math.min(0.9, edgeFade));
+        }
+        rafId = window.requestAnimationFrame(tickDots);
+      }
+
+      function startDots() {
+        if (running) return;
+        running = true;
+        last = 0;
+        rafId = window.requestAnimationFrame(tickDots);
+      }
+      function stopDots() {
+        running = false;
+        if (rafId) window.cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+
+      // ---- Throughput count-up, then a CAPPED jitter (no endless timer):
+      // one 900ms easeOutExpo ramp to `to`, then at most 6 wobble cycles of
+      // +/-2% at 3s intervals, then clearInterval for good. ----
+      let rampRaf = null;
+      let jitterTimer = null;
+
+      function setDisplay(value) {
+        if (throughputEl) throughputEl.textContent = fmt(value);
+        if (meterFill) meterFill.style.width = pctFor(value).toFixed(1) + '%';
+      }
+
+      function stopCounters() {
+        if (rampRaf) {
+          window.cancelAnimationFrame(rampRaf);
+          rampRaf = null;
+        }
+        if (jitterTimer) {
+          window.clearInterval(jitterTimer);
+          jitterTimer = null;
+        }
+      }
+
+      function startJitter() {
+        if (!to) return;
+        let cycles = 0;
+        jitterTimer = window.setInterval(function () {
+          cycles += 1;
+          const wobble = (Math.random() * 2 - 1) * 0.02;
+          setDisplay(to * (1 + wobble));
+          if (cycles >= 6) {
+            window.clearInterval(jitterTimer);
+            jitterTimer = null;
+            setDisplay(to);
+          }
+        }, 3000);
+      }
+
+      function startCounters() {
+        if (!to || rampRaf || jitterTimer) return;
+        const duration = 900;
+        let t0 = null;
+        const step = function (ts) {
+          if (t0 === null) t0 = ts;
+          const p = Math.min((ts - t0) / duration, 1);
+          // easeOutExpo — fast then settles, feels precise not springy.
+          const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+          setDisplay(to * eased);
+          if (p < 1) {
+            rampRaf = window.requestAnimationFrame(step);
+          } else {
+            rampRaf = null;
+            setDisplay(to);
+            startJitter();
+          }
+        };
+        rampRaf = window.requestAnimationFrame(step);
+      }
+
+      // ---- Orchestrated reveal: edges draw, nodes pop, staggered ----
+      let played = false;
+      function play() {
+        if (played) return;
+        played = true;
+
+        // group nodes by step for staggered entrance
+        const steps = {};
+        nodes.forEach(function (n) {
+          const s = n.getAttribute('data-step') || '0';
+          (steps[s] = steps[s] || []).push(n);
+        });
+
+        const stepKeys = Object.keys(steps).sort();
+        const base = 120;
+        stepKeys.forEach(function (key, idx) {
+          const group = steps[key];
+          window.setTimeout(
+            function () {
+              group.forEach(function (n, j) {
+                window.setTimeout(function () {
+                  const fx = n.querySelector('.arch__node-fx');
+                  if (fx) {
+                    fx.style.opacity = '1';
+                    fx.style.transform = 'none';
+                  }
+                }, j * 60);
+              });
+              // draw the edges leaving this step after its nodes appear
+              window.setTimeout(function () {
+                edges
+                  .filter(function (e) {
+                    return e.getAttribute('data-from') === key;
+                  })
+                  .forEach(function (e, k) {
+                    window.setTimeout(function () {
+                      e.style.strokeDashoffset = '0';
+                    }, k * 70);
+                  });
+              }, 180);
+            },
+            base + idx * 260,
+          );
+        });
+
+        // once the flow is drawn, bring it alive
+        window.setTimeout(
+          function () {
+            startDots();
+            startCounters();
+          },
+          base + stepKeys.length * 260 + 300,
+        );
+      }
+
+      // ---- Pause work when the card is off-screen (perf) ----
+      const io =
+        'IntersectionObserver' in window
+          ? new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    play();
+                    if (played && !running) startDots();
+                    if (played) startCounters();
+                  } else {
+                    stopDots();
+                    stopCounters();
+                  }
+                });
+              },
+              { threshold: 0.25 },
+            )
+          : null;
+
+      if (io) {
+        io.observe(card);
+      } else {
+        play();
+      }
+
+      // stop loops when tab hidden, resume the finished state when it returns
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          stopDots();
+          stopCounters();
+        } else if (played) {
+          startDots();
+          startCounters();
+        }
+      });
+    });
+  })();
+</script>
