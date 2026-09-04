@@ -5,82 +5,128 @@ export interface Props {
 
 const { lang } = Astro.props;
 
-const legalLinks = {
+const footerNav = {
   en: {
-    privacy: 'Privacy Policy',
-    imprint: 'Imprint',
+    site: {
+      title: 'Site',
+      links: [
+        { href: '/en/case-studies/', label: 'Case studies' },
+        { href: '/en/leadership/', label: 'Leadership' },
+        { href: '/en/consulting/', label: 'Consulting' },
+        { href: '/en/about/', label: 'About' },
+        { href: '/en/contact/', label: 'Contact' },
+      ],
+    },
+    work: {
+      title: 'Work',
+      links: [
+        { href: '/en/turnaround/', label: 'Tech turnaround' },
+        { href: '/en/builder/', label: 'AI systems architecture' },
+        { href: '/en/writing/', label: 'Writing & Talks' },
+        { href: '/tools/', label: 'Tools' },
+      ],
+    },
+    legal: {
+      title: 'Legal',
+      links: [
+        { href: '/en/privacy/', label: 'Privacy Policy' },
+        { href: '/en/imprint/', label: 'Imprint' },
+      ],
+    },
   },
   pl: {
-    privacy: 'Polityka Prywatności',
-    imprint: 'Informacje Prawne',
+    site: {
+      title: 'Site',
+      links: [
+        { href: '/pl/case-studies/', label: 'Case studies' },
+        { href: '/pl/leadership/', label: 'Leadership' },
+        { href: '/pl/consulting/', label: 'Konsulting' },
+        { href: '/pl/about/', label: 'O mnie' },
+        { href: '/pl/contact/', label: 'Kontakt' },
+      ],
+    },
+    work: {
+      title: 'Work',
+      links: [
+        { href: '/pl/turnaround/', label: 'Modernizacja i turnaround' },
+        { href: '/pl/builder/', label: 'Architektura systemów AI' },
+        { href: '/pl/writing/', label: 'Pisanie i Wystąpienia' },
+        { href: '/tools/', label: 'Narzędzia' },
+      ],
+    },
+    legal: {
+      title: 'Legal',
+      links: [
+        { href: '/pl/privacy/', label: 'Polityka Prywatności' },
+        { href: '/pl/imprint/', label: 'Informacje Prawne' },
+      ],
+    },
   },
   de: {
-    privacy: 'Datenschutzerklärung',
-    imprint: 'Impressum',
+    site: {
+      title: 'Site',
+      links: [
+        { href: '/de/case-studies/', label: 'Case studies' },
+        { href: '/de/leadership/', label: 'Leadership' },
+        { href: '/de/consulting/', label: 'Beratung' },
+        { href: '/de/about/', label: 'Über mich' },
+        { href: '/de/contact/', label: 'Kontakt' },
+      ],
+    },
+    work: {
+      title: 'Work',
+      links: [
+        { href: '/de/turnaround/', label: 'Tech-Turnaround' },
+        { href: '/de/builder/', label: 'AI-Systemarchitektur' },
+        { href: '/de/writing/', label: 'Schreiben & Vorträge' },
+        { href: '/tools/', label: 'Tools' },
+      ],
+    },
+    legal: {
+      title: 'Legal',
+      links: [
+        { href: '/de/privacy/', label: 'Datenschutzerklärung' },
+        { href: '/de/imprint/', label: 'Impressum' },
+      ],
+    },
   },
-};
+} as const;
 
-const links = legalLinks[lang];
-
-const siteNav = {
-  en: { consulting: 'Consulting', writing: 'Writing & Talks', tools: 'Tools' },
-  pl: {
-    consulting: 'Konsulting',
-    writing: 'Pisanie i Wystąpienia',
-    tools: 'Narzędzia',
-  },
-  de: {
-    consulting: 'Beratung',
-    writing: 'Schreiben & Vorträge',
-    tools: 'Tools',
-  },
-};
-const nav = siteNav[lang];
-
-const landingLinks = {
-  en: { turnaround: 'Tech turnaround', builder: 'AI systems architecture' },
-  pl: {
-    turnaround: 'Modernizacja i turnaround',
-    builder: 'Architektura systemów AI',
-  },
-  de: { turnaround: 'Tech-Turnaround', builder: 'AI-Systemarchitektur' },
-};
-const landings = landingLinks[lang];
-
+const f = footerNav[lang];
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="footer-container">
-    <div class="footer-left">
-      <nav class="footer-nav" aria-label="Site links">
-        <a href={`/${lang}/consulting/`} class="footer-nav-link">
-          {nav.consulting}
-        </a>
-        <a href={`/${lang}/writing/`} class="footer-nav-link">{nav.writing}</a>
-        <a href="/tools/" class="footer-nav-link">{nav.tools}</a>
-      </nav>
-      <p class="copyright">© {year} Jacek Janczura</p>
-      <p class="footer-attribution">
-        Logos are the property of their respective owners and mark organisations
-        Jacek has delivered work for; no endorsement is implied.
-      </p>
-      <div class="legal-links">
-        <a href={`/${lang}/privacy/`} class="legal-link">{links.privacy}</a>
-        <span class="legal-separator">•</span>
-        <a href={`/${lang}/imprint/`} class="legal-link">{links.imprint}</a>
-      </div>
-      <nav class="legal-links landing-links" aria-label="Other landing pages">
-        <a href={`/${lang}/turnaround/`} class="legal-link">
-          {landings.turnaround}
-        </a>
-        <span class="legal-separator">•</span>
-        <a href={`/${lang}/builder/`} class="legal-link">{landings.builder}</a>
-      </nav>
+    <div class="footer-groups">
+      {
+        [f.site, f.work, f.legal].map(group => (
+          <nav
+            class={`footer-group footer-group--${group === f.site ? 'site' : group === f.work ? 'work' : 'legal'}`}
+            aria-label={group.title}
+          >
+            <h2 class="footer-group__title">{group.title}</h2>
+            <ul>
+              {group.links.map(l => (
+                <li>
+                  <a href={l.href} class="footer-nav-link">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
     </div>
 
-    <div class="footer-right">
-      <a href={`/${lang}/contact/`} class="footer-cta"> Get in touch </a>
+    <p class="footer-attribution">
+      Logos are the property of their respective owners and mark organisations
+      Jacek has delivered work for; no endorsement is implied.
+    </p>
+
+    <div class="footer-bottom">
+      <p class="copyright">© {year} Jacek Janczura</p>
       <div class="social-links">
         <a
           href="https://linkedin.com/in/jacekjanczura"
@@ -123,55 +169,48 @@ const year = new Date().getFullYear();
   .footer-container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: var(--space-6) var(--space-4);
+    padding: var(--space-7) var(--space-4) var(--space-6);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-4);
+    flex-direction: column;
+    gap: var(--space-6);
   }
 
-  .footer-right {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
+  .footer-groups {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+  @media (min-width: 768px) {
+    .footer-groups {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
   }
 
-  .footer-cta {
-    padding: var(--space-2) var(--space-4);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--radius-m);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .footer-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px oklch(from var(--primary) l c h / 0.3);
-    text-decoration: none;
-  }
-
-  .footer-left {
+  .footer-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
   }
 
-  .footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-bottom: var(--space-1);
-    font-size: var(--font-size-sm);
+  .footer-group__title {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(from var(--text) l c h / 0.6);
   }
 
   .footer-nav-link {
     color: var(--text);
     text-decoration: none;
-    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-normal);
     transition: color 0.2s;
   }
 
@@ -179,43 +218,28 @@ const year = new Date().getFullYear();
     color: var(--primary);
   }
 
+  /* D21: exactly one attribution sentence on the whole site, and it lives here. */
+  .footer-attribution {
+    margin: 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+    max-width: 70ch;
+    font-size: var(--font-size-xs);
+    color: oklch(from var(--text) l c h / 0.55);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
   .copyright {
     color: var(--text);
     margin: 0;
     font-size: var(--font-size-sm);
-  }
-
-  .footer-attribution {
-    font-size: var(--font-size-xs);
-    color: oklch(from var(--text) l c h / 0.55);
-    max-width: 60ch;
-    margin-top: var(--space-2);
-  }
-
-  .legal-links {
-    display: flex;
-    gap: var(--space-2);
-    align-items: center;
-    font-size: var(--font-size-xs);
-  }
-
-  .legal-link {
-    color: var(--text);
-    text-decoration: none;
-    opacity: 0.7;
-    transition:
-      opacity 0.2s,
-      color 0.2s;
-  }
-
-  .legal-link:hover {
-    opacity: 1;
-    color: var(--primary);
-  }
-
-  .legal-separator {
-    color: var(--text);
-    opacity: 0.5;
   }
 
   .social-links {
@@ -233,24 +257,11 @@ const year = new Date().getFullYear();
   }
 
   @media (max-width: 600px) {
-    .footer-container {
-      flex-direction: column;
-      gap: var(--space-4);
-      text-align: center;
-    }
-
-    .footer-left {
-      align-items: center;
-    }
-
-    .footer-right {
+    .footer-bottom {
       flex-direction: column;
       align-items: center;
       gap: var(--space-3);
-    }
-
-    .legal-links {
-      justify-content: center;
+      text-align: center;
     }
   }
 </style>
