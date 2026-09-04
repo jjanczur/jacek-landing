@@ -6,7 +6,7 @@
   "hero": {
     "eyebrow": "Founder-CTO · Enterprise AI · Technology leadership",
     "title": "I turn complex enterprise workflows into production AI, <em>and build the teams that scale it.</em>",
-    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG, Bosch, KfW Bank, Boehringer Ingelheim and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
+    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG (a €500B+ pension fund), Bosch, KfW Bank, Boehringer Ingelheim and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
     "primary": {
       "href": "/en/contact/#hiring",
       "label": "Discuss a leadership role"
@@ -127,7 +127,7 @@
             "w": 548,
             "h": 186,
             "alt": "European pension fund",
-            "caption": "Pension fund · member-facing assistant",
+            "caption": "Pension fund · €500B+ under management",
             "scale": 0.95,
             "href": "/en/case-studies/apg-pension-assistant/"
           },
@@ -136,7 +136,7 @@
             "w": 622,
             "h": 186,
             "alt": "Global pharmaceutical group",
-            "caption": "Pharma",
+            "caption": "Pharmaceuticals · one of the world's largest",
             "scale": 1.2
           },
           {
@@ -151,8 +151,8 @@
             "src": "/media/28105d45d9344ea18b2923eed7f69bb3.webp",
             "w": 744,
             "h": 166,
-            "alt": "Industrial technology group",
-            "caption": "Industrial group · enterprise AI",
+            "alt": "Automotive and industrial group",
+            "caption": "Automotive & industrial · AI supplier",
             "scale": 0.9,
             "href": "/en/case-studies/engineering-enablement/"
           },

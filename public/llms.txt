@@ -39,4 +39,4 @@ case studies (English):
   - https://janczura.com/en/case-studies/regulated-distributed-systems/ — financial infrastructure, cross-ledger bridge and sovereign data platforms
   - https://janczura.com/en/case-studies/stellantis-rag-evaluation/ — Stellantis, foundation-model evaluation challenge won with Patronus AI
   - https://janczura.com/en/case-studies/legal-ai-startup-cto-advisory/ — anita.legal, independent engagement: security, audit and due-diligence readiness, AWS optimisation, AI-accelerated development
-  - https://janczura.com/en/case-studies/enterprise-software-migration-and-enablement/ — An enterprise software vendor, independent engagement: SaaS-to-on-premises migration saving €180,000+ in SaaS costs, and AI skills across teams
+  - https://janczura.com/en/case-studies/enterprise-software-migration-and-enablement/ — An enterprise software vendor, independent engagement: SaaS-to-on-premises migration saving €190,000+ in SaaS costs, and AI skills across teams

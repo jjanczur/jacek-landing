@@ -208,19 +208,28 @@ test.describe('home', () => {
     await expect(doors.nth(1)).toHaveAttribute('href', '/en/consulting/');
   });
 
-  test('featured section lists four cases with resolving links', async ({
+  test('featured section lists five cases with resolving links', async ({
     page,
     request,
   }) => {
     await page.goto('/en/');
     const rows = page.locator('.featured .case-rows .case-row');
-    await expect(rows).toHaveCount(4);
+    await expect(rows).toHaveCount(5);
     const hrefs = await page
       .locator('.featured a.case-row__link[href]')
       .evaluateAll(els =>
         els.map(el => (el as HTMLAnchorElement).getAttribute('href')),
       );
-    expect(hrefs).toHaveLength(4);
+    // Order is a deliberate editorial choice, not incidental: the company
+    // first, then the two largest regulated clients, then the named
+    // enablement work, then the current independent engagement.
+    expect(hrefs).toEqual([
+      '/en/case-studies/jaden-data-company-building/',
+      '/en/case-studies/apg-pension-assistant/',
+      '/en/case-studies/development-bank-genai-portfolio/',
+      '/en/case-studies/engineering-enablement/',
+      '/en/case-studies/enterprise-software-migration-and-enablement/',
+    ]);
     for (const href of hrefs) {
       const res = await request.get(href || '');
       expect(res.status(), `${href}`).toBeLessThan(400);

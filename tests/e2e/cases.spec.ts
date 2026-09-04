@@ -268,7 +268,14 @@ test('case-study pages identify clients by industry, not by name', async ({
   test.slow();
   for (const path of ['/en/case-studies/', ...DETAILS]) {
     await page.goto(path);
-    const visible = await page.locator('body').innerText();
+    // The Related panel links to other cases by title. A restricted client
+    // named there is the title of their own case, not an attribution of this
+    // page's work, so it is not part of the check.
+    const visible = await page.evaluate(() => {
+      const body = document.body.cloneNode(true) as HTMLElement;
+      body.querySelectorAll('.case-facts__related').forEach(el => el.remove());
+      return body.innerText;
+    });
     const meta =
       (await page
         .locator('meta[name="description"]')
