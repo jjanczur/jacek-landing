@@ -30,17 +30,20 @@ const target = external ? '_blank' : undefined;
     align-items: center;
     gap: var(--space-2);
     padding: 0.8em 1.25em;
-    border-radius: 999px;
+    /* Rubik 600 in a rounded rectangle reads engineered; in a pill it reads
+       SaaS template (AI-6). */
+    border-radius: var(--radius-s);
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: var(--font-size-base);
     line-height: 1;
     text-decoration: none;
     border: 1px solid transparent;
+    /* 140ms: a press is feedback, not an animation (MO-3). */
     transition:
-      transform 0.25s var(--ease-out),
-      box-shadow 0.25s var(--ease-out),
-      background-color 0.25s var(--ease-out);
+      transform 140ms var(--ease-out),
+      box-shadow 140ms var(--ease-out),
+      background-color 140ms var(--ease-out);
     will-change: transform;
   }
   .btn--lg {
@@ -48,9 +51,9 @@ const target = external ? '_blank' : undefined;
     font-size: var(--font-size-lg);
   }
   .btn--primary {
-    background: var(--primary);
-    color: #fff;
-    box-shadow: 0 6px 18px oklch(from var(--primary) l c h / 0.28);
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+    box-shadow: 0 6px 18px oklch(from var(--btn-primary-bg) l c h / 0.28);
   }
   .btn--ghost {
     background: transparent;
@@ -63,15 +66,16 @@ const target = external ? '_blank' : undefined;
   @media (hover: hover) and (pointer: fine) {
     .btn--primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px oklch(from var(--primary) l c h / 0.34);
+      box-shadow: 0 10px 24px oklch(from var(--btn-primary-bg) l c h / 0.34);
     }
     .btn--ghost:hover {
       background: var(--surface-1);
       border-color: var(--text);
     }
   }
+  /* Works on touch, where there is no hover state to cancel (MO-3, MO-10). */
   .btn:active {
-    transform: translateY(0);
+    transform: scale(0.97);
   }
   @media (prefers-reduced-motion: reduce) {
     .btn {

@@ -28,6 +28,11 @@ export default defineConfig({
   vite: {
     build: {
       cssCodeSplit: false, // Bundle CSS into single file per page to reduce requests
+      // esbuild's CSS minifier rewrites time literals to whichever unit is
+      // shortest (e.g. 460ms -> .46s). That's harmless visually, but the
+      // design-system contract tests read --reveal-dur back as a literal
+      // string, so minification must not be allowed to change its notation.
+      cssMinify: false,
     },
   },
 });
