@@ -1,0 +1,368 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+export interface LoopStep {
+  title: string;
+  body: string;
+  node: string[];
+}
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  steps: LoopStep[];
+  centre?: [string, string];
+}
+const {
+  eyebrow,
+  title,
+  steps,
+  centre = ['every deployment', 'costs less than the last'],
+} = Astro.props;
+
+// Radial layout: node centres at 12/3/6/9 o'clock on r=150 around (360,195).
+const NODES = [
+  { cx: 360, cy: 45 },
+  { cx: 510, cy: 195 },
+  { cx: 360, cy: 345 },
+  { cx: 210, cy: 195 },
+];
+
+// Each arc runs from (90k + 20)deg to (90(k+1) - 20)deg, clockwise from 12.
+// P(t) = (360 + 150 sin t, 195 - 150 cos t); the arrowhead angle IS the end angle.
+const ARCS = [
+  {
+    d: 'M 411.3 54.05 A 150 150 0 0 1 500.95 143.7',
+    tip: [500.95, 143.7],
+    angle: 70,
+  },
+  {
+    d: 'M 500.95 246.3 A 150 150 0 0 1 411.3 335.95',
+    tip: [411.3, 335.95],
+    angle: 160,
+  },
+  {
+    d: 'M 308.7 335.95 A 150 150 0 0 1 219.05 246.3',
+    tip: [219.05, 246.3],
+    angle: 250,
+  },
+  {
+    d: 'M 219.05 143.7 A 150 150 0 0 1 308.7 54.05',
+    tip: [308.7, 54.05],
+    angle: 340,
+  },
+];
+
+// Stacked layout (<=700px): four full-width nodes, three straight connectors,
+// and the return running down the left gutter back into node 01.
+const STACK = [28, 194, 360, 526]; // rect y; height 64, so centres are y + 32
+const ARROW = 'M0,-5 L9,0 L0,5 Z';
+---
+
+<section
+  class="loop section section--loose section--divided"
+  aria-labelledby="loop-heading"
+>
+  <div class="container">
+    <SectionHeader
+      eyebrow={eyebrow}
+      title={title}
+      align="center"
+      id="loop-heading"
+      variant="label"
+    />
+
+    <div class="loop__stage reveal" data-loop>
+      <!-- Radial variant (>700px) -->
+      <svg
+        class="loop__svg loop__svg--radial"
+        viewBox="0 0 720 420"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <g class="loop__arcs" fill="none" stroke-linecap="round">
+          {
+            ARCS.map((arc, i) => (
+              <path
+                class={`loop__arc${i === 3 ? ' loop__arc--return' : ''}`}
+                d={arc.d}
+                pathLength="100"
+                style={`--arc-delay: ${120 + i * 190}ms`}
+              />
+            ))
+          }
+        </g>
+        <g class="loop__tips">
+          {
+            ARCS.map((arc, i) => (
+              <path
+                class="loop__tip"
+                d={ARROW}
+                transform={`translate(${arc.tip[0]} ${arc.tip[1]}) rotate(${arc.angle})`}
+                style={`--tip-delay: ${540 + i * 190}ms`}
+              />
+            ))
+          }
+        </g>
+        <g class="loop__nodes">
+          {
+            NODES.map((n, i) => (
+              <g class="loop__node" style={`--node-delay: ${i * 70}ms`}>
+                <rect
+                  x={n.cx - 78}
+                  y={n.cy - 32}
+                  width="156"
+                  height="64"
+                  rx="8"
+                />
+                <text class="loop__index" x={n.cx} y={n.cy - 12}>
+                  {`0${i + 1}`}
+                </text>
+                {steps[i].node.map((line, k) => (
+                  <text class="loop__label" x={n.cx} y={n.cy + 8 + k * 17}>
+                    {line}
+                  </text>
+                ))}
+              </g>
+            ))
+          }
+        </g>
+        <text class="loop__centre" x="360" y="188">{centre[0]}</text>
+        <text class="loop__centre" x="360" y="206">{centre[1]}</text>
+        <circle class="loop__pulse" r="4"></circle>
+      </svg>
+
+      <!-- Stacked variant (<=700px) -->
+      <svg
+        class="loop__svg loop__svg--stack"
+        viewBox="0 0 360 620"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <g class="loop__arcs" fill="none" stroke-linecap="round">
+          {
+            [0, 1, 2].map(i => (
+              <path
+                class="loop__arc"
+                d={`M 196 ${STACK[i] + 64} V ${STACK[i + 1]}`}
+                pathLength="100"
+                style={`--arc-delay: ${120 + i * 190}ms`}
+              />
+            ))
+          }
+          <path
+            class="loop__arc loop__arc--return"
+            d={`M 56 ${STACK[3] + 32} H 20 V ${STACK[0] + 32} H 48`}
+            pathLength="100"
+            style={`--arc-delay: ${690}ms`}></path>
+        </g>
+        <g class="loop__tips">
+          {
+            [0, 1, 2].map(i => (
+              <path
+                class="loop__tip"
+                d={ARROW}
+                transform={`translate(196 ${STACK[i + 1] - 8}) rotate(90)`}
+                style={`--tip-delay: ${540 + i * 190}ms`}
+              />
+            ))
+          }
+          <path
+            class="loop__tip"
+            d={ARROW}
+            transform={`translate(56 ${STACK[0] + 32}) rotate(0)`}
+            style="--tip-delay: 1110ms"></path>
+        </g>
+        <g class="loop__nodes">
+          {
+            STACK.map((y, i) => (
+              <g class="loop__node" style={`--node-delay: ${i * 70}ms`}>
+                <rect x="56" y={y} width="280" height="64" rx="8" />
+                <text class="loop__index" x="196" y={y + 20}>
+                  {`0${i + 1}`}
+                </text>
+                {steps[i].node.map((line, k) => (
+                  <text class="loop__label" x="196" y={y + 40 + k * 17}>
+                    {line}
+                  </text>
+                ))}
+              </g>
+            ))
+          }
+        </g>
+      </svg>
+
+      <!-- The accessible equivalent of the list this diagram replaces, and
+           what a crawler reads. Always in the DOM. -->
+      <ol class="loop__steps visually-hidden">
+        {
+          steps.map(step => (
+            <li>
+              <strong>{step.title}</strong> {step.body}
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .loop__stage {
+    margin-top: var(--space-7);
+  }
+
+  .loop__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 720px;
+    margin-inline: auto;
+    overflow: visible;
+  }
+  .loop__svg--stack {
+    display: none;
+    max-width: 360px;
+  }
+  @media (max-width: 700px) {
+    .loop__svg--radial {
+      display: none;
+    }
+    .loop__svg--stack {
+      display: block;
+    }
+  }
+
+  .loop__node rect {
+    fill: var(--surface-1);
+    stroke: var(--line-strong);
+    stroke-width: 1;
+  }
+  .loop__index {
+    fill: var(--primary);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-anchor: middle;
+  }
+  .loop__label {
+    fill: var(--text);
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    text-anchor: middle;
+  }
+  .loop__centre {
+    fill: oklch(from var(--text) l c h / 0.7);
+    font-family: var(--font-body);
+    font-size: 14px;
+    text-anchor: middle;
+  }
+
+  .loop__arc {
+    stroke: var(--line-strong);
+    stroke-width: 1.5;
+  }
+  /* The closure is the only coloured element: it is the whole point. */
+  .loop__arc--return {
+    stroke: var(--accent);
+    stroke-width: 2;
+  }
+  .loop__tip {
+    fill: var(--primary);
+  }
+  .loop__pulse {
+    fill: var(--accent);
+    opacity: 0;
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Motion. The hidden start-state is only armed by the script (adds
+   * .is-armed), so no-JS renders the finished diagram. One lap of the
+   * pulse dot, then it stops: an infinite orbit is decoration, one lap
+   * is a demonstration.
+   * ------------------------------------------------------------------ */
+  .loop__stage.is-armed .loop__arc {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  .loop__stage.is-armed .loop__tip,
+  .loop__stage.is-armed .loop__node {
+    opacity: 0;
+  }
+  .loop__stage.is-armed .loop__node {
+    transform: translateY(10px);
+  }
+
+  .loop__stage.is-running .loop__arc {
+    transition: stroke-dashoffset 420ms var(--ease-in-out);
+    transition-delay: var(--arc-delay, 0ms);
+    stroke-dashoffset: 0;
+  }
+  .loop__stage.is-running .loop__arc--return {
+    transition-duration: 500ms;
+  }
+  .loop__stage.is-running .loop__tip {
+    transition: opacity 160ms var(--ease-out);
+    transition-delay: var(--tip-delay, 0ms);
+    opacity: 1;
+  }
+  .loop__stage.is-running .loop__node {
+    transition:
+      opacity 340ms var(--ease-out),
+      transform 340ms var(--ease-out);
+    transition-delay: var(--node-delay, 0ms);
+    opacity: 1;
+    transform: none;
+  }
+  .loop__stage.is-running .loop__pulse {
+    offset-path: path(
+      'M 360,45 A 150,150 0 1,1 360,345 A 150,150 0 1,1 360,45'
+    );
+    animation: loop-lap 2600ms linear 1400ms 1 both;
+  }
+  @keyframes loop-lap {
+    from {
+      offset-distance: 0%;
+      opacity: 1;
+    }
+    to {
+      offset-distance: 100%;
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loop__stage.is-armed .loop__arc,
+    .loop__stage.is-armed .loop__tip,
+    .loop__stage.is-armed .loop__node {
+      stroke-dashoffset: 0 !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .loop__pulse {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Kept lean: this bundled script still lands inline in the built HTML
+  // (Astro inlines small per-page module chunks rather than externalizing
+  // them), so it counts against the page's 10 KB inline-JS budget (MO-1).
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced && 'IntersectionObserver' in window) {
+    document.querySelectorAll<HTMLElement>('[data-loop]').forEach(stage => {
+      stage.classList.add('is-armed');
+      new IntersectionObserver(
+        ([entry], obs) => {
+          if (entry.isIntersecting) {
+            stage.classList.add('is-running');
+            obs.disconnect();
+          }
+        },
+        { threshold: 0.35 },
+      ).observe(stage);
+    });
+  }
+</script>

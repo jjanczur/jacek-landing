@@ -6,7 +6,7 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import PillarGrid from '../../components/PillarGrid.astro';
 import LogoWall from '../../components/LogoWall.astro';
 import StatStrip from '../../components/StatStrip.astro';
-import StepList from '../../components/StepList.astro';
+import LoopDiagram from '../../components/LoopDiagram.astro';
 import CaseRow from '../../components/CaseRow.astro';
 import Button from '../../components/Button.astro';
 import DoorPair from '../../components/DoorPair.astro';
@@ -37,12 +37,18 @@ const featuredCases = (await getCollection('case-studies'))
 >
   <Hero {...t.hero} />
 
-  <PillarGrid pillars={t.pillars.items}>
+  <PillarGrid
+    pillars={t.pillars.items}
+    variant="lead"
+    surface="bare"
+    rhythm="loose"
+    divided
+  >
     <SectionHeader
       slot="header"
       eyebrow={t.pillars.eyebrow}
       title={t.pillars.title}
-      align="center"
+      align="left"
     />
   </PillarGrid>
 
@@ -51,23 +57,32 @@ const featuredCases = (await getCollection('case-studies'))
     lede={t.wall.lede}
     groups={t.wall.groups}
     spotlight
+    tint
   />
 
-  <StatStrip heading={t.stats.heading} stats={t.stats.items} columns={6} />
+  <StatStrip
+    heading={t.stats.heading}
+    stats={t.stats.items}
+    columns={5}
+    footnote={t.stats.footnote}
+    rhythm="tight"
+    tint
+  />
 
-  <StepList
+  <LoopDiagram
     eyebrow={t.method.eyebrow}
     title={t.method.title}
     steps={t.method.steps}
+    centre={t.method.centre}
   />
 
   <section class="section featured" aria-labelledby="featured-heading">
     <div class="container">
       <SectionHeader
-        eyebrow={t.featured.eyebrow}
         title={t.featured.title}
         align="center"
         id="featured-heading"
+        variant="display"
       />
       <ol class="case-rows">
         {

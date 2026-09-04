@@ -7,6 +7,7 @@ export interface LogoItem {
   h: number;
   alt: string;
   caption: string;
+  scale?: number;
 }
 export interface LogoGroup {
   title: string;
@@ -18,15 +19,34 @@ export interface Props {
   lede?: string;
   groups: LogoGroup[];
   spotlight?: boolean;
+  rhythm?: 'tight' | 'default' | 'loose';
+  tint?: boolean;
 }
-const { heading, lede, groups, spotlight = false } = Astro.props;
+const {
+  heading,
+  lede,
+  groups,
+  spotlight = false,
+  rhythm = 'default',
+  tint = false,
+} = Astro.props;
+const rhythmClass =
+  rhythm === 'tight'
+    ? ' section--tight'
+    : rhythm === 'loose'
+      ? ' section--loose'
+      : '';
 
 // Continuous index across all groups so the staggered entrance reads as one
 // sweep through the whole wall, not a restart per group.
 let running = 0;
 ---
 
-<section class="logo-wall section" id="wall" aria-labelledby="wall-heading">
+<section
+  class={`logo-wall section${rhythmClass}${tint ? ' section--tint' : ''}`}
+  id="wall"
+  aria-labelledby="wall-heading"
+>
   <div class="container">
     {
       heading && (
@@ -35,6 +55,7 @@ let running = 0;
           lede={lede}
           align="center"
           id="wall-heading"
+          variant="display"
         />
       )
     }
@@ -50,7 +71,11 @@ let running = 0;
               {group.items.map(item => {
                 const i = running++;
                 return (
-                  <li class="chip-cell" data-chip style={`--i:${i}`}>
+                  <li
+                    class="chip-cell"
+                    data-chip
+                    style={`--i:${i}; --logo-scale:${item.scale ?? 1}`}
+                  >
                     <span class="chip">
                       <img
                         class="chip-logo"
@@ -80,39 +105,55 @@ let running = 0;
     /* section already provides block rhythm via .section */
   }
 
+  /* CO-1: a flat frame so the chip-to-frame relationship is constant top to
+     bottom. The gradient version measured 1.00:1 against its own chips at
+     the bottom edge in dark. */
   .logo-wall__frame {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     border-radius: var(--radius-l);
     border: 1px solid var(--line);
-    background: linear-gradient(180deg, var(--surface-1), var(--bg));
-    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    background: var(--surface-1);
+    /* RE-2: 48px of frame padding was what pushed a 390px viewport below two
+       columns; scale it with the viewport instead. */
+    padding: clamp(var(--space-4), 4vw, var(--space-7));
     display: flex;
     flex-direction: column;
     gap: var(--space-7);
   }
 
-  /* The moving spotlight — a soft radial highlight positioned by JS via
-     --mx/--my (percent). One instance sits above the frame background,
-     below the chips' own brightening, and never intercepts pointer events.
-     Spans both groups: it is one layer for the whole wall. */
+  /* The moving spotlight — a soft radial highlight, fixed at the frame's
+     centre; the animation moves the whole layer via transform, not the
+     gradient position, so it stays composited on the GPU (MO-9). */
   .logo-wall__spotlight {
     position: absolute;
-    inset: 0;
+    inset: -20% -10%;
     z-index: 0;
     pointer-events: none;
     background: radial-gradient(
-      34% 40% at var(--mx, 50%) var(--my, 50%),
+      34% 40% at 50% 50%,
       color-mix(in oklab, var(--primary) 22%, transparent) 0%,
       color-mix(in oklab, var(--accent) 12%, transparent) 40%,
       transparent 72%
     );
     opacity: 0;
     transition: opacity 0.6s var(--ease-out);
+    animation: wall-sweep 12s linear infinite alternate;
+    animation-play-state: paused;
+    will-change: transform;
+  }
+  @keyframes wall-sweep {
+    from {
+      transform: translate3d(-16%, -6%, 0);
+    }
+    to {
+      transform: translate3d(16%, 6%, 0);
+    }
   }
   .logo-wall__frame.is-lit .logo-wall__spotlight {
     opacity: 1;
+    animation-play-state: running;
   }
 
   .logo-wall__group {
@@ -132,13 +173,25 @@ let running = 0;
     margin-bottom: var(--space-4);
   }
 
+  /* RE-1 / RE-2: fixed column counts. auto-fill produced 6+2 at 1440 and
+     one-per-row at 390 (by 2px). 8 -> 4+4, 4 -> 4, rectangular everywhere. */
   .logo-wall__grid {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(var(--space-3), 2vw, var(--space-4));
+  }
+  @media (min-width: 560px) {
+    .logo-wall__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 900px) {
+    .logo-wall__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
   }
 
   .chip-cell {
@@ -150,6 +203,8 @@ let running = 0;
     opacity: 1;
   }
 
+  /* CO-1: chips are always one step away from the frame, in whichever
+     direction is lighter for the theme. */
   .chip {
     width: 100%;
     aspect-ratio: 5 / 2;
@@ -160,17 +215,26 @@ let running = 0;
     background: var(--bg);
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
-    /* Brighten as the spotlight passes: driven by --lit (0..1) from JS */
-    filter: brightness(calc(1 + var(--lit, 0) * 0.07));
-    transition: filter 0.3s var(--ease-out);
-    will-change: filter;
+    filter: none;
+    transition: border-color 0.25s var(--ease-out);
+    will-change: auto;
+  }
+  :root[data-theme='dark'] .chip {
+    background: var(--surface-2);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .chip {
+      background: var(--surface-2);
+    }
   }
 
+  /* GR-6: normalise by ink, not by bounding box. A wide mark used to hit the
+     width cap and render ~23px tall next to a square mark at 44px. */
   .chip-logo {
-    max-width: 100%;
-    max-height: 44px;
+    height: calc(44px * var(--logo-scale, 1));
     width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: none;
     object-fit: contain;
     display: block;
     /* Logos are dark-on-transparent; grayscale + dim keeps the wall calm */
@@ -194,9 +258,11 @@ let running = 0;
     }
   }
 
+  /* CO-3: 12px at 0.6 alpha measured 4.29:1 on the one element that carries
+     the relationship claim (D21). */
   .chip-note {
-    font-size: var(--font-size-xs);
-    color: oklch(from var(--text) l c h / 0.6);
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.72);
     text-align: center;
     letter-spacing: 0.01em;
     text-wrap: balance;
@@ -231,13 +297,6 @@ let running = 0;
     transform: none;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .chip-cell:hover .chip {
-      transform: translateY(-2px);
-      border-color: var(--line-strong);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .js-anim .chip-cell {
       opacity: 1 !important;
@@ -253,171 +312,46 @@ let running = 0;
   }
 </style>
 
-<script is:inline>
-  (function () {
-    const reduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
+<script>
+  // Kept lean: this bundled script still lands inline in the built HTML
+  // (Astro inlines small per-page module chunks rather than externalizing
+  // them), so it counts against the page's 10 KB inline-JS budget (MO-1).
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasIO = 'IntersectionObserver' in window;
 
-    document.querySelectorAll('[data-wall]').forEach(function (wall) {
-      /* ---------------------------------------------------------------- *
-       * 1. STAGGERED CHIP ENTRANCE                                        *
-       * The wall only opts into the hidden start-state when JS runs AND   *
-       * motion is allowed, so no-JS / reduced-motion keeps chips visible. *
-       * ---------------------------------------------------------------- */
-      if (!reduced) {
-        const grid = wall.querySelector('.logo-wall__grid');
-        if (grid) {
-          const allGrids = wall.querySelectorAll('.logo-wall__grid');
-          allGrids.forEach(function (g) {
-            g.classList.add('js-anim');
-          });
-          const cells = wall.querySelectorAll('[data-chip]');
-          const revealChips = function () {
-            cells.forEach(function (cell) {
-              cell.classList.add('is-in');
-            });
-          };
-          if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver(
-              function (entries, obs) {
-                entries.forEach(function (entry) {
-                  if (entry.isIntersecting) {
-                    revealChips();
-                    obs.disconnect();
-                  }
-                });
-              },
-              { threshold: 0.2 },
-            );
-            io.observe(wall);
-          } else {
-            revealChips();
+  document.querySelectorAll<HTMLElement>('[data-wall]').forEach(wall => {
+    if (reduced) return;
+    wall
+      .querySelectorAll('.logo-wall__grid')
+      .forEach(g => g.classList.add('js-anim'));
+    const reveal = () =>
+      wall
+        .querySelectorAll('[data-chip]')
+        .forEach(c => c.classList.add('is-in'));
+    if (hasIO) {
+      new IntersectionObserver(
+        ([entry], obs) => {
+          if (entry.isIntersecting) {
+            reveal();
+            obs.disconnect();
           }
-        }
+        },
+        { threshold: 0.2 },
+      ).observe(wall);
+    } else {
+      reveal();
+    }
+
+    // The sweep is CSS; the observer only toggles play/pause and the fade-in.
+    if (wall.querySelector('.logo-wall__spotlight')) {
+      if (hasIO) {
+        new IntersectionObserver(
+          ([entry]) => wall.classList.toggle('is-lit', entry.isIntersecting),
+          { threshold: 0.12 },
+        ).observe(wall);
+      } else {
+        wall.classList.add('is-lit');
       }
-
-      /* ---------------------------------------------------------------- *
-       * 2. SPOTLIGHT SWEEP                                                *
-       * A soft radial highlight glides across the whole wall (both        *
-       * groups) on a slow looping path (Lissajous-style so it never feels *
-       * linear). rAF-driven, paused when the wall is off-screen, and      *
-       * never started under reduced motion. Each chip brightens by        *
-       * proximity to the light.                                           *
-       * ---------------------------------------------------------------- */
-      const spotlight = wall.querySelector('.logo-wall__spotlight');
-      const chips = wall.querySelectorAll('.chip');
-
-      if (spotlight && chips.length && !reduced) {
-        let rafId = null;
-        let start = null;
-        let onScreen = false;
-        let chipBoxes = [];
-        let wallBox = null;
-
-        const measure = function () {
-          wallBox = wall.getBoundingClientRect();
-          chipBoxes = [];
-          chips.forEach(function (chip) {
-            const r = chip.getBoundingClientRect();
-            chipBoxes.push({
-              el: chip,
-              cx: r.left + r.width / 2 - wallBox.left,
-              cy: r.top + r.height / 2 - wallBox.top,
-            });
-          });
-        };
-
-        const frame = function (t) {
-          if (start === null) start = t;
-          if (!wallBox || wallBox.width === 0) {
-            rafId = window.requestAnimationFrame(frame);
-            return;
-          }
-          const elapsed = (t - start) / 1000;
-          // Two out-of-phase sines => a smooth wandering path, ~11s period.
-          const px = 50 + 42 * Math.sin(elapsed * 0.57);
-          const py = 50 + 30 * Math.sin(elapsed * 0.83 + 1.1);
-          spotlight.style.setProperty('--mx', px.toFixed(2) + '%');
-          spotlight.style.setProperty('--my', py.toFixed(2) + '%');
-
-          // Light position in px within the wall.
-          const lx = (px / 100) * wallBox.width;
-          const ly = (py / 100) * wallBox.height;
-          const radius = Math.max(wallBox.width, wallBox.height) * 0.34;
-
-          for (let k = 0; k < chipBoxes.length; k++) {
-            const c = chipBoxes[k];
-            const dx = c.cx - lx;
-            const dy = c.cy - ly;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            // 1 at the centre of the light, easing to 0 at the radius edge.
-            let lit = 1 - dist / radius;
-            if (lit < 0) lit = 0;
-            c.el.style.setProperty('--lit', (lit * lit).toFixed(3));
-          }
-          rafId = window.requestAnimationFrame(frame);
-        };
-
-        const play = function () {
-          if (rafId === null) {
-            measure();
-            start = null;
-            rafId = window.requestAnimationFrame(frame);
-          }
-        };
-        const pause = function () {
-          if (rafId !== null) {
-            window.cancelAnimationFrame(rafId);
-            rafId = null;
-          }
-        };
-
-        // Only run while the wall is in view (perf + battery).
-        if ('IntersectionObserver' in window) {
-          const vio = new IntersectionObserver(
-            function (entries) {
-              entries.forEach(function (entry) {
-                onScreen = entry.isIntersecting;
-                wall.classList.toggle('is-lit', onScreen);
-                if (onScreen) {
-                  play();
-                } else {
-                  pause();
-                }
-              });
-            },
-            { threshold: 0.12 },
-          );
-          vio.observe(wall);
-        } else {
-          onScreen = true;
-          wall.classList.add('is-lit');
-          play();
-        }
-
-        // Keep chip geometry correct on resize; cheap debounce.
-        let resizeTimer = null;
-        window.addEventListener(
-          'resize',
-          function () {
-            if (resizeTimer) window.clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(function () {
-              if (onScreen) measure();
-            }, 150);
-          },
-          { passive: true },
-        );
-
-        // Pause when the tab is hidden.
-        document.addEventListener('visibilitychange', function () {
-          if (document.hidden) {
-            pause();
-          } else if (onScreen) {
-            play();
-          }
-        });
-      }
-    });
-  })();
+    }
+  });
 </script>
