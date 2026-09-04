@@ -295,36 +295,34 @@ test('case-study pages identify clients by industry, not by name', async ({
   }
 });
 
-// Case-study routes renamed so the URL stops naming a client the case
-// itself describes by industry. astro.config.mjs is the single source for
-// both halves: the redirect and the sitemap exclusion.
-const RETIRED_CASE_ROUTES: Record<string, string> = {
-  '/en/case-studies/bosch-procurement-ai/':
-    '/en/case-studies/automotive-procurement-ai/',
-  '/en/case-studies/kfw-genai-portfolio/':
-    '/en/case-studies/development-bank-genai-portfolio/',
-};
+// Case-study slugs were renamed so no URL names a client the case itself
+// describes by industry. This section of the site had never been published
+// when they were renamed, so the old addresses must not exist at all — a
+// live redirect would keep publishing the name in the path.
+const CLIENT_NAMING_SLUGS = [
+  '/en/case-studies/bosch-procurement-ai/',
+  '/en/case-studies/kfw-genai-portfolio/',
+  '/en/case-studies/rp-matcher/',
+];
 
-test('retired case-study URLs still resolve, to their renamed route', async ({
-  request,
-}) => {
-  for (const [from, to] of Object.entries(RETIRED_CASE_ROUTES)) {
-    const res = await request.get(from);
-    expect(res.status(), from).toBeLessThan(400);
-    const html = await res.text();
-    expect(html, from).toContain(`url=${to}`);
-    // The retired address must not be the one that gets indexed.
-    expect(html, from).toContain('noindex');
+const RENAMED_CASE_ROUTES = [
+  '/en/case-studies/automotive-procurement-ai/',
+  '/en/case-studies/development-bank-genai-portfolio/',
+  '/en/case-studies/product-matching-ml/',
+];
+
+test('no URL names a client in its path', async ({ request }) => {
+  const xml = await (await request.get('/sitemap-0.xml')).text();
+  for (const path of CLIENT_NAMING_SLUGS) {
+    expect((await request.get(path)).status(), path).toBe(404);
+    expect(xml, path).not.toContain(path);
   }
 });
 
-test('the sitemap lists the renamed case routes, not the retired ones', async ({
-  request,
-}) => {
+test('the sitemap lists the renamed case routes', async ({ request }) => {
   const xml = await (await request.get('/sitemap-0.xml')).text();
-  for (const [from, to] of Object.entries(RETIRED_CASE_ROUTES)) {
-    expect(xml, to).toContain(to);
-    expect(xml, from).not.toContain(from);
+  for (const path of RENAMED_CASE_ROUTES) {
+    expect(xml, path).toContain(path);
   }
 });
 
