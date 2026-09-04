@@ -145,12 +145,16 @@ test('reveal timing is retuned and reduced motion still wins', async ({
   page,
 }) => {
   await page.goto('/en/');
-  const dur = await page.evaluate(() =>
-    getComputedStyle(document.documentElement)
+  // Read the computed duration rather than asserting the literal token
+  // text: CSS minifiers are free to rewrite 460ms as .46s (same duration,
+  // shorter string), so compare the resolved millisecond value instead.
+  const durMs = await page.evaluate(() => {
+    const raw = getComputedStyle(document.documentElement)
       .getPropertyValue('--reveal-dur')
-      .trim(),
-  );
-  expect(dur).toBe('460ms');
+      .trim();
+    return raw.endsWith('ms') ? parseFloat(raw) : parseFloat(raw) * 1000;
+  });
+  expect(durMs).toBe(460);
 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/en/');
