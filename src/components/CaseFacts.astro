@@ -8,6 +8,7 @@ export interface Props {
   status?: string;
   role: string;
   via?: string;
+  sourceUrl?: string;
   tags: string[];
   related: { href: string; title: string }[];
   chapters: { slug: string; text: string }[];
@@ -21,6 +22,7 @@ const {
   status,
   role,
   via,
+  sourceUrl,
   tags,
   related,
   chapters,
@@ -35,7 +37,7 @@ const STATUS_LABEL: Record<string, string> = {
   research: 'Research',
 };
 
-const facts: { term: string; value: string }[] = [
+const facts: { term: string; value: string; href?: string }[] = [
   { term: 'Client', value: client },
   { term: 'Sector', value: sector },
   { term: 'Period', value: period },
@@ -44,6 +46,17 @@ const facts: { term: string; value: string }[] = [
     : []),
   { term: 'Role', value: role },
   ...(via ? [{ term: 'Delivered via', value: via }] : []),
+  // The engagement is only named where it is already published; that
+  // publication is the link.
+  ...(sourceUrl
+    ? [
+        {
+          term: 'Public write-up',
+          value: new URL(sourceUrl).hostname.replace(/^www\./, ''),
+          href: sourceUrl,
+        },
+      ]
+    : []),
 ];
 ---
 
@@ -53,7 +66,15 @@ const facts: { term: string; value: string }[] = [
       facts.map(fact => (
         <div class="case-facts__row">
           <dt>{fact.term}</dt>
-          <dd>{fact.value}</dd>
+          <dd>
+            {fact.href ? (
+              <a href={fact.href} rel="noopener noreferrer" target="_blank">
+                {fact.value}
+              </a>
+            ) : (
+              fact.value
+            )}
+          </dd>
         </div>
       ))
     }

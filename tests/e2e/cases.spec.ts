@@ -15,6 +15,23 @@ const SHAPED = [
   '/en/case-studies/jaden-data-company-building/',
 ];
 
+// Clients that the case studies identify by industry rather than by name.
+// Scoped to case-study pages on purpose: some of these are named in general
+// page copy elsewhere on the site, which is a different statement from
+// attributing a specific project to them. Word boundaries keep hashed asset
+// names out of the match.
+const UNNAMED_CLIENTS: RegExp[] = [
+  /\bbosch\b/,
+  /\bkfw\b/,
+  /\bboehringer\b/,
+  /\bingelheim\b/,
+  /\bt[\u00fcu]v\b/,
+  /\bkenstone\b/,
+  /\bimf\b/,
+  /\bred bull\b/,
+  /\brp[\s-]group\b/,
+];
+
 const EVIDENCE = [
   'Measured',
   'Customer estimate',
@@ -215,17 +232,18 @@ test.describe('case-studies index', () => {
       els =>
         els.filter(el => el.tagName !== 'A' && !el.querySelector('a')).length,
     );
-    expect(notLinked).toBeGreaterThanOrEqual(5);
+    expect(notLinked).toBeGreaterThanOrEqual(4);
 
     // A case without a `status` in its frontmatter shows only the
-    // relationship pill. Four of the five skim-only rows have no status;
-    // the fifth (proof of concept) keeps its own.
+    // relationship pill. Every skim-only row is in that state.
     const withoutStatusBadge = await rows.evaluateAll(
       els =>
-        els.filter(el => el.querySelectorAll('.case-row__pill').length === 1)
+        els
+          .filter(el => el.tagName !== 'A' && !el.querySelector('a'))
+          .filter(el => el.querySelectorAll('.case-row__pill').length === 1)
           .length,
     );
-    expect(withoutStatusBadge).toBe(4);
+    expect(withoutStatusBadge).toBe(notLinked);
   });
 
   test('filter chips narrow the skim list to the selected category', async ({
@@ -238,6 +256,52 @@ test.describe('case-studies index', () => {
     const visibleRows = page.locator('.case-rows .case-row:not([hidden])');
     await expect(visibleRows).toHaveCount(1);
   });
+});
+
+test('case-study pages identify clients by industry, not by name', async ({
+  page,
+}) => {
+  test.slow();
+  for (const path of ['/en/case-studies/', ...DETAILS]) {
+    await page.goto(path);
+    const visible = await page.locator('body').innerText();
+    const meta =
+      (await page
+        .locator('meta[name="description"]')
+        .getAttribute('content')) ?? '';
+    // The page's own CreativeWork schema carries client, title, summary and
+    // tags. The site-wide Person schema is general positioning about who
+    // Jacek has worked for, which is a different statement from attributing
+    // a named project, and is deliberately not part of this check.
+    const ld = await page
+      .locator('script[type="application/ld+json"]')
+      .allTextContents();
+    const caseLd = ld
+      .flatMap(text => {
+        let parsed: unknown;
+        try {
+          parsed = JSON.parse(text);
+        } catch {
+          return [];
+        }
+        const graph = (parsed as { '@graph'?: unknown })['@graph'];
+        const nodes = Array.isArray(graph) ? graph : [parsed];
+        return (nodes as Record<string, unknown>[]).filter(
+          n => n['@type'] === 'CreativeWork',
+        );
+      })
+      .map(node => JSON.stringify(node))
+      .join(' ');
+    const haystack = [visible, meta, caseLd]
+      .join('\n')
+      .toLowerCase()
+      // Route slugs are URLs, not prose; the policy is about the words a
+      // reader sees, so collapse case-study paths before matching.
+      .replace(/\/case-studies\/[a-z0-9-]+\/?/g, '/case-studies/');
+    for (const re of UNNAMED_CLIENTS) {
+      expect(haystack, `${path} matches ${re}`).not.toMatch(re);
+    }
+  }
 });
 
 test('the retired /en/projects/ URL redirects to the case-studies index', async ({

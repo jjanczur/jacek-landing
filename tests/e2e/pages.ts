@@ -15,6 +15,7 @@ export const EN_PAGES = [
   '/en/case-studies/jaden-data-company-building/',
   '/en/case-studies/kfw-genai-portfolio/',
   '/en/case-studies/bosch-procurement-ai/',
+  '/en/case-studies/engineering-enablement/',
   '/en/case-studies/apg-pension-assistant/',
   '/en/case-studies/entaingine-platform/',
   '/en/case-studies/rp-matcher/',
@@ -22,6 +23,7 @@ export const EN_PAGES = [
   '/en/case-studies/taufolio/',
   '/en/case-studies/idealo-and-ing-scale/',
   '/en/case-studies/regulated-distributed-systems/',
+  '/en/case-studies/stellantis-rag-evaluation/',
 ];
 
 export const ALL_PAGES = [

@@ -1,11 +1,11 @@
 ---
-title: 'Product matching that takes the expert out of the critical path'
-client: 'RP Group (emergency lighting)'
+title: 'A machine-learning product matcher that takes the expert out of the critical path'
+client: 'An emergency-lighting manufacturer'
 relationship: 'client'
 via: 'Jaden Data'
 sector: 'Manufacturing'
 period: '2025 – 2026'
-status: 'mvp'
+status: 'production'
 role: 'ML engineer and project lead'
 mandate:
   'Owned the model work end to end: the data pipeline that turned document pairs into training data,
@@ -14,13 +14,14 @@ mandate:
 skim: 'Matching customer inquiries to catalogue products'
 category: 'ai-products'
 summary:
-  'Matching incoming customer inquiries to the right products in an emergency-lighting catalogue, so
-  offer preparation no longer waits for a domain expert to pick the parts by hand.'
+  'A supervised machine-learning system that matches incoming customer inquiries to the right
+  products in an emergency-lighting catalogue, so offer preparation no longer waits for a domain
+  expert to pick the parts by hand. It runs in production.'
 keyDecisions:
   - 'Engineered features with domain rules rather than a deep model: a bi-encoder was tested and
     paused, because it needs five to ten times more data than the corpus provides.'
-  - 'Built the training set with LLM-assisted extraction, turning 96 document pairs into 369
-    positive matches, up from an initial 55.'
+  - 'Built the training set with LLM-assisted extraction, growing the corpus from 96 document pairs
+    to over 300 documents.'
   - 'Formulated the task as ranking with same-document negatives at a 5.4:1 ratio, so the model
     learns the choice the expert actually makes.'
 outcomes:
@@ -32,25 +33,24 @@ outcomes:
       suffix: '%',
     }
   - {
-      value: '70.7%',
-      label: 'top-1 accuracy, tuned random forest, best of five model families',
+      value: '78.4%',
+      label: 'top-1 accuracy on the current corpus, best of five model families',
       evidence: 'benchmark',
-      countTo: 70.7,
+      countTo: 78.4,
       suffix: '%',
       decimals: 1,
     }
   - {
-      value: '0.835',
-      label: 'mean reciprocal rank; AUC-ROC 0.923',
-      evidence: 'benchmark',
-      countTo: 0.835,
-      decimals: 3,
+      value: '300+',
+      label: 'documents in the training corpus, up from 96 document pairs',
+      evidence: 'measured',
+      countTo: 300,
+      suffix: '+',
     }
   - {
-      value: '369',
-      label: 'positive matches built from 96 document pairs, up from 55',
-      evidence: 'measured',
-      countTo: 369,
+      value: '~575',
+      label: 'positive matches, extrapolated from the earlier 369 out of 96 pairs',
+      evidence: 'projected',
     }
 stakeholders:
   [
@@ -61,7 +61,7 @@ stakeholders:
   ]
 constraints:
   [
-    'A small corpus: 96 usable document pairs',
+    'A small corpus: 96 document pairs at the first benchmark, over 300 documents now',
     'Product selection knowledge held by a few people',
     'Inquiry and offer documents written for humans, not for parsing',
     'German product terminology and mounting conventions',
@@ -75,11 +75,11 @@ reuse:
 tags:
   [
     'machine learning',
-    'product matching',
+    'scikit-learn',
+    'random forest',
+    'ensemble methods',
     'feature engineering',
-    'ranking',
-    'benchmarking',
-    'LLM-assisted extraction',
+    'LLM extraction',
   ]
 angle: 'builder'
 featured: false
@@ -88,9 +88,9 @@ order: 60
 
 ## Context
 
-RP Group sells emergency lighting. Every customer inquiry has to be answered with an offer that
-names specific products from the catalogue, and choosing them correctly is domain knowledge held by
-a small number of people.
+An emergency-lighting manufacturer answers every customer inquiry with an offer that names specific
+products from its catalogue, and choosing them correctly is domain knowledge held by a small number
+of people.
 
 ## Business problem
 
@@ -106,19 +106,19 @@ put in front of users.
 
 ## Decisions
 
-- Turn documents into data with LLM-assisted extraction through the platform API, and grow the
-  positive set from 55 to 369 matches out of those 96 pairs.
+- Turn documents into data with LLM-assisted extraction through the platform API. The first round
+  grew the positive set from 55 to 369 matches out of 96 document pairs; the corpus has since passed
+  300 documents.
 - Treat it as ranking, not classification: negatives drawn from the same document at a 5.4:1 ratio,
   so the model learns to choose between plausible candidates rather than to reject obvious
   mismatches.
 - Engineer more than 25 features — difference, ratio and compatibility features, product-type
   detection, mounting-method recognition, numerical normalisation — with domain rules encoded
   symbolically instead of hoping a model would infer them.
-- Benchmark five families with hyperparameter search: tuned random forest, extra trees, gradient
-  boosting, and voting and stacking ensembles. The tuned random forest and the stacking ensemble
-  both reached 70.7% top-1.
+- Benchmark five families with hyperparameter search in scikit-learn: tuned random forest, extra
+  trees, gradient boosting, and voting and stacking ensembles.
 - Test the deep-learning route and stop: a bi-encoder needs five to ten times more data than exists,
-  so it stays paused rather than half-built. On the current curve, roughly five points of accuracy
+  so it stays paused rather than half-built. On the observed curve, roughly five points of accuracy
   come per fifty extra document pairs, which makes data collection the next investment, not
   architecture.
 - Clean the data properly: infinity values and extreme outliers clipped at the 99.9th percentile,
@@ -127,9 +127,11 @@ put in front of users.
 
 ## Delivery
 
-The system is in use for offer preparation and returns ranked product candidates for an inquiry,
-with the mean reciprocal rank of 0.835 meaning the right product is usually first or second on the
-list.
+The system runs in production for offer preparation and returns ranked product candidates for an
+inquiry. The first benchmark round, on 96 document pairs, recorded 70.7% top-1 accuracy, a mean
+reciprocal rank of 0.835 and AUC-ROC 0.923 — the right product usually first or second on the list.
+With the corpus grown past 300 documents, top-1 accuracy reached 78.4%, inside the 75–80% band the
+scaling curve predicted for a corpus this size.
 
 ## Outcome
 
@@ -145,5 +147,7 @@ where inquiries and offers exist as paired documents.
 ## Evidence
 
 Accuracy, mean reciprocal rank and AUC-ROC are benchmark figures on held-out data from the project
-records, and the dataset sizes are project records. The 60% figure is the customer's own estimate of
-the effect, not an independent measurement.
+records. The corpus size is a project record. The count of roughly 575 positive matches is an
+extrapolation, not a count: it applies the measured ratio of 3.84 positives per document pair to
+about 150 pairs, reading "over 300 documents" as documents rather than pairs. The 60% figure is the
+customer's own estimate of the effect, not an independent measurement.
