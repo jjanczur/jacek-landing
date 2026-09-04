@@ -12,97 +12,125 @@ export interface Stat {
 export interface Props {
   stats: Stat[];
   heading?: string;
-  columns?: 3 | 5 | 6;
+  columns?: 3 | 4 | 5;
+  footnote?: string;
+  rhythm?: 'tight' | 'default' | 'loose';
+  tint?: boolean;
 }
-const { stats, heading, columns = 5 } = Astro.props;
+const {
+  stats,
+  heading,
+  columns = 5,
+  footnote,
+  rhythm = 'default',
+  tint = false,
+} = Astro.props;
+const rhythmClass =
+  rhythm === 'tight'
+    ? ' section--tight'
+    : rhythm === 'loose'
+      ? ' section--loose'
+      : '';
 ---
 
-<section class="section" aria-labelledby="stats-heading">
+<section
+  class={`section${rhythmClass}${tint ? ' section--tint' : ''}`}
+  aria-labelledby="stats-heading"
+>
   <div class="container">
     {
       heading && (
-        <SectionHeader title={heading} align="center" id="stats-heading" />
+        <SectionHeader
+          title={heading}
+          align="center"
+          id="stats-heading"
+          variant="inline"
+        />
       )
     }
-    <dl class={`stat-strip stat-strip--${columns}`}>
+    <dl class={`stat-strip stat-strip--${columns}`} data-stats>
       {
-        stats.map(s => (
-          <div class="stat">
+        stats.map((s, i) => (
+          <div class="stat" style={`--n:${i}`}>
             {s.countTo !== undefined ? (
               <dt
                 class="stat__value"
                 data-count
                 data-to={s.countTo}
-                data-prefix={s.prefix || ''}
-                data-suffix={s.suffix || ''}
-                data-decimals={s.decimals ?? 0}
-              >
-                {s.value}
-              </dt>
+                data-pf={s.prefix || ''}
+                data-sf={s.suffix || ''}
+                data-dp={s.decimals ?? 0}
+                set:text={s.value}
+              />
             ) : (
-              <dt class="stat__value" data-text>
-                {s.value}
-              </dt>
+              <dt class="stat__value" data-text set:text={s.value} />
             )}
             <dd class="stat__label">{s.label}</dd>
           </div>
         ))
       }
     </dl>
+    {footnote && <p class="stat-strip__footnote">{footnote}</p>}
   </div>
 </section>
 
 <style>
+  /* RE-3(b): the grid owns two rows and each .stat inherits them via subgrid,
+     so every label sits on one baseline no matter how its value wraps. */
   .stat-strip {
     margin: 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
     gap: var(--space-6) var(--space-5);
+  }
+  .stat {
+    min-width: 0;
+    text-align: left;
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    align-content: start;
+  }
+  @supports not (grid-template-rows: subgrid) {
+    .stat {
+      display: block;
+    }
+    .stat__value {
+      min-height: 1lh;
+    }
   }
   @media (min-width: 700px) {
     .stat-strip {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
-  /* --columns applies from 1100px, except --6 which waits for 1280px: at
-     1100–1279px, six columns crush these labels (up to 26ch) into an
-     awkward wrap, so --6 stays at 3 columns through that range. */
   @media (min-width: 1100px) {
     .stat-strip--3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .stat-strip--4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .stat-strip--5 {
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
   }
-  @media (min-width: 1280px) {
-    .stat-strip--6 {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-    }
-  }
 
-  .stat {
-    min-width: 0;
-    text-align: left;
-  }
-
+  /* RE-3(a): ONE value size for the whole row, including text values. Three
+     sizes on one line was the most visible defect on the page. */
   .stat__value {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: clamp(1.9rem, 5.5vw, 3.1rem);
-    line-height: 1;
+    font-size: clamp(1.7rem, 4.4vw, 2.6rem);
+    line-height: 1.05;
     letter-spacing: -0.02em;
     color: var(--primary);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
     margin: 0 0 var(--space-2);
+    align-self: end;
   }
-  .stat__value[data-text] {
-    white-space: normal;
-    font-size: clamp(1.3rem, 3.6vw, 2.1rem);
-    line-height: 1.15;
-  }
-
   .stat__label {
     margin: 0;
     font-size: var(--font-size-sm);
@@ -110,67 +138,66 @@ const { stats, heading, columns = 5 } = Astro.props;
     max-width: 26ch;
     line-height: 1.5;
   }
+  .stat-strip__footnote {
+    margin: var(--space-6) 0 0;
+    max-width: var(--w-prose);
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.65);
+  }
+
+  /* MO-5: the row resolves as ONE gesture. Text values wipe in on the same
+     timeline the counters run on, so the strip is never half-alive. */
+  .stat-strip.is-armed .stat__value[data-text] {
+    clip-path: inset(0 100% 0 0);
+  }
+  .stat-strip.is-running .stat__value[data-text] {
+    transition: clip-path 300ms var(--ease-out);
+    transition-delay: calc(var(--n) * 60ms);
+    clip-path: inset(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stat-strip.is-armed .stat__value[data-text] {
+      clip-path: none !important;
+    }
+  }
 </style>
 
-<script is:inline>
-  (function () {
-    const reduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
+<script>
+  // Kept lean: this bundled script still lands inline in the built HTML
+  // (Astro inlines small per-page module chunks rather than externalizing
+  // them), so it counts against the page's 10 KB inline-JS budget (MO-1).
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const counters = document.querySelectorAll('[data-count][data-to]');
-    if (!counters.length) return;
+  const fmt = (el: Element, v: number) =>
+    (el.getAttribute('data-pf') || '') +
+    v.toFixed(+(el.getAttribute('data-dp') || 0)) +
+    (el.getAttribute('data-sf') || '');
 
-    const formatValue = function (el, value) {
-      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-      const prefix = el.getAttribute('data-prefix') || '';
-      const suffix = el.getAttribute('data-suffix') || '';
-      return prefix + value.toFixed(decimals) + suffix;
-    };
-
-    const runCount = function (el) {
-      const to = parseFloat(el.getAttribute('data-to') || '0');
-      if (reduced || !Number.isFinite(to)) {
-        el.textContent = formatValue(el, to);
-        return;
-      }
-      const duration = 1500;
-      let t0 = null;
-      const step = function (ts) {
-        if (t0 === null) t0 = ts;
-        const p = Math.min((ts - t0) / duration, 1);
-        // easeOutExpo — fast then settles, feels precise not springy.
-        const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-        el.textContent = formatValue(el, to * eased);
-        if (p < 1) {
-          window.requestAnimationFrame(step);
-        } else {
-          el.textContent = formatValue(el, to);
-        }
-      };
-      window.requestAnimationFrame(step);
-    };
-
-    if (reduced || !('IntersectionObserver' in window)) {
-      counters.forEach(function (el) {
-        const to = parseFloat(el.getAttribute('data-to') || '0');
-        el.textContent = formatValue(el, to);
-      });
-    } else {
-      const cio = new IntersectionObserver(
-        function (entries, obs) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              runCount(entry.target);
-              obs.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.6 },
-      );
-      counters.forEach(function (el) {
-        cio.observe(el);
-      });
-    }
-  })();
+  document.querySelectorAll<HTMLElement>('[data-stats]').forEach(strip => {
+    if (reduced || !('IntersectionObserver' in window)) return; // static HTML already final
+    const counters = strip.querySelectorAll('[data-to]');
+    strip.classList.add('is-armed');
+    new IntersectionObserver(
+      ([entry], obs) => {
+        if (!entry.isIntersecting) return;
+        strip.classList.add('is-running');
+        counters.forEach((el, i) => {
+          const to = +(el.getAttribute('data-to') || 0);
+          if (!Number.isFinite(to)) return;
+          const delay = i * 60;
+          let t0: number | null = null;
+          const step = (ts: number) => {
+            if (t0 === null) t0 = ts + delay;
+            const p = Math.min(Math.max(ts - t0, 0) / 1500, 1);
+            const eased = p === 1 ? 1 : 1 - 2 ** (-10 * p); // easeOutExpo
+            el.textContent = fmt(el, to * eased);
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+        obs.disconnect();
+      },
+      { threshold: 0.35 },
+    ).observe(strip);
+  });
 </script>
