@@ -1,12 +1,13 @@
 ---
 title: 'A pension-letter assistant: one-day prototype, on-premises production in twelve sprints'
-client: 'APG (pension fund administrator)'
+client: 'APG'
 relationship: 'client'
 via: 'Jaden Data / entAIngine'
 sector: 'Pensions'
-period: '2024 (twelve two-week sprints)'
-status: 'mvp'
+period: '2023 – 2024'
+status: 'production'
 role: 'AI lead and solution architect'
+sourceUrl: 'https://apg.nl/en/publication/translation-tool-allows-participants-to-make-pension-choices-in-their-native-language/'
 mandate:
   "Designed the solution architecture and the AI processes for a member-facing assistant, wrote the
   prompts, and was accountable for design quality and for delivering to the customer's expectations."
@@ -16,7 +17,7 @@ summary:
   'A customer-facing assistant that explains pension letters in plain language, defines difficult
   terms, lists the actions a member must take, and offers translation and audio for non-native
   speakers; prototyped in a day, then integrated and validated over twelve sprints into an
-  on-premises MVP.'
+  on-premises production deployment that has since been replaced by another solution.'
 keyDecisions:
   - 'Prototype from reusable platform components in one day, then spend the project on integration,
     user-experience validation and the on-premises deployment.'
@@ -34,10 +35,17 @@ outcomes:
     }
   - {
       value: '12 sprints',
-      label: "to an MVP in the client's on-premises environment",
+      label: "to production in the client's on-premises environment",
       evidence: 'measured',
       countTo: 12,
       suffix: ' sprints',
+    }
+  - {
+      value: '4 languages',
+      label: 'at launch — Dutch, Polish, Turkish and English',
+      evidence: 'measured',
+      countTo: 4,
+      suffix: ' languages',
     }
   - {
       value: 'Recognised',
@@ -46,14 +54,18 @@ outcomes:
     }
 delivery:
   - { at: 'Day 1', label: 'Working prototype', note: 'from platform components' }
-  - { at: '12 sprints', label: 'On-premises MVP', note: 'integration, validation, environment' }
+  - {
+      at: '12 sprints',
+      label: 'On-premises production',
+      note: 'integration, validation, environment',
+    }
   - { at: 'Handover', label: 'Run by the client', note: 'under Dutch financial regulation' }
 stakeholders:
   [
     'Member communication owners',
+    "APG's GroeiFabriek innovation hub and Pensioen Schoonmaak",
     'Internal user and UX validation groups',
     'IT, security and compliance',
-    'Executive sponsors',
   ]
 constraints:
   [
@@ -68,7 +80,15 @@ reuse:
     'Multilingual and audio output components',
   ]
 tags:
-  ['conversational assistant', 'RAG', 'on-premises', 'regulated', 'multilingual', 'accessibility']
+  [
+    'conversational assistant',
+    'RAG',
+    'vector search',
+    'speech-to-text',
+    'text-to-speech',
+    'machine translation',
+    'on-premises',
+  ]
 angle: 'builder'
 featured: true
 order: 40
@@ -79,12 +99,15 @@ import DeliveryTimeline from '../../components/DeliveryTimeline.astro';
 ## Context
 
 APG administers pensions for a large share of the Netherlands. Written pension communication is hard
-to follow for members who are not native Dutch speakers.
+to follow for members who are not native Dutch speakers. As APG's own write-up puts it, participants
+"have difficulty with the Dutch language" and "are embarrassed about that".
 
 ## Business problem
 
 Members needed to understand what a letter says, what the difficult terms mean and what they have to
-do, in a language they read comfortably, without a call-centre interaction for every letter.
+do, in a language they read comfortably, without a call-centre interaction for every letter. The
+tool that came out of it lets a participant scan a letter from Pensioen Schoonmaak and "have it
+translated, simplified and read to them".
 
 ## My mandate
 
@@ -103,18 +126,24 @@ for design quality and for delivering to the customer's expectations.
 
 ## Delivery
 
-Twelve iterations from kick-off to the MVP running in the on-premises environment.
+The work ran from 2023 into 2024, twelve iterations from kick-off to the system running in the
+on-premises environment. It was developed by Pensioen Schoonmaak together with APG's GroeiFabriek
+innovation hub, and unveiled on 8 November 2023 during the Pensioen3daagse event with four languages
+— Dutch, Polish, Turkish and English — and the potential to scale to over a hundred.
 
 <DeliveryTimeline items={frontmatter.delivery} />
 
 ## Outcome
 
-Measurable improvements in accessibility and user experience for a diverse member base, and
-recognition by a Dutch ministry as one of the best examples of impactful AI integration.
+It started as a proof of concept and went to production. APG's write-up quotes the effect on
+participants directly: "the app really does remove barriers. They now understand the point being
+made." A Dutch ministry recognised it as one of the best examples of impactful AI integration. It
+has since been replaced by another solution — a normal end to a first-generation system, and the
+reason this case is written in the past tense.
 
 <blockquote class="case-pull">
-  Measurable improvements in accessibility and user experience for a diverse member base, and
-  recognition by a Dutch ministry as one of the best examples of impactful AI integration.
+  It ran in production under Dutch financial regulation, was recognised by a Dutch ministry as a
+  best-practice example of impactful AI integration, and has since been superseded.
 </blockquote>
 
 ## Reuse
@@ -124,5 +153,6 @@ components became reusable platform capabilities.
 
 ## Evidence
 
-Prototype and sprint timelines are project records; the accessibility improvement is the client's
-qualitative validation; the ministry recognition is public.
+Prototype and sprint timelines are project records. The launch date, the four launch languages, the
+participant quotations and the development partners are from APG's own publication, linked in the
+facts panel. That it has since been replaced is the client's status as reported to me.

@@ -246,7 +246,7 @@
     "title": "Systems already in the field",
     "items": [
       {
-        "href": "/en/case-studies/kfw-genai-portfolio/",
+        "href": "/en/case-studies/development-bank-genai-portfolio/",
         "client": "KfW and a KfW-funded humanitarian programme",
         "skim": "Seven document-heavy workflows, one spec, one evaluation template",
         "outcome": {
@@ -270,7 +270,7 @@
         "relationship": "client"
       },
       {
-        "href": "/en/case-studies/bosch-procurement-ai/",
+        "href": "/en/case-studies/automotive-procurement-ai/",
         "client": "Bosch Global Services",
         "skim": "Four tendering and contracting workflows in production",
         "outcome": {
@@ -285,8 +285,8 @@
         "client": "RP Group",
         "skim": "Product matching for emergency-lighting offers",
         "outcome": {
-          "value": "70.7%",
-          "label": "top-1 match accuracy, 0.835 mean reciprocal rank",
+          "value": "78.4%",
+          "label": "top-1 match accuracy on the current corpus",
           "evidence": "benchmark"
         },
         "status": "production",

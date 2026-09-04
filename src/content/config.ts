@@ -45,6 +45,9 @@ export const collections = {
         .enum(['production', 'mvp', 'poc', 'prototype', 'research'])
         .optional(),
       role: z.string(),
+      // A public write-up of the engagement, where one exists. Rendered by
+      // CaseFacts.astro; the client may only be named when this is set.
+      sourceUrl: z.string().url().optional(),
       mandate: z.string(),
       skim: z.string(),
       category: z.enum([

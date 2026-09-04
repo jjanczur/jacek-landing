@@ -26,7 +26,7 @@
         "title": "Customer & commercial",
         "body": "Discovery, executive workshops, technical pre-sales, architecture and security reviews, scoping and business cases. I am in the room when a buyer decides whether the technology can be trusted.",
         "proof": "Four procurement workflows at Bosch Global Services taken from a scoped use case to production, with the alignment cadence raised from bi-weekly to weekly and split into parallel sub-groups so no single dependency stalled delivery.",
-        "href": "/en/case-studies/bosch-procurement-ai/"
+        "href": "/en/case-studies/automotive-procurement-ai/"
       },
       {
         "title": "Architecture & delivery",
@@ -44,7 +44,7 @@
         "title": "Reuse & product feedback",
         "body": "Every deployment leaves something behind — an integration, an evaluation harness, a playbook, a change to the product — so the next one starts further along than the last.",
         "proof": "One specification template and one evaluation template carried a seven-part proof-of-concept portfolio at KfW; the process patterns, the cited-retrieval design and the Testbed evaluation framework were reused across later deployments.",
-        "href": "/en/case-studies/kfw-genai-portfolio/"
+        "href": "/en/case-studies/development-bank-genai-portfolio/"
       }
     ]
   },
@@ -160,7 +160,7 @@
       },
       {
         "title": "RP-Matcher decisions",
-        "body": "For an emergency-lighting manufacturer I engineered the features, benchmarked five model families with hyperparameter search, and chose the tuned random forest at 70.7% top-1 accuracy and 0.835 mean reciprocal rank — then wrote down what more labelled pairs would buy, instead of reaching for a deep model the dataset could not support."
+        "body": "For an emergency-lighting manufacturer I engineered the features, benchmarked five model families with hyperparameter search, and chose the tuned random forest, which reaches 78.4% top-1 accuracy on the current corpus — then wrote down what more labelled pairs would buy, instead of reaching for a deep model the dataset could not support."
       },
       {
         "title": "Code and tooling in the open",
