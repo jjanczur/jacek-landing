@@ -67,7 +67,7 @@ test.describe('builder', () => {
   }) => {
     await page.goto('/en/builder/');
     await expect(page.locator('.case-row')).toHaveCount(4);
-    const hrefs = await page.$$eval('a.case-row[href]', els =>
+    const hrefs = await page.$$eval('a.case-row__link[href]', els =>
       els.map(e => e.getAttribute('href') || ''),
     );
     expect(hrefs).toHaveLength(3);
