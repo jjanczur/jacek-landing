@@ -10,11 +10,22 @@ export interface Props {
   via?: string;
   tags: string[];
   related: { href: string; title: string }[];
+  chapters: { slug: string; text: string }[];
   cta: { href: string; label: string };
 }
 
-const { client, sector, period, status, role, via, tags, related, cta } =
-  Astro.props;
+const {
+  client,
+  sector,
+  period,
+  status,
+  role,
+  via,
+  tags,
+  related,
+  chapters,
+  cta,
+} = Astro.props;
 
 const STATUS_LABEL: Record<string, string> = {
   production: 'Production',
@@ -59,9 +70,26 @@ const facts: { term: string; value: string }[] = [
   }
 
   {
+    chapters.length > 0 && (
+      <nav class="case-facts__index" aria-label="Sections">
+        <h3 class="case-facts__heading">On this page</h3>
+        <ol>
+          {chapters.map(c => (
+            <li>
+              <a href={`#${c.slug}`} data-index-link={c.slug}>
+                {c.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )
+  }
+
+  {
     related.length > 0 && (
       <div class="case-facts__related">
-        <h2 class="case-facts__heading">Related case studies</h2>
+        <h3 class="case-facts__heading">Related case studies</h3>
         <ul>
           {related.map(item => (
             <li>
@@ -83,6 +111,29 @@ const facts: { term: string; value: string }[] = [
   </div>
 </aside>
 
+<script>
+  const links =
+    document.querySelectorAll<HTMLAnchorElement>('[data-index-link]');
+  if (links.length && 'IntersectionObserver' in window) {
+    const byId = new Map<string, HTMLAnchorElement>();
+    links.forEach(a => byId.set(a.dataset.indexLink!, a));
+    const io = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          links.forEach(a => a.removeAttribute('aria-current'));
+          byId.get(entry.target.id)?.setAttribute('aria-current', 'true');
+        }
+      },
+      { rootMargin: '-88px 0px -70% 0px' },
+    );
+    byId.forEach((_, id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+</script>
+
 <style>
   .case-facts {
     padding: var(--space-5);
@@ -90,6 +141,17 @@ const facts: { term: string; value: string }[] = [
     border-radius: var(--radius-l);
     background: var(--surface-1);
     align-self: start;
+  }
+
+  /* RE-7: this component is placed first in the DOM by the case-detail page
+     so a tablet reader meets the facts before the essay, but the rail
+     returns to the right column at ≥1000px, where there is a column for it.
+     Scoped styles don't cross component boundaries, so the reordering has
+     to live here rather than in the page that decides the DOM order. */
+  @media (min-width: 1000px) {
+    .case-facts {
+      order: 2;
+    }
   }
 
   .case-facts__list {
@@ -148,6 +210,25 @@ const facts: { term: string; value: string }[] = [
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--primary);
+  }
+
+  .case-facts__index ol {
+    list-style: none;
+    margin: 0 0 var(--space-5);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+  }
+
+  .case-facts__index a {
+    color: oklch(from var(--text) l c h / 0.75);
+  }
+
+  .case-facts__index a[aria-current='true'] {
+    color: var(--primary);
+    font-weight: 600;
   }
 
   .case-facts__related {

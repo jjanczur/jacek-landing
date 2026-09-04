@@ -29,13 +29,18 @@ outcomes:
       value: '1.4M',
       label: 'accounts in three months, 700% over forecast, as key contributor',
       evidence: 'measured',
+      countTo: 1.4,
+      suffix: 'M',
+      decimals: 1,
     }
   - {
       value: '300%+',
       label: 'increase in customer acquisition after the single sign-on internationalisation',
       evidence: 'measured',
+      countTo: 300,
+      suffix: '%+',
     }
-  - { value: '6', label: 'countries enabled for login', evidence: 'measured' }
+  - { value: '6', label: 'countries enabled for login', evidence: 'measured', countTo: 6 }
   - {
       value: 'Thousands/sec',
       label: 'customer events processed in real time in the banking programme',
@@ -86,20 +91,6 @@ sign-on systems that made the six-country login rollout possible, alongside cros
 architecture work and on-call. In the bank programme I worked on one of its projects, customer
 behavioural analysis with machine learning and real-time processing, as the person responsible for
 data orchestration and the pipelines.
-
-## Stakeholders
-
-Product managers and UX designers on the account and login flows; platform teams during the move
-from on-premises infrastructure to AWS; marketing and analytics owners in the bank; and the
-compliance and data-protection stakeholders whose questions the lineage work answered.
-
-## Constraints
-
-Consumer traffic at up to 18 million monthly active users, with six markets going live inside three
-months. In the bank, thousands of customer actions per second — card payments online and offline,
-portal logins, transaction patterns, interaction behaviour — had to be processed while the customer
-was still there. Both systems ran 24/7 with on-call duty. The banking work carried data-protection
-and lineage obligations across an international group.
 
 ## Decisions
 

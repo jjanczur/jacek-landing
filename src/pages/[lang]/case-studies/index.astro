@@ -65,6 +65,7 @@ const groupedCards = t.groups
         eyebrow={t.skim.eyebrow}
         title={t.skim.title}
         id="skim-heading"
+        variant="display"
       />
       <FilterChips chips={t.filters} />
       <ol class="case-rows">
@@ -119,23 +120,21 @@ const groupedCards = t.groups
     ))
   }
 
-  <section class="section case-note">
+  <section class="section section--tight case-note">
     <div class="container">
       <p class="case-note__text reveal">{t.evidenceNote}</p>
     </div>
   </section>
 
   <CtaBand
-    title="Two ways to work with me"
+    title="Which of these looks like your problem?"
+    sub="If one of them does, the fastest route is to send me the constraints you cannot move. If you are hiring instead, the leadership page has the same evidence arranged for that decision."
     primary={{
-      href: `/${lang}/contact/#hiring`,
-      label: 'Discuss a leadership role',
-    }}
-    secondary={{
       href: `/${lang}/contact/#project`,
       label: 'Send a project brief',
     }}
-    note="Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+    secondary={{ href: `/${lang}/leadership/`, label: 'What I have led' }}
+    note="Remote-first, on-site when it matters; NDA on request"
   />
 </BaseLayout>
 

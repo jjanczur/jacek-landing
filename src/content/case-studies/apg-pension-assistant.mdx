@@ -29,17 +29,25 @@ outcomes:
       value: '1 day',
       label: 'to a working prototype from platform components',
       evidence: 'measured',
+      countTo: 1,
+      suffix: ' day',
     }
   - {
       value: '12 sprints',
       label: "to an MVP in the client's on-premises environment",
       evidence: 'measured',
+      countTo: 12,
+      suffix: ' sprints',
     }
   - {
       value: 'Recognised',
       label: 'by a Dutch ministry as a best-practice example of impactful AI integration',
       evidence: 'qualitative',
     }
+delivery:
+  - { at: 'Day 1', label: 'Working prototype', note: 'from platform components' }
+  - { at: '12 sprints', label: 'On-premises MVP', note: 'integration, validation, environment' }
+  - { at: 'Handover', label: 'Run by the client', note: 'under Dutch financial regulation' }
 stakeholders:
   [
     'Member communication owners',
@@ -66,6 +74,8 @@ featured: true
 order: 40
 ---
 
+import DeliveryTimeline from '../../components/DeliveryTimeline.astro';
+
 ## Context
 
 APG administers pensions for a large share of the Netherlands. Written pension communication is hard
@@ -81,16 +91,6 @@ do, in a language they read comfortably, without a call-centre interaction for e
 I designed the solution architecture and the AI processes, wrote the prompts, and was accountable
 for design quality and for delivering to the customer's expectations.
 
-## Stakeholders
-
-Member-communication owners, internal user groups and a UX validation group providing continuous
-feedback, IT, security and compliance, and the executive sponsors.
-
-## Constraints
-
-Deployment in the client's on-premises cloud under Dutch financial regulation; members with varied
-language and digital skills; accuracy requirements on financial content.
-
 ## Decisions
 
 - Assemble the first prototype in one day from standard platform components, then dedicate the
@@ -105,10 +105,17 @@ language and digital skills; accuracy requirements on financial content.
 
 Twelve iterations from kick-off to the MVP running in the on-premises environment.
 
+<DeliveryTimeline items={frontmatter.delivery} />
+
 ## Outcome
 
 Measurable improvements in accessibility and user experience for a diverse member base, and
 recognition by a Dutch ministry as one of the best examples of impactful AI integration.
+
+<blockquote class="case-pull">
+  Measurable improvements in accessibility and user experience for a diverse member base, and
+  recognition by a Dutch ministry as one of the best examples of impactful AI integration.
+</blockquote>
 
 ## Reuse
 

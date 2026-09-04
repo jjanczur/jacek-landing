@@ -10,6 +10,10 @@ interface Outcome {
     | 'projected'
     | 'qualitative'
     | 'benchmark';
+  countTo?: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
 }
 
 export interface Props {
@@ -39,9 +43,27 @@ const STATUS_LABEL: Record<string, string> = {
   prototype: 'Prototype',
   research: 'Research',
 };
+
+// CS-7: the evidence class is named once in the outcome heading rather than
+// shouted from every badge — the dominant kind drops its pill.
+const counts = outcomes.reduce<Record<string, number>>((acc, o) => {
+  acc[o.evidence] = (acc[o.evidence] ?? 0) + 1;
+  return acc;
+}, {});
+const dominant = Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0];
+const DOMINANT_SUFFIX: Record<string, string> = {
+  measured: ' — measured',
+  'customer-estimate': ' — customer estimates',
+  projected: ' — projected',
+  qualitative: ' — qualitative',
+  benchmark: ' — technical benchmarks',
+};
+// Built ahead of the template (rather than inline in the JSX) so no
+// whitespace text node sneaks between the tag and the expression.
+const outcomeHeading = `Outcome${DOMINANT_SUFFIX[dominant ?? ''] ?? ''}`;
 ---
 
-<div class="case-summary reveal">
+<div class="case-summary reveal surface-raised">
   <p class="case-summary__meta">
     {RELATIONSHIP_LABEL[relationship] ?? relationship}{via && ` · via ${via}`}
     {
@@ -54,11 +76,11 @@ const STATUS_LABEL: Record<string, string> = {
   </p>
   <div class="case-summary__grid">
     <div class="case-summary__col">
-      <h2 class="case-summary__heading">Mandate</h2>
+      <h3 class="case-summary__heading">Mandate</h3>
       <p class="case-summary__mandate">{mandate}</p>
     </div>
     <div class="case-summary__col">
-      <h2 class="case-summary__heading">Three decisions</h2>
+      <h3 class="case-summary__heading">Key decisions</h3>
       <ol class="case-summary__decisions">
         {
           keyDecisions.map(decision => (
@@ -68,7 +90,7 @@ const STATUS_LABEL: Record<string, string> = {
       </ol>
     </div>
     <div class="case-summary__col case-summary__col--outcomes">
-      <h2 class="case-summary__heading">Outcome</h2>
+      <h3 class="case-summary__heading">{outcomeHeading}</h3>
       <div class="case-summary__outcomes">
         {
           outcomes.map(outcome => (
@@ -76,6 +98,11 @@ const STATUS_LABEL: Record<string, string> = {
               value={outcome.value}
               label={outcome.label}
               evidence={outcome.evidence}
+              countTo={outcome.countTo}
+              prefix={outcome.prefix}
+              suffix={outcome.suffix}
+              decimals={outcome.decimals}
+              showEvidence={outcome.evidence !== dominant}
             />
           ))
         }
@@ -86,11 +113,7 @@ const STATUS_LABEL: Record<string, string> = {
 
 <style>
   .case-summary {
-    padding: clamp(20px, 3.5vw, 32px);
     margin-bottom: var(--space-8);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-l);
-    background: var(--surface-1);
   }
 
   .case-summary__meta {

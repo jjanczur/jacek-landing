@@ -28,17 +28,29 @@ outcomes:
       value: '60%',
       label: 'less time to prepare an offer, as reported by the customer',
       evidence: 'customer-estimate',
+      countTo: 60,
+      suffix: '%',
     }
   - {
       value: '70.7%',
       label: 'top-1 accuracy, tuned random forest, best of five model families',
       evidence: 'benchmark',
+      countTo: 70.7,
+      suffix: '%',
+      decimals: 1,
     }
-  - { value: '0.835', label: 'mean reciprocal rank; AUC-ROC 0.923', evidence: 'benchmark' }
+  - {
+      value: '0.835',
+      label: 'mean reciprocal rank; AUC-ROC 0.923',
+      evidence: 'benchmark',
+      countTo: 0.835,
+      decimals: 3,
+    }
   - {
       value: '369',
       label: 'positive matches built from 96 document pairs, up from 55',
       evidence: 'measured',
+      countTo: 369,
     }
 stakeholders:
   [
@@ -91,18 +103,6 @@ inquiry and offer documents the company already had.
 I led the project and did the model work: building the dataset from the document pairs, engineering
 the features, benchmarking model families against each other, and deciding what was good enough to
 put in front of users.
-
-## Stakeholders
-
-Sales and offer preparation as the users, the domain experts whose selection knowledge the system
-had to encode, the product-data owners, and client management sponsoring the work.
-
-## Constraints
-
-The usable corpus was 96 inquiry and offer document pairs — small for a learned ranker. The
-documents were written for people, with German product terminology, mounting conventions and
-implicit assumptions. And the target was not a score on a slide, but an offer a salesperson would
-send.
 
 ## Decisions
 
