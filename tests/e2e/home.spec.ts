@@ -200,6 +200,24 @@ test.describe('home', () => {
         els.map(el => Math.round(el.getBoundingClientRect().top)),
       );
     expect(new Set(labelTops).size, 'labels share one baseline').toBe(1);
+
+    // Regression guard: a value and its own label must read as one unit.
+    // The subgrid bug this replaced let implicit row tracks balloon to the
+    // tallest content anywhere in the strip, opening ~100px of dead space
+    // between a value and its label — well past any reasonable gap.
+    const gaps = await page.locator('.stat-strip .stat').evaluateAll(els =>
+      els.map(el => {
+        const value = el.querySelector('.stat__value')!;
+        const label = el.querySelector('.stat__label')!;
+        return (
+          label.getBoundingClientRect().top -
+          value.getBoundingClientRect().bottom
+        );
+      }),
+    );
+    for (const gap of gaps) {
+      expect(gap, 'value-to-label gap stays tight').toBeLessThan(40);
+    }
   });
 
   test('stat values and the footnote fact are in the static HTML', async ({

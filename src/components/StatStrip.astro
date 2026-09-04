@@ -12,7 +12,7 @@ export interface Stat {
 export interface Props {
   stats: Stat[];
   heading?: string;
-  columns?: 3 | 4 | 5;
+  columns?: 3 | 4 | 5 | 6;
   footnote?: string;
   rhythm?: 'tight' | 'default' | 'loose';
   tint?: boolean;
@@ -48,7 +48,10 @@ const rhythmClass =
         />
       )
     }
-    <dl class={`stat-strip stat-strip--${columns}`} data-stats>
+    <dl
+      class={`stat-strip stat-strip--${columns}${heading ? ' stat-strip--headed' : ''}`}
+      data-stats
+    >
       {
         stats.map((s, i) => (
           <div class="stat" style={`--n:${i}`}>
@@ -75,45 +78,54 @@ const rhythmClass =
 </section>
 
 <style>
-  /* RE-3(b): the grid owns two rows and each .stat inherits them via subgrid,
-     so every label sits on one baseline no matter how its value wraps. */
+  /* RE-3(c): subgrid asked the parent for two row tracks while N stats
+     across C columns need 2 x ceil(N/C) of them; the leftover implicit
+     tracks sized themselves from the tallest content in the whole strip,
+     which is what produced the ~100px dead zone between a value and its
+     own label. A flex row sidesteps the track math entirely: each .stat is
+     a plain block, so the gap between its value and its label is just that
+     value's own margin (--space-2), never anyone else's row height.
+     `align-items: flex-start` still pins every value in a row to the same
+     top edge, which is what "shared baseline" actually bought us here,
+     since all values share one font-size/line-height and don't wrap
+     (RE-3a). `justify-content: center` means a row that doesn't divide
+     evenly (five stats in a two- or three-column row) centers its leftover
+     item(s) instead of leaving them stranded on the left. */
   .stat-strip {
+    --stat-cols: 2;
     margin: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
     gap: var(--space-6) var(--space-5);
+  }
+  .stat-strip--headed {
+    margin-top: var(--space-6);
   }
   .stat {
     min-width: 0;
     text-align: left;
-    display: grid;
-    grid-row: span 2;
-    grid-template-rows: subgrid;
-    align-content: start;
-  }
-  @supports not (grid-template-rows: subgrid) {
-    .stat {
-      display: block;
-    }
-    .stat__value {
-      min-height: 1lh;
-    }
+    flex: 0 0
+      calc((100% - (var(--stat-cols) - 1) * var(--space-5)) / var(--stat-cols));
   }
   @media (min-width: 700px) {
     .stat-strip {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      --stat-cols: 3;
     }
   }
   @media (min-width: 1100px) {
     .stat-strip--3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      --stat-cols: 3;
     }
     .stat-strip--4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      --stat-cols: 4;
     }
     .stat-strip--5 {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      --stat-cols: 5;
+    }
+    .stat-strip--6 {
+      --stat-cols: 6;
     }
   }
 
@@ -129,7 +141,11 @@ const rhythmClass =
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
     margin: 0 0 var(--space-2);
-    align-self: end;
+  }
+  /* Numeric values stay on one line (the counter animation depends on a
+     stable box); a text value like "ISO 27001 + SOC 2" is free to wrap. */
+  .stat__value[data-text] {
+    white-space: normal;
   }
   .stat__label {
     margin: 0;

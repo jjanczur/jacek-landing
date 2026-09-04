@@ -37,6 +37,31 @@ test.describe('turnaround', () => {
     }
   });
 
+  test('stat strip keeps each value tight to its own label (RE-3)', async ({
+    page,
+  }) => {
+    // Regression guard: the subgrid this replaced let implicit row tracks
+    // balloon to the tallest content anywhere in the strip, opening ~100px
+    // of dead space between a value and its label — well past any
+    // reasonable gap. Covers both the wrapping ("~3 months") and non-
+    // wrapping ("ISO 27001 + SOC 2") values on this five-stat page.
+    await page.goto('/en/turnaround/');
+    const gaps = await page.locator('.stat-strip .stat').evaluateAll(els =>
+      els.map(el => {
+        const value = el.querySelector('.stat__value')!;
+        const label = el.querySelector('.stat__label')!;
+        return (
+          label.getBoundingClientRect().top -
+          value.getBoundingClientRect().bottom
+        );
+      }),
+    );
+    expect(gaps).toHaveLength(5);
+    for (const gap of gaps) {
+      expect(gap, 'value-to-label gap stays tight').toBeLessThan(40);
+    }
+  });
+
   test('the 90-day roadmap still has four milestones', async ({ page }) => {
     await page.goto('/en/turnaround/');
     await expect(page.locator('[data-roadmap]')).toHaveCount(1);
