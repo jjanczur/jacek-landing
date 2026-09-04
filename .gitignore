@@ -70,6 +70,7 @@ Desktop.ini
 # File formats (large files)
 /docs/Profile.pdf
 /docs/AI_jacek_janczura.pdf
+/docs/Jacek_Janczura_CV_Conversational_AI.pdf
 
 # Snyk Security Extension - AI Rules (auto-generated)
 .github/instructions/snyk_rules.instructions.md
@@ -81,3 +82,15 @@ Desktop.ini
 # Private working docs: canonical copies live in the private cv-magician repo.
 /docs/knowledge-base.md
 /docs/superpowers/
+
+# Parallel task worktrees
+/.worktrees/
+
+# Company-named logo source files. Never committed: the site serves only the
+# UUID-named WebP copies under public/media/ (see the logo-hygiene rule).
+/src/assets/images/logos/
+
+# Agent working directory (plans, ledgers, review packages, screenshots).
+# Tracked here rather than in an untracked nested .gitignore, which fresh
+# git worktrees never receive.
+/.superpowers/

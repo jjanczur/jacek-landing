@@ -1,0 +1,162 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import FilterChips from '../../../components/FilterChips.astro';
+import CaseRow from '../../../components/CaseRow.astro';
+import CaseCard from '../../../components/CaseCard.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import { getSupportedLangs, getTranslations } from '../../../utils/i18n';
+import type { Lang } from '../../../utils/i18n';
+
+export async function getStaticPaths() {
+  return getSupportedLangs().map(lang => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+interface CaseStudiesTranslations {
+  meta: { title: string; description: string };
+  hero: { eyebrow: string; title: string; sub: string };
+  skim: { eyebrow: string; title: string };
+  filters: { key: string; label: string }[];
+  groups: { key: string; title: string }[];
+  evidenceNote: string;
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = await getTranslations<CaseStudiesTranslations>('case-studies', lang);
+
+const cases = (await getCollection('case-studies')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const groupedCards = t.groups
+  .map(group => ({
+    group,
+    entries: cases.filter(
+      c => c.data.category === group.key && c.data.hasDetail,
+    ),
+  }))
+  .filter(g => g.entries.length > 0);
+---
+
+<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
+  <Hero
+    eyebrow={t.hero.eyebrow}
+    title={t.hero.title}
+    sub={t.hero.sub}
+    align="center"
+    primary={{
+      href: `/${lang}/contact/#hiring`,
+      label: 'Discuss a leadership role',
+    }}
+  />
+
+  <section class="section case-skim" aria-labelledby="skim-heading">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.skim.eyebrow}
+        title={t.skim.title}
+        id="skim-heading"
+        variant="display"
+      />
+      <FilterChips chips={t.filters} />
+      <ol class="case-rows">
+        {
+          cases.map((entry, i) => (
+            <CaseRow
+              index={i}
+              href={
+                entry.data.hasDetail
+                  ? `/${lang}/case-studies/${entry.slug}/`
+                  : undefined
+              }
+              client={entry.data.client}
+              skim={entry.data.skim}
+              outcome={entry.data.outcomes[0]}
+              status={entry.data.status}
+              relationship={entry.data.relationship}
+              category={entry.data.category}
+            />
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  {
+    groupedCards.map(({ group, entries }) => (
+      <section
+        class="section case-group"
+        aria-labelledby={`group-${group.key}`}
+      >
+        <div class="container">
+          <SectionHeader title={group.title} id={`group-${group.key}`} />
+          <ul class="case-cards">
+            {entries.map(entry => (
+              <CaseCard
+                href={`/${lang}/case-studies/${entry.slug}/`}
+                title={entry.data.title}
+                client={entry.data.client}
+                summary={entry.data.summary}
+                outcome={entry.data.outcomes[0]}
+                status={entry.data.status}
+                relationship={entry.data.relationship}
+                sector={entry.data.sector}
+                period={entry.data.period}
+                category={entry.data.category}
+              />
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section section--tight case-note">
+    <div class="container">
+      <p class="case-note__text reveal">{t.evidenceNote}</p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Which of these looks like your problem?"
+    sub="If one of them does, the fastest route is to send me the constraints you cannot move. If you are hiring instead, the leadership page has the same evidence arranged for that decision."
+    primary={{
+      href: `/${lang}/contact/#project`,
+      label: 'Send a project brief',
+    }}
+    secondary={{ href: `/${lang}/leadership/`, label: 'What I have led' }}
+    note="Remote-first, on-site when it matters; NDA on request"
+  />
+</BaseLayout>
+
+<style>
+  .case-skim {
+    padding-top: 0;
+  }
+
+  .case-group {
+    padding-top: 0;
+  }
+
+  .case-note {
+    padding-top: 0;
+    padding-bottom: var(--space-6);
+  }
+
+  .case-note__text {
+    max-width: var(--w-prose);
+    margin: 0 auto;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.65);
+  }
+</style>

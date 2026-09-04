@@ -1,6 +1,7 @@
 export const EN_PAGES = [
   '/en/',
-  '/en/projects/',
+  '/en/case-studies/',
+  '/en/leadership/',
   '/en/about/',
   '/en/turnaround/',
   '/en/builder/',
@@ -11,6 +12,20 @@ export const EN_PAGES = [
   '/en/publications/',
   '/en/privacy/',
   '/en/imprint/',
+  '/en/case-studies/jaden-data-company-building/',
+  '/en/case-studies/development-bank-genai-portfolio/',
+  '/en/case-studies/automotive-procurement-ai/',
+  '/en/case-studies/engineering-enablement/',
+  '/en/case-studies/apg-pension-assistant/',
+  '/en/case-studies/entaingine-platform/',
+  '/en/case-studies/product-matching-ml/',
+  '/en/case-studies/flowhive-vc/',
+  '/en/case-studies/taufolio/',
+  '/en/case-studies/idealo-and-ing-scale/',
+  '/en/case-studies/regulated-distributed-systems/',
+  '/en/case-studies/stellantis-rag-evaluation/',
+  '/en/case-studies/legal-ai-startup-cto-advisory/',
+  '/en/case-studies/software-ag-migration-and-enablement/',
 ];
 
 export const ALL_PAGES = [
@@ -19,8 +34,10 @@ export const ALL_PAGES = [
   '/pl/turnaround/',
   '/pl/builder/',
   '/pl/about/',
+  '/pl/leadership/',
   '/de/',
   '/de/turnaround/',
   '/de/builder/',
   '/de/about/',
+  '/de/leadership/',
 ];

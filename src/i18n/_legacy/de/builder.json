@@ -1,0 +1,52 @@
+{
+  "metaTitle": "Jacek Janczura — AI Systems Architect & Fractional CTO",
+  "metaDescription": "Das Multi-tenant-RAG-System, das du gerade bauen willst, habe ich schon in Produktion gebracht. Event-driven auf AWS, über 1.000 gleichzeitige Verbindungen, Tausende Requests pro Sekunde, 99,9% Uptime, für über 50 regulierte Organisationen.",
+  "eyebrow": "AI Systems Architect · Fractional CTO",
+  "heroTitle": "Das AI-System, das du bauen willst,<br class=\"br-desktop\" /> läuft bei mir schon.",
+  "heroSub": "Multi-tenant RAG auf event-driven AWS — über 1.000 gleichzeitige Verbindungen, Tausende Requests pro Sekunde, 99,9% Uptime, für über 50 regulierte Organisationen. Ich entwerfe die Architektur, baue die Pipelines und Evals, verdrahte die Audit-Trails und führe die Engineers, die das Ganze am Ende besitzen. <strong>Kein weiteres Proof-of-Concept.</strong>",
+  "ctaPrimary": "Geh mit mir durch die Architektur",
+  "ctaGhost": "Schick mir deine Pipeline — ich sag dir, wo sie bricht",
+  "availability": "Fractional CTO & Consulting-Partner · offen für die richtige feste CTO- oder Head-of-AI-Rolle",
+  "diagramTitle": "Referenzsystem",
+  "diagramHealth": "99,9% Uptime",
+  "throughputLabel": "Durchsatz, illustrativ",
+  "svgAriaLabel": "Architekturdiagramm: Client zu API Gateway zu Lambda und Fargate zu RAG Service zu Vector- und Graph-Datenbanken sowie den LLM-Providern OpenAI, Bedrock, Azure und Mistral.",
+  "proofKicker": "Systeme ausgeliefert für",
+  "logoAlts": [
+    "Industrietechnologiekonzern",
+    "Globale Getränkemarke",
+    "Förderbank",
+    "Globaler Pharmakonzern",
+    "Europäische Privatkundenbank",
+    "Europäischer Pensionsfonds",
+    "Nationale Zentralbank"
+  ],
+  "proofLegal": "Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Die Logos kennzeichnen Organisationen, für die Jacek Systeme umgesetzt hat — als Mitgründer und CTO von Jaden Data (Kundenprojekte) oder zuvor als Berater (ING über SAS Institute). Eine Partnerschaft, Förderung oder Empfehlung wird nicht impliziert.",
+  "stats": [
+    { "value": "1,000+", "label": "gleichzeitige Verbindungen" },
+    { "value": "thousands", "label": "Requests / Sekunde" },
+    { "value": "99.9%", "label": "Uptime" },
+    { "value": "50+", "label": "regulierte Organisationen" }
+  ],
+  "details": [
+    {
+      "num": "01",
+      "heading": "Ich entwerfe die Architektur.",
+      "body": "Event-driven auf AWS, gebaut, um echte Last auszuhalten: über 1.000 gleichzeitige Verbindungen und Tausende Requests pro Sekunde bei 99,9% Uptime. Das Diagramm auf dieser Seite ist die Form eines echten Produktionssystems — Request rein, Retrieval und Reasoning über Vector- und Graph-Stores, Modell-Calls verteilt über OpenAI, Bedrock, Azure und Mistral."
+    },
+    {
+      "num": "02",
+      "heading": "Ich baue die Pipelines und Evals.",
+      "body": "RAG, das Vertrauen verdient: Chunking und Retrieval, die du verteidigen kannst, Evals, die Regressionen abfangen, bevor deine Nutzer sie merken, und Audit-Trails, von Tag eins an verdrahtet. Ich habe meine Firma in rund 3 Monaten durch ISO 27001 und SOC 2 gebracht — denn in regulierten Märkten ist Compliance Teil der Architektur, kein nachträglicher Gedanke."
+    },
+    {
+      "num": "03",
+      "heading": "Ich führe die Engineers, die das System besitzen.",
+      "body": "Ich habe eine Firma von 0 auf über 1 Mio. € Umsatz und ein Team von 0 auf 10 aufgebaut. Bei idealo war ich maßgeblich am Login-Rollout in sechs Ländern beteiligt, der in drei Monaten 1,4 Mio. neue Accounts brachte — +700% gegenüber Forecast. Ich übergebe Systeme an Teams, die weiter ausliefern, wenn ich längst weiter bin."
+    }
+  ],
+  "ctaTitle": "Schick mir deine Pipeline. Ich sag dir, wo sie bricht.",
+  "ctaSub": "Ein kurzer, konkreter Blick auf dein RAG- oder event-driven Setup — Retrieval, Evals, Skalierung und die Compliance-Lücken, auf die du in einem regulierten Markt triffst. Keine Slides, kein Proof-of-Concept-Theater.",
+  "ctaActionPrimary": "Schick mir deine Pipeline",
+  "ctaActionGhost": "Nochmal durch die Architektur"
+}

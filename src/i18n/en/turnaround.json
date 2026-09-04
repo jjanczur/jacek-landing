@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "Interim CTO · Technology Turnaround — Jacek Janczura",
+    "description": "Interim CTO and AI lead for companies mid-turnaround: off the monolith, the compliance gaps auditors flag closed, ISO 27001 and SOC 2 in about three months — without freezing the roadmap. Then a clean handover to a team that runs it."
+  },
+  "hero": {
+    "eyebrow": "Interim CTO · Technology turnaround",
+    "title": "Modernise the stack — and pass the audit — <em>without freezing the roadmap.</em>",
+    "sub": "I step into companies mid-turnaround and take legacy debt off the critical path: off the monolith, the compliance gaps auditors flag closed, and AI added only where it moves a number. I took my own company from pentest findings to <strong>ISO 27001</strong> and <strong>SOC 2 Type 2</strong> certification in about three months, without pausing delivery. Then I hand you a team that runs it without me.",
+    "primary": {
+      "href": "#plan",
+      "label": "Map your first 90 days"
+    },
+    "ghost": {
+      "href": "https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1",
+      "label": "Book a 30-min fit call",
+      "external": true
+    },
+    "availability": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  },
+  "wall": {
+    "heading": "Organisations I have delivered for",
+    "groups": [
+      {
+        "title": "As Co-founder & CTO of Jaden Data, and earlier as an employee or consultant",
+        "items": [
+          {
+            "src": "/media/0a1b52260b574b1eb6896d0a54b55b11.webp",
+            "w": 744,
+            "h": 133,
+            "alt": "National central bank",
+            "caption": "Central bank"
+          },
+          {
+            "src": "/media/26a6930244564dbfbcf739144d3ee697.webp",
+            "w": 548,
+            "h": 186,
+            "alt": "European pension fund",
+            "caption": "Pension fund"
+          },
+          {
+            "src": "/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp",
+            "w": 622,
+            "h": 186,
+            "alt": "Global pharmaceutical group",
+            "caption": "Pharma"
+          },
+          {
+            "src": "/media/28105d45d9344ea18b2923eed7f69bb3.webp",
+            "w": 744,
+            "h": 166,
+            "alt": "Industrial technology group",
+            "caption": "Industrial technology"
+          },
+          {
+            "src": "/media/08e6a6fe611f43c2a0f29358faf97629.webp",
+            "w": 744,
+            "h": 176,
+            "alt": "Global beverage brand",
+            "caption": "Venture investing"
+          },
+          {
+            "src": "/media/83c4ed8c667b41939165458511d46e3f.webp",
+            "w": 550,
+            "h": 186,
+            "alt": "European retail bank",
+            "caption": "Retail banking"
+          },
+          {
+            "src": "/media/8b8ae90132304dc3be81b75e313e6285.webp",
+            "w": 611,
+            "h": 186,
+            "alt": "E-commerce price comparison platform",
+            "caption": "E-commerce"
+          }
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      {
+        "value": "€1M+",
+        "countTo": 1,
+        "prefix": "€",
+        "suffix": "M+",
+        "decimals": 0,
+        "label": "company revenue, built from zero without external capital"
+      },
+      {
+        "value": "ISO 27001 + SOC 2",
+        "label": "both certifications delivered while the team kept shipping"
+      },
+      {
+        "value": "~3 months",
+        "countTo": 3,
+        "prefix": "~",
+        "suffix": " months",
+        "decimals": 0,
+        "label": "from pentest findings to certification"
+      },
+      {
+        "value": "50+",
+        "countTo": 50,
+        "suffix": "+",
+        "decimals": 0,
+        "label": "organisations on one multi-tenant platform"
+      },
+      {
+        "value": "99.9%",
+        "countTo": 99.9,
+        "suffix": "%",
+        "decimals": 1,
+        "label": "uptime at thousands of requests per second"
+      }
+    ]
+  },
+  "plan": {
+    "eyebrow": "The first 90 days",
+    "title": "A plan that assembles itself.",
+    "lede": "Not a discovery phase that never ends. A dated path from \"we're not sure what's on fire\" to \"the team owns it\" — the same path I ran at my own company, from pentest findings to ISO 27001 and SOC 2 Type 2, in about three months.",
+    "milestones": [
+      {
+        "tag": "Week 1",
+        "title": "Risk & architecture read",
+        "body": "I map the monolith, the dependency graph and the gaps auditors will flag. You get the real picture — not the org chart."
+      },
+      {
+        "tag": "Weeks 2–4",
+        "title": "Standards & CI/CD quality gates live",
+        "body": "Automated quality gates, security baselines and a working path off the critical dependencies. The team keeps shipping."
+      },
+      {
+        "tag": "Weeks 5–8",
+        "title": "Measurable wins + a board-ready roadmap",
+        "body": "Legacy debt moves off the critical path, one metric moves, and the board gets a roadmap they can fund."
+      },
+      {
+        "tag": "Handover",
+        "title": "A team that runs it without me",
+        "body": "Ownership stays inside the company. A clear end, not an open-ended arrangement."
+      }
+    ],
+    "work": "<strong>How I work:</strong> in your Slack and your code review, making the calls — then a clean handover. A clear end, not an open-ended arrangement."
+  },
+  "proof": {
+    "eyebrow": "Proof",
+    "title": "Three turnarounds I have actually run",
+    "items": [
+      {
+        "title": "An entangled monolith became micro-frontends",
+        "body": "I led the architectural redesign of a large, entangled frontend monolith into micro-frontends, so teams got deployment independence and the codebase stopped being one shared blast radius.",
+        "href": "/en/case-studies/jaden-data-company-building/#delivery",
+        "label": "How the team and platform were built"
+      },
+      {
+        "title": "Pentest findings to ISO 27001 and SOC 2 in about three months",
+        "body": "Certification ran as an engineering programme: controls, evidence collection and process changes alongside delivery, so the roadmap never stopped for the auditors.",
+        "href": "/en/case-studies/jaden-data-company-building/#decisions",
+        "label": "The decisions behind it"
+      },
+      {
+        "title": "Platform reliability for 50+ organisations",
+        "body": "Event-driven services on AWS with serverless autoscaling and cost tuning: more than 1,000 concurrent connections and thousands of requests a second at 99.9% uptime, on one multi-tenant platform.",
+        "href": "/en/case-studies/jaden-data-company-building/#outcome",
+        "label": "The outcome in full"
+      }
+    ]
+  },
+  "get": {
+    "eyebrow": "What you get",
+    "title": "Four ways this starts",
+    "columns": ["Engagement", "What you get", "How it ends"],
+    "rows": [
+      {
+        "engagement": "Architecture and risk review",
+        "what": "A read of the architecture, the dependency graph and the gaps an auditor will flag, with findings prioritised into now, next and later.",
+        "end": "Written findings and a plan your team can execute without me."
+      },
+      {
+        "engagement": "Interim CTO / AI lead",
+        "what": "Architecture decisions, delivery standards, roadmap and technical budget owned day to day, plus the stakeholder and board conversations.",
+        "end": "A named successor, written decisions and a team that keeps shipping."
+      },
+      {
+        "engagement": "Production recovery",
+        "what": "Quality gates, security baselines and a working path off the critical dependencies, while the team keeps delivering.",
+        "end": "Legacy debt off the critical path and one metric that moved."
+      },
+      {
+        "engagement": "AI production readiness",
+        "what": "Evaluation harnesses, human-review thresholds, observability and the security posture an AI workflow needs before it faces real users.",
+        "end": "A workflow your team can change without breaking it."
+      }
+    ]
+  },
+  "band": {
+    "title": "Bring me in while it still matters.",
+    "sub": "Thirty minutes to see whether it is a fit — I will tell you straight whether an interim CTO is what you need, or whether you would be better off hiring.",
+    "primary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "secondary": {
+      "href": "https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1",
+      "label": "Book a 30-min fit call",
+      "external": true
+    },
+    "note": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  }
+}

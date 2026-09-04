@@ -1,0 +1,119 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  lede?: string;
+  id?: string;
+  align?: 'left' | 'center';
+  /**
+   * label   — eyebrow + title + lede (today's behaviour, the default)
+   * display — no eyebrow, --font-size-h1 title, prose-width lede
+   * inline  — title and lede on one baseline, hairline rule filling the row
+   *
+   * Alternate them down a page so nine consecutive sections do not open the
+   * same way (AI-3). Keep the eyebrow only where it labels a MODE
+   * ("What I own", "How I work"); drop it where the title already says it.
+   */
+  variant?: 'label' | 'display' | 'inline';
+}
+const {
+  eyebrow,
+  title,
+  lede,
+  id,
+  align = 'left',
+  variant = 'label',
+} = Astro.props;
+const showEyebrow = variant === 'label' && Boolean(eyebrow);
+---
+
+<header
+  class={`section-header section-header--${align} section-header--${variant} reveal`}
+>
+  {showEyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2 id={id} class="section-header__title">{title}</h2>
+  {lede && <p class="section-header__lede">{lede}</p>}
+  {
+    variant === 'inline' && (
+      <span class="section-header__rule" aria-hidden="true" />
+    )
+  }
+</header>
+
+<style>
+  /* CO-6: --primary labels a section. --accent labels evidence. */
+  .eyebrow {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-header__title {
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .section-header__lede {
+    max-width: var(--w-prose);
+    font-size: var(--font-size-lg);
+    color: oklch(from var(--text) l c h / 0.78);
+  }
+
+  .section-header--center {
+    text-align: center;
+  }
+  .section-header--center .section-header__lede {
+    margin-inline: auto;
+  }
+
+  /* display — the page opens a chapter */
+  .section-header--display .section-header__title {
+    font-size: var(--font-size-h1);
+    line-height: 1.06;
+    margin-bottom: var(--space-5);
+  }
+  .section-header--display .section-header__lede {
+    font-size: var(--font-size-lg);
+  }
+
+  /* inline — title, hairline, lede on one row */
+  .section-header--inline {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: var(--space-3) var(--space-5);
+  }
+  .section-header--inline .section-header__title {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+  .section-header--inline .section-header__rule {
+    grid-column: 2;
+    grid-row: 1;
+    height: 1px;
+    min-width: var(--space-6);
+    background: var(--line);
+    align-self: center;
+  }
+  .section-header--inline .section-header__lede {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+    font-size: var(--font-size-base);
+  }
+  @media (min-width: 900px) {
+    .section-header--inline {
+      grid-template-columns: auto minmax(var(--space-8), 1fr) minmax(0, 36ch);
+    }
+    .section-header--inline .section-header__lede {
+      grid-column: 3;
+      grid-row: 1;
+      align-self: baseline;
+    }
+  }
+</style>

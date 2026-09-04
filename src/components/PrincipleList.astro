@@ -1,0 +1,157 @@
+---
+export interface PrincipleItem {
+  title: string;
+  body: string;
+  example?: string;
+  link?: { href: string; label: string; external?: boolean };
+}
+export interface Props {
+  items: PrincipleItem[];
+  exampleLabel?: string;
+  columns?: 2 | 3;
+  /**
+   * card   — the boxed, bordered tile (today's rendering, the default)
+   * ruled  — a single-column hairline-divided row; the odd item count that
+   *          would orphan a grid cell becomes invisible (RE-8)
+   * accent — a single-column callout with a left accent rule
+   * panel  — a tinted panel, no border, in a 2/3-col grid like the card role
+   *
+   * Alternate the role down a page so consecutive lists never look like the
+   * same component reused (AI-1).
+   */
+  surface?: 'card' | 'ruled' | 'accent' | 'panel';
+}
+const {
+  items,
+  exampleLabel = 'In practice',
+  columns = 2,
+  surface = 'card',
+} = Astro.props;
+const SURFACE_CLASS: Record<string, string> = {
+  card: '',
+  ruled: ' surface-ruled',
+  accent: ' surface-accent',
+  panel: ' surface-panel',
+};
+---
+
+<ol
+  class={`principles principles--${columns} principles--${surface}`}
+  data-surface={surface}
+>
+  {
+    items.map((item, i) => (
+      <li
+        class={`principle reveal${SURFACE_CLASS[surface]}`}
+        style={`--reveal-delay: calc(${Math.min(i, 3)} * var(--stagger))`}
+      >
+        <h3 class="principle__title">{item.title}</h3>
+        <p class="principle__body">{item.body}</p>
+        {item.example && (
+          <p class="principle__example">
+            <span class="principle__label">{exampleLabel}</span>
+            {item.example}
+          </p>
+        )}
+        {item.link && (
+          <a
+            class="principle__link"
+            href={item.link.href}
+            target={item.link.external ? '_blank' : undefined}
+            rel={item.link.external ? 'noopener noreferrer' : undefined}
+          >
+            {item.link.label}
+          </a>
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .principles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+  /* Only the card and panel roles are a grid; ruled and accent are
+     single-column lists where an odd item count is invisible (RE-8). */
+  .principles--ruled,
+  .principles--accent {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0;
+  }
+  .principles--accent {
+    gap: var(--space-6);
+  }
+  .principles--ruled .principle__body,
+  .principles--accent .principle__body {
+    max-width: var(--w-prose);
+  }
+  @media (min-width: 800px) {
+    .principles--2:not(.principles--ruled):not(.principles--accent) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .principles--3:not(.principles--ruled):not(.principles--accent) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  /* The card role keeps its own box; every other role takes its background,
+     border, radius and padding from the global surface utility. */
+  .principles--card .principle {
+    padding: var(--space-5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+  }
+  /* A ruled row reads better with the title and body side by side. */
+  @media (min-width: 900px) {
+    .principles--ruled .principle {
+      display: grid;
+      grid-template-columns: 18rem 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+    .principles--ruled .principle__title {
+      margin: 0;
+    }
+  }
+  .principle__title {
+    margin: 0 0 var(--space-3);
+    font-size: var(--font-size-lg);
+    letter-spacing: var(--tracking-display);
+  }
+  .principle__body {
+    margin: 0;
+    color: oklch(from var(--text) l c h / 0.82);
+  }
+  .principle__example {
+    margin: var(--space-4) 0 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--line);
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.74);
+  }
+  /* CO-6: --accent labels evidence, and this label is evidence. */
+  .principle__label {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .principle__link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+</style>

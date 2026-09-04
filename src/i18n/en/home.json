@@ -1,0 +1,267 @@
+{
+  "meta": {
+    "title": "Jacek Janczura — Founder-CTO · Enterprise AI",
+    "description": "Founder-CTO working on enterprise AI. Co-founded Jaden Data and led it as CTO to €1M+ annual revenue and a ten-person engineering team; fractional CTO and consulting partner since 2024. Production AI for APG, Bosch Global Services, a German development bank and Boehringer Ingelheim; distributed systems for Norges Bank and ING."
+  },
+  "hero": {
+    "eyebrow": "Founder-CTO · Enterprise AI · Technology leadership",
+    "title": "I turn complex enterprise workflows into production AI, <em>and build the teams that scale it.</em>",
+    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG, Bosch Global Services, a German development bank and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "ghost": {
+      "href": "/en/case-studies/",
+      "label": "See the case studies"
+    },
+    "availability": "Open to CTO and Head of AI roles · selected fractional and delivery engagements"
+  },
+  "pillars": {
+    "eyebrow": "What I own",
+    "title": "From customer boardroom to production code",
+    "items": [
+      {
+        "title": "Customer & commercial",
+        "body": "Discovery, executive workshops, technical pre-sales, architecture and security review. I am in the room when a buyer decides whether the technology can be trusted.",
+        "proof": "Four procurement workflows taken from scoped use case to production at a global automotive group; a seven-PoC portfolio at a German development bank run on one spec and one evaluation template.",
+        "href": "/en/case-studies/automotive-procurement-ai/"
+      },
+      {
+        "title": "Architecture & delivery",
+        "body": "AI systems that run in somebody else's production environment — integrated, evaluated, observable, and still standing after the pilot.",
+        "proof": "entAIngine on event-driven AWS: 50+ organisations, 99.9% uptime. A pension-letter assistant prototyped in a day and taken to an on-premises production MVP in twelve sprints.",
+        "href": "/en/case-studies/apg-pension-assistant/"
+      },
+      {
+        "title": "Team & operating model",
+        "body": "Hiring and mentoring engineers, setting the delivery standards, owning the roadmap and the technical budget, and handing the work over cleanly.",
+        "proof": "Engineering grown from 0 to 10 inside a bootstrapped €1M+ company; code-review and CI/CD gates; ISO 27001 and SOC 2 in about three months.",
+        "href": "/en/case-studies/jaden-data-company-building/"
+      },
+      {
+        "title": "Reuse & product feedback",
+        "body": "What I build for one client becomes the thing that makes the next one cheaper: shared integrations, evaluation harnesses, deployment playbooks and a route back into the product roadmap.",
+        "proof": "Reusable platform components turned a one-day prototype into a product; Testbed and Prompt Wizard came out of repeated customer needs; development-bank templates were reused across seven proofs of concept.",
+        "href": "/en/case-studies/development-bank-genai-portfolio/"
+      }
+    ]
+  },
+  "method": {
+    "eyebrow": "How I work",
+    "title": "The same loop, every deployment",
+    "centre": ["every deployment", "costs less than the last"],
+    "steps": [
+      {
+        "node": ["Find the workflow"],
+        "title": "Find the workflow that matters",
+        "body": "Map the process, baseline, bottleneck, risk and economics before choosing a model."
+      },
+      {
+        "node": ["Win technical trust"],
+        "title": "Win technical trust",
+        "body": "Lead the demos, architecture reviews, integration design and security conversations with engineering and executive stakeholders."
+      },
+      {
+        "node": ["Ship the loop"],
+        "title": "Ship the production loop",
+        "body": "Build the smallest end-to-end system that proves business value under real data, systems and governance constraints."
+      },
+      {
+        "node": ["Make the next", "cheaper"],
+        "title": "Make the next deployment cheaper",
+        "body": "Turn repeated patterns into shared components, standards, evaluation harnesses and product roadmap input."
+      }
+    ]
+  },
+  "featured": {
+    "title": "Four deployments that show the whole loop"
+  },
+  "doors": [
+    {
+      "eyebrow": "Hiring",
+      "title": "Hiring a technology leader?",
+      "body": "Company building, customer-facing technical leadership and production AI, with the evidence laid out.",
+      "href": "/en/leadership/",
+      "label": "What I have led"
+    },
+    {
+      "eyebrow": "Building",
+      "title": "Building or fixing a system?",
+      "body": "Interim leadership, production AI for document-heavy workflows and assistants, and engineering enablement.",
+      "href": "/en/consulting/",
+      "label": "How we can work together"
+    }
+  ],
+  "band": {
+    "title": "Hiring, or building?",
+    "sub": "If you are filling a CTO or Head of AI role, tell me about the team and the first six months. If you have a system that has to survive real data and an audit, send me the problem.",
+    "primary": {
+      "href": "/en/contact/#hiring",
+      "label": "Discuss a leadership role"
+    },
+    "secondary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "note": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  },
+  "wall": {
+    "heading": "Organisations that audit every line",
+    "lede": "These are organisations with procurement, security review and an audit trail between an idea and production. The work below went through all of it.",
+    "groups": [
+      {
+        "title": "Clients, delivered as Co-founder & CTO of Jaden Data",
+        "items": [
+          {
+            "src": "/media/0a1b52260b574b1eb6896d0a54b55b11.webp",
+            "w": 744,
+            "h": 133,
+            "alt": "National central bank",
+            "caption": "Central bank · CBDC bridge",
+            "scale": 1.25
+          },
+          {
+            "src": "/media/26a6930244564dbfbcf739144d3ee697.webp",
+            "w": 548,
+            "h": 186,
+            "alt": "European pension fund",
+            "caption": "Pension fund · member-facing assistant",
+            "scale": 0.95
+          },
+          {
+            "src": "/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp",
+            "w": 622,
+            "h": 186,
+            "alt": "Global pharmaceutical group",
+            "caption": "Pharma · assistant & research platform",
+            "scale": 1.2
+          },
+          {
+            "src": "/media/28105d45d9344ea18b2923eed7f69bb3.webp",
+            "w": 744,
+            "h": 166,
+            "alt": "Industrial technology group",
+            "caption": "Industrial group · enterprise AI",
+            "scale": 0.9
+          },
+          {
+            "src": "/media/08e6a6fe611f43c2a0f29358faf97629.webp",
+            "w": 744,
+            "h": 176,
+            "alt": "Global beverage brand",
+            "caption": "Venture screening · Flowhive VC",
+            "scale": 0.85
+          },
+          {
+            "src": "/media/61e1429a033149af88693c678b929b4b.webp",
+            "w": 744,
+            "h": 158,
+            "alt": "Automotive manufacturer",
+            "caption": "Automotive · RAG evaluation",
+            "scale": 1.2
+          },
+          {
+            "src": "/media/70c915d7d1a94b99bbd3557ff3682463.webp",
+            "w": 395,
+            "h": 186,
+            "alt": "Technical certification body",
+            "caption": "Certification · regulation analysis",
+            "scale": 1.15
+          }
+        ]
+      },
+      {
+        "title": "Earlier: employers and their clients",
+        "items": [
+          {
+            "src": "/media/8b8ae90132304dc3be81b75e313e6285.webp",
+            "w": 611,
+            "h": 186,
+            "alt": "E-commerce price comparison platform",
+            "caption": "E-commerce · login at scale",
+            "scale": 1.0
+          },
+          {
+            "src": "/media/83c4ed8c667b41939165458511d46e3f.webp",
+            "w": 550,
+            "h": 186,
+            "alt": "European retail bank",
+            "caption": "Banking · real-time decisioning",
+            "scale": 1.1
+          },
+          {
+            "src": "/media/9612982e0292426fa1adad3310809278.webp",
+            "w": 453,
+            "h": 186,
+            "alt": "Analytics software vendor",
+            "caption": "Analytics · banking projects",
+            "scale": 1.0
+          },
+          {
+            "src": "/media/cf06994ba7154815a933e5d11a4a1335.webp",
+            "w": 156,
+            "h": 186,
+            "alt": "European telecommunications operator",
+            "caption": "Telecom · innovation lab",
+            "scale": 0.8
+          }
+        ]
+      },
+      {
+        "title": "Independent engagements, under my own name",
+        "items": [
+          {
+            "src": "/media/e700511af12d421fb03e9b9823af8f72.webp",
+            "w": 754,
+            "h": 169,
+            "alt": "Enterprise software vendor",
+            "caption": "Enterprise software · SaaS-to-on-premises migration",
+            "scale": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "heading": "Proof in numbers",
+    "items": [
+      {
+        "value": "€1M+",
+        "countTo": 1,
+        "prefix": "€",
+        "suffix": "M+",
+        "decimals": 0,
+        "label": "annual revenue, bootstrapped from zero"
+      },
+      {
+        "value": "10",
+        "countTo": 10,
+        "decimals": 0,
+        "label": "engineers hired and led from the first hire, across three workstreams"
+      },
+      {
+        "value": "50+",
+        "countTo": 50,
+        "suffix": "+",
+        "decimals": 0,
+        "label": "organisations on one multi-tenant platform"
+      },
+      {
+        "value": "99.9%",
+        "countTo": 99.9,
+        "suffix": "%",
+        "decimals": 1,
+        "label": "uptime at thousands of requests per second"
+      },
+      {
+        "value": "3 months",
+        "countTo": 3,
+        "suffix": " months",
+        "decimals": 0,
+        "label": "to ISO 27001 and SOC 2 Type 2, both delivered without freezing delivery"
+      }
+    ],
+    "footnote": "Earlier, as a key contributor to a six-country login rollout: 1.4M accounts in three months."
+  }
+}

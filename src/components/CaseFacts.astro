@@ -1,0 +1,284 @@
+---
+import Button from './Button.astro';
+
+export interface Props {
+  client: string;
+  sector: string;
+  period: string;
+  status?: string;
+  role: string;
+  via?: string;
+  sourceUrl?: string;
+  sourceLabel?: string;
+  tags: string[];
+  related: { href: string; title: string }[];
+  chapters: { slug: string; text: string }[];
+  cta: { href: string; label: string };
+}
+
+const {
+  client,
+  sector,
+  period,
+  status,
+  role,
+  via,
+  sourceUrl,
+  sourceLabel,
+  tags,
+  related,
+  chapters,
+  cta,
+} = Astro.props;
+
+const STATUS_LABEL: Record<string, string> = {
+  production: 'Production',
+  mvp: 'MVP',
+  poc: 'Proof of concept',
+  prototype: 'Prototype',
+  research: 'Research',
+};
+
+const facts: { term: string; value: string; href?: string }[] = [
+  { term: 'Client', value: client },
+  { term: 'Sector', value: sector },
+  { term: 'Period', value: period },
+  ...(status
+    ? [{ term: 'Status', value: STATUS_LABEL[status] ?? status }]
+    : []),
+  { term: 'Role', value: role },
+  ...(via ? [{ term: 'Delivered via', value: via }] : []),
+  // Usually a public write-up of the engagement. Where the link is the
+  // client's own site instead, the case says so via `sourceLabel` rather
+  // than implying an account of the project exists.
+  ...(sourceUrl
+    ? [
+        {
+          term: sourceLabel ?? 'Public write-up',
+          value: new URL(sourceUrl).hostname.replace(/^www\./, ''),
+          href: sourceUrl,
+        },
+      ]
+    : []),
+];
+---
+
+<aside class="case-facts reveal" style="--reveal-delay: 120ms">
+  <dl class="case-facts__list">
+    {
+      facts.map(fact => (
+        <div class="case-facts__row">
+          <dt>{fact.term}</dt>
+          <dd>
+            {fact.href ? (
+              <a href={fact.href} rel="noopener noreferrer" target="_blank">
+                {fact.value}
+              </a>
+            ) : (
+              fact.value
+            )}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  {
+    tags.length > 0 && (
+      <ul class="case-facts__tags">
+        {tags.map(tag => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    chapters.length > 0 && (
+      <nav class="case-facts__index" aria-label="Sections">
+        <h3 class="case-facts__heading">On this page</h3>
+        <ol>
+          {chapters.map(c => (
+            <li>
+              <a href={`#${c.slug}`} data-index-link={c.slug}>
+                {c.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )
+  }
+
+  {
+    related.length > 0 && (
+      <div class="case-facts__related">
+        <h3 class="case-facts__heading">Related case studies</h3>
+        <ul>
+          {related.map(item => (
+            <li>
+              <a href={item.href}>{item.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  <div class="case-facts__cta">
+    <Button
+      href={cta.href}
+      variant="primary"
+      size="md"
+      class="case-facts__cta-btn">{cta.label}</Button
+    >
+  </div>
+</aside>
+
+<script>
+  const links =
+    document.querySelectorAll<HTMLAnchorElement>('[data-index-link]');
+  if (links.length && 'IntersectionObserver' in window) {
+    const byId = new Map<string, HTMLAnchorElement>();
+    links.forEach(a => byId.set(a.dataset.indexLink!, a));
+    const io = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          links.forEach(a => a.removeAttribute('aria-current'));
+          byId.get(entry.target.id)?.setAttribute('aria-current', 'true');
+        }
+      },
+      { rootMargin: '-88px 0px -70% 0px' },
+    );
+    byId.forEach((_, id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+</script>
+
+<style>
+  .case-facts {
+    padding: var(--space-5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+    align-self: start;
+  }
+
+  /* RE-7: this component is placed first in the DOM by the case-detail page
+     so a tablet reader meets the facts before the essay, but the rail
+     returns to the right column at ≥1000px, where there is a column for it.
+     Scoped styles don't cross component boundaries, so the reordering has
+     to live here rather than in the page that decides the DOM order. */
+  @media (min-width: 1000px) {
+    .case-facts {
+      order: 2;
+    }
+  }
+
+  .case-facts__list {
+    margin: 0 0 var(--space-5) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .case-facts__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--line);
+  }
+  .case-facts__row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .case-facts__row dt {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(from var(--text) l c h / 0.6);
+  }
+
+  .case-facts__row dd {
+    margin: 0;
+    color: var(--text);
+  }
+
+  .case-facts__tags {
+    list-style: none;
+    margin: 0 0 var(--space-5) 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .case-facts__tags li {
+    padding: 0.3em 0.75em;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: var(--font-size-xs);
+    color: oklch(from var(--text) l c h / 0.75);
+  }
+
+  .case-facts__heading {
+    margin: 0 0 var(--space-3) 0;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .case-facts__index ol {
+    list-style: none;
+    margin: 0 0 var(--space-5);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+  }
+
+  .case-facts__index a {
+    color: oklch(from var(--text) l c h / 0.75);
+  }
+
+  .case-facts__index a[aria-current='true'] {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .case-facts__related {
+    margin-bottom: var(--space-5);
+  }
+
+  .case-facts__related ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Button.astro renders its own scope, so the class passed in from here
+     needs :global() to actually match the rendered anchor. */
+  .case-facts__cta :global(.case-facts__cta-btn) {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (min-width: 1000px) {
+    .case-facts {
+      position: sticky;
+      top: 88px;
+    }
+  }
+</style>

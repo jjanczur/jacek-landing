@@ -1,0 +1,154 @@
+---
+title:
+  'RP-Matcher, a machine-learning product matcher that takes the expert out of the critical path'
+client: 'RP Group (emergency lighting)'
+relationship: 'client'
+via: 'Jaden Data'
+sector: 'Manufacturing'
+period: '2025 – 2026'
+status: 'production'
+role: 'ML engineer and project lead'
+mandate:
+  'Owned the model work end to end: the data pipeline that turned document pairs into training data,
+  the feature engineering, the benchmark across five model families, and the decision on what to
+  ship.'
+skim: 'Matching customer inquiries to catalogue products'
+category: 'ai-products'
+summary:
+  'RP-Matcher, a supervised machine-learning system that matches incoming customer inquiries to the
+  right products in the RP Group emergency-lighting catalogue, so offer preparation no longer waits
+  for a domain expert to pick the parts by hand. It runs in production.'
+keyDecisions:
+  - 'Engineered features with domain rules rather than a deep model: a bi-encoder was tested and
+    paused, because it needs five to ten times more data than the corpus provides.'
+  - 'Built the training set with LLM-assisted extraction, growing the corpus from 96 document pairs
+    to over 300 documents.'
+  - 'Formulated the task as ranking with same-document negatives at a 5.4:1 ratio, so the model
+    learns the choice the expert actually makes.'
+outcomes:
+  - {
+      value: '60%',
+      label: 'less time to prepare an offer, as reported by the customer',
+      evidence: 'customer-estimate',
+      countTo: 60,
+      suffix: '%',
+    }
+  - {
+      value: '78.4%',
+      label: 'top-1 accuracy on the current corpus, best of five model families',
+      evidence: 'benchmark',
+      countTo: 78.4,
+      suffix: '%',
+      decimals: 1,
+    }
+  - {
+      value: '300+',
+      label: 'documents in the training corpus, up from 96 document pairs',
+      evidence: 'measured',
+      countTo: 300,
+      suffix: '+',
+    }
+  - {
+      value: '~575',
+      label: 'positive matches, extrapolated from the earlier 369 out of 96 pairs',
+      evidence: 'projected',
+    }
+stakeholders:
+  [
+    'Sales and offer preparation',
+    'Domain experts who previously selected the products',
+    'Product data owners',
+    'Client management',
+  ]
+constraints:
+  [
+    'A small corpus: 96 document pairs at the first benchmark, over 300 documents now',
+    'Product selection knowledge held by a few people',
+    'Inquiry and offer documents written for humans, not for parsing',
+    'German product terminology and mounting conventions',
+  ]
+reuse:
+  [
+    'LLM-assisted extraction pipeline for document pairs',
+    'Feature families: difference, ratio and compatibility features',
+    'Ranking benchmark harness across model families',
+  ]
+tags:
+  [
+    'machine learning',
+    'scikit-learn',
+    'random forest',
+    'ensemble methods',
+    'feature engineering',
+    'LLM extraction',
+  ]
+angle: 'builder'
+featured: false
+order: 60
+---
+
+## Context
+
+RP Group sells emergency lighting. Every customer inquiry has to be answered with an offer that
+names specific products from the catalogue, and choosing them correctly is domain knowledge held by
+a small number of people.
+
+## Business problem
+
+Offer preparation waited on those people. That caps how many inquiries the company can answer and
+ties growth to hiring more experts. The question was whether the choice could be learned from the
+inquiry and offer documents the company already had.
+
+## My mandate
+
+I led the project and did the model work: building the dataset from the document pairs, engineering
+the features, benchmarking model families against each other, and deciding what was good enough to
+put in front of users.
+
+## Decisions
+
+- Turn documents into data with LLM-assisted extraction through the platform API. The first round
+  grew the positive set from 55 to 369 matches out of 96 document pairs; the corpus has since passed
+  300 documents.
+- Treat it as ranking, not classification: negatives drawn from the same document at a 5.4:1 ratio,
+  so the model learns to choose between plausible candidates rather than to reject obvious
+  mismatches.
+- Engineer more than 25 features — difference, ratio and compatibility features, product-type
+  detection, mounting-method recognition, numerical normalisation — with domain rules encoded
+  symbolically instead of hoping a model would infer them.
+- Benchmark five families with hyperparameter search in scikit-learn: tuned random forest, extra
+  trees, gradient boosting, and voting and stacking ensembles.
+- Test the deep-learning route and stop: a bi-encoder needs five to ten times more data than exists,
+  so it stays paused rather than half-built. On the observed curve, roughly five points of accuracy
+  come per fifty extra document pairs, which makes data collection the next investment, not
+  architecture.
+- Clean the data properly: infinity values and extreme outliers clipped at the 99.9th percentile,
+  and identical feature columns across every dataset variant, so benchmark numbers compare like with
+  like.
+
+## Delivery
+
+RP-Matcher runs in production for offer preparation and returns ranked product candidates for an
+inquiry. The first benchmark round, on 96 document pairs, recorded 70.7% top-1 accuracy, a mean
+reciprocal rank of 0.835 and AUC-ROC 0.923 — the right product usually first or second on the list.
+With the corpus grown past 300 documents, top-1 accuracy reached 78.4%, inside the 75–80% band the
+scaling curve predicted for a corpus this size.
+
+## Outcome
+
+The customer reports a 60% reduction in offer preparation time, and product selection no longer
+depends on the availability of a specific expert, so the company can take on more inquiries without
+hiring proportionally.
+
+## Reuse
+
+The extraction pipeline, the feature families and the benchmark harness transfer to any catalogue
+where inquiries and offers exist as paired documents.
+
+## Evidence
+
+Accuracy, mean reciprocal rank and AUC-ROC are benchmark figures on held-out data from the project
+records. The corpus size is a project record. The count of roughly 575 positive matches is an
+extrapolation, not a count: it applies the measured ratio of 3.84 positives per document pair to
+about 150 pairs, reading "over 300 documents" as documents rather than pairs. The 60% figure is the
+customer's own estimate of the effect, not an independent measurement.

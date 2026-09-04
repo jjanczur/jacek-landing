@@ -1,0 +1,357 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+export interface LogoItem {
+  src: string;
+  w: number;
+  h: number;
+  alt: string;
+  caption: string;
+  scale?: number;
+}
+export interface LogoGroup {
+  title: string;
+  legal?: string;
+  items: LogoItem[];
+}
+export interface Props {
+  heading?: string;
+  lede?: string;
+  groups: LogoGroup[];
+  spotlight?: boolean;
+  rhythm?: 'tight' | 'default' | 'loose';
+  tint?: boolean;
+}
+const {
+  heading,
+  lede,
+  groups,
+  spotlight = false,
+  rhythm = 'default',
+  tint = false,
+} = Astro.props;
+const rhythmClass =
+  rhythm === 'tight'
+    ? ' section--tight'
+    : rhythm === 'loose'
+      ? ' section--loose'
+      : '';
+
+// Continuous index across all groups so the staggered entrance reads as one
+// sweep through the whole wall, not a restart per group.
+let running = 0;
+---
+
+<section
+  class={`logo-wall section${rhythmClass}${tint ? ' section--tint' : ''}`}
+  id="wall"
+  aria-labelledby="wall-heading"
+>
+  <div class="container">
+    {
+      heading && (
+        <SectionHeader
+          title={heading}
+          lede={lede}
+          align="center"
+          id="wall-heading"
+          variant="display"
+        />
+      )
+    }
+
+    <div class="logo-wall__frame" data-wall>
+      {spotlight && <div class="logo-wall__spotlight" aria-hidden="true" />}
+
+      {
+        groups.map(group => (
+          <div class="logo-wall__group" data-group>
+            <h3 class="logo-wall__group-title">{group.title}</h3>
+            <ul class="logo-wall__grid" role="list">
+              {group.items.map(item => {
+                const i = running++;
+                return (
+                  <li
+                    class="chip-cell"
+                    data-chip
+                    style={`--i:${i}; --logo-scale:${item.scale ?? 1}`}
+                  >
+                    <span class="chip">
+                      <img
+                        class="chip-logo"
+                        src={item.src}
+                        alt={item.alt}
+                        width={item.w}
+                        height={item.h}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                    <span class="chip-note">{item.caption}</span>
+                  </li>
+                );
+              })}
+            </ul>
+            {group.legal && <p class="logo-wall__legal">{group.legal}</p>}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-wall {
+    /* section already provides block rhythm via .section */
+  }
+
+  /* CO-1: a flat frame so the chip-to-frame relationship is constant top to
+     bottom. The gradient version measured 1.00:1 against its own chips at
+     the bottom edge in dark. */
+  .logo-wall__frame {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+    background: var(--surface-1);
+    /* RE-2: 48px of frame padding was what pushed a 390px viewport below two
+       columns; scale it with the viewport instead. */
+    padding: clamp(var(--space-4), 4vw, var(--space-7));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+  }
+
+  /* The moving spotlight — a soft radial highlight, fixed at the frame's
+     centre; the animation moves the whole layer via transform, not the
+     gradient position, so it stays composited on the GPU (MO-9). */
+  .logo-wall__spotlight {
+    position: absolute;
+    inset: -20% -10%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      34% 40% at 50% 50%,
+      color-mix(in oklab, var(--primary) 22%, transparent) 0%,
+      color-mix(in oklab, var(--accent) 12%, transparent) 40%,
+      transparent 72%
+    );
+    opacity: 0;
+    transition: opacity 0.6s var(--ease-out);
+    animation: wall-sweep 12s linear infinite alternate;
+    animation-play-state: paused;
+    will-change: transform;
+  }
+  @keyframes wall-sweep {
+    from {
+      transform: translate3d(-16%, -6%, 0);
+    }
+    to {
+      transform: translate3d(16%, 6%, 0);
+    }
+  }
+  .logo-wall__frame.is-lit .logo-wall__spotlight {
+    opacity: 1;
+    animation-play-state: running;
+  }
+
+  .logo-wall__group {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  /* Group title: small-caps eyebrow treatment, duplicated from .eyebrow */
+  .logo-wall__group-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+  }
+
+  /* RE-1 / RE-2: fixed column counts. auto-fill produced 6+2 at 1440 and
+     one-per-row at 390 (by 2px). 8 -> 4+4, 4 -> 4, rectangular everywhere. */
+  .logo-wall__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(var(--space-3), 2vw, var(--space-4));
+  }
+  @media (min-width: 560px) {
+    .logo-wall__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 900px) {
+    .logo-wall__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .chip-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+    opacity: 1;
+  }
+
+  /* CO-1: chips are always one step away from the frame, in whichever
+     direction is lighter for the theme. */
+  .chip {
+    width: 100%;
+    aspect-ratio: 5 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    filter: none;
+    transition: border-color 0.25s var(--ease-out);
+    will-change: auto;
+  }
+  :root[data-theme='dark'] .chip {
+    background: var(--surface-2);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .chip {
+      background: var(--surface-2);
+    }
+  }
+
+  /* GR-6: normalise by ink, not by bounding box. A wide mark used to hit the
+     width cap and render ~23px tall next to a square mark at 44px. */
+  .chip-logo {
+    height: calc(44px * var(--logo-scale, 1));
+    width: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+    display: block;
+    /* Logos are dark-on-transparent; grayscale + dim keeps the wall calm */
+    filter: grayscale(1) opacity(0.78);
+    transition: filter 0.25s var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .chip-cell:hover .chip-logo {
+      filter: none;
+    }
+  }
+
+  /* Dark mode: same dark-on-transparent logos need inverting to read */
+  :root[data-theme='dark'] .chip-logo {
+    filter: grayscale(1) invert(1) opacity(0.85);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .chip-logo {
+      filter: grayscale(1) invert(1) opacity(0.85);
+    }
+  }
+
+  /* CO-3: 12px at 0.6 alpha measured 4.29:1 on the one element that carries
+     the relationship claim (D21). */
+  .chip-note {
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.72);
+    text-align: center;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
+  /* Nominative-use notice. Deliberately quiet, but present in the static
+     HTML so it is visible to anyone reviewing the page — including a human
+     triaging an automated trademark flag. */
+  .logo-wall__legal {
+    margin: var(--space-5) auto 0;
+    max-width: 60ch;
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+    color: oklch(from var(--text) l c h / 0.6);
+    text-align: center;
+    text-wrap: pretty;
+  }
+
+  /* Staggered entrance: cells start collapsed, JS adds .is-in per-cell with a
+     per-index delay via --i. Fallback keeps them visible (see reduced-motion
+     below and no-JS default above). */
+  .js-anim .chip-cell {
+    opacity: 0;
+    transform: translateY(16px) scale(0.94);
+    transition:
+      opacity 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out);
+    transition-delay: calc(var(--i) * 55ms);
+  }
+  .js-anim .chip-cell.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js-anim .chip-cell {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .logo-wall__frame.is-lit .logo-wall__spotlight {
+      opacity: 0 !important;
+    }
+    .chip {
+      filter: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Kept lean: this bundled script still lands inline in the built HTML
+  // (Astro inlines small per-page module chunks rather than externalizing
+  // them), so it counts against the page's 10 KB inline-JS budget (MO-1).
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasIO = 'IntersectionObserver' in window;
+
+  document.querySelectorAll<HTMLElement>('[data-wall]').forEach(wall => {
+    if (reduced) return;
+    wall
+      .querySelectorAll('.logo-wall__grid')
+      .forEach(g => g.classList.add('js-anim'));
+    const reveal = () =>
+      wall
+        .querySelectorAll('[data-chip]')
+        .forEach(c => c.classList.add('is-in'));
+    if (hasIO) {
+      new IntersectionObserver(
+        ([entry], obs) => {
+          if (entry.isIntersecting) {
+            reveal();
+            obs.disconnect();
+          }
+        },
+        { threshold: 0.2 },
+      ).observe(wall);
+    } else {
+      reveal();
+    }
+
+    // The sweep is CSS; the observer only toggles play/pause and the fade-in.
+    if (wall.querySelector('.logo-wall__spotlight')) {
+      if (hasIO) {
+        new IntersectionObserver(
+          ([entry]) => wall.classList.toggle('is-lit', entry.isIntersecting),
+          { threshold: 0.12 },
+        ).observe(wall);
+      } else {
+        wall.classList.add('is-lit');
+      }
+    }
+  });
+</script>

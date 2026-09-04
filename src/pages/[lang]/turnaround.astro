@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getSupportedLangs } from '../../utils/i18n';
+import Hero from '../../components/Hero.astro';
+import LogoWall from '../../components/LogoWall.astro';
+import StatStrip from '../../components/StatStrip.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getSupportedLangs, getTranslations } from '../../utils/i18n';
+import type { Lang } from '../../utils/i18n';
 
 export function getStaticPaths() {
   return getSupportedLangs().map(lang => ({
@@ -9,382 +15,33 @@ export function getStaticPaths() {
   }));
 }
 
+interface Props {
+  lang: Lang;
+}
+
 const { lang } = Astro.props;
-
-const copy = {
-  en: {
-    metaTitle: 'Interim CTO · Technology Turnaround — Jacek Janczura',
-    metaDescription:
-      'Interim CTO and AI lead for companies mid-turnaround: migrate off the monolith, close the compliance gaps auditors flag, pass ISO 27001 and SOC 2 in about three months — without freezing the roadmap. Then a clean handoff to a team that runs it.',
-    eyebrow: 'Interim CTO · Technology turnaround',
-    heroTitle:
-      'Modernize the stack — and pass the audit —\n        <span class="hero__title-em">without freezing the roadmap.</span>',
-    heroSub:
-      "I step into companies mid-turnaround and take legacy debt off the\n        critical path: migrate off the monolith, close the compliance gaps\n        auditors flag, and add AI only where it moves a number. I've led\n        companies through pentests to <strong>ISO 27001</strong> and\n        <strong>SOC 2</strong> certification in about three months — while they kept\n        shipping. Then I hand you a team that runs it without me.",
-    ctaPrimary: 'Map your first 90 days',
-    ctaSecondary: 'Book a 30-min fit call',
-    availability:
-      'Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role',
-    proofLabel: "Organisations I've delivered for",
-    // Positionally merged with `logoBase` below — order is load-bearing.
-    logoAlts: [
-      'National central bank',
-      'European pension fund',
-      'Development bank',
-      'Global pharmaceutical group',
-      'Industrial technology group',
-      'Global beverage brand',
-      'European retail bank',
-      'E-commerce price comparison platform',
-    ],
-    proofLegal:
-      'All trademarks are the property of their respective owners. Logos indicate organisations Jacek has delivered work for — as Co-founder & CTO of Jaden Data (client engagements) or earlier as an employee or consultant (idealo; ING via SAS Institute). No partnership, sponsorship or endorsement is implied.',
-    credentials: ['ISO 27001', 'SOC 2', '99.9% uptime', '50+ orgs'],
-    stats: [
-      { label: 'Built from zero', sub: 'company revenue, 0 → €1M+' },
-      { label: 'Certifications delivered', sub: 'ISO 27001 + SOC 2' },
-      { label: 'Turnaround time', sub: 'pentest → certified' },
-      { label: 'Organizations served', sub: 'multi-tenant on AWS' },
-      { label: 'Uptime held', sub: 'thousands of req/s' },
-    ],
-    planEyebrow: 'The first 90 days',
-    planTitle: 'A plan that assembles itself.',
-    planLede:
-      'Not a discovery phase that never ends. A dated path from "we\'re not\n          sure what\'s on fire" to "the team owns it" — the same one I\'ve led\n          companies through, from pentests to ISO 27001 and SOC 2 certification,\n          in about three months.',
-    milestones: [
-      {
-        tag: 'Week 1',
-        title: 'Risk & architecture read',
-        body: 'I map the monolith, the dependency graph, and the gaps auditors will flag. You get the real picture — not the org chart.',
-      },
-      {
-        tag: 'Weeks 2–4',
-        title: 'Standards & CI/CD quality gates live',
-        body: 'Automated quality gates, security baselines, and a working path off the critical dependencies. The team keeps shipping.',
-      },
-      {
-        tag: 'Weeks 5–8',
-        title: 'Measurable wins + a board-ready roadmap',
-        body: 'Legacy debt moves off the critical path, one metric moves, and the board gets a roadmap they can fund.',
-      },
-      {
-        tag: 'Handoff',
-        title: 'A team that runs it without me',
-        body: 'Ownership stays inside the company. A clear end, not a perpetual retainer.',
-      },
-    ],
-    planWork:
-      '<strong>How I work:</strong> In your Slack and your code review, making the\n        calls — then a clean handoff. A clear end, not a perpetual retainer.',
-    closeTitle: 'Bring me in while it still matters.',
-    closeSub:
-      "Thirty minutes to see if it's a fit — I'll tell you straight whether an\n        interim CTO is what you need, or whether you'd be better off hiring.",
-  },
-  pl: {
-    metaTitle: 'Interim CTO · Naprawa techu — Jacek Janczura',
-    metaDescription:
-      'Interim CTO dla firm w trakcie naprawy: zejście z monolitu, domknięcie luk compliance, które wytkną audytorzy, i przejście ISO 27001 oraz SOC 2 w około trzy miesiące — bez zamrażania roadmapy. Na koniec czyste przekazanie zespołowi, który to utrzyma.',
-    eyebrow: 'Interim CTO · Naprawa techu',
-    heroTitle:
-      'Zmodernizuj stack — i przejdź audyt —\n        <span class="hero__title-em">bez zamrażania roadmapy.</span>',
-    heroSub:
-      'Wchodzę do firm w trakcie naprawy i ściągam legacy debt ze ścieżki\n        krytycznej: schodzę z monolitu, domykam luki compliance, które\n        wytkną audytorzy, i dodaję AI tylko tam, gdzie ruszy konkretną liczbę.\n        Przeprowadziłem firmy od pentestów do certyfikacji <strong>ISO 27001</strong>\n        i <strong>SOC 2</strong> w około trzy miesiące — nie przerywając\n        dowożenia. Na koniec zostawiam Ci zespół, który utrzyma to beze mnie.',
-    ctaPrimary: 'Rozpisz swoje pierwsze 90 dni',
-    ctaSecondary: 'Umów 30-min rozmowę',
-    availability:
-      'Fractional CTO i partner konsultingowy · otwarty na właściwą stałą rolę CTO lub Head of AI',
-    proofLabel: 'Organizacje, dla których dowoziłem',
-    // Positionally merged with `logoBase` below — order is load-bearing.
-    logoAlts: [
-      'Narodowy bank centralny',
-      'Europejski fundusz emerytalny',
-      'Bank rozwoju',
-      'Globalny koncern farmaceutyczny',
-      'Koncern technologii przemysłowych',
-      'Globalna marka napojów',
-      'Europejski bank detaliczny',
-      'Platforma porównywania cen e-commerce',
-    ],
-    proofLegal:
-      'Wszystkie znaki towarowe należą do ich właścicieli. Logotypy oznaczają organizacje, dla których Jacek realizował projekty — jako współzałożyciel i CTO Jaden Data (projekty dla klientów) lub wcześniej jako pracownik albo konsultant (idealo; ING przez SAS Institute). Nie oznaczają partnerstwa, sponsoringu ani rekomendacji.',
-    credentials: ['ISO 27001', 'SOC 2', '99.9% uptime', '50+ firm'],
-    stats: [
-      { label: 'Zbudowane od zera', sub: 'przychód firmy, 0 → €1M+' },
-      { label: 'Dostarczone certyfikaty', sub: 'ISO 27001 + SOC 2' },
-      { label: 'Czas naprawy', sub: 'pentest → certyfikat' },
-      { label: 'Obsłużonych firm', sub: 'multi-tenant na AWS' },
-      { label: 'Utrzymany uptime', sub: 'tysiące req/s' },
-    ],
-    planEyebrow: 'Pierwsze 90 dni',
-    planTitle: 'Plan, który układa się sam.',
-    planLede:
-      'Bez fazy discovery, która nie ma końca. Konkretna, datowana droga od\n          „nie wiemy, co się pali" do „zespół ma to pod kontrolą" — dokładnie\n          ta sama, którą przeprowadziłem firmy od pentestów do certyfikacji\n          ISO 27001 i SOC 2, w około trzy miesiące.',
-    milestones: [
-      {
-        tag: 'Tydzień 1',
-        title: 'Prześwietlenie ryzyka i architektury',
-        body: 'Mapuję monolit, graf zależności i luki, które wytkną audytorzy. Dostajesz prawdziwy obraz — nie schemat organizacyjny.',
-      },
-      {
-        tag: 'Tygodnie 2–4',
-        title: 'Standardy i quality gates w CI/CD na produkcji',
-        body: 'Automatyczne quality gates, bazowe standardy bezpieczeństwa i realna droga wyjścia z krytycznych zależności. Zespół dalej dowozi.',
-      },
-      {
-        tag: 'Tygodnie 5–8',
-        title: 'Mierzalne wygrane + roadmapa dla zarządu',
-        body: 'Legacy debt schodzi ze ścieżki krytycznej, jedna metryka rusza, a zarząd dostaje roadmapę, którą może sfinansować.',
-      },
-      {
-        tag: 'Przekazanie',
-        title: 'Zespół, który prowadzi to beze mnie',
-        body: 'Odpowiedzialność zostaje w firmie. Jasny koniec, nie bezterminowy retainer.',
-      },
-    ],
-    planWork:
-      '<strong>Jak pracuję:</strong> Na Twoim Slacku i w Twoim code review, podejmując\n        decyzje — a potem czyste przekazanie. Jasny koniec, nie bezterminowy retainer.',
-    closeTitle: 'Weź mnie na pokład, póki to jeszcze coś zmienia.',
-    closeSub:
-      'Trzydzieści minut, żeby sprawdzić, czy pasujemy — powiem Ci wprost, czy\n        potrzebujesz interim CTO, czy lepiej wyjdziesz na zatrudnieniu kogoś na stałe.',
-  },
-  de: {
-    metaTitle: 'Interim CTO · Tech-Turnaround — Jacek Janczura',
-    metaDescription:
-      'Interim CTO für Unternehmen mitten im Turnaround: weg vom Monolithen, die Compliance-Lücken schließen, die Auditoren aufdecken, ISO 27001 und SOC 2 in rund drei Monaten bestehen — ohne die Roadmap einzufrieren. Danach eine saubere Übergabe an ein Team, das es weiterführt.',
-    eyebrow: 'Interim CTO · Tech-Turnaround',
-    heroTitle:
-      'Stack modernisieren — und das Audit bestehen —\n        <span class="hero__title-em">ohne die Roadmap einzufrieren.</span>',
-    heroSub:
-      'Ich steige in Unternehmen mitten im Turnaround ein und hole Legacy Debt\n        vom kritischen Pfad: weg vom Monolithen, die Compliance-Lücken schließen,\n        die Auditoren aufdecken, und AI nur dort ergänzen, wo sie eine Zahl bewegt.\n        Ich habe Unternehmen von Pentests bis zur <strong>ISO 27001</strong>- und\n        <strong>SOC 2</strong>-Zertifizierung geführt — in rund drei Monaten, während\n        sie weiter ausgeliefert haben. Danach übergebe ich dir ein Team, das es\n        ohne mich weiterführt.',
-    ctaPrimary: 'Deine ersten 90 Tage planen',
-    ctaSecondary: '30-Min-Kennenlerncall buchen',
-    availability:
-      'Fractional CTO & Consulting-Partner · offen für die richtige feste CTO- oder Head-of-AI-Rolle',
-    proofLabel: 'Organisationen, für die ich geliefert habe',
-    // Positionally merged with `logoBase` below — order is load-bearing.
-    logoAlts: [
-      'Nationale Zentralbank',
-      'Europäischer Pensionsfonds',
-      'Förderbank',
-      'Globaler Pharmakonzern',
-      'Industrietechnologiekonzern',
-      'Globale Getränkemarke',
-      'Europäische Privatkundenbank',
-      'E-Commerce-Preisvergleichsplattform',
-    ],
-    proofLegal:
-      'Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Die Logos kennzeichnen Organisationen, für die Jacek Projekte umgesetzt hat — als Mitgründer und CTO von Jaden Data (Kundenprojekte) oder zuvor als Angestellter bzw. Berater (idealo; ING über SAS Institute). Eine Partnerschaft, Förderung oder Empfehlung wird nicht impliziert.',
-    credentials: ['ISO 27001', 'SOC 2', '99,9% uptime', '50+ Orgs'],
-    stats: [
-      { label: 'Von null aufgebaut', sub: 'Firmenumsatz, 0 → €1M+' },
-      { label: 'Zertifizierungen geliefert', sub: 'ISO 27001 + SOC 2' },
-      { label: 'Turnaround-Dauer', sub: 'Pentest → zertifiziert' },
-      { label: 'Organisationen betreut', sub: 'multi-tenant auf AWS' },
-      { label: 'Uptime gehalten', sub: 'tausende req/s' },
-    ],
-    planEyebrow: 'Die ersten 90 Tage',
-    planTitle: 'Ein Plan, der sich von selbst zusammensetzt.',
-    planLede:
-      'Keine Discovery-Phase, die nie endet. Ein datierter Weg von „wir wissen\n          nicht genau, wo es brennt" zu „das Team hat es im Griff" — genau der,\n          auf dem ich Unternehmen von Pentests bis zur ISO-27001- und\n          SOC-2-Zertifizierung geführt habe, in rund drei Monaten.',
-    milestones: [
-      {
-        tag: 'Woche 1',
-        title: 'Risiko- und Architektur-Check',
-        body: 'Ich kartiere den Monolithen, den Dependency-Graph und die Lücken, die Auditoren aufdecken werden. Du bekommst das echte Bild — nicht das Orgchart.',
-      },
-      {
-        tag: 'Woche 2–4',
-        title: 'Standards und CI/CD-Quality-Gates live',
-        body: 'Automatisierte Quality Gates, Security-Baselines und ein gangbarer Weg weg von den kritischen Dependencies. Das Team liefert weiter aus.',
-      },
-      {
-        tag: 'Woche 5–8',
-        title: 'Messbare Erfolge + eine Roadmap fürs Board',
-        body: 'Legacy Debt verlässt den kritischen Pfad, eine Kennzahl bewegt sich, und das Board bekommt eine Roadmap, die es finanzieren kann.',
-      },
-      {
-        tag: 'Übergabe',
-        title: 'Ein Team, das es ohne mich weiterführt',
-        body: 'Die Verantwortung bleibt im Unternehmen. Ein klares Ende, kein Retainer auf Dauer.',
-      },
-    ],
-    planWork:
-      '<strong>Wie ich arbeite:</strong> In deinem Slack und deinem Code-Review, ich\n        treffe die Entscheidungen — dann eine saubere Übergabe. Ein klares Ende, kein Retainer auf Dauer.',
-    closeTitle: 'Hol mich rein, solange es noch etwas ändert.',
-    closeSub:
-      'Dreißig Minuten, um zu sehen, ob es passt — ich sage dir klar, ob ein\n        Interim-CTO das ist, was du brauchst, oder ob du mit einer Festanstellung besser fährst.',
-  },
-};
-
-const t = copy[lang];
-
-const calendlyUrl =
-  'https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1';
-
-const milestones = t.milestones;
-
-// ORDER IS LOAD-BEARING — merged positionally with the translated `logoAlts`.
-// `w`/`h` are the asset's intrinsic size, used only to reserve the aspect ratio
-// and avoid CLS; CSS decides the rendered size.
-const logoBase = [
-  { src: '/media/0a1b52260b574b1eb6896d0a54b55b11.webp', w: 744, h: 133 },
-  { src: '/media/26a6930244564dbfbcf739144d3ee697.webp', w: 548, h: 186 },
-  { src: '/media/1281e65db12c45469e14f9d21293fc0f.webp', w: 529, h: 186 },
-  { src: '/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp', w: 622, h: 186 },
-  { src: '/media/28105d45d9344ea18b2923eed7f69bb3.webp', w: 744, h: 166 },
-  { src: '/media/08e6a6fe611f43c2a0f29358faf97629.webp', w: 744, h: 176 },
-  { src: '/media/83c4ed8c667b41939165458511d46e3f.webp', w: 550, h: 186 },
-  { src: '/media/8b8ae90132304dc3be81b75e313e6285.webp', w: 611, h: 186 },
-];
-const logos = logoBase.map((logo, i) => ({ ...logo, alt: t.logoAlts[i] }));
-
-const credentials = t.credentials;
-
-const stats = [
-  {
-    value: 1,
-    prefix: '€',
-    suffix: 'M+',
-    label: t.stats[0].label,
-    sub: t.stats[0].sub,
-    decimals: 0,
-  },
-  {
-    value: 2,
-    prefix: '',
-    suffix: '',
-    label: t.stats[1].label,
-    sub: t.stats[1].sub,
-    decimals: 0,
-  },
-  {
-    value: 3,
-    prefix: '~',
-    suffix: ' mo',
-    label: t.stats[2].label,
-    sub: t.stats[2].sub,
-    decimals: 0,
-  },
-  {
-    value: 50,
-    prefix: '',
-    suffix: '+',
-    label: t.stats[3].label,
-    sub: t.stats[3].sub,
-    decimals: 0,
-  },
-  {
-    value: 99.9,
-    prefix: '',
-    suffix: '%',
-    label: t.stats[4].label,
-    sub: t.stats[4].sub,
-    decimals: 1,
-  },
-];
+const t = await getTranslations('turnaround', lang);
 ---
 
 <BaseLayout
-  title={t.metaTitle}
-  description={t.metaDescription}
+  title={t.meta.title}
+  description={t.meta.description}
   lang={lang}
   noImageIndex
 >
-  <!-- ================= HERO ================= -->
-  <section class="hero">
-    <div class="aurora" aria-hidden="true">
-      <span class="aurora__blob aurora__blob--a"></span>
-      <span class="aurora__blob aurora__blob--b"></span>
-      <span class="aurora__blob aurora__blob--c"></span>
-      <span class="aurora__grid"></span>
-    </div>
+  <Hero {...t.hero} />
 
-    <div class="container hero__inner">
-      <p class="eyebrow reveal">
-        <span class="eyebrow__dot" aria-hidden="true"></span>
-        {t.eyebrow}
-      </p>
+  <LogoWall heading={t.wall.heading} groups={t.wall.groups} spotlight />
 
-      <h1
-        class="hero__title reveal"
-        style="--reveal-delay: 60ms;"
-        set:html={t.heroTitle}
-      />
+  <StatStrip stats={t.stats.items} columns={5} rhythm="tight" />
 
-      <p
-        class="hero__sub reveal"
-        style="--reveal-delay: 140ms;"
-        set:html={t.heroSub}
-      />
-
-      <div class="hero__cta reveal" style="--reveal-delay: 220ms;">
-        <a class="btn btn--primary" href="#plan">{t.ctaPrimary}</a>
-        <a
-          class="btn btn--ghost"
-          href={calendlyUrl}
-          target="_blank"
-          rel="noopener noreferrer">{t.ctaSecondary}</a
-        >
-      </div>
-
-      <p class="availability reveal" style="--reveal-delay: 300ms;">
-        <span class="availability__pulse" aria-hidden="true"></span>
-        {t.availability}
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= PROOF STRIP ================= -->
-  <section class="proof">
-    <div class="container">
-      <p class="proof__label reveal">{t.proofLabel}</p>
-      <ul class="proof__logos reveal" style="--reveal-delay: 60ms;">
-        {
-          logos.map(logo => (
-            <li class="chip">
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.w}
-                height={logo.h}
-                loading="lazy"
-                decoding="async"
-              />
-            </li>
-          ))
-        }
-      </ul>
-      <ul class="proof__creds reveal" style="--reveal-delay: 120ms;">
-        {credentials.map(c => <li class="cred">{c}</li>)}
-      </ul>
-      <p class="proof__legal">{t.proofLegal}</p>
-    </div>
-  </section>
-
-  <!-- ================= STATS COUNT-UP ================= -->
-  <section class="stats">
-    <div class="container">
-      <ul class="stats__grid">
-        {
-          stats.map((s, i) => (
-            <li class="stat reveal" style={`--reveal-delay: ${i * 60}ms;`}>
-              {/* prettier-ignore */}
-              <span class="stat__value" data-countup data-to={s.value} data-prefix={s.prefix} data-suffix={s.suffix} data-decimals={s.decimals}>{s.prefix}{s.value.toFixed(s.decimals)}{s.suffix}</span>
-              <span class="stat__label">{s.label}</span>
-              <span class="stat__sub">{s.sub}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <!-- ================= SIGNATURE: 90-DAY ROADMAP ================= -->
-  <section class="plan" id="plan">
+  <!-- ================= SIGNATURE: 90-DAY ROADMAP (markup unchanged) ======= -->
+  <section class="plan section--divided" id="plan">
     <div class="container">
       <header class="plan__head reveal">
-        <p class="plan__eyebrow">{t.planEyebrow}</p>
-        <h2 class="plan__title">{t.planTitle}</h2>
-        <p class="plan__lede" set:html={t.planLede} />
+        <p class="plan__eyebrow">{t.plan.eyebrow}</p>
+        <h2 class="plan__title">{t.plan.title}</h2>
+        <p class="plan__lede">{t.plan.lede}</p>
       </header>
 
       <div class="roadmap reveal" style="--reveal-delay: 80ms;" data-roadmap>
@@ -445,7 +102,7 @@ const stats = [
 
         <ol class="roadmap__cards">
           {
-            milestones.map((m, i) => (
+            t.plan.milestones.map((m, i) => (
               <li class="mstone" data-mstone={i}>
                 <span class="mstone__tag">{m.tag}</span>
                 <h3 class="mstone__title">{m.title}</h3>
@@ -458,460 +115,78 @@ const stats = [
 
       <p
         class="plan__work reveal"
-        style="--reveal-delay: 120ms;"
-        set:html={t.planWork}
+        style="--reveal-delay: 120ms"
+        set:html={t.plan.work}
       />
     </div>
   </section>
 
-  <!-- ================= CLOSING CTA ================= -->
-  <section class="close" id="fit">
-    <div class="container close__inner reveal">
-      <h2 class="close__title">{t.closeTitle}</h2>
-      <p class="close__sub">{t.closeSub}</p>
-      <div class="close__cta">
-        <a class="btn btn--primary" href="#plan">{t.ctaPrimary}</a>
-        <a
-          class="btn btn--ghost"
-          href={calendlyUrl}
-          target="_blank"
-          rel="noopener noreferrer">{t.ctaSecondary}</a
-        >
-      </div>
-      <p class="availability availability--foot">
-        <span class="availability__pulse" aria-hidden="true"></span>
-        {t.availability}
-      </p>
+  <section class="section" aria-labelledby="proof">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.proof.eyebrow}
+        title={t.proof.title}
+        id="proof"
+      />
+      <ol class="proof-blocks">
+        {
+          t.proof.items.map((item, i) => (
+            <li
+              class="proof-block reveal"
+              style={`--reveal-delay: ${i * 60}ms`}
+            >
+              <h3 class="proof-block__title">{item.title}</h3>
+              <p class="proof-block__body">{item.body}</p>
+              <a class="proof-block__link" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
     </div>
   </section>
+
+  <section class="section section--divided" aria-labelledby="get">
+    <div class="container">
+      <SectionHeader eyebrow={t.get.eyebrow} title={t.get.title} id="get" />
+      <div class="get-scroll">
+        <table class="get">
+          <thead>
+            <tr>{t.get.columns.map(c => <th scope="col">{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {
+              t.get.rows.map(row => (
+                <tr class="get__row">
+                  <th scope="row">{row.engagement}</th>
+                  <td data-label={t.get.columns[1]}>{row.what}</td>
+                  <td data-label={t.get.columns[2]}>{row.end}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand {...t.band} />
 </BaseLayout>
 
 <style>
-  /* ===================== HERO ===================== */
-  .hero {
-    position: relative;
-    overflow: hidden;
-    padding: var(--space-9) 0 var(--space-8);
-    isolation: isolate;
-  }
-
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 880px;
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin: 0 0 var(--space-4);
-    font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--primary);
-  }
-
-  .eyebrow__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
-  }
-
-  .hero__title {
-    font-size: clamp(2rem, 6.2vw, 3.8rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin: 0 0 var(--space-5);
-    max-width: 20ch;
-  }
-
-  .hero__title-em {
-    display: block;
-    background: linear-gradient(
-      100deg,
-      var(--primary),
-      color-mix(in oklab, var(--accent) 70%, var(--primary))
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .hero__sub {
-    font-size: clamp(1.02rem, 1.8vw, 1.2rem);
-    color: color-mix(in oklab, var(--text) 82%, transparent);
-    max-width: 62ch;
-    margin: 0 0 var(--space-6);
-  }
-
-  .hero__sub strong {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-bottom: var(--space-5);
-  }
-
-  /* ---- Aurora / calm animated gradient behind hero ---- */
-  .aurora {
-    position: absolute;
-    inset: -20% -10% 0;
-    z-index: 0;
-    pointer-events: none;
-    filter: blur(2px);
-  }
-
-  .aurora__blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(70px);
-    opacity: 0.5;
-    will-change: transform;
-  }
-
-  .aurora__blob--a {
-    top: -8%;
-    left: 4%;
-    width: 46vw;
-    height: 46vw;
-    max-width: 620px;
-    max-height: 620px;
-    background: radial-gradient(
-      circle at 30% 30%,
-      color-mix(in oklab, var(--primary) 55%, transparent),
-      transparent 68%
-    );
-    animation: drift-a 22s var(--ease-in-out) infinite alternate;
-  }
-
-  .aurora__blob--b {
-    top: 6%;
-    right: 2%;
-    width: 40vw;
-    height: 40vw;
-    max-width: 540px;
-    max-height: 540px;
-    background: radial-gradient(
-      circle at 60% 40%,
-      color-mix(in oklab, var(--accent) 60%, transparent),
-      transparent 66%
-    );
-    animation: drift-b 26s var(--ease-in-out) infinite alternate;
-  }
-
-  .aurora__blob--c {
-    bottom: -18%;
-    left: 32%;
-    width: 38vw;
-    height: 38vw;
-    max-width: 500px;
-    max-height: 500px;
-    background: radial-gradient(
-      circle at 50% 50%,
-      color-mix(in oklab, var(--highlight) 42%, transparent),
-      transparent 70%
-    );
-    animation: drift-c 30s var(--ease-in-out) infinite alternate;
-  }
-
-  .aurora__grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(
-        to right,
-        color-mix(in oklab, var(--border) 55%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        color-mix(in oklab, var(--border) 55%, transparent) 1px,
-        transparent 1px
-      );
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 30%,
-      #000 0%,
-      transparent 75%
-    );
-    mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 30%,
-      #000 0%,
-      transparent 75%
-    );
-    opacity: 0.5;
-  }
-
-  @keyframes drift-a {
-    from {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    to {
-      transform: translate3d(4%, 6%, 0) scale(1.12);
-    }
-  }
-  @keyframes drift-b {
-    from {
-      transform: translate3d(0, 0, 0) scale(1.05);
-    }
-    to {
-      transform: translate3d(-5%, 4%, 0) scale(0.95);
-    }
-  }
-  @keyframes drift-c {
-    from {
-      transform: translate3d(0, 0, 0) scale(0.95);
-    }
-    to {
-      transform: translate3d(3%, -5%, 0) scale(1.1);
-    }
-  }
-
-  /* ---- Availability pill ---- */
-  .availability {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin: 0;
-    padding: var(--space-2) var(--space-4);
-    font-size: var(--font-size-sm);
-    color: color-mix(in oklab, var(--text) 78%, transparent);
-    background: color-mix(in oklab, var(--muted) 70%, transparent);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    backdrop-filter: blur(6px);
-  }
-
-  .availability__pulse {
-    position: relative;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex: none;
-  }
-
-  .availability__pulse::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse-ring 2.4s var(--ease-out) infinite;
-  }
-
-  @keyframes pulse-ring {
-    0% {
-      transform: scale(1);
-      opacity: 0.7;
-    }
-    70%,
-    100% {
-      transform: scale(3);
-      opacity: 0;
-    }
-  }
-
-  /* ===================== BUTTONS ===================== */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-3) var(--space-5);
-    border-radius: var(--radius-m);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    line-height: 1;
-    text-decoration: none;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition:
-      transform 0.18s var(--ease-out),
-      box-shadow 0.28s var(--ease-out),
-      background-color 0.28s var(--ease-out),
-      border-color 0.28s var(--ease-out);
-  }
-
-  .btn:hover {
-    text-decoration: none;
-  }
-
-  .btn--primary {
-    background: var(--primary);
-    color: #fff;
-    box-shadow: var(--shadow-2);
-  }
-
-  .btn--ghost {
-    background: transparent;
-    color: var(--text);
-    border-color: var(--border);
-  }
-
-  .btn:active {
-    transform: scale(0.97);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-3);
-      background: color-mix(in oklab, var(--primary) 90%, #000);
-    }
-    .btn--ghost:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-      background: color-mix(in oklab, var(--primary) 8%, transparent);
-    }
-  }
-
-  /* ===================== PROOF STRIP ===================== */
-  .proof {
-    padding: var(--space-7) 0 var(--space-6);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .proof__label {
-    text-align: center;
-    font-size: var(--font-size-sm);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: color-mix(in oklab, var(--text) 55%, transparent);
-    margin: 0 0 var(--space-5);
-  }
-
-  .proof__logos {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-3);
-    padding: 0;
-    margin: 0 0 var(--space-5);
-  }
-
-  .chip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-radius: var(--radius-l);
-    padding: var(--space-3) var(--space-4);
-    box-shadow: var(--shadow-1);
-    height: 64px;
-    min-width: 0;
-    transition:
-      transform 0.24s var(--ease-out),
-      box-shadow 0.24s var(--ease-out);
-  }
-
-  .chip img {
-    max-height: 32px;
-    max-width: 130px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .chip:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-2);
-    }
-  }
-
-  /* Nominative-use notice — see the matching rule on the homepage wall. */
-  .proof__legal {
-    margin: var(--space-5) auto 0;
-    max-width: 60ch;
-    font-size: var(--font-size-xs);
-    line-height: 1.5;
-    opacity: 0.45;
-    text-align: center;
-    text-wrap: pretty;
-  }
-
-  .proof__creds {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-2);
-    padding: 0;
-    margin: 0;
-  }
-
-  .cred {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    padding: var(--space-1) var(--space-3);
-    border-radius: 999px;
-    color: var(--primary);
-    background: color-mix(in oklab, var(--primary) 10%, transparent);
-    border: 1px solid color-mix(in oklab, var(--primary) 24%, transparent);
-  }
-
-  /* ===================== STATS ===================== */
-  .stats {
-    padding: var(--space-8) 0;
-  }
-
-  .stats__grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--space-5);
-    padding: 0;
-    margin: 0;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    padding: var(--space-5);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-l);
-    background: color-mix(in oklab, var(--muted) 50%, transparent);
-  }
-
-  .stat__value {
-    font-family: var(--font-heading);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--primary);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .stat__label {
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    color: var(--text);
-  }
-
-  .stat__sub {
-    font-size: var(--font-size-sm);
-    color: color-mix(in oklab, var(--text) 58%, transparent);
+  /* One of this page's counted stats ("~3 months") is longer than the short
+     numeric values StatStrip was designed around, so its default
+     `white-space: nowrap` lets the text spill into the next column at wide
+     viewports. Let counted values wrap here, same as the plain-text ones
+     already do — a page-scoped override, not a change to the component. */
+  :global(.stat-strip .stat__value) {
+    white-space: normal !important;
   }
 
   /* ===================== PLAN / ROADMAP ===================== */
   .plan {
-    padding: var(--space-8) 0 var(--space-9);
+    padding-block: var(--section-y-loose);
   }
 
   .plan__head {
@@ -919,13 +194,15 @@ const stats = [
     margin: 0 0 var(--space-8);
   }
 
+  /* CO-6: --primary labels a section; --accent (below, on .mstone__tag)
+     labels evidence — one eyebrow colour system, not two. */
   .plan__eyebrow {
     font-family: var(--font-heading);
     font-size: var(--font-size-sm);
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--primary);
     margin: 0 0 var(--space-3);
   }
 
@@ -1086,84 +363,198 @@ const stats = [
     color: var(--text);
   }
 
-  /* ===================== CLOSE ===================== */
-  .close {
-    padding: var(--space-9) 0;
-    border-top: 1px solid var(--border);
+  /* ===================== PROOF BLOCKS ===================== */
+  .proof-blocks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
   }
-
-  .close__inner {
-    max-width: 60ch;
-    text-align: center;
-    margin: 0 auto;
+  @media (min-width: 900px) {
+    .proof-blocks {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
-
-  .close__title {
-    font-size: clamp(1.7rem, 4.4vw, 2.8rem);
-    letter-spacing: -0.02em;
+  .proof-block {
+    padding: var(--space-5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+  }
+  .proof-block__title {
+    margin: 0 0 var(--space-3);
+    font-size: var(--font-size-lg);
+    letter-spacing: var(--tracking-display);
+  }
+  .proof-block__body {
     margin: 0 0 var(--space-4);
+    color: oklch(from var(--text) l c h / 0.82);
+  }
+  .proof-block__link {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
   }
 
-  .close__sub {
-    font-size: clamp(1rem, 1.6vw, 1.15rem);
-    color: color-mix(in oklab, var(--text) 76%, transparent);
-    margin: 0 0 var(--space-6);
+  /* ===================== WHAT YOU GET TABLE ===================== */
+  .get-scroll {
+    overflow-x: auto;
+  }
+  .get {
+    width: 100%;
+    min-width: 40rem;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  .get th,
+  .get td {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .get thead th {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    border-bottom-color: var(--line-strong);
+  }
+  .get tbody th {
+    width: 14rem;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-base);
+    color: var(--text);
+  }
+  .get td {
+    color: oklch(from var(--text) l c h / 0.82);
   }
 
-  .close__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    justify-content: center;
-    margin-bottom: var(--space-5);
-  }
-
-  .availability--foot {
-    margin: 0 auto;
+  /* RE-5: below 700px the same table markup renders as one block per
+     engagement. No duplicated content, no horizontal scroll, and the third
+     column ("How it ends") stops being invisible on a phone. */
+  @media (max-width: 699px) {
+    .get-scroll {
+      overflow-x: visible;
+    }
+    .get,
+    .get tbody,
+    .get tr,
+    .get td {
+      display: block;
+      width: auto;
+      min-width: 0;
+    }
+    .get thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .get tbody th {
+      display: block;
+      width: auto;
+      padding: var(--space-5) 0 var(--space-3);
+      border-bottom: 0;
+      font-size: var(--font-size-lg);
+    }
+    .get tbody tr {
+      border-top: 1px solid var(--line);
+    }
+    .get td {
+      padding: 0 0 var(--space-4);
+      border-bottom: 0;
+    }
+    .get td::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: var(--space-1);
+      font-family: var(--font-heading);
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: oklch(from var(--text) l c h / 0.6);
+    }
   }
 
   /* ===================== RESPONSIVE ===================== */
+  /* MO-6: below 900px the rail rotates rather than disappearing. Same
+     trigger, same 900ms draw, top to bottom; the nodes sit at each card's
+     title baseline. No runner down here — at this width the leading edge of
+     the progress line already reads as one, and a second travelling dot in a
+     narrow gutter is noise. */
   @media (max-width: 900px) {
-    .stats__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .roadmap__cards {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    /* On tablet/phone the horizontal timeline reads awkwardly — hide the
-       drawn rail and let the milestone cards carry the sequence. */
     .roadmap__svg {
       display: none;
     }
-  }
-
-  @media (max-width: 560px) {
-    .hero {
-      padding: var(--space-8) 0 var(--space-7);
-    }
-    .stats__grid {
-      grid-template-columns: minmax(0, 1fr);
-    }
     .roadmap__cards {
+      position: relative;
       grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-5);
+      padding-left: var(--space-7);
     }
-    .btn {
-      width: 100%;
+    .roadmap__cards::before,
+    .roadmap__cards::after {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 14px;
+      bottom: 14px;
+      width: 2px;
+      border-radius: 2px;
     }
-    .hero__cta,
-    .close__cta {
-      flex-direction: column;
+    .roadmap__cards::before {
+      background: var(--line-strong);
+    }
+    .roadmap__cards::after {
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      transform-origin: top;
+      transform: scaleY(var(--rail-p, 1));
+    }
+    .roadmap.is-armed .roadmap__cards::after {
+      transform: scaleY(var(--rail-p, 0));
+    }
+    .mstone::after {
+      content: '';
+      position: absolute;
+      left: calc(-1 * var(--space-7) + 5px);
+      top: 20px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2.5px solid var(--line-strong);
+      transition:
+        background-color 300ms var(--ease-out),
+        border-color 300ms var(--ease-out);
+    }
+    .mstone.is-lit::after {
+      background: var(--primary);
+      border-color: color-mix(in oklab, var(--primary) 40%, var(--bg));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .roadmap__cards::after {
+      transform: scaleY(1) !important;
+    }
+    .mstone::after {
+      background: var(--primary) !important;
+      border-color: color-mix(
+        in oklab,
+        var(--primary) 40%,
+        var(--bg)
+      ) !important;
     }
   }
 
   /* ===================== REDUCED MOTION ===================== */
   @media (prefers-reduced-motion: reduce) {
-    .aurora__blob {
-      animation: none;
-    }
-    .availability__pulse::after {
-      animation: none;
-    }
     /* Show the finished roadmap statically: full progress line, lit nodes,
        lit cards, no travelling dot. */
     .roadmap__progress {
@@ -1187,67 +578,13 @@ const stats = [
   }
 </style>
 
-<script is:inline>
+<script>
   (() => {
     const reduce = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
 
-    /* ---------- 1. Count-up stats ---------- */
-    const counters = document.querySelectorAll('[data-countup]');
-
-    const runCount = el => {
-      if (!el) return;
-      const to = parseFloat(el.getAttribute('data-to') || '0');
-      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-      const prefix = el.getAttribute('data-prefix') || '';
-      const suffix = el.getAttribute('data-suffix') || '';
-
-      if (reduce) {
-        el.textContent = prefix + to.toFixed(decimals) + suffix;
-        return;
-      }
-
-      const duration = 1100;
-      const start = performance.now();
-      let rafId = 0;
-
-      const tick = now => {
-        const t = Math.min((now - start) / duration, 1);
-        // easeOutCubic
-        const eased = 1 - Math.pow(1 - t, 3);
-        const val = to * eased;
-        el.textContent = prefix + val.toFixed(decimals) + suffix;
-        if (t < 1) {
-          rafId = requestAnimationFrame(tick);
-        } else {
-          el.textContent = prefix + to.toFixed(decimals) + suffix;
-          cancelAnimationFrame(rafId);
-        }
-      };
-      rafId = requestAnimationFrame(tick);
-    };
-
-    if (counters.length) {
-      if (reduce || !('IntersectionObserver' in window)) {
-        counters.forEach(runCount);
-      } else {
-        const cObs = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                runCount(entry.target);
-                obs.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.5 },
-        );
-        counters.forEach(c => cObs.observe(c));
-      }
-    }
-
-    /* ---------- 2. Signature 90-day roadmap ---------- */
+    /* ---------- Signature 90-day roadmap ---------- */
     const roadmap = document.querySelector('[data-roadmap]');
 
     if (roadmap) {
@@ -1297,6 +634,7 @@ const stats = [
 
             // Draw the progress line.
             line.style.strokeDashoffset = String(totalLen * (1 - eased));
+            roadmap.style.setProperty('--rail-p', eased.toFixed(4));
 
             // Move the glowing runner dot along the rail.
             const x = NODE_X[0] + totalLen * eased;
@@ -1318,6 +656,7 @@ const stats = [
               // Ensure everything is settled and the runner rests on the end.
               line.style.strokeDashoffset = '0';
               lightUpAll();
+              roadmap.style.setProperty('--rail-p', '1');
               runner.setAttribute('cx', String(NODE_X[NODE_X.length - 1]));
               cancelAnimationFrame(rafId);
             }

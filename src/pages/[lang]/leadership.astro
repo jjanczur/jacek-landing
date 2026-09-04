@@ -1,0 +1,155 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import PillarGrid from '../../components/PillarGrid.astro';
+import PrincipleList from '../../components/PrincipleList.astro';
+import Timeline from '../../components/Timeline.astro';
+import FieldToProduct from '../../components/FieldToProduct.astro';
+import AvailabilityPill from '../../components/AvailabilityPill.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import portrait from '../../assets/images/headshot.jpg';
+import { getSupportedLangs, getTranslations } from '../../utils/i18n';
+import type { Lang } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return getSupportedLangs().map(lang => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = await getTranslations('leadership', lang);
+const { portraitAlt, ...hero } = t.hero;
+---
+
+<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
+  <Hero {...hero}>
+    <div slot="aside" class="hero-portrait">
+      <Picture
+        src={portrait}
+        formats={['avif', 'webp']}
+        widths={[320, 480, 640]}
+        sizes="(min-width: 1000px) 380px, 60vw"
+        alt={portraitAlt}
+        loading="eager"
+      />
+    </div>
+  </Hero>
+
+  <section
+    class="section-head section--loose section--divided"
+    data-surface="card"
+    id="owned-section"
+  >
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.pillars.eyebrow}
+        title={t.pillars.title}
+        lede={t.pillars.lede}
+        id="owned"
+      />
+    </div>
+  </section>
+  <PillarGrid pillars={t.pillars.items} />
+
+  <section class="section section--tight" data-surface="bare" id="f2p-section">
+    <div class="container">
+      <FieldToProduct />
+    </div>
+  </section>
+
+  <section
+    class="section section--loose section--divided"
+    id="built-section"
+    aria-labelledby="built"
+  >
+    <div class="container">
+      <SectionHeader title={t.built.title} id="built" variant="display" />
+      <PrincipleList items={t.built.items} columns={2} surface="ruled" />
+    </div>
+  </section>
+
+  <section class="section" id="lead-section" aria-labelledby="lead">
+    <div class="container">
+      <SectionHeader
+        eyebrow={t.principles.eyebrow}
+        title={t.principles.title}
+        id="lead"
+      />
+      <PrincipleList
+        items={t.principles.items}
+        exampleLabel={t.principles.exampleLabel}
+        columns={2}
+        surface="accent"
+      />
+    </div>
+  </section>
+
+  <section
+    class="section section--loose section--divided"
+    id="timeline-section"
+    aria-labelledby="timeline"
+  >
+    <div class="container">
+      <SectionHeader title={t.timeline.title} id="timeline" variant="inline" />
+      <Timeline items={t.timeline.items} />
+    </div>
+  </section>
+
+  <section class="availability-line section--tight">
+    <div class="container">
+      <AvailabilityPill
+        text={t.availability.line}
+        ariaLabel="Availability for leadership roles"
+      />
+      <p class="availability-line__detail">{t.availability.detail}</p>
+    </div>
+  </section>
+
+  <section class="section" id="hands-on-section" aria-labelledby="hands-on">
+    <div class="container">
+      <SectionHeader title={t.handsOn.title} id="hands-on" variant="display" />
+      <PrincipleList items={t.handsOn.items} columns={2} surface="panel" />
+    </div>
+  </section>
+
+  <CtaBand {...t.band} />
+</BaseLayout>
+
+<style>
+  /* PillarGrid brings its own `.section` rhythm, so the header above it only
+     pads the top and lets the grid supply the bottom. */
+  .section-head {
+    padding-block: var(--section-y) 0;
+  }
+  .hero-portrait {
+    max-width: 380px;
+    margin-inline: auto;
+  }
+  .hero-portrait :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-l);
+    display: block;
+  }
+  .availability-line .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    text-align: center;
+  }
+  .availability-line__detail {
+    margin: 0;
+    max-width: 60ch;
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.7);
+  }
+</style>

@@ -1,0 +1,140 @@
+---
+title: 'Login for six countries, and real-time decisioning inside a bank'
+client: 'idealo · ING (through SAS Institute)'
+relationship: 'employer'
+sector: 'E-commerce and banking'
+period: '2016 – 2018 (SAS Institute / ING) · 2020 – 2021 (idealo)'
+status: 'production'
+role: 'Software engineer (idealo) · associate technical consultant (SAS Institute)'
+mandate:
+  'Key contributor to the internationalisation of the single sign-on systems behind a six-country
+  login rollout, and, earlier, the engineer responsible for data orchestration and the real-time
+  pipelines on one project inside a bank behavioural-analysis programme.'
+skim: 'Six-country login rollout, real-time bank pipelines'
+category: 'scale-and-regulated'
+summary:
+  'Two employments at the scale end of the work: a price-comparison portal with up to 18 million
+  monthly users, where I was a key contributor to the single sign-on internationalisation behind a
+  six-country login rollout, and a banking programme processing thousands of customer events per
+  second in real time.'
+keyDecisions:
+  - 'Ship identity changes behind A/B tests with metrics analysis, so each change to the login flow
+    was judged on acquisition numbers rather than on opinion.'
+  - 'Build the real-time paths on streaming infrastructure — Kafka, WebSockets, Spring Boot
+    microservices — and carry on-call for them, so the people who wrote them owned the failures.'
+  - 'In the banking programme, treat data lineage as a product: a plugin that made ETL flows and
+    lineage inspectable for compliance, which the wider group then adopted.'
+outcomes:
+  - {
+      value: '1.4M',
+      label: 'accounts in three months, 700% over forecast, as key contributor',
+      evidence: 'measured',
+      countTo: 1.4,
+      suffix: 'M',
+      decimals: 1,
+    }
+  - {
+      value: '300%+',
+      label: 'increase in customer acquisition after the single sign-on internationalisation',
+      evidence: 'measured',
+      countTo: 300,
+      suffix: '%+',
+    }
+  - { value: '6', label: 'countries enabled for login', evidence: 'measured', countTo: 6 }
+  - {
+      value: 'Thousands/sec',
+      label: 'customer events processed in real time in the banking programme',
+      evidence: 'measured',
+    }
+stakeholders:
+  [
+    'Product and UX teams on the login and account flows',
+    'Platform and infrastructure teams during the cloud migration',
+    'Bank marketing and analytics owners',
+    'Compliance and data-protection stakeholders',
+  ]
+constraints:
+  [
+    'Up to 18 million monthly active users on the consumer side',
+    'Six markets going live inside three months',
+    'Thousands of events per second with real-time response in the bank',
+    '24/7 availability with on-call duty',
+    'Data protection and lineage requirements in a banking group',
+  ]
+reuse:
+  [
+    'Streaming patterns for thousands of events per second',
+    'A/B-tested rollout of identity and account changes',
+    'Lineage tooling adopted across the banking group',
+  ]
+tags:
+  [
+    'Kafka',
+    'Flink',
+    'Spring Boot',
+    'single sign-on',
+    'real-time streaming',
+    'A/B testing',
+    'data lineage',
+  ]
+featured: false
+order: 90
+---
+
+## Context
+
+Before founding a company I worked on two systems where the constraint was scale rather than
+novelty: a price-comparison portal with up to 18 million monthly active users, and a bank programme
+analysing customer behaviour in real time.
+
+## Business problem
+
+At the portal, accounts existed in one market and the login did not work in the others, so
+acquisition stopped at the border. In the bank, marketing decisions were made on yesterday's data
+while customers were acting now.
+
+## My mandate
+
+At the portal I was a key contributor — not the lead — to the internationalisation of the single
+sign-on systems that made the six-country login rollout possible, alongside cross-team development,
+architecture work and on-call. In the bank programme I worked on one of its projects, customer
+behavioural analysis with machine learning and real-time processing, as the person responsible for
+data orchestration and the pipelines.
+
+## Decisions
+
+- Ship changes to the login and account flows behind A/B tests, with the results analysed against
+  acquisition metrics, so the rollout was steered by measurement.
+- Build the high-performance paths on Kafka, NoSQL stores and WebSockets, with production-ready
+  microservices and REST APIs in Java and Kotlin on Spring Boot, Spring Security and Hibernate.
+- Carry on-call for what we built, and take part in the migration from on-premises infrastructure to
+  AWS rather than treating infrastructure as somebody else's concern.
+- In the bank, stream processing on Kafka, Flink and Camel feeding SAS Event Stream Processing and
+  the real-time decision manager, which became one of the first event-stream-processing
+  implementations of its kind in the European Union.
+- Write a lineage plugin for the data-integration tooling that presented ETL flows and data lineage
+  for compliance purposes; data analysts across the international group adopted it.
+
+## Delivery
+
+The login rollout reached six countries and produced 1.4 million new accounts in three months, 700%
+over the forecast, and the single sign-on internationalisation was followed by an increase of more
+than 300% in customer acquisition. The banking platform ran behavioural analysis on thousands of
+events per second and served personalised offers adapted to the signals it saw.
+
+## Outcome
+
+Two production systems at a scale where design mistakes are expensive: one consumer-facing across
+six markets, one inside a bank under compliance obligations.
+
+## Reuse
+
+The streaming patterns, the habit of A/B-testing identity changes and the lineage tooling all
+carried forward — the last of them literally, into the rest of the group.
+
+## Evidence
+
+Account numbers, forecast comparison, acquisition increase and country count are the employer's
+records; my part in the single sign-on internationalisation was as a key contributor, not as its
+lead. Event throughput and the scope of the banking work are project records. I worked on one
+project within that programme and was not part of its founding team.

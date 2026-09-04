@@ -1,0 +1,251 @@
+---
+import OutcomeBadge from './OutcomeBadge.astro';
+
+interface Outcome {
+  value: string;
+  label: string;
+  evidence:
+    | 'measured'
+    | 'customer-estimate'
+    | 'projected'
+    | 'qualitative'
+    | 'benchmark';
+}
+
+export interface Props {
+  href?: string;
+  client: string;
+  skim: string;
+  outcome?: Outcome;
+  status?: string;
+  relationship: string;
+  index: number;
+  /**
+   * Category key the filter chips match against. Not part of the brief's
+   * named prop list, but the brief's own markup for this component calls
+   * for a `data-category` attribute on the row — there is no other prop it
+   * could come from, so it is accepted here as a plain string.
+   */
+  category: string;
+}
+
+const { href, client, skim, outcome, status, relationship, index, category } =
+  Astro.props;
+
+const STATUS_LABEL: Record<string, string> = {
+  production: 'Production',
+  mvp: 'MVP',
+  poc: 'Proof of concept',
+  prototype: 'Prototype',
+  research: 'Research',
+};
+
+const RELATIONSHIP_LABEL: Record<string, string> = {
+  client: 'Client',
+  independent: 'Independent',
+  employer: 'Employment',
+  'own-company': 'Own company',
+  'research-partner': 'Research partner',
+};
+
+// The wrapper is always a real <li> (case-rows is an <ol>) — assistive
+// tech only announces list semantics when <ol>/<ul> children are actually
+// <li> elements. The clickable surface (an <a> when href is set, a plain
+// <div> otherwise) lives inside it, matching CaseCard.astro's pattern.
+const Tag = href ? 'a' : 'div';
+const linkAttrs = href ? { href } : {};
+---
+
+<li
+  class="case-row surface-ruled reveal"
+  style={`--reveal-delay: ${index * 40}ms`}
+  data-category={category}
+>
+  <Tag class="case-row__link" {...linkAttrs}>
+    <span class="case-row__top">
+      <span class="case-row__client">{client}</span>
+      <span class="case-row__skim">{skim}</span>
+    </span>
+    <span class="case-row__badges">
+      {
+        outcome && (
+          <span class="case-row__outcome">
+            <OutcomeBadge
+              value={outcome.value}
+              label={outcome.label}
+              evidence={outcome.evidence}
+            />
+          </span>
+        )
+      }
+      {
+        status && (
+          <span class="case-row__pill">{STATUS_LABEL[status] ?? status}</span>
+        )
+      }
+      <span class="case-row__pill case-row__pill--ghost">
+        {RELATIONSHIP_LABEL[relationship] ?? relationship}
+      </span>
+      {
+        href && (
+          <span class="case-row__arrow" aria-hidden="true">
+            →
+          </span>
+        )
+      }
+    </span>
+  </Tag>
+</li>
+
+<style>
+  :global(.case-rows) {
+    list-style: none;
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-row {
+    min-width: 0;
+  }
+
+  /* The filter script sets the `hidden` attribute on the <li> to hide
+     non-matching rows. Nothing in this file sets `display` on the bare
+     `.case-row` selector, so the browser's default `[hidden] { display:
+     none }` UA rule is never overridden — but the rule below is kept as an
+     explicit, defensive guarantee (it previously had to fight a `display:
+     grid` rule on this same element; that layout now lives on
+     `.case-row__link` instead, one level down, so there is no longer a
+     competing rule — this stays in case that ever changes again). */
+  .case-row[hidden] {
+    display: none;
+  }
+
+  .case-row__link {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) minmax(220px, 2fr) auto;
+    align-items: center;
+    gap: var(--space-5);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform 160ms var(--ease-out);
+  }
+
+  div.case-row__link {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .case-row__top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    min-width: 0;
+  }
+
+  .case-row__client {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .case-row__skim {
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.72);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .case-row__badges {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .case-row__outcome {
+    display: flex;
+  }
+
+  .case-row__outcome :global(.outcome) {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5em;
+    padding: 0.35em 0.75em;
+    border-radius: 999px;
+  }
+
+  .case-row__outcome :global(.outcome__value) {
+    font-size: var(--font-size-sm);
+  }
+
+  .case-row__outcome :global(.outcome__label) {
+    display: none;
+  }
+
+  .case-row__outcome :global(.outcome__evidence) {
+    margin-top: 0;
+    padding: 0.15em 0.55em;
+    font-size: 0.65rem;
+  }
+
+  .case-row__pill {
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--text);
+  }
+
+  .case-row__pill--ghost {
+    border-color: var(--line);
+    color: oklch(from var(--text) l c h / 0.65);
+  }
+
+  .case-row__arrow {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    transition: transform 160ms var(--ease-out);
+  }
+
+  a.case-row__link:hover .case-row__arrow {
+    transform: translateX(3px);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a.case-row__link:hover .case-row__client {
+      color: var(--primary);
+    }
+  }
+
+  a.case-row__link:active {
+    transform: scale(0.99);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-row__link,
+    .case-row__arrow {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .case-row__link {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+
+    .case-row__badges {
+      justify-content: flex-start;
+    }
+
+    .case-row__skim {
+      white-space: normal;
+    }
+  }
+</style>

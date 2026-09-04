@@ -1,0 +1,349 @@
+{
+  "meta": {
+    "title": "Production AI Systems & Enterprise AI Architecture — Jacek Janczura",
+    "description": "Multi-tenant retrieval and multi-step AI processes on event-driven AWS: document-heavy workflows, customer-facing assistants, evaluation harnesses and the compliance posture regulated buyers ask for. 50+ organisations, 99.9% uptime."
+  },
+  "hero": {
+    "eyebrow": "Production AI systems · Enterprise AI architecture",
+    "title": "I've shipped the AI system <em>you're trying to build.</em>",
+    "sub": "Multi-tenant retrieval and multi-step AI processes on event-driven AWS — more than 1,000 concurrent connections, thousands of requests a second and 99.9% uptime for 50+ organisations. <strong>Document-heavy workflows</strong>: extraction, reconciliation and drafting across contracts, reports and technical archives. <strong>Customer-facing assistants</strong>: a member-facing pension assistant running on-premises, and a five-language self-help assistant for a humanitarian programme. I design the architecture, write the processes and the evaluations, and lead the engineers who own it afterwards.",
+    "primary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "ghost": {
+      "href": "#architecture",
+      "label": "Walk through the architecture"
+    },
+    "availability": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  },
+  "diagram": {
+    "title": "Reference system",
+    "health": "99.9% uptime",
+    "throughputValue": "~3,200 req/sec",
+    "throughputLabel": "illustrative throughput",
+    "svgAriaLabel": "Architecture diagram: client to API gateway to Lambda and Fargate to a retrieval service to vector and graph databases and model providers OpenAI, Bedrock, Azure and Mistral.",
+    "nodes": [
+      {
+        "id": "client",
+        "label": "Client",
+        "x": 30,
+        "y": 30,
+        "w": 120,
+        "step": 0
+      },
+      {
+        "id": "gateway",
+        "label": "API Gateway",
+        "x": 170,
+        "y": 96,
+        "w": 140,
+        "step": 1,
+        "emphasis": "gateway"
+      },
+      {
+        "id": "lambda",
+        "label": "Lambda",
+        "x": 90,
+        "y": 174,
+        "w": 120,
+        "step": 2
+      },
+      {
+        "id": "fargate",
+        "label": "Fargate",
+        "x": 270,
+        "y": 174,
+        "w": 120,
+        "step": 2
+      },
+      {
+        "id": "rag",
+        "label": "RAG Service",
+        "x": 160,
+        "y": 252,
+        "w": 160,
+        "step": 3,
+        "emphasis": "core"
+      },
+      {
+        "id": "vector",
+        "label": "Vector DB",
+        "x": 50,
+        "y": 330,
+        "w": 140,
+        "step": 4
+      },
+      {
+        "id": "graph",
+        "label": "Graph DB",
+        "x": 290,
+        "y": 330,
+        "w": 140,
+        "step": 4
+      },
+      {
+        "id": "providers",
+        "label": "OpenAI · Bedrock · Azure · Mistral",
+        "x": 140,
+        "y": 384,
+        "w": 200,
+        "h": 28,
+        "step": 4,
+        "emphasis": "providers"
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "d": "M90 48 H240 V96"
+      },
+      {
+        "from": 1,
+        "d": "M240 132 V150 H150 V174"
+      },
+      {
+        "from": 1,
+        "d": "M240 132 V150 H330 V174"
+      },
+      {
+        "from": 2,
+        "d": "M150 210 V228 H240 V252"
+      },
+      {
+        "from": 2,
+        "d": "M330 210 V228 H240 V252"
+      },
+      {
+        "from": 3,
+        "d": "M240 288 V306 H120 V330"
+      },
+      {
+        "from": 3,
+        "d": "M240 288 V306 H360 V330"
+      },
+      {
+        "from": 4,
+        "d": "M240 288 V372"
+      }
+    ]
+  },
+  "wall": {
+    "heading": "Systems delivered for",
+    "groups": [
+      {
+        "title": "As Co-founder & CTO of Jaden Data, and earlier as a consultant",
+        "items": [
+          {
+            "src": "/media/28105d45d9344ea18b2923eed7f69bb3.webp",
+            "w": 744,
+            "h": 166,
+            "alt": "Industrial technology group",
+            "caption": "Industrial technology"
+          },
+          {
+            "src": "/media/08e6a6fe611f43c2a0f29358faf97629.webp",
+            "w": 744,
+            "h": 176,
+            "alt": "Global beverage brand",
+            "caption": "Venture investing"
+          },
+          {
+            "src": "/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp",
+            "w": 622,
+            "h": 186,
+            "alt": "Global pharmaceutical group",
+            "caption": "Pharma"
+          },
+          {
+            "src": "/media/83c4ed8c667b41939165458511d46e3f.webp",
+            "w": 550,
+            "h": 186,
+            "alt": "European retail bank",
+            "caption": "Retail banking"
+          },
+          {
+            "src": "/media/26a6930244564dbfbcf739144d3ee697.webp",
+            "w": 548,
+            "h": 186,
+            "alt": "European pension fund",
+            "caption": "Pension fund"
+          },
+          {
+            "src": "/media/0a1b52260b574b1eb6896d0a54b55b11.webp",
+            "w": 744,
+            "h": 133,
+            "alt": "National central bank",
+            "caption": "Central bank"
+          }
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      {
+        "value": "1,000+",
+        "label": "concurrent connections on the platform"
+      },
+      {
+        "value": "thousands",
+        "label": "requests a second, sustained"
+      },
+      {
+        "value": "99.9%",
+        "countTo": 99.9,
+        "suffix": "%",
+        "decimals": 1,
+        "label": "uptime"
+      },
+      {
+        "value": "50+",
+        "countTo": 50,
+        "suffix": "+",
+        "decimals": 0,
+        "label": "organisations, many of them regulated"
+      },
+      {
+        "value": "ISO 27001 + SOC 2",
+        "label": "certified platform, delivered in about three months"
+      }
+    ]
+  },
+  "details": {
+    "items": [
+      {
+        "num": "01",
+        "heading": "I design the architecture.",
+        "body": "Event-driven services on AWS built to survive real load: more than 1,000 concurrent connections and thousands of requests a second at 99.9% uptime. The diagram on this page is the shape of a real production system — request in, retrieval and reasoning across vector and graph stores, model calls fanned out across OpenAI, Bedrock, Azure and Mistral, chosen per client on quality, latency, cost and data sovereignty. A graph store is not decoration: one pharma client's research platform is vector- and graph-based."
+      },
+      {
+        "num": "02",
+        "heading": "I build the processes and the evaluations.",
+        "body": "Multi-step processes rather than one prompt: parallel extraction into structured JSON, a reconciliation step, then generation with source references preserved in every output. Retrieval with reranking and page-level citations. Deterministic test cases over the pipeline before anything model-graded. I took my own company through ISO 27001 and SOC 2 Type 2 in about three months, because in regulated markets compliance is part of the architecture, not an afterthought."
+      },
+      {
+        "num": "03",
+        "heading": "I lead the engineers who own it.",
+        "body": "I built a company from zero to €1M+ revenue and engineering from 0 to 10. At idealo I was a key contributor to a six-country login rollout that created 1.4M accounts in three months, 700% above forecast. I hand systems over to teams that keep shipping after I have moved on."
+      }
+    ]
+  },
+  "evaluation": {
+    "eyebrow": "Evaluation depth",
+    "title": "How I know the system is good enough to ship",
+    "lede": "The difference between a demo and a production workflow is that somebody can say, with numbers, what it gets right and what a person still has to check.",
+    "items": [
+      {
+        "title": "Eval sets built from real work",
+        "body": "Test cases come from the customer's own documents and the questions their experts actually ask, not from synthetic prompts. Across a seven-part proof-of-concept portfolio, every workflow was validated by subject-matter experts on real documents against one evaluation template: time saved, rework reduced, result quality, practical applicability, improvement potential."
+      },
+      {
+        "title": "Deterministic checks before model-graded ones",
+        "body": "Testbed runs deterministic cases over AI processes and retrieval pipelines first — structure, required fields, output language, refusal behaviour — because those failures are cheap to catch and unambiguous. Model-graded scoring comes after, for the judgements a rule cannot express."
+      },
+      {
+        "title": "Retrieval measured separately from generation",
+        "body": "Whether the right passage was retrieved is a different question from whether the answer reads well. Over technical archives of up to 300 pages per document, retrieval used top-k vector search, a reranking step with a stated relevance justification, and citations down to document, file and page — so a wrong answer can be traced to retrieval or to generation."
+      },
+      {
+        "title": "An error taxonomy, not an error count",
+        "body": "Failures get classified: missing extraction, wrong attribute, fabricated value, wrong output language, unsupported claim. On contract deliverables, that taxonomy showed a single wide table schema hallucinating, so extraction moved to an n-step design — identify first, then extract attributes."
+      },
+      {
+        "title": "Human-review thresholds written down",
+        "body": "Every workflow states what a person still checks and when. Partner-report pre-checks carry a three-star consistency rating per indicator with comments explaining each deviation; contract extraction keeps human-in-the-loop validation at the accuracy the customer accepted."
+      },
+      {
+        "title": "Launch criteria agreed before the build",
+        "body": "A workflow ships against numbers set in the specification, not against a demo reaction: on contract deliverables the targets were at least 70% recall, over 75% precision and more than 50% time reduction, with the projected review time falling from five hours to one at the agreed accuracy."
+      },
+      {
+        "title": "Quality, latency and cost as one trade-off",
+        "body": "Model choice follows quality, latency, cost and data sovereignty per client, on a provider-independent layer. For a multilingual self-help assistant, the per-interaction cost against a static decision tree was part of the evaluation rather than a surprise after rollout."
+      }
+    ]
+  },
+  "cases": {
+    "eyebrow": "Proof",
+    "title": "Systems already in the field",
+    "items": [
+      {
+        "href": "/en/case-studies/development-bank-genai-portfolio/",
+        "client": "A German development bank and a humanitarian programme it funds",
+        "skim": "Seven document-heavy workflows, one spec, one evaluation template",
+        "outcome": {
+          "value": "~1 day",
+          "label": "saved per ministry monitoring report",
+          "evidence": "customer-estimate"
+        },
+        "status": "poc",
+        "relationship": "client"
+      },
+      {
+        "href": "/en/case-studies/apg-pension-assistant/",
+        "client": "APG",
+        "skim": "Member-facing assistant, on-premises, twelve sprints",
+        "outcome": {
+          "value": "1 day",
+          "label": "to a working prototype from platform components",
+          "evidence": "measured"
+        },
+        "status": "mvp",
+        "relationship": "client"
+      },
+      {
+        "href": "/en/case-studies/automotive-procurement-ai/",
+        "client": "A global automotive group",
+        "skim": "Four tendering and contracting workflows in production",
+        "outcome": {
+          "value": "4",
+          "label": "workflows from proof of concept to production",
+          "evidence": "measured"
+        },
+        "status": "production",
+        "relationship": "client"
+      },
+      {
+        "client": "RP Group",
+        "skim": "Product matching for emergency-lighting offers",
+        "outcome": {
+          "value": "78.4%",
+          "label": "top-1 match accuracy on the current corpus",
+          "evidence": "benchmark"
+        },
+        "status": "production",
+        "relationship": "client"
+      }
+    ]
+  },
+  "doors": [
+    {
+      "eyebrow": "Hiring",
+      "title": "Hiring a technology leader?",
+      "body": "Company building, customer-facing technical leadership and production AI, with the evidence laid out.",
+      "href": "/en/leadership/",
+      "label": "What I have led"
+    },
+    {
+      "eyebrow": "Fixing",
+      "title": "Inherited a system that is slowing you down?",
+      "body": "Interim leadership: legacy debt off the critical path, the audit passed, the roadmap still moving.",
+      "href": "/en/turnaround/",
+      "label": "See the turnaround angle"
+    }
+  ],
+  "band": {
+    "title": "Send a project brief.",
+    "sub": "The workflow, the documents or the assistant, the constraints you cannot move, and who owns it afterwards. I will tell you where it breaks before you build it.",
+    "primary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "secondary": {
+      "href": "/en/contact/#project",
+      "label": "Request an architecture review"
+    },
+    "note": "Fractional CTO & consulting partner · open to the right permanent CTO or Head of AI role"
+  }
+}

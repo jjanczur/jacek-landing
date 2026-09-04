@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
-import { ALL_PAGES } from './pages';
+import { ALL_PAGES, EN_PAGES } from './pages';
 
 // Animated numbers must be server-rendered with their final value.
 const ZERO_PATTERNS: RegExp[] = [
@@ -29,6 +29,7 @@ const FORBIDDEN: string[] = [
   'produkcyjne ai dla norges bank',
   'produktives ai für die norges bank',
   'delivered as an independent contractor',
+  'kfw',
 ];
 
 // City-name check runs separately from FORBIDDEN because the About pages
@@ -70,5 +71,39 @@ for (const path of ALL_PAGES) {
       withoutUniversityName,
       `${path} contains a bare city reference outside the university name`,
     ).not.toMatch(CITY_NAME_RE);
+  });
+}
+
+// Bosch may be named as a client, but the four tendering and contracting
+// workflows must never be attributed to them: those are published under
+// "a global automotive group" (owner instruction, 2026-09-04).
+const ATTRIBUTION_RE = /procurement|tendering|contracting|workflow/;
+
+function readableText(html: string): string {
+  const metas = [...html.matchAll(/<meta[^>]+content="([^"]*)"/gi)].map(
+    m => m[1],
+  );
+  const title = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html)?.[1] ?? '';
+  const body = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ');
+  return [title, ...metas, body].join(' | ').replace(/\s+/g, ' ').toLowerCase();
+}
+
+for (const path of EN_PAGES) {
+  test(`no client attribution for the procurement workflows: ${path}`, async ({
+    request,
+  }) => {
+    const text = readableText(await (await request.get(path)).text());
+    // Attribution is a property of the sentence, not of raw proximity: naming
+    // them in a client list one sentence away from an anonymised claim is fine.
+    for (const sentence of text.split(/[.!?;|·]+/)) {
+      if (!sentence.includes('bosch')) continue;
+      expect(
+        sentence,
+        `${path}: "bosch" is named in a sentence describing work that must stay sector-only — "${sentence.trim()}"`,
+      ).not.toMatch(ATTRIBUTION_RE);
+    }
   });
 }

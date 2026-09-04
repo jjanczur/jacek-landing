@@ -1,0 +1,85 @@
+---
+export interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost';
+  size?: 'md' | 'lg';
+  external?: boolean;
+  class?: string;
+}
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  external = false,
+  class: extra = '',
+} = Astro.props;
+const rel = external ? 'noopener noreferrer' : undefined;
+const target = external ? '_blank' : undefined;
+---
+
+<a
+  class={`btn btn--${variant} btn--${size} ${extra}`}
+  href={href}
+  rel={rel}
+  target={target}><slot /></a
+>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.8em 1.25em;
+    /* Rubik 600 in a rounded rectangle reads engineered; in a pill it reads
+       SaaS template (AI-6). */
+    border-radius: var(--radius-s);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid transparent;
+    /* 140ms: a press is feedback, not an animation (MO-3). */
+    transition:
+      transform 140ms var(--ease-out),
+      box-shadow 140ms var(--ease-out),
+      background-color 140ms var(--ease-out);
+    will-change: transform;
+  }
+  .btn--lg {
+    padding: 0.95em 1.5em;
+    font-size: var(--font-size-lg);
+  }
+  .btn--primary {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+    box-shadow: 0 6px 18px oklch(from var(--btn-primary-bg) l c h / 0.28);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--line-strong);
+  }
+  .btn:hover {
+    text-decoration: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px oklch(from var(--btn-primary-bg) l c h / 0.34);
+    }
+    .btn--ghost:hover {
+      background: var(--surface-1);
+      border-color: var(--text);
+    }
+  }
+  /* Works on touch, where there is no hover state to cancel (MO-3, MO-10). */
+  .btn:active {
+    transform: scale(0.97);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
+    }
+  }
+</style>

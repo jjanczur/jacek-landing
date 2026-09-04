@@ -1,0 +1,228 @@
+---
+export interface Pillar {
+  title: string;
+  body: string;
+  proof: string;
+  href?: string;
+}
+export interface Props {
+  pillars: Pillar[];
+  variant?: 'grid' | 'lead';
+  surface?: 'card' | 'bare';
+  rhythm?: 'tight' | 'default' | 'loose';
+  divided?: boolean;
+}
+const {
+  pillars,
+  variant = 'grid',
+  surface = 'card',
+  rhythm = 'default',
+  divided = false,
+} = Astro.props;
+const rhythmClass =
+  rhythm === 'tight'
+    ? ' section--tight'
+    : rhythm === 'loose'
+      ? ' section--loose'
+      : '';
+---
+
+<section
+  class={`pillars pillars--${variant} pillars--${surface} section${rhythmClass}${divided ? ' section--divided' : ''}`}
+>
+  <div class="container">
+    <slot name="header" />
+    <ol class={`pillar-grid${surface === 'bare' ? ' surface-bare-group' : ''}`}>
+      {
+        pillars.map((pillar, i) => (
+          <li
+            class="pillar reveal"
+            style={`--reveal-delay: calc(${Math.min(i, 3)} * var(--stagger))`}
+          >
+            <div
+              class={`pillar__card${surface === 'bare' ? ' surface-bare' : ''}`}
+            >
+              <span class="pillar__index" aria-hidden="true">
+                0{i + 1}
+              </span>
+              <h3>{pillar.title}</h3>
+              <p class="pillar__body">{pillar.body}</p>
+              <p class="pillar__proof">{pillar.proof}</p>
+              {pillar.href && (
+                <a class="pillar__link" href={pillar.href}>
+                  See the case
+                  <span class="pillar__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .pillar-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(var(--space-4), 2.5vw, var(--space-5));
+  }
+
+  /* Extra breathing room when a header is slotted in above the grid. */
+  :global(.section-header) + .pillar-grid {
+    margin-top: var(--space-7);
+  }
+
+  .pillar__card {
+    height: 100%;
+    background: var(--surface-1);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    padding: var(--space-6) var(--space-5) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    transition:
+      transform 0.25s var(--ease-out),
+      border-color 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out);
+  }
+
+  .pillar__index {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    color: var(--primary);
+  }
+
+  .pillar__card h3 {
+    font-size: var(--font-size-lg);
+    margin: var(--space-2) 0 var(--space-3);
+    letter-spacing: -0.01em;
+  }
+
+  .pillar__body {
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.78);
+    line-height: 1.6;
+    margin: 0 0 var(--space-4);
+  }
+
+  .pillar__proof {
+    font-size: var(--font-size-sm);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: var(--space-4);
+    margin: auto 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .pillar__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .pillar__link:hover {
+    text-decoration: underline;
+  }
+
+  .pillar__arrow {
+    display: inline-block;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  /* AI-7: break the symmetry. Pillar 01 is the lead — two columns wide, body
+     at reading size, its proof pulled out at --font-size-lg. 02-04 stay
+     narrow. This is the single highest-leverage change against "generated". */
+  .pillars--lead .pillar-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (min-width: 1000px) {
+    .pillars--lead .pillar-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-areas:
+        'lead lead two'
+        'lead lead three'
+        'four four three';
+    }
+    .pillars--lead .pillar:nth-child(1) {
+      grid-area: lead;
+    }
+    .pillars--lead .pillar:nth-child(2) {
+      grid-area: two;
+    }
+    .pillars--lead .pillar:nth-child(3) {
+      grid-area: three;
+    }
+    .pillars--lead .pillar:nth-child(4) {
+      grid-area: four;
+    }
+    .pillars--lead .pillar:nth-child(1) .pillar__body {
+      font-size: var(--font-size-base);
+    }
+    .pillars--lead .pillar:nth-child(1) .pillar__proof {
+      font-size: var(--font-size-lg);
+      line-height: 1.45;
+    }
+  }
+  @media (max-width: 999px) {
+    .pillars--lead .pillar-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* AI-1(a): the group carries one hairline; the items carry nothing.
+     .surface-bare / .surface-bare-group supply background, border, radius and
+     padding, so the card declarations must not fight them. */
+  .pillars--bare .pillar__card {
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+  .pillars--bare .pillar {
+    padding-block: var(--space-6);
+  }
+  .pillars--bare .pillar__proof {
+    border-top: 1px solid var(--line);
+  }
+
+  /* MO-10: only a genuinely navigable pillar lifts. */
+  @media (hover: hover) and (pointer: fine) {
+    .pillar:has(.pillar__link):hover .pillar__card {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-2);
+    }
+    .pillars--bare .pillar:has(.pillar__link):hover .pillar__card {
+      transform: none;
+      box-shadow: none;
+    }
+    .pillar:hover .pillar__arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pillar__card,
+    .pillar__arrow {
+      transition: none;
+    }
+  }
+
+  /* Pillars reveal once, via the site-wide IntersectionObserver, with a
+     stagger from --reveal-delay. A scroll-linked timeline was tried here
+     and removed: it plays in reverse when the reader scrolls back up, so
+     the four claims disappear again on the way home. */
+</style>

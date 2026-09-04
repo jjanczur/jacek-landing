@@ -1,0 +1,98 @@
+---
+export interface Props {
+  chips: { key: string; label: string }[];
+}
+const { chips } = Astro.props;
+---
+
+<div class="filter-chips reveal" role="group" aria-label="Filter case studies">
+  {
+    chips.map((chip, i) => (
+      <button
+        type="button"
+        class="filter-chip"
+        data-filter={chip.key}
+        aria-pressed={i === 0 ? 'true' : 'false'}
+      >
+        {chip.label}
+      </button>
+    ))
+  }
+</div>
+
+<script is:inline>
+  // Progressive enhancement only: without this script every row and card
+  // stays visible (no `hidden` attribute is ever applied server-side), so
+  // the filter chips render and are focusable but simply do nothing until
+  // this runs.
+  (function () {
+    const buttons = document.querySelectorAll(
+      '.filter-chips button[data-filter]',
+    );
+    if (!buttons.length) return;
+    function apply(key) {
+      document.querySelectorAll('[data-category]').forEach(function (el) {
+        el.hidden = key !== 'all' && el.getAttribute('data-category') !== key;
+      });
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        apply(btn.getAttribute('data-filter'));
+      });
+    });
+  })();
+</script>
+
+<style>
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+  }
+
+  .filter-chip {
+    padding: 0.5em 1.1em;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition:
+      transform 160ms var(--ease-out),
+      background-color 160ms var(--ease-out),
+      color 160ms var(--ease-out),
+      border-color 160ms var(--ease-out);
+  }
+
+  .filter-chip[aria-pressed='true'] {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .filter-chip:hover {
+      border-color: var(--text);
+    }
+    .filter-chip[aria-pressed='true']:hover {
+      border-color: var(--primary);
+    }
+  }
+
+  .filter-chip:active {
+    transform: scale(0.97);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .filter-chip {
+      transition: none;
+    }
+  }
+</style>

@@ -1,7 +1,8 @@
 # janczura.com - LLM-friendly index
 #
-# Purpose: help LLM crawlers quickly find authoritative pages about Jacek Janczura.
-# Human-friendly too. Prefer canonical URLs below.
+# Purpose: help LLM crawlers find authoritative pages about Jacek Janczura.
+# Human-friendly too. Prefer the canonical URLs below. English is the only
+# published language; /pl/ and /de/ URLs redirect to their English equivalent.
 
 site: https://janczura.com
 languages:
@@ -12,9 +13,30 @@ assets (PDF):
   - https://janczura.com/docs/EmployerReference-Jacek.pdf
 
 primary (English):
-  - https://janczura.com/en/about/
-  - https://janczura.com/en/projects/
-  - https://janczura.com/en/talks/
-  - https://janczura.com/en/publications/
-  - https://janczura.com/en/contact/
+  - https://janczura.com/en/ — positioning, ownership pillars, proof and numbers
+  - https://janczura.com/en/leadership/ — what Jacek has led and owned: pillars, company building, principles, timeline
+  - https://janczura.com/en/case-studies/ — every case in one skim list, then grouped cards
+  - https://janczura.com/en/consulting/ — engagement model, the two angles and four offers
+  - https://janczura.com/en/turnaround/ — interim leadership and technology turnaround: first 90 days, what you get
+  - https://janczura.com/en/builder/ — production AI systems: architecture, evaluation depth, deployments
+  - https://janczura.com/en/about/ — narrative, principles, scope and timeline
+  - https://janczura.com/en/talks/ — conference talks
+  - https://janczura.com/en/publications/ — peer-reviewed publications
+  - https://janczura.com/en/writing/ — long-form writing
+  - https://janczura.com/en/contact/ — hiring and project paths
 
+case studies (English):
+  - https://janczura.com/en/case-studies/jaden-data-company-building/ — enterprise AI startup, bootstrapped to €1M+, team 0→10, two certifications
+  - https://janczura.com/en/case-studies/development-bank-genai-portfolio/ — development bank, seven document-heavy workflows, one spec, one evaluation template
+  - https://janczura.com/en/case-studies/automotive-procurement-ai/ — global automotive group, four tendering and contracting workflows in production
+  - https://janczura.com/en/case-studies/engineering-enablement/ — global automotive group, hackathons and AI-assisted development practice for engineers
+  - https://janczura.com/en/case-studies/apg-pension-assistant/ — pension fund administrator, member-facing assistant, on-premises, ministry-recognised
+  - https://janczura.com/en/case-studies/entaingine-platform/ — multi-tenant AI platform serving 50+ organisations
+  - https://janczura.com/en/case-studies/product-matching-ml/ — RP Group, emergency-lighting manufacturer, machine-learning matching of customer inquiries to catalogue products
+  - https://janczura.com/en/case-studies/flowhive-vc/ — venture capital, startup screening agents for a venture team
+  - https://janczura.com/en/case-studies/taufolio/ — equity research, AI-drafted research from filings and calls
+  - https://janczura.com/en/case-studies/idealo-and-ing-scale/ — e-commerce and banking, six-country login rollout, real-time bank pipelines
+  - https://janczura.com/en/case-studies/regulated-distributed-systems/ — financial infrastructure, cross-ledger bridge and sovereign data platforms
+  - https://janczura.com/en/case-studies/stellantis-rag-evaluation/ — Stellantis, foundation-model evaluation challenge won with Patronus AI
+  - https://janczura.com/en/case-studies/legal-ai-startup-cto-advisory/ — anita.legal, independent engagement: security, audit and due-diligence readiness, AWS optimisation, AI-accelerated development
+  - https://janczura.com/en/case-studies/software-ag-migration-and-enablement/ — Software AG, independent engagement: SaaS-to-on-premises migration saving €180,000+ in SaaS costs, and AI skills across teams

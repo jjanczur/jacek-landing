@@ -1,0 +1,52 @@
+{
+  "metaTitle": "Jacek Janczura — AI Systems Architect i Fractional CTO",
+  "metaDescription": "Zbudowałem i wdrożyłem multi-tenant system RAG, który dopiero próbujesz postawić. Event-driven na AWS, ponad 1000 jednoczesnych połączeń, tysiące requestów na sekundę, 99,9% uptime, dla ponad 50 organizacji z branż regulowanych.",
+  "eyebrow": "AI Systems Architect · Fractional CTO",
+  "heroTitle": "Zbudowałem system AI,<br class=\"br-desktop\" /> który dopiero chcesz postawić.",
+  "heroSub": "Multi-tenant RAG na event-driven AWS — ponad 1000 jednoczesnych połączeń, tysiące requestów na sekundę, 99,9% uptime, dla ponad 50 organizacji z branż regulowanych. Projektuję architekturę, buduję pipeline'y i evale, podpinam audit traile i prowadzę inżynierów, którzy potem to utrzymują. <strong>Nie kolejne proof-of-concept.</strong>",
+  "ctaPrimary": "Przejdź przez architekturę",
+  "ctaGhost": "Podeślij mi swój pipeline — powiem Ci, gdzie się posypie",
+  "availability": "Fractional CTO i partner konsultingowy · otwarty na właściwą stałą rolę CTO lub Head of AI",
+  "diagramTitle": "System referencyjny",
+  "diagramHealth": "99,9% uptime",
+  "throughputLabel": "przepustowość poglądowa",
+  "svgAriaLabel": "Diagram architektury: Client do API Gateway do Lambda i Fargate do RAG Service do baz Vector i Graph oraz dostawców LLM OpenAI, Bedrock, Azure i Mistral.",
+  "proofKicker": "Systemy wdrożone dla",
+  "logoAlts": [
+    "Koncern technologii przemysłowych",
+    "Globalna marka napojów",
+    "Bank rozwoju",
+    "Globalny koncern farmaceutyczny",
+    "Europejski bank detaliczny",
+    "Europejski fundusz emerytalny",
+    "Narodowy bank centralny"
+  ],
+  "proofLegal": "Wszystkie znaki towarowe należą do ich właścicieli. Logotypy oznaczają organizacje, dla których Jacek wdrażał systemy — jako współzałożyciel i CTO Jaden Data (projekty dla klientów) lub wcześniej jako konsultant (ING przez SAS Institute). Nie oznaczają partnerstwa, sponsoringu ani rekomendacji.",
+  "stats": [
+    { "value": "1,000+", "label": "jednoczesnych połączeń" },
+    { "value": "thousands", "label": "requestów / sekundę" },
+    { "value": "99.9%", "label": "uptime" },
+    { "value": "50+", "label": "organizacji regulowanych" }
+  ],
+  "details": [
+    {
+      "num": "01",
+      "heading": "Projektuję architekturę.",
+      "body": "Event-driven na AWS, zbudowane tak, by wytrzymać prawdziwe obciążenie: ponad 1000 jednoczesnych połączeń i tysiące requestów na sekundę przy 99,9% uptime. Diagram na tej stronie to kształt realnego systemu produkcyjnego — request wchodzi, retrieval i reasoning w bazach wektorowych i grafowych, wywołania modeli rozłożone między OpenAI, Bedrock, Azure i Mistral."
+    },
+    {
+      "num": "02",
+      "heading": "Buduję pipeline'y i evale.",
+      "body": "RAG, który zasługuje na zaufanie: chunking i retrieval, których obronisz przed każdym, evale wyłapujące regresje, zanim zrobią to Twoi użytkownicy, i audit traile podpięte od pierwszego dnia. Przeprowadziłem swoją firmę przez ISO 27001 i SOC 2 w około 3 miesiące — bo na rynkach regulowanych compliance to część architektury, a nie coś doklejanego na końcu."
+    },
+    {
+      "num": "03",
+      "heading": "Prowadzę inżynierów, którzy potem to utrzymują.",
+      "body": "Zbudowałem firmę od zera do ponad 1 mln € przychodu i zespół od zera do 10 osób. W idealo byłem jednym z kluczowych współautorów wdrożenia logowania w sześciu krajach, które w trzy miesiące dało 1,4 mln nowych kont — +700% względem prognozy. Przekazuję systemy zespołom, które dalej dowożą, kiedy mnie już nie ma."
+    }
+  ],
+  "ctaTitle": "Podeślij mi swój pipeline. Powiem Ci, gdzie się posypie.",
+  "ctaSub": "Krótka, konkretna analiza Twojego setupu RAG albo event-driven — retrieval, evale, skalowanie i luki w compliance, na które trafisz na rynku regulowanym. Bez slajdów, bez teatru z proof-of-concept.",
+  "ctaActionPrimary": "Podeślij mi swój pipeline",
+  "ctaActionGhost": "Przejdź przez architekturę jeszcze raz"
+}

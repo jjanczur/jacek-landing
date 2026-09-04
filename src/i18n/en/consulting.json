@@ -1,89 +1,106 @@
 {
   "meta": {
-    "title": "Consulting | Jacek Janczura",
-    "description": "Fractional CTO & consulting partner (ex Co-founder & CTO, Jaden Data). CTO & Cloud consulting: distributed systems, AWS architecture, reliability/cost optimization, security/compliance, and AI (LLM/RAG/evals) where it fits. Engagements: fractional leadership, architecture reviews, delivery sprints, developer enablement."
+    "title": "Consulting — Enterprise AI and interim technology leadership — Jacek Janczura",
+    "description": "Finite, outcome-defined engagements: architecture and risk review, interim CTO or AI lead, one production AI workflow end to end, and AI transformation for engineering teams. Every engagement ends in a handover."
   },
   "hero": {
-    "title": "Consulting",
-    "subtitle": "Senior engineering leadership for complex systems (AI included, not required)"
+    "eyebrow": "Consulting · Engagement model",
+    "title": "Engagements with a defined outcome <em>and an end date.</em>",
+    "sub": "I take on a finite piece of work with an agreed outcome: an architecture and risk read, an interim leadership stretch, one production AI workflow, or an engineering organisation that needs to work with AI safely. Every engagement ends in a handover to the people who will run it.",
+    "primary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "ghost": {
+      "href": "https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1",
+      "label": "Book a 30-min call",
+      "external": true
+    }
   },
-  "intro": {
-    "p1": "I'm a founder-CTO and fractional CTO — co-founder and CTO of Jaden Data until 2024, its consulting partner since. I help teams ship <strong>secure, reliable software</strong>-cloud platforms, distributed systems, and AI capabilities (LLM/RAG/evals) when they deliver real business value.",
-    "p2": "My focus is <strong>production outcomes</strong>: clear architecture decisions, speed of delivery without regressions, cost/performance, security/compliance, and an approach that fits how your organization actually operates."
+  "model": {
+    "eyebrow": "How engagements work",
+    "title": "Finite, outcome-defined, handed over",
+    "lede": "We agree what has to be true at the end and how we will know it is true. I work inside your repository, your review process and your stakeholder cadence rather than beside them, and decisions get written down as they are made. When the outcome is met, ownership sits with your team: standards, documentation and a system they can change without me."
   },
-  "engagements": {
-    "title": "How I work / Engagements",
+  "doors": [
+    {
+      "eyebrow": "You inherited a mess",
+      "title": "Technology turnaround",
+      "body": "Legacy debt off the critical path, the compliance gaps auditors flag closed, and a dated plan for the first 90 days — without freezing the roadmap.",
+      "href": "/en/turnaround/",
+      "label": "See the turnaround angle"
+    },
+    {
+      "eyebrow": "You have a demo, not a system",
+      "title": "Production AI systems",
+      "body": "Document-heavy workflows and customer-facing assistants taken from prototype to something that survives real data, real integrations and an audit.",
+      "href": "/en/builder/",
+      "label": "See the systems angle"
+    }
+  ],
+  "offers": {
+    "eyebrow": "What I take on",
+    "title": "Four engagements",
+    "lede": "Scoped one at a time, each with an outcome we agree before it starts.",
     "items": [
       {
-        "title": "Fractional CTO / Senior Engineering Leadership",
-        "description": "Hands-on leadership for strategy, technical direction, architecture decisions, and delivery standards-when you need senior support shaping systems and teams.",
-        "deliverables": [
-          "Architecture direction + decision records (tradeoffs made explicit)",
-          "Roadmap shaping + delivery operating model (quality gates, reviews, rollout)",
-          "Mentoring for senior engineers and team enablement",
-          "Risk review: security, reliability, and cost (including AI-specific risks where relevant)"
-        ]
+        "title": "Architecture & risk review",
+        "body": "A structured read of the system you have, or the one you are about to build: boundaries, data flows, failure modes, security and compliance exposure, cost, and the trade-off behind every recommendation. Findings come back prioritised into now, next and later.",
+        "proof": "The same read I ran on our own AWS platform against the Well-Architected Framework, and on client systems before they went into regulated production."
       },
       {
-        "title": "Architecture Review (Cloud / Distributed Systems / AI)",
-        "description": "A structured assessment of your current system (or planned design) with concrete recommendations your team can execute.",
-        "deliverables": [
-          "Findings + prioritized recommendations (now/next/later)",
-          "Reference architecture + key tradeoffs (build vs buy, data flows, boundaries)",
-          "Plan for reliability, observability (logs/metrics/traces), and cost control"
-        ]
+        "title": "Interim CTO / AI lead",
+        "body": "Hands-on leadership while you hire or recover: architecture decisions, delivery standards, roadmap, technical budget and the stakeholder conversations — with the decisions written down and the mandate ending in a handover.",
+        "proof": "Three years as CTO of a bootstrapped enterprise AI company: engineering from 0 to 10, 50+ organisations on the platform, ISO 27001 and SOC 2 Type 2 in about three months.",
+        "href": "/en/case-studies/jaden-data-company-building/"
       },
       {
-        "title": "Delivery Sprint (production-grade thin slice)",
-        "description": "Ship a focused, valuable increment end-to-end-so you get working software plus a pattern your team can repeat.",
-        "deliverables": [
-          "One production-ready feature (e.g., event-driven workflow, platform capability, RAG endpoint, or evaluation harness)",
-          "CI/test coverage + a deployment path your team owns",
-          "Monitoring/alerts + operational runbook basics",
-          "Security-first defaults (RBAC, data handling, auditability where needed)"
-        ]
+        "title": "Production AI thin slice",
+        "body": "One workflow, end to end, in your environment: process and retrieval design, the evaluation harness, human-review thresholds, the integration, and a deployment path your team owns. Narrow on purpose, so it can actually ship.",
+        "proof": "A member-facing pension assistant: prototype in a day from platform components, on-premises MVP in twelve sprints under Dutch financial regulation.",
+        "href": "/en/case-studies/apg-pension-assistant/"
       },
       {
-        "title": "Developer Productivity & Safe AI Tooling",
-        "description": "Make your engineering org faster without sacrificing quality-workflows, standards, and (optionally) AI coding tools like Cursor/Claude Code.",
-        "deliverables": [
-          "PR/review standards, coding guidelines, and templates tailored to your repo",
-          "CI quality gates (tests, lint, security checks) tuned to your delivery flow",
-          "AI coding tool enablement: onboarding, guardrails, and regression prevention"
-        ]
+        "title": "AI transformation & engineering enablement",
+        "body": "Introducing teams to AI-accelerated software engineering: setting up the best practices, teaching people to build their own internal tools, and setting up environments where AI can be used securely. Workshops on prompt engineering and AI IDEs, MCP practices and custom skills, and guidelines for responsible use.",
+        "proof": "Delivered for enterprise engineering teams at a global automotive group: onboarding to Cursor, Claude Code and Copilot, security standards for enterprise AI tool adoption, and MCP best practices in their internal instances.",
+        "href": "/en/case-studies/automotive-procurement-ai/"
       }
     ]
   },
-  "howIWork": {
-    "title": "How I approach delivery",
-    "steps": [
-      {
-        "title": "Start with goals and constraints",
-        "description": "We map the real workflow, stakeholders, and constraints (people, systems, risk, compliance) before choosing tech."
-      },
-      {
-        "title": "Design for operability from day one",
-        "description": "Security, observability, cost controls, and failure modes are part of the architecture-not a later phase."
-      },
-      {
-        "title": "Ship in iterations with measurable outcomes",
-        "description": "Small releases, clear success metrics, and monitoring (and evals where AI is involved) so quality improves over time instead of drifting."
-      }
+  "fit": {
+    "eyebrow": "Fit",
+    "title": "Where I help, and where I don't",
+    "goodTitle": "A good fit",
+    "good": [
+      "AI has to land inside a real back-office process — documents, contracts, reports, applications — and the output has to be defensible to whoever signs it off.",
+      "A customer-facing assistant has to work in a regulated environment, on-premises or under data-sovereignty rules.",
+      "A prototype impressed everyone and now has to survive real data, real integrations and an audit.",
+      "The platform is slowing the team down: an entangled monolith, no quality gates, reliability and cost drifting.",
+      "A certification or a pentest finding is coming and the roadmap cannot stop.",
+      "Engineers need to use AI tools without leaking data or losing review discipline."
+    ],
+    "notTitle": "Not a fit",
+    "not": [
+      "A seat to fill on a long-running team with no defined outcome.",
+      "Research without a workflow behind it, or a model trained for its own sake.",
+      "Work where nobody on your side will own the system after the handover.",
+      "A number in a pitch deck that I cannot evidence — I would rather say no than dress it up.",
+      "Deployments where evaluation, security and observability are scheduled for phase two."
     ]
   },
-  "goodFit": {
-    "title": "Good fit if you’re building…",
-    "items": [
-      "AWS-based platforms (serverless, containers) that need clear architecture and cost control",
-      "Event-driven systems and real-time pipelines (Kafka/Flink-style problems)",
-      "Multi-tenant SaaS with strong security, auditability, and compliance requirements",
-      "Reliability/performance work: SLOs, observability, incident-driven improvements",
-      "AI features that must be safe and measurable (LLM platform, RAG quality, evals)"
-    ]
-  },
-  "cta": {
-    "title": "Want to discuss a project?",
-    "description": "The fastest way is booking a short call. If you prefer, you can also send a message with context: your goal, current state, constraints (security/compliance), and timeline expectations.",
-    "button": "Book a call"
+  "band": {
+    "title": "Send a project brief",
+    "sub": "The goal, where you are now, the constraints you cannot move (security, compliance, timeline) and who will own it afterwards. That is enough for a straight answer about whether I can help.",
+    "primary": {
+      "href": "/en/contact/#project",
+      "label": "Send a project brief"
+    },
+    "secondary": {
+      "href": "https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1",
+      "label": "Book a 30-min call",
+      "external": true
+    },
+    "note": "Remote-first, on-site when it matters; NDA on request"
   }
 }

@@ -1,0 +1,234 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import CaseSummary from '../../../components/CaseSummary.astro';
+import CaseFacts from '../../../components/CaseFacts.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import { getSupportedLangs } from '../../../utils/i18n';
+
+export async function getStaticPaths() {
+  const cases = (await getCollection('case-studies')).filter(
+    c => c.data.hasDetail,
+  );
+  return getSupportedLangs().flatMap(lang =>
+    cases.map(entry => ({
+      params: { lang, slug: entry.slug },
+      props: { lang, entry, all: cases },
+    })),
+  );
+}
+const { lang, entry, all } = Astro.props;
+const { Content, headings } = await entry.render();
+const d = entry.data;
+const related = all
+  .filter(c => c.slug !== entry.slug && c.data.category === d.category)
+  .slice(0, 3)
+  .map(c => ({
+    href: `/${lang}/case-studies/${c.slug}/`,
+    title: c.data.title,
+  }));
+const chapters = headings.filter(h => h.depth === 2);
+const compact: { term: string; items: string[] }[] = [
+  { term: 'Stakeholders', items: d.stakeholders },
+  { term: 'Constraints', items: d.constraints },
+  { term: 'Reuse', items: d.reuse },
+].filter(x => x.items.length > 0);
+const cta =
+  d.angle === 'turnaround'
+    ? {
+        href: `/${lang}/turnaround/`,
+        label: 'Interim leadership for your stack',
+      }
+    : d.angle === 'builder'
+      ? { href: `/${lang}/builder/`, label: 'Production AI for your workflow' }
+      : {
+          href: `/${lang}/contact/#hiring`,
+          label: 'Discuss a leadership role',
+        };
+const jsonLd = {
+  '@type': 'CreativeWork',
+  '@id': `https://janczura.com/${lang}/case-studies/${entry.slug}/#case`,
+  name: d.title,
+  description: d.summary,
+  author: { '@id': 'https://janczura.com/#person' },
+  about: d.client,
+  keywords: d.tags.join(', '),
+  inLanguage: 'en',
+};
+---
+
+<BaseLayout
+  title={`${d.title} — Case study — Jacek Janczura`}
+  description={d.summary}
+  lang={lang}
+  jsonLd={jsonLd}
+>
+  <Hero
+    eyebrow={`Case study · ${d.sector}`}
+    title={d.title}
+    sub={d.summary}
+    primary={cta}
+    ghost={{ href: `/${lang}/case-studies/`, label: 'All case studies' }}
+  />
+  <section class="section case-body">
+    <div class="container case-layout">
+      <CaseFacts
+        client={d.client}
+        sector={d.sector}
+        period={d.period}
+        status={d.status}
+        role={d.role}
+        via={d.via}
+        sourceUrl={d.sourceUrl}
+        sourceLabel={d.sourceLabel}
+        tags={d.tags}
+        related={related}
+        chapters={chapters}
+        cta={cta}
+      />
+      <div class="case-main">
+        <CaseSummary
+          mandate={d.mandate}
+          keyDecisions={d.keyDecisions}
+          outcomes={d.outcomes}
+          status={d.status}
+          relationship={d.relationship}
+          via={d.via}
+        />
+        {
+          compact.length > 0 && (
+            <dl class="case-dl reveal">
+              {compact.map(block => (
+                <div class="case-dl__row surface-ruled">
+                  <dt>{block.term}</dt>
+                  <dd>{block.items.join(' · ')}</dd>
+                </div>
+              ))}
+            </dl>
+          )
+        }
+        <article class="prose reveal"><Content /></article>
+      </div>
+    </div>
+  </section>
+  <CtaBand
+    title="Want the same thing done in your environment?"
+    sub="This case is one of several. If the shape looks like your problem, the fastest route is to send me the constraints you cannot move."
+    primary={{
+      href: `/${lang}/contact/#project`,
+      label: 'Send a project brief',
+    }}
+    secondary={{ href: `/${lang}/case-studies/`, label: 'All case studies' }}
+    note="Remote-first, on-site when it matters; NDA on request"
+  />
+</BaseLayout>
+
+<style>
+  .case-body {
+    padding-top: 0;
+  }
+
+  /* RE-6: give the main column the prose measure directly, so there is no
+     164px of dead space beside a 68ch essay, and centre the pair. */
+  .case-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 68ch) 300px;
+    justify-content: center;
+    align-items: start;
+    gap: var(--space-8);
+  }
+
+  .case-main {
+    min-width: 0;
+  }
+
+  .prose {
+    max-width: none;
+    color: oklch(from var(--text) l c h / 0.9);
+  }
+
+  /* RE-7: facts first in the DOM so a tablet reader learns the client, the
+     period and the role before 3,000px of essay; the rail returns to the
+     right column only where there is a column to return to. CaseFacts.astro
+     carries the matching `order: 2` for its own root element — Astro's
+     scoped styles don't cross component boundaries, so that half of the
+     pair has to live there instead of here. */
+  @media (min-width: 1000px) {
+    .case-main {
+      order: 1;
+    }
+  }
+  @media (max-width: 999px) {
+    .case-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* AI-8(a): three of the ten sections become chapter breaks; the rest stay
+     quiet. Heading ids are Astro's own slugs, so this needs no MDX change. */
+  .prose :global(h2) {
+    font-size: var(--font-size-xl);
+    margin-top: var(--space-7);
+  }
+  .prose :global(#decisions),
+  .prose :global(#delivery),
+  .prose :global(#outcome) {
+    margin-top: var(--space-9);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--tracking-display);
+  }
+  .prose :global(#evidence) {
+    font-size: var(--font-size-lg);
+    color: oklch(from var(--text) l c h / 0.8);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.2em;
+  }
+
+  .prose :global(strong) {
+    color: var(--text);
+  }
+
+  /* AI-8(c): the one sentence a recruiter should leave with. */
+  .prose :global(.case-pull) {
+    margin: var(--space-6) 0;
+    padding: var(--space-2) 0 var(--space-2) var(--space-5);
+    border-left: 3px solid var(--accent);
+    font-size: var(--font-size-lg);
+    line-height: 1.45;
+    color: var(--text);
+  }
+
+  /* AI-8(a): Stakeholders / Constraints / Reuse, demoted to a two-column
+     ruled list instead of three more identical <h2> sections. */
+  .case-dl {
+    margin: 0 0 var(--space-7);
+  }
+  .case-dl__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-1) var(--space-5);
+  }
+  .case-dl__row dt {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(from var(--text) l c h / 0.6);
+  }
+  .case-dl__row dd {
+    margin: 0;
+    color: oklch(from var(--text) l c h / 0.85);
+  }
+  @media (min-width: 700px) {
+    .case-dl__row {
+      grid-template-columns: 12rem 1fr;
+    }
+  }
+</style>

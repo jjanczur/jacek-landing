@@ -131,17 +131,64 @@
   --breakpoint-sm: 600px;
   --breakpoint-md: 900px;
   --breakpoint-lg: 1200px;
+
+  /* Display scale (rebuild) */
+  --font-size-display: clamp(2.6rem, 5.5vw, 4.4rem);
+  --font-size-h1: clamp(2.1rem, 4vw, 3.2rem);
+  --font-size-h2: clamp(1.7rem, 2.8vw, 2.4rem);
+  --tracking-display: -0.02em;
+
+  /* Rhythm and widths — three bands, not one (AI-4) */
+  --section-y-tight: clamp(40px, 5vw, 64px);
+  --section-y: clamp(64px, 8vw, 96px);
+  --section-y-loose: clamp(88px, 12vw, 152px);
+  --w-prose: 68ch;
+  --w-wide: 1200px;
+  --w-hero: 56rem;
+
+  /* Surfaces (light) — panels sit a real step below the paper (AI-2).
+     --surface-raised is the one card per page that is allowed to pop: it is
+     the paper colour lifted by a shadow, not a tint. */
+  --surface-1: oklch(from var(--bg) calc(l - 0.045) c h);
+  --surface-2: oklch(from var(--bg) calc(l - 0.075) c h);
+  --surface-raised: var(--bg);
+  --shadow-raised: 0 12px 32px oklch(from var(--text) l c h / 0.1);
+  --line: oklch(from var(--text) l c h / 0.12);
+  --line-strong: oklch(from var(--text) l c h / 0.24);
+  --primary-soft: oklch(from var(--primary) l c h / 0.12);
+  --accent-soft: oklch(from var(--accent) l c h / 0.14);
+
+  /* CTA surface: darker than --primary so white 20px/600 labels clear AA.
+     Measured against #fff: 5.83:1 light, 4.93:1 dark (CO-2). --primary is
+     unchanged and still used for text, rules and display numerals. */
+  --btn-primary-bg: oklch(0.52 0.17 280);
+  --btn-primary-fg: #fff;
+
+  /* Motion (MO-2) */
+  --reveal-dur: 460ms;
+  --reveal-distance: 12px;
+  --stagger: 45ms;
 }
 
-/* Dark theme */
+/* Dark theme. The background carries a trace of the brand hue (CO-5) so
+   panels read as cool slate in the same family as the violet accents, and
+   the amber highlight stops reading as mud. Dark surfaces gain chroma, not
+   just lightness (AI-2). */
 :root[data-theme='dark'] {
-  --bg: var(--bg-dark);
+  --bg: oklch(0.17 0.008 280);
   --text: var(--text-dark);
   --primary: var(--primary-dark);
   --accent: var(--accent-dark);
   --highlight: var(--highlight-dark);
   --muted: var(--muted-dark);
   --border: var(--border-dark);
+  --surface-1: oklch(0.22 0.012 280);
+  --surface-2: oklch(0.26 0.014 280);
+  --surface-raised: oklch(0.24 0.014 280);
+  --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.5);
+  --line: oklch(from var(--text) l c h / 0.14);
+  --line-strong: oklch(from var(--text) l c h / 0.28);
+  --btn-primary-bg: oklch(0.56 0.18 280);
 }
 
 /* Phones: scale down display type globally via the tokens, so every page's
@@ -225,6 +272,99 @@ a:hover {
   margin: 0 auto;
 }
 
+/* ---------------------------------------------------------------------
+   Section rhythm (AI-4). A band gets --tight when it carries a single row
+   of content, --loose when the subject changes; --divided draws the
+   full-bleed hairline that turns the page into chapters, and --tint is the
+   restrained gradient band that replaces card borders as the rhythm device
+   (CO-4, D22: gradient surfaces yes, gradient text no).
+   --------------------------------------------------------------------- */
+.section {
+  padding-block: var(--section-y);
+}
+.section--tight {
+  padding-block: var(--section-y-tight);
+}
+.section--loose {
+  padding-block: var(--section-y-loose);
+}
+.section--divided {
+  border-top: 1px solid var(--line);
+}
+.section--tint {
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--surface-1) 0%, var(--bg) 100%);
+}
+
+/* ---------------------------------------------------------------------
+   Four surface roles (AI-1). Exactly one per section, never two adjacent.
+   These are the single source of background/border/radius/padding on the
+   element they are applied to — a component adopting a role deletes its own
+   competing declarations rather than overriding them.
+   --------------------------------------------------------------------- */
+
+/* (a) bare — the group carries one hairline, the items carry nothing */
+.surface-bare {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+.surface-bare-group {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-6);
+}
+
+/* (b) tinted panel */
+.surface-panel {
+  background: var(--surface-2);
+  border: 0;
+  border-radius: var(--radius-l);
+  padding: clamp(var(--space-5), 3vw, var(--space-6));
+}
+
+/* (c) ruled list row */
+.surface-ruled {
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: var(--space-5) 0;
+}
+.surface-ruled:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+/* (d) accent-rule callout */
+.surface-accent {
+  background: none;
+  border: 0;
+  border-left: 3px solid var(--accent);
+  border-radius: 0;
+  padding: var(--space-2) 0 var(--space-2) var(--space-5);
+}
+
+/* (e) the one raised card per page */
+.surface-raised {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-raised);
+  padding: clamp(var(--space-5), 3.5vw, var(--space-7));
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Focus styles */
 :focus-visible {
   outline: 2px solid var(--primary);
@@ -239,14 +379,15 @@ a:focus-visible {
 }
 
 /* Scroll reveal — base hidden state is applied ONLY when JS enables it
-   (adds .reveal-on to <html>) and motion is allowed. Without JS or under
-   reduced motion the class is never added, so content stays fully visible. */
+   (adds .reveal-on to <html>) and motion is allowed. 460ms, 12px: the
+   element should arrive with the scroll, not catch up with it. Consumers
+   cap cumulative stagger at 3 x --stagger. */
 .reveal-on .reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(var(--reveal-distance));
   transition:
-    opacity 0.7s var(--ease-out),
-    transform 0.7s var(--ease-out);
+    opacity var(--reveal-dur) var(--ease-out),
+    transform var(--reveal-dur) var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }

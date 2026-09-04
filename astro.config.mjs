@@ -3,11 +3,24 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
+// Case-study slugs that would name a client in the URL were renamed before
+// this section of the site was ever published, so there is nothing to
+// redirect from: those addresses simply do not exist.
 // https://astro.build/config
 export default defineConfig({
   site: 'https://janczura.com',
-  integrations: [mdx(), sitemap({ filter: page => !/\/(pl|de)\//.test(page) })],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: page => !/\/(pl|de)\//.test(page) && !/\/projects\//.test(page),
+    }),
+  ],
   trailingSlash: 'always',
+  redirects: {
+    '/en/projects/': '/en/case-studies/',
+    '/pl/projects/': '/en/case-studies/',
+    '/de/projects/': '/en/case-studies/',
+  },
   build: {
     // Inline stylesheets to eliminate render-blocking CSS requests
     // This reduces critical path latency by removing the CSS file from the dependency chain

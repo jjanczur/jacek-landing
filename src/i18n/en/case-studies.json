@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "title": "Enterprise AI and CTO case studies — Jacek Janczura",
+    "description": "From customer problem and technical validation to production system, measurable outcome and reusable capability: company building, enterprise AI deployments, AI products, and regulated systems at scale."
+  },
+  "hero": {
+    "eyebrow": "Case studies",
+    "title": "Enterprise AI and technology leadership, <em>with the evidence laid out.</em>",
+    "sub": "From customer problem and technical validation to production system, measurable outcome and reusable capability. Skim the list, then open the ones that matter to you."
+  },
+  "skim": {
+    "eyebrow": "At a glance",
+    "title": "Every case in one row"
+  },
+  "filters": [
+    { "key": "all", "label": "All" },
+    { "key": "enterprise-ai", "label": "Enterprise AI" },
+    { "key": "company-building", "label": "Company building" },
+    { "key": "ai-products", "label": "Products" },
+    { "key": "scale-and-regulated", "label": "Regulated systems" }
+  ],
+  "groups": [
+    { "key": "company-building", "title": "Company and team building" },
+    { "key": "enterprise-ai", "title": "Enterprise AI deployments" },
+    { "key": "ai-products", "title": "Production AI and ML products" },
+    {
+      "key": "scale-and-regulated",
+      "title": "High-scale and regulated systems"
+    }
+  ],
+  "evidenceNote": "Every outcome carries its evidence type: measured, customer estimate, projected, qualitative validation or technical benchmark."
+}

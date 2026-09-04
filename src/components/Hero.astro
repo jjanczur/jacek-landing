@@ -1,0 +1,227 @@
+---
+import Button from './Button.astro';
+import AvailabilityPill from './AvailabilityPill.astro';
+export interface Props {
+  eyebrow: string;
+  title: string;
+  sub: string;
+  primary: { href: string; label: string };
+  ghost?: { href: string; label: string; external?: boolean };
+  availability?: string;
+  align?: 'left' | 'center';
+}
+const {
+  eyebrow,
+  title,
+  sub,
+  primary,
+  ghost,
+  availability,
+  align = 'left',
+} = Astro.props;
+const hasAside = Astro.slots.has('aside');
+
+// GR-5: 14 diagonals at 68deg, 42px apart (so 45.3px of horizontal step).
+// A line entering at (x, -100) leaves at (x + 364, 800) — 900px of rise over
+// 900/tan(68deg) of run. Static: this is seen on every page load, and by the
+// frequency rule that argues for no animation at all.
+const RULES = Array.from({ length: 14 }, (_, i) =>
+  Number((-340 + i * 45.3).toFixed(1)),
+);
+// Three nodes echoing the language of the diagrams, so the hero foreshadows them.
+const BLOCKS: [number, number][] = [
+  [352, 150],
+  [196, 386],
+  [430, 508],
+];
+---
+
+<section class={`hero hero--${align}${hasAside ? ' hero--with-aside' : ''}`}>
+  {
+    !hasAside && align === 'left' && (
+      <svg
+        class="hero__rules"
+        viewBox="0 0 600 700"
+        preserveAspectRatio="xMaxYMid slice"
+        aria-hidden="true"
+        focusable="false"
+      >
+        {RULES.map(x => (
+          <line x1={x} y1="-100" x2={x + 364} y2="800" />
+        ))}
+        {BLOCKS.map(b => (
+          <rect x={b[0]} y={b[1]} width="44" height="44" rx="4" />
+        ))}
+        <circle class="hero__rules-dot" cx="229.5" cy="300" r="3" />
+      </svg>
+    )
+  }
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">{eyebrow}</p>
+      <h1
+        class="hero__title reveal"
+        style="--reveal-delay: 60ms"
+        set:html={title}
+      />
+      <p
+        class="hero__sub reveal"
+        style="--reveal-delay: 140ms"
+        set:html={sub}
+      />
+      <div class="hero__cta reveal" style="--reveal-delay: 220ms">
+        <Button href={primary.href} variant="primary" size="lg"
+          >{primary.label}</Button
+        >
+        {
+          ghost && (
+            <Button
+              href={ghost.href}
+              variant="ghost"
+              size="lg"
+              external={ghost.external}
+            >
+              {ghost.label}
+            </Button>
+          )
+        }
+      </div>
+      {
+        availability && (
+          <div class="reveal" style="--reveal-delay: 300ms">
+            <AvailabilityPill text={availability} />
+          </div>
+        )
+      }
+    </div>
+    {
+      hasAside && (
+        <div class="hero__aside reveal" style="--reveal-delay: 120ms">
+          <slot name="aside" />
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  /* AI-5: a single structural wash instead of three blur(70px) layers that
+     animate transform on every page load and are invisible in both themes. */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: calc(var(--section-y) * 1.1) var(--section-y);
+    background: linear-gradient(180deg, var(--surface-1) 0%, var(--bg) 100%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--w-hero);
+  }
+
+  .hero--center .hero__inner {
+    margin-inline: auto;
+    text-align: center;
+  }
+  .hero--center .hero__cta {
+    justify-content: center;
+  }
+
+  .eyebrow {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__title {
+    font-size: var(--font-size-display);
+    letter-spacing: var(--tracking-display);
+    line-height: 1.02;
+    margin-bottom: var(--space-5);
+  }
+  .hero__title :global(em) {
+    font-style: normal;
+    color: var(--primary);
+  }
+
+  .hero__sub {
+    font-size: var(--font-size-lg);
+    max-width: var(--w-prose);
+    color: oklch(from var(--text) l c h / 0.82);
+    margin-bottom: var(--space-6);
+  }
+  .hero--center .hero__sub {
+    margin-inline: auto;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .hero--with-aside .hero__inner {
+    max-width: var(--w-wide);
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .hero--with-aside .hero__inner {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+  }
+  .hero__aside {
+    min-width: 0;
+  }
+
+  /* GR-5: fills the dead right column at 1440 with structure, not blur.
+     ~1 KB of markup, zero JS, zero paint churn. Every colour is a token, so
+     light and dark both work with no override. */
+  .hero__rules {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: min(40%, 600px);
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to left, #000 10%, transparent 85%);
+    mask-image: linear-gradient(to left, #000 10%, transparent 85%);
+  }
+  .hero__rules line {
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+  .hero__rules rect {
+    fill: var(--surface-1);
+    stroke: var(--line-strong);
+    stroke-width: 1;
+  }
+  .hero__rules-dot {
+    fill: var(--accent);
+  }
+  @media (max-width: 760px) {
+    .hero__rules {
+      display: none;
+    }
+  }
+
+  /* AI-10: the aside column also carries the portrait on leadership.
+     Consumers today: builder (ArchDiagram) and leadership (portrait). */
+  .hero__aside--portrait {
+    max-width: 380px;
+    margin-inline: auto;
+  }
+  .hero__aside--portrait :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-l);
+  }
+</style>

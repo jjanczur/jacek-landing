@@ -1,0 +1,122 @@
+---
+export interface Door {
+  eyebrow: string;
+  title: string;
+  body: string;
+  href: string;
+  label: string;
+}
+export interface Props {
+  doors: Door[];
+}
+const { doors } = Astro.props;
+---
+
+<section class="doors section">
+  <div class="container">
+    <div class="door-grid">
+      {
+        doors.map((door, i) => (
+          <a
+            class="door reveal"
+            style={`--reveal-delay: ${i * 60}ms`}
+            href={door.href}
+          >
+            <span class="door__eyebrow">{door.eyebrow}</span>
+            <h3 class="door__title">{door.title}</h3>
+            <p class="door__body">{door.body}</p>
+            <span class="door__cta">
+              {door.label}
+              <span class="door__arrow" aria-hidden="true">
+                →
+              </span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .door-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 800px) {
+    .door-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .door {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, var(--surface-1), var(--bg));
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    padding: clamp(var(--space-6), 4vw, var(--space-7));
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.25s var(--ease-out);
+  }
+  .door:hover {
+    text-decoration: none;
+  }
+
+  .door__eyebrow {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .door__title {
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--tracking-display);
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .door__body {
+    font-size: var(--font-size-base);
+    color: oklch(from var(--text) l c h / 0.78);
+    line-height: 1.6;
+    margin: 0 0 var(--space-6);
+    flex-grow: 1;
+  }
+
+  .door__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    color: var(--primary);
+  }
+
+  .door__arrow {
+    display: inline-block;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .door:hover {
+      border-color: var(--line-strong);
+    }
+    .door:hover .door__arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .door,
+    .door__arrow {
+      transition: none;
+    }
+  }
+</style>

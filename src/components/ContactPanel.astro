@@ -1,0 +1,282 @@
+---
+import Button from './Button.astro';
+
+export type ContactFieldType = 'text' | 'email' | 'textarea' | 'select';
+
+export interface ContactField {
+  name: string;
+  label: string;
+  type: ContactFieldType;
+  required?: boolean;
+  placeholder?: string;
+  rows?: number;
+  options?: string[];
+  autocomplete?: string;
+}
+
+export interface Props {
+  id: string;
+  eyebrow: string;
+  title: string;
+  lede: string;
+  points: string[];
+  cta?: { href: string; label: string; external?: boolean };
+  action: string;
+  path: string;
+  subject: string;
+  formTitle: string;
+  submit: string;
+  note?: string;
+  fields: ContactField[];
+  switchTo?: { href: string; label: string };
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  lede,
+  points,
+  cta,
+  action,
+  path,
+  subject,
+  formTitle,
+  submit,
+  note,
+  fields,
+  switchTo,
+} = Astro.props;
+---
+
+<section class="path-panel" id={id}>
+  <div class="path-panel__intro reveal">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 class="path-panel__title">{title}</h2>
+    <p class="path-panel__lede">{lede}</p>
+    <ul class="path-panel__points" role="list">
+      {points.map(point => <li>{point}</li>)}
+    </ul>
+    {
+      cta && (
+        <Button href={cta.href} variant="ghost" external={cta.external}>
+          {cta.label}
+        </Button>
+      )
+    }
+  </div>
+
+  <form class="path-form reveal" method="POST" action={action}>
+    <h3 class="path-form__title">{formTitle}</h3>
+    <input type="hidden" name="path" value={path} />
+    <input type="hidden" name="_subject" value={subject} />
+    <p class="path-form__gotcha" aria-hidden="true">
+      <label for={`${id}-gotcha`}>Leave this field empty</label>
+      <input
+        id={`${id}-gotcha`}
+        type="text"
+        name="_gotcha"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </p>
+    {
+      fields.map(field => (
+        <p class="path-form__field">
+          <label class="path-form__label" for={`${id}-${field.name}`}>
+            {field.label}
+            {field.required && (
+              <span class="path-form__required" aria-hidden="true">
+                *
+              </span>
+            )}
+          </label>
+          {field.type === 'textarea' ? (
+            <textarea
+              id={`${id}-${field.name}`}
+              name={field.name}
+              class="path-form__control"
+              rows={field.rows ?? 4}
+              required={field.required}
+              placeholder={field.placeholder}
+            />
+          ) : field.type === 'select' ? (
+            <select
+              id={`${id}-${field.name}`}
+              name={field.name}
+              class="path-form__control"
+              required={field.required}
+            >
+              <option value="">—</option>
+              {(field.options ?? []).map(option => (
+                <option value={option}>{option}</option>
+              ))}
+            </select>
+          ) : (
+            <input
+              id={`${id}-${field.name}`}
+              name={field.name}
+              class="path-form__control"
+              type={field.type}
+              required={field.required}
+              placeholder={field.placeholder}
+              autocomplete={field.autocomplete}
+            />
+          )}
+        </p>
+      ))
+    }
+    <button class="path-form__submit" type="submit">{submit}</button>
+    {note && <p class="path-form__note">{note}</p>}
+    {
+      switchTo && (
+        <p class="path-form__switch">
+          <a href={switchTo.href}>{switchTo.label}</a>
+        </p>
+      )
+    }
+  </form>
+</section>
+
+<style>
+  .path-panel {
+    scroll-margin-top: 96px;
+    display: grid;
+    gap: var(--space-6);
+    padding: clamp(24px, 4vw, 40px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface-1);
+    transition: border-color 0.25s var(--ease-out);
+  }
+  @media (min-width: 900px) {
+    .path-panel {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+  }
+  .path-panel:target {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .path-panel {
+      transition: none;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+  }
+  .path-panel__title {
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--tracking-display);
+  }
+  .path-panel__lede {
+    max-width: 46ch;
+    color: oklch(from var(--text) l c h / 0.82);
+  }
+  .path-panel__points {
+    margin: 0 0 var(--space-5);
+    padding-left: 1.1em;
+    display: grid;
+    gap: var(--space-3);
+    max-width: 52ch;
+    color: oklch(from var(--text) l c h / 0.78);
+  }
+
+  .path-form {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    padding: clamp(20px, 3vw, 28px);
+  }
+  .path-form__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-5);
+  }
+  .path-form__gotcha {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .path-form__field {
+    display: grid;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  .path-form__label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+  .path-form__required {
+    color: var(--primary);
+    margin-left: 0.25em;
+  }
+  .path-form__control {
+    width: 100%;
+    padding: 0.7em 0.85em;
+    font: inherit;
+    font-size: var(--font-size-base);
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+  }
+  .path-form__control:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+  }
+  textarea.path-form__control {
+    resize: vertical;
+    min-height: 6rem;
+  }
+  .path-form__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.8em 1.4em;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      transform 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .path-form__submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px oklch(from var(--primary) l c h / 0.34);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .path-form__submit {
+      transition: none;
+    }
+  }
+  .path-form__note,
+  .path-form__switch {
+    margin: var(--space-4) 0 0;
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.7);
+  }
+</style>

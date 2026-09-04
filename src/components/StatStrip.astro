@@ -1,0 +1,219 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+export interface Stat {
+  value: string;
+  label: string;
+  countTo?: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+}
+export interface Props {
+  stats: Stat[];
+  heading?: string;
+  columns?: 3 | 4 | 5 | 6;
+  footnote?: string;
+  rhythm?: 'tight' | 'default' | 'loose';
+  tint?: boolean;
+}
+const {
+  stats,
+  heading,
+  columns = 5,
+  footnote,
+  rhythm = 'default',
+  tint = false,
+} = Astro.props;
+const rhythmClass =
+  rhythm === 'tight'
+    ? ' section--tight'
+    : rhythm === 'loose'
+      ? ' section--loose'
+      : '';
+---
+
+<section
+  class={`section${rhythmClass}${tint ? ' section--tint' : ''}`}
+  aria-labelledby="stats-heading"
+>
+  <div class="container">
+    {
+      heading && (
+        <SectionHeader
+          title={heading}
+          align="center"
+          id="stats-heading"
+          variant="inline"
+        />
+      )
+    }
+    <dl
+      class={`stat-strip stat-strip--${columns}${heading ? ' stat-strip--headed' : ''}`}
+      data-stats
+    >
+      {
+        stats.map((s, i) => (
+          <div class="stat" style={`--n:${i}`}>
+            {s.countTo !== undefined ? (
+              <dt
+                class="stat__value"
+                data-count
+                data-to={s.countTo}
+                data-pf={s.prefix || ''}
+                data-sf={s.suffix || ''}
+                data-dp={s.decimals ?? 0}
+                set:text={s.value}
+              />
+            ) : (
+              <dt class="stat__value" data-text set:text={s.value} />
+            )}
+            <dd class="stat__label">{s.label}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    {footnote && <p class="stat-strip__footnote">{footnote}</p>}
+  </div>
+</section>
+
+<style>
+  /* RE-3(c): subgrid asked the parent for two row tracks while N stats
+     across C columns need 2 x ceil(N/C) of them; the leftover implicit
+     tracks sized themselves from the tallest content in the whole strip,
+     which is what produced the ~100px dead zone between a value and its
+     own label. A flex row sidesteps the track math entirely: each .stat is
+     a plain block, so the gap between its value and its label is just that
+     value's own margin (--space-2), never anyone else's row height.
+     `align-items: flex-start` still pins every value in a row to the same
+     top edge, which is what "shared baseline" actually bought us here,
+     since all values share one font-size/line-height and don't wrap
+     (RE-3a). `justify-content: center` means a row that doesn't divide
+     evenly (five stats in a two- or three-column row) centers its leftover
+     item(s) instead of leaving them stranded on the left. */
+  .stat-strip {
+    --stat-cols: 2;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-6) var(--space-5);
+  }
+  .stat-strip--headed {
+    margin-top: var(--space-6);
+  }
+  .stat {
+    min-width: 0;
+    text-align: left;
+    flex: 0 0
+      calc((100% - (var(--stat-cols) - 1) * var(--space-5)) / var(--stat-cols));
+  }
+  @media (min-width: 700px) {
+    .stat-strip {
+      --stat-cols: 3;
+    }
+  }
+  @media (min-width: 1100px) {
+    .stat-strip--3 {
+      --stat-cols: 3;
+    }
+    .stat-strip--4 {
+      --stat-cols: 4;
+    }
+    .stat-strip--5 {
+      --stat-cols: 5;
+    }
+    .stat-strip--6 {
+      --stat-cols: 6;
+    }
+  }
+
+  /* RE-3(a): ONE value size for the whole row, including text values. Three
+     sizes on one line was the most visible defect on the page. */
+  .stat__value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4.4vw, 2.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    margin: 0 0 var(--space-2);
+  }
+  /* Numeric values stay on one line (the counter animation depends on a
+     stable box); a text value like "ISO 27001 + SOC 2" is free to wrap. */
+  .stat__value[data-text] {
+    white-space: normal;
+  }
+  .stat__label {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.72);
+    max-width: 26ch;
+    line-height: 1.5;
+  }
+  .stat-strip__footnote {
+    margin: var(--space-6) 0 0;
+    max-width: var(--w-prose);
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.65);
+  }
+
+  /* MO-5: the row resolves as ONE gesture. Text values wipe in on the same
+     timeline the counters run on, so the strip is never half-alive. */
+  .stat-strip.is-armed .stat__value[data-text] {
+    clip-path: inset(0 100% 0 0);
+  }
+  .stat-strip.is-running .stat__value[data-text] {
+    transition: clip-path 300ms var(--ease-out);
+    transition-delay: calc(var(--n) * 60ms);
+    clip-path: inset(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stat-strip.is-armed .stat__value[data-text] {
+      clip-path: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Kept lean: this bundled script still lands inline in the built HTML
+  // (Astro inlines small per-page module chunks rather than externalizing
+  // them), so it counts against the page's 10 KB inline-JS budget (MO-1).
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const fmt = (el: Element, v: number) =>
+    (el.getAttribute('data-pf') || '') +
+    v.toFixed(+(el.getAttribute('data-dp') || 0)) +
+    (el.getAttribute('data-sf') || '');
+
+  document.querySelectorAll<HTMLElement>('[data-stats]').forEach(strip => {
+    if (reduced || !('IntersectionObserver' in window)) return; // static HTML already final
+    const counters = strip.querySelectorAll('[data-to]');
+    strip.classList.add('is-armed');
+    new IntersectionObserver(
+      ([entry], obs) => {
+        if (!entry.isIntersecting) return;
+        strip.classList.add('is-running');
+        counters.forEach((el, i) => {
+          const to = +(el.getAttribute('data-to') || 0);
+          if (!Number.isFinite(to)) return;
+          const delay = i * 60;
+          let t0: number | null = null;
+          const step = (ts: number) => {
+            if (t0 === null) t0 = ts + delay;
+            const p = Math.min(Math.max(ts - t0, 0) / 1500, 1);
+            const eased = p === 1 ? 1 : 1 - 2 ** (-10 * p); // easeOutExpo
+            el.textContent = fmt(el, to * eased);
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+        obs.disconnect();
+      },
+      { threshold: 0.35 },
+    ).observe(strip);
+  });
+</script>
