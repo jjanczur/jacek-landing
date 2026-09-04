@@ -104,6 +104,26 @@ test.describe('leadership', () => {
     await expect(page.locator('.f2p__list li')).toHaveCount(7);
   });
 
+  test('the wide diagram does not clip its last node (B3)', async ({
+    page,
+  }) => {
+    await page.goto('/en/leadership/');
+    const svg = page.locator('.f2p__svg--wide');
+    const viewBoxHeight = await svg.evaluate(el => {
+      const parts = (el.getAttribute('viewBox') || '').split(/\s+/).map(Number);
+      return parts[3];
+    });
+    const lastRectBottom = await svg.evaluate(el => {
+      const rects = Array.from(el.querySelectorAll('.f2p__node rect'));
+      return Math.max(
+        ...rects.map(
+          r => Number(r.getAttribute('y')) + Number(r.getAttribute('height')),
+        ),
+      );
+    });
+    expect(viewBoxHeight).toBeGreaterThan(lastRectBottom);
+  });
+
   test('the fourth pillar is named in plain words (CP-1)', async ({ page }) => {
     await page.goto('/en/leadership/');
     await expect(page.locator('.pillar').nth(3)).toContainText(
