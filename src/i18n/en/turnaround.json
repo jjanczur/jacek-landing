@@ -7,7 +7,10 @@
     "eyebrow": "Interim CTO · Technology turnaround",
     "title": "Modernise the stack — and pass the audit — <em>without freezing the roadmap.</em>",
     "sub": "I step into companies mid-turnaround and take legacy debt off the critical path: off the monolith, the compliance gaps auditors flag closed, and AI added only where it moves a number. I took my own company from pentest findings to <strong>ISO 27001</strong> and <strong>SOC 2 Type 2</strong> certification in about three months, without pausing delivery. Then I hand you a team that runs it without me.",
-    "primary": { "href": "#plan", "label": "Map your first 90 days" },
+    "primary": {
+      "href": "#plan",
+      "label": "Map your first 90 days"
+    },
     "ghost": {
       "href": "https://calendly.com/jacek-janczura/30min?hide_event_type_details=0&hide_gdpr_banner=1",
       "label": "Book a 30-min fit call",
@@ -34,13 +37,6 @@
             "h": 186,
             "alt": "European pension fund",
             "caption": "Pension fund"
-          },
-          {
-            "src": "/media/1281e65db12c45469e14f9d21293fc0f.webp",
-            "w": 529,
-            "h": 186,
-            "alt": "Development bank",
-            "caption": "Development bank"
           },
           {
             "src": "/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp",

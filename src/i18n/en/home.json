@@ -11,7 +11,10 @@
       "href": "/en/contact/#hiring",
       "label": "Discuss a leadership role"
     },
-    "ghost": { "href": "/en/case-studies/", "label": "See the case studies" },
+    "ghost": {
+      "href": "/en/case-studies/",
+      "label": "See the case studies"
+    },
     "availability": "Open to CTO and Head of AI roles · selected fractional and delivery engagements"
   },
   "pillars": {
@@ -21,7 +24,7 @@
       {
         "title": "Customer & commercial",
         "body": "Discovery, executive workshops, technical pre-sales, architecture and security review. I am in the room when a buyer decides whether the technology can be trusted.",
-        "proof": "Four procurement workflows taken from scoped use case to production at Bosch Global Services; a seven-PoC portfolio at a German development bank run on one spec and one evaluation template.",
+        "proof": "Four procurement workflows taken from scoped use case to production at a global automotive group; a seven-PoC portfolio at a German development bank run on one spec and one evaluation template.",
         "href": "/en/case-studies/automotive-procurement-ai/"
       },
       {
@@ -135,19 +138,11 @@
             "scale": 1.2
           },
           {
-            "src": "/media/1281e65db12c45469e14f9d21293fc0f.webp",
-            "w": 529,
-            "h": 186,
-            "alt": "Development bank",
-            "caption": "Development bank · GenAI portfolio",
-            "scale": 0.85
-          },
-          {
             "src": "/media/28105d45d9344ea18b2923eed7f69bb3.webp",
             "w": 744,
             "h": 166,
             "alt": "Industrial technology group",
-            "caption": "Industrial group · procurement AI",
+            "caption": "Industrial group · enterprise AI",
             "scale": 0.9
           },
           {

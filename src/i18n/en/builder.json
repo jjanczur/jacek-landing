@@ -94,14 +94,38 @@
       }
     ],
     "edges": [
-      { "from": 0, "d": "M90 48 H240 V96" },
-      { "from": 1, "d": "M240 132 V150 H150 V174" },
-      { "from": 1, "d": "M240 132 V150 H330 V174" },
-      { "from": 2, "d": "M150 210 V228 H240 V252" },
-      { "from": 2, "d": "M330 210 V228 H240 V252" },
-      { "from": 3, "d": "M240 288 V306 H120 V330" },
-      { "from": 3, "d": "M240 288 V306 H360 V330" },
-      { "from": 4, "d": "M240 288 V372" }
+      {
+        "from": 0,
+        "d": "M90 48 H240 V96"
+      },
+      {
+        "from": 1,
+        "d": "M240 132 V150 H150 V174"
+      },
+      {
+        "from": 1,
+        "d": "M240 132 V150 H330 V174"
+      },
+      {
+        "from": 2,
+        "d": "M150 210 V228 H240 V252"
+      },
+      {
+        "from": 2,
+        "d": "M330 210 V228 H240 V252"
+      },
+      {
+        "from": 3,
+        "d": "M240 288 V306 H120 V330"
+      },
+      {
+        "from": 3,
+        "d": "M240 288 V306 H360 V330"
+      },
+      {
+        "from": 4,
+        "d": "M240 288 V372"
+      }
     ]
   },
   "wall": {
@@ -123,13 +147,6 @@
             "h": 176,
             "alt": "Global beverage brand",
             "caption": "Venture investing"
-          },
-          {
-            "src": "/media/1281e65db12c45469e14f9d21293fc0f.webp",
-            "w": 529,
-            "h": 186,
-            "alt": "Development bank",
-            "caption": "Development bank"
           },
           {
             "src": "/media/6fd4cdf0d58148bcb6ce44104b8c4c6e.webp",
@@ -165,8 +182,14 @@
   },
   "stats": {
     "items": [
-      { "value": "1,000+", "label": "concurrent connections on the platform" },
-      { "value": "thousands", "label": "requests a second, sustained" },
+      {
+        "value": "1,000+",
+        "label": "concurrent connections on the platform"
+      },
+      {
+        "value": "thousands",
+        "label": "requests a second, sustained"
+      },
       {
         "value": "99.9%",
         "countTo": 99.9,
@@ -271,7 +294,7 @@
       },
       {
         "href": "/en/case-studies/automotive-procurement-ai/",
-        "client": "Bosch Global Services",
+        "client": "A global automotive group",
         "skim": "Four tendering and contracting workflows in production",
         "outcome": {
           "value": "4",

@@ -63,7 +63,7 @@ test.describe('home', () => {
     await page.goto('/en/');
     const groups = page.locator('.logo-wall__group');
     await expect(groups).toHaveCount(3);
-    await expect(groups.nth(0).locator('.chip-cell')).toHaveCount(8);
+    await expect(groups.nth(0).locator('.chip-cell')).toHaveCount(7);
     await expect(groups.nth(1).locator('.chip-cell')).toHaveCount(4);
     // Independent work is attributed to its own group, not merged into the
     // engagements delivered through the company.
@@ -82,8 +82,8 @@ test.describe('home', () => {
     const captions = (
       await page.locator('.logo-wall .chip-note').allTextContents()
     ).map(text => text.toLowerCase());
-    expect(alts).toHaveLength(13);
-    expect(captions).toHaveLength(13);
+    expect(alts).toHaveLength(12);
+    expect(captions).toHaveLength(12);
     for (const text of [...alts, ...captions]) {
       for (const name of WALL_NAMES) {
         expect(text, `"${text}" names an organisation`).not.toContain(name);
@@ -121,7 +121,7 @@ test.describe('home', () => {
       .evaluateAll(els =>
         els.map(el => Math.round(el.getBoundingClientRect().height)),
       );
-    expect(heights.length).toBe(13);
+    expect(heights.length).toBe(12);
     // Ink-normalised, not bounding-box normalised: rendered heights must vary.
     expect(new Set(heights).size).toBeGreaterThan(1);
     for (const h of heights) {
@@ -138,7 +138,7 @@ test.describe('home', () => {
     await expect(pillars).toHaveCount(4);
     await expect(pillars.first()).toContainText('Customer & commercial');
     await expect(pillars.first().locator('.pillar__proof')).toContainText(
-      'Bosch Global Services',
+      'a global automotive group',
     );
     await expect(pillars.nth(3)).toContainText('Reuse & product feedback');
     await expect(page.locator('.pillars h2')).toHaveText(
