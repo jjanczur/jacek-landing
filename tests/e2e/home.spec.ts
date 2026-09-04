@@ -101,7 +101,7 @@ test.describe('home', () => {
     const rows = page.locator('.featured .case-rows .case-row');
     await expect(rows).toHaveCount(4);
     const hrefs = await page
-      .locator('.featured a.case-row[href]')
+      .locator('.featured a.case-row__link[href]')
       .evaluateAll(els =>
         els.map(el => (el as HTMLAnchorElement).getAttribute('href')),
       );

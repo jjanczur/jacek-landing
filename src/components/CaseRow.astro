@@ -48,45 +48,50 @@ const RELATIONSHIP_LABEL: Record<string, string> = {
   'research-partner': 'Research partner',
 };
 
-const Tag = href ? 'a' : 'li';
+// The wrapper is always a real <li> (case-rows is an <ol>) — assistive
+// tech only announces list semantics when <ol>/<ul> children are actually
+// <li> elements. The clickable surface (an <a> when href is set, a plain
+// <div> otherwise) lives inside it, matching CaseCard.astro's pattern.
+const Tag = href ? 'a' : 'div';
 const linkAttrs = href ? { href } : {};
 ---
 
-<Tag
+<li
   class="case-row reveal"
   style={`--reveal-delay: ${index * 40}ms`}
   data-category={category}
-  {...linkAttrs}
 >
-  <span class="case-row__top">
-    <span class="case-row__client">{client}</span>
-    <span class="case-row__skim">{skim}</span>
-  </span>
-  <span class="case-row__badges">
-    {
-      outcome && (
-        <span class="case-row__outcome">
-          <OutcomeBadge
-            value={outcome.value}
-            label={outcome.label}
-            evidence={outcome.evidence}
-          />
-        </span>
-      )
-    }
-    <span class="case-row__pill">{STATUS_LABEL[status] ?? status}</span>
-    <span class="case-row__pill case-row__pill--ghost">
-      {RELATIONSHIP_LABEL[relationship] ?? relationship}
+  <Tag class="case-row__link" {...linkAttrs}>
+    <span class="case-row__top">
+      <span class="case-row__client">{client}</span>
+      <span class="case-row__skim">{skim}</span>
     </span>
-    {
-      href && (
-        <span class="case-row__arrow" aria-hidden="true">
-          →
-        </span>
-      )
-    }
-  </span>
-</Tag>
+    <span class="case-row__badges">
+      {
+        outcome && (
+          <span class="case-row__outcome">
+            <OutcomeBadge
+              value={outcome.value}
+              label={outcome.label}
+              evidence={outcome.evidence}
+            />
+          </span>
+        )
+      }
+      <span class="case-row__pill">{STATUS_LABEL[status] ?? status}</span>
+      <span class="case-row__pill case-row__pill--ghost">
+        {RELATIONSHIP_LABEL[relationship] ?? relationship}
+      </span>
+      {
+        href && (
+          <span class="case-row__arrow" aria-hidden="true">
+            →
+          </span>
+        )
+      }
+    </span>
+  </Tag>
+</li>
 
 <style>
   :global(.case-rows) {
@@ -99,6 +104,22 @@ const linkAttrs = href ? { href } : {};
   }
 
   .case-row {
+    min-width: 0;
+  }
+
+  /* The filter script sets the `hidden` attribute on the <li> to hide
+     non-matching rows. Nothing in this file sets `display` on the bare
+     `.case-row` selector, so the browser's default `[hidden] { display:
+     none }` UA rule is never overridden — but the rule below is kept as an
+     explicit, defensive guarantee (it previously had to fight a `display:
+     grid` rule on this same element; that layout now lives on
+     `.case-row__link` instead, one level down, so there is no longer a
+     competing rule — this stays in case that ever changes again). */
+  .case-row[hidden] {
+    display: none;
+  }
+
+  .case-row__link {
     display: grid;
     grid-template-columns: minmax(160px, 1fr) minmax(220px, 2fr) auto;
     align-items: center;
@@ -115,17 +136,9 @@ const linkAttrs = href ? { href } : {};
       box-shadow 160ms var(--ease-out);
   }
 
-  li.case-row {
+  div.case-row__link {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  /* The filter script sets the `hidden` attribute to hide non-matching
-     rows; without this, the `display: grid`/`flex` rules above (same
-     specificity as the UA [hidden] rule, but later in the cascade) would
-     win and keep the row visible. */
-  .case-row[hidden] {
-    display: none;
   }
 
   .case-row__top {
@@ -204,31 +217,31 @@ const linkAttrs = href ? { href } : {};
     transition: transform 160ms var(--ease-out);
   }
 
-  a.case-row:hover .case-row__arrow {
+  a.case-row__link:hover .case-row__arrow {
     transform: translateX(3px);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    a.case-row:hover {
+    a.case-row__link:hover {
       border-color: var(--line-strong);
       box-shadow: var(--shadow-2);
       transform: translateY(-1px);
     }
   }
 
-  a.case-row:active {
+  a.case-row__link:active {
     transform: scale(0.99);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .case-row,
+    .case-row__link,
     .case-row__arrow {
       transition: none;
     }
   }
 
   @media (max-width: 700px) {
-    .case-row {
+    .case-row__link {
       grid-template-columns: 1fr;
       gap: var(--space-2);
     }

@@ -46,7 +46,7 @@ test.describe('case-studies index', () => {
     const rows = page.locator('.case-rows .case-row');
     expect(await rows.count()).toBeGreaterThanOrEqual(4);
     const hrefs = await page
-      .locator('a.case-row[href]')
+      .locator('a.case-row__link[href]')
       .evaluateAll(els =>
         els.map(el => (el as HTMLAnchorElement).getAttribute('href')),
       );
@@ -57,11 +57,23 @@ test.describe('case-studies index', () => {
     }
   });
 
+  test('every case row is a real <li> inside the <ol> (list semantics for assistive tech)', async ({
+    page,
+  }) => {
+    await page.goto('/en/case-studies/');
+    const listItemCount = await page
+      .locator('ol.case-rows > li.case-row')
+      .count();
+    const rowCount = await page.locator('.case-rows .case-row').count();
+    expect(listItemCount).toBe(rowCount);
+    expect(listItemCount).toBeGreaterThanOrEqual(4);
+  });
+
   test('grouped cards count matches the number of rows with a detail link', async ({
     page,
   }) => {
     await page.goto('/en/case-studies/');
-    const hrefCount = await page.locator('a.case-row[href]').count();
+    const hrefCount = await page.locator('a.case-row__link[href]').count();
     const cardCount = await page.locator('.case-cards .case-card').count();
     expect(cardCount).toBe(hrefCount);
   });
