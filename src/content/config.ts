@@ -41,7 +41,9 @@ export const collections = {
       via: z.string().optional(),
       sector: z.string(),
       period: z.string(),
-      status: z.enum(['production', 'mvp', 'poc', 'prototype', 'research']),
+      status: z
+        .enum(['production', 'mvp', 'poc', 'prototype', 'research'])
+        .optional(),
       role: z.string(),
       mandate: z.string(),
       skim: z.string(),

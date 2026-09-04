@@ -15,6 +15,12 @@ export const EN_PAGES = [
   '/en/case-studies/kfw-genai-portfolio/',
   '/en/case-studies/bosch-procurement-ai/',
   '/en/case-studies/apg-pension-assistant/',
+  '/en/case-studies/entaingine-platform/',
+  '/en/case-studies/rp-matcher/',
+  '/en/case-studies/flowhive-vc/',
+  '/en/case-studies/taufolio/',
+  '/en/case-studies/idealo-and-ing-scale/',
+  '/en/case-studies/regulated-distributed-systems/',
 ];
 
 export const ALL_PAGES = [

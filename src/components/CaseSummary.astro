@@ -16,7 +16,7 @@ export interface Props {
   mandate: string;
   keyDecisions: string[];
   outcomes: Outcome[];
-  status: string;
+  status?: string;
   relationship: string;
   via?: string;
 }
@@ -44,7 +44,13 @@ const STATUS_LABEL: Record<string, string> = {
 <div class="case-summary reveal">
   <p class="case-summary__meta">
     {RELATIONSHIP_LABEL[relationship] ?? relationship}{via && ` · via ${via}`}
-    <span class="case-summary__status">{STATUS_LABEL[status] ?? status}</span>
+    {
+      status && (
+        <span class="case-summary__status">
+          {STATUS_LABEL[status] ?? status}
+        </span>
+      )
+    }
   </p>
   <div class="case-summary__grid">
     <div class="case-summary__col">

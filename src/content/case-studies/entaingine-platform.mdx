@@ -1,0 +1,145 @@
+---
+title: 'entAIngine: one multi-tenant AI platform behind every client deployment'
+client: 'entAIngine'
+relationship: 'own-company'
+sector: 'Enterprise AI platform'
+period: '2022 – 2024 as CTO; consulting partner since'
+status: 'production'
+role: 'Co-founder & CTO'
+mandate:
+  'Architected the platform and led its implementation: the multi-tenant model, the event-driven
+  runtime, the provider-independent model layer, access control, the retrieval service and the
+  tooling around prompts and evaluation.'
+skim: 'Multi-tenant AI platform for 50+ organisations'
+category: 'ai-products'
+summary:
+  'The platform every client deployment runs on: multi-tenant, event-driven on AWS, with a
+  provider-independent model layer, role-based access control, a retrieval service over client
+  documents, and its own tooling for prompt optimisation and pipeline evaluation.'
+keyDecisions:
+  - 'Keep the model layer provider-independent (AWS Bedrock and SageMaker, Azure, Google Gemini,
+    OpenAI, Mistral) so model choice follows quality, latency, cost and data sovereignty per client.'
+  - 'Event-driven serverless architecture on AWS rather than long-running services, so cost tracks
+    usage and the platform autoscales into peaks.'
+  - 'Build evaluation and prompt tooling as platform primitives (Testbed, Prompt Wizard) instead of
+    letting every project write its own scripts.'
+outcomes:
+  - {
+      value: '50+',
+      label: 'organisations running AI processes on one multi-tenant platform',
+      evidence: 'measured',
+    }
+  - { value: '99.9%', label: 'platform uptime', evidence: 'measured' }
+  - {
+      value: '>1,000',
+      label: 'concurrent connections and thousands of requests per second',
+      evidence: 'measured',
+    }
+  - {
+      value: 'ISO 27001 + SOC 2',
+      label: 'Type 2 certified, with data sovereignty for regulated clients',
+      evidence: 'measured',
+    }
+stakeholders:
+  [
+    'Enterprise clients in manufacturing, pharma, financial services and back-office operations',
+    'Client IT, security and compliance teams',
+    'Frontend, backend and AI workstreams inside the company',
+    'External auditors',
+  ]
+constraints:
+  [
+    'Multi-tenant isolation with data sovereignty per client',
+    'ISO 27001 and SOC 2 Type 2 controls',
+    'Model providers changing capability and price faster than release cycles',
+    'Cost efficiency under bursty enterprise load',
+  ]
+reuse:
+  [
+    'Provider-independent model layer',
+    'Retrieval service that builds vector stores from client files',
+    'Testbed: deterministic test cases for AI processes and retrieval pipelines',
+    'Prompt Wizard: automated prompt optimisation',
+    'MCP-based tools exposing platform capabilities to agents and clients',
+  ]
+tags: ['multi-tenant', 'AWS', 'RAG', 'RBAC', 'ISO 27001', 'MCP', 'evaluation']
+angle: 'builder'
+featured: false
+order: 50
+---
+
+## Context
+
+I was co-founder & CTO of Jaden Data until June 2024 and have been its fractional CTO and consulting
+partner since. entAIngine is the SaaS platform for AI process automation that Jaden Data built and
+that every client deployment in these case studies runs on: knowledge-aware assistants, document
+workflows and back-office automation for organisations in manufacturing, pharma and financial
+services.
+
+## Business problem
+
+Each enterprise arrived with its own security review, its own document estate and its own preferred
+cloud. Solving that per client produces bespoke stacks that never pay for themselves. The platform
+had to make a new deployment mostly a matter of configuration, while still meeting the security and
+data-sovereignty bar that regulated buyers set.
+
+## My mandate
+
+I architected the platform and led its implementation: the multi-tenant model, the event-driven
+runtime, the model integration layer, role-based access control, the retrieval service, and the
+prompt and evaluation tooling around them.
+
+## Stakeholders
+
+Client process owners who use the workflows; client IT, security and compliance teams who approve
+them; the frontend, backend and AI workstreams inside the company; and the external auditors for ISO
+27001 and SOC 2.
+
+## Constraints
+
+Tenants had to stay isolated with data sovereignty they could defend to their own auditors. The
+controls for ISO 27001 and SOC 2 Type 2 applied to the platform itself. Model providers changed
+capability and pricing faster than any release cycle. Enterprise load is bursty, so idle capacity
+had to cost close to nothing.
+
+## Decisions
+
+- A provider-independent model layer integrating AWS Bedrock and SageMaker, Azure ML Studio and AI
+  Foundry, Google Gemini, OpenAI and Mistral, so a client's model choice follows quality, latency,
+  cost and data-residency rules rather than a vendor commitment made once.
+- Event-driven microservices on AWS — Fargate on ECS with ECR, Lambda, SNS and SQS, CloudWatch, EC2
+  and S3 — audited against the AWS Well-Architected Framework and tuned for serverless autoscaling.
+- Role-based access control and per-tenant boundaries as platform primitives rather than per-project
+  code, because every enterprise security review asks the same questions.
+- A retrieval service that builds vector databases from client files automatically, with Pinecone,
+  pgvector and Milvus behind one interface, so document retrieval was a configuration choice.
+- Testbed, a testing framework that assesses AI processes and retrieval pipelines with deterministic
+  test cases, quantitatively and qualitatively — so a prompt change could be judged, not argued
+  about.
+- Prompt Wizard, which automates the optimisation of prompts, so prompt engineering did not depend
+  on one person's intuition.
+- MCP-based tools deployed on the platform, making its capabilities available to MCP-compatible
+  agents and clients.
+
+## Delivery
+
+The platform ran client deployments in insurance, legal, automotive and property alongside the work
+documented in the other case studies. It reached more than 1,000 concurrent connections and
+thousands of requests per second at 99.9% uptime, under ISO 27001 and SOC 2 Type 2.
+
+## Outcome
+
+One platform serving 50+ organisations, with the security posture regulated buyers require and a
+cost profile that follows usage rather than provisioning.
+
+## Reuse
+
+Everything in the platform exists because a client project needed it twice. The model layer, the
+retrieval service, Testbed, Prompt Wizard and the MCP tools were built once and used in every later
+deployment.
+
+## Evidence
+
+Organisation count, uptime, concurrency and throughput are company records; the certifications are
+audited. The client-side results the platform produced are documented in the individual case
+studies.
