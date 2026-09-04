@@ -7,6 +7,7 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import CaseRow from '../../components/CaseRow.astro';
 import DoorPair from '../../components/DoorPair.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import ArchDiagram from '../../components/ArchDiagram.astro';
 import { getSupportedLangs, getTranslations } from '../../utils/i18n';
 
 export function getStaticPaths() {
@@ -29,138 +30,19 @@ const t = await getTranslations('builder', lang);
 >
   <Hero {...t.hero}>
     <div slot="aside">
-      <!-- Signature animation: self-drawing architecture diagram -->
-      <div class="diagram-card" id="diagram-card">
-        <div class="diagram-card__head">
-          <span class="diagram-card__title">{t.diagram.title}</span>
-          <span class="diagram-card__health" id="health-readout">
-            <span class="diagram-card__pulse" aria-hidden="true"></span>
-            {t.diagram.health}
-          </span>
-        </div>
-
-        <div class="diagram-stage">
-          <svg
-            class="arch"
-            id="arch-svg"
-            viewBox="0 0 480 420"
-            role="img"
-            aria-label={t.diagram.svgAriaLabel}
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <defs>
-              <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="var(--primary)"></stop>
-                <stop offset="1" stop-color="var(--accent)"></stop>
-              </linearGradient>
-            </defs>
-
-            <!-- Edges (drawn first, behind nodes) -->
-            <g
-              class="edges"
-              fill="none"
-              stroke="url(#edgeGrad)"
-              stroke-width="2"
-            >
-              <path class="edge" data-from="0" d="M90 48 H240 V96"></path>
-              <path class="edge" data-from="1" d="M240 132 V150 H150 V174"
-              ></path>
-              <path class="edge" data-from="1" d="M240 132 V150 H330 V174"
-              ></path>
-              <path class="edge" data-from="2" d="M150 210 V228 H240 V252"
-              ></path>
-              <path class="edge" data-from="2" d="M330 210 V228 H240 V252"
-              ></path>
-              <path class="edge" data-from="3" d="M240 288 V306 H120 V330"
-              ></path>
-              <path class="edge" data-from="3" d="M240 288 V306 H360 V330"
-              ></path>
-              <path class="edge" data-from="4" d="M240 288 V372"></path>
-            </g>
-
-            <!-- Data-flow pulse dots (positioned by JS along edges) -->
-            <g class="pulses" fill="var(--accent)"></g>
-
-            <!-- Nodes. Position lives on the outer <g> (transform attribute);
-                 the inner .node-fx carries the CSS entrance transform so the
-                 two never collide. -->
-            <g class="nodes" font-family="var(--font-heading)">
-              <g class="node" data-step="0" transform="translate(30 30)">
-                <g class="node-fx">
-                  <rect width="120" height="36" rx="9"></rect>
-                  <text x="60" y="23">Client</text>
-                </g>
-              </g>
-              <g
-                class="node node--gw"
-                data-step="1"
-                transform="translate(170 96)"
-              >
-                <g class="node-fx">
-                  <rect width="140" height="36" rx="9"></rect>
-                  <text x="70" y="23">API Gateway</text>
-                </g>
-              </g>
-              <g class="node" data-step="2" transform="translate(90 174)">
-                <g class="node-fx">
-                  <rect width="120" height="36" rx="9"></rect>
-                  <text x="60" y="23">Lambda</text>
-                </g>
-              </g>
-              <g class="node" data-step="2" transform="translate(270 174)">
-                <g class="node-fx">
-                  <rect width="120" height="36" rx="9"></rect>
-                  <text x="60" y="23">Fargate</text>
-                </g>
-              </g>
-              <g
-                class="node node--core"
-                data-step="3"
-                transform="translate(160 252)"
-              >
-                <g class="node-fx">
-                  <rect width="160" height="36" rx="9"></rect>
-                  <text x="80" y="23">RAG Service</text>
-                </g>
-              </g>
-              <g class="node" data-step="4" transform="translate(50 330)">
-                <g class="node-fx">
-                  <rect width="140" height="36" rx="9"></rect>
-                  <text x="70" y="23">Vector DB</text>
-                </g>
-              </g>
-              <g class="node" data-step="4" transform="translate(290 330)">
-                <g class="node-fx">
-                  <rect width="140" height="36" rx="9"></rect>
-                  <text x="70" y="23">Graph DB</text>
-                </g>
-              </g>
-              <g
-                class="node node--llm"
-                data-step="4"
-                transform="translate(140 384)"
-              >
-                <g class="node-fx">
-                  <rect width="200" height="28" rx="9"></rect>
-                  <text x="100" y="19">OpenAI · Bedrock · Azure · Mistral</text>
-                </g>
-              </g>
-            </g>
-          </svg>
-        </div>
-
-        <div class="diagram-card__foot">
-          <div class="throughput">
-            <span class="throughput__value" id="throughput"
-              >{t.diagram.throughputValue}</span
-            >
-            <span class="throughput__label">{t.diagram.throughputLabel}</span>
-          </div>
-          <div class="meter" aria-hidden="true">
-            <span class="meter__fill" id="meter-fill"></span>
-          </div>
-        </div>
-      </div>
+      <!-- Signature animation: self-drawing architecture diagram (GR-4) -->
+      <ArchDiagram
+        title={t.diagram.title}
+        ariaLabel={t.diagram.svgAriaLabel}
+        health={t.diagram.health}
+        nodes={t.diagram.nodes}
+        edges={t.diagram.edges}
+        meter={{
+          value: t.diagram.throughputValue,
+          label: t.diagram.throughputLabel,
+          countTo: 3200,
+        }}
+      />
     </div>
   </Hero>
 
@@ -168,7 +50,10 @@ const t = await getTranslations('builder', lang);
 
   <StatStrip stats={t.stats.items} columns={5} />
 
-  <section class="detail section" id="architecture">
+  <section
+    class="detail section section--divided section--loose"
+    id="architecture"
+  >
     <div class="container detail__grid">
       {
         t.details.items.map((d, i) => (
@@ -185,7 +70,10 @@ const t = await getTranslations('builder', lang);
     </div>
   </section>
 
-  <section class="section" aria-labelledby="evaluation">
+  <section
+    class="section section--divided section--loose"
+    aria-labelledby="evaluation"
+  >
     <div class="container">
       <SectionHeader
         eyebrow={t.evaluation.eyebrow}
@@ -206,7 +94,10 @@ const t = await getTranslations('builder', lang);
     </div>
   </section>
 
-  <section class="section" aria-labelledby="proof-rows">
+  <section
+    class="section section--divided section--loose"
+    aria-labelledby="proof-rows"
+  >
     <div class="container">
       <SectionHeader
         eyebrow={t.cases.eyebrow}
@@ -225,174 +116,6 @@ const t = await getTranslations('builder', lang);
 </BaseLayout>
 
 <style>
-  /* ---------- Diagram card ---------- */
-  .diagram-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-l);
-    box-shadow: var(--shadow-3);
-    padding: var(--space-4);
-    position: relative;
-    overflow: hidden;
-  }
-  /* faint grid texture so it reads as an "instrument", not a box */
-  .diagram-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(
-        color-mix(in oklch, var(--border) 45%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        color-mix(in oklch, var(--border) 45%, transparent) 1px,
-        transparent 1px
-      );
-    background-size: 26px 26px;
-    opacity: 0.35;
-    pointer-events: none;
-    mask-image: radial-gradient(120% 90% at 50% 0%, #000 40%, transparent 100%);
-  }
-  .diagram-card > * {
-    position: relative;
-  }
-
-  .diagram-card__head,
-  .diagram-card__foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
-  }
-  .diagram-card__head {
-    margin-bottom: var(--space-2);
-  }
-  .diagram-card__title {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--text);
-    opacity: 0.7;
-  }
-  .diagram-card__health {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: var(--accent);
-  }
-  .diagram-card__pulse {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: availPulse 2.6s var(--ease-out) infinite;
-  }
-  @keyframes availPulse {
-    0% {
-      box-shadow: 0 0 0 0 color-mix(in oklch, var(--accent) 55%, transparent);
-    }
-    70% {
-      box-shadow: 0 0 0 7px color-mix(in oklch, var(--accent) 0%, transparent);
-    }
-    100% {
-      box-shadow: 0 0 0 0 color-mix(in oklch, var(--accent) 0%, transparent);
-    }
-  }
-
-  .diagram-stage {
-    width: 100%;
-  }
-  .arch {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* Nodes */
-  .arch .node rect {
-    fill: var(--bg);
-    stroke: var(--border);
-    stroke-width: 1.5;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
-  }
-  .arch .node--gw rect,
-  .arch .node--core rect {
-    stroke: var(--primary);
-  }
-  .arch .node--core rect {
-    fill: color-mix(in oklch, var(--primary) 10%, var(--bg));
-  }
-  .arch .node--llm rect {
-    fill: color-mix(in oklch, var(--accent) 12%, var(--bg));
-    stroke: var(--accent);
-  }
-  .arch .node text {
-    fill: var(--text);
-    font-size: 13px;
-    font-weight: 600;
-    text-anchor: middle;
-    font-family: var(--font-heading);
-  }
-  .arch .node--llm text {
-    font-size: 11px;
-    letter-spacing: 0.01em;
-  }
-
-  /* Foot: throughput + meter */
-  .diagram-card__foot {
-    margin-top: var(--space-3);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--border);
-  }
-  .throughput {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-  }
-  .throughput__value {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: var(--font-size-lg);
-    color: var(--primary);
-    font-variant-numeric: tabular-nums;
-  }
-  .throughput__label {
-    font-size: var(--font-size-xs);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.6;
-  }
-  .meter {
-    flex: 1;
-    max-width: 160px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--muted);
-    overflow: hidden;
-  }
-  .meter__fill {
-    display: block;
-    height: 100%;
-    width: 8%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    transition: width 0.4s var(--ease-out);
-  }
-
-  @media (max-width: 900px) {
-    .diagram-card {
-      max-width: 460px;
-      margin: 0 auto;
-    }
-  }
-
   /* ---------- Detail columns ---------- */
   .detail__grid {
     display: grid;
@@ -465,252 +188,4 @@ const t = await getTranslations('builder', lang);
     margin: 0;
     padding: 0;
   }
-
-  /* ---------- Reduced motion: static, everything visible ---------- */
-  @media (prefers-reduced-motion: reduce) {
-    .diagram-card__pulse {
-      animation: none;
-    }
-    .meter__fill {
-      transition: none;
-    }
-  }
 </style>
-
-<script is:inline>
-  (function () {
-    const svg = document.getElementById('arch-svg');
-    const card = document.getElementById('diagram-card');
-    const throughputEl = document.getElementById('throughput');
-    const meterFill = document.getElementById('meter-fill');
-    if (!svg || !card) return;
-
-    const reduce =
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const edges = Array.prototype.slice.call(svg.querySelectorAll('.edge'));
-    const nodes = Array.prototype.slice.call(svg.querySelectorAll('.node'));
-    const pulseGroup = svg.querySelector('.pulses');
-
-    // ---- Static fallback for reduced motion: draw everything, final numbers ----
-    if (reduce) {
-      edges.forEach(function (e) {
-        e.style.strokeDasharray = 'none';
-        e.style.strokeDashoffset = '0';
-        e.style.opacity = '1';
-      });
-      nodes.forEach(function (n) {
-        const fx = n.querySelector('.node-fx');
-        if (fx) fx.style.opacity = '1';
-      });
-      if (throughputEl) throughputEl.textContent = '~3,200 req/sec';
-      if (meterFill) meterFill.style.width = '80%';
-      return;
-    }
-
-    // ---- Prime nodes + edges hidden, ready to reveal ----
-    nodes.forEach(function (n) {
-      const fx = n.querySelector('.node-fx');
-      if (!fx) return;
-      fx.style.opacity = '0';
-      fx.style.transformBox = 'fill-box';
-      fx.style.transformOrigin = 'center';
-      fx.style.transform = 'translateY(8px) scale(0.96)';
-      fx.style.transition =
-        'opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out)';
-    });
-
-    edges.forEach(function (e) {
-      const len = e.getTotalLength ? e.getTotalLength() : 300;
-      e.style.strokeDasharray = len;
-      e.style.strokeDashoffset = len;
-      e.style.opacity = '0.9';
-      e.style.transition = 'stroke-dashoffset 0.6s var(--ease-out)';
-    });
-
-    // ---- Data-flow pulse dots (rAF along edges) ----
-    const dots = edges.map(function (edge) {
-      const c = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'circle',
-      );
-      c.setAttribute('r', '3');
-      c.setAttribute('fill', 'var(--accent)');
-      c.style.opacity = '0';
-      if (pulseGroup) pulseGroup.appendChild(c);
-      return {
-        el: c,
-        edge: edge,
-        len: edge.getTotalLength ? edge.getTotalLength() : 300,
-        // staggered start + varied speed so flow feels organic
-        t: Math.random(),
-        speed: 0.28 + Math.random() * 0.22,
-      };
-    });
-
-    let running = false;
-    let rafId = null;
-    let last = 0;
-
-    function tickDots(now) {
-      if (!running) return;
-      const dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016;
-      last = now;
-      for (let i = 0; i < dots.length; i++) {
-        const d = dots[i];
-        d.t += d.speed * dt;
-        if (d.t > 1) d.t -= 1;
-        const p = d.edge.getPointAtLength(d.t * d.len);
-        d.el.setAttribute('cx', p.x);
-        d.el.setAttribute('cy', p.y);
-        // fade at ends so dots don't pop
-        const edgeFade = Math.min(d.t, 1 - d.t) * 6;
-        d.el.style.opacity = String(Math.min(0.9, edgeFade));
-      }
-      rafId = window.requestAnimationFrame(tickDots);
-    }
-
-    function startDots() {
-      if (running) return;
-      running = true;
-      last = 0;
-      rafId = window.requestAnimationFrame(tickDots);
-    }
-    function stopDots() {
-      running = false;
-      if (rafId) window.cancelAnimationFrame(rafId);
-      rafId = null;
-    }
-
-    // ---- Throughput + uptime counters (interval, cheap) ----
-    let counterTimer = null;
-    let displayed = 0;
-    const target = 3200;
-
-    function fmt(n) {
-      return '~' + Math.round(n).toLocaleString('en-US') + ' req/sec';
-    }
-
-    function startCounters() {
-      // ramp up to target, then breathe subtly around it
-      let phase = 'ramp';
-      let breatheT = 0;
-      counterTimer = window.setInterval(function () {
-        if (phase === 'ramp') {
-          displayed += (target - displayed) * 0.14 + 4;
-          if (displayed >= target - 12) {
-            displayed = target;
-            phase = 'breathe';
-          }
-        } else {
-          breatheT += 0.18;
-          // gentle +/- 220 wander, never shouty
-          displayed =
-            target + Math.sin(breatheT) * 180 + Math.sin(breatheT * 2.3) * 40;
-        }
-        if (throughputEl) throughputEl.textContent = fmt(displayed);
-        if (meterFill) {
-          const pct = 12 + (Math.min(displayed, 4000) / 4000) * 76;
-          meterFill.style.width = pct.toFixed(1) + '%';
-        }
-      }, 90);
-    }
-    function stopCounters() {
-      if (counterTimer) window.clearInterval(counterTimer);
-      counterTimer = null;
-    }
-
-    // ---- Orchestrated reveal: edges draw, nodes pop, staggered ----
-    let played = false;
-    function play() {
-      if (played) return;
-      played = true;
-
-      // group nodes by step for staggered entrance
-      const steps = {};
-      nodes.forEach(function (n) {
-        const s = n.getAttribute('data-step') || '0';
-        (steps[s] = steps[s] || []).push(n);
-      });
-
-      const stepKeys = Object.keys(steps).sort();
-      const base = 120;
-      stepKeys.forEach(function (key, idx) {
-        const group = steps[key];
-        window.setTimeout(
-          function () {
-            group.forEach(function (n, j) {
-              window.setTimeout(function () {
-                const fx = n.querySelector('.node-fx');
-                if (fx) {
-                  fx.style.opacity = '1';
-                  fx.style.transform = 'none';
-                }
-              }, j * 60);
-            });
-            // draw the edges leaving this step after its nodes appear
-            window.setTimeout(function () {
-              edges
-                .filter(function (e) {
-                  return e.getAttribute('data-from') === key;
-                })
-                .forEach(function (e, k) {
-                  window.setTimeout(function () {
-                    e.style.strokeDashoffset = '0';
-                  }, k * 70);
-                });
-            }, 180);
-          },
-          base + idx * 260,
-        );
-      });
-
-      // once the flow is drawn, bring it alive
-      window.setTimeout(
-        function () {
-          startDots();
-          startCounters();
-        },
-        base + stepKeys.length * 260 + 300,
-      );
-    }
-
-    // ---- Pause work when the card is off-screen (perf) ----
-    const io =
-      'IntersectionObserver' in window
-        ? new IntersectionObserver(
-            function (entries) {
-              entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                  play();
-                  if (played && !running) startDots();
-                  if (played && !counterTimer) startCounters();
-                } else {
-                  stopDots();
-                  stopCounters();
-                }
-              });
-            },
-            { threshold: 0.25 },
-          )
-        : null;
-
-    if (io) {
-      io.observe(card);
-    } else {
-      play();
-    }
-
-    // stop loops when tab hidden
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) {
-        stopDots();
-        stopCounters();
-      } else if (played) {
-        startDots();
-        startCounters();
-      }
-    });
-  })();
-</script>

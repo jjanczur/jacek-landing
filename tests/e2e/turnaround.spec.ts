@@ -81,4 +81,91 @@ test.describe('turnaround', () => {
       '/en/contact/#project',
     );
   });
+
+  test('the roadmap is visible and animated on a phone (MO-6)', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/en/turnaround/');
+    const rail = page.locator('.roadmap__cards');
+    await expect(rail).toBeVisible();
+    const railStyles = await rail.evaluate(el => {
+      const before = getComputedStyle(el, '::before');
+      const after = getComputedStyle(el, '::after');
+      return {
+        track: before.content,
+        progress: after.content,
+        pl: getComputedStyle(el).paddingLeft,
+      };
+    });
+    expect(railStyles.track, 'the vertical track exists').not.toBe('none');
+    expect(railStyles.progress, 'the vertical progress line exists').not.toBe(
+      'none',
+    );
+    expect(
+      parseFloat(railStyles.pl),
+      'a left gutter for the rail',
+    ).toBeGreaterThan(24);
+
+    // The four milestones all light as the rail draws past them.
+    await rail.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(3000);
+    await expect(page.locator('.mstone.is-lit')).toHaveCount(4);
+  });
+
+  test('the roadmap is finished and static under reduced motion', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/en/turnaround/');
+    await page.locator('.roadmap__cards').scrollIntoViewIfNeeded();
+    await expect(page.locator('.mstone.is-lit')).toHaveCount(4);
+  });
+
+  test('"what you get" stacks instead of scrolling sideways at 390 (RE-5)', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/en/turnaround/');
+    const overflow = await page
+      .locator('.get-scroll')
+      .evaluate(el => el.scrollWidth - el.clientWidth);
+    expect(overflow, 'no hidden third column').toBeLessThanOrEqual(1);
+    // The third column's content is on screen, with its own label.
+    const labels = await page
+      .locator('.get td')
+      .evaluateAll(els =>
+        els.map(el =>
+          getComputedStyle(el, '::before').content.replace(/^"|"$/g, ''),
+        ),
+      );
+    expect(labels.filter(l => l.includes('How it ends')).length).toBe(4);
+  });
+
+  test('one eyebrow colour system (CO-6)', async ({ page }) => {
+    await page.goto('/en/turnaround/');
+    const sectionLabel = await page
+      .locator('.plan__eyebrow')
+      .evaluate(el => getComputedStyle(el).color);
+    const evidenceLabel = await page
+      .locator('.mstone__tag')
+      .first()
+      .evaluate(el => getComputedStyle(el).color);
+    expect(sectionLabel, 'a section label is --primary').not.toBe(
+      evidenceLabel,
+    );
+  });
+
+  test('turnaround inline JS stays inside the 10 KB budget (MO-1)', async ({
+    request,
+  }) => {
+    const html = await (await request.get('/en/turnaround/')).text();
+    const inline = [
+      ...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g),
+    ]
+      .map(m => m[1])
+      .join('');
+    expect(Buffer.byteLength(inline, 'utf8')).toBeLessThan(10_240);
+  });
 });
