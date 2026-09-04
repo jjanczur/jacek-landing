@@ -39,15 +39,15 @@ const STATUS_LABEL: Record<string, string> = {
   research: 'Research',
 };
 
-const facts: { term: string; value: string; href?: string }[] = [
-  { term: 'Client', value: client },
-  { term: 'Sector', value: sector },
-  { term: 'Period', value: period },
+const facts: { term: string; value: string; href?: string; ic: string }[] = [
+  { term: 'Client', value: client, ic: 'client' },
+  { term: 'Sector', value: sector, ic: 'sector' },
+  { term: 'Period', value: period, ic: 'period' },
   ...(status
-    ? [{ term: 'Status', value: STATUS_LABEL[status] ?? status }]
+    ? [{ term: 'Status', value: STATUS_LABEL[status] ?? status, ic: 'status' }]
     : []),
-  { term: 'Role', value: role },
-  ...(via ? [{ term: 'Delivered via', value: via }] : []),
+  { term: 'Role', value: role, ic: 'role' },
+  ...(via ? [{ term: 'Delivered via', value: via, ic: 'via' }] : []),
   // Usually a public write-up of the engagement. Where the link is the
   // client's own site instead, the case says so via `sourceLabel` rather
   // than implying an account of the project exists.
@@ -55,6 +55,7 @@ const facts: { term: string; value: string; href?: string }[] = [
     ? [
         {
           term: sourceLabel ?? 'Public write-up',
+          ic: 'link',
           value: new URL(sourceUrl).hostname.replace(/^www\./, ''),
           href: sourceUrl,
         },
@@ -68,7 +69,7 @@ const facts: { term: string; value: string; href?: string }[] = [
     {
       facts.map(fact => (
         <div class="case-facts__row">
-          <dt>{fact.term}</dt>
+          <dt data-ic={fact.ic}>{fact.term}</dt>
           <dd>
             {fact.href ? (
               <a href={fact.href} rel="noopener noreferrer" target="_blank">
@@ -248,6 +249,81 @@ const facts: { term: string; value: string; href?: string }[] = [
 
   .case-facts__index a {
     color: oklch(from var(--text) l c h / 0.75);
+  }
+
+  /* Icons are masks, so they take the colour of the text beside them. */
+  .case-facts__list dt[data-ic]::before,
+  .case-facts__index a[data-index-link='context']::before,
+  .case-facts__index a[data-index-link='business-problem']::before,
+  .case-facts__index a[data-index-link='my-mandate']::before,
+  .case-facts__index a[data-index-link='decisions']::before,
+  .case-facts__index a[data-index-link='delivery']::before,
+  .case-facts__index a[data-index-link='outcome']::before,
+  .case-facts__index a[data-index-link='reuse']::before,
+  .case-facts__index a[data-index-link='evidence']::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.45em;
+    vertical-align: -0.14em;
+    background-color: currentColor;
+    opacity: 0.65;
+    -webkit-mask: var(--ic) center / contain no-repeat;
+    mask: var(--ic) center / contain no-repeat;
+  }
+  .case-facts__list dt[data-ic='client'] {
+    --ic: var(--ic-client);
+  }
+  .case-facts__list dt[data-ic='sector'] {
+    --ic: var(--ic-sector);
+  }
+  .case-facts__list dt[data-ic='period'] {
+    --ic: var(--ic-period);
+  }
+  .case-facts__list dt[data-ic='status'] {
+    --ic: var(--ic-status);
+  }
+  .case-facts__list dt[data-ic='role'] {
+    --ic: var(--ic-role);
+  }
+  .case-facts__list dt[data-ic='via'] {
+    --ic: var(--ic-via);
+  }
+  .case-facts__list dt[data-ic='link'] {
+    --ic: var(--ic-link);
+  }
+
+  /* The nav repeats the body's icons, so a reader scanning the index and a
+     reader scanning the page are looking at the same marks. */
+  .case-facts__index a[data-index-link='context'] {
+    --ic: var(--ic-context);
+  }
+  .case-facts__index a[data-index-link='business-problem'] {
+    --ic: var(--ic-problem);
+  }
+  .case-facts__index a[data-index-link='my-mandate'] {
+    --ic: var(--ic-mandate);
+  }
+  .case-facts__index a[data-index-link='decisions'] {
+    --ic: var(--ic-decisions);
+  }
+  .case-facts__index a[data-index-link='delivery'] {
+    --ic: var(--ic-delivery);
+  }
+  .case-facts__index a[data-index-link='outcome'] {
+    --ic: var(--ic-outcome);
+  }
+  .case-facts__index a[data-index-link='reuse'] {
+    --ic: var(--ic-reuse);
+  }
+  .case-facts__index a[data-index-link='evidence'] {
+    --ic: var(--ic-evidence);
+  }
+  /* Only the eight known sections get a mark; an unrecognised heading stays
+     plain rather than rendering as a blank square. */
+  .case-facts__index a[aria-current='true']::before {
+    opacity: 1;
   }
 
   .case-facts__index a[aria-current='true'] {

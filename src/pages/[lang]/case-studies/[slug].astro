@@ -46,10 +46,10 @@ const related = all
     title: c.data.title,
   }));
 const chapters = headings.filter(h => h.depth === 2);
-const compact: { term: string; items: string[] }[] = [
-  { term: 'Stakeholders', items: d.stakeholders },
-  { term: 'Constraints', items: d.constraints },
-  { term: 'Reuse', items: d.reuse },
+const compact: { term: string; items: string[]; ic: string }[] = [
+  { term: 'Stakeholders', items: d.stakeholders, ic: 'role' },
+  { term: 'Constraints', items: d.constraints, ic: 'problem' },
+  { term: 'Reuse', items: d.reuse, ic: 'reuse' },
 ].filter(x => x.items.length > 0);
 const cta =
   d.angle === 'turnaround'
@@ -118,8 +118,14 @@ const jsonLd = {
             <dl class="case-dl reveal">
               {compact.map(block => (
                 <div class="case-dl__row surface-ruled">
-                  <dt>{block.term}</dt>
-                  <dd>{block.items.join(' · ')}</dd>
+                  <dt data-ic={block.ic}>{block.term}</dt>
+                  <dd>
+                    <ul class="case-dl__chips">
+                      {block.items.map(item => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -197,6 +203,51 @@ const jsonLd = {
     font-size: var(--font-size-h2);
     letter-spacing: var(--tracking-display);
   }
+  /* A mark per section: the same set the index in the sidebar uses, so the
+     eye can move between the two. Masks, so they follow the heading colour. */
+  .prose :global(#context)::before,
+  .prose :global(#business-problem)::before,
+  .prose :global(#my-mandate)::before,
+  .prose :global(#decisions)::before,
+  .prose :global(#delivery)::before,
+  .prose :global(#outcome)::before,
+  .prose :global(#reuse)::before,
+  .prose :global(#evidence)::before {
+    content: '';
+    display: inline-block;
+    width: 0.82em;
+    height: 0.82em;
+    margin-right: 0.42em;
+    vertical-align: -0.04em;
+    background-color: var(--accent);
+    -webkit-mask: var(--ic) center / contain no-repeat;
+    mask: var(--ic) center / contain no-repeat;
+  }
+  .prose :global(#context) {
+    --ic: var(--ic-context);
+  }
+  .prose :global(#business-problem) {
+    --ic: var(--ic-problem);
+  }
+  .prose :global(#my-mandate) {
+    --ic: var(--ic-mandate);
+  }
+  .prose :global(#decisions) {
+    --ic: var(--ic-decisions);
+  }
+  .prose :global(#delivery) {
+    --ic: var(--ic-delivery);
+  }
+  .prose :global(#outcome) {
+    --ic: var(--ic-outcome);
+  }
+  .prose :global(#reuse) {
+    --ic: var(--ic-reuse);
+  }
+  .prose :global(#evidence) {
+    --ic: var(--ic-evidence);
+  }
+
   .prose :global(#evidence) {
     font-size: var(--font-size-lg);
     color: oklch(from var(--text) l c h / 0.8);
@@ -242,6 +293,45 @@ const jsonLd = {
   .case-dl__row dd {
     margin: 0;
     color: oklch(from var(--text) l c h / 0.85);
+  }
+  /* One chip per item beats a run-on line joined by separators: the reader
+     can count them and stop at the one that matters. */
+  .case-dl__chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .case-dl__chips li {
+    padding: 0.25em 0.7em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface-1);
+    font-size: var(--font-size-sm);
+    line-height: 1.45;
+  }
+  .case-dl__row dt[data-ic]::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.4em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    opacity: 0.7;
+    -webkit-mask: var(--ic) center / contain no-repeat;
+    mask: var(--ic) center / contain no-repeat;
+  }
+  .case-dl__row dt[data-ic='role'] {
+    --ic: var(--ic-role);
+  }
+  .case-dl__row dt[data-ic='problem'] {
+    --ic: var(--ic-problem);
+  }
+  .case-dl__row dt[data-ic='reuse'] {
+    --ic: var(--ic-reuse);
   }
   @media (min-width: 700px) {
     .case-dl__row {
