@@ -1,6 +1,4 @@
 ---
-import { ArrowRight } from 'lucide-astro';
-
 export interface Door {
   eyebrow: string;
   title: string;
@@ -29,7 +27,9 @@ const { doors } = Astro.props;
             <p class="door__body">{door.body}</p>
             <span class="door__cta">
               {door.label}
-              <ArrowRight class="door__arrow" size={18} aria-hidden="true" />
+              <span class="door__arrow" aria-hidden="true">
+                →
+              </span>
             </span>
           </a>
         ))
@@ -100,6 +100,7 @@ const { doors } = Astro.props;
   }
 
   .door__arrow {
+    display: inline-block;
     transition: transform 0.25s var(--ease-out);
   }
 
@@ -108,7 +109,7 @@ const { doors } = Astro.props;
       border-color: var(--line-strong);
     }
     .door:hover .door__arrow {
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
   }
 

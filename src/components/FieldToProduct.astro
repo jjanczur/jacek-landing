@@ -1,0 +1,345 @@
+---
+export interface Props {
+  caption?: string;
+  annotation?: string;
+}
+const {
+  caption = 'One engagement becomes the component that makes the next one cheaper.',
+  annotation = 'each deployment adds to the next',
+} = Astro.props;
+
+const LANES = [
+  { key: 'field', label: 'Field', y: 48 },
+  { key: 'platform', label: 'Platform', y: 140 },
+  { key: 'next', label: 'Next engagement', y: 222 },
+];
+
+const FIELD = [
+  { x: 120, w: 120, label: 'APG assistant' },
+  { x: 300, w: 120, label: 'KfW PoC portfolio' },
+  { x: 480, w: 120, label: 'Bosch workflows' },
+];
+const PLATFORM = [
+  { x: 180, w: 140, label: 'Reusable process components' },
+  { x: 380, w: 140, label: 'Testbed (evals)' },
+  { x: 580, w: 140, label: 'Prompt Wizard' },
+];
+const NEXT = { x: 420, w: 300, label: 'Prototype in one day' };
+
+const cx = (b: { x: number; w: number }) => b.x + b.w / 2;
+const NEXT_CX = cx(NEXT); // 570
+---
+
+<figure class="f2p" data-f2p>
+  <p class="f2p__legend" aria-hidden="true">
+    Field → Platform → Next engagement
+  </p>
+
+  <svg
+    class="f2p__svg f2p__svg--wide"
+    viewBox="0 0 880 260"
+    aria-hidden="true"
+    focusable="false"
+  >
+    {
+      LANES.map(lane => (
+        <text class="f2p__lane-label" x="8" y={lane.y + 28}>
+          {lane.label}
+        </text>
+      ))
+    }
+
+    <g class="f2p__edges" fill="none">
+      {
+        FIELD.map((b, i) => (
+          <path
+            class="f2p__edge f2p__edge--ab"
+            pathLength="100"
+            style={`--edge-delay: ${300 + i * 40}ms`}
+            d={`M ${cx(b)} 92 C ${cx(b)} 116, ${cx(PLATFORM[i])} 116, ${cx(PLATFORM[i])} 140`}
+          />
+        ))
+      }
+      {
+        PLATFORM.map((b, i) => (
+          <path
+            class="f2p__edge f2p__edge--bc"
+            pathLength="100"
+            style={`--edge-delay: ${1080 + i * 40}ms`}
+            d={`M ${cx(b)} 184 C ${cx(b)} 205, ${NEXT_CX} 205, ${NEXT_CX} 222`}
+          />
+        ))
+      }
+    </g>
+
+    <g class="f2p__nodes">
+      {
+        FIELD.map((b, i) => (
+          <g class="f2p__node f2p__node--a" style={`--node-delay: ${i * 60}ms`}>
+            <rect x={b.x} y="48" width={b.w} height="44" rx="6" />
+            <text x={cx(b)} y="75">
+              {b.label}
+            </text>
+          </g>
+        ))
+      }
+      {
+        PLATFORM.map((b, i) => (
+          <g
+            class="f2p__node f2p__node--b"
+            style={`--node-delay: ${760 + i * 60}ms`}
+          >
+            <rect x={b.x} y="140" width={b.w} height="44" rx="6" />
+            <text x={cx(b)} y="167">
+              {b.label}
+            </text>
+          </g>
+        ))
+      }
+      <g class="f2p__node f2p__node--c">
+        <rect x={NEXT.x} y="222" width={NEXT.w} height="44" rx="6"></rect>
+        <text x={NEXT_CX} y="249">
+          {NEXT.label}
+        </text>
+      </g>
+    </g>
+
+    <text class="f2p__annotation" x="748" y="146">
+      {annotation.split(' ').slice(0, 3).join(' ')}
+    </text>
+    <text class="f2p__annotation" x="748" y="162">
+      {annotation.split(' ').slice(3).join(' ')}
+    </text>
+  </svg>
+
+  <svg
+    class="f2p__svg f2p__svg--stack"
+    viewBox="0 0 380 700"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <text class="f2p__lane-label" x="0" y="28"> Field </text>
+    {
+      FIELD.map((b, i) => (
+        <g class="f2p__node f2p__node--a" style={`--node-delay: ${i * 60}ms`}>
+          <rect x="30" y={44 + i * 68} width="320" height="44" rx="6" />
+          <text x="190" y={71 + i * 68}>
+            {b.label}
+          </text>
+        </g>
+      ))
+    }
+    <path
+      class="f2p__edge f2p__edge--ab"
+      pathLength="100"
+      style="--edge-delay: 300ms"
+      d="M 190 224 V 300"></path>
+
+    <text class="f2p__lane-label" x="0" y="300"> Platform </text>
+    {
+      PLATFORM.map((b, i) => (
+        <g
+          class="f2p__node f2p__node--b"
+          style={`--node-delay: ${760 + i * 60}ms`}
+        >
+          <rect x="30" y={316 + i * 68} width="320" height="44" rx="6" />
+          <text x="190" y={343 + i * 68}>
+            {b.label}
+          </text>
+        </g>
+      ))
+    }
+    <path
+      class="f2p__edge f2p__edge--bc"
+      pathLength="100"
+      style="--edge-delay: 1080ms"
+      d="M 190 496 V 560"></path>
+
+    <text class="f2p__lane-label" x="0" y="560"> Next engagement </text>
+    <g class="f2p__node f2p__node--c">
+      <rect x="30" y="576" width="320" height="44" rx="6"></rect>
+      <text x="190" y="603">
+        {NEXT.label}
+      </text>
+    </g>
+  </svg>
+
+  <figcaption class="f2p__caption">{caption}</figcaption>
+
+  <ol class="f2p__list visually-hidden">
+    {FIELD.map(b => <li>Field: {b.label}</li>)}
+    {PLATFORM.map(b => <li>Platform: {b.label}</li>)}
+    <li>Next engagement: {NEXT.label}</li>
+  </ol>
+</figure>
+
+<style>
+  .f2p {
+    margin: 0;
+  }
+  .f2p__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 880px;
+    margin-inline: auto;
+    overflow: visible;
+  }
+  .f2p__svg--stack {
+    display: none;
+    max-width: 380px;
+  }
+  .f2p__legend {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    .f2p__svg--wide {
+      display: none;
+    }
+    .f2p__svg--stack {
+      display: block;
+    }
+  }
+  @media (max-width: 420px) {
+    .f2p__lane-label {
+      display: none;
+    }
+    .f2p__legend {
+      display: block;
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-heading);
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: oklch(from var(--text) l c h / 0.55);
+    }
+  }
+
+  .f2p__lane-label {
+    fill: oklch(from var(--text) l c h / 0.55);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .f2p__node rect {
+    fill: var(--surface-1);
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+  .f2p__node--b rect {
+    stroke: var(--primary);
+    stroke-width: 1.5;
+  }
+  .f2p__node--c rect {
+    fill: var(--primary-soft);
+    stroke: none;
+  }
+  .f2p__node text {
+    fill: var(--text);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-anchor: middle;
+  }
+  .f2p__node--c text {
+    fill: var(--primary);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .f2p__edge {
+    stroke: var(--line-strong);
+    stroke-width: 1.5;
+  }
+  .f2p__edge--bc {
+    stroke: var(--accent);
+    stroke-width: 2;
+  }
+  .f2p__annotation {
+    fill: oklch(from var(--text) l c h / 0.6);
+    font-family: var(--font-body);
+    font-size: 11px;
+  }
+  .f2p__caption {
+    margin-top: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: oklch(from var(--text) l c h / 0.7);
+    max-width: var(--w-prose);
+  }
+
+  .f2p.is-armed .f2p__edge {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  .f2p.is-armed .f2p__node--a,
+  .f2p.is-armed .f2p__node--b {
+    opacity: 0;
+  }
+  .f2p.is-armed .f2p__node--a {
+    transform: translateY(10px);
+  }
+  /* Per Emil: never from scale(0). */
+  .f2p.is-armed .f2p__node--b {
+    transform: scale(0.94);
+    transform-origin: center;
+  }
+  .f2p.is-armed .f2p__node--c {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .f2p.is-running .f2p__edge {
+    transition: stroke-dashoffset 400ms var(--ease-in-out);
+    transition-delay: var(--edge-delay, 0ms);
+    stroke-dashoffset: 0;
+  }
+  .f2p.is-running .f2p__node--a,
+  .f2p.is-running .f2p__node--b {
+    transition:
+      opacity 300ms var(--ease-out),
+      transform 300ms var(--ease-out);
+    transition-delay: var(--node-delay, 0ms);
+    opacity: 1;
+    transform: none;
+  }
+  .f2p.is-running .f2p__node--c {
+    transition:
+      opacity 240ms var(--ease-out) 1500ms,
+      clip-path 240ms var(--ease-out) 1500ms;
+    opacity: 1;
+    clip-path: inset(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .f2p.is-armed .f2p__edge,
+    .f2p.is-armed .f2p__node--a,
+    .f2p.is-armed .f2p__node--b,
+    .f2p.is-armed .f2p__node--c {
+      stroke-dashoffset: 0 !important;
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+    }
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced && 'IntersectionObserver' in window) {
+    document.querySelectorAll<HTMLElement>('[data-f2p]').forEach(fig => {
+      fig.classList.add('is-armed');
+      const io = new IntersectionObserver(
+        (entries, obs) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              (entry.target as HTMLElement).classList.add('is-running');
+              obs.disconnect();
+            }
+          }
+        },
+        { threshold: 0.4 },
+      );
+      io.observe(fig);
+    });
+  }
+</script>

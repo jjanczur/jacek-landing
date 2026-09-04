@@ -21,7 +21,7 @@ test.describe('consulting hub', () => {
 
   test('four offers, including engineering enablement', async ({ page }) => {
     await page.goto('/en/consulting/');
-    const offers = page.locator('.pillar');
+    const offers = page.locator('.principle');
     await expect(offers).toHaveCount(4);
     await expect(offers.nth(0)).toContainText('Architecture & risk review');
     await expect(offers.nth(1)).toContainText('Interim CTO / AI lead');
@@ -69,5 +69,36 @@ test.describe('consulting hub', () => {
     ]) {
       expect(html, `contains "${s}"`).not.toContain(s);
     }
+  });
+
+  test('the remote-first line appears exactly once (CP-2)', async ({
+    request,
+  }) => {
+    const html = (
+      await (await request.get('/en/consulting/')).text()
+    ).toLowerCase();
+    const needle = 'remote-first, on-site when it matters';
+    const count = html.split(needle).length - 1;
+    expect(count, 'once, in the closing band').toBe(1);
+  });
+
+  test('offers are a tinted panel, not a fifth card variant (AI-1b)', async ({
+    page,
+  }) => {
+    await page.goto('/en/consulting/');
+    const offers = page.locator('#offers-section .principle');
+    await expect(offers).toHaveCount(4);
+    const borders = await offers.evaluateAll(els =>
+      els.map(el => getComputedStyle(el).borderTopWidth),
+    );
+    for (const b of borders) expect(b).toBe('0px');
+  });
+
+  test('the audience doors use the text arrow, not an icon (AI-9)', async ({
+    page,
+  }) => {
+    await page.goto('/en/consulting/');
+    await expect(page.locator('.door svg')).toHaveCount(0);
+    await expect(page.locator('.door__arrow').first()).toHaveText('→');
   });
 });

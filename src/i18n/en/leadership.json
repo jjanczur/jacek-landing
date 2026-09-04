@@ -14,7 +14,8 @@
     "ghost": {
       "href": "/docs/Jacek_Janczura_CV.pdf",
       "label": "Download the CV"
-    }
+    },
+    "portraitAlt": "Jacek Janczura"
   },
   "pillars": {
     "eyebrow": "What I have owned",
@@ -40,8 +41,8 @@
         "href": "/en/case-studies/jaden-data-company-building/"
       },
       {
-        "title": "Field-to-product leverage",
-        "body": "Reusable integrations, evaluation frameworks, deployment playbooks and product feedback out of every deployment, so the next one costs less than the last.",
+        "title": "Reuse & product feedback",
+        "body": "Every deployment leaves something behind — an integration, an evaluation harness, a playbook, a change to the product — so the next one starts further along than the last.",
         "proof": "One specification template and one evaluation template carried a seven-part proof-of-concept portfolio at KfW; the process patterns, the cited-retrieval design and the Testbed evaluation framework were reused across later deployments.",
         "href": "/en/case-studies/kfw-genai-portfolio/"
       }
@@ -173,12 +174,16 @@
       {
         "title": "Talks and publications",
         "body": "Conference talks on blockchain research and applications, and peer-reviewed publications on decentralised compensation of digital content, trusted inter-organisational data processing and static vulnerability analysis.",
-        "link": { "href": "/en/talks/", "label": "Talks and publications" }
+        "link": {
+          "href": "/en/talks/",
+          "label": "Talks and publications"
+        }
       }
     ]
   },
   "availability": {
-    "line": "Available for full-time leadership roles · remote-first, on-site when it matters · Polish (native), English (fluent), German (conversational)"
+    "line": "Available for full-time leadership roles",
+    "detail": "Remote-first, on-site when it matters · Polish (native), English (fluent), German (conversational)"
   },
   "band": {
     "title": "Let's talk about the role",
@@ -190,6 +195,7 @@
     "secondary": {
       "href": "/en/case-studies/",
       "label": "Read the case studies"
-    }
+    },
+    "note": "Available for full-time leadership roles · remote-first, on-site when it matters"
   }
 }

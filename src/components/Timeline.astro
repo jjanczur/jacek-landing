@@ -17,10 +17,13 @@ const linkLabel = (href: string) =>
   isPdf(href) ? 'Employer reference (PDF)' : 'Read the case';
 ---
 
-<ol class="timeline">
+<ol class="timeline" data-surface="ruled">
   {
     items.map((item, i) => (
-      <li class="timeline__row reveal" style={`--reveal-delay: ${i * 60}ms`}>
+      <li
+        class="timeline__row reveal"
+        style={`--reveal-delay: calc(${Math.min(i, 3)} * var(--stagger))`}
+      >
         <p class="timeline__period">{item.period}</p>
         <div class="timeline__body">
           <h3 class="timeline__role">

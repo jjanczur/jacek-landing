@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import DoorPair from '../../components/DoorPair.astro';
-import PillarGrid from '../../components/PillarGrid.astro';
+import PrincipleList from '../../components/PrincipleList.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { getSupportedLangs, getTranslations } from '../../utils/i18n';
 import type { Lang } from '../../utils/i18n';
@@ -26,20 +26,24 @@ const t = await getTranslations('consulting', lang);
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
   <Hero {...t.hero} />
 
-  <section class="section" aria-labelledby="model">
+  <section class="section-head" data-surface="bare" id="model-section">
     <div class="container">
       <SectionHeader
-        eyebrow={t.model.eyebrow}
         title={t.model.title}
         lede={t.model.lede}
         id="model"
+        variant="display"
       />
     </div>
   </section>
 
   <DoorPair doors={t.doors} />
 
-  <section class="section-head">
+  <section
+    class="section section--loose section--divided"
+    id="offers-section"
+    aria-labelledby="offers"
+  >
     <div class="container">
       <SectionHeader
         eyebrow={t.offers.eyebrow}
@@ -47,19 +51,37 @@ const t = await getTranslations('consulting', lang);
         lede={t.offers.lede}
         id="offers"
       />
+      <PrincipleList
+        surface="panel"
+        columns={2}
+        exampleLabel="In practice"
+        items={t.offers.items.map(o => ({
+          title: o.title,
+          body: o.body,
+          example: o.proof,
+          link: o.href ? { href: o.href, label: 'Read the case' } : undefined,
+        }))}
+      />
     </div>
   </section>
-  <PillarGrid pillars={t.offers.items} />
 
-  <section class="section" aria-labelledby="fit">
+  <section
+    class="section"
+    id="fit-section"
+    data-surface="bare"
+    aria-labelledby="fit"
+  >
     <div class="container">
-      <SectionHeader eyebrow={t.fit.eyebrow} title={t.fit.title} id="fit" />
+      <SectionHeader title={t.fit.title} id="fit" variant="inline" />
       <div class="fit-grid">
-        <div class="fit fit--good reveal">
+        <div class="fit fit--good surface-bare reveal">
           <h3 class="fit__title">{t.fit.goodTitle}</h3>
           <ul>{t.fit.good.map(item => <li>{item}</li>)}</ul>
         </div>
-        <div class="fit fit--not reveal" style="--reveal-delay: 60ms">
+        <div
+          class="fit fit--not surface-bare reveal"
+          style="--reveal-delay: var(--stagger)"
+        >
           <h3 class="fit__title">{t.fit.notTitle}</h3>
           <ul>{t.fit.not.map(item => <li>{item}</li>)}</ul>
         </div>
@@ -84,10 +106,8 @@ const t = await getTranslations('consulting', lang);
     }
   }
   .fit {
-    padding: var(--space-5);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-l);
-    background: var(--surface-1);
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-5);
   }
   .fit__title {
     margin: 0 0 var(--space-4);
