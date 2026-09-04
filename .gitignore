@@ -88,3 +88,8 @@ Desktop.ini
 # Company-named logo source files. Never committed: the site serves only the
 # UUID-named WebP copies under public/media/ (see the logo-hygiene rule).
 /src/assets/images/logos/
+
+# Agent working directory (plans, ledgers, review packages, screenshots).
+# Tracked here rather than in an untracked nested .gitignore, which fresh
+# git worktrees never receive.
+/.superpowers/
