@@ -5,7 +5,7 @@ export interface Props {
   client: string;
   sector: string;
   period: string;
-  status: string;
+  status?: string;
   role: string;
   via?: string;
   tags: string[];
@@ -28,7 +28,9 @@ const facts: { term: string; value: string }[] = [
   { term: 'Client', value: client },
   { term: 'Sector', value: sector },
   { term: 'Period', value: period },
-  { term: 'Status', value: STATUS_LABEL[status] ?? status },
+  ...(status
+    ? [{ term: 'Status', value: STATUS_LABEL[status] ?? status }]
+    : []),
   { term: 'Role', value: role },
   ...(via ? [{ term: 'Delivered via', value: via }] : []),
 ];

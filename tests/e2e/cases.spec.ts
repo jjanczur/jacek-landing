@@ -5,6 +5,12 @@ const DETAILS = [
   'kfw-genai-portfolio',
   'bosch-procurement-ai',
   'apg-pension-assistant',
+  'entaingine-platform',
+  'rp-matcher',
+  'flowhive-vc',
+  'taufolio',
+  'idealo-and-ing-scale',
+  'regulated-distributed-systems',
 ];
 const EVIDENCE = [
   'Measured',
@@ -76,6 +82,32 @@ test.describe('case-studies index', () => {
     const hrefCount = await page.locator('a.case-row__link[href]').count();
     const cardCount = await page.locator('.case-cards .case-card').count();
     expect(cardCount).toBe(hrefCount);
+  });
+
+  test('skim-only rows are not links and drop the status badge', async ({
+    page,
+  }) => {
+    await page.goto('/en/case-studies/');
+    const rows = page.locator('.case-rows .case-row');
+    expect(await rows.count()).toBeGreaterThanOrEqual(15);
+
+    // A case without `hasDetail` renders no anchor: the row is neither an
+    // <a> itself nor a wrapper around one.
+    const notLinked = await rows.evaluateAll(
+      els =>
+        els.filter(el => el.tagName !== 'A' && !el.querySelector('a')).length,
+    );
+    expect(notLinked).toBeGreaterThanOrEqual(5);
+
+    // A case without a `status` in its frontmatter shows only the
+    // relationship pill. Four of the five skim-only rows have no status;
+    // the fifth (proof of concept) keeps its own.
+    const withoutStatusBadge = await rows.evaluateAll(
+      els =>
+        els.filter(el => el.querySelectorAll('.case-row__pill').length === 1)
+          .length,
+    );
+    expect(withoutStatusBadge).toBe(4);
   });
 
   test('filter chips narrow the skim list to the selected category', async ({

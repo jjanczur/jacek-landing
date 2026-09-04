@@ -1,0 +1,127 @@
+---
+title: 'Taufolio: equity research drafted from primary sources in minutes'
+client: 'Taufolio'
+relationship: 'own-company'
+sector: 'Equity research'
+period: '2025 – present'
+status: 'production'
+role: 'Founder, hands-on build'
+mandate:
+  'Founded it and build it: the filing and transcript ingestion, the market-data layer, the
+  multi-agent drafting and reconciliation, the citation anchoring and the report modes.'
+skim: 'AI equity research from filings and calls'
+category: 'ai-products'
+summary:
+  'My current independent build: an AI equity research platform that reads SEC filings and
+  earnings-call transcripts, drafts a report with several models in parallel, reconciles them and
+  anchors every claim to its source. A snapshot takes about twenty seconds, a full report about
+  three minutes.'
+keyDecisions:
+  - 'Draft with several models in parallel — Claude, Gemini and GPT — then reconcile the drafts,
+    rather than trusting a single model with the analysis.'
+  - 'Anchor every claim to a citation in the underlying filing or transcript, so a reader can check
+    the number rather than believe it.'
+  - 'Two modes instead of one: a roughly twenty-second snapshot for a first look, a roughly
+    three-minute full report when the question deserves it.'
+outcomes:
+  - {
+      value: '~3 min',
+      label: 'for a full report; about twenty seconds for a snapshot',
+      evidence: 'measured',
+    }
+  - { value: '6–8 h', label: 'of manual research replaced per company', evidence: 'projected' }
+stakeholders:
+  [
+    'Me, as founder and the person building it',
+    'Investors doing their own company research, as the intended readers',
+  ]
+constraints:
+  [
+    'Primary sources are long, inconsistently formatted and filed on their own schedule',
+    'A wrong number in a research report is worse than no report',
+    'Market-data providers fail, rate-limit and disagree',
+    'One person building and running it',
+  ]
+reuse:
+  [
+    'Filing and transcript ingestion pipeline',
+    'Parallel multi-agent drafting with reconciliation',
+    'Citation anchoring',
+    'Quarter-over-quarter diffing',
+  ]
+tags:
+  [
+    'equity research',
+    'multi-agent',
+    'document ingestion',
+    'citations',
+    'SEC filings',
+    'founder project',
+  ]
+featured: false
+order: 80
+---
+
+## Context
+
+Taufolio is the founder project I started in 2025 and my current independent build: an AI equity
+research platform that works from primary sources rather than from summaries of them.
+
+## Business problem
+
+Understanding a listed company means reading its 10-K, its recent 10-Qs and 8-Ks and the last few
+earnings calls, then holding all of it in your head next to the price and the numbers. That is six
+to eight hours per company, which is why most people skip it and read someone else's opinion
+instead.
+
+## My mandate
+
+I founded it and I build it: ingestion, the market-data layer, the drafting and reconciliation, the
+citation anchoring and the report modes.
+
+## Stakeholders
+
+Me, as founder and the person writing the code, and investors doing their own company research as
+the intended readers.
+
+## Constraints
+
+Filings are long, inconsistently formatted and arrive on the filer's schedule, not mine. A wrong
+figure in a research report destroys the point of the report. Market-data providers fail, rate-limit
+and disagree with each other. And there is one person building and running all of it.
+
+## Decisions
+
+- Ingest the primary sources directly: SEC EDGAR filings — 10-K, 10-Q and 8-K — and earnings-call
+  transcripts, parsed with Azure Document Intelligence so tables and structure survive the trip.
+- Take market data from Yahoo Finance with Finnhub failover, because a single provider outage should
+  degrade a report, not stop it.
+- Draft in parallel with several models — Claude, Gemini and GPT — and reconcile their drafts
+  against each other, so a single model's confident mistake does not become the report.
+- Anchor every claim to its source with citation anchoring, so a reader can go straight to the
+  sentence in the filing that a number came from.
+- Offer two depths: a snapshot in about twenty seconds for triage, and a full report in about three
+  minutes when the company is worth the time.
+
+## Delivery
+
+Beyond the single-company report, the platform does Ticker Compare for side-by-side companies,
+monthly portfolio recaps, and quarter-over-quarter diffs that show what changed in a company's own
+words between filings.
+
+## Outcome
+
+A full report in about three minutes, standing in for the six to eight hours of reading and
+note-taking the same coverage would otherwise take per company.
+
+## Reuse
+
+The ingestion pipeline, the parallel drafting and reconciliation pattern and the citation anchoring
+are the parts that generalise beyond equity research to any domain where long primary documents have
+to become a defensible written answer.
+
+## Evidence
+
+The report timings are measured on the running system. The six-to-eight-hour figure is my own
+projection of the manual research a full report replaces, not a customer measurement. The platform
+is at https://www.taufolio.com.

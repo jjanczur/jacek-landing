@@ -18,7 +18,7 @@ export interface Props {
   client: string;
   summary: string;
   outcome?: Outcome;
-  status: string;
+  status?: string;
   relationship: string;
   sector: string;
   /**
@@ -83,7 +83,11 @@ const linkAttrs = href ? { href } : {};
       )
     }
     <p class="case-card__badges">
-      <span class="case-card__pill">{STATUS_LABEL[status] ?? status}</span>
+      {
+        status && (
+          <span class="case-card__pill">{STATUS_LABEL[status] ?? status}</span>
+        )
+      }
       <span class="case-card__pill case-card__pill--ghost">
         {RELATIONSHIP_LABEL[relationship] ?? relationship}
       </span>

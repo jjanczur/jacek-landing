@@ -1,0 +1,177 @@
+---
+title: 'Regulated distributed systems: data sovereignty for institutions that cannot centralise'
+client: 'Norges Bank, KfW and EU-funded consortia'
+relationship: 'client'
+via: 'Jaden Data / JadenX'
+sector: 'Central banking, development finance and supply chain'
+period: '2021 – 2024'
+status: 'mvp'
+role: 'Technical lead · lead architect and delivery owner'
+mandate:
+  'Technical lead on the central-bank cross-ledger bridge, and lead architect and delivery owner on
+  the development-finance platform, the supply-chain trust platform and the confidential-computing
+  marketplace — accountable for the design and for delivering each to the customer.'
+skim: 'Cross-ledger bridge and sovereign data platforms'
+category: 'scale-and-regulated'
+summary:
+  'Four deliveries for institutions that need shared data without a shared owner: a cross-ledger
+  bridge for a central bank, a development-finance platform on federated context brokers, an
+  auditable carbon-capture supply chain, and a marketplace where models are trained on data nobody
+  hands over.'
+keyDecisions:
+  - 'Federate rather than centralise: every stakeholder runs their own context broker and data moves
+    through policies and subscriptions, so no single party controls the record.'
+  - 'Run the innovation work as a start-up inside the institution — wireframes validated with
+    stakeholders first, code only for what they valued — and open-source the result with the client.'
+  - 'Use the ledger only where it earns its place: checksums of digital twins, certificates and
+    audit trails, while the working data stays in the brokers and inside trusted execution
+    environments.'
+outcomes:
+  - {
+      value: '4 systems',
+      label: 'delivered: a bridge, two platform MVPs and an open-source marketplace',
+      evidence: 'measured',
+    }
+  - {
+      value: 'Min. 30%',
+      label: 'revenue increase for carbon-capture supply-chain participants',
+      evidence: 'projected',
+    }
+  - {
+      value: 'GPL-3.0',
+      label: 'development-finance platform published open source in agreement with the client',
+      evidence: 'measured',
+    }
+  - {
+      value: 'Donor interest',
+      label: 'from a major foundation and development organisations in co-creating the platform',
+      evidence: 'qualitative',
+    }
+stakeholders:
+  [
+    'A central bank exploring programmable money',
+    'A development bank and its funders and partner organisations',
+    'Biomass producers, logistics, pyrolysis and storage operators in a carbon-capture chain',
+    'Consortium partners and EU programme reviewers',
+    'Legal and compliance stakeholders in each engagement',
+  ]
+constraints:
+  [
+    'Data sovereignty: no central controlling entity acceptable to the participants',
+    'EU funding programmes with fixed scopes and review gates',
+    'Several organisations owning different parts of one end-to-end flow',
+    'Legal review running alongside the build',
+  ]
+reuse:
+  [
+    'Context-broker federation patterns for decentralised data',
+    'Digital-twin and certificate models for supply chains',
+    'Confidential-computing workflow: preparation → agreement → execution → evaluation',
+    'Parallel tech, business and legal sub-tracks inside an agile delivery',
+  ]
+tags:
+  [
+    'distributed systems',
+    'data sovereignty',
+    'FIWARE',
+    'digital twins',
+    'confidential computing',
+    'open source',
+    'regulated delivery',
+  ]
+angle: 'turnaround'
+featured: false
+order: 100
+---
+
+## Context
+
+Four engagements share one problem: several organisations need to act on the same data, none of them
+will accept another as the owner of it, and a regulator is watching. Distributed ledgers and
+federated data infrastructure are the mechanism here, not the headline.
+
+## Business problem
+
+A central bank wanted to understand whether value can move between two different ledgers. A
+development bank needed funders, implementers and auditors to coordinate on projects without a
+single institution controlling the record. A carbon-capture chain needed every participant to trust
+a certificate issued by someone else. And organisations with sensitive data wanted analytical work
+done on it without handing it over.
+
+## My mandate
+
+I was technical lead on the central-bank bridge, and lead architect and delivery owner on the other
+three: I designed the solutions and was accountable for delivering them to the customer's
+expectations.
+
+## Stakeholders
+
+A central bank's technical staff; a development bank's project owners plus the funders and partner
+organisations around them; the biomass, logistics, pyrolysis and storage operators in a carbon
+supply chain; consortium partners and EU programme reviewers; and legal stakeholders in every one of
+them.
+
+## Constraints
+
+None of these systems could have a central controlling entity, because the participants would not
+accept one. Three ran inside EU funding programmes with fixed scopes and review gates. Each involved
+several organisations owning different parts of one end-to-end flow, with legal questions running in
+parallel with the engineering.
+
+## Decisions
+
+- **Cross-ledger bridge (2022–2023, technical lead).** For a central bank, a bridge between IOTA and
+  Ethereum for central bank digital currency, exploring programmable money and cross-chain
+  interoperability for sovereign currencies. This work involved no AI.
+- **Development-finance platform MVP.** A React front end over a FIWARE Orion context broker with
+  Java components and Auth0 for identity. Storage is decentralised: ideally every stakeholder runs
+  their own broker, with federation and replication through policies and subscriptions to data
+  changes, so no central entity controls the record. FIWARE was chosen as an open, EU-backed
+  component ecosystem that avoids vendor lock-in.
+- **Lean start-up inside the institution.** Twelve sprints over three months, run with lean learning
+  loops and pivot-or-persist decisions: illustrative wireframes validated with stakeholders first,
+  progressively replaced by functional prototypes, and only features stakeholders valued got built.
+  The result was published open source under GPL-3.0 in agreement with the client.
+- **Auditable supply chain.** A trust platform on the FIWARE context broker, extended with new
+  modules: every asset represented as a digital twin with checksums on the ledger for verification,
+  iSHARE for inter-organisational exchange, and emission certificates issued as NFTs so they can be
+  traded and traced. Delivery ran as parallel sub-tracks — technical, business and legal — because
+  the contributors owned different parts of one end-to-end flow.
+- **Confidential computing marketplace.** For inter-organisational data processing, a modular
+  microservices design (agreement, execution, user management, matchmaking, audit and payment) with
+  Ethereum smart contracts for authorisation and tamper-proof audit trails, Intel SGX trusted
+  execution environments through iExec, and AES-256 at rest with key management inside the enclave.
+  The pattern is bringing the code to the data, so a freelance data scientist can build a model on
+  private data without ever controlling access to it.
+
+## Delivery
+
+The development-finance MVP shipped a projects marketplace, discussion templates, threaded
+discussions and dashboard data, in twelve sprints over three months. The supply-chain platform ran
+an end-to-end proof of concept covering biomass verification, pyrolysis transformation, independent
+lab analysis and certificate issuance, over ten two-week iterations. The marketplace was released as
+an open-source MVP with a co-authored whitepaper. Three of the four were funded under EU Horizon
+2020 programmes.
+
+## Outcome
+
+The development-finance platform reached product-market fit, was published open source under GPL-3.0
+in agreement with the client, and drew interest from the Gates Foundation in improving coordination
+of development work, with representatives from the bank, Co-Develop, UNDP and Norad indicating
+interest in co-creating it; a separate alignment initiative grew out of the project. The
+supply-chain platform delivered a working auditing platform for the carbon capture value chain, with
+a minimum 30% revenue increase projected for participants through optimised operations and
+certificate trading. The marketplace shipped as an open-source MVP with a peer-reviewed publication.
+
+## Reuse
+
+Context-broker federation, digital twins with on-ledger checksums, the confidential-computing
+workflow and the parallel tech/business/legal sub-track setup are patterns I have reused since,
+including in later work where the sensitive part was AI rather than a ledger.
+
+## Evidence
+
+The open-source release, the funding programmes, the publication and the expressions of interest are
+public record. The 30% revenue increase is a projection made for the supply-chain participants, not
+a measured result. The central-bank engagement was a distributed-systems project with no AI
+component.
