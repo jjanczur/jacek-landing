@@ -221,36 +221,8 @@ const rhythmClass =
     }
   }
 
-  /* MO-7: scroll-linked stagger where supported, off the main thread. The
-     .reveal fallback stays for everything else. */
-  @supports (animation-timeline: view()) {
-    :global(.reveal-on) .pillar.reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-    .pillar {
-      animation: pillar-in linear both;
-      animation-timeline: view();
-      animation-range: entry 10% cover 32%;
-      animation-delay: calc(-1 * var(--reveal-delay, 0ms));
-    }
-    @keyframes pillar-in {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .pillar {
-        animation: none;
-        opacity: 1;
-        transform: none;
-      }
-    }
-  }
+  /* Pillars reveal once, via the site-wide IntersectionObserver, with a
+     stagger from --reveal-delay. A scroll-linked timeline was tried here
+     and removed: it plays in reverse when the reader scrolls back up, so
+     the four claims disappear again on the way home. */
 </style>
