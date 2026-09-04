@@ -10,8 +10,8 @@ const DETAILS = EN_PAGES.filter(
 // must carry `delivery` frontmatter and a pull quote.
 const SHAPED = [
   '/en/case-studies/apg-pension-assistant/',
-  '/en/case-studies/kfw-genai-portfolio/',
-  '/en/case-studies/bosch-procurement-ai/',
+  '/en/case-studies/development-bank-genai-portfolio/',
+  '/en/case-studies/automotive-procurement-ai/',
   '/en/case-studies/jaden-data-company-building/',
 ];
 
@@ -301,6 +301,39 @@ test('case-study pages identify clients by industry, not by name', async ({
     for (const re of UNNAMED_CLIENTS) {
       expect(haystack, `${path} matches ${re}`).not.toMatch(re);
     }
+  }
+});
+
+// Case-study routes renamed so the URL stops naming a client the case
+// itself describes by industry. astro.config.mjs is the single source for
+// both halves: the redirect and the sitemap exclusion.
+const RETIRED_CASE_ROUTES: Record<string, string> = {
+  '/en/case-studies/bosch-procurement-ai/':
+    '/en/case-studies/automotive-procurement-ai/',
+  '/en/case-studies/kfw-genai-portfolio/':
+    '/en/case-studies/development-bank-genai-portfolio/',
+};
+
+test('retired case-study URLs still resolve, to their renamed route', async ({
+  request,
+}) => {
+  for (const [from, to] of Object.entries(RETIRED_CASE_ROUTES)) {
+    const res = await request.get(from);
+    expect(res.status(), from).toBeLessThan(400);
+    const html = await res.text();
+    expect(html, from).toContain(`url=${to}`);
+    // The retired address must not be the one that gets indexed.
+    expect(html, from).toContain('noindex');
+  }
+});
+
+test('the sitemap lists the renamed case routes, not the retired ones', async ({
+  request,
+}) => {
+  const xml = await (await request.get('/sitemap-0.xml')).text();
+  for (const [from, to] of Object.entries(RETIRED_CASE_ROUTES)) {
+    expect(xml, to).toContain(to);
+    expect(xml, from).not.toContain(from);
   }
 });
 

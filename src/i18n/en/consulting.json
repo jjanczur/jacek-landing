@@ -64,7 +64,7 @@
         "title": "AI transformation & engineering enablement",
         "body": "Introducing teams to AI-accelerated software engineering: setting up the best practices, teaching people to build their own internal tools, and setting up environments where AI can be used securely. Workshops on prompt engineering and AI IDEs, MCP practices and custom skills, and guidelines for responsible use.",
         "proof": "Delivered for enterprise engineering teams, including Bosch: onboarding to Cursor, Claude Code and Copilot, security standards for enterprise AI tool adoption, and MCP best practices in their internal instances.",
-        "href": "/en/case-studies/bosch-procurement-ai/"
+        "href": "/en/case-studies/automotive-procurement-ai/"
       }
     ]
   },

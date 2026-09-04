@@ -107,7 +107,7 @@
       },
       {
         "title": "Data, streaming and machine learning",
-        "body": "Kafka, Flink and Camel for real-time processing; PostgreSQL, pgvector, Pinecone and Milvus for retrieval; and classical machine learning where it wins — the tuned RP-Matcher ensemble reached 70.7% top-1 accuracy and a mean reciprocal rank of 0.835 on 25+ engineered features."
+        "body": "Kafka, Flink and Camel for real-time processing; PostgreSQL, pgvector, Pinecone and Milvus for retrieval; and classical machine learning where it wins — the tuned RP-Matcher ensemble reaches 78.4% top-1 accuracy on the current corpus, on 25+ engineered features."
       },
       {
         "title": "Security and compliance engineering",
@@ -125,7 +125,7 @@
         "title": "Fractional CTO & consulting partner",
         "org": "Jaden Data and direct client engagements",
         "outcome": "RP-Matcher cut offer preparation time by 60% for RP Group and removed the dependency on one expert for product selection.",
-        "contribution": "Built and benchmarked five model families with hyperparameter search; the tuned ensemble reached 70.7% top-1 accuracy and a mean reciprocal rank of 0.835 on 25+ engineered features."
+        "contribution": "Built and benchmarked five model families with hyperparameter search; the tuned ensemble reaches 78.4% top-1 accuracy on the current corpus, on 25+ engineered features."
       },
       {
         "period": "Mar 2021 – Jun 2024",

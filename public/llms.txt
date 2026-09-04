@@ -27,8 +27,8 @@ primary (English):
 
 case studies (English):
   - https://janczura.com/en/case-studies/jaden-data-company-building/ — enterprise AI startup, bootstrapped to €1M+, team 0→10, two certifications
-  - https://janczura.com/en/case-studies/kfw-genai-portfolio/ — development bank, seven document-heavy workflows, one spec, one evaluation template
-  - https://janczura.com/en/case-studies/bosch-procurement-ai/ — global automotive group, four tendering and contracting workflows in production
+  - https://janczura.com/en/case-studies/development-bank-genai-portfolio/ — development bank, seven document-heavy workflows, one spec, one evaluation template
+  - https://janczura.com/en/case-studies/automotive-procurement-ai/ — global automotive group, four tendering and contracting workflows in production
   - https://janczura.com/en/case-studies/engineering-enablement/ — global automotive group, hackathons and AI-assisted development practice for engineers
   - https://janczura.com/en/case-studies/apg-pension-assistant/ — pension fund administrator, member-facing assistant, on-premises, ministry-recognised
   - https://janczura.com/en/case-studies/entaingine-platform/ — multi-tenant AI platform serving 50+ organisations
