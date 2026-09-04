@@ -12,6 +12,7 @@ const LANGS = ['en', 'pl', 'de'];
 const RETIRED_CASE_SLUGS = {
   'bosch-procurement-ai': 'automotive-procurement-ai',
   'kfw-genai-portfolio': 'development-bank-genai-portfolio',
+  'rp-matcher': 'product-matching-ml',
 };
 
 const retiredCaseRedirects = Object.fromEntries(

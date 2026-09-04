@@ -18,7 +18,7 @@ export const EN_PAGES = [
   '/en/case-studies/engineering-enablement/',
   '/en/case-studies/apg-pension-assistant/',
   '/en/case-studies/entaingine-platform/',
-  '/en/case-studies/rp-matcher/',
+  '/en/case-studies/product-matching-ml/',
   '/en/case-studies/flowhive-vc/',
   '/en/case-studies/taufolio/',
   '/en/case-studies/idealo-and-ing-scale/',
