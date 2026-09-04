@@ -1,5 +1,28 @@
 import { test, expect } from '@playwright/test';
 
+// Organisations behind the wall assets. None of them may appear in an alt
+// attribute or in a chip caption; the wall speaks in sectors.
+const WALL_NAMES = [
+  'norges',
+  'apg',
+  'boehringer',
+  'ingelheim',
+  'kfw',
+  'bosch',
+  'red bull',
+  'ing bank',
+  'telekom',
+  'idealo',
+  'stellantis',
+  'sas institute',
+  'tüv',
+  'tuv',
+  'imf',
+  'kenstone',
+  'software ag',
+  'anita',
+];
+
 test.describe('home', () => {
   test('hero renders the founder-CTO positioning with both CTAs', async ({
     page,
@@ -34,14 +57,39 @@ test.describe('home', () => {
     );
   });
 
-  test('logo wall has two attributed groups and captions without names', async ({
+  test('logo wall has three attributed groups and captions without names', async ({
     page,
   }) => {
     await page.goto('/en/');
     const groups = page.locator('.logo-wall__group');
-    await expect(groups).toHaveCount(2);
+    await expect(groups).toHaveCount(3);
     await expect(groups.nth(0).locator('.chip-cell')).toHaveCount(8);
     await expect(groups.nth(1).locator('.chip-cell')).toHaveCount(4);
+    // Independent work is attributed to its own group, not merged into the
+    // engagements delivered through the company.
+    await expect(groups.nth(2).locator('.chip-cell')).toHaveCount(1);
+    await expect(
+      groups.nth(2).locator('.logo-wall__group-title'),
+    ).toContainText('Independent');
+
+    // Every wall asset is described by sector, never by the organisation's
+    // name — in the alt text and in the caption underneath it.
+    const alts = await page
+      .locator('.logo-wall .chip-logo')
+      .evaluateAll(els =>
+        els.map(el => (el.getAttribute('alt') || '').toLowerCase()),
+      );
+    const captions = (
+      await page.locator('.logo-wall .chip-note').allTextContents()
+    ).map(text => text.toLowerCase());
+    expect(alts).toHaveLength(13);
+    expect(captions).toHaveLength(13);
+    for (const text of [...alts, ...captions]) {
+      for (const name of WALL_NAMES) {
+        expect(text, `"${text}" names an organisation`).not.toContain(name);
+      }
+    }
+
     await expect(groups.locator('.logo-wall__legal')).toHaveCount(0);
     await expect(page.locator('.footer-attribution')).toHaveCount(1);
   });
@@ -73,7 +121,7 @@ test.describe('home', () => {
       .evaluateAll(els =>
         els.map(el => Math.round(el.getBoundingClientRect().height)),
       );
-    expect(heights.length).toBe(12);
+    expect(heights.length).toBe(13);
     // Ink-normalised, not bounding-box normalised: rendered heights must vary.
     expect(new Set(heights).size).toBeGreaterThan(1);
     for (const h of heights) {

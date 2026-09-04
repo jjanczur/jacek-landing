@@ -24,6 +24,8 @@ export const EN_PAGES = [
   '/en/case-studies/idealo-and-ing-scale/',
   '/en/case-studies/regulated-distributed-systems/',
   '/en/case-studies/stellantis-rag-evaluation/',
+  '/en/case-studies/legal-ai-startup-cto-advisory/',
+  '/en/case-studies/software-ag-migration-and-enablement/',
 ];
 
 export const ALL_PAGES = [

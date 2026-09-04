@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Jacek Janczura — Founder-CTO · Enterprise AI",
-    "description": "Founder-CTO working on enterprise AI. Co-founded Jaden Data and led it as CTO to €1M+ annual revenue and a ten-person engineering team; fractional CTO and consulting partner since 2024. Production AI for APG, Bosch Global Services, KfW and Boehringer Ingelheim; distributed systems for Norges Bank and ING."
+    "description": "Founder-CTO working on enterprise AI. Co-founded Jaden Data and led it as CTO to €1M+ annual revenue and a ten-person engineering team; fractional CTO and consulting partner since 2024. Production AI for APG, Bosch Global Services, a German development bank and Boehringer Ingelheim; distributed systems for Norges Bank and ING."
   },
   "hero": {
     "eyebrow": "Founder-CTO · Enterprise AI · Technology leadership",
     "title": "I turn complex enterprise workflows into production AI, <em>and build the teams that scale it.</em>",
-    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG, Bosch Global Services, KfW and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
+    "sub": "Co-founded and bootstrapped Jaden Data to €1M+ annual revenue, grew engineering from 0 to 10, and led AI and distributed-systems delivery for APG, Bosch Global Services, a German development bank and ING. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover.",
     "primary": {
       "href": "/en/contact/#hiring",
       "label": "Discuss a leadership role"
@@ -21,7 +21,7 @@
       {
         "title": "Customer & commercial",
         "body": "Discovery, executive workshops, technical pre-sales, architecture and security review. I am in the room when a buyer decides whether the technology can be trusted.",
-        "proof": "Four procurement workflows taken from scoped use case to production at Bosch Global Services; a seven-PoC portfolio at KfW run on one spec and one evaluation template.",
+        "proof": "Four procurement workflows taken from scoped use case to production at Bosch Global Services; a seven-PoC portfolio at a German development bank run on one spec and one evaluation template.",
         "href": "/en/case-studies/automotive-procurement-ai/"
       },
       {
@@ -39,7 +39,7 @@
       {
         "title": "Reuse & product feedback",
         "body": "What I build for one client becomes the thing that makes the next one cheaper: shared integrations, evaluation harnesses, deployment playbooks and a route back into the product roadmap.",
-        "proof": "Reusable platform components turned a one-day prototype into a product; Testbed and Prompt Wizard came out of repeated customer needs; KfW templates were reused across seven proofs of concept.",
+        "proof": "Reusable platform components turned a one-day prototype into a product; Testbed and Prompt Wizard came out of repeated customer needs; development-bank templates were reused across seven proofs of concept.",
         "href": "/en/case-studies/development-bank-genai-portfolio/"
       }
     ]
@@ -210,6 +210,19 @@
             "alt": "European telecommunications operator",
             "caption": "Telecom · innovation lab",
             "scale": 0.8
+          }
+        ]
+      },
+      {
+        "title": "Independent engagements, under my own name",
+        "items": [
+          {
+            "src": "/media/e700511af12d421fb03e9b9823af8f72.webp",
+            "w": 754,
+            "h": 169,
+            "alt": "Enterprise software vendor",
+            "caption": "Enterprise software · SaaS-to-on-premises migration",
+            "scale": 1.0
           }
         ]
       }

@@ -21,6 +21,8 @@ const NAMES = [
   'tuv',
   'imf',
   'kenstone',
+  'software ag',
+  'anita',
 ];
 
 function localNames(): string[] {

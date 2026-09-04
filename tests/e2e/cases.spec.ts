@@ -15,21 +15,13 @@ const SHAPED = [
   '/en/case-studies/jaden-data-company-building/',
 ];
 
-// Clients that the case studies identify by industry rather than by name.
-// Scoped to case-study pages on purpose: some of these are named in general
-// page copy elsewhere on the site, which is a different statement from
-// attributing a specific project to them. Word boundaries keep hashed asset
-// names out of the match.
-const UNNAMED_CLIENTS: RegExp[] = [
-  /\bbosch\b/,
-  /\bkfw\b/,
-  /\bboehringer\b/,
-  /\bingelheim\b/,
-  /\bt[\u00fcu]v\b/,
-  /\bkenstone\b/,
-  /\bimf\b/,
-  /\bred bull\b/,
-];
+// The two clients the case studies still identify by industry rather than by
+// name. Every other client is named with the client's agreement, so only
+// these two are guarded here. The automotive client is scoped to case-study
+// pages on purpose: it is named in general page copy elsewhere on the site,
+// which is a different statement from attributing a specific project to it.
+// Word boundaries keep hashed asset names out of the match.
+const UNNAMED_CLIENTS: RegExp[] = [/\bbosch\b/, /\bkfw\b/];
 
 const EVIDENCE = [
   'Measured',

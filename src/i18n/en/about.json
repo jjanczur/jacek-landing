@@ -34,7 +34,7 @@
     "steps": [
       {
         "title": "Start with the workflow, not the model",
-        "body": "Before anything is designed I sit with the people doing the job and map the process, the baseline, the bottleneck, the risk and the economics. At KfW that produced one specification template and one evaluation template used across a portfolio of proofs of concept, so results could be compared instead of argued about."
+        "body": "Before anything is designed I sit with the people doing the job and map the process, the baseline, the bottleneck, the risk and the economics. At a German development bank that produced one specification template and one evaluation template used across a portfolio of proofs of concept, so results could be compared instead of argued about."
       },
       {
         "title": "Ship the smallest loop that really runs",

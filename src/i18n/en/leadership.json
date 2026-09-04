@@ -6,7 +6,7 @@
   "hero": {
     "eyebrow": "Technology leadership · Enterprise AI",
     "title": "From customer boardroom <em>to production code.</em>",
-    "sub": "I co-founded Jaden Data and led it as CTO to €1M+ annual revenue with no external capital, grew engineering from 0 to 10, and owned AI delivery for APG, Bosch Global Services and KfW — with earlier real-time systems work for ING through SAS Institute. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover, and I still write the code.",
+    "sub": "I co-founded Jaden Data and led it as CTO to €1M+ annual revenue with no external capital, grew engineering from 0 to 10, and owned AI delivery for APG, Bosch Global Services and a German development bank — with earlier real-time systems work for ING through SAS Institute. I work from executive discovery and technical pre-sales through architecture, code, production rollout and handover, and I still write the code.",
     "primary": {
       "href": "/en/contact/#hiring",
       "label": "Discuss a leadership role"
@@ -43,7 +43,7 @@
       {
         "title": "Reuse & product feedback",
         "body": "Every deployment leaves something behind — an integration, an evaluation harness, a playbook, a change to the product — so the next one starts further along than the last.",
-        "proof": "One specification template and one evaluation template carried a seven-part proof-of-concept portfolio at KfW; the process patterns, the cited-retrieval design and the Testbed evaluation framework were reused across later deployments.",
+        "proof": "One specification template and one evaluation template carried a seven-part proof-of-concept portfolio at a German development bank; the process patterns, the cited-retrieval design and the Testbed evaluation framework were reused across later deployments.",
         "href": "/en/case-studies/development-bank-genai-portfolio/"
       }
     ]
@@ -90,7 +90,7 @@
       {
         "title": "Understand the workflow and its baseline before choosing technology",
         "body": "Model choice is the last decision, not the first. What does this work cost today, who does it, where does it break, and what would make the result trustworthy to the person who signs it off?",
-        "example": "At KfW every proof of concept started from one specification template — background, problem, objective, scope, methodology, success metrics, dependencies — so seven very different workflows could be compared on the same terms."
+        "example": "At a German development bank every proof of concept started from one specification template — background, problem, objective, scope, methodology, success metrics, dependencies — so seven very different workflows could be compared on the same terms."
       },
       {
         "title": "Ship the smallest real production loop",
