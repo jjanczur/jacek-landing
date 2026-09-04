@@ -45,9 +45,11 @@ export const collections = {
         .enum(['production', 'mvp', 'poc', 'prototype', 'research'])
         .optional(),
       role: z.string(),
-      // A public write-up of the engagement, where one exists. Rendered by
-      // CaseFacts.astro; the client may only be named when this is set.
+      // An external link for the engagement, where one exists: usually a
+      // public write-up, sometimes the client's own site. Rendered by
+      // CaseFacts.astro under `sourceLabel`, which defaults to a write-up.
       sourceUrl: z.string().url().optional(),
+      sourceLabel: z.string().optional(),
       mandate: z.string(),
       skim: z.string(),
       category: z.enum([

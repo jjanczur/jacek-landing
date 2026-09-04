@@ -9,6 +9,7 @@ export interface Props {
   role: string;
   via?: string;
   sourceUrl?: string;
+  sourceLabel?: string;
   tags: string[];
   related: { href: string; title: string }[];
   chapters: { slug: string; text: string }[];
@@ -23,6 +24,7 @@ const {
   role,
   via,
   sourceUrl,
+  sourceLabel,
   tags,
   related,
   chapters,
@@ -46,12 +48,13 @@ const facts: { term: string; value: string; href?: string }[] = [
     : []),
   { term: 'Role', value: role },
   ...(via ? [{ term: 'Delivered via', value: via }] : []),
-  // The engagement is only named where it is already published; that
-  // publication is the link.
+  // Usually a public write-up of the engagement. Where the link is the
+  // client's own site instead, the case says so via `sourceLabel` rather
+  // than implying an account of the project exists.
   ...(sourceUrl
     ? [
         {
-          term: 'Public write-up',
+          term: sourceLabel ?? 'Public write-up',
           value: new URL(sourceUrl).hostname.replace(/^www\./, ''),
           href: sourceUrl,
         },
