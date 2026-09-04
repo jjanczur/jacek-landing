@@ -29,7 +29,6 @@ const UNNAMED_CLIENTS: RegExp[] = [
   /\bkenstone\b/,
   /\bimf\b/,
   /\bred bull\b/,
-  /\brp[\s-]group\b/,
 ];
 
 const EVIDENCE = [

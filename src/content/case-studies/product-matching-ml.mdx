@@ -1,6 +1,7 @@
 ---
-title: 'A machine-learning product matcher that takes the expert out of the critical path'
-client: 'An emergency-lighting manufacturer'
+title:
+  'RP-Matcher, a machine-learning product matcher that takes the expert out of the critical path'
+client: 'RP Group (emergency lighting)'
 relationship: 'client'
 via: 'Jaden Data'
 sector: 'Manufacturing'
@@ -14,9 +15,9 @@ mandate:
 skim: 'Matching customer inquiries to catalogue products'
 category: 'ai-products'
 summary:
-  'A supervised machine-learning system that matches incoming customer inquiries to the right
-  products in an emergency-lighting catalogue, so offer preparation no longer waits for a domain
-  expert to pick the parts by hand. It runs in production.'
+  'RP-Matcher, a supervised machine-learning system that matches incoming customer inquiries to the
+  right products in the RP Group emergency-lighting catalogue, so offer preparation no longer waits
+  for a domain expert to pick the parts by hand. It runs in production.'
 keyDecisions:
   - 'Engineered features with domain rules rather than a deep model: a bi-encoder was tested and
     paused, because it needs five to ten times more data than the corpus provides.'
@@ -88,9 +89,9 @@ order: 60
 
 ## Context
 
-An emergency-lighting manufacturer answers every customer inquiry with an offer that names specific
-products from its catalogue, and choosing them correctly is domain knowledge held by a small number
-of people.
+RP Group sells emergency lighting. Every customer inquiry has to be answered with an offer that
+names specific products from the catalogue, and choosing them correctly is domain knowledge held by
+a small number of people.
 
 ## Business problem
 
@@ -127,7 +128,7 @@ put in front of users.
 
 ## Delivery
 
-The system runs in production for offer preparation and returns ranked product candidates for an
+RP-Matcher runs in production for offer preparation and returns ranked product candidates for an
 inquiry. The first benchmark round, on 96 document pairs, recorded 70.7% top-1 accuracy, a mean
 reciprocal rank of 0.835 and AUC-ROC 0.923 — the right product usually first or second on the list.
 With the corpus grown past 300 documents, top-1 accuracy reached 78.4%, inside the 75–80% band the

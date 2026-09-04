@@ -159,7 +159,7 @@
         }
       },
       {
-        "title": "Product-matcher decisions",
+        "title": "RP-Matcher decisions",
         "body": "For an emergency-lighting manufacturer I engineered the features, benchmarked five model families with hyperparameter search, and chose the tuned random forest, which reaches 78.4% top-1 accuracy on the current corpus — then wrote down what more labelled pairs would buy, instead of reaching for a deep model the dataset could not support."
       },
       {
